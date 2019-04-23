@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="秒杀系统项目的业务逻辑是:  用户打开商品列表,选择某个商品,跳转到秒杀页面 若秒杀开启了,则暴露秒杀接口">
+  <meta name="description" content="项目的业务逻辑是: 商家添加商品库存,商品供用户进行秒杀 用户打开商品列表,选择某个商品,跳转到秒杀页面 若秒杀开启了,则用户进行秒杀商品 秒杀成功的话,买家付款,商家发货  我在项目中主要实现的部分业务逻辑是 用户打开商品列表,点击某样需要秒杀的商品 当前商品若开启秒杀,则进行秒杀 秒杀成功,则商品减库存 针对这个秒杀的过程进行优化,防止商品超卖,能达到一定的并发量 我是借助这个秒杀系统的项目,">
 <meta name="keywords" content="项目">
 <meta property="og:type" content="article">
 <meta property="og:title" content="秒杀系统项目总结（未完结）">
-<meta property="og:url" content="http://github.com/icebearice/2019/04/05/秒杀系统总结/index.html">
+<meta property="og:url" content="http://github.com/icebearice/2019/04/23/秒杀系统总结/index.html">
 <meta property="og:site_name" content="淘气的白熊">
-<meta property="og:description" content="秒杀系统项目的业务逻辑是:  用户打开商品列表,选择某个商品,跳转到秒杀页面 若秒杀开启了,则暴露秒杀接口">
+<meta property="og:description" content="项目的业务逻辑是: 商家添加商品库存,商品供用户进行秒杀 用户打开商品列表,选择某个商品,跳转到秒杀页面 若秒杀开启了,则用户进行秒杀商品 秒杀成功的话,买家付款,商家发货  我在项目中主要实现的部分业务逻辑是 用户打开商品列表,点击某样需要秒杀的商品 当前商品若开启秒杀,则进行秒杀 秒杀成功,则商品减库存 针对这个秒杀的过程进行优化,防止商品超卖,能达到一定的并发量 我是借助这个秒杀系统的项目,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-22T16:43:23.402Z">
+<meta property="og:updated_time" content="2019-04-23T15:17:06.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="秒杀系统项目总结（未完结）">
-<meta name="twitter:description" content="秒杀系统项目的业务逻辑是:  用户打开商品列表,选择某个商品,跳转到秒杀页面 若秒杀开启了,则暴露秒杀接口">
+<meta name="twitter:description" content="项目的业务逻辑是: 商家添加商品库存,商品供用户进行秒杀 用户打开商品列表,选择某个商品,跳转到秒杀页面 若秒杀开启了,则用户进行秒杀商品 秒杀成功的话,买家付款,商家发货  我在项目中主要实现的部分业务逻辑是 用户打开商品列表,点击某样需要秒杀的商品 当前商品若开启秒杀,则进行秒杀 秒杀成功,则商品减库存 针对这个秒杀的过程进行优化,防止商品超卖,能达到一定的并发量 我是借助这个秒杀系统的项目,">
 
 
 
@@ -122,7 +122,7 @@
 
   
   
-  <link rel="canonical" href="http://github.com/icebearice/2019/04/05/秒杀系统总结/">
+  <link rel="canonical" href="http://github.com/icebearice/2019/04/23/秒杀系统总结/">
 
 
 
@@ -336,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/05/秒杀系统总结/">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/23/秒杀系统总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="icebearice">
@@ -379,24 +379,12 @@
                 
               
 
-              <time title="创建时间：2019-04-05 12:14:28" itemprop="dateCreated datePublished" datetime="2019-04-05T12:14:28+08:00">2019-04-05</time>
+              <time title="创建时间：2019-04-23 23:17:05 / 修改时间：23:17:06" itemprop="dateCreated datePublished" datetime="2019-04-23T23:17:05+08:00">2019-04-23</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-23 00:43:23" itemprop="dateModified" datetime="2019-04-23T00:43:23+08:00">2019-04-23</time>
               
             
           </span>
@@ -455,10 +443,38 @@
       
 
       
-        <h1 id="秒杀系统"><a href="#秒杀系统" class="headerlink" title="秒杀系统"></a>秒杀系统</h1><p>项目的业务逻辑是:</p>
-<ol>
+        <h4 id="项目的业务逻辑是"><a href="#项目的业务逻辑是" class="headerlink" title="项目的业务逻辑是:"></a>项目的业务逻辑是:</h4><ol>
+<li>商家添加商品库存,商品供用户进行秒杀</li>
 <li>用户打开商品列表,选择某个商品,跳转到秒杀页面</li>
-<li>若秒杀开启了,则暴露秒杀接口</li>
+<li>若秒杀开启了,则用户进行秒杀商品</li>
+<li>秒杀成功的话,买家付款,商家发货</li>
+</ol>
+<h4 id="我在项目中主要实现的部分业务逻辑是"><a href="#我在项目中主要实现的部分业务逻辑是" class="headerlink" title="我在项目中主要实现的部分业务逻辑是"></a>我在项目中主要实现的部分业务逻辑是</h4><ol>
+<li>用户打开商品列表,点击某样需要秒杀的商品</li>
+<li>当前商品若开启秒杀,则进行秒杀</li>
+<li>秒杀成功,则商品减库存</li>
+<li>针对这个秒杀的过程进行优化,防止商品超卖,能达到一定的并发量</li>
+<li>我是借助这个秒杀系统的项目,来对高并发领域进行初步的接触与学习</li>
+</ol>
+<h4 id="实现秒杀的过程-如何考虑秒杀的需求"><a href="#实现秒杀的过程-如何考虑秒杀的需求" class="headerlink" title="实现秒杀的过程(如何考虑秒杀的需求):"></a>实现秒杀的过程(如何考虑秒杀的需求):</h4><ol>
+<li>先对秒杀进行简单的模拟</li>
+<li>从商品列表中,点开具体商品</li>
+<li>然后根据数据库中存在的秒杀商品的开始时间 结束时间 库存量 进行判断<ol>
+<li>若秒杀未开启,则隐藏秒杀接口,并显示秒杀未开启</li>
+<li>若秒杀正在进行中,分成两种情况<ol>
+<li>商品库存量未达到零,则暴露秒杀接口,并显示秒杀进行中</li>
+<li>商品库存量达到零,则隐藏秒杀接口,并显示秒杀已结束</li>
+</ol>
+</li>
+<li>若秒杀已经结束,则隐藏秒杀接口,并显示秒杀已结束</li>
+</ol>
+</li>
+<li>如果执行了秒杀,我们记录秒杀订单,减少库存</li>
+</ol>
+<h4 id="如何防止商品超卖-库存超卖"><a href="#如何防止商品超卖-库存超卖" class="headerlink" title="如何防止商品超卖(库存超卖)"></a>如何防止商品超卖(库存超卖)</h4><ol>
+<li>暴露秒杀接口后,在前端使按钮防重复,若是重复点击,会造成提交多次请求</li>
+<li>在减库存的sql语句中的where条件中判断库存量&gt;0</li>
+<li></li>
 </ol>
 
       
@@ -496,8 +512,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/20/2019.3.20 问题集/" rel="next" title="2019.3.20 问题集">
-                <i class="fa fa-chevron-left"></i> 2019.3.20 问题集
+              <a href="/2019/04/23/Java源码/" rel="next" title="Java源码">
+                <i class="fa fa-chevron-left"></i> Java源码
               </a>
             
           </div>
@@ -505,10 +521,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/05/秒杀系统项目总结/" rel="prev" title="秒杀系统项目总结（未完结）">
-                秒杀系统项目总结（未完结） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -745,7 +757,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#秒杀系统"><span class="nav-number">1.</span> <span class="nav-text">秒杀系统</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#项目的业务逻辑是"><span class="nav-number">1.</span> <span class="nav-text">项目的业务逻辑是:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我在项目中主要实现的部分业务逻辑是"><span class="nav-number">2.</span> <span class="nav-text">我在项目中主要实现的部分业务逻辑是</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现秒杀的过程-如何考虑秒杀的需求"><span class="nav-number">3.</span> <span class="nav-text">实现秒杀的过程(如何考虑秒杀的需求):</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何防止商品超卖-库存超卖"><span class="nav-number">4.</span> <span class="nav-text">如何防止商品超卖(库存超卖)</span></a></li></ol></div>
             
 
           </div>

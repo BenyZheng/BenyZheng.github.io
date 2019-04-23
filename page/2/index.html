@@ -336,6 +336,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/23/关于数据库索引的思考/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="icebearice">
+      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淘气的白熊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/23/关于数据库索引的思考/" class="post-title-link" itemprop="url">Java源码</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-23 00:41:00 / 修改时间：00:42:33" itemprop="dateCreated datePublished" datetime="2019-04-23T00:41:00+08:00">2019-04-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DataBase/" itemprop="url" rel="index"><span itemprop="name">DataBase</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="为什么说B-树适合做索引-而不是B树呢"><a href="#为什么说B-树适合做索引-而不是B树呢" class="headerlink" title="为什么说B+树适合做索引 而不是B树呢"></a>为什么说B+树适合做索引 而不是B树呢</h1><ol>
+<li>索引查找过程中会产生磁盘IO消耗,相对于内存的读取,磁盘的IO消耗的数量级要更高,所以说要想索引的效率高,要尽可能的减少磁盘IO的数量,而B树每个节点都有具体指向关键字的指针,B+树则没有指向关键字的具体指针,它只需要对一个关键字盘块进行读取,B树需要对关键字盘块和对应指针盘块两个盘块进行读取,一个盘块读取的效率就是一次IO,故B+树的IO读写次数就较少一些</li>
+<li>由于B+树存的是对关键字的索引,所以任何关键字都需要从对应索引根节点走向叶子节点的路,相对于B树而言,查询效率更加稳定一些</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/15/算法/字符串的排列/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -480,173 +644,6 @@
 <p><strong>在时间上</strong>，<strong>提前处理字符串的字典序会比处理完事后生成的字符串要快一些</strong></p>
 <p>代码随后补上，睡觉，要猝死咯~</p>
 
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/14/笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="icebearice">
-      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="淘气的白熊">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/14/笔记/" class="post-title-link" itemprop="url">思维导图</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-14 17:10:17 / 修改时间：19:32:54" itemprop="dateCreated datePublished" datetime="2019-04-14T17:10:17+08:00">2019-04-14</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/思维导图/" itemprop="url" rel="index"><span itemprop="name">思维导图</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/思维导图/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="思维导图-知识整理-百度脑图-自用"><a href="#思维导图-知识整理-百度脑图-自用" class="headerlink" title="思维导图-知识整理    百度脑图            自用"></a>思维导图-知识整理    百度脑图            自用</h3><h4 id="前端："><a href="#前端：" class="headerlink" title="前端："></a>前端：</h4><h4 id="HTML-Css-JQuery-JSP-Ajax-EL表达式-JSTL"><a href="#HTML-Css-JQuery-JSP-Ajax-EL表达式-JSTL" class="headerlink" title="HTML    Css        JQuery        JSP        Ajax        EL表达式        JSTL"></a><a href="http://naotu.baidu.com/file/951ec7faee21af0d7b94ee824ddcbe19?token=d7db50ae11959597" target="_blank" rel="noopener">HTML</a>    <a href="http://naotu.baidu.com/file/ca0c4759841da2ee53eca123a7900046?token=1750141306459a4d" target="_blank" rel="noopener">Css</a>        <a href="http://naotu.baidu.com/file/5564b57ad317c91b61ea8197f4a9c4aa?token=5ea6ebc9e64043ec" target="_blank" rel="noopener">JQuery</a>        <a href="http://naotu.baidu.com/file/5949e7899962d777a62ce69ed8527d42?token=c0785ee7518e95b0" target="_blank" rel="noopener">JSP</a>        <a href="http://naotu.baidu.com/file/b2f3571fadcd5c68ffa41c1e7063014c?token=b8a16e593fbea2c0" target="_blank" rel="noopener">Ajax</a>        <a href="http://naotu.baidu.com/file/c12f3110c0a38fb0fd0fff1c41e2a4a0?token=5cd23d2a080cdd92" target="_blank" rel="noopener">EL表达式</a>        <a href="http://naotu.baidu.com/file/cb32d73d5748347f6178b1fa0e3872b1?token=fa2668dc8c96ca1e" target="_blank" rel="noopener">JSTL</a></h4><h4 id="Java："><a href="#Java：" class="headerlink" title="Java："></a>Java：</h4><h4 id="Java基础-MVC-MVC案例-Servlet-学生管理系统"><a href="#Java基础-MVC-MVC案例-Servlet-学生管理系统" class="headerlink" title="Java基础        MVC    MVC案例    Servlet    学生管理系统"></a><a href="http://naotu.baidu.com/file/d62593a4148e88d5e6e28e68d7564c36?token=1a68139eee85a24a" target="_blank" rel="noopener">Java基础</a>        <a href="http://naotu.baidu.com/file/5f4ccac49ef73afea030c4a3a4439789?token=60f6f608b039e142" target="_blank" rel="noopener">MVC</a>    <a href="http://naotu.baidu.com/file/42ae1427319317382fc11af8b84b7839?token=e9b285267ac52579" target="_blank" rel="noopener">MVC案例</a>    <a href>Servlet</a>    <a href="http://naotu.baidu.com/file/70e67b2081221d10961953ea982fe513?token=bf6436fd9c8cbadb" target="_blank" rel="noopener">学生管理系统</a></h4><h4 id="数据交互："><a href="#数据交互：" class="headerlink" title="数据交互："></a>数据交互：</h4><h4 id="JDBC-JDBC案例-数据库-数据库连接池-XML-DBUtils-MySQL-事务"><a href="#JDBC-JDBC案例-数据库-数据库连接池-XML-DBUtils-MySQL-事务" class="headerlink" title="JDBC    JDBC案例    数据库        数据库连接池    XML    DBUtils    MySQL    事务"></a><a href="http://naotu.baidu.com/file/bdbc8d3e88cf289f89d474863b8dd235?token=d777b362e9227e99" target="_blank" rel="noopener">JDBC</a>    <a href="http://naotu.baidu.com/file/75b9d2b594a0b412af8a86bdd7e545a4?token=e813fe2b5efbc067" target="_blank" rel="noopener">JDBC案例</a>    <a href="http://naotu.baidu.com/file/64930bbdf3be1498e5fff3eeec350b83?token=35a072eaf214a397" target="_blank" rel="noopener">数据库</a>        <a href="http://naotu.baidu.com/file/158d19d9fde133b37fc53cfb2a6f263a?token=61af401f6ecbb307" target="_blank" rel="noopener">数据库连接池</a>    <a href="http://naotu.baidu.com/file/62cfbca4f5e3e2ca0c41278bc825e1b2?token=83670dd2c5767ba8" target="_blank" rel="noopener">XML</a>    <a href="http://naotu.baidu.com/file/52849b052ae215b474a8a4664bad519c?token=34e0bbdd536acd0f" target="_blank" rel="noopener">DBUtils</a>    <a href="http://naotu.baidu.com/file/732c4f6ab64d9ee7fbae2acdb89f713e?token=03c322b5244326f8" target="_blank" rel="noopener">MySQL</a>    <a href="http://naotu.baidu.com/file/1940c1974dda2e34f2ab092204fcdc2f?token=e03520fca5f9438a" target="_blank" rel="noopener">事务</a></h4><h4 id="网络"><a href="#网络" class="headerlink" title="网络:"></a>网络:</h4><h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a><a href="http://naotu.baidu.com/file/ff2d367c2c60da0e4acd153757b9125c?token=7c6ccb61571fff2d" target="_blank" rel="noopener">HTTP</a></h4><h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux:"></a>Linux:</h4><h4 id="Linux-1"><a href="#Linux-1" class="headerlink" title="Linux"></a><a href="http://naotu.baidu.com/file/5c7ab14433dfe538228ef2a54803d66e?token=75cca7af1d52fb43" target="_blank" rel="noopener">Linux</a></h4><h4 id="框架"><a href="#框架" class="headerlink" title="框架:"></a>框架:</h4><h4 id="SpringMVC-Spring-MyBatis-Hibernate"><a href="#SpringMVC-Spring-MyBatis-Hibernate" class="headerlink" title="SpringMVC    Spring    MyBatis    Hibernate"></a><a href="http://naotu.baidu.com/file/f238694a3f70745b02db8c9a602868f4?token=5ab5259336211a9d" target="_blank" rel="noopener">SpringMVC</a>    <a href="http://naotu.baidu.com/file/cd8234e1e70aa8657e85b2a69d2597fd?token=b9762d4ba7ed19a6" target="_blank" rel="noopener">Spring</a>    <a href="http://naotu.baidu.com/file/ee5738f64565b7ce31be59d028e1eeac?token=4cfc1e5a4d6dfdad" target="_blank" rel="noopener">MyBatis</a>    <a href="http://naotu.baidu.com/file/24b28c855096b8d73dc7593c98bffeed?token=dc4e4ac1d26842e5" target="_blank" rel="noopener">Hibernate</a></h4><h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理:"></a>数据处理:</h4><h4 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a><a href="http://naotu.baidu.com/file/55696fc083bafe660b1cf8294257067d?token=1e2ac78e7dd33ee1" target="_blank" rel="noopener">Hadoop</a></h4><h4 id="小程序"><a href="#小程序" class="headerlink" title="小程序:"></a>小程序:</h4><h4 id="小程序-小程序开发"><a href="#小程序-小程序开发" class="headerlink" title="小程序    小程序开发"></a><a href="http://naotu.baidu.com/file/7640bbaa6a9b64d1bfe4161d5077b530?token=3c3ad42099f553bc" target="_blank" rel="noopener">小程序</a>    <a href="http://naotu.baidu.com/file/367cb35c2aa00cd93aefd72dc6aeb80b?token=38bb254d0a06427a" target="_blank" rel="noopener">小程序开发</a></h4>
           
         
       
