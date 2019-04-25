@@ -336,6 +336,214 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/15/算法/字符串的排列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="icebearice">
+      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淘气的白熊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/15/算法/字符串的排列/" class="post-title-link" itemprop="url">字符串的排列</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-15 02:36:10 / 修改时间：03:17:47" itemprop="dateCreated datePublished" datetime="2019-04-15T02:36:10+08:00">2019-04-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2019-04-15T03:17:47+08:00" content="2019-04-15">
+                2019-04-15
+              </time>
+            </span>
+          
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指OFFER/" itemprop="url" rel="index"><span itemprop="name">剑指OFFER</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="字符串的排列"><a href="#字符串的排列" class="headerlink" title="字符串的排列"></a>字符串的排列</h1><blockquote>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。</p>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 输入一个字符串,长度不超过9(可能有字符重复),字符只包括大小写字母。</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>做这道题吧，既然是排列，就回忆一下排列组合的数学知识吧。</p>
+<p><img src="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D257/sign=97158a763df33a879a6d071ff15d1018/2e2eb9389b504fc2974eb943e2dde71190ef6d66.jpg" alt="img"></p>
+<p><img src="https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D162/sign=f68c65f4b5b7d0a27fc9009bf9ee760d/5d6034a85edf8db190ab75220e23dd54574e74ea.jpg" alt="img"></p>
+<p>如果字符串为abc，那就是A33</p>
+<p>如果字符串为alibaba，那就是C73<em>C42</em>A22</p>
+<p>实现了计算的全排列，看看算法应该如何实现全排列呢？</p>
+<p>以字符串abc为例，固定住第一个字符，然后让后面两个字符交换，如图所示</p>
+<p><img src="http://img.blog.csdn.net/20130517151143329" alt="img"></p>
+<blockquote>
+<p>图片来源：<a href="http://www.cnblogs.com/cxjchen/p/3932949.html" target="_blank" rel="noopener">http://www.cnblogs.com/cxjchen/p/3932949.html</a></p>
+</blockquote>
+<p>以编程的思维来看，假定字符串长度为<strong>n</strong>，则循环一般是从<strong>0~n</strong>遍历一遍的，那我们要如何实现交换之后<strong>递归停止呢</strong>？</p>
+<p><strong>以abc为例：</strong></p>
+<ol>
+<li>第一个字符有abc三种可能，则第一个字符遍历3次，结束条件为遍历到最后一个字符（即只剩下一个字符）</li>
+<li>第一个字符的三种可能已经确定，我们只需考虑第二字符和第三字符，显而易见，第二字符和第三字符交换即可得到两个字符串</li>
+<li>需要注意的是，首字符固定后，第二字符与第三字符进行交换后，需要换回来，保证不影响首字符的遍历集合</li>
+</ol>
+<p><strong>那如果是三个以上的字符呢？</strong></p>
+<p><strong>以abcde为例：</strong></p>
+<ol>
+<li>首字符有5种可能，遍历5次，每遍历一次，都要考虑首字符后面4个字符</li>
+<li>由于首字符固定，考虑后面4个字符，同处理首字符一样</li>
+<li>相当于每一次都在处理 固定的首字符</li>
+<li>结束条件为遍历到最后一个字符</li>
+</ol>
+<p><strong>非常明显的递归关系，不断处理首字符，从而进行交换</strong></p>
+<p><img src="https://icebearice.gitee.io/uploads/1555268158383.png" alt="1555268158383"></p>
+<p><strong>紧接着，有重复问题，怎么处理？</strong></p>
+<p>对于abb而言，由于我们是固定首字符，在交换首字符a与第二字符b，并且交换回来后，若发现第三个字符与第二字符相等，则不再进行交换</p>
+<p><strong>所以，交换规则就是，从首字符开始，每个字符与后面非重复出现的字符进行交换，结束条件为遍历到最后一个字符（即只剩下一个字符），然鹅进行递归处理</strong></p>
+<p>算法思路如上，可以用<strong>方法递归</strong>或<strong>循环</strong>实现吧，方法递归可能需要<strong>处理字典序问题</strong>，循环的话可以<strong>提前处理字典序</strong>，处理完后再进行循环，便不需要完事（全排列）后处理字典序</p>
+<p>在空间上，<strong>循环不需要递归空间</strong></p>
+<p><strong>在时间上</strong>，<strong>提前处理字符串的字典序会比处理完事后生成的字符串要快一些</strong></p>
+<p>代码随后补上，睡觉，要猝死咯~</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/14/笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -391,6 +599,15 @@
             
           </span>
 
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2019-04-14T19:32:54+08:00" content="2019-04-14">
+                2019-04-14
+              </time>
+            </span>
+          
+          
           
             <span class="post-category">
             
@@ -488,152 +705,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/14/记第一个博客/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="icebearice">
-      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="淘气的白熊">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/14/记第一个博客/" class="post-title-link" itemprop="url">记第一个博客</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-14 02:29:12 / 修改时间：02:38:17" itemprop="dateCreated datePublished" datetime="2019-04-14T02:29:12+08:00">2019-04-14</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Hexo还是很棒的，非常漂亮方便，有了自己搭建的博客，就有更新博客的理由啦 哈哈哈</p>
-<p>赶紧把我本地的笔记全部传上来 放着看还是很有成就感的 不错</p>
-<p>有空再上来把我的未命名笔记们更新一遍吧</p>
-<p>nice~</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -682,7 +753,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -723,7 +794,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -762,7 +835,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
