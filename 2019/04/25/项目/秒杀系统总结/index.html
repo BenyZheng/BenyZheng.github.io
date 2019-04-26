@@ -499,7 +499,7 @@
 </li>
 <li><p>如果出现超卖现象, 还有可能是因为出现了幻读现象</p>
 <ol>
-<li><p><a href="https://icebearice.gitee.io/2019/04/26/数据库/关于事务的MVCC多版本并发控制的思考" target="_blank" rel="noopener">跳转: 关于事务MVCC多版本并发控制的思考</a></p>
+<li><p><a href="https://icebearice.gitee.io/2019/04/26/数据库/关于事务MVCC多版本并发控制的思考" target="_blank" rel="noopener">跳转: 关于事务MVCC多版本并发控制的思考</a></p>
 <p>MySQL的默认事务隔离级别为: Repeated Read (此处可延伸事务隔离级别) 在<strong>默认隔离级别的基础</strong>上 将秒杀方法放入同步锁synchronized代码块中, 始终会有<strong>幻读问题</strong>, 于是扩大了锁的范围, 就没有幻读的现象了, 但是同步锁会严重影响并发性能</p>
 <blockquote>
 <p>Spring事务是通过AOP实现的, synchronized代码块是在事务之内执行的, synchronized代码块执行完之后, 事务还未提交, 事务的范围大于锁的范围, 于是将同步锁加到了Controller层, 使锁的范围大于事务的范围, 就不会有幻读问题了</p>
