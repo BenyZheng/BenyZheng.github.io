@@ -336,6 +336,282 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/25/项目/秒杀系统总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="icebearice">
+      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淘气的白熊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/25/项目/秒杀系统总结/" class="post-title-link" itemprop="url">秒杀系统项目总结（未完结）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-04-25 19:39:40" itemprop="dateCreated datePublished" datetime="2019-04-25T19:39:40+08:00">2019-04-25 19:39:40</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/" itemprop="url" rel="index"><span itemprop="name">项目</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/秒杀系统/" itemprop="url" rel="index"><span itemprop="name">秒杀系统</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="项目的业务逻辑是"><a href="#项目的业务逻辑是" class="headerlink" title="项目的业务逻辑是:"></a>项目的业务逻辑是:</h4><ol>
+<li>商家添加商品库存,商品供用户进行秒杀</li>
+<li>用户打开商品列表,选择某个商品,跳转到秒杀页面</li>
+<li>若秒杀开启了,则用户进行秒杀商品</li>
+<li>秒杀成功的话,买家付款,商家发货</li>
+</ol>
+<h4 id="我在项目中主要实现的部分业务逻辑是"><a href="#我在项目中主要实现的部分业务逻辑是" class="headerlink" title="我在项目中主要实现的部分业务逻辑是"></a>我在项目中主要实现的部分业务逻辑是</h4><ol>
+<li>用户打开商品列表,点击某样需要秒杀的商品</li>
+<li>当前商品若开启秒杀,则进行秒杀</li>
+<li>秒杀成功,则商品减库存</li>
+<li>针对这个秒杀的过程进行优化,防止商品超卖,能达到一定的并发量</li>
+<li>我是借助这个秒杀系统的项目,来对高并发领域进行初步的接触与学习</li>
+</ol>
+<h4 id="实现秒杀的过程-如何考虑秒杀的需求"><a href="#实现秒杀的过程-如何考虑秒杀的需求" class="headerlink" title="实现秒杀的过程(如何考虑秒杀的需求):"></a>实现秒杀的过程(如何考虑秒杀的需求):</h4><ol>
+<li>先对秒杀进行简单的模拟</li>
+<li>从商品列表中,点开具体商品</li>
+<li>然后根据数据库中存在的秒杀商品的开始时间 结束时间 库存量 进行判断<ol>
+<li>若秒杀未开启,则隐藏秒杀接口,并显示秒杀未开启</li>
+<li>若秒杀正在进行中,分成两种情况<ol>
+<li>商品库存量未达到零,则暴露秒杀接口,并显示秒杀进行中</li>
+<li>商品库存量达到零,则隐藏秒杀接口,并显示秒杀已结束</li>
+</ol>
+</li>
+<li>若秒杀已经结束,则隐藏秒杀接口,并显示秒杀已结束</li>
+</ol>
+</li>
+<li>如果执行了秒杀,我们记录秒杀订单,减少库存</li>
+</ol>
+<h4 id="如何防止商品超卖-库存超卖"><a href="#如何防止商品超卖-库存超卖" class="headerlink" title="如何防止商品超卖(库存超卖)"></a>如何防止商品超卖(库存超卖)</h4><ol>
+<li><p>暴露秒杀接口后,在前端使按钮防重复,若是重复点击,会造成提交多次请求</p>
+</li>
+<li><p>在减库存的sql语句中的where条件中判断库存量&gt;0</p>
+</li>
+<li><p>如果出现超卖现象, 还有可能是因为出现了幻读现象</p>
+<ol>
+<li><p><a href="https://icebearice.gitee.io/2019/04/26/数据库/关于事务MVCC多版本并发控制的思考" target="_blank" rel="noopener">跳转: 关于事务MVCC多版本并发控制的思考</a></p>
+<p>MySQL的默认事务隔离级别为: Repeated Read (此处可延伸事务隔离级别) 在<strong>默认隔离级别的基础</strong>上 将秒杀方法放入同步锁synchronized代码块中, 始终会有<strong>幻读问题</strong>, 于是扩大了锁的范围, 就没有幻读的现象了, 但是同步锁会严重影响并发性能</p>
+<blockquote>
+<p>Spring事务是通过AOP实现的, synchronized代码块是在事务之内执行的, synchronized代码块执行完之后, 事务还未提交, 事务的范围大于锁的范围, 于是将同步锁加到了Controller层, 使锁的范围大于事务的范围, 就不会有幻读问题了</p>
+</blockquote>
+</li>
+<li><p>将事务隔离级别改成可串行化, 也是严重影响并发性能</p>
+</li>
+<li><p>乐观锁改进(将实际秒杀后减少的库存量与预计秒杀后减少的库存量进行比较, 若相等则提交事务, 若不相等则回滚事务)</p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="乐观锁改进之后-还能如何提升我们的并发量呢"><a href="#乐观锁改进之后-还能如何提升我们的并发量呢" class="headerlink" title="乐观锁改进之后, 还能如何提升我们的并发量呢???"></a>乐观锁改进之后, 还能如何提升我们的并发量呢???</h4><ol>
+<li>redis缓存, 作用其实就是在高并发访问多个商品的时候, 商品的种类数量超过了上限, 导致不断地重复访问数据库, 造成缓存雪崩, 处理缓存雪崩的方式是不断地进行更新缓存, 更新缓存会出现脏读, 那就不断的删除缓存</li>
+<li>加上redis缓存, 发现当缓;存满了的时候, <strong>缓存雪崩</strong>, 缓存就没有作用了, 于是更新缓存</li>
+<li>发现<strong>更新缓存出现了脏读</strong>, 于是<strong>删除缓存</strong></li>
+<li><strong>缓存预加载</strong></li>
+<li>网络延迟<ol>
+<li>调换事务顺序, 原来先减库存后查, 变成先查后减</li>
+<li>将秒杀的数据库操作过程写成存储过程, 全权交给Mysql, 提高吞吐量</li>
+</ol>
+</li>
+</ol>
+<h4 id="目前所遇到的问题"><a href="#目前所遇到的问题" class="headerlink" title="目前所遇到的问题"></a>目前所遇到的问题</h4><ol>
+<li>redis的缓存概念 如 缓存雪崩 缓存预热 缓存穿透 缓存击穿 缓存更新</li>
+<li>redis本身在项目中存储的是序列化后的对象, 从redis中将其反序列化即可得到对象, 有对应的对象, 即可读取其的商品ID, 商品名称, 商品库存量</li>
+<li>涉及到需要redis缓存的高并发, 必定都是读, 而不是写, redis起到的作用就是将需要读的数据存储到缓存中, 避免多次执行sql语句进行select操作</li>
+<li>项目中存在两种高并发的情况:<ol>
+<li><strong>原来 本来就是动态加载</strong> 但是用户还是会不断刷新 好吧<ol>
+<li>用户不断刷新的话 需要处理高并发</li>
+<li><strong>   秒杀即将开始时, 用户不断的在秒杀商品的页面不断地刷新, 进入秒杀界面?</strong></li>
+<li><strong>为什么这里不用ajax实现自动更新 然后 到点了就自动变更接口呢?</strong><ol>
+<li>如果用ajax的话 我需要对时间一直进行判断 动态请求 等时间到了 接口直接转换成秒杀接口 </li>
+<li><strong>那这样子整的话 ajax可以和redis结合 redis负责刷新的时候 直接读取对应商品对象 读取出来之后 利用对象中的库存量 开始时间 结束时间 来对接口进行ajax动态化 ajax会造成延迟吗? 好像不会</strong></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>多个用户对同一物品进行秒杀操作, 点击秒杀后, 会产生大量秒杀请求</li>
+</ol>
+</li>
+<li>如何处理高并发的情况<ol>
+<li>针对用户刷新的情况 即用redis 并且更新商品页的对应信息  防止多次访问sql 获取相应商品信息</li>
+<li>针对秒杀的并发操作,<ol>
+<li>减少行级锁持有时间, 优化sql语句</li>
+<li>存储过程, 深度优化</li>
+<li>还有什么优化 请听下回分解</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/23/Java源码/Java源码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -584,196 +860,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/23/数据库/关于数据库索引的思考/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="icebearice">
-      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="淘气的白熊">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/23/数据库/关于数据库索引的思考/" class="post-title-link" itemprop="url">关于数据库索引的思考</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-04-23 00:41:00" itemprop="dateCreated datePublished" datetime="2019-04-23T00:41:00+08:00">2019-04-23 00:41:00</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
-              
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
-                2019-04-26 22:50:06
-              </time>
-            </span>
-          
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DataBase/" itemprop="url" rel="index"><span itemprop="name">DataBase</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="为什么说B-树适合做索引-而不是B树呢"><a href="#为什么说B-树适合做索引-而不是B树呢" class="headerlink" title="为什么说B+树适合做索引 而不是B树呢"></a>为什么说B+树适合做索引 而不是B树呢</h1><ol>
-<li>索引查找过程中会产生磁盘IO消耗,相对于内存的读取,磁盘的IO消耗的数量级要更高,所以说要想索引的效率高,要尽可能的减少磁盘IO的数量,而B树每个节点都有具体指向关键字的指针,B+树则没有指向关键字的具体指针,它只需要对一个关键字盘块进行读取,B树需要对关键字盘块和对应指针盘块两个盘块进行读取,一个盘块读取的效率就是一次IO,故B+树的IO读写次数就较少一些</li>
-<li>由于B+树存的是对关键字的索引,所以任何关键字都需要从对应索引根节点走向叶子节点的路,相对于B树而言,查询效率更加稳定一些</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -817,7 +908,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

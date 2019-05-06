@@ -336,6 +336,380 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/20/Maven/14.Maven-软件项目管理工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="icebearice">
+      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淘气的白熊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/11/20/Maven/14.Maven-软件项目管理工具/" class="post-title-link" itemprop="url">14 Maven-软件项目管理工具</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2018-11-20 21:03:10" itemprop="dateCreated datePublished" datetime="2018-11-20T21:03:10+08:00">2018-11-20 21:03:10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Maven/" itemprop="url" rel="index"><span itemprop="name">Maven</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Maven-软件项目管理工具"><a href="#Maven-软件项目管理工具" class="headerlink" title="Maven-软件项目管理工具"></a>Maven-软件项目管理工具</h1><ul>
+<li><h3 id="目录文件夹介绍"><a href="#目录文件夹介绍" class="headerlink" title="目录文件夹介绍"></a>目录文件夹介绍</h3><ul>
+<li>bin目录包含mvn的运行脚本 m2.conf-配置文件</li>
+<li>boot目录包含一个类加载器的框架</li>
+<li>conf目录包含一些配置文件</li>
+<li>lib目录包含自身的一些类库</li>
+</ul>
+</li>
+<li><h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><ul>
+<li>M2_HOME对应maven目录</li>
+<li>Path配置bin目录</li>
+<li>测试：shell中 mvn -v 查看版本</li>
+</ul>
+</li>
+<li><h3 id="Pom-xml配置"><a href="#Pom-xml配置" class="headerlink" title="Pom.xml配置"></a>Pom.xml配置</h3><ul>
+<li>groupId是项目的包名</li>
+<li>artifactID是项目模块名，即项目名</li>
+</ul>
+</li>
+<li><h3 id="Maven约定好的目录结构"><a href="#Maven约定好的目录结构" class="headerlink" title="Maven约定好的目录结构"></a>Maven约定好的目录结构</h3><ul>
+<li>src<ul>
+<li>main<ul>
+<li>java<ul>
+<li>package</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>test<ul>
+<li>java<ul>
+<li>package</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>resources</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h3><ul>
+<li>compile 编译</li>
+<li>test 测试</li>
+<li>package 打包</li>
+<li>clean 删除target maven所生成的目标文件</li>
+<li>install 安装jar包到本地仓库中</li>
+</ul>
+</li>
+<li><h3 id="archetype插件"><a href="#archetype插件" class="headerlink" title="archetype插件"></a>archetype插件</h3><ul>
+<li><p>用于创建符合maven规定的目录骨架</p>
+</li>
+<li><p>快速创建maven骨架</p>
+<ul>
+<li><p>archetype:generate 按照提示进行选择</p>
+</li>
+<li><p>archetype:generate -DgroupID=组织名，公司网址的反写+项目名</p>
+<p>​                    -DartifactId=项目名-模块名</p>
+<p>​                    -Dversion=版本号</p>
+<p>​                    -Dpackage=代码所存在的包名</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="maven中的坐标和仓库"><a href="#maven中的坐标和仓库" class="headerlink" title="maven中的坐标和仓库"></a>maven中的坐标和仓库</h3><ul>
+<li>groupId和artifactId还有version就是坐标</li>
+<li>仓库<ul>
+<li>本地仓库</li>
+<li>远程仓库</li>
+<li>中央仓库-全球默认仓库</li>
+<li>镜像仓库-国内的镜像仓库 解决无法访问外网问题</li>
+</ul>
+</li>
+<li>更改仓库位置 conf.xml改变localReposities</li>
+</ul>
+</li>
+<li><h3 id="Maven插件安装"><a href="#Maven插件安装" class="headerlink" title="Maven插件安装"></a>Maven插件安装</h3></li>
+<li><h3 id="完整的项目构建过程"><a href="#完整的项目构建过程" class="headerlink" title="完整的项目构建过程"></a>完整的项目构建过程</h3><ul>
+<li>清理</li>
+<li>编译</li>
+<li>测试</li>
+<li>打包</li>
+<li>集成测试</li>
+<li>验证</li>
+<li>部署</li>
+</ul>
+</li>
+<li><h3 id="maven生命周期"><a href="#maven生命周期" class="headerlink" title="maven生命周期"></a>maven生命周期</h3><ul>
+<li>clean 清理项目<ul>
+<li>pre-clean 执行清理前的工作</li>
+<li>clean 清理上一次构建生成的所有文件</li>
+<li>post-clean 执行清理后的文件</li>
+</ul>
+</li>
+<li>default 构建项目-核心<ul>
+<li>compile</li>
+<li>test</li>
+<li>package</li>
+<li>install</li>
+</ul>
+</li>
+<li>site 生成项目站点<ul>
+<li>pre-site 在生成项目站点前要完成的工作</li>
+<li>site 生成项目的站点文档</li>
+<li>post-site 在生成项目站点后要完成的工作</li>
+<li>site-deploy 发布生成的站点到服务器是上</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="plugins插件"><a href="#plugins插件" class="headerlink" title="plugins插件"></a>plugins插件</h3><ul>
+<li>如何使用</li>
+</ul>
+</li>
+<li><h3 id="pom-xml解析"><a href="#pom-xml解析" class="headerlink" title="pom.xml解析"></a>pom.xml解析</h3><ul>
+<li><h4 id="坐标信息-（前三必要）"><a href="#坐标信息-（前三必要）" class="headerlink" title="坐标信息-（前三必要）"></a>坐标信息-（前三必要）</h4><ul>
+<li><strong>groupId 反写公司网址+项目名</strong></li>
+<li><strong>artifactId 项目名+模块名</strong></li>
+<li><strong>version 版本号</strong><ul>
+<li>第一位-大版本号 第二位-分支版本号 第三位-小版本号 0.0.1</li>
+<li>snapshot-快照版本</li>
+<li>alpha-内部测试</li>
+<li>beta-公测</li>
+<li>release-稳定</li>
+<li>GA-正式发布</li>
+</ul>
+</li>
+<li>packaging-项目描述名</li>
+<li>name-项目描述名</li>
+<li>url-项目地址</li>
+<li>description-项目描述</li>
+</ul>
+</li>
+<li><p>如何指定依赖</p>
+<ul>
+<li>指定坐标信息</li>
+<li>指定范围-scope</li>
+<li>设置依赖是否可选-默认为false</li>
+<li>排除依赖传递列表-exclusions、exclusion</li>
+</ul>
+</li>
+<li><p>依赖管理-dependencyManagement</p>
+</li>
+<li><p>build-构建</p>
+<ul>
+<li>plugins</li>
+</ul>
+</li>
+<li><p>parent-子模块对父模块的继承</p>
+</li>
+<li><p>modules-多个模块</p>
+</li>
+</ul>
+</li>
+<li><h3 id="依赖范围-scope"><a href="#依赖范围-scope" class="headerlink" title="依赖范围-scope"></a>依赖范围-scope</h3><ul>
+<li>compile<strong>（编译范围）</strong>-默认的范围，编译测试运行都有效</li>
+<li>provided<strong>（已提供范围）</strong>-在编译和测试时有效（打包的时候不会被包进去，别的web container会提供）</li>
+<li>runtime<strong>（运行时范围）</strong>-在测试和运行时有效</li>
+<li>test<strong>（测试范围）</strong>-只在测试时有效</li>
+<li>system<strong>（系统范围）</strong>-与本季系统相关联，可移植性差</li>
+<li>import-导入的范围，它只是用在dependencyManagement中表示从其他的pom中导入dependency的配置</li>
+</ul>
+</li>
+<li><h3 id="maven依赖传递-dependencys"><a href="#maven依赖传递-dependencys" class="headerlink" title="maven依赖传递-dependencys"></a>maven依赖传递-dependencys</h3><ul>
+<li>将子依赖包clean后install打包后到本地仓库 后 才可进行 依赖传递</li>
+<li>排除依赖-exclusions</li>
+</ul>
+</li>
+<li><h3 id="依赖冲突"><a href="#依赖冲突" class="headerlink" title="依赖冲突"></a>依赖冲突</h3><ul>
+<li>1 短路优先-优先解析路径短的版本</li>
+<li>2 先声明先优先-同长度路径情况</li>
+</ul>
+</li>
+<li><h3 id="聚合-modules"><a href="#聚合-modules" class="headerlink" title="聚合-modules"></a>聚合-modules</h3><ul>
+<li>modules-module 聚合</li>
+</ul>
+</li>
+<li><h3 id="继承-denpendencyManagement"><a href="#继承-denpendencyManagement" class="headerlink" title="继承-denpendencyManagement"></a>继承-denpendencyManagement</h3><ul>
+<li>设置父类依赖 denpendencyManagement  使用该标签 该标签中的依赖不会在该项目中运行</li>
+<li>子类继承依赖 parent标签 继承父类依赖</li>
+</ul>
+</li>
+<li><h3 id="使用maven构建web项目"><a href="#使用maven构建web项目" class="headerlink" title="使用maven构建web项目"></a>使用maven构建web项目</h3><ul>
+<li>构建的是 webapp 而不是quickstart</li>
+<li>添加servlet依赖</li>
+</ul>
+</li>
+<li><h3 id="Servlet容器"><a href="#Servlet容器" class="headerlink" title="Servlet容器"></a>Servlet容器</h3><ul>
+<li>jetty</li>
+<li>tomcat</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/19/前端/13.Ajax&Jquery/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1107,402 +1481,11 @@ js代码
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/15/MVC/12.MVC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="icebearice">
-      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="淘气的白熊">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/11/15/MVC/12.MVC/" class="post-title-link" itemprop="url">12 MVC</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2018-11-15 02:33:12" itemprop="dateCreated datePublished" datetime="2018-11-15T02:33:12+08:00">2018-11-15 02:33:12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
-              
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
-                2019-04-26 22:50:06
-              </time>
-            </span>
-          
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MVC设计模式/" itemprop="url" rel="index"><span itemprop="name">MVC设计模式</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="元数据"><a href="#元数据" class="headerlink" title="元数据"></a>元数据</h3><h2 id="Meata-data"><a href="#Meata-data" class="headerlink" title="Meata data"></a>Meata data</h2><blockquote>
-<p>描述数据的数据 String sql , 描述这份sql字符串的数据叫做元数据</p>
-</blockquote>
-<p>数据库元数据  DatabaseMetaData<br>参数元数据  ParameterMetaData<br>结果集元数据  ResultSetMetaData</p>
-<h3 id="MVC设计模式"><a href="#MVC设计模式" class="headerlink" title="MVC设计模式"></a>MVC设计模式</h3><h3 id="JSP的开发模式"><a href="#JSP的开发模式" class="headerlink" title="JSP的开发模式"></a>JSP的开发模式</h3><p><img src="/icebearice/2018/11/15/MVC/12.MVC/img01.png" alt="icon"></p>
-<h3 id="三层架构-amp-MVC练习"><a href="#三层架构-amp-MVC练习" class="headerlink" title="三层架构&amp;MVC练习"></a>三层架构&amp;MVC练习</h3><p><img src="/icebearice/2018/11/15/MVC/12.MVC/img02.png" alt="icon"></p>
-<h2 id="学生信息管理系统"><a href="#学生信息管理系统" class="headerlink" title="学生信息管理系统"></a>学生信息管理系统</h2><h2 id="数据库准备"><a href="#数据库准备" class="headerlink" title="数据库准备"></a>数据库准备</h2><pre><code>CREATE DATABASE stus;
-USE stus;
-CREATE TABLE stu (
-    sid INT PRIMARY KEY  AUTO_INCREMENT,
-    sname VARCHAR (20),
-    gender VARCHAR (5),
-    phone VARCHAR (20),
-    birthday DATE,
-    hobby VARCHAR(50),
-    info VARCHAR(200)
-);
-</code></pre><h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><ol>
-<li><p>先写一个JSP 页面， 里面放一个超链接 。 </p>
-<p><a href="StudentListServlet"> 学生列表显示</a></p>
-</li>
-<li><p>写Servlet， 接收请求， 去调用 Service  , 由service去调用dao</p>
-</li>
-<li><p>先写Dao , 做Dao实现。</p>
-<pre><code>public interface StudentDao {
-</code></pre><p>​<br>​        /**</p>
-<ul>
-<li><p>查询所有学生</p>
-<ul>
-<li>@return  List<student><br> */<br>  List<student> findAll()  throws SQLException ;<br>  }</student></student></li>
-</ul>
-<hr>
-</li>
-</ul>
-</li>
-</ol>
-<pre><code>public class StudentDaoImpl implements StudentDao {
-</code></pre><p>​<br>​            /*<em><br>​             </em> 查询所有学生<br>​             <em> @throws SQLException<br>​             </em>/<br>​            @Override<br>​            public List<student> findAll() throws SQLException {<br>​                QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());<br>​                return runner.query(“select * from stu”, new BeanListHandler<student>(Student.class));<br>​                }<br>​<br>​        }    </student></student></p>
-<ol start="4">
-<li>再Service , 做Service的实现。</li>
-</ol>
-<pre><code>/**
- * 这是学生的业务处理规范
- * @author xiaomi
- *
- */
-public interface StudentService {
-
-    /**
-     * 查询所有学生
-     * @return  List&lt;Student&gt;
-     */
-    List&lt;Student&gt; findAll()  throws SQLException ;
-
-}
-
-------------------------------------------
-
-/**
- * 这是学生业务实现
- * @author xiaomi
- *
- */
-public class StudentServiceImpl implements StudentService{
-
-    @Override
-    public List&lt;Student&gt; findAll() throws SQLException {
-        StudentDao dao = new StudentDaoImpl();
-        return dao.findAll();
-    }
-}
-</code></pre><ol start="5">
-<li><p>在servlet 存储数据，并且做出页面响应。</p>
-<pre><code>protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-</code></pre><p>​        </p>
-<pre><code>    try {
-        //1. 查询出来所有的学生
-        StudentService service = new StudentServiceImpl();
-        List&lt;Student&gt; list = service.findAll();
-
-        //2. 先把数据存储到作用域中
-        request.setAttribute(&quot;list&quot;, list);
-        //3. 跳转页面
-        request.getRequestDispatcher(&quot;list.jsp&quot;).forward(request, response);
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-
-}
-</code></pre></li>
-<li><p>在list.jsp上显示数据</p>
-<p>EL + JSTL  + 表格</p>
-</li>
-</ol>
-<h2 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h2><ol>
-<li><p>先跳转到增加的页面 ， 编写增加的页面</p>
-</li>
-<li><p>点击添加，提交数据到AddServlet . 处理数据。</p>
-</li>
-<li><p>调用service</p>
-</li>
-<li><p>调用dao, 完成数据持久化。</p>
-</li>
-<li><p>完成了这些存储工作后，需要跳转到列表页面。 这里不能直接跳转到列表页面，否则没有什么内容显示。 应该先跳转到查询所有学生信息的那个Servlet， 由那个Servlet再去跳转到列表页面。</p>
-</li>
-<li><p>爱好的value 值有多个。 </p>
-<p>request.getParameter(“hobby”);<br>String[] hobby =     request.getParameterValues(“hobby”) —&gt; String[]<br>String value = Arrays.toString(hobby): // [爱好， 篮球， 足球]</p>
-</li>
-</ol>
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><ol>
-<li>点击超链接，弹出一个询问是否删除的对话框，如果点击了确定，那么就真的删除。</li>
-</ol>
-<pre><code>&lt;a href=&quot;#&quot; onclick=&quot;doDelete(${stu.sid})&quot;&gt;删除&lt;/a&gt;
-</code></pre><p>​        </p>
-<ol>
-<li><p>让超链接，执行一个js方法</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-
-    function doDelete(sid) {
-        /* 如果这里弹出的对话框，用户点击的是确定，就马上去请求Servlet。 
-        如何知道用户点击的是确定。
-        如何在js的方法中请求servlet。 */
-        var flag = confirm(&quot;是否确定删除?&quot;);
-        if(flag){
-            //表明点了确定。 访问servlet。 在当前标签页上打开 超链接，
-            //window.location.href=&quot;DeleteServlet?sid=&quot;+sid;
-            location.href=&quot;DeleteServlet?sid=&quot;+sid;
-        }
-    }
-&lt;/script&gt;
-</code></pre></li>
-<li><p>在js访问里面判断点击的选项，然后跳转到servlet。</p>
-</li>
-<li><p>servlet收到了请求，然后去调用service ， service去调用dao</p>
-</li>
-</ol>
-<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><ol>
-<li>点击列表上的更新， 先跳转到一个EditServlet </li>
-</ol>
-<blockquote>
-<p>在这个Servlet里面，先根据ID 去查询这个学生的所有信息出来。</p>
-</blockquote>
-<ol start="2">
-<li>跳转到更新的页面。 ，然后在页面上显示数据</li>
-</ol>
-<pre><code>&lt;tr&gt;
-   &lt;td&gt;姓名&lt;/td&gt;
-   &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;sname&quot; value=&quot;${stu.sname }&quot;&gt;&lt;/td&gt;
- &lt;/tr&gt;
-
-
-  &lt;tr&gt;
-   &lt;td&gt;性别&lt;/td&gt;
-   &lt;td&gt;
-       &lt;!-- 如果性别是男的，  可以在男的性别 input标签里面， 出现checked ,
-       如果性别是男的，  可以在女的性别 input标签里面，出现checked --&gt;
-       &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;男&quot; &lt;c:if test=&quot;${stu.gender == &apos;男&apos;}&quot;&gt;checked&lt;/c:if&gt;&gt;男
-       &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;女&quot; &lt;c:if test=&quot;${stu.gender == &apos;女&apos;}&quot;&gt;checked&lt;/c:if&gt;&gt;女
-   &lt;/td&gt;
- &lt;/tr&gt;
-
-
-&lt;tr&gt;
-   &lt;td&gt;爱好&lt;/td&gt;
-
-
-   &lt;td&gt;
-       &lt;!-- 爱好： 篮球 ， 足球 ， 看书 
-       因为爱好有很多个，  里面存在包含的关系 --&gt;
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;游泳&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;游泳&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;游泳
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;篮球&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;篮球&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;篮球
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;足球&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;足球&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;足球
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;看书&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;看书&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;看书
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;写字&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;写字&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;写字
-
-   &lt;/td&gt;
- &lt;/tr&gt;
-</code></pre><ol start="3">
-<li>修改完毕后，提交数据到UpdateServlet</li>
-</ol>
-<blockquote>
-<p>提交上来的数据是没有带id的，所以我们要手动创建一个隐藏的输入框， 在这里面给定id的值， 以便提交表单，带上id。 </p>
-</blockquote>
-<pre><code>&lt;form method=&quot;post&quot; action=&quot;UpdateServlet&quot;&gt;
-    &lt;input type=&quot;hidden&quot; name=&quot;sid&quot; value=&quot;${stu.sid }&quot;&gt;
-
-    ...
-&lt;/form&gt;
-</code></pre><ol start="4">
-<li>获取数据，调用service， 调用dao.</li>
-</ol>
-<h2 id="分页功能"><a href="#分页功能" class="headerlink" title="分页功能"></a>分页功能</h2><ul>
-<li>物理分页 （真分页）</li>
-</ul>
-<blockquote>
-<p>来数据库查询的时候，只查一页的数据就返回了。  </p>
-</blockquote>
-<pre><code>优点 内存中的数据量不会太大
-</code></pre><p>​    缺点：对数据库的访问频繁了一点。</p>
-<pre><code>SELECT * FROM stu LIMIT    5 OFFSET 2 
-</code></pre><ul>
-<li>逻辑分页 （假分页）</li>
-</ul>
-<blockquote>
-<p>一口气把所有的数据全部查询出来，然后放置在内存中。 </p>
-</blockquote>
-<pre><code>优点： 访问速度快。
-缺点： 数据库量过大，内存溢出。
-</code></pre><p>​        </p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1546,7 +1529,7 @@ public class StudentServiceImpl implements StudentService{
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
