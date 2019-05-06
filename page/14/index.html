@@ -336,477 +336,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/02/J2EE/8.Http&Servlet/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="icebearice">
-      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="淘气的白熊">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/11/02/J2EE/8.Http&Servlet/" class="post-title-link" itemprop="url">8 Http&Servlet</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2018-11-02 11:23:47" itemprop="dateCreated datePublished" datetime="2018-11-02T11:23:47+08:00">2018-11-02 11:23:47</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
-              
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
-                2019-04-26 22:50:06
-              </time>
-            </span>
-          
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/J2EE/" itemprop="url" rel="index"><span itemprop="name">J2EE</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Http协议-amp-Servlet"><a href="#Http协议-amp-Servlet" class="headerlink" title="Http协议&amp;Servlet"></a>Http协议&amp;Servlet</h1><h1 id="Http协议"><a href="#Http协议" class="headerlink" title="Http协议"></a>Http协议</h1><ul>
-<li>什么是协议</li>
-</ul>
-<blockquote>
-<p>双方在交互、通讯的时候， 遵守的一种规范、规则。</p>
-</blockquote>
-<ul>
-<li>http协议</li>
-</ul>
-<blockquote>
-<p>针对网络上的客户端 与 服务器端在执行http请求的时候，遵守的一种规范。 其实就是规定了客户端在访问服务器端的时候，要带上哪些东西， 服务器端返回数据的时候，也要带上什么东西。 </p>
-</blockquote>
-<ul>
-<li><p>版本</p>
-<p>  1.0</p>
-<pre><code>请求数据，服务器返回后， 将会断开连接
-</code></pre><p>  1.1</p>
-<pre><code>请求数据，服务器返回后， 连接还会保持着。 除非服务器 | 客户端 关掉。 有一定的时间限制，如果都空着这个连接，那么后面会自己断掉。
-</code></pre></li>
-</ul>
-<h3 id="演示客户端-如何-与服务器端通讯。"><a href="#演示客户端-如何-与服务器端通讯。" class="headerlink" title="演示客户端 如何 与服务器端通讯。"></a>演示客户端 如何 与服务器端通讯。</h3><blockquote>
-<p>在地址栏中键入网络地址 回车  或者是平常注册的时候，点击了注册按钮 ， 浏览器都能显示出来一些东西。那么背地里到底浏览器和服务器是怎么通讯。 它们都传输了哪些数据。</p>
-</blockquote>
-<ol>
-<li><p>安装抓包工具 HttpWatch (IE插件)</p>
-</li>
-<li><p>打开tomcat. 输入localhost:8080 打开首页</p>
-</li>
-<li><p>在首页上找到Example 字样 </p>
-</li>
-</ol>
-<blockquote>
-<p>6.x 和 7.x 的文档页面有所不同，但是只要找到example就能够找到例子工程</p>
-</blockquote>
-<ol start="4">
-<li>选择 servlet 例子 —&gt; Request Parameter</li>
-</ol>
-<p><img src="img/img01.png" alt="icon"></p>
-<p>接着点击Request  Parameters 的 Execute超链接</p>
-<p><img src="img/img02.png" alt="icon"></p>
-<p>执行tomcat的例子，然后查看浏览器和 tomcat服务器的对接细节</p>
-<p><img src="img/img03.png" alt="icon"></p>
-<h3 id="Http请求数据解释"><a href="#Http请求数据解释" class="headerlink" title="Http请求数据解释"></a>Http请求数据解释</h3><blockquote>
-<p>请求的数据里面包含三个部分内容 ： 请求行 、 请求头 、请求体</p>
-</blockquote>
-<ul>
-<li><p>请求行</p>
-<pre><code>POST /examples/servlets/servlet/RequestParamExample HTTP/1.1 
-
-POST ： 请求方式 ，以post去提交数据
-
-/examples/servlets/servlet/RequestParamExample
-请求的地址路径 ， 就是要访问哪个地方。
-
-HTTP/1.1 协议版本
-</code></pre></li>
-<li><p>请求头</p>
-<pre><code>Accept: application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, */*
-</code></pre><p>  ​    Referer: <a href="http://localhost:8080/examples/servlets/servlet/RequestParamExample" target="_blank" rel="noopener">http://localhost:8080/examples/servlets/servlet/RequestParamExample</a><br>  ​    Accept-Language: zh-CN<br>  ​    User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)<br>  ​    Content-Type: application/x-www-form-urlencoded<br>  ​    Accept-Encoding: gzip, deflate<br>  ​    Host: localhost:8080<br>  ​    Content-Length: 31<br>  ​    Connection: Keep-Alive<br>  ​    Cache-Control: no-cache</p>
-<pre><code>Accept: 客户端向服务器端表示，我能支持什么类型的数据。 
-Referer ： 真正请求的地址路径，全路径
-Accept-Language: 支持语言格式
-User-Agent: 用户代理 向服务器表明，当前来访的客户端信息。 
-Content-Type： 提交的数据类型。经过urlencoding编码的form表单的数据
-Accept-Encoding： gzip, deflate ： 压缩算法 。 
-Host ： 主机地址
-Content-Length： 数据长度
-Connection : Keep-Alive 保持连接
-Cache-Control ： 对缓存的操作
-</code></pre></li>
-<li><p>请求体</p>
-</li>
-</ul>
-<blockquote>
-<p>浏览器真正发送给服务器的数据 </p>
-</blockquote>
-<pre><code>发送的数据呈现的是key=value ,如果存在多个数据，那么使用 &amp;
-
-firstname=zhang&amp;lastname=sansan
-</code></pre><h3 id="Http响应数据解析"><a href="#Http响应数据解析" class="headerlink" title="Http响应数据解析"></a>Http响应数据解析</h3><blockquote>
-<p>请求的数据里面包含三个部分内容 ： 响应行 、 响应头 、响应体</p>
-</blockquote>
-<pre><code>HTTP/1.1 200 OK
-Server: Apache-Coyote/1.1
-Content-Type: text/html;charset=ISO-8859-1
-Content-Length: 673
-Date: Fri, 17 Feb 2017 02:53:02 GMT
-
-...这里还有很多数据...
-</code></pre><ul>
-<li><p>响应行</p>
-<pre><code>HTTP/1.1 200 OK
-
-协议版本  
-
-状态码 
-
-    咱们这次交互到底是什么样结果的一个code. 
-
-    200 : 成功，正常处理，得到数据。
-
-    403  : for bidden  拒绝
-    404 ： Not Found
-    500 ： 服务器异常
-
-OK
-
-    对应前面的状态码  
-</code></pre></li>
-<li><p>响应头</p>
-<pre><code>Server:  服务器是哪一种类型。  Tomcat
-
-Content-Type ： 服务器返回给客户端你的内容类型
-
-Content-Length ： 返回的数据长度
-
-Date ： 通讯的日期，响应的时间        
-</code></pre></li>
-</ul>
-<h2 id="Get-和-Post请求区别"><a href="#Get-和-Post请求区别" class="headerlink" title="Get 和  Post请求区别"></a>Get 和  Post请求区别</h2><p><img src="img/img04.png" alt="icon"></p>
-<ul>
-<li><p>post</p>
-<pre><code>1. 数据是以流的方式写过去，不会在地址栏上面显示。  现在一般提交数据到服务器使用的都是POST
-
-2. 以流的方式写数据，所以数据没有大小限制。
-</code></pre></li>
-<li><p>get</p>
-<pre><code>1. 会在地址栏后面拼接数据，所以有安全隐患。 一般从服务器获取数据，并且客户端也不用提交上面数据的时候，可以使用GET
-
-2. 能够带的数据有限， 1kb大小
-</code></pre></li>
-</ul>
-<h3 id="Web资源"><a href="#Web资源" class="headerlink" title="Web资源"></a>Web资源</h3><p>在http协议当中，规定了请求和响应双方， 客户端和服务器端。与web相关的资源。 </p>
-<p>有两种分类</p>
-<ul>
-<li><p>静态资源</p>
-<p>  html 、 js、 css</p>
-</li>
-<li><p>动态资源</p>
-<p>  servlet/jsp</p>
-</li>
-</ul>
-<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><ul>
-<li>servlet是什么?</li>
-</ul>
-<blockquote>
-<p>其实就是一个java程序，运行在我们的web服务器上，用于接收和响应 客户端的http请求。 </p>
-</blockquote>
-<blockquote>
-<p>更多的是配合动态资源来做。 当然静态资源也需要使用到servlet，只不过是Tomcat里面已经定义好了一个 DefaultServlet</p>
-</blockquote>
-<h3 id="Hello-Servlet"><a href="#Hello-Servlet" class="headerlink" title="Hello Servlet"></a>Hello Servlet</h3><ol>
-<li><p>得写一个Web工程 ， 要有一个服务器。</p>
-</li>
-<li><p>测试运行Web工程</p>
-<pre><code>1. 新建一个类， 实现Servlet接口
-
-2. 配置Servlet ， 用意： 告诉服务器，我们的应用有这么些个servlet。
-
-    在webContent/WEB-INF/web.xml里面写上以下内容。
-</code></pre></li>
-</ol>
-<pre><code>  &lt;!-- 向tomcat报告， 我这个应用里面有这个servlet， 名字叫做HelloServlet , 具体的路径是com.itheima.servlet.HelloServlet --&gt;
-  &lt;servlet&gt;
-      &lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;
-      &lt;servlet-class&gt;com.itheima.servlet.HelloServlet&lt;/servlet-class&gt;
-  &lt;/servlet&gt;
-
-  &lt;!-- 注册servlet的映射。  servletName : 找到上面注册的具体servlet，  url-pattern: 在地址栏上的path 一定要以/打头 --&gt;
-  &lt;servlet-mapping&gt;
-      &lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;
-      &lt;url-pattern&gt;/a&lt;/url-pattern&gt;
-  &lt;/servlet-mapping&gt;
-
-3. 在地址栏上输入 http://localhost:8080/项目名称/a
-</code></pre><h3 id="Servlet执行过程"><a href="#Servlet执行过程" class="headerlink" title="Servlet执行过程"></a>Servlet执行过程</h3><p><img src="img/img05.png" alt="icon"></p>
-<h3 id="Servlet的通用写法"><a href="#Servlet的通用写法" class="headerlink" title="Servlet的通用写法"></a>Servlet的通用写法</h3><pre><code>Servlet (接口)
-    |
-    |
-GenericServlet
-    |
-    |
-HttpServlet （用于处理http的请求）
-</code></pre><ol>
-<li>定义一个类，继承HttpServlet 复写doGet 和 doPost</li>
-</ol>
-<p><img src="img/img06.png" alt="icon"></p>
-<h2 id="Servlet的生命周期"><a href="#Servlet的生命周期" class="headerlink" title="Servlet的生命周期"></a>Servlet的生命周期</h2><ul>
-<li>生命周期</li>
-</ul>
-<blockquote>
-<p>从创建到销毁的一段时间</p>
-</blockquote>
-<ul>
-<li>生命周期方法</li>
-</ul>
-<blockquote>
-<p>从创建到销毁，所调用的那些方法。</p>
-</blockquote>
-<ul>
-<li><p>init方法</p>
-<pre><code>在创建该servlet的实例时，就执行该方法。
-</code></pre><p>  ​    一个servlet只会初始化一次， init方法只会执行一次<br>  ​    默认情况下是 ： 初次访问该servlet，才会创建实例。 </p>
-</li>
-<li><p>service方法</p>
-<pre><code>只要客户端来了一个请求，那么就执行这个方法了。
-  该方法可以被执行很多次。 一次请求，对应一次service方法的调用
-</code></pre></li>
-<li><p>destroy方法</p>
-</li>
-</ul>
-<pre><code>      servlet销毁的时候，就会执行该方法
-​    
-​          1. 该项目从tomcat的里面移除。
-​          2. 正常关闭tomcat就会执行 shutdown.bat
-</code></pre><blockquote>
-<p>doGet 和 doPost不算生命周期方法，所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</p>
-</blockquote>
-<h3 id="让Servlet创建实例的时机-提前。"><a href="#让Servlet创建实例的时机-提前。" class="headerlink" title="让Servlet创建实例的时机 提前。"></a>让Servlet创建实例的时机 提前。</h3><ol>
-<li><p>默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。 </p>
-</li>
-<li><p>那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 那么有没有方法可以让这个初始化的时机提前一点。 </p>
-</li>
-<li><p>在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。 </p>
-</li>
-</ol>
-<pre><code>&lt;servlet&gt;
-      &lt;servlet-name&gt;HelloServlet04&lt;/servlet-name&gt;
-      &lt;servlet-class&gt;com.itheima.servlet.HelloServlet04&lt;/servlet-class&gt;
-      &lt;load-on-startup&gt;2&lt;/load-on-startup&gt;
-  &lt;/servlet&gt;
-</code></pre><h2 id="ServletConfig"><a href="#ServletConfig" class="headerlink" title="ServletConfig"></a>ServletConfig</h2><blockquote>
-<p>Servlet的配置，通过这个对象，可以获取servlet在配置的时候一些信息</p>
-</blockquote>
-<blockquote>
-<p>先说 ， 在写怎么用， 最后说有什么用。</p>
-</blockquote>
-<pre><code>//1. 得到servlet配置对象 专门用于在配置servlet的信息
-ServletConfig config = getServletConfig();
-
-//获取到的是配置servlet里面servlet-name 的文本内容
-String servletName = config.getServletName();
-System.out.println(&quot;servletName=&quot;+servletName);
-</code></pre><p>​<br>​        //2、。 可以获取具体的某一个参数。<br>​        String address = config.getInitParameter(“address”);<br>​        System.out.println(“address=”+address);</p>
-<pre><code>//3.获取所有的参数名称
-Enumeration&lt;String&gt; names = config.getInitParameterNames();
-//遍历取出所有的参数名称
-while (names.hasMoreElements()) {
-    String key = (String) names.nextElement();
-    String value = config.getInitParameter(key);
-    System.out.println(&quot;key===&quot;+key + &quot;   value=&quot;+value);
-
-}
-</code></pre><h3 id="为什么需要有这个ServletConfig"><a href="#为什么需要有这个ServletConfig" class="headerlink" title="为什么需要有这个ServletConfig"></a>为什么需要有这个ServletConfig</h3><ol>
-<li><p>未来我们自己开发的一些应用，使用到了一些技术，或者一些代码，我们不会。 但是有人写出来了。它的代码放置在了自己的servlet类里面。 </p>
-</li>
-<li><p>刚好这个servlet 里面需要一个数字或者叫做变量值。 但是这个值不能是固定了。 所以要求使用到这个servlet的公司，在注册servlet的时候，必须要在web.xml里面，声明init-params</p>
-</li>
-</ol>
-<p>在开发当中比较少用。</p>
-<p>刚才的这个实验， 希望基础好或者感兴趣的同学，回去自己做一下。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li><p>Http协议</p>
-<pre><code>1. 使用HttpWacht 抓包看一看http请求背后的细节。 
-
-2. 基本了解 请求和响应的数据内容
-
-        请求行、 请求头 、请求体
-    ​    响应行、响应头、响应体
-
-3. Get和Post的区别
-</code></pre></li>
-<li><p>Servlet【重点】</p>
-<pre><code>1. 会使用简单的servlet
-
-    1.写一个类，实现接口Servlet
-​    2. 配置Servlet
-​    3. 会访问Setvlet
-
-2. Servlet的生命周期
-
-    init 一次 创建对象 默认初次访问就会调用或者可以通过配置，让它提前 load-on-startup
-    service    多次，一次请求对应一次service
-    destory 一次 销毁的时候 从服务器移除 或者 正常关闭服务器
-
-3. ServletConfig
-
-    获取配置的信息， params
-</code></pre></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/01/J2EE/7.Xml&Tomcat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -943,7 +472,7 @@ while (names.hasMoreElements()) {
 <li><p>数据传输载体</p>
 </li>
 </ol>
-<p><img src="img/document.png" alt="icon"></p>
+<p><img src="/icebearice/2018/11/01/J2EE/7.Xml&Tomcat/document.png" alt="icon"></p>
 <h2 id="定义xml"><a href="#定义xml" class="headerlink" title="定义xml"></a>定义xml</h2><blockquote>
 <p>其实就是一个文件，文件的后缀为 .xml</p>
 </blockquote>
@@ -1050,7 +579,7 @@ standalone  : no - 该文档会依赖关联其他文档 ，  yes-- 这是一个�
 <li><p>SAX</p>
 </li>
 </ul>
-<p><img src="img/parse_type.png" alt="icon"></p>
+<p><img src="/icebearice/2018/11/01/J2EE/7.Xml&Tomcat/parse_type.png" alt="icon"></p>
 <h3 id="针对这两种解析方式的API"><a href="#针对这两种解析方式的API" class="headerlink" title="针对这两种解析方式的API"></a>针对这两种解析方式的API</h3><blockquote>
 <p>一些组织或者公司， 针对以上两种解析方式， 给出的解决方案有哪些？</p>
 </blockquote>
@@ -1430,11 +959,323 @@ tomcat
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/10/28/J2EE/6.JDBC笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="icebearice">
+      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淘气的白熊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/10/28/J2EE/6.JDBC笔记/" class="post-title-link" itemprop="url">6 JDBC</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2018-10-28 17:39:41" itemprop="dateCreated datePublished" datetime="2018-10-28T17:39:41+08:00">2018-10-28 17:39:41</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/J2EE/" itemprop="url" rel="index"><span itemprop="name">J2EE</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><blockquote>
+<p>JAVA Database Connectivity java 数据库连接</p>
+</blockquote>
+<h3 id="为什么会出现JDBC"><a href="#为什么会出现JDBC" class="headerlink" title="为什么会出现JDBC"></a>为什么会出现JDBC</h3><blockquote>
+<p>SUN公司提供的一种数据库访问规则、规范, 由于数据库种类较多，并且java语言使用比较广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问规则。 我们的java程序只要使用sun公司提供的jdbc驱动即可。</p>
+</blockquote>
+<h4 id="使用JDBC的基本步骤"><a href="#使用JDBC的基本步骤" class="headerlink" title="使用JDBC的基本步骤"></a>使用JDBC的基本步骤</h4><ol>
+<li><h5 id="注册驱动"><a href="#注册驱动" class="headerlink" title="注册驱动"></a>注册驱动</h5><p> DriverManager.registerDriver(new com.mysql.jdbc.Driver());</p>
+</li>
+<li><h5 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a>建立连接</h5><p> //DriverManager.getConnection(“jdbc:mysql://localhost/test?user=monty&amp;password=greatsqldb”);</p>
+<pre><code>//2. 建立连接 参数一： 协议 + 访问的数据库 ， 参数二： 用户名 ， 参数三： 密码。
+conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost/student&quot;, &quot;root&quot;, &quot;root&quot;);
+</code></pre></li>
+<li><h5 id="创建statement-运输车"><a href="#创建statement-运输车" class="headerlink" title="创建statement 运输车"></a>创建statement 运输车</h5><p> //3. 创建statement ， 跟数据库打交道，一定需要这个对象</p>
+<pre><code>st = conn.createStatement();
+</code></pre></li>
+<li><h5 id="执行sql-，得到ResultSet"><a href="#执行sql-，得到ResultSet" class="headerlink" title="执行sql ，得到ResultSet"></a>执行sql ，得到ResultSet</h5><p> //4. 执行查询 ， 得到结果集</p>
+<pre><code>String sql = &quot;select * from t_stu&quot;;
+rs = st.executeQuery(sql);
+</code></pre></li>
+<li><h5 id="遍历结果集"><a href="#遍历结果集" class="headerlink" title="遍历结果集"></a>遍历结果集</h5><p> //5. 遍历查询每一条记录</p>
+<pre><code>    while(rs.next()){
+        int id = rs.getInt(&quot;id&quot;);
+        String name = rs.getString(&quot;name&quot;);
+        int age = rs.getInt(&quot;age&quot;);
+        System.out.println(&quot;id=&quot;+id + &quot;===name=&quot;+name+&quot;==age=&quot;+age);
+
+}
+</code></pre></li>
+<li><h5 id="释放资源"><a href="#释放资源" class="headerlink" title="释放资源"></a>释放资源</h5></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (rs != <span class="keyword">null</span>) &#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           rs.close();</span><br><span class="line">       &#125; </span><br><span class="line">       <span class="keyword">catch</span> (SQLException sqlEx) &#123; &#125; <span class="comment">// ignore </span></span><br><span class="line">       rs = <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="JDBC-工具类构建"><a href="#JDBC-工具类构建" class="headerlink" title="JDBC 工具类构建"></a>JDBC 工具类构建</h3><ol>
+<li><h5 id="资源释放工作的整合"><a href="#资源释放工作的整合" class="headerlink" title="资源释放工作的整合"></a>资源释放工作的整合</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//释放结果集</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeRs</span><span class="params">(ResultSet rs)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (rs != <span class="keyword">null</span>) &#123;</span><br><span class="line">   </span><br><span class="line">			rs.close();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">		rs = <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//释放SQL语句运输车</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeSt</span><span class="params">(Statement st)</span> </span>&#123;</span><br><span class="line">   </span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (st != <span class="keyword">null</span>) &#123;</span><br><span class="line">			st.close();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">		st = <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//释放连接</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeConn</span><span class="params">(Connection conn)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (conn != <span class="keyword">null</span>) &#123;</span><br><span class="line">			conn.close();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">		conn = <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//总释放</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">(Connection conn, Statement st, ResultSet rs)</span> </span>&#123;</span><br><span class="line">	closeRs(rs);</span><br><span class="line">	closeConn(conn);</span><br><span class="line">	closeSt(st);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//总释放（无结果集）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">(Connection conn, Statement st)</span> </span>&#123;</span><br><span class="line">	closeConn(conn);</span><br><span class="line">	closeSt(st);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="驱动防二次注册"><a href="#驱动防二次注册" class="headerlink" title="驱动防二次注册"></a>驱动防二次注册</h5></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DriverManager.registerDriver(<span class="keyword">new</span> com.mysql.jdbc.Driver());</span><br></pre></td></tr></table></figure>
+<pre><code>Driver 这个类里面有静态代码块，一上来就执行了，所以等同于我们注册了两次驱动。 其实没这个必要的。
+//静态代码块 ---&gt; 类加载了，就执行
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.sql.DriverManager.registerDriver(<span class="keyword">new</span> Driver());</span><br></pre></td></tr></table></figure>
+<p>​    最后形成以下代码即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><h5 id="使用properties配置文件"><a href="#使用properties配置文件" class="headerlink" title="使用properties配置文件"></a>使用properties配置文件</h5><ol>
+<li>在src底下声明一个文件 xxx.properties ，里面的内容吐下：</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">driverClass=com.mysql.jdbc.Driver</span><br><span class="line">url=jdbc:mysql://localhost/student</span><br><span class="line">name=root</span><br><span class="line">password=root</span><br></pre></td></tr></table></figure>
+<p>​    2. 在工具类里面，使用静态代码块，读取属性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//JDBCUtil.java</span></span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//1. 创建一个属性配置对象</span></span><br><span class="line">			Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">			InputStream is = <span class="keyword">new</span> FileInputStream(<span class="string">"jdbc.properties"</span>); <span class="comment">//对应文件位于工程根目录</span></span><br><span class="line">			 </span><br><span class="line">			<span class="comment">//使用类加载器，去读取src底下的资源文件。 后面在servlet  //对应文件位于src目录底下</span></span><br><span class="line">			<span class="comment">//InputStream is = JDBCUtil.class.getClassLoader().getResourceAsStream("jdbc.properties");</span></span><br><span class="line">			<span class="comment">//导入输入流。</span></span><br><span class="line">			properties.load(is);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//读取属性</span></span><br><span class="line">			driverClass = properties.getProperty(<span class="string">"driverClass"</span>);</span><br><span class="line">			url = properties.getProperty(<span class="string">"url"</span>);</span><br><span class="line">			name = properties.getProperty(<span class="string">"name"</span>);</span><br><span class="line">			password = properties.getProperty(<span class="string">"password"</span>);</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<h3 id="数据库的CRUD-sql-Create-添加-Retrieve-读取查询-Update-更新-Delete-删除"><a href="#数据库的CRUD-sql-Create-添加-Retrieve-读取查询-Update-更新-Delete-删除" class="headerlink" title="数据库的CRUD sql  Create-添加      Retrieve-读取查询     Update-更新    Delete-删除"></a>数据库的CRUD sql  Create-添加      Retrieve-读取查询     Update-更新    Delete-删除</h3><ul>
+<li><h3 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h3></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t_stu <span class="keyword">VALUES</span> (<span class="literal">NULL</span>,<span class="string">'wangqiang2'</span>,<span class="number">28</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">      <span class="comment">// 1. 获取连接对象</span></span><br><span class="line">conn = JDBCUtil.getConn();</span><br><span class="line"><span class="comment">// 2. 根据连接对象，得到statement</span></span><br><span class="line">st = conn.createStatement();</span><br><span class="line"></span><br><span class="line"><span class="comment">//3. 执行添加</span></span><br><span class="line">String sql = <span class="string">"insert into t_stu values(null , 'aobama' , 59)"</span>;</span><br><span class="line"><span class="comment">//影响的行数， ，如果大于0 表明操作成功。 否则失败</span></span><br><span class="line"><span class="keyword">int</span> result = st.executeUpdate(sql);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(result &gt;<span class="number">0</span> )&#123;</span><br><span class="line">	System.out.println(<span class="string">"添加成功"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"添加失败"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h3> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> t_stu <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="number">6</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 获取连接对象</span></span><br><span class="line">	conn = JDBCUtil.getConn();</span><br><span class="line">	<span class="comment">// 2. 根据连接对象，得到statement</span></span><br><span class="line">	st = conn.createStatement();</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//3. 执行添加</span></span><br><span class="line">	String sql = <span class="string">"delete from t_stu where name='aobama'"</span>;</span><br><span class="line">	<span class="comment">//影响的行数， ，如果大于0 表明操作成功。 否则失败</span></span><br><span class="line">	<span class="keyword">int</span> result = st.executeUpdate(sql);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(result &gt;<span class="number">0</span> )&#123;</span><br><span class="line">		System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"删除失败"</span>);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="query"><a href="#query" class="headerlink" title="query"></a>query</h3> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> t_stu</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 获取连接对象</span></span><br><span class="line">conn = JDBCUtil.getConn();</span><br><span class="line"><span class="comment">// 2. 根据连接对象，得到statement</span></span><br><span class="line">st = conn.createStatement();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 执行sql语句，返回ResultSet</span></span><br><span class="line">String sql = <span class="string">"select * from t_stu"</span>;</span><br><span class="line">rs = st.executeQuery(sql);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 遍历结果集</span></span><br><span class="line"><span class="keyword">while</span> (rs.next()) &#123;</span><br><span class="line">	String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">	<span class="keyword">int</span> age = rs.getInt(<span class="string">"age"</span>);</span><br><span class="line"></span><br><span class="line">	System.out.println(name + <span class="string">"   "</span> + age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="update"><a href="#update" class="headerlink" title="update"></a>update</h3> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> t_stu <span class="keyword">SET</span> age = <span class="number">38</span> <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 获取连接对象</span></span><br><span class="line">	conn = JDBCUtil.getConn();</span><br><span class="line">	<span class="comment">// 2. 根据连接对象，得到statement</span></span><br><span class="line">	st = conn.createStatement();</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//3. 执行添加</span></span><br><span class="line">	String sql = <span class="string">"update t_stu set age = 26 where name ='qyq'"</span>;</span><br><span class="line">	<span class="comment">//影响的行数， ，如果大于0 表明操作成功。 否则失败</span></span><br><span class="line">	<span class="keyword">int</span> result = st.executeUpdate(sql);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(result &gt;<span class="number">0</span> )&#123;</span><br><span class="line">		System.out.println(<span class="string">"更新成功"</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"更新失败"</span>);</span><br><span class="line">	&#125;###使用单元测试，测试代码</span><br></pre></td></tr></table></figure>
+<h3 id="测试类Test-JUnit工具"><a href="#测试类Test-JUnit工具" class="headerlink" title="测试类Test-JUnit工具"></a>测试类Test-JUnit工具</h3><ol>
+<li><p>定义一个类， TestXXX , 里面定义方法 testXXX.</p>
+</li>
+<li><p>添加junit的支持。 </p>
+<p> 右键工程 — add Library — Junit — Junit4</p>
+</li>
+<li><p>在方法的上面加上注解 ， 其实就是一个标记。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"> 	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQuery</span><span class="params">()</span> </span>&#123;</span><br><span class="line"> 		...</span><br><span class="line"> 	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>光标选中方法名字，然后右键执行单元测试。  或者是打开outline视图， 然后选择方法右键执行。</p>
+</li>
+</ol>
+<h3 id="Dao模式"><a href="#Dao模式" class="headerlink" title="Dao模式"></a>Dao模式</h3><blockquote>
+<p>Data Access Object 数据访问对象</p>
+</blockquote>
+<ol>
+<li>新建一个dao的接口， 里面声明数据库访问规则</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//update t_user set name=? where id = ?</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据id去更新具体的用户名</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> id , String name)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 执行添加</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> userName</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> password</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(String userName , String password)</span></span>;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 查询所有</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">findAll</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 登录方法</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> username</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> password</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">login</span><span class="params">(String username , String password)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>新建一个dao的实现类，具体实现<strong>早前定义</strong>的规则</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title">UserDao</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">findAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Connection conn = <span class="keyword">null</span>;</span><br><span class="line">		Statement st = <span class="keyword">null</span>;</span><br><span class="line">		ResultSet rs = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//1. 获取连接对象</span></span><br><span class="line">			conn = JDBCUtil.getConn();</span><br><span class="line">			<span class="comment">//2. 创建statement对象</span></span><br><span class="line">			st = conn.createStatement();</span><br><span class="line">			String sql = <span class="string">"select * from t_user"</span>;</span><br><span class="line">			rs = st.executeQuery(sql);</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">				String userName = rs.getString(<span class="string">"username"</span>);</span><br><span class="line">				String password = rs.getString(<span class="string">"password"</span>);</span><br><span class="line">				</span><br><span class="line">				System.out.println(userName+<span class="string">"="</span>+password);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			JDBCUtil.release(conn, st, rs);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>直接使用实现</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"> 	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFindAll</span><span class="params">()</span></span>&#123;</span><br><span class="line"> 		UserDao dao = <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line"> 		dao.findAll();</span><br><span class="line"> 	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Statement安全问题"><a href="#Statement安全问题" class="headerlink" title="Statement安全问题"></a>Statement安全问题</h2><ol>
+<li>Statement执行 ，其实是拼接sql语句的。  先拼接sql语句，然后在一起执行。 </li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">"select * from t_user where username='"</span>+ username  +<span class="string">"' and password='"</span>+ password +<span class="string">"'"</span>;</span><br><span class="line"></span><br><span class="line">UserDao dao = <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">dao.login(<span class="string">"admin"</span>, <span class="string">"100234khsdf88' or '1=1"</span>);</span><br><span class="line"></span><br><span class="line">SELECT * FROM t_user WHERE username=<span class="string">'admin'</span> AND PASSWORD=<span class="string">'100234khsdf88'</span> or <span class="string">'1=1'</span> </span><br><span class="line"></span><br><span class="line">前面先拼接sql语句， 如果变量里面带有了 数据库的关键字，那么一并认为是关键字。 不认为是普通的字符串。 </span><br><span class="line">rs = st.executeQuery(sql);</span><br></pre></td></tr></table></figure>
+<h2 id="PrepareStatement"><a href="#PrepareStatement" class="headerlink" title="PrepareStatement"></a>PrepareStatement</h2><blockquote>
+<p>该对象就是替换前面的statement对象。</p>
+</blockquote>
+<ol>
+<li>相比较以前的statement， 预先处理给定的sql语句，对其执行语法检查。 在sql语句里面使用 ? 占位符来替代后续要传递进来的变量。 后面进来的变量值，将会被看成是字符串，不会产生任何的关键字。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">"insert into t_user values(null , ? , ?)"</span>;</span><br><span class="line"> ps = conn.prepareStatement(sql);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//给占位符赋值 从左到右数过来，1 代表第一个问号， 永远你是1开始。</span></span><br><span class="line"> ps.setString(<span class="number">1</span>, userName);</span><br><span class="line"> ps.setString(<span class="number">2</span>, password);</span><br></pre></td></tr></table></figure>
+<h3 id="PrepareStatement相比Statement的优势"><a href="#PrepareStatement相比Statement的优势" class="headerlink" title="PrepareStatement相比Statement的优势*"></a>PrepareStatement相比Statement的优势*</h3><p>​    PrepareStatement用于于处理多条相似的语句，只需修改参数即可</p>
+<p>​    Statement用于处理单条语句，单处理语句</p>
+<h3 id="时间方面："><a href="#时间方面：" class="headerlink" title="时间方面："></a><em>时间方面：</em></h3><p>​    处理单条语句的时候 Statement效率较高</p>
+<p>​    <em>处理多条语句的时候 PreStatement的效率较高 因为有提前预处理</em></p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ol>
+<li><p>JDBC入门</p>
+</li>
+<li><p>抽取工具类  </p>
+</li>
+<li><p>Statement CRUD </p>
+<pre><code>演练crud
+</code></pre></li>
+<li><p>Dao模式 </p>
+<pre><code>声明与实现分开
+</code></pre></li>
+<li><p>PrepareStament CRUD</p>
+<pre><code>预处理sql语句，解决上面statement出现的问题
+</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span>
   </nav>
 
 
@@ -1478,7 +1319,7 @@ tomcat
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1692,7 +1533,7 @@ tomcat
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共字</span>
+  <span class="post-count">博客全站共36.2k字</span>
 </div>
         
 

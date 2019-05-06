@@ -336,311 +336,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/03/19/学习日记/2019.3.19 问题集/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="icebearice">
-      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="淘气的白熊">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/19/学习日记/2019.3.19 问题集/" class="post-title-link" itemprop="url">2019.3.19 问题集</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-03-19 21:00:00" itemprop="dateCreated datePublished" datetime="2019-03-19T21:00:00+08:00">2019-03-19 21:00:00</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
-              
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
-                2019-04-26 22:50:06
-              </time>
-            </span>
-          
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习日记/" itemprop="url" rel="index"><span itemprop="name">学习日记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="2019-3-19-问题集"><a href="#2019-3-19-问题集" class="headerlink" title="2019.3.19 问题集"></a>2019.3.19 问题集</h1><h3 id="Spring的问题"><a href="#Spring的问题" class="headerlink" title="Spring的问题"></a>Spring的问题</h3><ol>
-<li><p>Bean</p>
-<ol>
-<li><p>作用域Scope</p>
-<p>Spring中Bean有<strong>五种scope</strong>，<strong>singleton</strong> <strong>prototype</strong> <strong>request</strong> <strong>session</strong> <strong>globalSession</strong>  </p>
-<ul>
-<li>singleton为默认值，IOC容器中仅存在一个Bean实例，Bean都以<strong>单例模式</strong>存在 </li>
-<li>prototype，在每次请求获取Bean的时候，都会<strong>创建一个新的实例</strong>，它在容器初始化的时候不会创建实例，采用的是<strong>延迟加载</strong>的形式注入Bean，当你<strong>使用**</strong>的时候<strong>，才会进行</strong>实例化<strong>，每次实例化获取的对象都</strong>不是同一个<strong> 就像BeanFactory的实例化模式 </strong>实例不唯一**,容器在初始化prototype作用域的Bean时,会将该Bean的生命周期全权交给客户端管理</li>
-<li>request，在每一次<strong>http请求</strong>时会创建一个实例，该实例仅在当前<strong>http</strong> <strong>request</strong>有效 </li>
-<li>session，在每一次<strong>http**</strong>请求<strong>时会创建一个实例，该实例仅在当前</strong>http<strong> </strong>session**有效 </li>
-<li>globalSession，全局Session，供<strong>不同的portlet</strong>共享，portlet好像是类似于servlet的Web组件</li>
-</ul>
-</li>
-<li><p>Spring Bean的生命周期</p>
-<ol>
-<li>Bean容器在配置文件中找到Bean的定义</li>
-<li>Bean容器利用Java Reflection api来创建一个Bean的实例</li>
-<li>Bean容器通过调用相应Loader方法来一一设置Bean，例如set名字、set属性、类加载器等等</li>
-<li>当定义了初始化init-method属性时，执行指定方法</li>
-<li>执行加载该Bean的对象的指定方法，就是加载这个Bean的对象，必定是要通过实例化该Bean进行某些过程性的操作</li>
-<li>当定义了销毁destroy-method时,执行指定方法</li>
-<li>执行destroy()方法,销毁Bean</li>
-</ol>
-</li>
-<li><p>Bean的实例化方式</p>
-<ol>
-<li>无参构造</li>
-<li>静态工厂实例化</li>
-<li>实例工厂实例化</li>
-</ol>
-</li>
-<li><p>Spring的属性注入</p>
-<ol>
-<li><p>构造方法属性注入</p>
-</li>
-<li><p>Set方法属性注入</p>
-<ol>
-<li><p>P名称空间的属性注入 引入p名称空间完成属性注入(2.5之后)</p>
-</li>
-<li><p>SPEL spring expression language Spring的表达式语言(3.0之后)</p>
-<p>就跟EL表达式的注入方式一样</p>
-</li>
-</ol>
-</li>
-<li><p>集合类属性注入</p>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>IOC介绍</p>
-<ol>
-<li><p>简单的IOC实现</p>
-<ol>
-<li>加载XML配置文件, 遍历其中的标签</li>
-<li>获取标签中的id和class属性, 加载class属性对应的类, 创建Bean</li>
-<li>遍历标签, 获取标签的属性值, 将属性值填充到Bean对象中</li>
-<li>将Bean注册到Bean容器中</li>
-</ol>
-</li>
-<li><p>原理</p>
-<ul>
-<li>将对象的创建权反转交给Spring Invension of Controll(控制反转)</li>
-</ul>
-</li>
-<li><p>产生原因 - 解耦</p>
-<p><img src="file:///C:\Users\16475\AppData\Local\Temp\ksohtml5680\wps1.jpg" alt="img"></p>
-<ol>
-<li>常规的impl实现类, 使接口与实现类有耦合, 为了更好的满足程序设计原则 - 开闭原则, 对外扩展开放, 对内修改关闭 在尽量不修改源程序的代码的情况下对程序进行拓展</li>
-<li>为了解耦, 引入工厂模式, 创建一个工厂类将所有的实现类整合起来, 这样一来, 想要对程序进行接口与实现类之前没有耦合, 有耦合的变成了工厂和实现类</li>
-</ol>
-</li>
-<li><p>依赖注入DI</p>
-<ul>
-<li>在IOC的环境下,Spring管理Bean的时候将Bean的依赖属性注入到Bean中</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>AOP</p>
-<ol>
-<li><p>定义</p>
-<ul>
-<li>面向切面编程 Aspect Oriented Programming</li>
-</ul>
-</li>
-<li>简单的AOP实现<ol>
-<li>JDK动态代理 - 只能对实现接口的类产生代理 - invoke</li>
-<li>Cglib动态代理 - 采用Javassist第三方代理技术, 没有实现类的接口也可以产生代理对象 - intercept</li>
-</ol>
-</li>
-<li><p>AOP技术优势在于:</p>
-<ul>
-<li>将核心关注点与横切关注点完全隔离</li>
-</ul>
-</li>
-<li>Spring AOP的面向切面的通知<ol>
-<li>前置通知: Before</li>
-<li>后置通知: After</li>
-<li>返回通知: After-returning</li>
-<li>异常通知: After-throwing</li>
-<li>环绕通知: Around</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>工厂模式</li>
-<li><p>工厂类</p>
-<ol>
-<li>BeanFactory是Spring的心脏，采用延迟加载的形式注入Bean，当使用某个Bean的时候，才会对该Bean进行实例化</li>
-<li>ApplicationContext是BeanFactory派生的接口，在初始化的时候就会一次性创建所有的Bean<ul>
-<li>BeanFactory需要在加载实例化的时候，才能发现Spring中的一些Bean配置问题，而ApplicationContext在初始化自身时就会进行检验</li>
-<li>ApplicationContext的不足就是占用内存空间，且Bean较多的时候，程序启动较慢</li>
-<li>ApplicationContext通过预加载实例Bean，使你不用等待实例的创建，从这个角度来讲可能比BeanFactory效率要更高</li>
-</ul>
-</li>
-<li>Application有两个实现类<ul>
-<li>ClassPathXmlApplicationContext 加载类路径下的配置文件</li>
-<li>FileSystemXmlApplicationContext 加载文件系统下的配置文件</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/12/30/项目/数据库分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -846,11 +541,385 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/20/Maven/14.Maven-软件项目管理工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="icebearice">
+      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淘气的白熊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/11/20/Maven/14.Maven-软件项目管理工具/" class="post-title-link" itemprop="url">14 Maven-软件项目管理工具</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2018-11-20 21:03:10" itemprop="dateCreated datePublished" datetime="2018-11-20T21:03:10+08:00">2018-11-20 21:03:10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Maven/" itemprop="url" rel="index"><span itemprop="name">Maven</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Maven-软件项目管理工具"><a href="#Maven-软件项目管理工具" class="headerlink" title="Maven-软件项目管理工具"></a>Maven-软件项目管理工具</h1><ul>
+<li><h3 id="目录文件夹介绍"><a href="#目录文件夹介绍" class="headerlink" title="目录文件夹介绍"></a>目录文件夹介绍</h3><ul>
+<li>bin目录包含mvn的运行脚本 m2.conf-配置文件</li>
+<li>boot目录包含一个类加载器的框架</li>
+<li>conf目录包含一些配置文件</li>
+<li>lib目录包含自身的一些类库</li>
+</ul>
+</li>
+<li><h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><ul>
+<li>M2_HOME对应maven目录</li>
+<li>Path配置bin目录</li>
+<li>测试：shell中 mvn -v 查看版本</li>
+</ul>
+</li>
+<li><h3 id="Pom-xml配置"><a href="#Pom-xml配置" class="headerlink" title="Pom.xml配置"></a>Pom.xml配置</h3><ul>
+<li>groupId是项目的包名</li>
+<li>artifactID是项目模块名，即项目名</li>
+</ul>
+</li>
+<li><h3 id="Maven约定好的目录结构"><a href="#Maven约定好的目录结构" class="headerlink" title="Maven约定好的目录结构"></a>Maven约定好的目录结构</h3><ul>
+<li>src<ul>
+<li>main<ul>
+<li>java<ul>
+<li>package</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>test<ul>
+<li>java<ul>
+<li>package</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>resources</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h3><ul>
+<li>compile 编译</li>
+<li>test 测试</li>
+<li>package 打包</li>
+<li>clean 删除target maven所生成的目标文件</li>
+<li>install 安装jar包到本地仓库中</li>
+</ul>
+</li>
+<li><h3 id="archetype插件"><a href="#archetype插件" class="headerlink" title="archetype插件"></a>archetype插件</h3><ul>
+<li><p>用于创建符合maven规定的目录骨架</p>
+</li>
+<li><p>快速创建maven骨架</p>
+<ul>
+<li><p>archetype:generate 按照提示进行选择</p>
+</li>
+<li><p>archetype:generate -DgroupID=组织名，公司网址的反写+项目名</p>
+<p>​                    -DartifactId=项目名-模块名</p>
+<p>​                    -Dversion=版本号</p>
+<p>​                    -Dpackage=代码所存在的包名</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="maven中的坐标和仓库"><a href="#maven中的坐标和仓库" class="headerlink" title="maven中的坐标和仓库"></a>maven中的坐标和仓库</h3><ul>
+<li>groupId和artifactId还有version就是坐标</li>
+<li>仓库<ul>
+<li>本地仓库</li>
+<li>远程仓库</li>
+<li>中央仓库-全球默认仓库</li>
+<li>镜像仓库-国内的镜像仓库 解决无法访问外网问题</li>
+</ul>
+</li>
+<li>更改仓库位置 conf.xml改变localReposities</li>
+</ul>
+</li>
+<li><h3 id="Maven插件安装"><a href="#Maven插件安装" class="headerlink" title="Maven插件安装"></a>Maven插件安装</h3></li>
+<li><h3 id="完整的项目构建过程"><a href="#完整的项目构建过程" class="headerlink" title="完整的项目构建过程"></a>完整的项目构建过程</h3><ul>
+<li>清理</li>
+<li>编译</li>
+<li>测试</li>
+<li>打包</li>
+<li>集成测试</li>
+<li>验证</li>
+<li>部署</li>
+</ul>
+</li>
+<li><h3 id="maven生命周期"><a href="#maven生命周期" class="headerlink" title="maven生命周期"></a>maven生命周期</h3><ul>
+<li>clean 清理项目<ul>
+<li>pre-clean 执行清理前的工作</li>
+<li>clean 清理上一次构建生成的所有文件</li>
+<li>post-clean 执行清理后的文件</li>
+</ul>
+</li>
+<li>default 构建项目-核心<ul>
+<li>compile</li>
+<li>test</li>
+<li>package</li>
+<li>install</li>
+</ul>
+</li>
+<li>site 生成项目站点<ul>
+<li>pre-site 在生成项目站点前要完成的工作</li>
+<li>site 生成项目的站点文档</li>
+<li>post-site 在生成项目站点后要完成的工作</li>
+<li>site-deploy 发布生成的站点到服务器是上</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="plugins插件"><a href="#plugins插件" class="headerlink" title="plugins插件"></a>plugins插件</h3><ul>
+<li>如何使用</li>
+</ul>
+</li>
+<li><h3 id="pom-xml解析"><a href="#pom-xml解析" class="headerlink" title="pom.xml解析"></a>pom.xml解析</h3><ul>
+<li><h4 id="坐标信息-（前三必要）"><a href="#坐标信息-（前三必要）" class="headerlink" title="坐标信息-（前三必要）"></a>坐标信息-（前三必要）</h4><ul>
+<li><strong>groupId 反写公司网址+项目名</strong></li>
+<li><strong>artifactId 项目名+模块名</strong></li>
+<li><strong>version 版本号</strong><ul>
+<li>第一位-大版本号 第二位-分支版本号 第三位-小版本号 0.0.1</li>
+<li>snapshot-快照版本</li>
+<li>alpha-内部测试</li>
+<li>beta-公测</li>
+<li>release-稳定</li>
+<li>GA-正式发布</li>
+</ul>
+</li>
+<li>packaging-项目描述名</li>
+<li>name-项目描述名</li>
+<li>url-项目地址</li>
+<li>description-项目描述</li>
+</ul>
+</li>
+<li><p>如何指定依赖</p>
+<ul>
+<li>指定坐标信息</li>
+<li>指定范围-scope</li>
+<li>设置依赖是否可选-默认为false</li>
+<li>排除依赖传递列表-exclusions、exclusion</li>
+</ul>
+</li>
+<li><p>依赖管理-dependencyManagement</p>
+</li>
+<li><p>build-构建</p>
+<ul>
+<li>plugins</li>
+</ul>
+</li>
+<li><p>parent-子模块对父模块的继承</p>
+</li>
+<li><p>modules-多个模块</p>
+</li>
+</ul>
+</li>
+<li><h3 id="依赖范围-scope"><a href="#依赖范围-scope" class="headerlink" title="依赖范围-scope"></a>依赖范围-scope</h3><ul>
+<li>compile<strong>（编译范围）</strong>-默认的范围，编译测试运行都有效</li>
+<li>provided<strong>（已提供范围）</strong>-在编译和测试时有效（打包的时候不会被包进去，别的web container会提供）</li>
+<li>runtime<strong>（运行时范围）</strong>-在测试和运行时有效</li>
+<li>test<strong>（测试范围）</strong>-只在测试时有效</li>
+<li>system<strong>（系统范围）</strong>-与本季系统相关联，可移植性差</li>
+<li>import-导入的范围，它只是用在dependencyManagement中表示从其他的pom中导入dependency的配置</li>
+</ul>
+</li>
+<li><h3 id="maven依赖传递-dependencys"><a href="#maven依赖传递-dependencys" class="headerlink" title="maven依赖传递-dependencys"></a>maven依赖传递-dependencys</h3><ul>
+<li>将子依赖包clean后install打包后到本地仓库 后 才可进行 依赖传递</li>
+<li>排除依赖-exclusions</li>
+</ul>
+</li>
+<li><h3 id="依赖冲突"><a href="#依赖冲突" class="headerlink" title="依赖冲突"></a>依赖冲突</h3><ul>
+<li>1 短路优先-优先解析路径短的版本</li>
+<li>2 先声明先优先-同长度路径情况</li>
+</ul>
+</li>
+<li><h3 id="聚合-modules"><a href="#聚合-modules" class="headerlink" title="聚合-modules"></a>聚合-modules</h3><ul>
+<li>modules-module 聚合</li>
+</ul>
+</li>
+<li><h3 id="继承-denpendencyManagement"><a href="#继承-denpendencyManagement" class="headerlink" title="继承-denpendencyManagement"></a>继承-denpendencyManagement</h3><ul>
+<li>设置父类依赖 denpendencyManagement  使用该标签 该标签中的依赖不会在该项目中运行</li>
+<li>子类继承依赖 parent标签 继承父类依赖</li>
+</ul>
+</li>
+<li><h3 id="使用maven构建web项目"><a href="#使用maven构建web项目" class="headerlink" title="使用maven构建web项目"></a>使用maven构建web项目</h3><ul>
+<li>构建的是 webapp 而不是quickstart</li>
+<li>添加servlet依赖</li>
+</ul>
+</li>
+<li><h3 id="Servlet容器"><a href="#Servlet容器" class="headerlink" title="Servlet容器"></a>Servlet容器</h3><ul>
+<li>jetty</li>
+<li>tomcat</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -894,7 +963,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1108,7 +1177,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共字</span>
+  <span class="post-count">博客全站共36.2k字</span>
 </div>
         
 
