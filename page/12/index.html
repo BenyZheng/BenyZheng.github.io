@@ -336,397 +336,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/15/MVC/12.MVC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="icebearice">
-      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="淘气的白熊">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/11/15/MVC/12.MVC/" class="post-title-link" itemprop="url">12 MVC</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2018-11-15 02:33:12" itemprop="dateCreated datePublished" datetime="2018-11-15T02:33:12+08:00">2018-11-15 02:33:12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
-              
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
-                2019-04-26 22:50:06
-              </time>
-            </span>
-          
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MVC设计模式/" itemprop="url" rel="index"><span itemprop="name">MVC设计模式</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="元数据"><a href="#元数据" class="headerlink" title="元数据"></a>元数据</h3><h2 id="Meata-data"><a href="#Meata-data" class="headerlink" title="Meata data"></a>Meata data</h2><blockquote>
-<p>描述数据的数据 String sql , 描述这份sql字符串的数据叫做元数据</p>
-</blockquote>
-<p>数据库元数据  DatabaseMetaData<br>参数元数据  ParameterMetaData<br>结果集元数据  ResultSetMetaData</p>
-<h3 id="MVC设计模式"><a href="#MVC设计模式" class="headerlink" title="MVC设计模式"></a>MVC设计模式</h3><h3 id="JSP的开发模式"><a href="#JSP的开发模式" class="headerlink" title="JSP的开发模式"></a>JSP的开发模式</h3><p><img src="/icebearice/2018/11/15/MVC/12.MVC/img01.png" alt="icon"></p>
-<h3 id="三层架构-amp-MVC练习"><a href="#三层架构-amp-MVC练习" class="headerlink" title="三层架构&amp;MVC练习"></a>三层架构&amp;MVC练习</h3><p><img src="/icebearice/2018/11/15/MVC/12.MVC/img02.png" alt="icon"></p>
-<h2 id="学生信息管理系统"><a href="#学生信息管理系统" class="headerlink" title="学生信息管理系统"></a>学生信息管理系统</h2><h2 id="数据库准备"><a href="#数据库准备" class="headerlink" title="数据库准备"></a>数据库准备</h2><pre><code>CREATE DATABASE stus;
-USE stus;
-CREATE TABLE stu (
-    sid INT PRIMARY KEY  AUTO_INCREMENT,
-    sname VARCHAR (20),
-    gender VARCHAR (5),
-    phone VARCHAR (20),
-    birthday DATE,
-    hobby VARCHAR(50),
-    info VARCHAR(200)
-);
-</code></pre><h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><ol>
-<li><p>先写一个JSP 页面， 里面放一个超链接 。 </p>
-<p><a href="StudentListServlet"> 学生列表显示</a></p>
-</li>
-<li><p>写Servlet， 接收请求， 去调用 Service  , 由service去调用dao</p>
-</li>
-<li><p>先写Dao , 做Dao实现。</p>
-<pre><code>public interface StudentDao {
-</code></pre><p>​<br>​        /**</p>
-<ul>
-<li><p>查询所有学生</p>
-<ul>
-<li>@return  List<student><br> */<br>  List<student> findAll()  throws SQLException ;<br>  }</student></student></li>
-</ul>
-<hr>
-</li>
-</ul>
-</li>
-</ol>
-<pre><code>public class StudentDaoImpl implements StudentDao {
-</code></pre><p>​<br>​            /*<em><br>​             </em> 查询所有学生<br>​             <em> @throws SQLException<br>​             </em>/<br>​            @Override<br>​            public List<student> findAll() throws SQLException {<br>​                QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());<br>​                return runner.query(“select * from stu”, new BeanListHandler<student>(Student.class));<br>​                }<br>​<br>​        }    </student></student></p>
-<ol start="4">
-<li>再Service , 做Service的实现。</li>
-</ol>
-<pre><code>/**
- * 这是学生的业务处理规范
- * @author xiaomi
- *
- */
-public interface StudentService {
-
-    /**
-     * 查询所有学生
-     * @return  List&lt;Student&gt;
-     */
-    List&lt;Student&gt; findAll()  throws SQLException ;
-
-}
-
-------------------------------------------
-
-/**
- * 这是学生业务实现
- * @author xiaomi
- *
- */
-public class StudentServiceImpl implements StudentService{
-
-    @Override
-    public List&lt;Student&gt; findAll() throws SQLException {
-        StudentDao dao = new StudentDaoImpl();
-        return dao.findAll();
-    }
-}
-</code></pre><ol start="5">
-<li><p>在servlet 存储数据，并且做出页面响应。</p>
-<pre><code>protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-</code></pre><p>​        </p>
-<pre><code>    try {
-        //1. 查询出来所有的学生
-        StudentService service = new StudentServiceImpl();
-        List&lt;Student&gt; list = service.findAll();
-
-        //2. 先把数据存储到作用域中
-        request.setAttribute(&quot;list&quot;, list);
-        //3. 跳转页面
-        request.getRequestDispatcher(&quot;list.jsp&quot;).forward(request, response);
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-
-}
-</code></pre></li>
-<li><p>在list.jsp上显示数据</p>
-<p>EL + JSTL  + 表格</p>
-</li>
-</ol>
-<h2 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h2><ol>
-<li><p>先跳转到增加的页面 ， 编写增加的页面</p>
-</li>
-<li><p>点击添加，提交数据到AddServlet . 处理数据。</p>
-</li>
-<li><p>调用service</p>
-</li>
-<li><p>调用dao, 完成数据持久化。</p>
-</li>
-<li><p>完成了这些存储工作后，需要跳转到列表页面。 这里不能直接跳转到列表页面，否则没有什么内容显示。 应该先跳转到查询所有学生信息的那个Servlet， 由那个Servlet再去跳转到列表页面。</p>
-</li>
-<li><p>爱好的value 值有多个。 </p>
-<p>request.getParameter(“hobby”);<br>String[] hobby =     request.getParameterValues(“hobby”) —&gt; String[]<br>String value = Arrays.toString(hobby): // [爱好， 篮球， 足球]</p>
-</li>
-</ol>
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><ol>
-<li>点击超链接，弹出一个询问是否删除的对话框，如果点击了确定，那么就真的删除。</li>
-</ol>
-<pre><code>&lt;a href=&quot;#&quot; onclick=&quot;doDelete(${stu.sid})&quot;&gt;删除&lt;/a&gt;
-</code></pre><p>​        </p>
-<ol>
-<li><p>让超链接，执行一个js方法</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-
-    function doDelete(sid) {
-        /* 如果这里弹出的对话框，用户点击的是确定，就马上去请求Servlet。 
-        如何知道用户点击的是确定。
-        如何在js的方法中请求servlet。 */
-        var flag = confirm(&quot;是否确定删除?&quot;);
-        if(flag){
-            //表明点了确定。 访问servlet。 在当前标签页上打开 超链接，
-            //window.location.href=&quot;DeleteServlet?sid=&quot;+sid;
-            location.href=&quot;DeleteServlet?sid=&quot;+sid;
-        }
-    }
-&lt;/script&gt;
-</code></pre></li>
-<li><p>在js访问里面判断点击的选项，然后跳转到servlet。</p>
-</li>
-<li><p>servlet收到了请求，然后去调用service ， service去调用dao</p>
-</li>
-</ol>
-<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><ol>
-<li>点击列表上的更新， 先跳转到一个EditServlet </li>
-</ol>
-<blockquote>
-<p>在这个Servlet里面，先根据ID 去查询这个学生的所有信息出来。</p>
-</blockquote>
-<ol start="2">
-<li>跳转到更新的页面。 ，然后在页面上显示数据</li>
-</ol>
-<pre><code>&lt;tr&gt;
-   &lt;td&gt;姓名&lt;/td&gt;
-   &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;sname&quot; value=&quot;${stu.sname }&quot;&gt;&lt;/td&gt;
- &lt;/tr&gt;
-
-
-  &lt;tr&gt;
-   &lt;td&gt;性别&lt;/td&gt;
-   &lt;td&gt;
-       &lt;!-- 如果性别是男的，  可以在男的性别 input标签里面， 出现checked ,
-       如果性别是男的，  可以在女的性别 input标签里面，出现checked --&gt;
-       &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;男&quot; &lt;c:if test=&quot;${stu.gender == &apos;男&apos;}&quot;&gt;checked&lt;/c:if&gt;&gt;男
-       &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;女&quot; &lt;c:if test=&quot;${stu.gender == &apos;女&apos;}&quot;&gt;checked&lt;/c:if&gt;&gt;女
-   &lt;/td&gt;
- &lt;/tr&gt;
-
-
-&lt;tr&gt;
-   &lt;td&gt;爱好&lt;/td&gt;
-
-
-   &lt;td&gt;
-       &lt;!-- 爱好： 篮球 ， 足球 ， 看书 
-       因为爱好有很多个，  里面存在包含的关系 --&gt;
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;游泳&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;游泳&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;游泳
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;篮球&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;篮球&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;篮球
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;足球&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;足球&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;足球
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;看书&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;看书&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;看书
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;写字&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;写字&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;写字
-
-   &lt;/td&gt;
- &lt;/tr&gt;
-</code></pre><ol start="3">
-<li>修改完毕后，提交数据到UpdateServlet</li>
-</ol>
-<blockquote>
-<p>提交上来的数据是没有带id的，所以我们要手动创建一个隐藏的输入框， 在这里面给定id的值， 以便提交表单，带上id。 </p>
-</blockquote>
-<pre><code>&lt;form method=&quot;post&quot; action=&quot;UpdateServlet&quot;&gt;
-    &lt;input type=&quot;hidden&quot; name=&quot;sid&quot; value=&quot;${stu.sid }&quot;&gt;
-
-    ...
-&lt;/form&gt;
-</code></pre><ol start="4">
-<li>获取数据，调用service， 调用dao.</li>
-</ol>
-<h2 id="分页功能"><a href="#分页功能" class="headerlink" title="分页功能"></a>分页功能</h2><ul>
-<li>物理分页 （真分页）</li>
-</ul>
-<blockquote>
-<p>来数据库查询的时候，只查一页的数据就返回了。  </p>
-</blockquote>
-<pre><code>优点 内存中的数据量不会太大
-</code></pre><p>​    缺点：对数据库的访问频繁了一点。</p>
-<pre><code>SELECT * FROM stu LIMIT    5 OFFSET 2 
-</code></pre><ul>
-<li>逻辑分页 （假分页）</li>
-</ul>
-<blockquote>
-<p>一口气把所有的数据全部查询出来，然后放置在内存中。 </p>
-</blockquote>
-<pre><code>优点： 访问速度快。
-缺点： 数据库量过大，内存溢出。
-</code></pre><p>​        </p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1306,11 +915,832 @@ queryRunner.query
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/04/前端/10.JSP&EL&JSTL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="icebearice">
+      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淘气的白熊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/11/04/前端/10.JSP&EL&JSTL/" class="post-title-link" itemprop="url">10 JSP&EL&JSTL</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2018-11-04 08:25:33" itemprop="dateCreated datePublished" datetime="2018-11-04T08:25:33+08:00">2018-11-04 08:25:33</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JSP-amp-EL-amp-JSTL"><a href="#JSP-amp-EL-amp-JSTL" class="headerlink" title="JSP &amp; EL &amp; JSTL"></a>JSP &amp; EL &amp; JSTL</h1><h1 id="jsp"><a href="#jsp" class="headerlink" title="jsp"></a>jsp</h1><blockquote>
+<p>Java Server Page </p>
+</blockquote>
+<ul>
+<li>什么是jsp</li>
+</ul>
+<blockquote>
+<p>从用户角度看待 ，就是是一个网页 ， 从程序员角度看待 ， 其实是一个java类， 它继承了servlet，所以可以直接说jsp 就是一个Servlet.</p>
+</blockquote>
+<ul>
+<li>为什么会有jsp?</li>
+</ul>
+<blockquote>
+<p>html 多数情况下用来显示静态内容 ， 一成不变的。 但是有时候我们需要在网页上显示一些动态数据， 比如： 查询所有的学生信息， 根据姓名去查询具体某个学生。  这些动作都需要去查询数据库，然后在网页上显示。 html是不支持写java代码  ， jsp里面可以写java代码。 </p>
+</blockquote>
+<h2 id="怎么用JSP"><a href="#怎么用JSP" class="headerlink" title="怎么用JSP"></a>怎么用JSP</h2><h3 id="指令写法"><a href="#指令写法" class="headerlink" title="指令写法"></a>指令写法</h3><p>&lt;%@ 指令名字 %&gt;</p>
+<h3 id="page指令"><a href="#page指令" class="headerlink" title="page指令"></a>page指令</h3><ul>
+<li>language</li>
+</ul>
+<blockquote>
+<p>表明jsp页面中可以写java代码</p>
+</blockquote>
+<ul>
+<li>contentType</li>
+</ul>
+<blockquote>
+<p>其实即使说这个文件是什么类型，告诉浏览器我是什么内容类型，以及使用什么编码</p>
+</blockquote>
+<pre><code>contentType=&quot;text/html; charset=UTF-8&quot;
+
+text/html  MIMEType 这是一个文本，html网页
+</code></pre><ul>
+<li><p>pageEncoding  jsp内容编码</p>
+</li>
+<li><p>extends 用于指定jsp翻译成java文件后，继承的父类是谁，一般不用改。</p>
+</li>
+<li><p>import 导包使用的，一般不用手写。</p>
+</li>
+<li><p>session </p>
+</li>
+</ul>
+<blockquote>
+<p>值可选的有true or false .</p>
+</blockquote>
+<blockquote>
+<p>用于控制在这个jsp页面里面，能够直接使用session对象。</p>
+</blockquote>
+<blockquote>
+<p>具体的区别是，请看翻译后的java文件   如果该值是true , 那么在代码里面会有getSession（）的调用，如果是false :  那么就不会有该方法调用，也就是没有session对象了。在页面上自然也就不能使用session了。</p>
+</blockquote>
+<ul>
+<li>errorPage</li>
+</ul>
+<blockquote>
+<p>指的是错误的页面， 值需要给错误的页面路径</p>
+</blockquote>
+<ul>
+<li>isErrorPage</li>
+</ul>
+<blockquote>
+<p>上面的errorPage 用于指定错误的时候跑到哪一个页面去。 那么这个isErroPage , 就是声明某一个页面到底是不是错误的页面。</p>
+</blockquote>
+<h3 id="include"><a href="#include" class="headerlink" title="include"></a>include</h3><blockquote>
+<p>包含另外一个jsp的内容进来。</p>
+</blockquote>
+<pre><code>&lt;%@ include file=&quot;other02.jsp&quot;%&gt;
+</code></pre><ul>
+<li>背后细节:</li>
+</ul>
+<blockquote>
+<p>把另外一个页面的所有内容拿过来一起输出。 所有的标签元素都包含进来。</p>
+</blockquote>
+<h3 id="taglib"><a href="#taglib" class="headerlink" title="taglib"></a>taglib</h3><pre><code> &lt;%@ taglib prefix=&quot;&quot;  uri=&quot;&quot;%&gt;  
+
+uri: 标签库路径
+prefix : 标签库的别名  
+</code></pre><h2 id="JSP-动作标签"><a href="#JSP-动作标签" class="headerlink" title="JSP 动作标签"></a>JSP 动作标签</h2><pre><code>&lt;jsp:include page=&quot;&quot;&gt;&lt;/jsp:include&gt;
+&lt;jsp:param value=&quot;&quot; name=&quot;&quot;/&gt;
+&lt;jsp:forward page=&quot;&quot;&gt;&lt;/jsp:forward&gt;
+</code></pre><ul>
+<li><p>jsp:include</p>
+<p>&lt;jsp:include page=”other02.jsp”&gt;&lt;/jsp:include&gt;</p>
+</li>
+</ul>
+<blockquote>
+<p>包含指定的页面， 这里是动态包含。 也就是不把包含的页面所有元素标签全部拿过来输出，而是把它的运行结果拿过来。 </p>
+</blockquote>
+<ul>
+<li><p>jsp:forward</p>
+<pre><code>&lt;jsp:forward page=&quot;&quot;&gt;&lt;/jsp:forward&gt;
+</code></pre></li>
+</ul>
+<blockquote>
+<p>前往哪一个页面。  </p>
+</blockquote>
+<pre><code>&lt;% 
+    //请求转发
+    request.getRequestDispatcher(&quot;other02.jsp&quot;).forward(request, response);
+%&gt;    
+</code></pre><ul>
+<li>jsp:param</li>
+</ul>
+<blockquote>
+<p>意思是： 在包含某个页面的时候，或者在跳转某个页面的时候，加入这个参数。</p>
+</blockquote>
+<p>​<br>​    &lt;jsp:forward page=”other02.jsp”&gt;<br>​        &lt;jsp:param value=”beijing” name=”address”/&gt;<br>​    &lt;/jsp:forward&gt;<br>​<br>​    在other02.jsp中获取参数</p>
+<pre><code>&lt;br&gt;收到的参数是：&lt;br&gt;
+
+&lt;%= request.getParameter(&quot;address&quot;)%&gt;
+</code></pre><h2 id="JSP内置对象"><a href="#JSP内置对象" class="headerlink" title="JSP内置对象"></a>JSP内置对象</h2><blockquote>
+<p>所谓内置对象，就是我们可以直接在jsp页面中使用这些对象。 不用创建。</p>
+</blockquote>
+<ul>
+<li>pageContext</li>
+<li>request</li>
+<li>session</li>
+<li>application</li>
+</ul>
+<p>以上4个是作用域对象 , </p>
+<ul>
+<li>作用域 </li>
+</ul>
+<blockquote>
+<p>表示这些对象可以存值，他们的取值范围有限定。  setAttribute   和  getAttribute</p>
+</blockquote>
+<pre><code>使用作用域来存储数据&lt;br&gt;
+
+&lt;%
+    pageContext.setAttribute(&quot;name&quot;, &quot;page&quot;);
+    request.setAttribute(&quot;name&quot;, &quot;request&quot;);
+    session.setAttribute(&quot;name&quot;, &quot;session&quot;);
+    application.setAttribute(&quot;name&quot;, &quot;application&quot;);
+%&gt;
+
+取出四个作用域中的值&lt;br&gt;
+
+&lt;%=pageContext.getAttribute(&quot;name&quot;)%&gt;
+&lt;%=request.getAttribute(&quot;name&quot;)%&gt;
+&lt;%=session.getAttribute(&quot;name&quot;)%&gt;
+&lt;%=application.getAttribute(&quot;name&quot;)%&gt;
+</code></pre><p>作用域范围大小：</p>
+<pre><code>pageContext -- request --- session -- application 
+</code></pre><h3 id="四个作用域的区别"><a href="#四个作用域的区别" class="headerlink" title="四个作用域的区别"></a>四个作用域的区别</h3><ul>
+<li>pageContext 【PageContext】</li>
+</ul>
+<blockquote>
+<p>作用域仅限于当前的页面。  </p>
+</blockquote>
+<blockquote>
+<p>还可以获取到其他八个内置对象。</p>
+</blockquote>
+<ul>
+<li>request 【HttpServletRequest】</li>
+</ul>
+<blockquote>
+<p>作用域仅限于一次请求， 只要服务器对该请求做出了响应。 这个域中存的值就没有了。</p>
+</blockquote>
+<ul>
+<li>session 【HttpSession】</li>
+</ul>
+<blockquote>
+<p>作用域限于一次会话（多次请求与响应） 当中。 </p>
+</blockquote>
+<ul>
+<li>application 【ServletContext】</li>
+</ul>
+<blockquote>
+<p>整个工程都可以访问， 服务器关闭后就不能访问了。 </p>
+</blockquote>
+<ul>
+<li>out         【JspWriter】<ul>
+<li>response  【HttpServletResponse】</li>
+</ul>
+</li>
+</ul>
+<p><img src="/icebearice/2018/11/04/前端/10.JSP&EL&JSTL/img01.png" alt="icon"></p>
+<ul>
+<li>exception  【Throwable】<ul>
+<li>page     【Object】 —就是这个jsp翻译成的java类的实例对象<ul>
+<li>config 【ServletConfig】</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h2><blockquote>
+<p>是为了简化咱们的jsp代码，具体一点就是为了简化在jsp里面写的那些java代码。</p>
+</blockquote>
+<ul>
+<li>写法格式</li>
+</ul>
+<p>${表达式 }</p>
+<blockquote>
+<p>如果从作用域中取值，会先从小的作用域开始取，如果没有，就往下一个作用域取。  一直把四个作用域取完都没有， 就没有显示。</p>
+</blockquote>
+<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><h3 id="1-取出4个作用域中存放的值。"><a href="#1-取出4个作用域中存放的值。" class="headerlink" title="1. 取出4个作用域中存放的值。"></a>1. 取出4个作用域中存放的值。</h3><pre><code>&lt;%
+    pageContext.setAttribute(&quot;name&quot;, &quot;page&quot;);
+    request.setAttribute(&quot;name&quot;, &quot;request&quot;);
+    session.setAttribute(&quot;name&quot;, &quot;session&quot;);
+    application.setAttribute(&quot;name&quot;, &quot;application&quot;);
+%&gt;
+
+按普通手段取值&lt;br&gt;
+
+&lt;%= pageContext.getAttribute(&quot;name&quot;)%&gt;
+&lt;%= request.getAttribute(&quot;name&quot;)%&gt;
+&lt;%= session.getAttribute(&quot;name&quot;)%&gt;
+&lt;%= application.getAttribute(&quot;name&quot;)%&gt;
+
+&lt;br&gt;使用EL表达式取出作用域中的值&lt;br&gt;
+
+${ pageScope.name }
+${ requestScope.name }
+${ sessionScope.name }
+${ applicationScope.name }
+</code></pre><ol start="2">
+<li><p>如果域中所存的是数组</p>
+<pre><code>&lt;%
+       String [] a = {&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot;dd&quot;};
+       pageContext.setAttribute(&quot;array&quot;, a);
+   %&gt;
+
+使用EL表达式取出作用域中数组的值&lt;br&gt;
+
+${array[0] } , ${array[1] },${array[2] },${array[3] }
+</code></pre></li>
+</ol>
+<ol start="3">
+<li>如果域中锁存的是集合</li>
+</ol>
+<pre><code>使用EL表达式取出作用域中集合的值&lt;br&gt;
+
+${li[0] } , ${li[1] },${li[2] },${li[3] }
+
+&lt;br&gt;-------------Map数据----------------&lt;br&gt;
+&lt;%
+    Map map = new HashMap();
+    map.put(&quot;name&quot;, &quot;zhangsna&quot;);
+    map.put(&quot;age&quot;,18);
+    map.put(&quot;address&quot;,&quot;北京..&quot;);
+
+    map.put(&quot;address.aa&quot;,&quot;深圳..&quot;);
+
+
+    pageContext.setAttribute(&quot;map&quot;, map);
+%&gt;
+</code></pre><ol start="4">
+<li><p>取出Map集合的值</p>
+<pre><code>&lt;%
+       Map map = new HashMap();
+       map.put(&quot;name&quot;, &quot;zhangsna&quot;);
+       map.put(&quot;age&quot;,18);
+       map.put(&quot;address&quot;,&quot;北京..&quot;);
+
+    map.put(&quot;address.aa&quot;,&quot;深圳..&quot;);
+</code></pre></li>
+</ol>
+<pre><code>    pageContext.setAttribute(&quot;map&quot;, map);
+%&gt;
+使用EL表达式取出作用域中Map的值&lt;br&gt;
+
+${map.name } , ${map.age } , ${map.address }  , ${map[&quot;address.aa&quot;] }
+</code></pre><h3 id="取值细节："><a href="#取值细节：" class="headerlink" title="取值细节："></a>取值细节：</h3><ol>
+<li><p>从域中取值。  得先存值。<br>&lt;%</p>
+<pre><code>//pageContext.setAttribute(&quot;name&quot;, &quot;zhangsan&quot;);
+session.setAttribute(&quot;name&quot;, &quot;lisi...&quot;);
+</code></pre><p>%&gt;</p>
+<p><br>直接指定说了，到这个作用域里面去找这个name<br><br>${ pageScope.name } </p>
+</li>
+</ol>
+<p>   <br>//先从page里面找，没有去request找，去session，去application <br><br>   ${ name }</p>
+<p>   <br>指定从session中取值<br><br>   ${ sessionScope.name }  </p>
+<ol start="2">
+<li>取值方式</li>
+</ol>
+<p>如果这份值是有下标的，那么直接使用[]</p>
+<pre><code>&lt;%
+    String [] array = {&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;}
+    session.setAttribute(&quot;array&quot;,array);
+%&gt;
+
+
+${ array[1] } --&gt; 这里array说的是attribute的name 
+</code></pre><p>如果没有下标， 直接使用 .的方式去取</p>
+<pre><code>&lt;%
+    User user = new User(&quot;zhangsan&quot;,18);
+
+    session.setAttribute(&quot;u&quot;, user);
+%&gt;
+
+${ u.name }  , ${ u.age } 
+</code></pre><blockquote>
+<p>一般使用EL表达式，用的比较多的，都是从一个对象中取出它的属性值，比如取出某一个学生的姓名。</p>
+</blockquote>
+<h2 id="EL表达式-的11个内置对象。"><a href="#EL表达式-的11个内置对象。" class="headerlink" title="EL表达式 的11个内置对象。"></a>EL表达式 的11个内置对象。</h2><p>${ 对象名.成员 }</p>
+<ul>
+<li>pageContext </li>
+</ul>
+<p>作用域相关对象</p>
+<ul>
+<li>pageScope</li>
+<li>requestScope</li>
+<li>sessionScope</li>
+<li>applicationScope</li>
+</ul>
+<p>头信息相关对象</p>
+<ul>
+<li>header</li>
+<li>headerValues</li>
+</ul>
+<p>参数信息相关对象</p>
+<ul>
+<li>param</li>
+<li>paramValues</li>
+</ul>
+<ul>
+<li>cookie<br>全局初始化参数</li>
+<li>initParam</li>
+</ul>
+<h2 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h2><blockquote>
+<p>全称 ： JSP Standard Tag Library  jsp标准标签库</p>
+</blockquote>
+<blockquote>
+<p>简化jsp的代码编写。 替换 &lt;%%&gt; 写法。 一般与EL表达式配合</p>
+</blockquote>
+<h3 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h3><ol>
+<li><p>导入jar文件到工程的WebContent/Web-Inf/lib  jstl.jar standard.jar</p>
+</li>
+<li><p>在jsp页面上，使用taglib 指令，来引入标签库</p>
+</li>
+<li><p>注意： 如果想支持 EL表达式，那么引入的标签库必须选择1.1的版本，1.0的版本不支持EL表达式。</p>
+</li>
+</ol>
+<pre><code>&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;
+</code></pre><h3 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h3><p>&lt;c:set&gt;&lt;/c:set&gt;<br>&lt;c:if test=””&gt;&lt;/c:if&gt;<br>&lt;c:forEach&gt;&lt;/c:forEach&gt;</p>
+<ul>
+<li>c:set</li>
+</ul>
+<pre><code>&lt;!-- 声明一个对象name， 对象的值 zhangsan , 存储到了page（默认） ， 指定是session --&gt;
+&lt;c:set var=&quot;name&quot; value=&quot;zhangsan&quot; scope=&quot;session&quot;&gt;&lt;/c:set&gt;
+
+${sessionScope.name }
+</code></pre><ul>
+<li>c:if</li>
+</ul>
+<blockquote>
+<p>判断test里面的表达式是否满足，如果满足，就执行c:if标签中的输出 ， c:if 是没有else的。 </p>
+</blockquote>
+<pre><code>&lt;c:set var=&quot;age&quot; value=&quot;18&quot; &gt;&lt;/c:set&gt;
+&lt;c:if test=&quot;${ age &gt; 26 }&quot;&gt;
+    年龄大于了26岁...
+&lt;/c:if&gt;
+
+&lt;c:if test=&quot;${ age &lt;= 26 }&quot;&gt;
+    年龄小于了26岁...
+&lt;/c:if&gt;
+
+
+------------------------------
+
+定义一个变量名 flag  去接收前面表达式的值，然后存在session域中
+
+&lt;c:if test=&quot;${ age &gt; 26 }&quot; var=&quot;flag&quot; scope=&quot;session&quot;&gt;
+    年龄大于了26岁...
+&lt;/c:if&gt;
+</code></pre><ul>
+<li>c:forEach</li>
+</ul>
+<pre><code>从1 开始遍历到10 ，得到的结果 ，赋值给 i ,并且会存储到page域中， step , 增幅为2， 
+&lt;c:forEach begin=&quot;1&quot; end=&quot;10&quot; var=&quot;i&quot; step=&quot;2&quot;&gt;
+    ${i }
+&lt;/c:forEach&gt;
+
+
+-----------------------------------------------
+
+&lt;!-- items : 表示遍历哪一个对象，注意，这里必须写EL表达式。 
+var: 遍历出来的每一个元素用user 去接收。 --&gt;
+&lt;c:forEach var=&quot;user&quot; items=&quot;${list }&quot;&gt;
+    ${user.name } ----${user.age }
+&lt;/c:forEach&gt;
+</code></pre><h2 id="学生信息管理系统"><a href="#学生信息管理系统" class="headerlink" title="学生信息管理系统"></a>学生信息管理系统</h2><ul>
+<li>需求分析</li>
+</ul>
+<p><img src="/icebearice/2018/11/04/前端/10.JSP&EL&JSTL/img02.png" alt="icon"></p>
+<ol>
+<li><p>先写 login.jsp , 并且搭配一个LoginServlet 去获取登录信息。</p>
+</li>
+<li><p>创建用户表， 里面只要有id , username  和 password</p>
+</li>
+<li><p>创建UserDao, 定义登录的方法 </p>
+<pre><code>/**
+</code></pre><ul>
+<li><p>该dao定义了对用户表的访问规则<br> */<br>public interface UserDao {</p>
+<pre><code>/**
+</code></pre><ul>
+<li>这里简单就返回一个Boolean类型， 成功或者失败即可。<ul>
+<li>​</li>
+<li>但是开发的时候，登录的方法，一旦成功。这里应该返回该用户的个人信息</li>
+<li>@param userName </li>
+<li>@param password</li>
+<li>​</li>
+<li>@return true : 登录成功， false : 登录失败。<br> */<br>  boolean login(String userName , String password);<br>  }</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="4">
+<li>创建UserDaoImpl , 实现刚才定义的登录方法。</li>
+</ol>
+<pre><code>public class UserDaoImpl implements UserDao {
+
+    @Override
+    public boolean login(String userName , String password) {
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs   = null;
+        try {
+            //1. 得到连接对象
+            conn = JDBCUtil.getConn();
+
+            String sql = &quot;select * from t_user where username=? and password=?&quot;;
+
+            //2. 创建ps对象
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, userName);
+            ps.setString(2, password);
+
+
+            //3. 开始执行。
+            rs = ps.executeQuery();
+
+            //如果能够成功移到下一条记录，那么表明有这个用户。 
+            return rs.next();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.release(conn, ps, rs);
+        }
+        return false;
+    }
+
+}
+</code></pre><ol start="5">
+<li><p>在LoginServlet里面访问UserDao， 判断登录结果。 以区分对待</p>
+</li>
+<li><p>创建stu_list.jsp , 让登录成功的时候跳转过去。</p>
+</li>
+<li><p>创建学生表 ， 里面字段随意。 </p>
+</li>
+<li><p>定义学生的Dao . StuDao  </p>
+</li>
+</ol>
+<pre><code>public interface StuDao {
+
+    /**
+     * 查询出来所有的学生信息
+     * @return List集合
+     */
+    List&lt;Student&gt; findAll();
+}
+</code></pre><ol start="9">
+<li><p>对上面定义的StuDao 做出实现 StuDaoImpl</p>
+<pre><code>public class StuDaoImpl implements StuDao {
+
+    @Override
+    public List&lt;Student&gt; findAll() {
+        List&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs   = null;
+        try {
+            //1. 得到连接对象
+            conn = JDBCUtil.getConn();
+
+            String sql = &quot;select * from t_stu&quot;;
+
+            ps = conn.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+</code></pre></li>
+</ol>
+<p>   ​<br>                   //数据多了，用对象装， 对象也多了呢？ 用集合装。<br>                   while(rs.next()){ //10 次 ，10个学生</p>
+<pre><code>                Student stu = new Student();
+
+                stu.setId(rs.getInt(&quot;id&quot;));
+                stu.setAge(rs.getInt(&quot;age&quot;));
+                stu.setName(rs.getString(&quot;name&quot;));
+                stu.setGender(rs.getString(&quot;gender&quot;));
+                stu.setAddress(rs.getString(&quot;address&quot;));
+
+                list.add(stu);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.release(conn, ps, rs);
+        }
+
+        return list;
+    }
+
+}
+</code></pre><ol start="10">
+<li><p>在登录成功的时候，完成三件事情。</p>
+</li>
+<li><p>查询所有的学生</p>
+<ol start="2">
+<li><p>把这个所有的学生集合存储到作用域中。</p>
+</li>
+<li><p>跳转到stu_list.jsp</p>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    //提交的数据有可能有中文， 怎么处理。
+    request.setCharacterEncoding(&quot;UTF-8&quot;);
+    response.setContentType(&quot;text/html;charset=utf-8&quot;);
+
+    //1. 获取客户端提交的信息
+    String userName = request.getParameter(&quot;username&quot;);
+    String password = request.getParameter(&quot;password&quot;);
+
+    //2. 去访问dao ， 看看是否满足登录。
+    UserDao dao = new UserDaoImpl();
+    boolean isSuccess = dao.login(userName, password);
+
+    //3. 针对dao的返回结果，做出响应
+    if(isSuccess){
+        //response.getWriter().write(&quot;登录成功.&quot;);
+
+        //1. 查询出来所有的学生信息。
+        StuDao stuDao = new StuDaoImpl();
+        List&lt;Student&gt; list = stuDao.findAll();
+
+        //2. 先把这个集合存到作用域中。
+        request.getSession().setAttribute(&quot;list&quot;, list);
+
+        //2. 重定向
+        response.sendRedirect(&quot;stu_list.jsp&quot;);
+
+    }else{
+        response.getWriter().write(&quot;用户名或者密码错误！&quot;);
+    }
+}
+</code></pre><ol start="11">
+<li>在stu_list.jsp中，取出域中的集合，然后使用c标签 去遍历集合。 </li>
+</ol>
+<pre><code>    &lt;table border=&quot;1&quot; width=&quot;700&quot;&gt;
+    &lt;tr align=&quot;center&quot;&gt;
+        &lt;td&gt;编号&lt;/td&gt;
+        &lt;td&gt;姓名&lt;/td&gt;
+        &lt;td&gt;年龄&lt;/td&gt;
+        &lt;td&gt;性别&lt;/td&gt;
+        &lt;td&gt;住址&lt;/td&gt;
+        &lt;td&gt;操作&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;c:forEach items=&quot;${list }&quot; var=&quot;stu&quot;&gt;
+        &lt;tr align=&quot;center&quot;&gt;
+            &lt;td&gt;${stu.id }&lt;/td&gt;
+            &lt;td&gt;${stu.name }&lt;/td&gt;
+            &lt;td&gt;${stu.age }&lt;/td&gt;
+            &lt;td&gt;${stu.gender }&lt;/td&gt;
+            &lt;td&gt;${stu.address }&lt;/td&gt;
+            &lt;td&gt;&lt;a href=&quot;# &quot;&gt;更新&lt;/a&gt;   &lt;a href=&quot;# &quot;&gt;删除&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/c:forEach&gt;
+&lt;/table&gt;
+</code></pre><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ul>
+<li><p>JSP</p>
+<pre><code>三大指令
+
+    page
+    include
+    taglib
+
+三个动作标签
+    &lt;jsp:include&gt;
+    &lt;jsp:forward&gt;
+    &lt;jsp:param&gt;
+</code></pre></li>
+</ul>
+<pre><code>九个内置对象
+
+    四个作用域
+        pageContext
+        request
+        session
+        application
+
+    out
+    exception
+    response
+    page
+    config
+</code></pre><p>​            </p>
+<ul>
+<li><p>EL</p>
+<p>${ 表达式 }</p>
+<p>取4个作用域中的值</p>
+<pre><code>${ name }
+</code></pre><p>有11个内置对象。</p>
+<pre><code>pageContext
+
+pageScope
+requestScope
+sessionScope
+applicationScope
+
+header
+headerValues
+
+param
+paramValues
+
+cookie
+initParam
+</code></pre></li>
+<li><p>JSTL</p>
+</li>
+</ul>
+<blockquote>
+<p>使用1.1的版本， 支持EL表达式， 1.0不支持EL表达式</p>
+</blockquote>
+<blockquote>
+<p>拷贝jar包， 通过taglib 去引入标签库</p>
+</blockquote>
+<pre><code>&lt;c:set&gt;
+&lt;c:if&gt;
+&lt;c:forEach&gt;
+</code></pre><p>​    </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1354,7 +1784,7 @@ queryRunner.query
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
