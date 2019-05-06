@@ -336,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/26/数据库/关于事务MVCC多版本并发控制的思考/">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/05/06/Linux/Linux硬链接与软链接/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="icebearice">
@@ -356,7 +356,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/04/26/数据库/关于事务MVCC多版本并发控制的思考/" class="post-title-link" itemprop="url">关于事务MVCC多版本并发控制的思考</a>
+                <a href="/2019/05/06/Linux/Linux硬链接与软链接/" class="post-title-link" itemprop="url">Linux硬链接与软链接</a>
               
             
           </h1>
@@ -381,7 +381,7 @@
              
              
 
-              <time title="创建时间：2019-04-26 21:36:38 / 修改时间：22:50:06" itemprop="dateCreated datePublished" datetime="2019-04-26T21:36:38+08:00">2019-04-26 21:36:38</time>
+              <time title="创建时间：2019-05-06 14:48:04 / 修改时间：14:48:20" itemprop="dateCreated datePublished" datetime="2019-05-06T14:48:04+08:00">2019-05-06 14:48:04</time>
             
 
             
@@ -394,8 +394,8 @@
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
-                2019-04-26 22:50:06
+              <time itemprop="dateUpdated" datetime="2019-05-06T14:48:20+08:00" content="2019-05-06">
+                2019-05-06 14:48:20
               </time>
             </span>
           
@@ -412,7 +412,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DataBase/" itemprop="url" rel="index"><span itemprop="name">DataBase</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -449,12 +449,20 @@
       
         
           
-            <h2 id="数据库的MVCC-Multi-Version-Concurrency-Control-多版本并发控制"><a href="#数据库的MVCC-Multi-Version-Concurrency-Control-多版本并发控制" class="headerlink" title="数据库的MVCC(Multi-Version Concurrency Control)多版本并发控制"></a>数据库的MVCC(Multi-Version Concurrency Control)多版本并发控制</h2><h4 id="事务的隔离级别-MyISAM不支持事务-将隔离级别是基于事务上的-只有InnoDB支持事务隔离级别"><a href="#事务的隔离级别-MyISAM不支持事务-将隔离级别是基于事务上的-只有InnoDB支持事务隔离级别" class="headerlink" title="事务的隔离级别 (MyISAM不支持事务, 将隔离级别是基于事务上的, 只有InnoDB支持事务隔离级别)"></a>事务的隔离级别 (MyISAM不支持事务, 将隔离级别是基于事务上的, 只有InnoDB支持事务隔离级别)</h4><ol>
-<li><strong>读未提交 Read Uncommitted</strong> 假设A向B转账 A还没提交事务 B已经发现钱变多了 A就回滚事务 B再查看钱的时候 发现钱没有变多 这就是read uncommited 造成的<strong>脏读</strong>现象 出现<strong>脏读</strong>的<strong>本质</strong>其实是<strong>操作本身修改完数据之后就立刻将锁释放掉</strong></li>
-<li><strong>读已提交 Read Committed</strong> 就是将<strong>释放锁</strong>的<strong>位置</strong>调整到<strong>事务提交之后</strong>, 在此事务提交之前, 其他进程或者线程是无法对该行数据进行读取的, 但这样也有<strong>弊端</strong>, 假设AB<strong>同时</strong>对<strong>数据库**</strong>进行操作<strong>, A</strong>准备<strong>查询</strong>数据库<strong>的同时, B正在修改</strong>数据库, 而<strong>A想要查的数据是B修改前的数据</strong>, 这种现象叫做不可重复读</li>
-<li><strong>可重复读 Repeated Read</strong> 就是 每开始一个新的事务, <strong>系统版本号会自动递增</strong>, (实际上是每行记录后面保存<strong>两个隐藏的列</strong>来实现的, 一列是保存了<strong>行的创建时间</strong>, 一列是保存了<strong>行的删除时间</strong>), 事务开始时的系统版本号作为<strong>事务的版本号</strong>, 用来查询的时候比较<strong>每行记录的版本是否相符</strong> <strong>(其实这是一种乐观锁)</strong> , 然鹅即便<strong>到了如此防御的程度</strong>, 始终还有不完美的地方, 当两个并发事务的版本号一致的时候, 会导致幻读现象, 什么叫幻读呢, 就是一个事务可能读到另一个事务insert后的值, 无中生有(咦, 这条数据哪里来的! 我本来没有的呀! 难道我漏了??? 这么玄学的???)</li>
-<li><strong>串行化 Serializable</strong> 在上面的基础上, 将<strong>事务的数据读取范围加上间隙锁,</strong> 其他事务<strong>不能访问或修改该范围内的数据</strong></li>
-</ol>
+            <p>转载自: <a href="https://www.cnblogs.com/crazylqy/p/5821105.html" target="_blank" rel="noopener">https://www.cnblogs.com/crazylqy/p/5821105.html</a></p>
+<p>Linux 系统中有<strong>软链接</strong>和<strong>硬链接</strong>两种特殊的“文件”。</p>
+<p><strong>软链接</strong>可以看作是<strong>Windows中的快捷方式</strong>，可以让你快速链接到目标档案或目录。</p>
+<p><strong>硬链接</strong>则透过文件系统的inode来产生新档名，而不是产生新档案。</p>
+<p>磁盘分区会被分为两个部分: Inode区 与 Data Block(实际数据放置在数据区域中)</p>
+<p>Inode是文件在文件系统中的唯一标识 访问一个文件的时候必须先找到并读取这个文件的Inode</p>
+<p>Inode里面存储了文件的很多重要参数, 其中唯一标识称为Inumber, 创建时间ctime, 修改时间mtime, 文件大小, 属主 归属的用户组, 读写权限, 数据所在的block号等信息</p>
+<p>磁盘分区会根据inode的数量进行分区, 比如文件数量很多而文件都很小, 则需要Inode的数量就会较多, 方便索引全部文件</p>
+<p>Inode不记录文件名, 文件名记录在目录文件的Block中</p>
+<p>硬链接: 多个档名对应同一个Inode, 借助Inode来产生新的档名, 从而产生新的档名链接</p>
+<p><strong>硬链接</strong></p>
+<p>多个档名对应同一个inode，硬链接只是在某个目录下新增一笔档名链 接到某个inode号码的关联记录而已。如果将上图中任何一个档名删除，档案的inode与block都还存在，依然还可以通过另一个档名来读取正确的档 案数据。此外，不论用哪一个档名来编辑，最终的结果都会写入相同的inode和block中，因此均能进行数据的修改。</p>
+<p><strong>软连接</strong></p>
+<p>软连接就是建立一个独立的文件，而这个文件会让数据的读取指向它link的那个档案的档名，由于只是作为<strong>指向的动作</strong>，所以当来源档案被删除之后，软连接的档案无法开启，因为找不到原始档名。连结档的内容只有档名，根据档名链接到正确的目录进一步取得目标档案的inode，最终就能够读取到正确的数据。如果目标档案的原始档名被删除了那么整个环节就进行不下去了。</p>
 
           
         
@@ -511,7 +519,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/26/面试/CVTE一面/">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/05/06/Linux/Untitled/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="icebearice">
@@ -531,7 +539,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/04/26/面试/CVTE一面/" class="post-title-link" itemprop="url">CVTE一面</a>
+                <a href="/2019/05/06/Linux/Untitled/" class="post-title-link" itemprop="url">未命名</a>
               
             
           </h1>
@@ -553,46 +561,17 @@
               
 
              
-             
-             
-
-              <time title="创建时间：2019-04-26 20:04:03 / 修改时间：20:04:32" itemprop="dateCreated datePublished" datetime="2019-04-26T20:04:03+08:00">2019-04-26 20:04:03</time>
-            
-
-            
+                
               
 
-              
+              <time title="创建时间：2019-05-06 14:47:47" itemprop="dateCreated datePublished" datetime="2019-05-06T14:47:47+08:00">2019-05-06 14:47:47</time>
+            
+
             
           </span>
 
           
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-04-26T20:04:32+08:00" content="2019-04-26">
-                2019-04-26 20:04:32
-              </time>
-            </span>
           
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -624,21 +603,7 @@
       
         
           
-            <h4 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h4><p>线程状态之间的转换</p>
-<p>多线程中常见的方法</p>
-<p>串行执行线程的多种方式</p>
-<p>多线程的创建的三种方法</p>
-<h4 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h4><p>IOC原理</p>
-<p>IOC实现过程</p>
-<p>AOP实现过程</p>
-<p>AOP原理</p>
-<p>两种动态代理模式的底层实现</p>
-<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p>数据库表的设计</p>
-<p>数据库的前三范式</p>
-<p>常见的索引形式</p>
-<p>索引的底层实现 数据结构</p>
-<p>B+树的插入过程</p>
-
+            
           
         
       
@@ -683,7 +648,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -727,7 +692,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -772,7 +737,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -815,7 +782,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

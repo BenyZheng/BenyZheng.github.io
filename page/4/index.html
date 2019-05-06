@@ -336,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/23/数据库/关于数据库索引的思考/">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/26/面试/美团一面/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="icebearice">
@@ -356,7 +356,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/04/23/数据库/关于数据库索引的思考/" class="post-title-link" itemprop="url">关于数据库索引的思考</a>
+                <a href="/2019/04/26/面试/美团一面/" class="post-title-link" itemprop="url">美团一面</a>
               
             
           </h1>
@@ -378,27 +378,15 @@
               
 
              
-                
-              
+             
+             
 
-              <time title="创建时间：2019-04-23 00:41:00" itemprop="dateCreated datePublished" datetime="2019-04-23T00:41:00+08:00">2019-04-23 00:41:00</time>
+              <time title="创建时间：2019-04-26 19:59:23 / 修改时间：20:04:32" itemprop="dateCreated datePublished" datetime="2019-04-26T19:59:23+08:00">2019-04-26 19:59:23</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
               
             
           </span>
@@ -406,8 +394,8 @@
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
-                2019-04-26 22:50:06
+              <time itemprop="dateUpdated" datetime="2019-04-26T20:04:32+08:00" content="2019-04-26">
+                2019-04-26 20:04:32
               </time>
             </span>
           
@@ -424,7 +412,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DataBase/" itemprop="url" rel="index"><span itemprop="name">DataBase</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
 
                 
                 
@@ -461,9 +449,30 @@
       
         
           
-            <h1 id="为什么说B-树适合做索引-而不是B树呢"><a href="#为什么说B-树适合做索引-而不是B树呢" class="headerlink" title="为什么说B+树适合做索引 而不是B树呢"></a>为什么说B+树适合做索引 而不是B树呢</h1><ol>
-<li>索引查找过程中会产生磁盘IO消耗,相对于内存的读取,磁盘的IO消耗的数量级要更高,所以说要想索引的效率高,要尽可能的减少磁盘IO的数量,而B树每个节点都有具体指向关键字的指针,B+树则没有指向关键字的具体指针,它只需要对一个关键字盘块进行读取,B树需要对关键字盘块和对应指针盘块两个盘块进行读取,一个盘块读取的效率就是一次IO,故B+树的IO读写次数就较少一些</li>
-<li>由于B+树存的是对关键字的索引,所以任何关键字都需要从对应索引根节点走向叶子节点的路,相对于B树而言,查询效率更加稳定一些</li>
+            <ol>
+<li>自我介绍</li>
+<li>介绍项目 根据项目出发问题</li>
+<li>项目中如何实现秒杀</li>
+<li>项目中如何防止超卖(没问我准备好的乐观锁)</li>
+<li>redis怎么用</li>
+<li>redis底层原理有没有了解过</li>
+<li>redis为什么可以缓解高并发</li>
+<li>检测链表中是否存在环</li>
+<li>mysql有什么索引 主键索引和非主键索引的区别 索引的优缺点</li>
+<li>主键索引是什么索引 没听太懂</li>
+<li>innodb底层是什么索引</li>
+<li>知道什么数据结构</li>
+<li>有看过hashmap源码吗 讲一下put方法</li>
+<li>hashmap为什么线程不安全 从底层实现模拟线程不安全的情况</li>
+<li>hashmap的初始容量</li>
+<li>讲一下冒泡的过程</li>
+<li>时间复杂度和空间复杂度的意义 联系实际分析细节</li>
+<li>有什么要问我的</li>
+</ol>
+<hr>
+<h5 id="最近得了个病-叫-面试焦虑病"><a href="#最近得了个病-叫-面试焦虑病" class="headerlink" title="最近得了个病 叫 面试焦虑病"></a>最近得了个病 叫 面试焦虑病</h5><ol>
+<li>面试官问我问到我回答不上来 心里就想 有些没回答上来的问题 我是不是没希望了</li>
+<li>面试官问我问的刚好都是我会的 心里就想 完了 怎么感觉问的深度还不够深 他们是不是根本不缺人 只是走下流程 我是不是没希望了</li>
 </ol>
 
           
@@ -521,7 +530,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/15/算法/字符串的排列/">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/25/小脚本/时间戳生成器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="icebearice">
@@ -541,7 +550,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/04/15/算法/字符串的排列/" class="post-title-link" itemprop="url">字符串的排列</a>
+                <a href="/2019/04/25/小脚本/时间戳生成器/" class="post-title-link" itemprop="url">时间戳生成器</a>
               
             
           </h1>
@@ -563,27 +572,15 @@
               
 
              
-                
-              
+             
+             
 
-              <time title="创建时间：2019-04-15 02:36:10" itemprop="dateCreated datePublished" datetime="2019-04-15T02:36:10+08:00">2019-04-15 02:36:10</time>
+              <time title="创建时间：2019-04-25 20:00:49 / 修改时间：21:02:42" itemprop="dateCreated datePublished" datetime="2019-04-25T20:00:49+08:00">2019-04-25 20:00:49</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
               
             
           </span>
@@ -591,8 +588,8 @@
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
-                2019-04-26 22:50:06
+              <time itemprop="dateUpdated" datetime="2019-04-25T21:02:42+08:00" content="2019-04-25">
+                2019-04-25 21:02:42
               </time>
             </span>
           
@@ -609,7 +606,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指OFFER/" itemprop="url" rel="index"><span itemprop="name">剑指OFFER</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/小脚本/" itemprop="url" rel="index"><span itemprop="name">小脚本</span></a></span>
 
                 
                 
@@ -646,45 +643,24 @@
       
         
           
-            <h1 id="字符串的排列"><a href="#字符串的排列" class="headerlink" title="字符串的排列"></a>字符串的排列</h1><blockquote>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。</p>
-<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 输入一个字符串,长度不超过9(可能有字符重复),字符只包括大小写字母。</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>做这道题吧，既然是排列，就回忆一下排列组合的数学知识吧。</p>
-<p><img src="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D257/sign=97158a763df33a879a6d071ff15d1018/2e2eb9389b504fc2974eb943e2dde71190ef6d66.jpg" alt="img"></p>
-<p><img src="https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D162/sign=f68c65f4b5b7d0a27fc9009bf9ee760d/5d6034a85edf8db190ab75220e23dd54574e74ea.jpg" alt="img"></p>
-<p>如果字符串为abc，那就是A33</p>
-<p>如果字符串为alibaba，那就是C73<em>C42</em>A22</p>
-<p>实现了计算的全排列，看看算法应该如何实现全排列呢？</p>
-<p>以字符串abc为例，固定住第一个字符，然后让后面两个字符交换，如图所示</p>
-<p><img src="http://img.blog.csdn.net/20130517151143329" alt="img"></p>
-<blockquote>
-<p>图片来源：<a href="http://www.cnblogs.com/cxjchen/p/3932949.html" target="_blank" rel="noopener">http://www.cnblogs.com/cxjchen/p/3932949.html</a></p>
-</blockquote>
-<p>以编程的思维来看，假定字符串长度为<strong>n</strong>，则循环一般是从<strong>0~n</strong>遍历一遍的，那我们要如何实现交换之后<strong>递归停止呢</strong>？</p>
-<p><strong>以abc为例：</strong></p>
+            <p>想着经常会改博客的生成时间, 所以写了个时间戳生成代码, 每次都不用自己一点点改时间啦</p>
 <ol>
-<li>第一个字符有abc三种可能，则第一个字符遍历3次，结束条件为遍历到最后一个字符（即只剩下一个字符）</li>
-<li>第一个字符的三种可能已经确定，我们只需考虑第二字符和第三字符，显而易见，第二字符和第三字符交换即可得到两个字符串</li>
-<li>需要注意的是，首字符固定后，第二字符与第三字符进行交换后，需要换回来，保证不影响首字符的遍历集合</li>
+<li><p>生成的时间戳输出到文件中</p>
+</li>
+<li><p>生成的时间戳还不如复制到剪切板</p>
+</li>
+<li><p>于是就查了查怎么访问剪切板</p>
+</li>
+<li><p>代码是.java文件, 如何将编译后的.class文件转成windows支持的.exe文件, 双击即可生成呢?</p>
+</li>
+<li><p>自行食用, 不搬运了, 用的是exe4j  + jar包<a href="https://blog.csdn.net/zzzgd_666/article/details/80756430" target="_blank" rel="noopener">https://blog.csdn.net/zzzgd_666/article/details/80756430</a></p>
+</li>
+<li><p>我做好的 直接打开 按ctrl+v 粘贴 即可生成时间戳</p>
+<p>链接: <a href="https://pan.baidu.com/s/1aq6a0oLLW6bJ80pGZVhf4Q" target="_blank" rel="noopener">https://pan.baidu.com/s/1aq6a0oLLW6bJ80pGZVhf4Q</a> 提取码: 1dve 复制这段内容后打开百度网盘手机App，操作更方便哦</p>
+</li>
 </ol>
-<p><strong>那如果是三个以上的字符呢？</strong></p>
-<p><strong>以abcde为例：</strong></p>
-<ol>
-<li>首字符有5种可能，遍历5次，每遍历一次，都要考虑首字符后面4个字符</li>
-<li>由于首字符固定，考虑后面4个字符，同处理首字符一样</li>
-<li>相当于每一次都在处理 固定的首字符</li>
-<li>结束条件为遍历到最后一个字符</li>
-</ol>
-<p><strong>非常明显的递归关系，不断处理首字符，从而进行交换</strong></p>
-<p><img src="https://icebearice.gitee.io/uploads/1555268158383.png" alt="1555268158383"></p>
-<p><strong>紧接着，有重复问题，怎么处理？</strong></p>
-<p>对于abb而言，由于我们是固定首字符，在交换首字符a与第二字符b，并且交换回来后，若发现第三个字符与第二字符相等，则不再进行交换</p>
-<p><strong>所以，交换规则就是，从首字符开始，每个字符与后面非重复出现的字符进行交换，结束条件为遍历到最后一个字符（即只剩下一个字符），然鹅进行递归处理</strong></p>
-<p>算法思路如上，可以用<strong>方法递归</strong>或<strong>循环</strong>实现吧，方法递归可能需要<strong>处理字典序问题</strong>，循环的话可以<strong>提前处理字典序</strong>，处理完后再进行循环，便不需要完事（全排列）后处理字典序</p>
-<p>在空间上，<strong>循环不需要递归空间</strong></p>
-<p><strong>在时间上</strong>，<strong>提前处理字符串的字典序会比处理完事后生成的字符串要快一些</strong></p>
-<p>代码随后补上，睡觉，要猝死咯~</p>
+<h4 id="输出到文件"><a href="#输出到文件" class="headerlink" title="输出到文件"></a>输出到文件</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.datatransfer.Clipboard;</span><br><span class="line"><span class="keyword">import</span> java.awt.datatransfer.StringSelection;</span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created By icebearice on 2019/4/25 19:43</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeStampGenerator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 生成当前时间</span></span><br><span class="line">        Date date = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="comment">// 输出到NowTime.txt</span></span><br><span class="line">        File file = <span class="keyword">new</span> File(<span class="string">"NowTime.txt"</span>);</span><br><span class="line">        PrintWriter output = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            output = <span class="keyword">new</span> PrintWriter(file);</span><br><span class="line">            <span class="comment">// 将时间按照自己想要的格式格式化</span></span><br><span class="line">            SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">            output.println(simpleDateFormat.format(date));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">// 记得关闭output哦 不然文件会是空的</span></span><br><span class="line">            output.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="输出到剪切板"><a href="#输出到剪切板" class="headerlink" title="输出到剪切板"></a>输出到剪切板</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.datatransfer.Clipboard;</span><br><span class="line"><span class="keyword">import</span> java.awt.datatransfer.StringSelection;</span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created By icebearice on 2019/4/25 19:43</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeStampGenerator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 生成当前时间</span></span><br><span class="line">        Date date = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 格式化时间</span></span><br><span class="line">            SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">            <span class="comment">// 将字符串赋值到剪切板上</span></span><br><span class="line">            <span class="comment">// 访问系统剪切板</span></span><br><span class="line">            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();</span><br><span class="line">            <span class="comment">// 字符串转换成 传输选取类型的文本 剪切板识别传输选取类型的文本 StringSelection</span></span><br><span class="line">            StringSelection selection = <span class="keyword">new</span> StringSelection(simpleDateFormat.format(date));</span><br><span class="line">            <span class="comment">// 将传输选取类型文本赋值给剪切板</span></span><br><span class="line">            clipboard.setContents(selection, <span class="keyword">null</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">//output.close();</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -730,7 +706,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -774,7 +750,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -819,7 +795,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -862,7 +840,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

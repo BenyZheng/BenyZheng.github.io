@@ -336,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/04/前端/10.JSP&EL&JSTL/">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/20/Maven/14.Maven-软件项目管理工具/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="icebearice">
@@ -356,7 +356,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/11/04/前端/10.JSP&EL&JSTL/" class="post-title-link" itemprop="url">10 JSP&EL&JSTL</a>
+                <a href="/2018/11/20/Maven/14.Maven-软件项目管理工具/" class="post-title-link" itemprop="url">14 Maven-软件项目管理工具</a>
               
             
           </h1>
@@ -381,7 +381,381 @@
                 
               
 
-              <time title="创建时间：2018-11-04 08:25:33" itemprop="dateCreated datePublished" datetime="2018-11-04T08:25:33+08:00">2018-11-04 08:25:33</time>
+              <time title="创建时间：2018-11-20 21:03:10" itemprop="dateCreated datePublished" datetime="2018-11-20T21:03:10+08:00">2018-11-20 21:03:10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Maven/" itemprop="url" rel="index"><span itemprop="name">Maven</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Maven-软件项目管理工具"><a href="#Maven-软件项目管理工具" class="headerlink" title="Maven-软件项目管理工具"></a>Maven-软件项目管理工具</h1><ul>
+<li><h3 id="目录文件夹介绍"><a href="#目录文件夹介绍" class="headerlink" title="目录文件夹介绍"></a>目录文件夹介绍</h3><ul>
+<li>bin目录包含mvn的运行脚本 m2.conf-配置文件</li>
+<li>boot目录包含一个类加载器的框架</li>
+<li>conf目录包含一些配置文件</li>
+<li>lib目录包含自身的一些类库</li>
+</ul>
+</li>
+<li><h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><ul>
+<li>M2_HOME对应maven目录</li>
+<li>Path配置bin目录</li>
+<li>测试：shell中 mvn -v 查看版本</li>
+</ul>
+</li>
+<li><h3 id="Pom-xml配置"><a href="#Pom-xml配置" class="headerlink" title="Pom.xml配置"></a>Pom.xml配置</h3><ul>
+<li>groupId是项目的包名</li>
+<li>artifactID是项目模块名，即项目名</li>
+</ul>
+</li>
+<li><h3 id="Maven约定好的目录结构"><a href="#Maven约定好的目录结构" class="headerlink" title="Maven约定好的目录结构"></a>Maven约定好的目录结构</h3><ul>
+<li>src<ul>
+<li>main<ul>
+<li>java<ul>
+<li>package</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>test<ul>
+<li>java<ul>
+<li>package</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>resources</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h3><ul>
+<li>compile 编译</li>
+<li>test 测试</li>
+<li>package 打包</li>
+<li>clean 删除target maven所生成的目标文件</li>
+<li>install 安装jar包到本地仓库中</li>
+</ul>
+</li>
+<li><h3 id="archetype插件"><a href="#archetype插件" class="headerlink" title="archetype插件"></a>archetype插件</h3><ul>
+<li><p>用于创建符合maven规定的目录骨架</p>
+</li>
+<li><p>快速创建maven骨架</p>
+<ul>
+<li><p>archetype:generate 按照提示进行选择</p>
+</li>
+<li><p>archetype:generate -DgroupID=组织名，公司网址的反写+项目名</p>
+<p>​                    -DartifactId=项目名-模块名</p>
+<p>​                    -Dversion=版本号</p>
+<p>​                    -Dpackage=代码所存在的包名</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="maven中的坐标和仓库"><a href="#maven中的坐标和仓库" class="headerlink" title="maven中的坐标和仓库"></a>maven中的坐标和仓库</h3><ul>
+<li>groupId和artifactId还有version就是坐标</li>
+<li>仓库<ul>
+<li>本地仓库</li>
+<li>远程仓库</li>
+<li>中央仓库-全球默认仓库</li>
+<li>镜像仓库-国内的镜像仓库 解决无法访问外网问题</li>
+</ul>
+</li>
+<li>更改仓库位置 conf.xml改变localReposities</li>
+</ul>
+</li>
+<li><h3 id="Maven插件安装"><a href="#Maven插件安装" class="headerlink" title="Maven插件安装"></a>Maven插件安装</h3></li>
+<li><h3 id="完整的项目构建过程"><a href="#完整的项目构建过程" class="headerlink" title="完整的项目构建过程"></a>完整的项目构建过程</h3><ul>
+<li>清理</li>
+<li>编译</li>
+<li>测试</li>
+<li>打包</li>
+<li>集成测试</li>
+<li>验证</li>
+<li>部署</li>
+</ul>
+</li>
+<li><h3 id="maven生命周期"><a href="#maven生命周期" class="headerlink" title="maven生命周期"></a>maven生命周期</h3><ul>
+<li>clean 清理项目<ul>
+<li>pre-clean 执行清理前的工作</li>
+<li>clean 清理上一次构建生成的所有文件</li>
+<li>post-clean 执行清理后的文件</li>
+</ul>
+</li>
+<li>default 构建项目-核心<ul>
+<li>compile</li>
+<li>test</li>
+<li>package</li>
+<li>install</li>
+</ul>
+</li>
+<li>site 生成项目站点<ul>
+<li>pre-site 在生成项目站点前要完成的工作</li>
+<li>site 生成项目的站点文档</li>
+<li>post-site 在生成项目站点后要完成的工作</li>
+<li>site-deploy 发布生成的站点到服务器是上</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="plugins插件"><a href="#plugins插件" class="headerlink" title="plugins插件"></a>plugins插件</h3><ul>
+<li>如何使用</li>
+</ul>
+</li>
+<li><h3 id="pom-xml解析"><a href="#pom-xml解析" class="headerlink" title="pom.xml解析"></a>pom.xml解析</h3><ul>
+<li><h4 id="坐标信息-（前三必要）"><a href="#坐标信息-（前三必要）" class="headerlink" title="坐标信息-（前三必要）"></a>坐标信息-（前三必要）</h4><ul>
+<li><strong>groupId 反写公司网址+项目名</strong></li>
+<li><strong>artifactId 项目名+模块名</strong></li>
+<li><strong>version 版本号</strong><ul>
+<li>第一位-大版本号 第二位-分支版本号 第三位-小版本号 0.0.1</li>
+<li>snapshot-快照版本</li>
+<li>alpha-内部测试</li>
+<li>beta-公测</li>
+<li>release-稳定</li>
+<li>GA-正式发布</li>
+</ul>
+</li>
+<li>packaging-项目描述名</li>
+<li>name-项目描述名</li>
+<li>url-项目地址</li>
+<li>description-项目描述</li>
+</ul>
+</li>
+<li><p>如何指定依赖</p>
+<ul>
+<li>指定坐标信息</li>
+<li>指定范围-scope</li>
+<li>设置依赖是否可选-默认为false</li>
+<li>排除依赖传递列表-exclusions、exclusion</li>
+</ul>
+</li>
+<li><p>依赖管理-dependencyManagement</p>
+</li>
+<li><p>build-构建</p>
+<ul>
+<li>plugins</li>
+</ul>
+</li>
+<li><p>parent-子模块对父模块的继承</p>
+</li>
+<li><p>modules-多个模块</p>
+</li>
+</ul>
+</li>
+<li><h3 id="依赖范围-scope"><a href="#依赖范围-scope" class="headerlink" title="依赖范围-scope"></a>依赖范围-scope</h3><ul>
+<li>compile<strong>（编译范围）</strong>-默认的范围，编译测试运行都有效</li>
+<li>provided<strong>（已提供范围）</strong>-在编译和测试时有效（打包的时候不会被包进去，别的web container会提供）</li>
+<li>runtime<strong>（运行时范围）</strong>-在测试和运行时有效</li>
+<li>test<strong>（测试范围）</strong>-只在测试时有效</li>
+<li>system<strong>（系统范围）</strong>-与本季系统相关联，可移植性差</li>
+<li>import-导入的范围，它只是用在dependencyManagement中表示从其他的pom中导入dependency的配置</li>
+</ul>
+</li>
+<li><h3 id="maven依赖传递-dependencys"><a href="#maven依赖传递-dependencys" class="headerlink" title="maven依赖传递-dependencys"></a>maven依赖传递-dependencys</h3><ul>
+<li>将子依赖包clean后install打包后到本地仓库 后 才可进行 依赖传递</li>
+<li>排除依赖-exclusions</li>
+</ul>
+</li>
+<li><h3 id="依赖冲突"><a href="#依赖冲突" class="headerlink" title="依赖冲突"></a>依赖冲突</h3><ul>
+<li>1 短路优先-优先解析路径短的版本</li>
+<li>2 先声明先优先-同长度路径情况</li>
+</ul>
+</li>
+<li><h3 id="聚合-modules"><a href="#聚合-modules" class="headerlink" title="聚合-modules"></a>聚合-modules</h3><ul>
+<li>modules-module 聚合</li>
+</ul>
+</li>
+<li><h3 id="继承-denpendencyManagement"><a href="#继承-denpendencyManagement" class="headerlink" title="继承-denpendencyManagement"></a>继承-denpendencyManagement</h3><ul>
+<li>设置父类依赖 denpendencyManagement  使用该标签 该标签中的依赖不会在该项目中运行</li>
+<li>子类继承依赖 parent标签 继承父类依赖</li>
+</ul>
+</li>
+<li><h3 id="使用maven构建web项目"><a href="#使用maven构建web项目" class="headerlink" title="使用maven构建web项目"></a>使用maven构建web项目</h3><ul>
+<li>构建的是 webapp 而不是quickstart</li>
+<li>添加servlet依赖</li>
+</ul>
+</li>
+<li><h3 id="Servlet容器"><a href="#Servlet容器" class="headerlink" title="Servlet容器"></a>Servlet容器</h3><ul>
+<li>jetty</li>
+<li>tomcat</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/19/前端/13.Ajax&Jquery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="icebearice">
+      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淘气的白熊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/11/19/前端/13.Ajax&Jquery/" class="post-title-link" itemprop="url">13 Ajax&Jquery</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2018-11-19 15:23:54" itemprop="dateCreated datePublished" datetime="2018-11-19T15:23:54+08:00">2018-11-19 15:23:54</time>
             
 
             
@@ -461,1137 +835,612 @@
       
         
           
-            <h1 id="JSP-amp-EL-amp-JSTL"><a href="#JSP-amp-EL-amp-JSTL" class="headerlink" title="JSP &amp; EL &amp; JSTL"></a>JSP &amp; EL &amp; JSTL</h1><h1 id="jsp"><a href="#jsp" class="headerlink" title="jsp"></a>jsp</h1><blockquote>
-<p>Java Server Page </p>
-</blockquote>
-<ul>
-<li>什么是jsp</li>
+            <h1 id="Ajax-amp-Jquery"><a href="#Ajax-amp-Jquery" class="headerlink" title="Ajax &amp; Jquery"></a>Ajax &amp; Jquery</h1><h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><ul>
+<li>是什么?</li>
 </ul>
 <blockquote>
-<p>从用户角度看待 ，就是是一个网页 ， 从程序员角度看待 ， 其实是一个java类， 它继承了servlet，所以可以直接说jsp 就是一个Servlet.</p>
+<p>“Asynchronous Javascript And XML”（异步JavaScript和XML），</p>
 </blockquote>
-<ul>
-<li>为什么会有jsp?</li>
-</ul>
 <blockquote>
-<p>html 多数情况下用来显示静态内容 ， 一成不变的。 但是有时候我们需要在网页上显示一些动态数据， 比如： 查询所有的学生信息， 根据姓名去查询具体某个学生。  这些动作都需要去查询数据库，然后在网页上显示。 html是不支持写java代码  ， jsp里面可以写java代码。 </p>
+<p>并不是新的技术，只是把原有的技术，整合到一起而已。 </p>
 </blockquote>
-<h2 id="怎么用JSP"><a href="#怎么用JSP" class="headerlink" title="怎么用JSP"></a>怎么用JSP</h2><h3 id="指令写法"><a href="#指令写法" class="headerlink" title="指令写法"></a>指令写法</h3><p>&lt;%@ 指令名字 %&gt;</p>
-<h3 id="page指令"><a href="#page指令" class="headerlink" title="page指令"></a>page指令</h3><ul>
-<li>language</li>
-</ul>
-<blockquote>
-<p>表明jsp页面中可以写java代码</p>
-</blockquote>
-<ul>
-<li>contentType</li>
-</ul>
-<blockquote>
-<p>其实即使说这个文件是什么类型，告诉浏览器我是什么内容类型，以及使用什么编码</p>
-</blockquote>
-<pre><code>contentType=&quot;text/html; charset=UTF-8&quot;
-
-text/html  MIMEType 这是一个文本，html网页
+<pre><code>1.使用CSS和XHTML来表示。
+2. 使用DOM模型来交互和动态显示。
+3.使用XMLHttpRequest来和服务器进行异步通信。
+4.使用javascript来绑定和调用。
 </code></pre><ul>
-<li><p>pageEncoding  jsp内容编码</p>
-</li>
-<li><p>extends 用于指定jsp翻译成java文件后，继承的父类是谁，一般不用改。</p>
-</li>
-<li><p>import 导包使用的，一般不用手写。</p>
-</li>
-<li><p>session </p>
-</li>
+<li>有什么用?</li>
 </ul>
 <blockquote>
-<p>值可选的有true or false .</p>
+<p>咱们的网页如果想要刷新局部内容。 那么需要重新载入整个网页。用户体验不是很好。  就是为了解决局部刷新的问题。 保持其他部分不动，只刷新某些地方。 </p>
 </blockquote>
-<blockquote>
-<p>用于控制在这个jsp页面里面，能够直接使用session对象。</p>
-</blockquote>
-<blockquote>
-<p>具体的区别是，请看翻译后的java文件   如果该值是true , 那么在代码里面会有getSession（）的调用，如果是false :  那么就不会有该方法调用，也就是没有session对象了。在页面上自然也就不能使用session了。</p>
-</blockquote>
-<ul>
-<li>errorPage</li>
-</ul>
-<blockquote>
-<p>指的是错误的页面， 值需要给错误的页面路径</p>
-</blockquote>
-<ul>
-<li>isErrorPage</li>
-</ul>
-<blockquote>
-<p>上面的errorPage 用于指定错误的时候跑到哪一个页面去。 那么这个isErroPage , 就是声明某一个页面到底是不是错误的页面。</p>
-</blockquote>
-<h3 id="include"><a href="#include" class="headerlink" title="include"></a>include</h3><blockquote>
-<p>包含另外一个jsp的内容进来。</p>
-</blockquote>
-<pre><code>&lt;%@ include file=&quot;other02.jsp&quot;%&gt;
-</code></pre><ul>
-<li>背后细节:</li>
-</ul>
-<blockquote>
-<p>把另外一个页面的所有内容拿过来一起输出。 所有的标签元素都包含进来。</p>
-</blockquote>
-<h3 id="taglib"><a href="#taglib" class="headerlink" title="taglib"></a>taglib</h3><pre><code> &lt;%@ taglib prefix=&quot;&quot;  uri=&quot;&quot;%&gt;  
+<h2 id="数据请求-Get"><a href="#数据请求-Get" class="headerlink" title="数据请求 Get"></a>数据请求 Get</h2><pre><code>1.创建对象
 
-uri: 标签库路径
-prefix : 标签库的别名  
-</code></pre><h2 id="JSP-动作标签"><a href="#JSP-动作标签" class="headerlink" title="JSP 动作标签"></a>JSP 动作标签</h2><pre><code>&lt;jsp:include page=&quot;&quot;&gt;&lt;/jsp:include&gt;
-&lt;jsp:param value=&quot;&quot; name=&quot;&quot;/&gt;
-&lt;jsp:forward page=&quot;&quot;&gt;&lt;/jsp:forward&gt;
-</code></pre><ul>
-<li><p>jsp:include</p>
-<p>&lt;jsp:include page=”other02.jsp”&gt;&lt;/jsp:include&gt;</p>
-</li>
-</ul>
-<blockquote>
-<p>包含指定的页面， 这里是动态包含。 也就是不把包含的页面所有元素标签全部拿过来输出，而是把它的运行结果拿过来。 </p>
-</blockquote>
-<ul>
-<li><p>jsp:forward</p>
-<pre><code>&lt;jsp:forward page=&quot;&quot;&gt;&lt;/jsp:forward&gt;
-</code></pre></li>
-</ul>
-<blockquote>
-<p>前往哪一个页面。  </p>
-</blockquote>
-<pre><code>&lt;% 
-    //请求转发
-    request.getRequestDispatcher(&quot;other02.jsp&quot;).forward(request, response);
-%&gt;    
-</code></pre><ul>
-<li>jsp:param</li>
-</ul>
-<blockquote>
-<p>意思是： 在包含某个页面的时候，或者在跳转某个页面的时候，加入这个参数。</p>
-</blockquote>
-<p>​<br>​    &lt;jsp:forward page=”other02.jsp”&gt;<br>​        &lt;jsp:param value=”beijing” name=”address”/&gt;<br>​    &lt;/jsp:forward&gt;<br>​<br>​    在other02.jsp中获取参数</p>
-<pre><code>&lt;br&gt;收到的参数是：&lt;br&gt;
-
-&lt;%= request.getParameter(&quot;address&quot;)%&gt;
-</code></pre><h2 id="JSP内置对象"><a href="#JSP内置对象" class="headerlink" title="JSP内置对象"></a>JSP内置对象</h2><blockquote>
-<p>所谓内置对象，就是我们可以直接在jsp页面中使用这些对象。 不用创建。</p>
-</blockquote>
-<ul>
-<li>pageContext</li>
-<li>request</li>
-<li>session</li>
-<li>application</li>
-</ul>
-<p>以上4个是作用域对象 , </p>
-<ul>
-<li>作用域 </li>
-</ul>
-<blockquote>
-<p>表示这些对象可以存值，他们的取值范围有限定。  setAttribute   和  getAttribute</p>
-</blockquote>
-<pre><code>使用作用域来存储数据&lt;br&gt;
-
-&lt;%
-    pageContext.setAttribute(&quot;name&quot;, &quot;page&quot;);
-    request.setAttribute(&quot;name&quot;, &quot;request&quot;);
-    session.setAttribute(&quot;name&quot;, &quot;session&quot;);
-    application.setAttribute(&quot;name&quot;, &quot;application&quot;);
-%&gt;
-
-取出四个作用域中的值&lt;br&gt;
-
-&lt;%=pageContext.getAttribute(&quot;name&quot;)%&gt;
-&lt;%=request.getAttribute(&quot;name&quot;)%&gt;
-&lt;%=session.getAttribute(&quot;name&quot;)%&gt;
-&lt;%=application.getAttribute(&quot;name&quot;)%&gt;
-</code></pre><p>作用域范围大小：</p>
-<pre><code>pageContext -- request --- session -- application 
-</code></pre><h3 id="四个作用域的区别"><a href="#四个作用域的区别" class="headerlink" title="四个作用域的区别"></a>四个作用域的区别</h3><ul>
-<li>pageContext 【PageContext】</li>
-</ul>
-<blockquote>
-<p>作用域仅限于当前的页面。  </p>
-</blockquote>
-<blockquote>
-<p>还可以获取到其他八个内置对象。</p>
-</blockquote>
-<ul>
-<li>request 【HttpServletRequest】</li>
-</ul>
-<blockquote>
-<p>作用域仅限于一次请求， 只要服务器对该请求做出了响应。 这个域中存的值就没有了。</p>
-</blockquote>
-<ul>
-<li>session 【HttpSession】</li>
-</ul>
-<blockquote>
-<p>作用域限于一次会话（多次请求与响应） 当中。 </p>
-</blockquote>
-<ul>
-<li>application 【ServletContext】</li>
-</ul>
-<blockquote>
-<p>整个工程都可以访问， 服务器关闭后就不能访问了。 </p>
-</blockquote>
-<ul>
-<li>out         【JspWriter】<ul>
-<li>response  【HttpServletResponse】</li>
-</ul>
-</li>
-</ul>
-<p><img src="img/img01.png" alt="icon"></p>
-<ul>
-<li>exception  【Throwable】<ul>
-<li>page     【Object】 —就是这个jsp翻译成的java类的实例对象<ul>
-<li>config 【ServletConfig】</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h2><blockquote>
-<p>是为了简化咱们的jsp代码，具体一点就是为了简化在jsp里面写的那些java代码。</p>
-</blockquote>
-<ul>
-<li>写法格式</li>
-</ul>
-<p>${表达式 }</p>
-<blockquote>
-<p>如果从作用域中取值，会先从小的作用域开始取，如果没有，就往下一个作用域取。  一直把四个作用域取完都没有， 就没有显示。</p>
-</blockquote>
-<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><h3 id="1-取出4个作用域中存放的值。"><a href="#1-取出4个作用域中存放的值。" class="headerlink" title="1. 取出4个作用域中存放的值。"></a>1. 取出4个作用域中存放的值。</h3><pre><code>&lt;%
-    pageContext.setAttribute(&quot;name&quot;, &quot;page&quot;);
-    request.setAttribute(&quot;name&quot;, &quot;request&quot;);
-    session.setAttribute(&quot;name&quot;, &quot;session&quot;);
-    application.setAttribute(&quot;name&quot;, &quot;application&quot;);
-%&gt;
-
-按普通手段取值&lt;br&gt;
-
-&lt;%= pageContext.getAttribute(&quot;name&quot;)%&gt;
-&lt;%= request.getAttribute(&quot;name&quot;)%&gt;
-&lt;%= session.getAttribute(&quot;name&quot;)%&gt;
-&lt;%= application.getAttribute(&quot;name&quot;)%&gt;
-
-&lt;br&gt;使用EL表达式取出作用域中的值&lt;br&gt;
-
-${ pageScope.name }
-${ requestScope.name }
-${ sessionScope.name }
-${ applicationScope.name }
-</code></pre><ol start="2">
-<li><p>如果域中所存的是数组</p>
-<pre><code>&lt;%
-       String [] a = {&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot;dd&quot;};
-       pageContext.setAttribute(&quot;array&quot;, a);
-   %&gt;
-
-使用EL表达式取出作用域中数组的值&lt;br&gt;
-
-${array[0] } , ${array[1] },${array[2] },${array[3] }
-</code></pre></li>
-</ol>
-<ol start="3">
-<li>如果域中锁存的是集合</li>
-</ol>
-<pre><code>使用EL表达式取出作用域中集合的值&lt;br&gt;
-
-${li[0] } , ${li[1] },${li[2] },${li[3] }
-
-&lt;br&gt;-------------Map数据----------------&lt;br&gt;
-&lt;%
-    Map map = new HashMap();
-    map.put(&quot;name&quot;, &quot;zhangsna&quot;);
-    map.put(&quot;age&quot;,18);
-    map.put(&quot;address&quot;,&quot;北京..&quot;);
-
-    map.put(&quot;address.aa&quot;,&quot;深圳..&quot;);
-
-
-    pageContext.setAttribute(&quot;map&quot;, map);
-%&gt;
-</code></pre><ol start="4">
-<li><p>取出Map集合的值</p>
-<pre><code>&lt;%
-       Map map = new HashMap();
-       map.put(&quot;name&quot;, &quot;zhangsna&quot;);
-       map.put(&quot;age&quot;,18);
-       map.put(&quot;address&quot;,&quot;北京..&quot;);
-
-    map.put(&quot;address.aa&quot;,&quot;深圳..&quot;);
-</code></pre></li>
-</ol>
-<pre><code>    pageContext.setAttribute(&quot;map&quot;, map);
-%&gt;
-使用EL表达式取出作用域中Map的值&lt;br&gt;
-
-${map.name } , ${map.age } , ${map.address }  , ${map[&quot;address.aa&quot;] }
-</code></pre><h3 id="取值细节："><a href="#取值细节：" class="headerlink" title="取值细节："></a>取值细节：</h3><ol>
-<li><p>从域中取值。  得先存值。<br>&lt;%</p>
-<pre><code>//pageContext.setAttribute(&quot;name&quot;, &quot;zhangsan&quot;);
-session.setAttribute(&quot;name&quot;, &quot;lisi...&quot;);
-</code></pre><p>%&gt;</p>
-<p><br>直接指定说了，到这个作用域里面去找这个name<br><br>${ pageScope.name } </p>
-</li>
-</ol>
-<p>   <br>//先从page里面找，没有去request找，去session，去application <br><br>   ${ name }</p>
-<p>   <br>指定从session中取值<br><br>   ${ sessionScope.name }  </p>
-<ol start="2">
-<li>取值方式</li>
-</ol>
-<p>如果这份值是有下标的，那么直接使用[]</p>
-<pre><code>&lt;%
-    String [] array = {&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;}
-    session.setAttribute(&quot;array&quot;,array);
-%&gt;
-
-
-${ array[1] } --&gt; 这里array说的是attribute的name 
-</code></pre><p>如果没有下标， 直接使用 .的方式去取</p>
-<pre><code>&lt;%
-    User user = new User(&quot;zhangsan&quot;,18);
-
-    session.setAttribute(&quot;u&quot;, user);
-%&gt;
-
-${ u.name }  , ${ u.age } 
-</code></pre><blockquote>
-<p>一般使用EL表达式，用的比较多的，都是从一个对象中取出它的属性值，比如取出某一个学生的姓名。</p>
-</blockquote>
-<h2 id="EL表达式-的11个内置对象。"><a href="#EL表达式-的11个内置对象。" class="headerlink" title="EL表达式 的11个内置对象。"></a>EL表达式 的11个内置对象。</h2><p>${ 对象名.成员 }</p>
-<ul>
-<li>pageContext </li>
-</ul>
-<p>作用域相关对象</p>
-<ul>
-<li>pageScope</li>
-<li>requestScope</li>
-<li>sessionScope</li>
-<li>applicationScope</li>
-</ul>
-<p>头信息相关对象</p>
-<ul>
-<li>header</li>
-<li>headerValues</li>
-</ul>
-<p>参数信息相关对象</p>
-<ul>
-<li>param</li>
-<li>paramValues</li>
-</ul>
-<ul>
-<li>cookie<br>全局初始化参数</li>
-<li>initParam</li>
-</ul>
-<h2 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h2><blockquote>
-<p>全称 ： JSP Standard Tag Library  jsp标准标签库</p>
-</blockquote>
-<blockquote>
-<p>简化jsp的代码编写。 替换 &lt;%%&gt; 写法。 一般与EL表达式配合</p>
-</blockquote>
-<h3 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h3><ol>
-<li><p>导入jar文件到工程的WebContent/Web-Inf/lib  jstl.jar standard.jar</p>
-</li>
-<li><p>在jsp页面上，使用taglib 指令，来引入标签库</p>
-</li>
-<li><p>注意： 如果想支持 EL表达式，那么引入的标签库必须选择1.1的版本，1.0的版本不支持EL表达式。</p>
-</li>
-</ol>
-<pre><code>&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;
-</code></pre><h3 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h3><p>&lt;c:set&gt;&lt;/c:set&gt;<br>&lt;c:if test=””&gt;&lt;/c:if&gt;<br>&lt;c:forEach&gt;&lt;/c:forEach&gt;</p>
-<ul>
-<li>c:set</li>
-</ul>
-<pre><code>&lt;!-- 声明一个对象name， 对象的值 zhangsan , 存储到了page（默认） ， 指定是session --&gt;
-&lt;c:set var=&quot;name&quot; value=&quot;zhangsan&quot; scope=&quot;session&quot;&gt;&lt;/c:set&gt;
-
-${sessionScope.name }
-</code></pre><ul>
-<li>c:if</li>
-</ul>
-<blockquote>
-<p>判断test里面的表达式是否满足，如果满足，就执行c:if标签中的输出 ， c:if 是没有else的。 </p>
-</blockquote>
-<pre><code>&lt;c:set var=&quot;age&quot; value=&quot;18&quot; &gt;&lt;/c:set&gt;
-&lt;c:if test=&quot;${ age &gt; 26 }&quot;&gt;
-    年龄大于了26岁...
-&lt;/c:if&gt;
-
-&lt;c:if test=&quot;${ age &lt;= 26 }&quot;&gt;
-    年龄小于了26岁...
-&lt;/c:if&gt;
-
-
-------------------------------
-
-定义一个变量名 flag  去接收前面表达式的值，然后存在session域中
-
-&lt;c:if test=&quot;${ age &gt; 26 }&quot; var=&quot;flag&quot; scope=&quot;session&quot;&gt;
-    年龄大于了26岁...
-&lt;/c:if&gt;
-</code></pre><ul>
-<li>c:forEach</li>
-</ul>
-<pre><code>从1 开始遍历到10 ，得到的结果 ，赋值给 i ,并且会存储到page域中， step , 增幅为2， 
-&lt;c:forEach begin=&quot;1&quot; end=&quot;10&quot; var=&quot;i&quot; step=&quot;2&quot;&gt;
-    ${i }
-&lt;/c:forEach&gt;
-
-
------------------------------------------------
-
-&lt;!-- items : 表示遍历哪一个对象，注意，这里必须写EL表达式。 
-var: 遍历出来的每一个元素用user 去接收。 --&gt;
-&lt;c:forEach var=&quot;user&quot; items=&quot;${list }&quot;&gt;
-    ${user.name } ----${user.age }
-&lt;/c:forEach&gt;
-</code></pre><h2 id="学生信息管理系统"><a href="#学生信息管理系统" class="headerlink" title="学生信息管理系统"></a>学生信息管理系统</h2><ul>
-<li>需求分析</li>
-</ul>
-<p><img src="img/img02.png" alt="icon"></p>
-<ol>
-<li><p>先写 login.jsp , 并且搭配一个LoginServlet 去获取登录信息。</p>
-</li>
-<li><p>创建用户表， 里面只要有id , username  和 password</p>
-</li>
-<li><p>创建UserDao, 定义登录的方法 </p>
-<pre><code>/**
-</code></pre><ul>
-<li><p>该dao定义了对用户表的访问规则<br> */<br>public interface UserDao {</p>
-<pre><code>/**
-</code></pre><ul>
-<li>这里简单就返回一个Boolean类型， 成功或者失败即可。<ul>
-<li>​</li>
-<li>但是开发的时候，登录的方法，一旦成功。这里应该返回该用户的个人信息</li>
-<li>@param userName </li>
-<li>@param password</li>
-<li>​</li>
-<li>@return true : 登录成功， false : 登录失败。<br> */<br>  boolean login(String userName , String password);<br>  }</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<ol start="4">
-<li>创建UserDaoImpl , 实现刚才定义的登录方法。</li>
-</ol>
-<pre><code>public class UserDaoImpl implements UserDao {
-
-    @Override
-    public boolean login(String userName , String password) {
-
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs   = null;
-        try {
-            //1. 得到连接对象
-            conn = JDBCUtil.getConn();
-
-            String sql = &quot;select * from t_user where username=? and password=?&quot;;
-
-            //2. 创建ps对象
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, userName);
-            ps.setString(2, password);
-
-
-            //3. 开始执行。
-            rs = ps.executeQuery();
-
-            //如果能够成功移到下一条记录，那么表明有这个用户。 
-            return rs.next();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            JDBCUtil.release(conn, ps, rs);
-        }
-        return false;
-    }
-
-}
-</code></pre><ol start="5">
-<li><p>在LoginServlet里面访问UserDao， 判断登录结果。 以区分对待</p>
-</li>
-<li><p>创建stu_list.jsp , 让登录成功的时候跳转过去。</p>
-</li>
-<li><p>创建学生表 ， 里面字段随意。 </p>
-</li>
-<li><p>定义学生的Dao . StuDao  </p>
-</li>
-</ol>
-<pre><code>public interface StuDao {
-
-    /**
-     * 查询出来所有的学生信息
-     * @return List集合
-     */
-    List&lt;Student&gt; findAll();
-}
-</code></pre><ol start="9">
-<li><p>对上面定义的StuDao 做出实现 StuDaoImpl</p>
-<pre><code>public class StuDaoImpl implements StuDao {
-
-    @Override
-    public List&lt;Student&gt; findAll() {
-        List&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs   = null;
-        try {
-            //1. 得到连接对象
-            conn = JDBCUtil.getConn();
-
-            String sql = &quot;select * from t_stu&quot;;
-
-            ps = conn.prepareStatement(sql);
-
-            rs = ps.executeQuery();
-</code></pre></li>
-</ol>
-<p>   ​<br>                   //数据多了，用对象装， 对象也多了呢？ 用集合装。<br>                   while(rs.next()){ //10 次 ，10个学生</p>
-<pre><code>                Student stu = new Student();
-
-                stu.setId(rs.getInt(&quot;id&quot;));
-                stu.setAge(rs.getInt(&quot;age&quot;));
-                stu.setName(rs.getString(&quot;name&quot;));
-                stu.setGender(rs.getString(&quot;gender&quot;));
-                stu.setAddress(rs.getString(&quot;address&quot;));
-
-                list.add(stu);
-
+        function  ajaxFunction(){
+           var xmlHttp;
+           try{ // Firefox, Opera 8.0+, Safari
+                xmlHttp=new XMLHttpRequest();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            JDBCUtil.release(conn, ps, rs);
+            catch (e){
+               try{// Internet Explorer
+                     xmlHttp=new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);
+                  }
+                catch (e){
+                  try{
+                     xmlHttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+                  }
+                  catch (e){}
+                  }
+            }
+
+            return xmlHttp;
+         }
+
+
+2. 发送请求
+
+
+    //执行get请求
+function get() {
+
+    //1. 创建xmlhttprequest 对象
+    var request = ajaxFunction();
+
+    //2. 发送请求。
+    // http://localhost:8080/day16/demo01.jsp
+    //http://localhost:8080/day16/DemoServlet01
+
+    /*    
+        参数一： 请求类型  GET or  POST
+        参数二： 请求的路径
+        参数三： 是否异步， true  or false
+    */
+    request.open(&quot;GET&quot; ,&quot;/day16/DemoServlet01&quot; ,true );
+    request.send();
+}
+
+
+
+如果发送请求的同时，还想获取数据，那么代码如下
+
+//执行get请求
+function get() {
+
+    //1. 创建xmlhttprequest 对象
+    var request = ajaxFunction();
+
+    //2. 发送请求
+    request.open(&quot;GET&quot; ,&quot;/day16/DemoServlet01?name=aa&amp;age=18&quot; ,true );
+
+    //3. 获取响应数据 注册监听的意思。  一会准备的状态发生了改变，那么就执行 = 号右边的方法
+    request.onreadystatechange = function(){
+
+        //前半段表示 已经能够正常处理。  再判断状态码是否是200
+        if(request.readyState == 4 &amp;&amp; request.status == 200){
+            //弹出响应的信息
+            alert(request.responseText);
+        }
+    }
+    request.send();
+}
+</code></pre><h2 id="数据请求-Post"><a href="#数据请求-Post" class="headerlink" title="数据请求 Post"></a>数据请求 Post</h2><p>​        </p>
+<script type="text/javascript">
+
+    //1. 创建对象
+    function  ajaxFunction(){
+       var xmlHttp;
+       try{ // Firefox, Opera 8.0+, Safari
+            xmlHttp=new XMLHttpRequest();
+        }
+        catch (e){
+           try{// Internet Explorer
+                 xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+              }
+            catch (e){
+              try{
+                 xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+              }
+              catch (e){}
+              }
         }
 
-        return list;
+        return xmlHttp;
+     }
+
+    function post() {
+        //1. 创建对象
+        var request = ajaxFunction();
+
+        //2. 发送请求
+        request.open( "POST", "/day16/DemoServlet01", true );
+
+        //如果不带数据，写这行就可以了
+        //request.send();
+
+        //如果想带数据，就写下面的两行
+
+        //如果使用的是post方式带数据，那么 这里要添加头， 说明提交的数据类型是一个经过url编码的form表单数据
+        request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+        //带数据过去  ， 在send方法里面写表单数据。 
+        request.send("name=aobama&age=19");
+    }
+
+
+</script>
+
+
+<pre><code>需要获取数据
+
+
+    function post() {
+        //1. 创建对象
+        var request = ajaxFunction();
+
+        //2. 发送请求
+        request.open( &quot;POST&quot;, &quot;/day16/DemoServlet01&quot;, true );
+
+        //想获取服务器传送过来的数据， 加一个状态的监听。 
+        request.onreadystatechange=function(){
+            if(request.readyState==4 &amp;&amp; request.status == 200){
+
+                alert(&quot;post：&quot;+request.responseText);
+            }
+        }
+
+        //如果使用的是post方式带数据，那么 这里要添加头， 说明提交的数据类型是一个经过url编码的form表单数据
+        request.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);
+
+        //带数据过去  ， 在send方法里面写表单数据。 
+        request.send(&quot;name=aobama&amp;age=19&quot;);
+    }
+</code></pre><h2 id="校验用户名是否可用"><a href="#校验用户名是否可用" class="headerlink" title="校验用户名是否可用"></a>校验用户名是否可用</h2><h3 id="1-搭建环境"><a href="#1-搭建环境" class="headerlink" title="1. 搭建环境"></a>1. 搭建环境</h3><ol>
+<li><p>页面准备</p>
+<pre><code>&lt;body&gt;
+&lt;table border=&quot;1&quot; width=&quot;500&quot;&gt;
+    &lt;tr&gt;
+        &lt;td&gt;用户名:&lt;/td&gt;
+        &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;name&quot; id=&quot;name&quot;  onblur=&quot;checkUserName()&quot;&gt;&lt;span id=&quot;span01&quot;&gt;&lt;/span&gt;&lt;/td&gt; 
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;密码&lt;/td&gt;
+        &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;邮箱&lt;/td&gt;
+        &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;简介&lt;/td&gt;
+        &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;注册&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre><p></p>
+</li>
+</ol>
+<ol start="2">
+<li>数据库准备</li>
+</ol>
+<p>###2. Servlet代码</p>
+<pre><code>    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    try {
+
+        request.setCharacterEncoding(&quot;UTF-8&quot;);
+
+        //1. 检测是否存在
+        String name = request.getParameter(&quot;name&quot;);
+        System.out.println(&quot;name=&quot;+name);
+
+        UserDao dao = new UserDaomImpl();
+        boolean isExist = dao.checkUserName(name);
+
+        //2.  通知页面，到底有还是没有。
+        if(isExist){
+            response.getWriter().println(1);  //存在用户名
+        }else{
+            response.getWriter().println(2); //不存在该用户名
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+</code></pre><h3 id="3-Dao代码"><a href="#3-Dao代码" class="headerlink" title="3. Dao代码"></a>3. Dao代码</h3><pre><code>public class UserDaomImpl implements UserDao{
+
+    @Override
+    public boolean checkUserName(String username) throws SQLException {
+        QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
+
+        String sql = &quot;select count(*) from t_user where username =?&quot;;
+
+
+        runner.query(sql, new  ScalarHandler(), username);
+
+        Long result = (Long) runner.query(sql, new  ScalarHandler(), username); 
+        return result &gt; 0 ;
     }
 
 }
-</code></pre><ol start="10">
-<li><p>在登录成功的时候，完成三件事情。</p>
-</li>
-<li><p>查询所有的学生</p>
-<ol start="2">
-<li><p>把这个所有的学生集合存储到作用域中。</p>
-</li>
-<li><p>跳转到stu_list.jsp</p>
+</code></pre><p>###jsp页面显示</p>
+<p>​<br>​    function checkUserName() {</p>
+<pre><code>    //获取输入框的值 document 整个网页
+    var name = document.getElementById(&quot;name&quot;).value; // value  value() val val()
+    //1. 创建对象
+    var request = ajaxFunction();
+
+    //2. 发送请求
+    request.open(&quot;POST&quot;  ,&quot;/day16/CheckUserNameServlet&quot; , true );
+
+    //注册状态改变监听，获取服务器传送过来的数据
+    request.onreadystatechange = function(){
+
+        if(request.readyState == 4 &amp;&amp; request.status == 200){
+            //alert(request.responseText);
+            var data = request.responseText;
+            if(data == 1){
+                //alert(&quot;用户名已存在&quot;);
+                document.getElementById(&quot;span01&quot;).innerHTML = &quot;&lt;font color=&apos;red&apos;&gt;用户名已存在!&lt;/font&gt;&quot;;
+            }else{
+                document.getElementById(&quot;span01&quot;).innerHTML = &quot;&lt;font color=&apos;green&apos;&gt;用户名可用!&lt;/font&gt;&quot;;
+                //alert(&quot;用户名未存在&quot;);
+            }
+        }
+
+    }
+
+    request.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);
+    request.send(&quot;name=&quot;+name);
+}
+</code></pre><h2 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery"></a>JQuery</h2><ul>
+<li>是什么?</li>
+</ul>
+<blockquote>
+<p>javascript 的代码框架。  </p>
+</blockquote>
+<ul>
+<li>有什么用?</li>
+</ul>
+<blockquote>
+<p>简化代码，提高效率。  </p>
+</blockquote>
+<ul>
+<li>核心 </li>
+</ul>
+<blockquote>
+<p>write less do more , 写得更少，做的更多。 </p>
+</blockquote>
+<p>###load</p>
+<pre><code>&lt;a href=&quot;&quot; onclick=&quot;load()&quot;&gt;使用JQuery执行load方法&lt;/a&gt;
+
+有两次刷新，  先走 onClick的方法，取到数据回来之后，赋值显示。 接着 走 href=&quot;&quot;的路径，但是这个属性没有给值，所以会把当前的页面重新再刷新一次。所以导致看不见值。
+
+
+//找到这个元素， 去执行加载的动作， 加载/day16/DemoServlet02 ， 得到的数据，赋值显示
+$(&quot;#aaa&quot;).load(&quot;/day16/DemoServlet02&quot; , function(responseText , statusTXT  , xhr) {
+        //找到id为text01的元素， 设置它的value属性值为 responseText 对应的值
+        $(&quot;#aaa&quot;).val(responseText);
+    }); 
+    url    规定要将请求发送到哪个 URL。
+data    可选。规定连同请求发送到服务器的数据。
+function(response,status,xhr)    
+可选。规定当请求完成时运行的函数。
+
+额外的参数：
+
+response - 包含来自请求的结果数据
+status - 包含请求的状态（&quot;success&quot;, &quot;notmodified&quot;, &quot;error&quot;, &quot;timeout&quot; 或 &quot;parsererror&quot;）
+xhr - 包含 XMLHttpRequest 对象
+</code></pre><h3 id="Get"><a href="#Get" class="headerlink" title="Get"></a>Get</h3><pre><code>$.get(&quot;/day16/DemoServlet02&quot;  , function(data ,status) {
+        $(&quot;#div01&quot;).text(data);
+    });
+</code></pre><h1 id="赋值显示"><a href="#赋值显示" class="headerlink" title="赋值显示"></a>赋值显示</h1><ul>
+<li>val(“aa”); </li>
+</ul>
+<blockquote>
+<p>只能放那些标签带有value属性</p>
+<ul>
+<li>html(“aa”); —写html代码</li>
+<li>text(“aa”);</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>其实没有什么区别，如果想针对这分数据做html样式处理，那么只能用html()</p>
+</blockquote>
+<h3 id="load-amp-get"><a href="#load-amp-get" class="headerlink" title="load &amp; get"></a>load &amp; get</h3><ul>
+<li><p>load</p>
+<pre><code>$(&quot;#元素id&quot;).load(url地址);
+
+$(&quot;#div1&quot;).load(serlvet); ---&gt; 使用的get请求，回来赋值的时候， 使用text（）;去赋值
+</code></pre></li>
+<li><p>get</p>
+<pre><code>语法格式 ： $.get(URL,callback);    
+</code></pre></li>
+</ul>
+<pre><code>使用案例： $.get(&quot;/day16/DemoServlet02&quot;  , function(data ,status) {
+    $(&quot;#div01&quot;).text(data);
+});
+</code></pre><ul>
+<li><p>post</p>
+<pre><code>语法格式：$.post(URL,data,callback);
+</code></pre></li>
+</ul>
+<pre><code>function post() {
+    $.post(&quot;/day16/DemoServlet02&quot;, {name:&quot;zhangsan&quot;,age:18},function(data,status) {
+        //想要放数据到div里面去。 --- 找到div
+        $(&quot;#div01&quot;).html(data);
+    });
+}
+</code></pre><p>###使用JQuery去实现校验用户名</p>
+<pre><code>function checkUserName() {
+    //1. 获取输入框的内容
+    var name = $(&quot;#name&quot;).val();
+
+    //2. 发送请求
+    $.post(&quot;/day16/CheckUserNameServlet&quot; , {name:name} , function(data , status){
+        //alert(data);
+        if(data == 1){//用户名存在
+            //alert(&quot;用户名存在&quot;);
+            $(&quot;#span01&quot;).html(&quot;&lt;font color=&apos;red&apos;&gt;用户名已被注册&lt;/font&gt;&quot;);
+        }else{
+            //alert(&quot;用户名可用&quot;);
+            $(&quot;#span01&quot;).html(&quot;&lt;font color=&apos;green&apos;&gt;用户名可以使用&lt;/font&gt;&quot;);
+        }
+    } );
+    //3. 输出响应的数据到页面上。
+}
+</code></pre><h2 id="实现百度搜索提示"><a href="#实现百度搜索提示" class="headerlink" title="实现百度搜索提示"></a>实现百度搜索提示</h2><h3 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h3><ol>
+<li><p>定义首页</p>
+<pre><code>&lt;body&gt;
+&lt;center&gt;
+&lt;h2&gt;黑马&lt;/h2&gt;
+    &lt;input type=&quot;text&quot; name=&quot;word&quot; id=&quot;word&quot; style=&quot;width: 600px ; height: 50px  ;font-size: 20px;&quot;&gt;
+    &lt;input type=&quot;button&quot; value=&quot;黑马一下&quot;  style=&quot;height: 55px ; width: 100px ; &quot;&gt;
+
+    &lt;div id=&quot;div01&quot; style=&quot;position:relative; left : -54px; width: 600px; height: 200px ; border:  1px solid blue; display: none&quot;&gt;&lt;/div&gt;
+&lt;/center&gt;
+&lt;/body&gt;
+</code></pre></li>
+<li><p>定义数据库</p>
 </li>
 </ol>
-</li>
+<h3 id="捕获键盘弹起"><a href="#捕获键盘弹起" class="headerlink" title="捕获键盘弹起"></a>捕获键盘弹起</h3><p>$(function(){<br>​    $(“#word”).keyup(function() {<br>​        alert(“键盘弹起了..”);<br>​    })<br>});</p>
+<h3 id="JS请求"><a href="#JS请求" class="headerlink" title="JS请求"></a>JS请求</h3><pre><code>$(function(){
+    $(&quot;#word&quot;).keyup(function() {
+        //2。 获取输入框的值 
+        //var word = $(&quot;#word&quot;).val();
+        //this  对应就是执行这个方法的那个对象， $(&quot;#word&quot;)
+        var word = $(this).val();
+
+        if(word == &quot;&quot;){
+            $(&quot;#div01&quot;).hide();
+        }else{
+            //3. 请求数据。
+            $.post(&quot;find&quot;,{word:word} ,function(data , status){
+                //alert(data);
+                $(&quot;#div01&quot;).show();
+                $(&quot;#div01&quot;).html(data);
+            });
+        }
+
+    })
+});
+</code></pre><h3 id="Servlet代码"><a href="#Servlet代码" class="headerlink" title="Servlet代码"></a>Servlet代码</h3><pre><code>    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    request.setCharacterEncoding(&quot;utf-8&quot;);
+    try {
+        //1. 先获取参数
+        String word = request.getParameter(&quot;word&quot;);
+        System.out.println(&quot;word=&quot;+word);
+
+        //2. 让dao执行查询
+        WordsDao dao = new WordsDaoImpl();
+        List&lt;WordBean&gt; list = dao.findWords(word);
+
+        for (WordBean wordBean : list) {
+            System.out.println(&quot;===&quot;+wordBean.toString());
+        }
+
+        request.setAttribute(&quot;list&quot;, list);
+
+        //3. 返回数据
+        response.setContentType(&quot;text/html;charset=utf-8&quot;);
+        //response.getWriter().write(&quot;数据是：&quot;);
+        request.getRequestDispatcher(&quot;list.jsp&quot;).forward(request, response);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+}
+</code></pre><h3 id="list-jsp"><a href="#list-jsp" class="headerlink" title="list.jsp"></a>list.jsp</h3><pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+ &lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot;  prefix=&quot;c&quot;%&gt;
+</code></pre><p>​<br>​        <table style="width: 100%"><br>​            &lt;c:forEach items=”${list }” var=”wordBean”&gt;<br>​                <tr><br>​                    <td>${wordBean.words}</td><br>​                </tr><br>​            &lt;/c:forEach&gt;<br>​        </table></p>
+<h2 id="使用JQuery实现-省市联动"><a href="#使用JQuery实现-省市联动" class="headerlink" title="使用JQuery实现 省市联动"></a>使用JQuery实现 省市联动</h2><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><ol>
+<li>准备数据库</li>
 </ol>
+<p>2 。 准备页面</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-1.11.3.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/city.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    省份: &lt;select name=&quot;province&quot; id =&quot;province&quot;&gt;
+            &lt;option value=&quot;&quot; &gt;-请选择 -
+            &lt;option value=&quot;1&quot; &gt;广东
+            &lt;option value=&quot;2&quot; &gt;湖南
+            &lt;option value=&quot;3&quot; &gt;湖北
+            &lt;option value=&quot;4&quot; &gt;四川
+        &lt;/select&gt;
+    城市: 
+        &lt;select name=&quot;city&quot; id=&quot;city&quot;&gt;
+            &lt;option value=&quot;&quot; &gt;-请选择 -
+        &lt;/select&gt;
+    &lt;/body&gt;
+</code></pre><h3 id="XStream的使用"><a href="#XStream的使用" class="headerlink" title="XStream的使用"></a>XStream的使用</h3><pre><code>//3. 返回数据。手动拼  ---&gt; XStream  转化 bean对象成 xml
+    XStream xStream = new XStream();
+
+    //想把id做成属性
+    xStream.useAttributeFor(CityBean.class, &quot;id&quot;);
+
+    //设置别名
+    xStream.alias(&quot;city&quot;, CityBean.class);
+
+    //转化一个对象成xml字符串
+    String xml = xStream.toXML(list);
+</code></pre><h3 id="JS代码"><a href="#JS代码" class="headerlink" title="JS代码"></a>JS代码</h3><pre><code>    $(function() {
+    //1。找到省份的元素
+    $(&quot;#province&quot;).change(function() {
+        //2. 一旦里面的值发生了改变，那么就去请求该省份的城市数据
+        //$(&quot;#province&quot;).varl();
+        var pid = $(this).val();
+
+        /*&lt;list&gt;
+            &lt;city&gt;
+                &lt;id&gt;1&lt;id&gt;
+                &lt;pid&gt;1&lt;/pid&gt;
+                &lt;cname&gt;深圳&lt;/cname&gt;
+            &lt;/city&gt;
+            &lt;city &gt;
+                &lt;id&gt;2&lt;id&gt;
+                &lt;pid&gt;1&lt;/pid&gt;
+                &lt;cname&gt;东莞&lt;/cname&gt;
+            &lt;/city&gt;
+        &lt;/list&gt;*/
+
+        $.post( &quot;CityServlet&quot;,{pid:pid} ,function(data,status){
+            //alert(&quot;回来数据了:&quot;+data);
+
+            //先清空以前的值：
+            $(&quot;#city&quot;).html(&quot;&lt;option value=&apos;&apos; &gt;-请选择-&quot;)
+            //遍历： 
+            //从data数据里面找出所有的city  ， 然后遍历所有的city。
+            //遍历一个city，就执行一次function方法
+            $(data).find(&quot;city&quot;).each(function() {
+
+                //遍历出来的每一个city，取它的孩子。 id , cname
+                var id = $(this).children(&quot;id&quot;).text();
+                var cname = $(this).children(&quot;cname&quot;).text();
+
+                $(&quot;#city&quot;).append(&quot;&lt;option value=&apos;&quot;+id+&quot;&apos; &gt;&quot;+cname)
+            });
+        } );
+
+    });
+});
+</code></pre><h2 id="服务器和客户端数据传输的方式"><a href="#服务器和客户端数据传输的方式" class="headerlink" title="服务器和客户端数据传输的方式"></a>服务器和客户端数据传输的方式</h2><ul>
+<li><p>xml</p>
+<pre><code>&lt;list&gt;
+          &lt;city&gt;
+              &lt;id&gt;1&lt;id&gt;
+              &lt;pid&gt;1&lt;/pid&gt;
+              &lt;cname&gt;深圳&lt;/cname&gt;
+          &lt;/city&gt;
+          &lt;city &gt;
+              &lt;id&gt;2&lt;id&gt;
+              &lt;pid&gt;1&lt;/pid&gt;
+              &lt;cname&gt;东莞&lt;/cname&gt;
+          &lt;/city&gt;
+      &lt;/list&gt;
+</code></pre></li>
+<li><p>json</p>
+<p>阅读性更好 、 容量更小。</p>
+<p>{“name”:”aaa” , “age”:19}</p>
+</li>
+</ul>
+<pre><code>把javaBean  转化成 json数据
+
+//3. 把list ---&gt; json数据
+    //JSONArray ---&gt; 变成数组 ， 集合  []
+    //JSONObject ---&gt; 变成简单的数据  { name : zhangsan , age:18}
+
+    JSONArray jsonArray = JSONArray.fromObject(list);
+    String json = jsonArray.toString();
+</code></pre><h2 id="使用json格式数据显示省市联动效果"><a href="#使用json格式数据显示省市联动效果" class="headerlink" title="使用json格式数据显示省市联动效果"></a>使用json格式数据显示省市联动效果</h2><p>​    serlvet代码：</p>
 <pre><code>    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    //提交的数据有可能有中文， 怎么处理。
-    request.setCharacterEncoding(&quot;UTF-8&quot;);
-    response.setContentType(&quot;text/html;charset=utf-8&quot;);
+    try {
+        //1. 获取参数
+        int pid = Integer.parseInt(request.getParameter(&quot;pid&quot;));
 
-    //1. 获取客户端提交的信息
-    String userName = request.getParameter(&quot;username&quot;);
-    String password = request.getParameter(&quot;password&quot;);
+        //2 找出所有的城市
+        CityDao dao = new CityDaoImpl();
+        List&lt;CityBean&gt; list = dao.findCity(pid);
 
-    //2. 去访问dao ， 看看是否满足登录。
-    UserDao dao = new UserDaoImpl();
-    boolean isSuccess = dao.login(userName, password);
+        //3. 把list ---&gt; json数据
+        //JSONArray ---&gt; 变成数组 ， 集合  []
+        //JSONObject ---&gt; 变成简单的数据  { name : zhangsan , age:18}
 
-    //3. 针对dao的返回结果，做出响应
-    if(isSuccess){
-        //response.getWriter().write(&quot;登录成功.&quot;);
+        JSONArray jsonArray = JSONArray.fromObject(list);
+        String json = jsonArray.toString();
 
-        //1. 查询出来所有的学生信息。
-        StuDao stuDao = new StuDaoImpl();
-        List&lt;Student&gt; list = stuDao.findAll();
 
-        //2. 先把这个集合存到作用域中。
-        request.getSession().setAttribute(&quot;list&quot;, list);
+        response.setContentType(&quot;text/html;charset=utf-8&quot;);
+        response.getWriter().write(json);
 
-        //2. 重定向
-        response.sendRedirect(&quot;stu_list.jsp&quot;);
 
-    }else{
-        response.getWriter().write(&quot;用户名或者密码错误！&quot;);
-    }
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    };
 }
-</code></pre><ol start="11">
-<li>在stu_list.jsp中，取出域中的集合，然后使用c标签 去遍历集合。 </li>
-</ol>
-<pre><code>    &lt;table border=&quot;1&quot; width=&quot;700&quot;&gt;
-    &lt;tr align=&quot;center&quot;&gt;
-        &lt;td&gt;编号&lt;/td&gt;
-        &lt;td&gt;姓名&lt;/td&gt;
-        &lt;td&gt;年龄&lt;/td&gt;
-        &lt;td&gt;性别&lt;/td&gt;
-        &lt;td&gt;住址&lt;/td&gt;
-        &lt;td&gt;操作&lt;/td&gt;
-    &lt;/tr&gt;
 
-    &lt;c:forEach items=&quot;${list }&quot; var=&quot;stu&quot;&gt;
-        &lt;tr align=&quot;center&quot;&gt;
-            &lt;td&gt;${stu.id }&lt;/td&gt;
-            &lt;td&gt;${stu.name }&lt;/td&gt;
-            &lt;td&gt;${stu.age }&lt;/td&gt;
-            &lt;td&gt;${stu.gender }&lt;/td&gt;
-            &lt;td&gt;${stu.address }&lt;/td&gt;
-            &lt;td&gt;&lt;a href=&quot;# &quot;&gt;更新&lt;/a&gt;   &lt;a href=&quot;# &quot;&gt;删除&lt;/a&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/c:forEach&gt;
-&lt;/table&gt;
-</code></pre><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ul>
-<li><p>JSP</p>
-<pre><code>三大指令
 
-    page
-    include
-    taglib
 
-三个动作标签
-    &lt;jsp:include&gt;
-    &lt;jsp:forward&gt;
-    &lt;jsp:param&gt;
-</code></pre></li>
-</ul>
-<pre><code>九个内置对象
+js代码
 
-    四个作用域
-        pageContext
-        request
-        session
-        application
 
-    out
-    exception
-    response
-    page
-    config
-</code></pre><p>​            </p>
-<ul>
-<li><p>EL</p>
-<p>${ 表达式 }</p>
-<p>取4个作用域中的值</p>
-<pre><code>${ name }
-</code></pre><p>有11个内置对象。</p>
-<pre><code>pageContext
+    $(function() {
+        //1。找到省份的元素
+        $(&quot;#province&quot;).change(function() {
+            //2. 一旦里面的值发生了改变，那么就去请求该省份的城市数据
+            //$(&quot;#province&quot;).varl();
+            var pid = $(this).val();
 
-pageScope
-requestScope
-sessionScope
-applicationScope
+            /*[
+                {
+                    &quot;cname&quot;: &quot;深圳&quot;,
+                    &quot;id&quot;: 1,
+                    &quot;pid&quot;: 1
+                },
+                {
+                    &quot;cname&quot;: &quot;东莞&quot;,
+                    &quot;id&quot;: 2,
+                    &quot;pid&quot;: 1
+                }
+                ...
+            ]*/
+            $.post( &quot;CityServlet02&quot;,{pid:pid} ,function(data,status){
 
-header
-headerValues
+                //先清空
+                $(&quot;#city&quot;).html(&quot;&lt;option value=&apos;&apos; &gt;-请选择-&quot;);
+                //再遍历，追加
+                $(data).each(function(index , c) {
+                    $(&quot;#city&quot;).append(&quot;&lt;option value=&apos;&quot;+c.id+&quot;&apos; &gt;&quot;+c.cname)
+                });
+            },&quot;json&quot; );
 
-param
-paramValues
+        });
+    });
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="Ajax-1"><a href="#Ajax-1" class="headerlink" title="Ajax"></a>Ajax</h3><pre><code>发送get请求
 
-cookie
-initParam
-</code></pre></li>
-<li><p>JSTL</p>
-</li>
-</ul>
-<blockquote>
-<p>使用1.1的版本， 支持EL表达式， 1.0不支持EL表达式</p>
-</blockquote>
-<blockquote>
-<p>拷贝jar包， 通过taglib 去引入标签库</p>
-</blockquote>
-<pre><code>&lt;c:set&gt;
-&lt;c:if&gt;
-&lt;c:forEach&gt;
-</code></pre><p>​    </p>
+发送post请求
 
-          
-        
-      
-    </div>
+都要求带数据 + 获取数据＋　放置到元素上。
+</code></pre><h3 id="JQuery-1"><a href="#JQuery-1" class="headerlink" title="JQuery"></a>JQuery</h3><pre><code>发送get请求
 
-    
+发送post请求
 
-    
-    
-    
+都要求带数据 + 获取数据＋　放置到元素上。
 
-    
+---------------------------------------
 
-    
-      
-    
-    
+1. 服务器返回xml数据
 
-    
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/03/J2EE/9.Cookie&Session/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="icebearice">
-      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="淘气的白熊">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/11/03/J2EE/9.Cookie&Session/" class="post-title-link" itemprop="url">9 Cookie&Session</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2018-11-03 09:30:45" itemprop="dateCreated datePublished" datetime="2018-11-03T09:30:45+08:00">2018-11-03 09:30:45</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
-              
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
-                2019-04-26 22:50:06
-              </time>
-            </span>
-          
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/J2EE/" itemprop="url" rel="index"><span itemprop="name">J2EE</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="中文文件下载"><a href="#中文文件下载" class="headerlink" title="中文文件下载"></a>中文文件下载</h2><blockquote>
-<p>针对浏览器类型，对文件名字做编码处理 Firefox (Base64) , IE、Chrome … 使用的是URLEncoder</p>
-</blockquote>
-<pre><code>/*
- * 如果文件的名字带有中文，那么需要对这个文件名进行编码处理
- * 如果是IE ，或者  Chrome （谷歌浏览器） ，使用URLEncoding 编码
- * 如果是Firefox ， 使用Base64编码
- */
-//获取来访的客户端类型
-String clientType = request.getHeader(&quot;User-Agent&quot;);
-
-if(clientType.contains(&quot;Firefox&quot;)){
-    fileName = DownLoadUtil.base64EncodeFileName(fileName);
-}else{
-    //IE ，或者  Chrome （谷歌浏览器） ，
-    //对中文的名字进行编码处理
-    fileName = URLEncoder.encode(fileName,&quot;UTF-8&quot;);
-}
-</code></pre><h2 id="请求转发和重定向"><a href="#请求转发和重定向" class="headerlink" title="请求转发和重定向"></a>请求转发和重定向</h2><h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><pre><code>    /*
-    之前的写法
-    response.setStatus(302);
-    response.setHeader(&quot;Location&quot;, &quot;login_success.html&quot;);*/
-
-    //重定向写法： 重新定位方向 参数即跳转的位置
-response.sendRedirect(&quot;login_success.html&quot;);
-
-1. 地址上显示的是最后的那个资源的路径地址
-
-2. 请求次数最少有两次， 服务器在第一次请求后，会返回302 以及一个地址， 浏览器在根据这个地址，执行第二次访问。
-
-3. 可以跳转到任意路径。 不是自己的工程也可以跳。
-
-4. 效率稍微低一点， 执行两次请求。 
-
-5. 后续的请求，没法使用上一次的request存储的数据，或者 没法使用上一次的request对象，因为这是两次不同的请求。
-</code></pre><h3 id="请求转发"><a href="#请求转发" class="headerlink" title="请求转发"></a>请求转发</h3><pre><code>//请求转发的写法： 参数即跳转的位置
-request.getRequestDispatcher(&quot;login_success.html&quot;).forward(request, response);
-
-1. 地址上显示的是请求servlet的地址。  返回200 ok
-
-2. 请求次数只有一次， 因为是服务器内部帮客户端执行了后续的工作。 
-
-3. 只能跳转自己项目的资源路径 。  
-
-4. 效率上稍微高一点，因为只执行一次请求。 
-
-5. 可以使用上一次的request对象。 
-</code></pre><p><img src="img/img01.png" alt="icon"></p>
-<h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><blockquote>
-<p>饼干. 其实是一份小数据， 是服务器给客户端，并且存储在客户端上的一份小数据</p>
-</blockquote>
-<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><blockquote>
-<p>自动登录、浏览记录、购物车。</p>
-</blockquote>
-<h3 id="为什么要有这个Cookie"><a href="#为什么要有这个Cookie" class="headerlink" title="为什么要有这个Cookie"></a>为什么要有这个Cookie</h3><blockquote>
-<p>http的请求是无状态。 客户端与服务器在通讯的时候，是无状态的，其实就是客户端在第二次来访的时候，服务器根本就不知道这个客户端以前有没有来访问过。 为了更好的用户体验，更好的交互 [自动登录]，其实从公司层面讲，就是为了更好的收集用户习惯[大数据]</p>
-</blockquote>
-<h3 id="Cookie怎么用"><a href="#Cookie怎么用" class="headerlink" title="Cookie怎么用"></a>Cookie怎么用</h3><h2 id="简单使用："><a href="#简单使用：" class="headerlink" title="##  简单使用："></a>##  简单使用：</h2><ul>
-<li><p>添加Cookie给客户端</p>
-<ol>
-<li>在响应的时候，添加cookie</li>
-</ol>
-</li>
-</ul>
-<pre><code>Cookie cookie = new Cookie(&quot;aa&quot;, &quot;bb&quot;);
-​    
-​    
-    //给响应，添加一个cookie
-    response.addCookie(cookie);
-</code></pre><ol start="2">
-<li>客户端收到的信息里面，响应头中多了一个字段 Set-Cookie</li>
-<li></li>
-</ol>
-<p><img src="img/img02.png" alt="icon"></p>
-<ul>
-<li><p>获取客户端带过来的Cookie</p>
-<pre><code>//获取客户端带过来的cookie
-</code></pre><p>  ​    Cookie[] cookies = request.getCookies();<br>  ​    if(cookies != null){<br>  ​        for (Cookie c : cookies) {<br>  ​            String cookieName = c.getName();<br>  ​            String cookieValue = c.getValue();<br>  ​            System.out.println(cookieName + “ = “+ cookieValue);<br>  ​        }<br>  ​    }</p>
-</li>
-</ul>
-<ul>
-<li>常用方法</li>
-</ul>
-<pre><code>//关闭浏览器后，cookie就没有了。 ---&gt; 针对没有设置cookie的有效期。
-//    expiry： 有效 以秒计算。
-//正值 ： 表示 在这个数字过后，cookie将会失效。
-//负值： 关闭浏览器，那么cookie就失效， 默认值是 -1
-cookie.setMaxAge(60 * 60 * 24 * 7);
-
-//赋值新的值
-//cookie.setValue(newValue);
-
-//用于指定只有请求了指定的域名，才会带上该cookie
-cookie.setDomain(&quot;.itheima.com&quot;);
-
-//只有访问该域名下的cookieDemo的这个路径地址才会带cookie
-cookie.setPath(&quot;/CookieDemo&quot;);
-</code></pre><h2 id="例子一-显示最近访问的时间。"><a href="#例子一-显示最近访问的时间。" class="headerlink" title="例子一 显示最近访问的时间。"></a>例子一 显示最近访问的时间。</h2><ol>
-<li><p>判断账号是否正确</p>
-</li>
-<li><p>如果正确，则获取cookie。 但是得到的cookie是一个数组， 我们要从数组里面找到我们想要的对象。</p>
-</li>
-<li><p>如果找到的对象为空，表明是第一次登录。那么要添加cookie</p>
-</li>
-<li><p>如果找到的对象不为空， 表明不是第一次登录。 </p>
-</li>
-</ol>
-<pre><code>if(&quot;admin&quot;.equals(userName) &amp;&amp; &quot;123&quot;.equals(password)){
-    //获取cookie last-name --- &gt;
-    Cookie [] cookies = request.getCookies();
-
-    //从数组里面找出我们想要的cookie
-    Cookie cookie = CookieUtil.findCookie(cookies, &quot;last&quot;);
-
-    //是第一次登录，没有cookie
-    if(cookie == null){
-
-        Cookie c = new Cookie(&quot;last&quot;, System.currentTimeMillis()+&quot;&quot;);
-        c.setMaxAge(60*60); //一个小时
-        response.addCookie(c);
-
-        response.getWriter().write(&quot;欢迎您, &quot;+userName);
-
-    }else{
-        //1. 去以前的cookie第二次登录，有cookie
-        long lastVisitTime = Long.parseLong(cookie.getValue());
-
-        //2. 输出到界面，
-        response.getWriter().write(&quot;欢迎您, &quot;+userName +&quot;,上次来访时间是：&quot;+new Date(lastVisitTime));
-</code></pre><p>​<br>​                //3. 重置登录的时间<br>​                cookie.setValue(System.currentTimeMillis()+””);<br>​                response.addCookie(cookie);<br>​            }<br>​        }else{<br>​            response.getWriter().write(“登陆失败 “);<br>​        }</p>
-<h2 id="例子二：-显示商品浏览记录。"><a href="#例子二：-显示商品浏览记录。" class="headerlink" title="例子二： 显示商品浏览记录。"></a>例子二： 显示商品浏览记录。</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
-<li><p>拷贝基础课第一天的 htmll原型文件，到工程的WebContent里面。</p>
-</li>
-<li><p>在WebContent目录下新建一个jsp文件， product_list.jsp, 然后拷贝原来product_list.html的内容到jsp里面。 建好之后，jsp里面的所有ISO-8859-1 改成 UTF-8</p>
-<p> 拷贝html标签的所有内容。 替换jsp的html标签即可</p>
-</li>
-<li><p>修改product_info.htm里面的手机数码超链接地址</p>
-<pre><code>&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;product_list.jsp&quot;&gt;手机数码&lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-</code></pre></li>
-<li><p>修改首页(index.html)顶部的手机数码跳转的位置为 product_list.jsp</p>
-<pre><code>&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;product_list.jsp&quot;&gt;手机数码&lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-</code></pre></li>
-</ol>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><img src="img/img03.png" alt="icon"></p>
-<h3 id="Jsp-里面使用Java代码"><a href="#Jsp-里面使用Java代码" class="headerlink" title="Jsp 里面使用Java代码"></a>Jsp 里面使用Java代码</h3><ul>
-<li>jsp</li>
-</ul>
-<blockquote>
-<p>Java Server Pager —&gt; 最终会翻译成一个类， 就是一个Servlet</p>
-</blockquote>
-<ul>
-<li><p>定义全局变量</p>
-<p>  &lt;%! int a = 99; %&gt;</p>
-</li>
-<li><p>定义局部变量</p>
-<p>  &lt;% int b = 999; %&gt;</p>
-</li>
-<li><p>在jsp页面上，显示 a 和 b的值，</p>
-<p>  &lt;%=a %&gt;<br>  &lt;%=b %&gt;</p>
-</li>
-</ul>
-<h3 id="jsp显示浏览记录"><a href="#jsp显示浏览记录" class="headerlink" title="jsp显示浏览记录"></a>jsp显示浏览记录</h3><p><img src="img/img04.png" alt="icon"></p>
-<h3 id="清除浏览记录"><a href="#清除浏览记录" class="headerlink" title="清除浏览记录"></a>清除浏览记录</h3><blockquote>
-<p>其实就是清除Cookie， 删除cookie是没有什么delete方法的。只有设置maxAge 为0 。</p>
-</blockquote>
-<pre><code>Cookie cookie = new Cookie(&quot;history&quot;,&quot;&quot;);
-cookie.setMaxAge(0); //设置立即删除
-cookie.setPath(&quot;/CookieDemo02&quot;);
-response.addCookie(cookie);
-</code></pre><h3 id="Cookie总结"><a href="#Cookie总结" class="headerlink" title="Cookie总结"></a>Cookie总结</h3><ol>
-<li><p>服务器给客户端发送过来的一小份数据，并且存放在客户端上。</p>
-</li>
-<li><p>获取cookie， 添加cookie</p>
-<p> request.getCookie();</p>
-<p> response.addCookie();</p>
-</li>
-<li><p>Cookie分类</p>
-<p> 会话Cookie<br> ​    默认情况下，关闭了浏览器，那么cookie就会消失。</p>
-<p> 持久Cookie</p>
-<pre><code>在一定时间内，都有效，并且会保存在客户端上。 
-
-cookie.setMaxAge(0); //设置立即删除
-
-cookie.setMaxAge(100); //100 秒
-</code></pre></li>
-<li><p>Cookie的安全问题。</p>
-</li>
-</ol>
-<blockquote>
-<p>由于Cookie会保存在客户端上，所以有安全隐患问题。  还有一个问题， Cookie的大小与个数有限制。 为了解决这个问题 —&gt; Session .</p>
-</blockquote>
-<h1 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h1><blockquote>
-<p>会话 ， Session是基于Cookie的一种会话机制。 Cookie是服务器返回一小份数据给客户端，并且存放在客户端上。 Session是，数据存放在服务器端。</p>
-</blockquote>
-<ul>
-<li>常用API</li>
-</ul>
-<pre><code>//得到会话ID
-String id = session.getId();
-
-//存值
-session.setAttribute(name, value);
-
-//取值
-session.getAttribute(name);
-
-//移除值
-session.removeAttribute(name);
-</code></pre><ul>
-<li><p>Session何时创建  ， 何时销毁?</p>
-</li>
-<li><p>创建</p>
-</li>
-</ul>
-<blockquote>
-<p>如果有在servlet里面调用了 request.getSession()</p>
-</blockquote>
-<ul>
-<li>销毁</li>
-</ul>
-<blockquote>
-<p>session 是存放在服务器的内存中的一份数据。 当然可以持久化. Redis . 即使关了浏览器，session也不会销毁。</p>
-</blockquote>
-<blockquote>
-<ol>
-<li>关闭服务器</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li>session会话时间过期。 有效期过了，默认有效期： 30分钟。</li>
-</ol>
-</blockquote>
-<h1 id="例子三：-简单购物车。"><a href="#例子三：-简单购物车。" class="headerlink" title="例子三： 简单购物车。"></a>例子三： 简单购物车。</h1><p><img src="img/img05.png" alt="icon"></p>
-<h3 id="CartServlet-代码"><a href="#CartServlet-代码" class="headerlink" title="CartServlet 代码"></a>CartServlet 代码</h3><pre><code>response.setContentType(&quot;text/html;charset=utf-8&quot;);
-
-    //1. 获取要添加到购物车的商品id
-    int id = Integer.parseInt(request.getParameter(&quot;id&quot;)); // 0 - 1- 2 -3 -4 
-    String [] names = {&quot;Iphone7&quot;,&quot;小米6&quot;,&quot;三星Note8&quot;,&quot;魅族7&quot; , &quot;华为9&quot;};
-    //取到id对应的商品名称
-    String name = names[id];
-
-    //2. 获取购物车存放东西的session  Map&lt;String , Integer&gt;  iphoen7 3
-    //把一个map对象存放到session里面去，并且保证只存一次。 
-    Map&lt;String, Integer&gt; map = (Map&lt;String, Integer&gt;) request.getSession().getAttribute(&quot;cart&quot;);
-    //session里面没有存放过任何东西。
-    if(map == null){
-        map = new LinkedHashMap&lt;String , Integer&gt;();
-        request.getSession().setAttribute(&quot;cart&quot;, map);
-    }
-</code></pre><p>​<br>​            //3. 判断购物车里面有没有该商品<br>​            if(map.containsKey(name)){<br>​                //在原来的值基础上  + 1<br>​                map.put(name, map.get(name) + 1 );<br>​            }else{<br>​                //没有购买过该商品，当前数量为1 。<br>​                map.put(name, 1);<br>​            }<br>​<br>​            //4. 输出界面。（跳转）<br>​            response.getWriter().write(“<a href="product_list.jsp"><h3>继续购物</h3></a><br>“);<br>​            response.getWriter().write(“<a href="cart.jsp"><h3>去购物车结算</h3></a>“);</p>
-<h2 id="移除Session中的元素"><a href="#移除Session中的元素" class="headerlink" title="移除Session中的元素"></a>移除Session中的元素</h2><pre><code>//强制干掉会话，里面存放的任何数据就都没有了。
-session.invalidate();
-
-//从session中移除某一个数据
-//session.removeAttribute(&quot;cart&quot;);
-</code></pre><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ul>
-<li>请求转发和重定向（面试经常问。）</li>
-</ul>
-<ul>
-<li><p>Cookie</p>
-<p>  服务器给客户端发送一小份数据， 存放在客户端上。</p>
-<p>  基本用法：</p>
-<pre><code>添加cookie
-
-获取cookie。
-</code></pre><p>  演练例子：</p>
-<pre><code>1. 获取上一次访问时间
-
-2. 获取商品浏览记录。
-</code></pre></li>
-<li><p>什么时候有cookie</p>
-<p>  response.addCookie(new Cookie())</p>
-</li>
-<li><p>Cookie 分类</p>
-<pre><code>会话Cookie
-
-    关闭浏览器，就失效
-
-持久cookie
-
-    存放在客户端上。 在指定的期限内有效。 
-
-    setMaxAge();
-</code></pre></li>
-</ul>
-<ul>
-<li><p>Session</p>
-<pre><code>也是基于cookie的一种会话技术，  数据存放存放在服务器端
-
-会在cookie里面添加一个字段 JSESSIONID . 是tomcat服务器生成。 
-
-setAttribute 存数据
-
-getAttribute 取数据
-
-removeAttribute  移除数据
-
-getSessionId();  获取会话id
-
-invalidate() 强制让会话失效。
-</code></pre></li>
-<li><p>创建和销毁</p>
-<p>  ，调用request.getSesion创建 </p>
-<p>   服务器关闭 ， 会话超时（30分）</p>
-</li>
-</ul>
-<p>setAttribute 存放的值， 在浏览器关闭后，还有没有。  有！，就算客户端把电脑砸了也还有。</p>
-<p>​        </p>
-
+2. 服务器返回json数据
+</code></pre>
           
         
       
@@ -1636,7 +1485,7 @@ invalidate() 强制让会话失效。
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1680,7 +1529,7 @@ invalidate() 强制让会话失效。
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1725,7 +1574,9 @@ invalidate() 强制让会话失效。
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1768,7 +1619,9 @@ invalidate() 强制让会话失效。
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
