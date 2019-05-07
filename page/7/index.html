@@ -336,6 +336,269 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/23/Java源码/Java源码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="icebearice">
+      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淘气的白熊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/23/Java源码/Java源码/" class="post-title-link" itemprop="url">Java源码</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-04-23 00:41:00" itemprop="dateCreated datePublished" datetime="2019-04-23T00:41:00+08:00">2019-04-23 00:41:00</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java源码/" itemprop="url" rel="index"><span itemprop="name">Java源码</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Java源码"><a href="#Java源码" class="headerlink" title="Java源码"></a>Java源码</h1><h3 id="Map-HashMap-LinkedHashMap-TreeMap-ConcurrentHashMap-HashTable"><a href="#Map-HashMap-LinkedHashMap-TreeMap-ConcurrentHashMap-HashTable" class="headerlink" title="Map HashMap LinkedHashMap TreeMap ConcurrentHashMap HashTable"></a>Map HashMap LinkedHashMap TreeMap ConcurrentHashMap HashTable</h3><h4 id="1-Hash-Map"><a href="#1-Hash-Map" class="headerlink" title="1 Hash Map"></a>1 Hash Map</h4><p>存放键值对</p>
+<p>JDK1.8之后，链表长度大于阈值8，将链表转换为红黑树</p>
+<p>要将链表转换成红黑树的table的最小结点数为64</p>
+<p>(n - 1) &amp; hash 判断位置</p>
+<p>jdk1.8后 hash函数 即 扰动函数 扰动一次 1.8前 扰动四次</p>
+<p>默认容量 16 负载因子 0.75</p>
+<p><strong>loadFactor太大导致查找元素效率低，太小导致数组的利用率低，存放的数据会很分散。loadFactor的默认值为0.75f是官方给出的一个比较好的临界值</strong>。</p>
+<p><strong>threshold = capacity * loadFactor</strong>，<strong>当Size&gt;=threshold</strong>的时候，那么就要考虑对数组的扩增了，也就是说，这个的意思就是 <strong>衡量数组是否需要扩增的一个标准</strong>。</p>
+<p>hashCode 将key的hashCode 异或^ value的hashCode</p>
+<p>Node节点中的equals 1 先确定是否是对象本身 2 若不是对象本身, 则判断是否为相同map.entry的实例 3 若为相同实例, 才能继续判断 对应的key是否equals      对应的value是否equals</p>
+<p>HashMap中 root 方法调用  根节点 不断地返回 parent </p>
+<p>红黑树 双向 parent left  right prev</p>
+<p>resize 扩容函数 若没超最大值 则扩容两倍 newThr = oldThr &lt;&lt; 1</p>
+<p>resize 尽量避免 因为  resize扩容之后  会将所有的oldtable值  全部重新遍历赋值到newtable中</p>
+<p>(e = oldTab[j]) != null)  为什么要这样子写 好处是什么???</p>
+<p>构造方法有四种:</p>
+<ol>
+<li>无参构造</li>
+<li>指定容量大小</li>
+<li>指定容量大小和负载因子</li>
+<li>包含另一个”Map”的构造函数</li>
+</ol>
+<p>HashMap为什么会 线程不安全  从底层的角度思考</p>
+<p>首先 HashMap与HashTable的区别就是 HashTable加了synchronized锁 HashMap没加</p>
+<p>其次 冲突可能出现在放置元素的put方法中,也可能出现在扩容方法resize中,我们先从put方法说起,假设版本在jdk1.8,冲突的对应链表节点的数量未超过8的情况下,假设同时有两个以上的线程出现同一个哈希碰撞,并且两个线程同时取到了冲突链表上的同一个位置,在这种情况下,必定有一个线程的值会丢失,只有一个坑可以占</p>
+<p>另外在resize的扩容方法中,由于扩容之后,需要将所有的节点赋值给已经扩容的新表,假设存在多个线程进行扩容,同时进行的话,只有最后赋值成功的新表,才会成为新表,其他在此线程之前重新赋值的表都作废</p>
+<p>表是以节点数组的状态存在的</p>
+<h4 id="HashCode为什么以一定是2的次幂"><a href="#HashCode为什么以一定是2的次幂" class="headerlink" title="HashCode为什么以一定是2的次幂"></a>HashCode为什么以一定是2的次幂</h4><h5 id="看链接-http-www-cnblogs-com-chengxiao-p-6059914-html-t3"><a href="#看链接-http-www-cnblogs-com-chengxiao-p-6059914-html-t3" class="headerlink" title="(看链接)http://www.cnblogs.com/chengxiao/p/6059914.html#t3"></a>(看链接)<a href="http://www.cnblogs.com/chengxiao/p/6059914.html#t3" target="_blank" rel="noopener">http://www.cnblogs.com/chengxiao/p/6059914.html#t3</a></h5><p>HashMap和HashTable区别</p>
+<ol>
+<li>前者线程不安全, 后者线程安全,原因是因为后者加了synchronized锁</li>
+<li>前者可以接受null的key和value, 后者不行</li>
+<li>在单线程的情况下, 前者的性能要比后者要快</li>
+<li>前者的初始容量为16, 扩容以指数形式扩容, 即2的倍数, 后者的初始容量为11, 扩容是两倍的原容量+1</li>
+</ol>
+<h4 id="2-LinkedHashMap-继承HashMap"><a href="#2-LinkedHashMap-继承HashMap" class="headerlink" title="2 LinkedHashMap 继承HashMap"></a>2 LinkedHashMap 继承HashMap</h4><p>底层是super调用父类的无参构造方法</p>
+<p>存在accessOrder的boolean变量 若为false则插入是有序的, 若为true,则插入和访问的顺序都是有序的, 会对里面的键值对进行排序</p>
+<p>实则是本质上是双向链表+HashMap</p>
+<h3 id="面试中关于HashMap的时间复杂度O-1-的思考"><a href="#面试中关于HashMap的时间复杂度O-1-的思考" class="headerlink" title="面试中关于HashMap的时间复杂度O(1)的思考"></a>面试中关于HashMap的时间复杂度O(1)的思考</h3><p>分四步：<br>1.判断key，根据key算出索引。<br>2.根据索引获得索引位置所对应的键值对链表。<br>3.遍历键值对链表，根据key找到对应的Entry键值对。<br>4.拿到value。 </p>
+<p>以上四步要保证HashMap的时间复杂度O(1)，需要保证每一步都是O(1)，现在看起来就第三步对链表的循环的时间复杂度影响最大，链表查找的时间复杂度为O(n)，与链表长度有关。我们要保证那个链表长度为1，才可以说时间复杂度能满足O(1)。但这么说来只有那个hash算法尽量减少冲突，才能使链表长度尽可能短，理想状态为1。因此可以得出结论：HashMap的查找时间复杂度只有在最理想的情况下才会为O(1)，而要保证这个理想状态不是我们开发者控制的。</p>
+<p>查询插入 O(1) 删除O(n)</p>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>有序可重复 可克隆 可序列化</p>
+<p>继承abstractList 实现list<e> RandomAccess(快速随机访问 故用for循环遍历效率更高 但用iterator访问更安全 因为当访问的数据发生改变的时候 他会抛异常 异常是) Clonable Serializable</e></p>
+<p>默认初始容量大小为10 初始为空数组 添加第一个元素后 容量才变成10 </p>
+<p>通过反射来判断对象是否符合elementData.getClass() != Object[].class</p>
+<p>如果未指定Object, 则令elementData为默认空数组</p>
+<p>修改实力容量为当前大小(最小化ArrayList实例)是通过copyof实现的</p>
+<p>扩容因子为1.5 int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1)</p>
+<p>检查newCapacity是否溢出, 若溢出了则赋值为数组最大值 Integer.MAX_VALUE 同时 对象头的最大信息占用内存不可超过8个字节</p>
+<p>为什么最大数组大小为Integer.MAX_VALUE - 8 因为8个字节用来存数组的头信息</p>
+<p>占满32位的内存单元长度</p>
+<p>遍历O(1) 插入删除O(n)</p>
+<p>关于自动装箱与自动拆箱 Java中的八大数据类型都有对应的包装类 Java是以对象的形式来保存八大数据类型的, 实现真正的面向对象</p>
+<p>三个构造函数</p>
+<ol>
+<li>无参</li>
+<li>指定容量</li>
+<li>指定集合</li>
+</ol>
+<p>copyof为重构当前数组 底层调用了arraycopy 目标函数为新数组</p>
+<p>copyofrange是对数组进行复制</p>
+<p>arraycopy需要目标函数,拷贝到自定义的数组中</p>
+<p>底层采用newcapacity - mincapacity &lt; 0 代替 newcapacity &lt; mincapacity 运算更快</p>
+<p>remove 删除对象 fastremove 删除u索引 remove调用了faseremove clear 删除所有元素addAll 追加添加 可指定位置 modCount 改变list大小的次数</p>
+<p>扩容机制 为了避免只扩充少量频繁的拷贝的情况 导致降低性能 有着良好的扩容机制 扩容因子为1.5倍</p>
+<p>Arrays.toArray() 得到的是Object[] 不可向下转型为其他对象类型</p>
+<p>Arrays.toArray(T&lt;&gt;[]) 好用 </p>
+<h5 id="那ArrayList为什么线程不安全呢"><a href="#那ArrayList为什么线程不安全呢" class="headerlink" title="那ArrayList为什么线程不安全呢"></a>那ArrayList为什么线程不安全呢</h5><p>从底层来讲 举个例子 比如 在当前size为0的情况下 ArrayList底层会在有第一个数据存入的时候 将容量改为初始容量 出现多个线程同时存储值进入list中 只有最后一个存储的线程的值可以存到list中 而其他的线程的值全都会丢失 而不会存入list中 尽管capacity为初始容量 16  但 size还是等于1 只有一个值存了进来</p>
+<h3 id="LinkedList-线程不安全-synchronizedList"><a href="#LinkedList-线程不安全-synchronizedList" class="headerlink" title="LinkedList 线程不安全 synchronizedList"></a>LinkedList 线程不安全 synchronizedList</h3><p>在任何位置高效地插入和删除的有序序列 基于 双向链表实现的</p>
+<p>继承AbstractSequentialList</p>
+<p>有一个头结点 一个尾节点 我们可以从头遍历 也可以从尾遍历</p>
+<p>checkPositionIndex(index); 检查index是否在size范围内</p>
+<p>始终会记录着first节点和last节点</p>
+<h4 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h4><p>可变长度的数组    长度变化靠capacity 和capacityIncrement</p>
+<p>构造方法三种</p>
+<ol>
+<li>无参构造 默认构造初始容量为10</li>
+<li>initialCapacity 初始化容量 一个参数</li>
+<li>initialCapacity 初始化容量 capacityIncrement 容量增长值 两个参数</li>
+</ol>
+<p>其中构造方法1调用构造方法2 构造方法2调用构造方法3 默认初始容量为10 默认容量增长值为0(默认扩增为两倍原长度)</p>
+<h4 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h4><p>继承Vector    线程安全</p>
+<p>push(E) pop() peek() empty()</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/15/算法/字符串的排列/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -541,199 +804,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2019/04/14/思维导图/思维导图/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="icebearice">
-      <meta itemprop="description" content="后端开发 大三 找实习 加油学习吧~">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="淘气的白熊">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/14/思维导图/思维导图/" class="post-title-link" itemprop="url">思维导图</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-04-14 17:10:17" itemprop="dateCreated datePublished" datetime="2019-04-14T17:10:17+08:00">2019-04-14 17:10:17</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
-              
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
-                2019-04-26 22:50:06
-              </time>
-            </span>
-          
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/思维导图/" itemprop="url" rel="index"><span itemprop="name">思维导图</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/思维导图/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="思维导图-知识整理-百度脑图-自用"><a href="#思维导图-知识整理-百度脑图-自用" class="headerlink" title="思维导图-知识整理    百度脑图            自用"></a>思维导图-知识整理    百度脑图            自用</h3><h4 id="前端："><a href="#前端：" class="headerlink" title="前端："></a>前端：</h4><h4 id="HTML-Css-JQuery-JSP-Ajax-EL表达式-JSTL"><a href="#HTML-Css-JQuery-JSP-Ajax-EL表达式-JSTL" class="headerlink" title="HTML    Css        JQuery        JSP        Ajax        EL表达式        JSTL"></a><a href="http://naotu.baidu.com/file/951ec7faee21af0d7b94ee824ddcbe19?token=d7db50ae11959597" target="_blank" rel="noopener">HTML</a>    <a href="http://naotu.baidu.com/file/ca0c4759841da2ee53eca123a7900046?token=1750141306459a4d" target="_blank" rel="noopener">Css</a>        <a href="http://naotu.baidu.com/file/5564b57ad317c91b61ea8197f4a9c4aa?token=5ea6ebc9e64043ec" target="_blank" rel="noopener">JQuery</a>        <a href="http://naotu.baidu.com/file/5949e7899962d777a62ce69ed8527d42?token=c0785ee7518e95b0" target="_blank" rel="noopener">JSP</a>        <a href="http://naotu.baidu.com/file/b2f3571fadcd5c68ffa41c1e7063014c?token=b8a16e593fbea2c0" target="_blank" rel="noopener">Ajax</a>        <a href="http://naotu.baidu.com/file/c12f3110c0a38fb0fd0fff1c41e2a4a0?token=5cd23d2a080cdd92" target="_blank" rel="noopener">EL表达式</a>        <a href="http://naotu.baidu.com/file/cb32d73d5748347f6178b1fa0e3872b1?token=fa2668dc8c96ca1e" target="_blank" rel="noopener">JSTL</a></h4><h4 id="Java："><a href="#Java：" class="headerlink" title="Java："></a>Java：</h4><h4 id="Java基础-MVC-MVC案例-Servlet-学生管理系统"><a href="#Java基础-MVC-MVC案例-Servlet-学生管理系统" class="headerlink" title="Java基础        MVC    MVC案例    Servlet    学生管理系统"></a><a href="http://naotu.baidu.com/file/d62593a4148e88d5e6e28e68d7564c36?token=1a68139eee85a24a" target="_blank" rel="noopener">Java基础</a>        <a href="http://naotu.baidu.com/file/5f4ccac49ef73afea030c4a3a4439789?token=60f6f608b039e142" target="_blank" rel="noopener">MVC</a>    <a href="http://naotu.baidu.com/file/42ae1427319317382fc11af8b84b7839?token=e9b285267ac52579" target="_blank" rel="noopener">MVC案例</a>    <a href>Servlet</a>    <a href="http://naotu.baidu.com/file/70e67b2081221d10961953ea982fe513?token=bf6436fd9c8cbadb" target="_blank" rel="noopener">学生管理系统</a></h4><h4 id="数据交互："><a href="#数据交互：" class="headerlink" title="数据交互："></a>数据交互：</h4><h4 id="JDBC-JDBC案例-数据库-数据库连接池-XML-DBUtils-MySQL-事务"><a href="#JDBC-JDBC案例-数据库-数据库连接池-XML-DBUtils-MySQL-事务" class="headerlink" title="JDBC    JDBC案例    数据库        数据库连接池    XML    DBUtils    MySQL    事务"></a><a href="http://naotu.baidu.com/file/bdbc8d3e88cf289f89d474863b8dd235?token=d777b362e9227e99" target="_blank" rel="noopener">JDBC</a>    <a href="http://naotu.baidu.com/file/75b9d2b594a0b412af8a86bdd7e545a4?token=e813fe2b5efbc067" target="_blank" rel="noopener">JDBC案例</a>    <a href="http://naotu.baidu.com/file/64930bbdf3be1498e5fff3eeec350b83?token=35a072eaf214a397" target="_blank" rel="noopener">数据库</a>        <a href="http://naotu.baidu.com/file/158d19d9fde133b37fc53cfb2a6f263a?token=61af401f6ecbb307" target="_blank" rel="noopener">数据库连接池</a>    <a href="http://naotu.baidu.com/file/62cfbca4f5e3e2ca0c41278bc825e1b2?token=83670dd2c5767ba8" target="_blank" rel="noopener">XML</a>    <a href="http://naotu.baidu.com/file/52849b052ae215b474a8a4664bad519c?token=34e0bbdd536acd0f" target="_blank" rel="noopener">DBUtils</a>    <a href="http://naotu.baidu.com/file/732c4f6ab64d9ee7fbae2acdb89f713e?token=03c322b5244326f8" target="_blank" rel="noopener">MySQL</a>    <a href="http://naotu.baidu.com/file/1940c1974dda2e34f2ab092204fcdc2f?token=e03520fca5f9438a" target="_blank" rel="noopener">事务</a></h4><h4 id="网络"><a href="#网络" class="headerlink" title="网络:"></a>网络:</h4><h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a><a href="http://naotu.baidu.com/file/ff2d367c2c60da0e4acd153757b9125c?token=7c6ccb61571fff2d" target="_blank" rel="noopener">HTTP</a></h4><h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux:"></a>Linux:</h4><h4 id="Linux-1"><a href="#Linux-1" class="headerlink" title="Linux"></a><a href="http://naotu.baidu.com/file/5c7ab14433dfe538228ef2a54803d66e?token=75cca7af1d52fb43" target="_blank" rel="noopener">Linux</a></h4><h4 id="框架"><a href="#框架" class="headerlink" title="框架:"></a>框架:</h4><h4 id="SpringMVC-Spring-MyBatis-Hibernate"><a href="#SpringMVC-Spring-MyBatis-Hibernate" class="headerlink" title="SpringMVC    Spring    MyBatis    Hibernate"></a><a href="http://naotu.baidu.com/file/f238694a3f70745b02db8c9a602868f4?token=5ab5259336211a9d" target="_blank" rel="noopener">SpringMVC</a>    <a href="http://naotu.baidu.com/file/cd8234e1e70aa8657e85b2a69d2597fd?token=b9762d4ba7ed19a6" target="_blank" rel="noopener">Spring</a>    <a href="http://naotu.baidu.com/file/ee5738f64565b7ce31be59d028e1eeac?token=4cfc1e5a4d6dfdad" target="_blank" rel="noopener">MyBatis</a>    <a href="http://naotu.baidu.com/file/24b28c855096b8d73dc7593c98bffeed?token=dc4e4ac1d26842e5" target="_blank" rel="noopener">Hibernate</a></h4><h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理:"></a>数据处理:</h4><h4 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a><a href="http://naotu.baidu.com/file/55696fc083bafe660b1cf8294257067d?token=1e2ac78e7dd33ee1" target="_blank" rel="noopener">Hadoop</a></h4><h4 id="小程序"><a href="#小程序" class="headerlink" title="小程序:"></a>小程序:</h4><h4 id="小程序-小程序开发"><a href="#小程序-小程序开发" class="headerlink" title="小程序    小程序开发"></a><a href="http://naotu.baidu.com/file/7640bbaa6a9b64d1bfe4161d5077b530?token=3c3ad42099f553bc" target="_blank" rel="noopener">小程序</a>    <a href="http://naotu.baidu.com/file/367cb35c2aa00cd93aefd72dc6aeb80b?token=38bb254d0a06427a" target="_blank" rel="noopener">小程序开发</a></h4>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -777,7 +852,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -824,7 +899,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -869,7 +946,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -991,7 +1070,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共38.4k字</span>
+  <span class="post-count">博客全站共39.6k字</span>
 </div>
         
 
