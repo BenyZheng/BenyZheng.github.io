@@ -107,7 +107,7 @@
 <meta name="keywords" content="后端开发, Java, icebearice">
 <meta property="og:type" content="website">
 <meta property="og:title" content="淘气的白熊">
-<meta property="og:url" content="https://gitee.com/icebearice/icebearice/page/15/index.html">
+<meta property="og:url" content="https://icebearice.gitee.io/page/15/index.html">
 <meta property="og:site_name" content="淘气的白熊">
 <meta property="og:description" content="后端开发 大三 找实习 加油学习吧~">
 <meta property="og:locale" content="zh-Hans">
@@ -121,7 +121,7 @@
 
   
   
-  <link rel="canonical" href="https://gitee.com/icebearice/icebearice/page/15/">
+  <link rel="canonical" href="https://icebearice.gitee.io/page/15/">
 
 
 
@@ -336,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gitee.com/icebearice/icebearice/2018/11/03/J2EE/9.Cookie&Session/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2018/11/03/J2EE/9.Cookie&Session/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="icebearice">
@@ -508,7 +508,7 @@ request.getRequestDispatcher(&quot;login_success.html&quot;).forward(request, re
 4. 效率上稍微高一点，因为只执行一次请求。 
 
 5. 可以使用上一次的request对象。 
-</code></pre><p><img src="/icebearice/icebearice/2018/11/03/J2EE/9.Cookie&Session/img01.png" alt="icon"></p>
+</code></pre><p><img src="/2018/11/03/J2EE/9.Cookie&Session/img01.png" alt="icon"></p>
 <h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><blockquote>
 <p>饼干. 其实是一份小数据， 是服务器给客户端，并且存储在客户端上的一份小数据</p>
 </blockquote>
@@ -534,7 +534,7 @@ request.getRequestDispatcher(&quot;login_success.html&quot;).forward(request, re
 <li>客户端收到的信息里面，响应头中多了一个字段 Set-Cookie</li>
 <li></li>
 </ol>
-<p><img src="/icebearice/icebearice/2018/11/03/J2EE/9.Cookie&Session/img02.png" alt="icon"></p>
+<p><img src="/2018/11/03/J2EE/9.Cookie&Session/img02.png" alt="icon"></p>
 <ul>
 <li><p>获取客户端带过来的Cookie</p>
 <pre><code>//获取客户端带过来的cookie
@@ -604,7 +604,7 @@ cookie.setPath(&quot;/CookieDemo&quot;);
 <pre><code>&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;product_list.jsp&quot;&gt;手机数码&lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
 </code></pre></li>
 </ol>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><img src="/icebearice/icebearice/2018/11/03/J2EE/9.Cookie&Session/img03.png" alt="icon"></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><img src="/2018/11/03/J2EE/9.Cookie&Session/img03.png" alt="icon"></p>
 <h3 id="Jsp-里面使用Java代码"><a href="#Jsp-里面使用Java代码" class="headerlink" title="Jsp 里面使用Java代码"></a>Jsp 里面使用Java代码</h3><ul>
 <li>jsp</li>
 </ul>
@@ -622,7 +622,7 @@ cookie.setPath(&quot;/CookieDemo&quot;);
 <p>  &lt;%=a %&gt;<br>  &lt;%=b %&gt;</p>
 </li>
 </ul>
-<h3 id="jsp显示浏览记录"><a href="#jsp显示浏览记录" class="headerlink" title="jsp显示浏览记录"></a>jsp显示浏览记录</h3><p><img src="/icebearice/icebearice/2018/11/03/J2EE/9.Cookie&Session/img04.png" alt="icon"></p>
+<h3 id="jsp显示浏览记录"><a href="#jsp显示浏览记录" class="headerlink" title="jsp显示浏览记录"></a>jsp显示浏览记录</h3><p><img src="/2018/11/03/J2EE/9.Cookie&Session/img04.png" alt="icon"></p>
 <h3 id="清除浏览记录"><a href="#清除浏览记录" class="headerlink" title="清除浏览记录"></a>清除浏览记录</h3><blockquote>
 <p>其实就是清除Cookie， 删除cookie是没有什么delete方法的。只有设置maxAge 为0 。</p>
 </blockquote>
@@ -694,7 +694,7 @@ session.removeAttribute(name);
 <li>session会话时间过期。 有效期过了，默认有效期： 30分钟。</li>
 </ol>
 </blockquote>
-<h1 id="例子三：-简单购物车。"><a href="#例子三：-简单购物车。" class="headerlink" title="例子三： 简单购物车。"></a>例子三： 简单购物车。</h1><p><img src="/icebearice/icebearice/2018/11/03/J2EE/9.Cookie&Session/img05.png" alt="icon"></p>
+<h1 id="例子三：-简单购物车。"><a href="#例子三：-简单购物车。" class="headerlink" title="例子三： 简单购物车。"></a>例子三： 简单购物车。</h1><p><img src="/2018/11/03/J2EE/9.Cookie&Session/img05.png" alt="icon"></p>
 <h3 id="CartServlet-代码"><a href="#CartServlet-代码" class="headerlink" title="CartServlet 代码"></a>CartServlet 代码</h3><pre><code>response.setContentType(&quot;text/html;charset=utf-8&quot;);
 
     //1. 获取要添加到购物车的商品id
@@ -826,7 +826,7 @@ invalidate() 强制让会话失效。
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gitee.com/icebearice/icebearice/2018/11/02/J2EE/8.Http&Servlet/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2018/11/02/J2EE/8.Http&Servlet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="icebearice">
@@ -988,11 +988,11 @@ invalidate() 强制让会话失效。
 <ol start="4">
 <li>选择 servlet 例子 —&gt; Request Parameter</li>
 </ol>
-<p><img src="/icebearice/icebearice/2018/11/02/J2EE/8.Http&Servlet/img01.png" alt="icon"></p>
+<p><img src="/2018/11/02/J2EE/8.Http&Servlet/img01.png" alt="icon"></p>
 <p>接着点击Request  Parameters 的 Execute超链接</p>
-<p><img src="/icebearice/icebearice/2018/11/02/J2EE/8.Http&Servlet/img02.png" alt="icon"></p>
+<p><img src="/2018/11/02/J2EE/8.Http&Servlet/img02.png" alt="icon"></p>
 <p>执行tomcat的例子，然后查看浏览器和 tomcat服务器的对接细节</p>
-<p><img src="/icebearice/icebearice/2018/11/02/J2EE/8.Http&Servlet/img03.png" alt="icon"></p>
+<p><img src="/2018/11/02/J2EE/8.Http&Servlet/img03.png" alt="icon"></p>
 <h3 id="Http请求数据解释"><a href="#Http请求数据解释" class="headerlink" title="Http请求数据解释"></a>Http请求数据解释</h3><blockquote>
 <p>请求的数据里面包含三个部分内容 ： 请求行 、 请求头 、请求体</p>
 </blockquote>
@@ -1070,7 +1070,7 @@ Content-Length ： 返回的数据长度
 Date ： 通讯的日期，响应的时间        
 </code></pre></li>
 </ul>
-<h2 id="Get-和-Post请求区别"><a href="#Get-和-Post请求区别" class="headerlink" title="Get 和  Post请求区别"></a>Get 和  Post请求区别</h2><p><img src="/icebearice/icebearice/2018/11/02/J2EE/8.Http&Servlet/img04.png" alt="icon"></p>
+<h2 id="Get-和-Post请求区别"><a href="#Get-和-Post请求区别" class="headerlink" title="Get 和  Post请求区别"></a>Get 和  Post请求区别</h2><p><img src="/2018/11/02/J2EE/8.Http&Servlet/img04.png" alt="icon"></p>
 <ul>
 <li><p>post</p>
 <pre><code>1. 数据是以流的方式写过去，不会在地址栏上面显示。  现在一般提交数据到服务器使用的都是POST
@@ -1126,7 +1126,7 @@ Date ： 通讯的日期，响应的时间
   &lt;/servlet-mapping&gt;
 
 3. 在地址栏上输入 http://localhost:8080/项目名称/a
-</code></pre><h3 id="Servlet执行过程"><a href="#Servlet执行过程" class="headerlink" title="Servlet执行过程"></a>Servlet执行过程</h3><p><img src="/icebearice/icebearice/2018/11/02/J2EE/8.Http&Servlet/img05.png" alt="icon"></p>
+</code></pre><h3 id="Servlet执行过程"><a href="#Servlet执行过程" class="headerlink" title="Servlet执行过程"></a>Servlet执行过程</h3><p><img src="/2018/11/02/J2EE/8.Http&Servlet/img05.png" alt="icon"></p>
 <h3 id="Servlet的通用写法"><a href="#Servlet的通用写法" class="headerlink" title="Servlet的通用写法"></a>Servlet的通用写法</h3><pre><code>Servlet (接口)
     |
     |
@@ -1137,7 +1137,7 @@ HttpServlet （用于处理http的请求）
 </code></pre><ol>
 <li>定义一个类，继承HttpServlet 复写doGet 和 doPost</li>
 </ol>
-<p><img src="/icebearice/icebearice/2018/11/02/J2EE/8.Http&Servlet/img06.png" alt="icon"></p>
+<p><img src="/2018/11/02/J2EE/8.Http&Servlet/img06.png" alt="icon"></p>
 <h2 id="Servlet的生命周期"><a href="#Servlet的生命周期" class="headerlink" title="Servlet的生命周期"></a>Servlet的生命周期</h2><ul>
 <li>生命周期</li>
 </ul>
