@@ -107,7 +107,7 @@
 <meta name="keywords" content="后端开发, Java, icebearice">
 <meta property="og:type" content="website">
 <meta property="og:title" content="淘气的白熊">
-<meta property="og:url" content="http://github.com/icebearice/page/14/index.html">
+<meta property="og:url" content="https://gitee.com/icebearice/icebearice/page/14/index.html">
 <meta property="og:site_name" content="淘气的白熊">
 <meta property="og:description" content="后端开发 大三 找实习 加油学习吧~">
 <meta property="og:locale" content="zh-Hans">
@@ -121,7 +121,7 @@
 
   
   
-  <link rel="canonical" href="http://github.com/icebearice/page/14/">
+  <link rel="canonical" href="https://gitee.com/icebearice/icebearice/page/14/">
 
 
 
@@ -336,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/">
+    <link itemprop="mainEntityOfPage" href="https://gitee.com/icebearice/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="icebearice">
@@ -481,11 +481,11 @@
 <ol>
 <li>关闭自动提交功能。</li>
 </ol>
-<p><img src="/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img01.png" alt="icon"></p>
+<p><img src="/icebearice/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img01.png" alt="icon"></p>
 <ol start="2">
 <li>演示事务</li>
 </ol>
-<p><img src="/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img02.png" alt="icon"></p>
+<p><img src="/icebearice/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img02.png" alt="icon"></p>
 <h3 id="使用代码方式演示事务"><a href="#使用代码方式演示事务" class="headerlink" title="使用代码方式演示事务"></a>使用代码方式演示事务</h3><blockquote>
 <p>代码里面的事务，主要是针对连接来的。 </p>
 <ol>
@@ -563,12 +563,12 @@ public void testTransaction(){
 
 &gt; 一个事务读到了另外一个事务提交的数据 ，造成了前后两次查询结果不一致。
 </code></pre><h2 id="读未提交-演示"><a href="#读未提交-演示" class="headerlink" title="##  读未提交 演示"></a>##  读未提交 演示</h2><ol>
-<li><p>设置A窗口的隔离级别为 读未提交<br><img src="/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img03.png" alt="icon"></p>
+<li><p>设置A窗口的隔离级别为 读未提交<br><img src="/icebearice/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img03.png" alt="icon"></p>
 </li>
 <li><p>两个窗口都分别开启事务</p>
 </li>
 </ol>
-<p><img src="/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img04.png" alt="icon"></p>
+<p><img src="/icebearice/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img04.png" alt="icon"></p>
 <ul>
 <li>写</li>
 </ul>
@@ -578,15 +578,15 @@ public void testTransaction(){
 <h2 id="读已提交演示"><a href="#读已提交演示" class="headerlink" title="##   读已提交演示"></a>##   读已提交演示</h2><ol>
 <li>设置A窗口的隔离级别为 读已提交</li>
 </ol>
-<p><img src="/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img05.png" alt="icon"></p>
+<p><img src="/icebearice/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img05.png" alt="icon"></p>
 <ol start="2">
 <li>A B 两个窗口都开启事务， 在B窗口执行更新操作。</li>
 </ol>
-<p><img src="/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img06.png" alt="icon"></p>
+<p><img src="/icebearice/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img06.png" alt="icon"></p>
 <ol start="3">
 <li>在A窗口执行的查询结果不一致。 一次是在B窗口提交事务之前，一次是在B窗口提交事务之后。</li>
 </ol>
-<p><img src="/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img07.png" alt="icon"></p>
+<p><img src="/icebearice/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img07.png" alt="icon"></p>
 <blockquote>
 <p>这个隔离级别能够屏蔽 脏读的现象， 但是引发了另一个问题  ，不可重复读。</p>
 </blockquote>
@@ -648,21 +648,21 @@ conn.rollback();
 </blockquote>
 <p>mySql 默认的隔离级别是 可重复读</p>
 <p>Oracle 默认的隔离级别是  读已提交</p>
-<h3 id="丢失更新"><a href="#丢失更新" class="headerlink" title="丢失更新"></a>丢失更新</h3><p><img src="/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img08.png" alt="icon"></p>
+<h3 id="丢失更新"><a href="#丢失更新" class="headerlink" title="丢失更新"></a>丢失更新</h3><p><img src="/icebearice/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img08.png" alt="icon"></p>
 <h3 id="解决丢失更新"><a href="#解决丢失更新" class="headerlink" title="解决丢失更新"></a>解决丢失更新</h3><ul>
 <li>悲观锁</li>
 </ul>
 <blockquote>
 <p>可以在查询的时候，加入 for update</p>
 </blockquote>
-<p><img src="/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img09.png" alt="icon"></p>
+<p><img src="/icebearice/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img09.png" alt="icon"></p>
 <ul>
 <li>乐观锁</li>
 </ul>
 <blockquote>
 <p>要求程序员自己控制。 </p>
 </blockquote>
-<p><img src="/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img10.png" alt="icon"></p>
+<p><img src="/icebearice/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img10.png" alt="icon"></p>
 <h2 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h2><blockquote>
 <ol>
 <li>数据库的连接对象创建工作，比较消耗性能。 </li>
@@ -671,7 +671,7 @@ conn.rollback();
 <blockquote>
 <p>2.一开始现在内存中开辟一块空间（集合） ， 一开先往池子里面放置 多个连接对象。  后面需要连接的话，直接从池子里面去。不要去自己创建连接了。  使用完毕， 要记得归还连接。确保连接对象能循环利用。</p>
 </blockquote>
-<p><img src="/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img11.png" alt="icon"></p>
+<p><img src="/icebearice/icebearice/2018/11/05/数据库/11.事务&数据库连接池&DBUtils/img11.png" alt="icon"></p>
 <h3 id="自定义数据库连接池"><a href="#自定义数据库连接池" class="headerlink" title="自定义数据库连接池"></a>自定义数据库连接池</h3><ul>
 <li><p>代码实现</p>
 </li>
@@ -930,7 +930,7 @@ queryRunner.query
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/icebearice/2018/11/04/前端/10.JSP&EL&JSTL/">
+    <link itemprop="mainEntityOfPage" href="https://gitee.com/icebearice/icebearice/2018/11/04/前端/10.JSP&EL&JSTL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="icebearice">
@@ -1230,7 +1230,7 @@ prefix : 标签库的别名
 </ul>
 </li>
 </ul>
-<p><img src="/icebearice/2018/11/04/前端/10.JSP&EL&JSTL/img01.png" alt="icon"></p>
+<p><img src="/icebearice/icebearice/2018/11/04/前端/10.JSP&EL&JSTL/img01.png" alt="icon"></p>
 <ul>
 <li>exception  【Throwable】<ul>
 <li>page     【Object】 —就是这个jsp翻译成的java类的实例对象<ul>
@@ -1439,7 +1439,7 @@ var: 遍历出来的每一个元素用user 去接收。 --&gt;
 </code></pre><h2 id="学生信息管理系统"><a href="#学生信息管理系统" class="headerlink" title="学生信息管理系统"></a>学生信息管理系统</h2><ul>
 <li>需求分析</li>
 </ul>
-<p><img src="/icebearice/2018/11/04/前端/10.JSP&EL&JSTL/img02.png" alt="icon"></p>
+<p><img src="/icebearice/icebearice/2018/11/04/前端/10.JSP&EL&JSTL/img02.png" alt="icon"></p>
 <ol>
 <li><p>先写 login.jsp , 并且搭配一个LoginServlet 去获取登录信息。</p>
 </li>
@@ -1918,7 +1918,7 @@ initParam
                   
                     
                   
-                  <a href="https://github.com/icebearice" title="GitHub &rarr; https://github.com/icebearice"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/icebearice" title="GitHub &rarr; https://github.com/icebearice" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
