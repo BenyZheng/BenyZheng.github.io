@@ -336,6 +336,191 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/04/23/数据库/关于数据库索引的思考/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="icebearice">
+      <meta itemprop="description" content="后端开发 大三 暂时已找到实习啦 一家感觉技术很棒的公司 加油学习吧">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淘气的白熊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/23/数据库/关于数据库索引的思考/" class="post-title-link" itemprop="url">关于数据库索引的思考</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-04-23 00:41:00" itemprop="dateCreated datePublished" datetime="2019-04-23T00:41:00+08:00">2019-04-23 00:41:00</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DataBase/" itemprop="url" rel="index"><span itemprop="name">DataBase</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="为什么说B-树适合做索引-而不是B树呢"><a href="#为什么说B-树适合做索引-而不是B树呢" class="headerlink" title="为什么说B+树适合做索引 而不是B树呢"></a>为什么说B+树适合做索引 而不是B树呢</h1><ol>
+<li>索引查找过程中会产生磁盘IO消耗,相对于内存的读取,磁盘的IO消耗的数量级要更高,所以说要想索引的效率高,要尽可能的减少磁盘IO的数量,而B树每个节点都有具体指向关键字的指针,B+树则没有指向关键字的具体指针,它只需要对一个关键字盘块进行读取,B树需要对关键字盘块和对应指针盘块两个盘块进行读取,一个盘块读取的效率就是一次IO,故B+树的IO读写次数就较少一些</li>
+<li>由于B+树存的是对关键字的索引,所以任何关键字都需要从对应索引根节点走向叶子节点的路,相对于B树而言,查询效率更加稳定一些</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/04/23/Java源码/Java源码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -543,191 +728,6 @@
 <p>其中构造方法1调用构造方法2 构造方法2调用构造方法3 默认初始容量为10 默认容量增长值为0(默认扩增为两倍原长度)</p>
 <h4 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h4><p>继承Vector    线程安全</p>
 <p>push(E) pop() peek() empty()</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/04/23/数据库/关于数据库索引的思考/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="icebearice">
-      <meta itemprop="description" content="后端开发 大三 暂时已找到实习啦 一家感觉技术很棒的公司 加油学习吧">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="淘气的白熊">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/23/数据库/关于数据库索引的思考/" class="post-title-link" itemprop="url">关于数据库索引的思考</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-04-23 00:41:00" itemprop="dateCreated datePublished" datetime="2019-04-23T00:41:00+08:00">2019-04-23 00:41:00</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time>
-              
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
-                2019-04-26 22:50:06
-              </time>
-            </span>
-          
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DataBase/" itemprop="url" rel="index"><span itemprop="name">DataBase</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="为什么说B-树适合做索引-而不是B树呢"><a href="#为什么说B-树适合做索引-而不是B树呢" class="headerlink" title="为什么说B+树适合做索引 而不是B树呢"></a>为什么说B+树适合做索引 而不是B树呢</h1><ol>
-<li>索引查找过程中会产生磁盘IO消耗,相对于内存的读取,磁盘的IO消耗的数量级要更高,所以说要想索引的效率高,要尽可能的减少磁盘IO的数量,而B树每个节点都有具体指向关键字的指针,B+树则没有指向关键字的具体指针,它只需要对一个关键字盘块进行读取,B树需要对关键字盘块和对应指针盘块两个盘块进行读取,一个盘块读取的效率就是一次IO,故B+树的IO读写次数就较少一些</li>
-<li>由于B+树存的是对关键字的索引,所以任何关键字都需要从对应索引根节点走向叶子节点的路,相对于B树而言,查询效率更加稳定一些</li>
-</ol>
 
           
         
