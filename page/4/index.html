@@ -336,190 +336,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/06/Linux/Linux硬链接与软链接/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="icebearice">
-      <meta itemprop="description" content="后端开发 大三 暂时已找到实习啦 一家感觉技术很棒的公司 加油学习吧">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="淘气的白熊">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/06/Linux/Linux硬链接与软链接/" class="post-title-link" itemprop="url">Linux硬链接与软链接</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-             
-             
-
-              <time title="创建时间：2019-05-06 14:48:04 / 修改时间：14:48:20" itemprop="dateCreated datePublished" datetime="2019-05-06T14:48:04+08:00">2019-05-06 14:48:04</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2019-05-06T14:48:20+08:00" content="2019-05-06">
-                2019-05-06 14:48:20
-              </time>
-            </span>
-          
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>转载自: <a href="https://www.cnblogs.com/crazylqy/p/5821105.html" target="_blank" rel="noopener">https://www.cnblogs.com/crazylqy/p/5821105.html</a></p>
-<p>Linux 系统中有<strong>软链接</strong>和<strong>硬链接</strong>两种特殊的“文件”。</p>
-<p><strong>软链接</strong>可以看作是<strong>Windows中的快捷方式</strong>，可以让你快速链接到目标档案或目录。</p>
-<p><img src="/2019/05/06/Linux/Linux硬链接与软链接/u=3599640089,3204948493&amp;fm=85&amp;s=5BE5964614EB731113978A7F03005058.jpg" alt="img"></p>
-<p><strong>硬链接</strong>则透过文件系统的inode来产生新档名，而不是产生新档案。</p>
-<p>磁盘分区会被分为两个部分: Inode区 与 Data Block(实际数据放置在数据区域中)</p>
-<p>Inode是文件在文件系统中的唯一标识 访问一个文件的时候必须先找到并读取这个文件的Inode</p>
-<p>Inode里面存储了文件的很多重要参数, 其中唯一标识称为Inumber, 创建时间ctime, 修改时间mtime, 文件大小, 属主 归属的用户组, 读写权限, 数据所在的block号等信息</p>
-<p>磁盘分区会根据inode的数量进行分区, 比如文件数量很多而文件都很小, 则需要Inode的数量就会较多, 方便索引全部文件</p>
-<p>Inode不记录文件名, 文件名记录在目录文件的Block中</p>
-<p>硬链接: 多个档名对应同一个Inode, 借助Inode来产生新的档名, 从而产生新的档名链接</p>
-<p><strong>硬链接</strong></p>
-<p>多个档名对应同一个inode，硬链接只是在某个目录下新增一笔档名链 接到某个inode号码的关联记录而已。如果将上图中任何一个档名删除，档案的inode与block都还存在，依然还可以通过另一个档名来读取正确的档 案数据。此外，不论用哪一个档名来编辑，最终的结果都会写入相同的inode和block中，因此均能进行数据的修改。</p>
-<p><strong>软连接</strong></p>
-<p>软连接就是建立一个独立的文件，而这个文件会让数据的读取指向它link的那个档案的档名，由于只是作为<strong>指向的动作</strong>，所以当来源档案被删除之后，软连接的档案无法开启，因为找不到原始档名。连结档的内容只有档名，根据档名链接到正确的目录进一步取得目标档案的inode，最终就能够读取到正确的数据。如果目标档案的原始档名被删除了那么整个环节就进行不下去了。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/06/Linux/Linux常见命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -891,6 +707,195 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/06/Linux/Linux查看负载的三种方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="icebearice">
+      <meta itemprop="description" content="后端开发 大三 暂时已找到实习啦 一家感觉技术很棒的公司 加油学习吧">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淘气的白熊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/06/Linux/Linux查看负载的三种方式/" class="post-title-link" itemprop="url">Linux查看负载的三种方式</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+             
+             
+
+              <time title="创建时间：2019-05-06 14:21:37 / 修改时间：14:22:46" itemprop="dateCreated datePublished" datetime="2019-05-06T14:21:37+08:00">2019-05-06 14:21:37</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2019-05-06T14:22:46+08:00" content="2019-05-06">
+                2019-05-06 14:22:46
+              </time>
+            </span>
+          
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>转载自: <a href="https://www.cnblogs.com/zhaozhenguo666/p/5512701.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhaozhenguo666/p/5512701.html</a></p>
+<p><strong>1 uptime 显示当前机器的负载情况</strong></p>
+<p><img src="/2019/05/06/Linux/Linux查看负载的三种方式/1557124059004.png" alt="1557124059004"></p>
+<p><strong>2 w 显示当前机器的负载情况, 并列出所有user分别的负载情况</strong></p>
+<p><img src="/2019/05/06/Linux/Linux查看负载的三种方式/1557124106155.png" alt="1557124106155"></p>
+<p>load average: 过去1分钟 5分钟 15分钟的负载平均值</p>
+<p><strong>以上两个命令为单纯的反映出负载, 还有更为使用的查看服务器负载的命令</strong></p>
+<p><strong>3 top 实时监控当前的服务器负载情况, 清晰的罗列出每一个进程占有的cpu使用和内存使用</strong>, 输入q退出</p>
+<p><img src="/2019/05/06/Linux/Linux查看负载的三种方式/1557124373862.png" alt="1557124373862"></p>
+<p>Tasks: 目前的进程总数, 以及所处状态, running表示可运行进程, sleeping表示暂停进程, stopped表示停止运行, zombie表示僵尸进程, 若zombie不为0则表示进程出现问题</p>
+<p>Cpu(s): 展示了当前CPU的状态，us表示用户进程占用CPU比例，sy表示内核进程占用CPU比例，id表示空闲CPU百分比，wa表示IO等待所占用的CPU时间的百分比。<strong>wa占用超过30%则表示IO压力很大</strong>。</p>
+<p>Mem: [展示了当前内存的状态，total是总的内存大小，userd是已使用的，free是剩余的，buffers是目录缓存。</p>
+<p>Swap: 同Mem行，cached表示缓存，用户已打开的文件。<strong>如果Swap的used很高，则表示系统内存不足</strong>。</p>
+<p><strong>按1, 可以展示出服务器有多少CPU, 以及每个CPU的使用情况</strong></p>
+<p>在top命令下，按<strong>shift + “c”</strong>，则将进程按照CPU使用率从大到小排序，按shift+”p”，则将进程按照内存使用率从大到小排序，很容易能够定位出哪些服务占用了较高的CPU和内存。</p>
+<p><strong>仅仅有top命令是不够的</strong>，因为它仅能展示CPU和内存的使用情况，对于负载升高的另一重要原因——<strong>IO没有清晰明确的展示</strong>。linux提供了<strong>iostat</strong>命令，可以了解io的开销。</p>
+<p>输入<strong>iostat -x 1 10</strong>命令，表示开始<strong>监控输入输出状态</strong>，<strong>-x表示显示所有参数信息</strong>，<strong>1表示每隔1秒监控一次，10表示共监控10次</strong>。</p>
+<p>没有iostat命令的话  yum/apt-get install sysstat -y 即可</p>
+<p><img src="/2019/05/06/Linux/Linux查看负载的三种方式/1557124840872.png" alt="1557124840872"></p>
+<p>其中rsec/s表示读入，wsec/s表示每秒写入，这两个参数某一个特别高的时候就表示磁盘IO有很大压力，util表示IO使用率，如果接近100%，说明IO满负荷运转。 </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -939,7 +944,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
