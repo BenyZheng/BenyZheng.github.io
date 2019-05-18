@@ -1768,7 +1768,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffe0ff;
+  background: #240fff;
 }
 .feed-link,
 .chat {
@@ -2783,6 +2783,18 @@ body {
   color: #000;
   opacity: 0.97;
   background-image: url("/uploads/42fe1afce37fb7e79764c879f605e24.jpg");
+  cursor: url("/uploads/NumixLight/Arrow.cur"), auto;
+}
+a {
+  cursor: url("/uploads/NumixLight/Hand.cur"), auto;
+}
+.posts-expand .post-meta time {
+  border-bottom: 1px dashed #999;
+  cursor: url("/uploads/NumixLight/Help.cur"), auto;
+}
+.headband {
+  height: 1.5px;
+  background: rgba(255,255,255,0);
 }
 .menu .menu-item a {
   font-size: 17px;
