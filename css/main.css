@@ -1768,7 +1768,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #25a1c9;
+  background: #ff1b0a;
 }
 .feed-link,
 .chat {
@@ -2780,46 +2780,30 @@ ul.breadcrumb li+li:last-child {
   text-overflow: ellipsis;
 }
 body {
-  background-color: #eff;
   color: #000;
-  line-height: 1.5;
-  opacity: 0.8;
-}
-.headband {
-  height: 1.5px;
-  background: rgba(255,255,255,0);
+  opacity: 0.97;
+  background-image: url("/uploads/42fe1afce37fb7e79764c879f605e24.jpg");
 }
 .menu .menu-item a {
-  font-size: 18px;
+  font-size: 17px;
   margin-top: 0px;
   margin-bottom: 0px;
-  padding: 15px;
 }
 .site-title {
-  color: #0f0f0f;
-  font-size: 30px;
+  color: #555;
+  font-size: 26px;
   padding: 15px;
 }
-.site-meta {
-  margin: 0;
-  text-align: center;
-  background: #6cc;
-}
 .site-subtitle {
-  font-size: 18px;
-  color: #646464;
+  color: #bbb;
 }
 .site-description {
   margin-top: 0;
   padding: 15px;
-  text-align: left;
+  text-align: center;
   font-size: 15px;
   color: #999;
 }
-.links-of-author-item {
-  margin: 15px 0 0;
-  width: 50%;
-}
-.nav-item nav-level-3 {
-  text-align: left;
+.site-meta {
+  background: #fff;
 }

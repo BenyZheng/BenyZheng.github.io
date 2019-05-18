@@ -101,17 +101,17 @@
 
 
 
-  <meta name="description" content="后端开发 大三 暂时已找到实习啦 一家感觉技术很棒的公司 加油学习吧">
-<meta name="keywords" content="后端开发, Java, icebearice, Golang(初始阶段)">
+  <meta name="description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
+<meta name="keywords" content="后端开发, Java, Icebearice, Golang">
 <meta property="og:type" content="website">
-<meta property="og:title" content="淘气的白熊">
+<meta property="og:title" content="Icebearice">
 <meta property="og:url" content="https://icebearice.gitee.io/page/3/index.html">
-<meta property="og:site_name" content="淘气的白熊">
-<meta property="og:description" content="后端开发 大三 暂时已找到实习啦 一家感觉技术很棒的公司 加油学习吧">
+<meta property="og:site_name" content="Icebearice">
+<meta property="og:description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="淘气的白熊">
-<meta name="twitter:description" content="后端开发 大三 暂时已找到实习啦 一家感觉技术很棒的公司 加油学习吧">
+<meta name="twitter:title" content="Icebearice">
+<meta name="twitter:description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
 
 
 
@@ -129,7 +129,7 @@
   };
 </script>
 
-  <title>淘气的白熊</title>
+  <title>Icebearice</title>
   
 
 
@@ -190,13 +190,13 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">淘气的白熊</span>
+        <span class="site-title">Icebearice</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
     
       
-        <p class="site-subtitle">淘气的白熊</p>
+        <p class="site-subtitle">又来偷看我博客</p>
       
     
     
@@ -337,13 +337,13 @@
     <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/06/数据库/数据库优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="icebearice">
-      <meta itemprop="description" content="后端开发 大三 暂时已找到实习啦 一家感觉技术很棒的公司 加油学习吧">
-      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="淘气的白熊">
+      <meta itemprop="name" content="Icebearice">
     </span>
 
     
@@ -458,7 +458,7 @@
       
         
           
-            <h1 id="数据库优化"><a href="#数据库优化" class="headerlink" title="数据库优化"></a>数据库优化</h1><h3 id="数据库优化的目的"><a href="#数据库优化的目的" class="headerlink" title="数据库优化的目的"></a>数据库优化的目的</h3><ol>
+            <h3 id="数据库优化的目的"><a href="#数据库优化的目的" class="headerlink" title="数据库优化的目的"></a>数据库优化的目的</h3><ol>
 <li><strong>避免出现页面访问错误</strong><ol>
 <li>由于数据库链接timeout产生的页面5xx错误</li>
 <li>由于<strong>慢查询</strong>造成页面无法加载</li>
@@ -495,7 +495,8 @@
 <p><img src="/2019/05/06/数据库/数据库优化/1557146932829.png" alt="1557146932829"></p>
 <p><img src="/2019/05/06/数据库/数据库优化/1557146963201.png" alt="1557146963201"></p>
 <h3 id="MySQL慢查日志的分析工具之-pt-query-digest"><a href="#MySQL慢查日志的分析工具之-pt-query-digest" class="headerlink" title="MySQL慢查日志的分析工具之 pt-query-digest"></a>MySQL慢查日志的分析工具之 pt-query-digest</h3><p><img src="/2019/05/06/数据库/数据库优化/1557147118735.png" alt="1557147118735"></p>
-<h5 id="纵观分析结果图1"><a href="#纵观分析结果图1" class="headerlink" title="纵观分析结果图1"></a>纵观分析结果图1</h5><p><img src="/2019/05/06/数据库/数据库优化/1557147107172.png" alt="1557147107172"></p>
+<p><strong>纵观分析结果图1</strong></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557147107172.png" alt="1557147107172"></p>
 <ol>
 <li>有显示总查询和实际普通查询的数量, 可表示查询的优化程度 </li>
 </ol>
@@ -506,11 +507,13 @@
 </ol>
 <p><img src="/2019/05/06/数据库/数据库优化/1557147634443.png" alt="1557147634443"></p>
 <p>扫描的行数大于发送的行数 说明了表的索引以及SQL语句没有优化好</p>
-<h5 id="纵观分析结果图2"><a href="#纵观分析结果图2" class="headerlink" title="纵观分析结果图2"></a>纵观分析结果图2</h5><p><img src="/2019/05/06/数据库/数据库优化/1557147352085.png" alt="1557147352085"></p>
+<p><strong>纵观分析结果图2</strong></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557147352085.png" alt="1557147352085"></p>
 <ol start="3">
 <li>按照表的调用次数和响应时间进行排序, 可明显看到哪个表是被访问的次数是最多的</li>
 </ol>
-<h5 id="纵观分析结果图3"><a href="#纵观分析结果图3" class="headerlink" title="纵观分析结果图3"></a>纵观分析结果图3</h5><p><img src="/2019/05/06/数据库/数据库优化/1557147368630.png" alt="1557147368630"></p>
+<p><strong>纵观分析结果图3</strong></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557147368630.png" alt="1557147368630"></p>
 <p><img src="/2019/05/06/数据库/数据库优化/1557147996655.png" alt="1557147996655"></p>
 <ol start="4">
 <li>针对指定sql语句的执行次数和锁持有时间 对指定sql语句进行分析</li>
@@ -547,9 +550,10 @@
 <p><img src="/2019/05/06/数据库/数据库优化/1557149941622.png" alt="1557149941622"></p>
 <p><img src="/2019/05/06/数据库/数据库优化/1557149771102.png" alt="1557149771102"></p>
 <p><img src="/2019/05/06/数据库/数据库优化/1557149746763.png" alt="1557149746763"></p>
-<h5 id="为什么join查询方式比子查询的方式速度更快呢"><a href="#为什么join查询方式比子查询的方式速度更快呢" class="headerlink" title="为什么join查询方式比子查询的方式速度更快呢?"></a>为什么join查询方式比子查询的方式速度更快呢?</h5><blockquote>
-<p>因为join查询不需要内建临时表处理. use temporary</p>
-</blockquote>
+<p><strong>为什么join查询方式比子查询的方式速度更快呢?</strong></p>
+<ul>
+<li>因为join查询不需要内建临时表处理. use temporary</li>
+</ul>
 <h3 id="Group-by的优化"><a href="#Group-by的优化" class="headerlink" title="Group by的优化"></a>Group by的优化</h3><p>优化前</p>
 <p><img src="/2019/05/06/数据库/数据库优化/1557150200596.png" alt="1557150200596"></p>
 <p><img src="/2019/05/06/数据库/数据库优化/1557150222117.png" alt="1557150222117"></p>
@@ -662,13 +666,13 @@
     <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/06/Linux/Linux硬链接与软链接/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="icebearice">
-      <meta itemprop="description" content="后端开发 大三 暂时已找到实习啦 一家感觉技术很棒的公司 加油学习吧">
-      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="淘气的白熊">
+      <meta itemprop="name" content="Icebearice">
     </span>
 
     
@@ -874,10 +878,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/uploads/avatar.png" alt="icebearice">
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Icebearice">
             
-              <p class="site-author-name" itemprop="name">icebearice</p>
-              <div class="site-description motion-element" itemprop="description">后端开发 大三 暂时已找到实习啦 一家感觉技术很棒的公司 加油学习吧</div>
+              <p class="site-author-name" itemprop="name">Icebearice</p>
+              <div class="site-description motion-element" itemprop="description">后端开发 大三学生 实习ing 比较闲情雅致的 学习ing</div>
           </div>
 
           
@@ -1087,7 +1091,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">icebearice</span>
+  <span class="author" itemprop="copyrightHolder">Icebearice</span>
 
   
 
@@ -1178,12 +1182,6 @@
 
 
 
-
-  
-    
-    
-  
-  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/libs/canvas-nest/canvas-nest.min.js"></script>
 
 
 
