@@ -363,7 +363,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/03/20/学习日记/2019.3.20 问题集/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -383,7 +383,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/" class="post-title-link" itemprop="url">11 事务&数据库连接池&DBUtils</a>
+                <a href="/2019/03/20/学习日记/2019.3.20 问题集/" class="post-title-link" itemprop="url">2019.3.20 问题集</a>
               
             
           </h1>
@@ -408,7 +408,7 @@
                 
               
 
-              <time title="创建时间：2018-11-05 11:15:12" itemprop="dateCreated datePublished" datetime="2018-11-05T11:15:12+08:00">2018-11-05 11:15:12</time>
+              <time title="创建时间：2019-03-20 21:00:00" itemprop="dateCreated datePublished" datetime="2019-03-20T21:00:00+08:00">2019-03-20 21:00:00</time>
             
 
             
@@ -462,7 +462,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DataBase/" itemprop="url" rel="index"><span itemprop="name">DataBase</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习日记/" itemprop="url" rel="index"><span itemprop="name">学习日记</span></a></span>
 
                 
                 
@@ -481,8 +481,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/" itemprop="commentCount"></span>
+                <a href="/2019/03/20/学习日记/2019.3.20 问题集/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/20/学习日记/2019.3.20 问题集/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -512,420 +512,68 @@
       
         
           
-            <h1 id="事务-amp-数据库连接池-amp-DBUtils"><a href="#事务-amp-数据库连接池-amp-DBUtils" class="headerlink" title="事务&amp;数据库连接池&amp;DBUtils"></a>事务&amp;数据库连接池&amp;DBUtils</h1><h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><blockquote>
-<p>Transaction  其实指的一组操作，里面包含许多个单一的逻辑。只要有一个逻辑没有执行成功，那么都算失败。 所有的数据都回归到最初的状态(回滚)</p>
-</blockquote>
-<ul>
-<li>为什么要有事务?</li>
-</ul>
+            <h1 id="2019-3-20-问题集"><a href="#2019-3-20-问题集" class="headerlink" title="2019.3.20 问题集"></a>2019.3.20 问题集</h1><h2 id="1-面向对象和面向过程的区别"><a href="#1-面向对象和面向过程的区别" class="headerlink" title="1. 面向对象和面向过程的区别"></a>1. 面向对象和面向过程的区别</h2><h3 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h3><p><strong>优点：</strong> 性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源;比如单片机、嵌入式开发、Linux/Unix等一般采用面向过程开发，性能是最重要的因素。</p>
+<p><strong>缺点：</strong> 没有面向对象易维护、易复用、易扩展</p>
+<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><p><strong>优点：</strong> 易维护、易复用、易扩展，由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统更加灵活、更加易于维护</p>
+<p><strong>缺点：</strong> 性能比面向过程低</p>
+<h2 id="2-Java-语言有哪些特点"><a href="#2-Java-语言有哪些特点" class="headerlink" title="2. Java 语言有哪些特点"></a>2. Java 语言有哪些特点</h2><ol>
+<li>简单易学；</li>
+<li>面向对象（封装，继承，多态）；</li>
+<li>平台无关性（ Java 虚拟机实现平台无关性）；</li>
+<li>可靠性；</li>
+<li>安全性；</li>
+<li>支持多线程（ C++ 语言没有内置的多线程机制，因此必须调用操作系统的多线程功能来进行多线程程序设计，而 Java 语言却提供了多线程支持）；</li>
+<li>支持网络编程并且很方便（ Java 语言诞生本身就是为简化网络编程设计的，因此 Java 语言不仅支持网络编程而且很方便）；</li>
+<li>编译与解释并存；</li>
+</ol>
+<h2 id="3-关于-JVM-JDK-和-JRE-最详细通俗的解答"><a href="#3-关于-JVM-JDK-和-JRE-最详细通俗的解答" class="headerlink" title="3. 关于 JVM JDK 和 JRE 最详细通俗的解答"></a>3. 关于 JVM JDK 和 JRE 最详细通俗的解答</h2><h3 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h3><p>Java虚拟机（JVM）是运行 Java 字节码的虚拟机。JVM有针对不同系统的特定实现（Windows，Linux，macOS），目的是使用相同的字节码，它们都会给出相同的结果。</p>
+<p><strong>什么是字节码?采用字节码的好处是什么?</strong></p>
 <blockquote>
-<p>为了确保逻辑的成功。 例子： 银行的转账。 </p>
+<p>在 Java 中，JVM可以理解的代码就叫做<code>字节码</code>（即扩展名为 <code>.class</code> 的文件），它不面向任何特定的处理器，只面向虚拟机。Java 语言通过字节码的方式，在一定程度上解决了传统解释型语言执行效率低的问题，同时又保留了解释型语言可移植的特点。所以 Java 程序运行时比较高效，而且，由于字节码并不专对一种特定的机器，因此，Java程序无须重新编译便可在多种不同的计算机上运行。</p>
 </blockquote>
-<h3 id="使用命令行方式演示事务。"><a href="#使用命令行方式演示事务。" class="headerlink" title="使用命令行方式演示事务。"></a>使用命令行方式演示事务。</h3><ul>
-<li><p>开启事务</p>
-<p>  start transaction;</p>
-</li>
-<li><p>提交或者回滚事务</p>
-<p>  commit; 提交事务， 数据将会写到磁盘上的数据库<br>  rollback ;  数据回滚，回到最初的状态。</p>
-</li>
-</ul>
+<p><strong>Java 程序从源代码到运行一般有下面3步：</strong></p>
+<p><a href="https://camo.githubusercontent.com/8f6eceddf64b5948c69a398d1a0e777c9c7f8e5b/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f4a6176612532302545372541382538422545352542412538462545382542462539302545382541312538432545382542462538372545372541382538422e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/8f6eceddf64b5948c69a398d1a0e777c9c7f8e5b/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f4a6176612532302545372541382538422545352542412538462545382542462539302545382541312538432545382542462538372545372541382538422e706e67" alt="Java程序运行过程"></a></p>
+<p>我们需要格外注意的是 .class-&gt;机器码 这一步。在这一步 jvm 类加载器首先加载字节码文件，然后通过解释器逐行解释执行，这种方式的执行速度会相对比较慢。而且，有些方法和代码块是经常需要被调用的，也就是所谓的热点代码，所以后面引进了 JIT 编译器，JIT 属于运行时编译。当 JIT 编译器完成第一次编译后，其会将字节码对应的机器码保存下来，下次可以直接使用。而我们知道，机器码的运行效率肯定是高于 Java 解释器的。这也解释了我们为什么经常会说 Java 是编译与解释共存的语言。</p>
+<blockquote>
+<p>HotSpot采用了惰性评估(Lazy Evaluation)的做法，根据二八定律，消耗大部分系统资源的只有那一小部分的代码（热点代码），而这也就是JIT所需要编译的部分。JVM会根据代码每次被执行的情况收集信息并相应地做出一些优化，因此执行的次数越多，它的速度就越快。JDK 9引入了一种新的编译模式AOT(Ahead of Time Compilation)，它是直接将字节码编译成机器码，这样就避免了JIT预热等各方面的开销。JDK支持分层编译和AOT协作使用。但是 ，AOT 编译器的编译质量是肯定比不上 JIT 编译器的。</p>
+</blockquote>
+<p>总结：Java虚拟机（JVM）是运行 Java 字节码的虚拟机。JVM有针对不同系统的特定实现（Windows，Linux，macOS），目的是使用相同的字节码，它们都会给出相同的结果。字节码和不同系统的 JVM 实现是 Java 语言“一次编译，随处可以运行”的关键所在。</p>
+<h3 id="JDK-和-JRE"><a href="#JDK-和-JRE" class="headerlink" title="JDK 和 JRE"></a>JDK 和 JRE</h3><p>JDK是Java Development Kit，它是功能齐全的Java SDK。它拥有JRE所拥有的一切，还有编译器（javac）和工具（如javadoc和jdb）。它能够创建和编译程序。</p>
+<p>JRE 是 Java运行时环境。它是运行已编译 Java 程序所需的所有内容的集合，包括 Java虚拟机（JVM），Java类库，java命令和其他的一些基础构件。但是，它不能用于创建新程序。</p>
+<p>如果你只是为了运行一下 Java 程序的话，那么你只需要安装 JRE 就可以了。如果你需要进行一些 Java 编程方面的工作，那么你就需要安装JDK了。但是，这不是绝对的。有时，即使您不打算在计算机上进行任何Java开发，仍然需要安装JDK。例如，如果要使用JSP部署Web应用程序，那么从技术上讲，您只是在应用程序服务器中运行Java程序。那你为什么需要JDK呢？因为应用程序服务器会将 JSP 转换为 Java servlet，并且需要使用 JDK 来编译 servlet。</p>
+<h2 id="4-Oracle-JDK-和-OpenJDK-的对比"><a href="#4-Oracle-JDK-和-OpenJDK-的对比" class="headerlink" title="4. Oracle JDK 和 OpenJDK 的对比"></a>4. Oracle JDK 和 OpenJDK 的对比</h2><p>可能在看这个问题之前很多人和我一样并没有接触和使用过 OpenJDK 。那么Oracle和OpenJDK之间是否存在重大差异？下面通过我通过我收集到一些资料对你解答这个被很多人忽视的问题。</p>
+<p>对于Java 7，没什么关键的地方。OpenJDK项目主要基于Sun捐赠的HotSpot源代码。此外，OpenJDK被选为Java 7的参考实现，由Oracle工程师维护。关于JVM，JDK，JRE和OpenJDK之间的区别，Oracle博客帖子在2012年有一个更详细的答案：</p>
+<blockquote>
+<p>问：OpenJDK存储库中的源代码与用于构建Oracle JDK的代码之间有什么区别？</p>
+<p>答：非常接近 - 我们的Oracle JDK版本构建过程基于OpenJDK 7构建，只添加了几个部分，例如部署代码，其中包括Oracle的Java插件和Java WebStart的实现，以及一些封闭的源代码派对组件，如图形光栅化器，一些开源的第三方组件，如Rhino，以及一些零碎的东西，如附加文档或第三方字体。展望未来，我们的目的是开源Oracle JDK的所有部分，除了我们考虑商业功能的部分。</p>
+</blockquote>
+<p>总结：</p>
 <ol>
-<li>关闭自动提交功能。</li>
+<li>Oracle JDK版本将每三年发布一次，而OpenJDK版本每三个月发布一次；</li>
+<li>OpenJDK 是一个参考模型并且是完全开源的，而Oracle JDK是OpenJDK的一个实现，并不是完全开源的；</li>
+<li>Oracle JDK 比 OpenJDK 更稳定。OpenJDK和Oracle JDK的代码几乎相同，但Oracle JDK有更多的类和一些错误修复。因此，如果您想开发企业/商业软件，我建议您选择Oracle JDK，因为它经过了彻底的测试和稳定。某些情况下，有些人提到在使用OpenJDK 可能会遇到了许多应用程序崩溃的问题，但是，只需切换到Oracle JDK就可以解决问题；</li>
+<li>在响应性和JVM性能方面，Oracle JDK与OpenJDK相比提供了更好的性能；</li>
+<li>Oracle JDK不会为即将发布的版本提供长期支持，用户每次都必须通过更新到最新版本获得支持来获取最新版本；</li>
+<li>Oracle JDK根据二进制代码许可协议获得许可，而OpenJDK根据GPL v2许可获得许可。</li>
 </ol>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img01.png" alt="icon"></p>
-<ol start="2">
-<li>演示事务</li>
-</ol>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img02.png" alt="icon"></p>
-<h3 id="使用代码方式演示事务"><a href="#使用代码方式演示事务" class="headerlink" title="使用代码方式演示事务"></a>使用代码方式演示事务</h3><blockquote>
-<p>代码里面的事务，主要是针对连接来的。 </p>
-<ol>
-<li>通过conn.setAutoCommit（false ）来关闭自动提交的设置。</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li>提交事务  conn.commit();</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="3">
-<li>回滚事务 conn.rollback();</li>
-</ol>
-</blockquote>
-<pre><code>@Test
-public void testTransaction(){
-
-    Connection conn = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
-    try {
-        conn = JDBCUtil.getConn();
-
-        //连接，事务默认就是自动提交的。 关闭自动提交。
-        conn.setAutoCommit(false);
-
-        String sql = &quot;update account set money = money - ? where id = ?&quot;;
-        ps = conn.prepareStatement(sql);
-
-        //扣钱， 扣ID为1 的100块钱
-        ps.setInt(1, 100);
-        ps.setInt(2, 1);
-        ps.executeUpdate();
-</code></pre><p>​<br>​            int a = 10 /0 ;<br>​<br>​            //加钱， 给ID为2 加100块钱<br>​            ps.setInt(1, -100);<br>​            ps.setInt(2, 2);<br>​            ps.executeUpdate();<br>​<br>​            //成功： 提交事务。<br>​            conn.commit();<br>​<br>​        } catch (SQLException e) {<br>​            try {<br>​                //事变： 回滚事务<br>​                conn.rollback();<br>​            } catch (SQLException e1) {<br>​                e1.printStackTrace();<br>​            }<br>​            e.printStackTrace();<br>​<br>​        }finally {<br>​            JDBCUtil.release(conn, ps, rs);<br>​        }<br>​    }</p>
-<h3 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h3><ul>
-<li>原子性</li>
-</ul>
-<blockquote>
-<p>指的是 事务中包含的逻辑，不可分割。 </p>
-</blockquote>
+<h2 id="5-Java和C-的区别"><a href="#5-Java和C-的区别" class="headerlink" title="5. Java和C++的区别"></a>5. Java和C++的区别</h2><p>我知道很多人没学过 C++，但是面试官就是没事喜欢拿咱们 Java 和 C++ 比呀！没办法！！！就算没学过C++，也要记下来！</p>
 <ul>
-<li>一致性</li>
+<li>都是面向对象的语言，都支持封装、继承和多态</li>
+<li>Java 不提供指针来直接访问内存，程序内存更加安全</li>
+<li>Java 的类是单继承的，C++ 支持多重继承；虽然 Java 的类不可以多继承，但是接口可以多继承。</li>
+<li>Java 有自动内存管理机制，不需要程序员手动释放无用内存</li>
 </ul>
-<blockquote>
-<p>指的是 事务执行前后。数据完整性</p>
-</blockquote>
-<ul>
-<li>隔离性</li>
-</ul>
-<blockquote>
-<p>指的是 事务在执行期间不应该受到其他事务的影响</p>
-</blockquote>
-<ul>
-<li>持久性</li>
-</ul>
-<blockquote>
-<p>指的是 事务执行成功，那么数据应该持久保存到磁盘上。</p>
-</blockquote>
-<h3 id="事务的安全隐患"><a href="#事务的安全隐患" class="headerlink" title="事务的安全隐患"></a>事务的安全隐患</h3><blockquote>
-<p>不考虑隔离级别设置，那么会出现以下问题。</p>
-</blockquote>
-<ul>
-<li>读<blockquote>
-<p>脏读 不可重读读  幻读.</p>
-</blockquote>
-</li>
-</ul>
-<pre><code>* 脏读
-
-&gt; 一个事务读到另外一个事务还未提交的数据
-
-* 不可重复读 
-
-&gt; 一个事务读到了另外一个事务提交的数据 ，造成了前后两次查询结果不一致。
-</code></pre><h2 id="读未提交-演示"><a href="#读未提交-演示" class="headerlink" title="##  读未提交 演示"></a>##  读未提交 演示</h2><ol>
-<li><p>设置A窗口的隔离级别为 读未提交<br><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img03.png" alt="icon"></p>
-</li>
-<li><p>两个窗口都分别开启事务</p>
-</li>
+<h2 id="6-什么是-Java-程序的主类-应用程序和小程序的主类有何不同"><a href="#6-什么是-Java-程序的主类-应用程序和小程序的主类有何不同" class="headerlink" title="6. 什么是 Java 程序的主类 应用程序和小程序的主类有何不同"></a>6. 什么是 Java 程序的主类 应用程序和小程序的主类有何不同</h2><p>一个程序中可以有多个类，但只能有一个类是主类。在 Java 应用程序中，这个主类是指包含 main（）方法的类。而在 Java 小程序中，这个主类是一个继承自系统类 JApplet 或 Applet 的子类。应用程序的主类不一定要求是 public 类，但小程序的主类要求必须是 public 类。主类是 Java 程序执行的入口点。</p>
+<h2 id="7-Java-应用程序与小程序之间有那些差别"><a href="#7-Java-应用程序与小程序之间有那些差别" class="headerlink" title="7. Java 应用程序与小程序之间有那些差别"></a>7. Java 应用程序与小程序之间有那些差别</h2><p>简单说应用程序是从主线程启动(也就是 main() 方法)。applet 小程序没有main方法，主要是嵌在浏览器页面上运行(调用init()线程或者run()来启动)，嵌入浏览器这点跟 flash 的小游戏类似。</p>
+<h2 id="8-字符型常量和字符串常量的区别"><a href="#8-字符型常量和字符串常量的区别" class="headerlink" title="8. 字符型常量和字符串常量的区别"></a>8. 字符型常量和字符串常量的区别</h2><ol>
+<li>形式上: 字符常量是单引号引起的一个字符 字符串常量是双引号引起的若干个字符</li>
+<li>含义上: 字符常量相当于一个整形值( ASCII 值),可以参加表达式运算 字符串常量代表一个地址值(该字符串在内存中存放位置)</li>
+<li>占内存大小 字符常量只占2个字节 字符串常量占若干个字节(至少一个字符结束标志) (<strong>注意： char在Java中占两个字节</strong>)</li>
 </ol>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img04.png" alt="icon"></p>
-<ul>
-<li>写</li>
-</ul>
 <blockquote>
-<p>丢失更新</p>
+<p>java编程思想第四版：2.2.2节 <a href="https://camo.githubusercontent.com/d913ab9b3880feab7d326a0904caac5f5e285a56/687474703a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f31382d392d31352f38363733353531392e6a7067" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/d913ab9b3880feab7d326a0904caac5f5e285a56/687474703a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f31382d392d31352f38363733353531392e6a7067" alt="img"></a></p>
 </blockquote>
-<h2 id="读已提交演示"><a href="#读已提交演示" class="headerlink" title="##   读已提交演示"></a>##   读已提交演示</h2><ol>
-<li>设置A窗口的隔离级别为 读已提交</li>
-</ol>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img05.png" alt="icon"></p>
-<ol start="2">
-<li>A B 两个窗口都开启事务， 在B窗口执行更新操作。</li>
-</ol>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img06.png" alt="icon"></p>
-<ol start="3">
-<li>在A窗口执行的查询结果不一致。 一次是在B窗口提交事务之前，一次是在B窗口提交事务之后。</li>
-</ol>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img07.png" alt="icon"></p>
-<blockquote>
-<p>这个隔离级别能够屏蔽 脏读的现象， 但是引发了另一个问题  ，不可重复读。</p>
-</blockquote>
-<h3 id="可串行化"><a href="#可串行化" class="headerlink" title="可串行化"></a>可串行化</h3><blockquote>
-<p>如果有一个连接的隔离级别设置为了串行化 ，那么谁先打开了事务， 谁就有了先执行的权利， 谁后打开事务，谁就只能得着，等前面的那个事务，提交或者回滚后，才能执行。  但是这种隔离级别一般比较少用。 容易造成性能上的问题。 效率比较低。</p>
-</blockquote>
-<ul>
-<li>按效率划分，从高到低</li>
-</ul>
-<blockquote>
-<p>读未提交  &gt; 读已提交  &gt; 可重复读  &gt; 可串行化</p>
-</blockquote>
-<ul>
-<li>按拦截程度 ，从高到底</li>
-</ul>
-<blockquote>
-<p>可串行化 &gt; 可重复读 &gt; 读已提交 &gt;  读未提交</p>
-</blockquote>
-<h2 id="事务总结"><a href="#事务总结" class="headerlink" title="事务总结"></a>事务总结</h2><h3 id="需要掌握的"><a href="#需要掌握的" class="headerlink" title="需要掌握的"></a>需要掌握的</h3><ol>
-<li><p>在代码里面会使用事务 </p>
-<pre><code>conn.setAutoCommit(false);
-</code></pre></li>
-</ol>
-<pre><code>conn.commit();
 
-conn.rollback();
-</code></pre><ol start="2">
-<li><p>事务只是针对连接连接对象，如果再开一个连接对象，那么那是默认的提交。</p>
-</li>
-<li><p>事务是会自动提交的。 </p>
-</li>
-</ol>
-<h3 id="需要了解的"><a href="#需要了解的" class="headerlink" title="需要了解的"></a>需要了解的</h3><h2 id="安全隐患"><a href="#安全隐患" class="headerlink" title="##  安全隐患"></a>##  安全隐患</h2><pre><code>读
-    脏读
-        一个事务读到了另一个事务未提交的数据
-    不可重复读
-        一个事务读到了另一个事务已提交的数据，造成前后两次查询结果不一致
-    幻读
-        一个事务读到了另一个事务insert的数据 ，造成前后查询结果不一致 。
-
-写
-
-    丢失更新。
-</code></pre><h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="##  隔离级别"></a>##  隔离级别</h2><p>读未提交</p>
-<blockquote>
-<p>引发问题： 脏读 </p>
-</blockquote>
-<p>读已提交</p>
-<blockquote>
-<p>解决： 脏读 ， 引发： 不可重复读</p>
-</blockquote>
-<p>可重复读</p>
-<blockquote>
-<p>解决： 脏读 、 不可重复读 ， 未解决： 幻读</p>
-</blockquote>
-<p>可串行化</p>
-<blockquote>
-<p>解决： 脏读、 不可重复读 、 幻读。</p>
-</blockquote>
-<p>mySql 默认的隔离级别是 可重复读</p>
-<p>Oracle 默认的隔离级别是  读已提交</p>
-<h3 id="丢失更新"><a href="#丢失更新" class="headerlink" title="丢失更新"></a>丢失更新</h3><p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img08.png" alt="icon"></p>
-<h3 id="解决丢失更新"><a href="#解决丢失更新" class="headerlink" title="解决丢失更新"></a>解决丢失更新</h3><ul>
-<li>悲观锁</li>
-</ul>
-<blockquote>
-<p>可以在查询的时候，加入 for update</p>
-</blockquote>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img09.png" alt="icon"></p>
-<ul>
-<li>乐观锁</li>
-</ul>
-<blockquote>
-<p>要求程序员自己控制。 </p>
-</blockquote>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img10.png" alt="icon"></p>
-<h2 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h2><blockquote>
-<ol>
-<li>数据库的连接对象创建工作，比较消耗性能。 </li>
-</ol>
-</blockquote>
-<blockquote>
-<p>2.一开始现在内存中开辟一块空间（集合） ， 一开先往池子里面放置 多个连接对象。  后面需要连接的话，直接从池子里面去。不要去自己创建连接了。  使用完毕， 要记得归还连接。确保连接对象能循环利用。</p>
-</blockquote>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img11.png" alt="icon"></p>
-<h3 id="自定义数据库连接池"><a href="#自定义数据库连接池" class="headerlink" title="自定义数据库连接池"></a>自定义数据库连接池</h3><ul>
-<li><p>代码实现</p>
-</li>
-<li><p>出现的问题：</p>
-<ol>
-<li><p>需要额外记住 addBack方法</p>
-<ol start="2">
-<li><p>单例。</p>
-</li>
-<li><p>无法面向接口编程。 </p>
-<p>UserDao dao = new UserDaoImpl();<br>dao.insert();</p>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-<pre><code>    DataSource dataSource = new MyDataSource();
-
-    因为接口里面没有定义addBack方法。 
-
-4. 怎么解决?   以addBack 为切入点。
-</code></pre><h3 id="解决自定义数据库连接池出现的问题。"><a href="#解决自定义数据库连接池出现的问题。" class="headerlink" title="解决自定义数据库连接池出现的问题。"></a>解决自定义数据库连接池出现的问题。</h3><blockquote>
-<p>由于多了一个addBack 方法，所以使用这个连接池的地方，需要额外记住这个方法，并且还不能面向接口编程。</p>
-</blockquote>
-<blockquote>
-<p>我们打算修改接口中的那个close方法。  原来的Connection对象的close方法，是真的关闭连接。<br>打算修改这个close方法，以后在调用close， 并不是真的关闭，而是归还连接对象。</p>
-</blockquote>
-<h3 id="如何扩展某一个方法"><a href="#如何扩展某一个方法" class="headerlink" title="如何扩展某一个方法?"></a>如何扩展某一个方法?</h3><blockquote>
-<p>原有的方法逻辑，不是我们想要的。 想修改自己的逻辑</p>
-</blockquote>
-<ol>
-<li><p>直接改源码  无法实现。</p>
-</li>
-<li><p>继承， 必须得知道这个接口的具体实现是谁。 </p>
-</li>
-<li><p>使用装饰者模式。 </p>
-</li>
-</ol>
-<h2 id="开源连接池"><a href="#开源连接池" class="headerlink" title="开源连接池"></a>开源连接池</h2><h2 id="DBCP"><a href="#DBCP" class="headerlink" title="##   DBCP"></a>##   DBCP</h2><ol>
-<li><p>导入jar文件</p>
-</li>
-<li><p>不使用配置文件：</p>
-</li>
-</ol>
-<pre><code>public void testDBCP01(){
-</code></pre><p>​<br>​            Connection conn = null;<br>​            PreparedStatement ps = null;<br>​            try {<br>​<br>​                //1. 构建数据源对象<br>​                BasicDataSource dataSource = new BasicDataSource();<br>​                //连的是什么类型的数据库， 访问的是哪个数据库 ， 用户名， 密码。。<br>​                //jdbc:mysql://localhost/bank 主协议：子协议 ://本地/数据库<br>​                dataSource.setDriverClassName(“com.mysql.jdbc.Driver”);<br>​                dataSource.setUrl(“jdbc:mysql://localhost/bank”);<br>​                dataSource.setUsername(“root”);<br>​                dataSource.setPassword(“root”);</p>
-<p>​<br>​                //2. 得到连接对象<br>​                conn = dataSource.getConnection();<br>​                String sql = “insert into account values(null , ? , ?)”;<br>​                ps = conn.prepareStatement(sql);<br>​                ps.setString(1, “admin”);<br>​                ps.setInt(2, 1000);<br>​<br>​                ps.executeUpdate();<br>​<br>​            } catch (SQLException e) {<br>​                e.printStackTrace();<br>​            }finally {<br>​                JDBCUtil.release(conn, ps);<br>​            }<br>​<br>​        }</p>
-<ol start="2">
-<li>使用配置文件方式：</li>
-</ol>
-<pre><code>Connection conn = null;
-PreparedStatement ps = null;
-try {
-    BasicDataSourceFactory factory = new BasicDataSourceFactory();
-    Properties properties = new Properties();
-    InputStream is = new FileInputStream(&quot;src//dbcpconfig.properties&quot;);
-    properties.load(is);
-    DataSource dataSource = factory.createDataSource(properties);
-
-    //2. 得到连接对象
-    conn = dataSource.getConnection();
-    String sql = &quot;insert into account values(null , ? , ?)&quot;;
-    ps = conn.prepareStatement(sql);
-    ps.setString(1, &quot;liangchaowei&quot;);
-    ps.setInt(2, 100);
-
-    ps.executeUpdate();
-
-} catch (Exception e) {
-    e.printStackTrace();
-}finally {
-    JDBCUtil.release(conn, ps);
-}
-</code></pre><p>​        </p>
-<ul>
-<li>C3P0</li>
-</ul>
-<blockquote>
-<p>拷贝jar文件 到 lib目录</p>
-</blockquote>
-<h3 id="不使用配置文件方式"><a href="#不使用配置文件方式" class="headerlink" title="不使用配置文件方式"></a>不使用配置文件方式</h3><pre><code>Connection conn = null;
-PreparedStatement ps = null;
-try {
-    //1. 创建datasource
-    ComboPooledDataSource dataSource = new ComboPooledDataSource();
-    //2. 设置连接数据的信息
-    dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
-
-    //忘记了---&gt; 去以前的代码 ---&gt; jdbc的文档
-    dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost/bank&quot;);
-    dataSource.setUser(&quot;root&quot;);
-    dataSource.setPassword(&quot;root&quot;);
-
-    //2. 得到连接对象
-    conn = dataSource.getConnection();
-    String sql = &quot;insert into account values(null , ? , ?)&quot;;
-    ps = conn.prepareStatement(sql);
-    ps.setString(1, &quot;admi234n&quot;);
-    ps.setInt(2, 103200);
-
-    ps.executeUpdate();
-
-} catch (Exception e) {
-    e.printStackTrace();
-}finally {
-    JDBCUtil.release(conn, ps);
-}
-</code></pre><h3 id="使用配置文件方式"><a href="#使用配置文件方式" class="headerlink" title="使用配置文件方式"></a>使用配置文件方式</h3><pre><code>//默认会找 xml 中的 default-config 分支。 
-ComboPooledDataSource dataSource = new ComboPooledDataSource();
-//2. 设置连接数据的信息
-dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
-
-
-//忘记了---&gt; 去以前的代码 ---&gt; jdbc的文档
-dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost/bank&quot;);
-dataSource.setUser(&quot;root&quot;);
-dataSource.setPassword(&quot;root&quot;);
-
-//2. 得到连接对象
-conn = dataSource.getConnection();
-String sql = &quot;insert into account values(null , ? , ?)&quot;;
-ps = conn.prepareStatement(sql);
-ps.setString(1, &quot;admi234n&quot;);
-ps.setInt(2, 103200);
-</code></pre><h2 id="DBUtils"><a href="#DBUtils" class="headerlink" title="DBUtils"></a>DBUtils</h2><h3 id="增删改"><a href="#增删改" class="headerlink" title="增删改"></a>增删改</h3><pre><code>        //dbutils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作。 不在他的考虑范围
-QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
-</code></pre><p>​<br>​        //增加<br>​        //queryRunner.update(“insert into account values (null , ? , ? )”, “aa” ,1000);<br>​<br>​        //删除<br>​        //queryRunner.update(“delete from account where id = ?”, 5);<br>​<br>​        //更新<br>​        //queryRunner.update(“update account set money = ? where id = ?”, 10000000 , 6);</p>
-<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><ol>
-<li>直接new接口的匿名实现类</li>
-</ol>
-<pre><code>QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
-
-
-Account  account =  queryRunner.query(&quot;select * from account where id = ?&quot;, new ResultSetHandler&lt;Account&gt;(){
-
-    @Override
-    public Account handle(ResultSet rs) throws SQLException {
-        Account account  =  new Account();
-        while(rs.next()){
-            String name = rs.getString(&quot;name&quot;);
-            int money = rs.getInt(&quot;money&quot;);
-
-            account.setName(name);
-            account.setMoney(money);
-        }
-        return account;
-    }
-
- }, 6);
-
-System.out.println(account.toString());
-</code></pre><ol start="2">
-<li>直接使用框架已经写好的实现类。</li>
-</ol>
-<pre><code>* 查询单个对象
-
-    QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
-    //查询单个对象
-    Account account = queryRunner.query(&quot;select * from account where id = ?&quot;, 
-            new BeanHandler&lt;Account&gt;(Account.class), 8);
-</code></pre><p>​<br>​    <em> 查询多个对象<br>​<br>​        QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());<br>​        List<account> list = queryRunner.query(“select </account></em> from account “,<br>​                new BeanListHandler<account>(Account.class));</account></p>
-<h3 id="ResultSetHandler-常用的实现类"><a href="#ResultSetHandler-常用的实现类" class="headerlink" title="ResultSetHandler 常用的实现类"></a>ResultSetHandler 常用的实现类</h3><p>以下两个是使用频率最高的</p>
-<pre><code>BeanHandler,  查询到的单个数据封装成一个对象
-BeanListHandler, 查询到的多个数据封装 成一个List&lt;对象&gt;
-</code></pre><hr>
-<pre><code>ArrayHandler,  查询到的单个数据封装成一个数组
-ArrayListHandler,  查询到的多个数据封装成一个集合 ，集合里面的元素是数组。 
-</code></pre><p>​<br>​<br>​    MapHandler,  查询到的单个数据封装成一个map<br>​    MapListHandler,查询到的多个数据封装成一个集合 ，集合里面的元素是map。 </p>
-<p>ColumnListHandler<br>KeyedHandler<br>ScalarHandler</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="事务-1"><a href="#事务-1" class="headerlink" title="事务"></a>事务</h2><pre><code>使用命令行演示
-
-使用代码演示
-</code></pre><p>脏读、</p>
-<p>不可重复读、</p>
-<p>幻读<br>丢失更新</p>
-<pre><code>悲观锁
-乐观锁
-
-4个隔离级别
-    读未提交
-    读已提交
-    可重复读
-    可串行化
-</code></pre><h2 id="数据连接池"><a href="#数据连接池" class="headerlink" title="数据连接池"></a>数据连接池</h2><ul>
-<li><p>DBCP</p>
-<p>  不使用配置</p>
-<p>  使用配置</p>
-</li>
-<li><p>C3P0</p>
-<p>  不使用配置</p>
-<p>  使用配置 （必须掌握）</p>
-</li>
-<li><p>自定义连接池 </p>
-<p>  装饰者模式</p>
-</li>
-</ul>
-<h2 id="DBUtils-1"><a href="#DBUtils-1" class="headerlink" title="DBUtils"></a>DBUtils</h2><blockquote>
-<p>简化了我们的CRUD ， 里面定义了通用的CRUD方法。 </p>
-</blockquote>
-<pre><code>queryRunner.update();
-queryRunner.query
-</code></pre>
           
         
       
@@ -981,7 +629,7 @@ queryRunner.query
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2018/11/04/前端/10.JSP EL JSTL/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/03/20/算法/求1+2+3+...+n/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -1001,7 +649,7 @@ queryRunner.query
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/11/04/前端/10.JSP EL JSTL/" class="post-title-link" itemprop="url">10 JSP&EL&JSTL</a>
+                <a href="/2019/03/20/算法/求1+2+3+...+n/" class="post-title-link" itemprop="url">求1+2+3+...+n</a>
               
             
           </h1>
@@ -1026,7 +674,7 @@ queryRunner.query
                 
               
 
-              <time title="创建时间：2018-11-04 08:25:33" itemprop="dateCreated datePublished" datetime="2018-11-04T08:25:33+08:00">2018-11-04 08:25:33</time>
+              <time title="创建时间：2019-03-20 19:15:56" itemprop="dateCreated datePublished" datetime="2019-03-20T19:15:56+08:00">2019-03-20 19:15:56</time>
             
 
             
@@ -1080,7 +728,7 @@ queryRunner.query
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指OFFER/" itemprop="url" rel="index"><span itemprop="name">剑指OFFER</span></a></span>
 
                 
                 
@@ -1099,8 +747,8 @@ queryRunner.query
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2018/11/04/前端/10.JSP EL JSTL/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/04/前端/10.JSP EL JSTL/" itemprop="commentCount"></span>
+                <a href="/2019/03/20/算法/求1+2+3+...+n/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/20/算法/求1+2+3+...+n/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1130,646 +778,14 @@ queryRunner.query
       
         
           
-            <h1 id="JSP-amp-EL-amp-JSTL"><a href="#JSP-amp-EL-amp-JSTL" class="headerlink" title="JSP &amp; EL &amp; JSTL"></a>JSP &amp; EL &amp; JSTL</h1><h1 id="jsp"><a href="#jsp" class="headerlink" title="jsp"></a>jsp</h1><blockquote>
-<p>Java Server Page </p>
+            <h1 id="求1-2-3-…-n"><a href="#求1-2-3-…-n" class="headerlink" title="求1+2+3+…+n"></a>求1+2+3+…+n</h1><blockquote>
+<p>求1+2+3+…+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。</p>
 </blockquote>
-<ul>
-<li>什么是jsp</li>
-</ul>
-<blockquote>
-<p>从用户角度看待 ，就是是一个网页 ， 从程序员角度看待 ， 其实是一个java类， 它继承了servlet，所以可以直接说jsp 就是一个Servlet.</p>
-</blockquote>
-<ul>
-<li>为什么会有jsp?</li>
-</ul>
-<blockquote>
-<p>html 多数情况下用来显示静态内容 ， 一成不变的。 但是有时候我们需要在网页上显示一些动态数据， 比如： 查询所有的学生信息， 根据姓名去查询具体某个学生。  这些动作都需要去查询数据库，然后在网页上显示。 html是不支持写java代码  ， jsp里面可以写java代码。 </p>
-</blockquote>
-<h2 id="怎么用JSP"><a href="#怎么用JSP" class="headerlink" title="怎么用JSP"></a>怎么用JSP</h2><h3 id="指令写法"><a href="#指令写法" class="headerlink" title="指令写法"></a>指令写法</h3><p>&lt;%@ 指令名字 %&gt;</p>
-<h3 id="page指令"><a href="#page指令" class="headerlink" title="page指令"></a>page指令</h3><ul>
-<li>language</li>
-</ul>
-<blockquote>
-<p>表明jsp页面中可以写java代码</p>
-</blockquote>
-<ul>
-<li>contentType</li>
-</ul>
-<blockquote>
-<p>其实即使说这个文件是什么类型，告诉浏览器我是什么内容类型，以及使用什么编码</p>
-</blockquote>
-<pre><code>contentType=&quot;text/html; charset=UTF-8&quot;
-
-text/html  MIMEType 这是一个文本，html网页
-</code></pre><ul>
-<li><p>pageEncoding  jsp内容编码</p>
-</li>
-<li><p>extends 用于指定jsp翻译成java文件后，继承的父类是谁，一般不用改。</p>
-</li>
-<li><p>import 导包使用的，一般不用手写。</p>
-</li>
-<li><p>session </p>
-</li>
-</ul>
-<blockquote>
-<p>值可选的有true or false .</p>
-</blockquote>
-<blockquote>
-<p>用于控制在这个jsp页面里面，能够直接使用session对象。</p>
-</blockquote>
-<blockquote>
-<p>具体的区别是，请看翻译后的java文件   如果该值是true , 那么在代码里面会有getSession（）的调用，如果是false :  那么就不会有该方法调用，也就是没有session对象了。在页面上自然也就不能使用session了。</p>
-</blockquote>
-<ul>
-<li>errorPage</li>
-</ul>
-<blockquote>
-<p>指的是错误的页面， 值需要给错误的页面路径</p>
-</blockquote>
-<ul>
-<li>isErrorPage</li>
-</ul>
-<blockquote>
-<p>上面的errorPage 用于指定错误的时候跑到哪一个页面去。 那么这个isErroPage , 就是声明某一个页面到底是不是错误的页面。</p>
-</blockquote>
-<h3 id="include"><a href="#include" class="headerlink" title="include"></a>include</h3><blockquote>
-<p>包含另外一个jsp的内容进来。</p>
-</blockquote>
-<pre><code>&lt;%@ include file=&quot;other02.jsp&quot;%&gt;
-</code></pre><ul>
-<li>背后细节:</li>
-</ul>
-<blockquote>
-<p>把另外一个页面的所有内容拿过来一起输出。 所有的标签元素都包含进来。</p>
-</blockquote>
-<h3 id="taglib"><a href="#taglib" class="headerlink" title="taglib"></a>taglib</h3><pre><code> &lt;%@ taglib prefix=&quot;&quot;  uri=&quot;&quot;%&gt;  
-
-uri: 标签库路径
-prefix : 标签库的别名  
-</code></pre><h2 id="JSP-动作标签"><a href="#JSP-动作标签" class="headerlink" title="JSP 动作标签"></a>JSP 动作标签</h2><pre><code>&lt;jsp:include page=&quot;&quot;&gt;&lt;/jsp:include&gt;
-&lt;jsp:param value=&quot;&quot; name=&quot;&quot;/&gt;
-&lt;jsp:forward page=&quot;&quot;&gt;&lt;/jsp:forward&gt;
-</code></pre><ul>
-<li><p>jsp:include</p>
-<p>&lt;jsp:include page=”other02.jsp”&gt;&lt;/jsp:include&gt;</p>
-</li>
-</ul>
-<blockquote>
-<p>包含指定的页面， 这里是动态包含。 也就是不把包含的页面所有元素标签全部拿过来输出，而是把它的运行结果拿过来。 </p>
-</blockquote>
-<ul>
-<li><p>jsp:forward</p>
-<pre><code>&lt;jsp:forward page=&quot;&quot;&gt;&lt;/jsp:forward&gt;
-</code></pre></li>
-</ul>
-<blockquote>
-<p>前往哪一个页面。  </p>
-</blockquote>
-<pre><code>&lt;% 
-    //请求转发
-    request.getRequestDispatcher(&quot;other02.jsp&quot;).forward(request, response);
-%&gt;    
-</code></pre><ul>
-<li>jsp:param</li>
-</ul>
-<blockquote>
-<p>意思是： 在包含某个页面的时候，或者在跳转某个页面的时候，加入这个参数。</p>
-</blockquote>
-<p>​<br>​    &lt;jsp:forward page=”other02.jsp”&gt;<br>​        &lt;jsp:param value=”beijing” name=”address”/&gt;<br>​    &lt;/jsp:forward&gt;<br>​<br>​    在other02.jsp中获取参数</p>
-<pre><code>&lt;br&gt;收到的参数是：&lt;br&gt;
-
-&lt;%= request.getParameter(&quot;address&quot;)%&gt;
-</code></pre><h2 id="JSP内置对象"><a href="#JSP内置对象" class="headerlink" title="JSP内置对象"></a>JSP内置对象</h2><blockquote>
-<p>所谓内置对象，就是我们可以直接在jsp页面中使用这些对象。 不用创建。</p>
-</blockquote>
-<ul>
-<li>pageContext</li>
-<li>request</li>
-<li>session</li>
-<li>application</li>
-</ul>
-<p>以上4个是作用域对象 , </p>
-<ul>
-<li>作用域 </li>
-</ul>
-<blockquote>
-<p>表示这些对象可以存值，他们的取值范围有限定。  setAttribute   和  getAttribute</p>
-</blockquote>
-<pre><code>使用作用域来存储数据&lt;br&gt;
-
-&lt;%
-    pageContext.setAttribute(&quot;name&quot;, &quot;page&quot;);
-    request.setAttribute(&quot;name&quot;, &quot;request&quot;);
-    session.setAttribute(&quot;name&quot;, &quot;session&quot;);
-    application.setAttribute(&quot;name&quot;, &quot;application&quot;);
-%&gt;
-
-取出四个作用域中的值&lt;br&gt;
-
-&lt;%=pageContext.getAttribute(&quot;name&quot;)%&gt;
-&lt;%=request.getAttribute(&quot;name&quot;)%&gt;
-&lt;%=session.getAttribute(&quot;name&quot;)%&gt;
-&lt;%=application.getAttribute(&quot;name&quot;)%&gt;
-</code></pre><p>作用域范围大小：</p>
-<pre><code>pageContext -- request --- session -- application 
-</code></pre><h3 id="四个作用域的区别"><a href="#四个作用域的区别" class="headerlink" title="四个作用域的区别"></a>四个作用域的区别</h3><ul>
-<li>pageContext 【PageContext】</li>
-</ul>
-<blockquote>
-<p>作用域仅限于当前的页面。  </p>
-</blockquote>
-<blockquote>
-<p>还可以获取到其他八个内置对象。</p>
-</blockquote>
-<ul>
-<li>request 【HttpServletRequest】</li>
-</ul>
-<blockquote>
-<p>作用域仅限于一次请求， 只要服务器对该请求做出了响应。 这个域中存的值就没有了。</p>
-</blockquote>
-<ul>
-<li>session 【HttpSession】</li>
-</ul>
-<blockquote>
-<p>作用域限于一次会话（多次请求与响应） 当中。 </p>
-</blockquote>
-<ul>
-<li>application 【ServletContext】</li>
-</ul>
-<blockquote>
-<p>整个工程都可以访问， 服务器关闭后就不能访问了。 </p>
-</blockquote>
-<ul>
-<li>out         【JspWriter】<ul>
-<li>response  【HttpServletResponse】</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2018/11/04/前端/10.JSP EL JSTL/img01.png" alt="icon"></p>
-<ul>
-<li>exception  【Throwable】<ul>
-<li>page     【Object】 —就是这个jsp翻译成的java类的实例对象<ul>
-<li>config 【ServletConfig】</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h2><blockquote>
-<p>是为了简化咱们的jsp代码，具体一点就是为了简化在jsp里面写的那些java代码。</p>
-</blockquote>
-<ul>
-<li>写法格式</li>
-</ul>
-<p>${表达式 }</p>
-<blockquote>
-<p>如果从作用域中取值，会先从小的作用域开始取，如果没有，就往下一个作用域取。  一直把四个作用域取完都没有， 就没有显示。</p>
-</blockquote>
-<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><h3 id="1-取出4个作用域中存放的值。"><a href="#1-取出4个作用域中存放的值。" class="headerlink" title="1. 取出4个作用域中存放的值。"></a>1. 取出4个作用域中存放的值。</h3><pre><code>&lt;%
-    pageContext.setAttribute(&quot;name&quot;, &quot;page&quot;);
-    request.setAttribute(&quot;name&quot;, &quot;request&quot;);
-    session.setAttribute(&quot;name&quot;, &quot;session&quot;);
-    application.setAttribute(&quot;name&quot;, &quot;application&quot;);
-%&gt;
-
-按普通手段取值&lt;br&gt;
-
-&lt;%= pageContext.getAttribute(&quot;name&quot;)%&gt;
-&lt;%= request.getAttribute(&quot;name&quot;)%&gt;
-&lt;%= session.getAttribute(&quot;name&quot;)%&gt;
-&lt;%= application.getAttribute(&quot;name&quot;)%&gt;
-
-&lt;br&gt;使用EL表达式取出作用域中的值&lt;br&gt;
-
-${ pageScope.name }
-${ requestScope.name }
-${ sessionScope.name }
-${ applicationScope.name }
-</code></pre><ol start="2">
-<li><p>如果域中所存的是数组</p>
-<pre><code>&lt;%
-       String [] a = {&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot;dd&quot;};
-       pageContext.setAttribute(&quot;array&quot;, a);
-   %&gt;
-
-使用EL表达式取出作用域中数组的值&lt;br&gt;
-
-${array[0] } , ${array[1] },${array[2] },${array[3] }
-</code></pre></li>
-</ol>
-<ol start="3">
-<li>如果域中锁存的是集合</li>
-</ol>
-<pre><code>使用EL表达式取出作用域中集合的值&lt;br&gt;
-
-${li[0] } , ${li[1] },${li[2] },${li[3] }
-
-&lt;br&gt;-------------Map数据----------------&lt;br&gt;
-&lt;%
-    Map map = new HashMap();
-    map.put(&quot;name&quot;, &quot;zhangsna&quot;);
-    map.put(&quot;age&quot;,18);
-    map.put(&quot;address&quot;,&quot;北京..&quot;);
-
-    map.put(&quot;address.aa&quot;,&quot;深圳..&quot;);
-
-
-    pageContext.setAttribute(&quot;map&quot;, map);
-%&gt;
-</code></pre><ol start="4">
-<li><p>取出Map集合的值</p>
-<pre><code>&lt;%
-       Map map = new HashMap();
-       map.put(&quot;name&quot;, &quot;zhangsna&quot;);
-       map.put(&quot;age&quot;,18);
-       map.put(&quot;address&quot;,&quot;北京..&quot;);
-
-    map.put(&quot;address.aa&quot;,&quot;深圳..&quot;);
-</code></pre></li>
-</ol>
-<pre><code>    pageContext.setAttribute(&quot;map&quot;, map);
-%&gt;
-使用EL表达式取出作用域中Map的值&lt;br&gt;
-
-${map.name } , ${map.age } , ${map.address }  , ${map[&quot;address.aa&quot;] }
-</code></pre><h3 id="取值细节："><a href="#取值细节：" class="headerlink" title="取值细节："></a>取值细节：</h3><ol>
-<li><p>从域中取值。  得先存值。<br>&lt;%</p>
-<pre><code>//pageContext.setAttribute(&quot;name&quot;, &quot;zhangsan&quot;);
-session.setAttribute(&quot;name&quot;, &quot;lisi...&quot;);
-</code></pre><p>%&gt;</p>
-<p><br>直接指定说了，到这个作用域里面去找这个name<br><br>${ pageScope.name } </p>
-</li>
-</ol>
-<p>   <br>//先从page里面找，没有去request找，去session，去application <br><br>   ${ name }</p>
-<p>   <br>指定从session中取值<br><br>   ${ sessionScope.name }  </p>
-<ol start="2">
-<li>取值方式</li>
-</ol>
-<p>如果这份值是有下标的，那么直接使用[]</p>
-<pre><code>&lt;%
-    String [] array = {&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;}
-    session.setAttribute(&quot;array&quot;,array);
-%&gt;
-
-
-${ array[1] } --&gt; 这里array说的是attribute的name 
-</code></pre><p>如果没有下标， 直接使用 .的方式去取</p>
-<pre><code>&lt;%
-    User user = new User(&quot;zhangsan&quot;,18);
-
-    session.setAttribute(&quot;u&quot;, user);
-%&gt;
-
-${ u.name }  , ${ u.age } 
-</code></pre><blockquote>
-<p>一般使用EL表达式，用的比较多的，都是从一个对象中取出它的属性值，比如取出某一个学生的姓名。</p>
-</blockquote>
-<h2 id="EL表达式-的11个内置对象。"><a href="#EL表达式-的11个内置对象。" class="headerlink" title="EL表达式 的11个内置对象。"></a>EL表达式 的11个内置对象。</h2><p>${ 对象名.成员 }</p>
-<ul>
-<li>pageContext </li>
-</ul>
-<p>作用域相关对象</p>
-<ul>
-<li>pageScope</li>
-<li>requestScope</li>
-<li>sessionScope</li>
-<li>applicationScope</li>
-</ul>
-<p>头信息相关对象</p>
-<ul>
-<li>header</li>
-<li>headerValues</li>
-</ul>
-<p>参数信息相关对象</p>
-<ul>
-<li>param</li>
-<li>paramValues</li>
-</ul>
-<ul>
-<li>cookie<br>全局初始化参数</li>
-<li>initParam</li>
-</ul>
-<h2 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h2><blockquote>
-<p>全称 ： JSP Standard Tag Library  jsp标准标签库</p>
-</blockquote>
-<blockquote>
-<p>简化jsp的代码编写。 替换 &lt;%%&gt; 写法。 一般与EL表达式配合</p>
-</blockquote>
-<h3 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h3><ol>
-<li><p>导入jar文件到工程的WebContent/Web-Inf/lib  jstl.jar standard.jar</p>
-</li>
-<li><p>在jsp页面上，使用taglib 指令，来引入标签库</p>
-</li>
-<li><p>注意： 如果想支持 EL表达式，那么引入的标签库必须选择1.1的版本，1.0的版本不支持EL表达式。</p>
-</li>
-</ol>
-<pre><code>&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;
-</code></pre><h3 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h3><p>&lt;c:set&gt;&lt;/c:set&gt;<br>&lt;c:if test=””&gt;&lt;/c:if&gt;<br>&lt;c:forEach&gt;&lt;/c:forEach&gt;</p>
-<ul>
-<li>c:set</li>
-</ul>
-<pre><code>&lt;!-- 声明一个对象name， 对象的值 zhangsan , 存储到了page（默认） ， 指定是session --&gt;
-&lt;c:set var=&quot;name&quot; value=&quot;zhangsan&quot; scope=&quot;session&quot;&gt;&lt;/c:set&gt;
-
-${sessionScope.name }
-</code></pre><ul>
-<li>c:if</li>
-</ul>
-<blockquote>
-<p>判断test里面的表达式是否满足，如果满足，就执行c:if标签中的输出 ， c:if 是没有else的。 </p>
-</blockquote>
-<pre><code>&lt;c:set var=&quot;age&quot; value=&quot;18&quot; &gt;&lt;/c:set&gt;
-&lt;c:if test=&quot;${ age &gt; 26 }&quot;&gt;
-    年龄大于了26岁...
-&lt;/c:if&gt;
-
-&lt;c:if test=&quot;${ age &lt;= 26 }&quot;&gt;
-    年龄小于了26岁...
-&lt;/c:if&gt;
-
-
-------------------------------
-
-定义一个变量名 flag  去接收前面表达式的值，然后存在session域中
-
-&lt;c:if test=&quot;${ age &gt; 26 }&quot; var=&quot;flag&quot; scope=&quot;session&quot;&gt;
-    年龄大于了26岁...
-&lt;/c:if&gt;
-</code></pre><ul>
-<li>c:forEach</li>
-</ul>
-<pre><code>从1 开始遍历到10 ，得到的结果 ，赋值给 i ,并且会存储到page域中， step , 增幅为2， 
-&lt;c:forEach begin=&quot;1&quot; end=&quot;10&quot; var=&quot;i&quot; step=&quot;2&quot;&gt;
-    ${i }
-&lt;/c:forEach&gt;
-
-
------------------------------------------------
-
-&lt;!-- items : 表示遍历哪一个对象，注意，这里必须写EL表达式。 
-var: 遍历出来的每一个元素用user 去接收。 --&gt;
-&lt;c:forEach var=&quot;user&quot; items=&quot;${list }&quot;&gt;
-    ${user.name } ----${user.age }
-&lt;/c:forEach&gt;
-</code></pre><h2 id="学生信息管理系统"><a href="#学生信息管理系统" class="headerlink" title="学生信息管理系统"></a>学生信息管理系统</h2><ul>
-<li>需求分析</li>
-</ul>
-<p><img src="/2018/11/04/前端/10.JSP EL JSTL/img02.png" alt="icon"></p>
-<ol>
-<li><p>先写 login.jsp , 并且搭配一个LoginServlet 去获取登录信息。</p>
-</li>
-<li><p>创建用户表， 里面只要有id , username  和 password</p>
-</li>
-<li><p>创建UserDao, 定义登录的方法 </p>
-<pre><code>/**
-</code></pre><ul>
-<li><p>该dao定义了对用户表的访问规则<br> */<br>public interface UserDao {</p>
-<pre><code>/**
-</code></pre><ul>
-<li>这里简单就返回一个Boolean类型， 成功或者失败即可。<ul>
-<li>​</li>
-<li>但是开发的时候，登录的方法，一旦成功。这里应该返回该用户的个人信息</li>
-<li>@param userName </li>
-<li>@param password</li>
-<li>​</li>
-<li>@return true : 登录成功， false : 登录失败。<br> */<br>  boolean login(String userName , String password);<br>  }</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<ol start="4">
-<li>创建UserDaoImpl , 实现刚才定义的登录方法。</li>
-</ol>
-<pre><code>public class UserDaoImpl implements UserDao {
-
-    @Override
-    public boolean login(String userName , String password) {
-
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs   = null;
-        try {
-            //1. 得到连接对象
-            conn = JDBCUtil.getConn();
-
-            String sql = &quot;select * from t_user where username=? and password=?&quot;;
-
-            //2. 创建ps对象
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, userName);
-            ps.setString(2, password);
-
-
-            //3. 开始执行。
-            rs = ps.executeQuery();
-
-            //如果能够成功移到下一条记录，那么表明有这个用户。 
-            return rs.next();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            JDBCUtil.release(conn, ps, rs);
-        }
-        return false;
-    }
-
-}
-</code></pre><ol start="5">
-<li><p>在LoginServlet里面访问UserDao， 判断登录结果。 以区分对待</p>
-</li>
-<li><p>创建stu_list.jsp , 让登录成功的时候跳转过去。</p>
-</li>
-<li><p>创建学生表 ， 里面字段随意。 </p>
-</li>
-<li><p>定义学生的Dao . StuDao  </p>
-</li>
-</ol>
-<pre><code>public interface StuDao {
-
-    /**
-     * 查询出来所有的学生信息
-     * @return List集合
-     */
-    List&lt;Student&gt; findAll();
-}
-</code></pre><ol start="9">
-<li><p>对上面定义的StuDao 做出实现 StuDaoImpl</p>
-<pre><code>public class StuDaoImpl implements StuDao {
-
-    @Override
-    public List&lt;Student&gt; findAll() {
-        List&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs   = null;
-        try {
-            //1. 得到连接对象
-            conn = JDBCUtil.getConn();
-
-            String sql = &quot;select * from t_stu&quot;;
-
-            ps = conn.prepareStatement(sql);
-
-            rs = ps.executeQuery();
-</code></pre></li>
-</ol>
-<p>   ​<br>                   //数据多了，用对象装， 对象也多了呢？ 用集合装。<br>                   while(rs.next()){ //10 次 ，10个学生</p>
-<pre><code>                Student stu = new Student();
-
-                stu.setId(rs.getInt(&quot;id&quot;));
-                stu.setAge(rs.getInt(&quot;age&quot;));
-                stu.setName(rs.getString(&quot;name&quot;));
-                stu.setGender(rs.getString(&quot;gender&quot;));
-                stu.setAddress(rs.getString(&quot;address&quot;));
-
-                list.add(stu);
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            JDBCUtil.release(conn, ps, rs);
-        }
-
-        return list;
-    }
-
-}
-</code></pre><ol start="10">
-<li><p>在登录成功的时候，完成三件事情。</p>
-</li>
-<li><p>查询所有的学生</p>
-<ol start="2">
-<li><p>把这个所有的学生集合存储到作用域中。</p>
-</li>
-<li><p>跳转到stu_list.jsp</p>
-</li>
-</ol>
-</li>
-</ol>
-<pre><code>    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    //提交的数据有可能有中文， 怎么处理。
-    request.setCharacterEncoding(&quot;UTF-8&quot;);
-    response.setContentType(&quot;text/html;charset=utf-8&quot;);
-
-    //1. 获取客户端提交的信息
-    String userName = request.getParameter(&quot;username&quot;);
-    String password = request.getParameter(&quot;password&quot;);
-
-    //2. 去访问dao ， 看看是否满足登录。
-    UserDao dao = new UserDaoImpl();
-    boolean isSuccess = dao.login(userName, password);
-
-    //3. 针对dao的返回结果，做出响应
-    if(isSuccess){
-        //response.getWriter().write(&quot;登录成功.&quot;);
-
-        //1. 查询出来所有的学生信息。
-        StuDao stuDao = new StuDaoImpl();
-        List&lt;Student&gt; list = stuDao.findAll();
-
-        //2. 先把这个集合存到作用域中。
-        request.getSession().setAttribute(&quot;list&quot;, list);
-
-        //2. 重定向
-        response.sendRedirect(&quot;stu_list.jsp&quot;);
-
-    }else{
-        response.getWriter().write(&quot;用户名或者密码错误！&quot;);
-    }
-}
-</code></pre><ol start="11">
-<li>在stu_list.jsp中，取出域中的集合，然后使用c标签 去遍历集合。 </li>
-</ol>
-<pre><code>    &lt;table border=&quot;1&quot; width=&quot;700&quot;&gt;
-    &lt;tr align=&quot;center&quot;&gt;
-        &lt;td&gt;编号&lt;/td&gt;
-        &lt;td&gt;姓名&lt;/td&gt;
-        &lt;td&gt;年龄&lt;/td&gt;
-        &lt;td&gt;性别&lt;/td&gt;
-        &lt;td&gt;住址&lt;/td&gt;
-        &lt;td&gt;操作&lt;/td&gt;
-    &lt;/tr&gt;
-
-    &lt;c:forEach items=&quot;${list }&quot; var=&quot;stu&quot;&gt;
-        &lt;tr align=&quot;center&quot;&gt;
-            &lt;td&gt;${stu.id }&lt;/td&gt;
-            &lt;td&gt;${stu.name }&lt;/td&gt;
-            &lt;td&gt;${stu.age }&lt;/td&gt;
-            &lt;td&gt;${stu.gender }&lt;/td&gt;
-            &lt;td&gt;${stu.address }&lt;/td&gt;
-            &lt;td&gt;&lt;a href=&quot;# &quot;&gt;更新&lt;/a&gt;   &lt;a href=&quot;# &quot;&gt;删除&lt;/a&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/c:forEach&gt;
-&lt;/table&gt;
-</code></pre><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ul>
-<li><p>JSP</p>
-<pre><code>三大指令
-
-    page
-    include
-    taglib
-
-三个动作标签
-    &lt;jsp:include&gt;
-    &lt;jsp:forward&gt;
-    &lt;jsp:param&gt;
-</code></pre></li>
-</ul>
-<pre><code>九个内置对象
-
-    四个作用域
-        pageContext
-        request
-        session
-        application
-
-    out
-    exception
-    response
-    page
-    config
-</code></pre><p>​            </p>
-<ul>
-<li><p>EL</p>
-<p>${ 表达式 }</p>
-<p>取4个作用域中的值</p>
-<pre><code>${ name }
-</code></pre><p>有11个内置对象。</p>
-<pre><code>pageContext
-
-pageScope
-requestScope
-sessionScope
-applicationScope
-
-header
-headerValues
-
-param
-paramValues
-
-cookie
-initParam
-</code></pre></li>
-<li><p>JSTL</p>
-</li>
-</ul>
-<blockquote>
-<p>使用1.1的版本， 支持EL表达式， 1.0不支持EL表达式</p>
-</blockquote>
-<blockquote>
-<p>拷贝jar包， 通过taglib 去引入标签库</p>
-</blockquote>
-<pre><code>&lt;c:set&gt;
-&lt;c:if&gt;
-&lt;c:forEach&gt;
-</code></pre><p>​    </p>
+<p>1 递归加到0之后 如何停止程序</p>
+<p>​    通过短路运算符&amp;&amp;使sum停止累加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过运算符 以及一些判断</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Sum_Solution</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = n;</span><br><span class="line">        <span class="keyword">boolean</span> temp = n &gt; <span class="number">0</span> &amp;&amp; (sum += Sum_Solution(n - <span class="number">1</span>)) &gt; <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2 使用try catch制造在n=0时可能有的异常, 让异常来终端程序执行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 0不能为分母</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Sum_Solution</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">1</span> % n;</span><br><span class="line">            sum = n + Sum_Solution(n - <span class="number">1</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1815,7 +831,7 @@ initParam
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1859,7 +875,7 @@ initParam
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1916,7 +932,11 @@ initParam
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1969,7 +989,11 @@ initParam
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2081,7 +1105,7 @@ initParam
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共42k字</span>
+  <span class="post-count">博客全站共48.4k字</span>
 </div>
         
 <div class="busuanzi-count">

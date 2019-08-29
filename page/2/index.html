@@ -363,7 +363,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/08/Java/关于Java内存泄漏的思考/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/07/29/笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -383,7 +383,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/08/Java/关于Java内存泄漏的思考/" class="post-title-link" itemprop="url">关于Java内存泄漏的思考</a>
+                <a href="/2019/07/29/笔记/" class="post-title-link" itemprop="url">笔记</a>
               
             
           </h1>
@@ -405,15 +405,27 @@
               
 
              
-             
-             
+                
+              
 
-              <time title="创建时间：2019-05-08 10:16:23 / 修改时间：10:18:19" itemprop="dateCreated datePublished" datetime="2019-05-08T10:16:23+08:00">2019-05-08 10:16:23</time>
+              <time title="创建时间：2019-07-29 22:15:43" itemprop="dateCreated datePublished" datetime="2019-07-29T22:15:43+08:00">2019-07-29 22:15:43</time>
             
 
             
               
             <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-07-30 22:58:04" itemprop="dateModified" datetime="2019-07-30T22:58:04+08:00">2019-07-30</time> 
               -->
               <!-- new version -->
                         
@@ -428,8 +440,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-05-08T10:18:19+08:00" content="2019-05-08">
-                2019-05-08 10:18:19
+              <time itemprop="dateUpdated" datetime="2019-07-30T22:58:04+08:00" content="2019-07-30">
+                2019-07-30 22:58:04
               </time>
             </span>
           
@@ -438,24 +450,6 @@
 
 
           
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -469,8 +463,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/08/Java/关于Java内存泄漏的思考/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/08/Java/关于Java内存泄漏的思考/" itemprop="commentCount"></span>
+                <a href="/2019/07/29/笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/29/笔记/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -500,17 +494,11 @@
       
         
           
-            <h1 id="关于Java内存泄漏的思考"><a href="#关于Java内存泄漏的思考" class="headerlink" title="关于Java内存泄漏的思考"></a>关于Java内存泄漏的思考</h1><h3 id="Java内存回收的机制"><a href="#Java内存回收的机制" class="headerlink" title="Java内存回收的机制"></a>Java内存回收的机制</h3><p>Java虚拟机针对垃圾回收有一套自己的良好的机制, 但是, 即便在Java看似完美的垃圾回收机制下, 除了内存溢出 Out of memory 和 堆栈溢出 Stack overflow 两大异常之外, 其实还有内存溢出 Memory leak的现象</p>
-<h3 id="Java内存泄露引起的原因"><a href="#Java内存泄露引起的原因" class="headerlink" title="Java内存泄露引起的原因"></a>Java内存泄露引起的原因</h3><p>内存泄漏是指无用对象(不再使用的对象)持续占有内存或无用对象得不到内存释放, 从而造成的内存空间的浪费称为内存泄漏.</p>
-<p>内存泄漏不严重的时候, 根本察觉不到, 但严重时, JVM会抛出Out of memory的异常</p>
-<h4 id="根本原因"><a href="#根本原因" class="headerlink" title="根本原因"></a>根本原因</h4><p>长生命周期对象对短生命周期对象的引用, 导致内存泄漏</p>
-<p>尽管短生命周期已经不需要再被使用, 但长生命周期对象持有对它的引用而导致JVM不能对其进行回收, 造成内存泄漏</p>
-<ol>
-<li><p>静态集合类的内存泄漏</p>
-<p>静态集合类Static Vector 或者 Static HashMap 的生命周期和应用程序是一致的, 他们所引用的所有的对象Object也不能被释放</p>
-</li>
+            <h3 id="问题集"><a href="#问题集" class="headerlink" title="问题集"></a>问题集</h3><ol>
+<li>restful orm 面向接口编程 等多种编程过程的区别</li>
+<li>maven的整体结构</li>
+<li>classpath是哪里 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Static Vector v = <span class="keyword">new</span> Vector(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;<span class="number">100</span>; i++) &#123;</span><br><span class="line">	Object o = <span class="keyword">new</span> Object();</span><br><span class="line">	v.add(o);</span><br><span class="line">	o = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -567,7 +555,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/07/并发/并发常见方法/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/07/24/近期需要整理的各种知识体系/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -587,7 +575,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/07/并发/并发常见方法/" class="post-title-link" itemprop="url">并发常见方法</a>
+                <a href="/2019/07/24/近期需要整理的各种知识体系/" class="post-title-link" itemprop="url">近期需要整理的各种知识体系</a>
               
             
           </h1>
@@ -609,34 +597,12 @@
               
 
              
-             
-             
-
-              <time title="创建时间：2019-05-07 16:36:03 / 修改时间：16:36:59" itemprop="dateCreated datePublished" datetime="2019-05-07T16:36:03+08:00">2019-05-07 16:36:03</time>
-            
-
-            
+                
               
-            <!--  old version
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
 
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-05-07T16:36:59+08:00" content="2019-05-07">
-                2019-05-07 16:36:59
-              </time>
-            </span>
-          
+              <time title="创建时间：2019-07-24 22:00:36" itemprop="dateCreated datePublished" datetime="2019-07-24T22:00:36+08:00">2019-07-24 22:00:36</time>
+            
+
             
           </span>
 
@@ -654,7 +620,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/日记/" itemprop="url" rel="index"><span itemprop="name">日记</span></a></span>
 
                 
                 
@@ -673,8 +639,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/07/并发/并发常见方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/07/并发/并发常见方法/" itemprop="commentCount"></span>
+                <a href="/2019/07/24/近期需要整理的各种知识体系/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/24/近期需要整理的各种知识体系/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -704,51 +670,61 @@
       
         
           
-            <h1 id="并发常见方法"><a href="#并发常见方法" class="headerlink" title="并发常见方法"></a>并发常见方法</h1><h3 id="sleep方法"><a href="#sleep方法" class="headerlink" title="sleep方法"></a>sleep方法</h3><p>sleep是Thread类的静态方法, 暂停当前线程的活动, 休眠指定的毫秒数, 会抛出InterruptedException异常</p>
-<h3 id="run方法"><a href="#run方法" class="headerlink" title="run方法"></a>run方法</h3><p>Runnable是接口, 实现多线程的方式之一, 直接调用run方法, 只会执行同一线程中的任务, 而不会启动新线程. </p>
-<h3 id="start方法"><a href="#start方法" class="headerlink" title="start方法"></a>start方法</h3><p>调用Thread.start方法, 这个方法将创建一个执行run方法的新线程, 在底层创建新线程之后, 会执行run方法</p>
-<h3 id="return方法"><a href="#return方法" class="headerlink" title="return方法"></a>return方法</h3><p>正常结束, 或者中断进程</p>
-<h3 id="Stop方法"><a href="#Stop方法" class="headerlink" title="Stop方法"></a>Stop方法</h3><p>其他线程可以调用它终止线程, 已被弃用, 弃用的原因是 stop方法是终止当前线程所有未结束的方法, 当线程被终止时, 立即释放所有相关对象的锁, 导致对象处于与原来不一致的状态, 且无法还原</p>
-<h3 id="Suspend方法"><a href="#Suspend方法" class="headerlink" title="Suspend方法"></a>Suspend方法</h3><p>挂起一个持有一个锁的线程, 不释放锁, 该锁在回复之前都是不可用的, 很容易造成死锁</p>
-<h3 id="resume方法"><a href="#resume方法" class="headerlink" title="resume方法"></a>resume方法</h3><p>唤醒一个被挂起的线程, 该方法在suspend方法后调用</p>
-<h3 id="线程运行的状态"><a href="#线程运行的状态" class="headerlink" title="线程运行的状态"></a>线程运行的状态</h3><ul>
-<li>new 新创建</li>
-<li>runnable 可运行 一旦启用start方法,  线程则处于runnable状态 可运行分为 <ul>
-<li>正在运行</li>
-<li>没有运行 没有运行则可能是 以下三种状态的一种<ul>
-<li>blocked 阻塞 请求锁 得到锁后 变成可运行状态</li>
-<li>waiting 等待 等待通知 被通知后 变成可运行</li>
-<li>timed waiting 超时等待 等待通知 被通知或者超时后 变成可运行</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>terminated 被终止 执行exits方法</li>
-</ul>
-<h3 id="getState方法"><a href="#getState方法" class="headerlink" title="getState方法"></a>getState方法</h3><p>获取一个线程的当前状态</p>
-<h3 id="被终止的线程"><a href="#被终止的线程" class="headerlink" title="被终止的线程"></a>被终止的线程</h3><ul>
-<li>原因有两种<ul>
-<li>因为run方法正常退出return而自然死亡</li>
-<li>因为一个没有捕获的异常throws终止了run方法而意外死亡<ul>
-<li>stop杀死一个线程的时候, 该方法抛出ThreadDeath错误对象异常, 由此杀死线程</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="join方法"><a href="#join方法" class="headerlink" title="join方法"></a>join方法</h3><p>等待指定线程终止, 可带参数, 指等待指定毫秒数</p>
-<h3 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h3><p>为其他线程提供服务, 比如ftp服务, 若所有进程中, 只有守护进程在运行, 虚拟机就会退出, 守护进程不应该去访问固有资源例如数据库, 因为守护进程随时可能被一个操作中断</p>
-<h3 id="竞争条件"><a href="#竞争条件" class="headerlink" title="竞争条件"></a>竞争条件</h3><p>两个或两个以上的线程需要共享同一个数据的存取, 则存在竞争条件</p>
-<h3 id="可重入锁RenntrantLock类"><a href="#可重入锁RenntrantLock类" class="headerlink" title="可重入锁RenntrantLock类"></a>可重入锁RenntrantLock类</h3><p>通过创建可重入锁的实力, 临界区的开始调用lock方法, 一般用try catch finally代码块限制临界区确保临界区的代码执行完之后, finally块需要释放锁unlock(), 可重入锁有一个对象持有数计数器, 用于锁的嵌套调用, 表明目前持有的对象数量, 当持有计数为0时, 线程释放锁</p>
-<p>可重入锁可以有多个条件对象, 根据条件对象来让线程进入条件的等待集中</p>
-<p>锁被释放的时候, 调用signalAll接触该条件的等待集中的所有线程的阻塞状态</p>
-<p>若调用signal方法, 该条件会随机选择一个线程 释放其阻塞状态 这种方法有风险 如果该线程不满足条件的话  其他被阻塞的线程就永远都不会再运行了, 就造成死锁的现象了 </p>
-<p>ReentrantLock的构造方法可以构造一个公平策略的可重入锁, 公平锁会优先选择等待时间最长的线程, 即便是这样, 如果线程调度器因为策略选择忽略这个线程, 即便这个线程等待了很长时间, 他也会被忽略, 不能确保完全公平</p>
-<h3 id="Synchronized内在锁-固有锁"><a href="#Synchronized内在锁-固有锁" class="headerlink" title="Synchronized内在锁 固有锁"></a>Synchronized内在锁 固有锁</h3><p>对象自带的内部所, 和lock不一样的是, 内部对象锁只可以有一个相关条件</p>
-<p>用wait方法添加一个线程到等待集中, 用notifyAll/ notify接触等待线程的阻塞状态, notify同样也是随机接触一个线程, 有死锁的风险</p>
-<h3 id="死锁的场景"><a href="#死锁的场景" class="headerlink" title="死锁的场景"></a>死锁的场景</h3><p>可重入锁或者同步对象锁 用signal或者notify随机唤醒一个线程, 导致死锁</p>
-<p>suspend方法挂起一个线程后, suspend是不会释放锁的, 若线程试图获取同一个锁, 程序会变死锁</p>
-<p>MySQL并发修改同一记录或封锁同一范围导致相互等待</p>
+            <p> 哎  自从实习开始  知识体系就没有成立过  知道的东西的确很多 但是没有串在一起 非常容易忘 我必须要 狠下心来 整理一次</p>
+<h4 id="关于Linux的知识路线"><a href="#关于Linux的知识路线" class="headerlink" title="关于Linux的知识路线"></a>关于Linux的知识路线</h4><ol>
+<li>Linux起源 版本 区别 一些历史性的东西 CentOS</li>
+<li>Linux的基本操作命令 例如 管道命令 grep命令 安装命令yum 修改权限命令chmod 查看各种东西 又比如输出日志 还有什么 从明天开始 边使用 边整理 还有vim 等</li>
+<li>Linux整个系统的文件结构 文件系统 是怎么分配的 怎么形成的 磁盘分区 等</li>
+<li>Linux的网络编程 以及其他编程等等</li>
+</ol>
+<h4 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h4><ol>
+<li>看基础知识  看书 Go的特色 有什么</li>
+<li>Go的Web开发 </li>
+<li>Go的高并发</li>
+<li>Go的源码</li>
+</ol>
+<h4 id="RPC框架"><a href="#RPC框架" class="headerlink" title="RPC框架"></a>RPC框架</h4><ol>
+<li>Thrift 与Dubbo 使用与区别</li>
+<li>参数都是有什么用的</li>
+</ol>
+<h4 id="服务中心"><a href="#服务中心" class="headerlink" title="服务中心"></a>服务中心</h4><ol>
+<li>Zookeeper和etcd的区别 与使用</li>
+<li>参数有什么用</li>
+</ol>
+<h4 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h4><ol>
+<li>卡夫卡和RabbitMQ的区别与使用</li>
+<li>还没开始学习呢</li>
+</ol>
+<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><ol>
+<li>各种读写分离的 本质</li>
+<li>数据库的相关优化</li>
+<li>那些参数都有什么用</li>
+</ol>
+<h4 id="Redis缓存"><a href="#Redis缓存" class="headerlink" title="Redis缓存"></a>Redis缓存</h4><ol>
+<li>各种读写分离的本质 以及相关优化  并且还有使用</li>
+<li>那些参数都有什么用</li>
+</ol>
+<h4 id="实习"><a href="#实习" class="headerlink" title="实习"></a>实习</h4><ol>
+<li>实习的过程中 学习到了什么</li>
+<li>实习的项目经历</li>
+<li>实习遇到的难题</li>
+<li>实习的感受</li>
+</ol>
+<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><ol>
+<li>Java的基础</li>
+<li>Java的多线程</li>
+<li>Java的虚拟机 </li>
+<li>Java的网络开发框架 </li>
+<li>Java的源码</li>
+<li>Java的学习成本是真的高 我现在啥都学的不是很精啊 完了</li>
+</ol>
+<h4 id="php"><a href="#php" class="headerlink" title="php"></a>php</h4><ol>
+<li>这门脚本语言的学习 还是有帮助的</li>
+<li>php的学习放到最后把 有机会再学习把</li>
+</ol>
+<h4 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h4><ol>
+<li>暂时不知道呀</li>
+</ol>
 
           
         
@@ -794,7 +770,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -838,7 +814,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -895,7 +871,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -948,7 +928,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1060,7 +1044,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共42k字</span>
+  <span class="post-count">博客全站共48.4k字</span>
 </div>
         
 <div class="busuanzi-count">

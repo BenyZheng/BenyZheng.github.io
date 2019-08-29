@@ -1,0 +1,2620 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/libs/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/libs/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_small.ico?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
+<meta name="keywords" content="后端开发, Java, Icebearice, Golang">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Icebearice">
+<meta property="og:url" content="https://icebearice.gitee.io/page/19/index.html">
+<meta property="og:site_name" content="Icebearice">
+<meta property="og:description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Icebearice">
+<meta name="twitter:description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://icebearice.gitee.io/page/19/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Icebearice</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+<a href="https://github.com/icebearice" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Icebearice</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">又来偷看我博客 新增功能有 搜索(在菜单那里)</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/" class="post-title-link" itemprop="url">11 事务&数据库连接池&DBUtils</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2018-11-05 11:15:12" itemprop="dateCreated datePublished" datetime="2018-11-05T11:15:12+08:00">2018-11-05 11:15:12</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DataBase/" itemprop="url" rel="index"><span itemprop="name">DataBase</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="事务-amp-数据库连接池-amp-DBUtils"><a href="#事务-amp-数据库连接池-amp-DBUtils" class="headerlink" title="事务&amp;数据库连接池&amp;DBUtils"></a>事务&amp;数据库连接池&amp;DBUtils</h1><h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><blockquote>
+<p>Transaction  其实指的一组操作，里面包含许多个单一的逻辑。只要有一个逻辑没有执行成功，那么都算失败。 所有的数据都回归到最初的状态(回滚)</p>
+</blockquote>
+<ul>
+<li>为什么要有事务?</li>
+</ul>
+<blockquote>
+<p>为了确保逻辑的成功。 例子： 银行的转账。 </p>
+</blockquote>
+<h3 id="使用命令行方式演示事务。"><a href="#使用命令行方式演示事务。" class="headerlink" title="使用命令行方式演示事务。"></a>使用命令行方式演示事务。</h3><ul>
+<li><p>开启事务</p>
+<p>  start transaction;</p>
+</li>
+<li><p>提交或者回滚事务</p>
+<p>  commit; 提交事务， 数据将会写到磁盘上的数据库<br>  rollback ;  数据回滚，回到最初的状态。</p>
+</li>
+</ul>
+<ol>
+<li>关闭自动提交功能。</li>
+</ol>
+<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img01.png" alt="icon"></p>
+<ol start="2">
+<li>演示事务</li>
+</ol>
+<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img02.png" alt="icon"></p>
+<h3 id="使用代码方式演示事务"><a href="#使用代码方式演示事务" class="headerlink" title="使用代码方式演示事务"></a>使用代码方式演示事务</h3><blockquote>
+<p>代码里面的事务，主要是针对连接来的。 </p>
+<ol>
+<li>通过conn.setAutoCommit（false ）来关闭自动提交的设置。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>提交事务  conn.commit();</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>回滚事务 conn.rollback();</li>
+</ol>
+</blockquote>
+<pre><code>@Test
+public void testTransaction(){
+
+    Connection conn = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    try {
+        conn = JDBCUtil.getConn();
+
+        //连接，事务默认就是自动提交的。 关闭自动提交。
+        conn.setAutoCommit(false);
+
+        String sql = &quot;update account set money = money - ? where id = ?&quot;;
+        ps = conn.prepareStatement(sql);
+
+        //扣钱， 扣ID为1 的100块钱
+        ps.setInt(1, 100);
+        ps.setInt(2, 1);
+        ps.executeUpdate();
+</code></pre><p>​<br>​            int a = 10 /0 ;<br>​<br>​            //加钱， 给ID为2 加100块钱<br>​            ps.setInt(1, -100);<br>​            ps.setInt(2, 2);<br>​            ps.executeUpdate();<br>​<br>​            //成功： 提交事务。<br>​            conn.commit();<br>​<br>​        } catch (SQLException e) {<br>​            try {<br>​                //事变： 回滚事务<br>​                conn.rollback();<br>​            } catch (SQLException e1) {<br>​                e1.printStackTrace();<br>​            }<br>​            e.printStackTrace();<br>​<br>​        }finally {<br>​            JDBCUtil.release(conn, ps, rs);<br>​        }<br>​    }</p>
+<h3 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h3><ul>
+<li>原子性</li>
+</ul>
+<blockquote>
+<p>指的是 事务中包含的逻辑，不可分割。 </p>
+</blockquote>
+<ul>
+<li>一致性</li>
+</ul>
+<blockquote>
+<p>指的是 事务执行前后。数据完整性</p>
+</blockquote>
+<ul>
+<li>隔离性</li>
+</ul>
+<blockquote>
+<p>指的是 事务在执行期间不应该受到其他事务的影响</p>
+</blockquote>
+<ul>
+<li>持久性</li>
+</ul>
+<blockquote>
+<p>指的是 事务执行成功，那么数据应该持久保存到磁盘上。</p>
+</blockquote>
+<h3 id="事务的安全隐患"><a href="#事务的安全隐患" class="headerlink" title="事务的安全隐患"></a>事务的安全隐患</h3><blockquote>
+<p>不考虑隔离级别设置，那么会出现以下问题。</p>
+</blockquote>
+<ul>
+<li>读<blockquote>
+<p>脏读 不可重读读  幻读.</p>
+</blockquote>
+</li>
+</ul>
+<pre><code>* 脏读
+
+&gt; 一个事务读到另外一个事务还未提交的数据
+
+* 不可重复读 
+
+&gt; 一个事务读到了另外一个事务提交的数据 ，造成了前后两次查询结果不一致。
+</code></pre><h2 id="读未提交-演示"><a href="#读未提交-演示" class="headerlink" title="##  读未提交 演示"></a>##  读未提交 演示</h2><ol>
+<li><p>设置A窗口的隔离级别为 读未提交<br><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img03.png" alt="icon"></p>
+</li>
+<li><p>两个窗口都分别开启事务</p>
+</li>
+</ol>
+<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img04.png" alt="icon"></p>
+<ul>
+<li>写</li>
+</ul>
+<blockquote>
+<p>丢失更新</p>
+</blockquote>
+<h2 id="读已提交演示"><a href="#读已提交演示" class="headerlink" title="##   读已提交演示"></a>##   读已提交演示</h2><ol>
+<li>设置A窗口的隔离级别为 读已提交</li>
+</ol>
+<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img05.png" alt="icon"></p>
+<ol start="2">
+<li>A B 两个窗口都开启事务， 在B窗口执行更新操作。</li>
+</ol>
+<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img06.png" alt="icon"></p>
+<ol start="3">
+<li>在A窗口执行的查询结果不一致。 一次是在B窗口提交事务之前，一次是在B窗口提交事务之后。</li>
+</ol>
+<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img07.png" alt="icon"></p>
+<blockquote>
+<p>这个隔离级别能够屏蔽 脏读的现象， 但是引发了另一个问题  ，不可重复读。</p>
+</blockquote>
+<h3 id="可串行化"><a href="#可串行化" class="headerlink" title="可串行化"></a>可串行化</h3><blockquote>
+<p>如果有一个连接的隔离级别设置为了串行化 ，那么谁先打开了事务， 谁就有了先执行的权利， 谁后打开事务，谁就只能得着，等前面的那个事务，提交或者回滚后，才能执行。  但是这种隔离级别一般比较少用。 容易造成性能上的问题。 效率比较低。</p>
+</blockquote>
+<ul>
+<li>按效率划分，从高到低</li>
+</ul>
+<blockquote>
+<p>读未提交  &gt; 读已提交  &gt; 可重复读  &gt; 可串行化</p>
+</blockquote>
+<ul>
+<li>按拦截程度 ，从高到底</li>
+</ul>
+<blockquote>
+<p>可串行化 &gt; 可重复读 &gt; 读已提交 &gt;  读未提交</p>
+</blockquote>
+<h2 id="事务总结"><a href="#事务总结" class="headerlink" title="事务总结"></a>事务总结</h2><h3 id="需要掌握的"><a href="#需要掌握的" class="headerlink" title="需要掌握的"></a>需要掌握的</h3><ol>
+<li><p>在代码里面会使用事务 </p>
+<pre><code>conn.setAutoCommit(false);
+</code></pre></li>
+</ol>
+<pre><code>conn.commit();
+
+conn.rollback();
+</code></pre><ol start="2">
+<li><p>事务只是针对连接连接对象，如果再开一个连接对象，那么那是默认的提交。</p>
+</li>
+<li><p>事务是会自动提交的。 </p>
+</li>
+</ol>
+<h3 id="需要了解的"><a href="#需要了解的" class="headerlink" title="需要了解的"></a>需要了解的</h3><h2 id="安全隐患"><a href="#安全隐患" class="headerlink" title="##  安全隐患"></a>##  安全隐患</h2><pre><code>读
+    脏读
+        一个事务读到了另一个事务未提交的数据
+    不可重复读
+        一个事务读到了另一个事务已提交的数据，造成前后两次查询结果不一致
+    幻读
+        一个事务读到了另一个事务insert的数据 ，造成前后查询结果不一致 。
+
+写
+
+    丢失更新。
+</code></pre><h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="##  隔离级别"></a>##  隔离级别</h2><p>读未提交</p>
+<blockquote>
+<p>引发问题： 脏读 </p>
+</blockquote>
+<p>读已提交</p>
+<blockquote>
+<p>解决： 脏读 ， 引发： 不可重复读</p>
+</blockquote>
+<p>可重复读</p>
+<blockquote>
+<p>解决： 脏读 、 不可重复读 ， 未解决： 幻读</p>
+</blockquote>
+<p>可串行化</p>
+<blockquote>
+<p>解决： 脏读、 不可重复读 、 幻读。</p>
+</blockquote>
+<p>mySql 默认的隔离级别是 可重复读</p>
+<p>Oracle 默认的隔离级别是  读已提交</p>
+<h3 id="丢失更新"><a href="#丢失更新" class="headerlink" title="丢失更新"></a>丢失更新</h3><p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img08.png" alt="icon"></p>
+<h3 id="解决丢失更新"><a href="#解决丢失更新" class="headerlink" title="解决丢失更新"></a>解决丢失更新</h3><ul>
+<li>悲观锁</li>
+</ul>
+<blockquote>
+<p>可以在查询的时候，加入 for update</p>
+</blockquote>
+<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img09.png" alt="icon"></p>
+<ul>
+<li>乐观锁</li>
+</ul>
+<blockquote>
+<p>要求程序员自己控制。 </p>
+</blockquote>
+<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img10.png" alt="icon"></p>
+<h2 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h2><blockquote>
+<ol>
+<li>数据库的连接对象创建工作，比较消耗性能。 </li>
+</ol>
+</blockquote>
+<blockquote>
+<p>2.一开始现在内存中开辟一块空间（集合） ， 一开先往池子里面放置 多个连接对象。  后面需要连接的话，直接从池子里面去。不要去自己创建连接了。  使用完毕， 要记得归还连接。确保连接对象能循环利用。</p>
+</blockquote>
+<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img11.png" alt="icon"></p>
+<h3 id="自定义数据库连接池"><a href="#自定义数据库连接池" class="headerlink" title="自定义数据库连接池"></a>自定义数据库连接池</h3><ul>
+<li><p>代码实现</p>
+</li>
+<li><p>出现的问题：</p>
+<ol>
+<li><p>需要额外记住 addBack方法</p>
+<ol start="2">
+<li><p>单例。</p>
+</li>
+<li><p>无法面向接口编程。 </p>
+<p>UserDao dao = new UserDaoImpl();<br>dao.insert();</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<pre><code>    DataSource dataSource = new MyDataSource();
+
+    因为接口里面没有定义addBack方法。 
+
+4. 怎么解决?   以addBack 为切入点。
+</code></pre><h3 id="解决自定义数据库连接池出现的问题。"><a href="#解决自定义数据库连接池出现的问题。" class="headerlink" title="解决自定义数据库连接池出现的问题。"></a>解决自定义数据库连接池出现的问题。</h3><blockquote>
+<p>由于多了一个addBack 方法，所以使用这个连接池的地方，需要额外记住这个方法，并且还不能面向接口编程。</p>
+</blockquote>
+<blockquote>
+<p>我们打算修改接口中的那个close方法。  原来的Connection对象的close方法，是真的关闭连接。<br>打算修改这个close方法，以后在调用close， 并不是真的关闭，而是归还连接对象。</p>
+</blockquote>
+<h3 id="如何扩展某一个方法"><a href="#如何扩展某一个方法" class="headerlink" title="如何扩展某一个方法?"></a>如何扩展某一个方法?</h3><blockquote>
+<p>原有的方法逻辑，不是我们想要的。 想修改自己的逻辑</p>
+</blockquote>
+<ol>
+<li><p>直接改源码  无法实现。</p>
+</li>
+<li><p>继承， 必须得知道这个接口的具体实现是谁。 </p>
+</li>
+<li><p>使用装饰者模式。 </p>
+</li>
+</ol>
+<h2 id="开源连接池"><a href="#开源连接池" class="headerlink" title="开源连接池"></a>开源连接池</h2><h2 id="DBCP"><a href="#DBCP" class="headerlink" title="##   DBCP"></a>##   DBCP</h2><ol>
+<li><p>导入jar文件</p>
+</li>
+<li><p>不使用配置文件：</p>
+</li>
+</ol>
+<pre><code>public void testDBCP01(){
+</code></pre><p>​<br>​            Connection conn = null;<br>​            PreparedStatement ps = null;<br>​            try {<br>​<br>​                //1. 构建数据源对象<br>​                BasicDataSource dataSource = new BasicDataSource();<br>​                //连的是什么类型的数据库， 访问的是哪个数据库 ， 用户名， 密码。。<br>​                //jdbc:mysql://localhost/bank 主协议：子协议 ://本地/数据库<br>​                dataSource.setDriverClassName(“com.mysql.jdbc.Driver”);<br>​                dataSource.setUrl(“jdbc:mysql://localhost/bank”);<br>​                dataSource.setUsername(“root”);<br>​                dataSource.setPassword(“root”);</p>
+<p>​<br>​                //2. 得到连接对象<br>​                conn = dataSource.getConnection();<br>​                String sql = “insert into account values(null , ? , ?)”;<br>​                ps = conn.prepareStatement(sql);<br>​                ps.setString(1, “admin”);<br>​                ps.setInt(2, 1000);<br>​<br>​                ps.executeUpdate();<br>​<br>​            } catch (SQLException e) {<br>​                e.printStackTrace();<br>​            }finally {<br>​                JDBCUtil.release(conn, ps);<br>​            }<br>​<br>​        }</p>
+<ol start="2">
+<li>使用配置文件方式：</li>
+</ol>
+<pre><code>Connection conn = null;
+PreparedStatement ps = null;
+try {
+    BasicDataSourceFactory factory = new BasicDataSourceFactory();
+    Properties properties = new Properties();
+    InputStream is = new FileInputStream(&quot;src//dbcpconfig.properties&quot;);
+    properties.load(is);
+    DataSource dataSource = factory.createDataSource(properties);
+
+    //2. 得到连接对象
+    conn = dataSource.getConnection();
+    String sql = &quot;insert into account values(null , ? , ?)&quot;;
+    ps = conn.prepareStatement(sql);
+    ps.setString(1, &quot;liangchaowei&quot;);
+    ps.setInt(2, 100);
+
+    ps.executeUpdate();
+
+} catch (Exception e) {
+    e.printStackTrace();
+}finally {
+    JDBCUtil.release(conn, ps);
+}
+</code></pre><p>​        </p>
+<ul>
+<li>C3P0</li>
+</ul>
+<blockquote>
+<p>拷贝jar文件 到 lib目录</p>
+</blockquote>
+<h3 id="不使用配置文件方式"><a href="#不使用配置文件方式" class="headerlink" title="不使用配置文件方式"></a>不使用配置文件方式</h3><pre><code>Connection conn = null;
+PreparedStatement ps = null;
+try {
+    //1. 创建datasource
+    ComboPooledDataSource dataSource = new ComboPooledDataSource();
+    //2. 设置连接数据的信息
+    dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
+
+    //忘记了---&gt; 去以前的代码 ---&gt; jdbc的文档
+    dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost/bank&quot;);
+    dataSource.setUser(&quot;root&quot;);
+    dataSource.setPassword(&quot;root&quot;);
+
+    //2. 得到连接对象
+    conn = dataSource.getConnection();
+    String sql = &quot;insert into account values(null , ? , ?)&quot;;
+    ps = conn.prepareStatement(sql);
+    ps.setString(1, &quot;admi234n&quot;);
+    ps.setInt(2, 103200);
+
+    ps.executeUpdate();
+
+} catch (Exception e) {
+    e.printStackTrace();
+}finally {
+    JDBCUtil.release(conn, ps);
+}
+</code></pre><h3 id="使用配置文件方式"><a href="#使用配置文件方式" class="headerlink" title="使用配置文件方式"></a>使用配置文件方式</h3><pre><code>//默认会找 xml 中的 default-config 分支。 
+ComboPooledDataSource dataSource = new ComboPooledDataSource();
+//2. 设置连接数据的信息
+dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
+
+
+//忘记了---&gt; 去以前的代码 ---&gt; jdbc的文档
+dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost/bank&quot;);
+dataSource.setUser(&quot;root&quot;);
+dataSource.setPassword(&quot;root&quot;);
+
+//2. 得到连接对象
+conn = dataSource.getConnection();
+String sql = &quot;insert into account values(null , ? , ?)&quot;;
+ps = conn.prepareStatement(sql);
+ps.setString(1, &quot;admi234n&quot;);
+ps.setInt(2, 103200);
+</code></pre><h2 id="DBUtils"><a href="#DBUtils" class="headerlink" title="DBUtils"></a>DBUtils</h2><h3 id="增删改"><a href="#增删改" class="headerlink" title="增删改"></a>增删改</h3><pre><code>        //dbutils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作。 不在他的考虑范围
+QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
+</code></pre><p>​<br>​        //增加<br>​        //queryRunner.update(“insert into account values (null , ? , ? )”, “aa” ,1000);<br>​<br>​        //删除<br>​        //queryRunner.update(“delete from account where id = ?”, 5);<br>​<br>​        //更新<br>​        //queryRunner.update(“update account set money = ? where id = ?”, 10000000 , 6);</p>
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><ol>
+<li>直接new接口的匿名实现类</li>
+</ol>
+<pre><code>QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
+
+
+Account  account =  queryRunner.query(&quot;select * from account where id = ?&quot;, new ResultSetHandler&lt;Account&gt;(){
+
+    @Override
+    public Account handle(ResultSet rs) throws SQLException {
+        Account account  =  new Account();
+        while(rs.next()){
+            String name = rs.getString(&quot;name&quot;);
+            int money = rs.getInt(&quot;money&quot;);
+
+            account.setName(name);
+            account.setMoney(money);
+        }
+        return account;
+    }
+
+ }, 6);
+
+System.out.println(account.toString());
+</code></pre><ol start="2">
+<li>直接使用框架已经写好的实现类。</li>
+</ol>
+<pre><code>* 查询单个对象
+
+    QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
+    //查询单个对象
+    Account account = queryRunner.query(&quot;select * from account where id = ?&quot;, 
+            new BeanHandler&lt;Account&gt;(Account.class), 8);
+</code></pre><p>​<br>​    <em> 查询多个对象<br>​<br>​        QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());<br>​        List<account> list = queryRunner.query(“select </account></em> from account “,<br>​                new BeanListHandler<account>(Account.class));</account></p>
+<h3 id="ResultSetHandler-常用的实现类"><a href="#ResultSetHandler-常用的实现类" class="headerlink" title="ResultSetHandler 常用的实现类"></a>ResultSetHandler 常用的实现类</h3><p>以下两个是使用频率最高的</p>
+<pre><code>BeanHandler,  查询到的单个数据封装成一个对象
+BeanListHandler, 查询到的多个数据封装 成一个List&lt;对象&gt;
+</code></pre><hr>
+<pre><code>ArrayHandler,  查询到的单个数据封装成一个数组
+ArrayListHandler,  查询到的多个数据封装成一个集合 ，集合里面的元素是数组。 
+</code></pre><p>​<br>​<br>​    MapHandler,  查询到的单个数据封装成一个map<br>​    MapListHandler,查询到的多个数据封装成一个集合 ，集合里面的元素是map。 </p>
+<p>ColumnListHandler<br>KeyedHandler<br>ScalarHandler</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="事务-1"><a href="#事务-1" class="headerlink" title="事务"></a>事务</h2><pre><code>使用命令行演示
+
+使用代码演示
+</code></pre><p>脏读、</p>
+<p>不可重复读、</p>
+<p>幻读<br>丢失更新</p>
+<pre><code>悲观锁
+乐观锁
+
+4个隔离级别
+    读未提交
+    读已提交
+    可重复读
+    可串行化
+</code></pre><h2 id="数据连接池"><a href="#数据连接池" class="headerlink" title="数据连接池"></a>数据连接池</h2><ul>
+<li><p>DBCP</p>
+<p>  不使用配置</p>
+<p>  使用配置</p>
+</li>
+<li><p>C3P0</p>
+<p>  不使用配置</p>
+<p>  使用配置 （必须掌握）</p>
+</li>
+<li><p>自定义连接池 </p>
+<p>  装饰者模式</p>
+</li>
+</ul>
+<h2 id="DBUtils-1"><a href="#DBUtils-1" class="headerlink" title="DBUtils"></a>DBUtils</h2><blockquote>
+<p>简化了我们的CRUD ， 里面定义了通用的CRUD方法。 </p>
+</blockquote>
+<pre><code>queryRunner.update();
+queryRunner.query
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2018/11/04/前端/10.JSP EL JSTL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/11/04/前端/10.JSP EL JSTL/" class="post-title-link" itemprop="url">10 JSP&EL&JSTL</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2018-11-04 08:25:33" itemprop="dateCreated datePublished" datetime="2018-11-04T08:25:33+08:00">2018-11-04 08:25:33</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/11/04/前端/10.JSP EL JSTL/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/04/前端/10.JSP EL JSTL/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JSP-amp-EL-amp-JSTL"><a href="#JSP-amp-EL-amp-JSTL" class="headerlink" title="JSP &amp; EL &amp; JSTL"></a>JSP &amp; EL &amp; JSTL</h1><h1 id="jsp"><a href="#jsp" class="headerlink" title="jsp"></a>jsp</h1><blockquote>
+<p>Java Server Page </p>
+</blockquote>
+<ul>
+<li>什么是jsp</li>
+</ul>
+<blockquote>
+<p>从用户角度看待 ，就是是一个网页 ， 从程序员角度看待 ， 其实是一个java类， 它继承了servlet，所以可以直接说jsp 就是一个Servlet.</p>
+</blockquote>
+<ul>
+<li>为什么会有jsp?</li>
+</ul>
+<blockquote>
+<p>html 多数情况下用来显示静态内容 ， 一成不变的。 但是有时候我们需要在网页上显示一些动态数据， 比如： 查询所有的学生信息， 根据姓名去查询具体某个学生。  这些动作都需要去查询数据库，然后在网页上显示。 html是不支持写java代码  ， jsp里面可以写java代码。 </p>
+</blockquote>
+<h2 id="怎么用JSP"><a href="#怎么用JSP" class="headerlink" title="怎么用JSP"></a>怎么用JSP</h2><h3 id="指令写法"><a href="#指令写法" class="headerlink" title="指令写法"></a>指令写法</h3><p>&lt;%@ 指令名字 %&gt;</p>
+<h3 id="page指令"><a href="#page指令" class="headerlink" title="page指令"></a>page指令</h3><ul>
+<li>language</li>
+</ul>
+<blockquote>
+<p>表明jsp页面中可以写java代码</p>
+</blockquote>
+<ul>
+<li>contentType</li>
+</ul>
+<blockquote>
+<p>其实即使说这个文件是什么类型，告诉浏览器我是什么内容类型，以及使用什么编码</p>
+</blockquote>
+<pre><code>contentType=&quot;text/html; charset=UTF-8&quot;
+
+text/html  MIMEType 这是一个文本，html网页
+</code></pre><ul>
+<li><p>pageEncoding  jsp内容编码</p>
+</li>
+<li><p>extends 用于指定jsp翻译成java文件后，继承的父类是谁，一般不用改。</p>
+</li>
+<li><p>import 导包使用的，一般不用手写。</p>
+</li>
+<li><p>session </p>
+</li>
+</ul>
+<blockquote>
+<p>值可选的有true or false .</p>
+</blockquote>
+<blockquote>
+<p>用于控制在这个jsp页面里面，能够直接使用session对象。</p>
+</blockquote>
+<blockquote>
+<p>具体的区别是，请看翻译后的java文件   如果该值是true , 那么在代码里面会有getSession（）的调用，如果是false :  那么就不会有该方法调用，也就是没有session对象了。在页面上自然也就不能使用session了。</p>
+</blockquote>
+<ul>
+<li>errorPage</li>
+</ul>
+<blockquote>
+<p>指的是错误的页面， 值需要给错误的页面路径</p>
+</blockquote>
+<ul>
+<li>isErrorPage</li>
+</ul>
+<blockquote>
+<p>上面的errorPage 用于指定错误的时候跑到哪一个页面去。 那么这个isErroPage , 就是声明某一个页面到底是不是错误的页面。</p>
+</blockquote>
+<h3 id="include"><a href="#include" class="headerlink" title="include"></a>include</h3><blockquote>
+<p>包含另外一个jsp的内容进来。</p>
+</blockquote>
+<pre><code>&lt;%@ include file=&quot;other02.jsp&quot;%&gt;
+</code></pre><ul>
+<li>背后细节:</li>
+</ul>
+<blockquote>
+<p>把另外一个页面的所有内容拿过来一起输出。 所有的标签元素都包含进来。</p>
+</blockquote>
+<h3 id="taglib"><a href="#taglib" class="headerlink" title="taglib"></a>taglib</h3><pre><code> &lt;%@ taglib prefix=&quot;&quot;  uri=&quot;&quot;%&gt;  
+
+uri: 标签库路径
+prefix : 标签库的别名  
+</code></pre><h2 id="JSP-动作标签"><a href="#JSP-动作标签" class="headerlink" title="JSP 动作标签"></a>JSP 动作标签</h2><pre><code>&lt;jsp:include page=&quot;&quot;&gt;&lt;/jsp:include&gt;
+&lt;jsp:param value=&quot;&quot; name=&quot;&quot;/&gt;
+&lt;jsp:forward page=&quot;&quot;&gt;&lt;/jsp:forward&gt;
+</code></pre><ul>
+<li><p>jsp:include</p>
+<p>&lt;jsp:include page=”other02.jsp”&gt;&lt;/jsp:include&gt;</p>
+</li>
+</ul>
+<blockquote>
+<p>包含指定的页面， 这里是动态包含。 也就是不把包含的页面所有元素标签全部拿过来输出，而是把它的运行结果拿过来。 </p>
+</blockquote>
+<ul>
+<li><p>jsp:forward</p>
+<pre><code>&lt;jsp:forward page=&quot;&quot;&gt;&lt;/jsp:forward&gt;
+</code></pre></li>
+</ul>
+<blockquote>
+<p>前往哪一个页面。  </p>
+</blockquote>
+<pre><code>&lt;% 
+    //请求转发
+    request.getRequestDispatcher(&quot;other02.jsp&quot;).forward(request, response);
+%&gt;    
+</code></pre><ul>
+<li>jsp:param</li>
+</ul>
+<blockquote>
+<p>意思是： 在包含某个页面的时候，或者在跳转某个页面的时候，加入这个参数。</p>
+</blockquote>
+<p>​<br>​    &lt;jsp:forward page=”other02.jsp”&gt;<br>​        &lt;jsp:param value=”beijing” name=”address”/&gt;<br>​    &lt;/jsp:forward&gt;<br>​<br>​    在other02.jsp中获取参数</p>
+<pre><code>&lt;br&gt;收到的参数是：&lt;br&gt;
+
+&lt;%= request.getParameter(&quot;address&quot;)%&gt;
+</code></pre><h2 id="JSP内置对象"><a href="#JSP内置对象" class="headerlink" title="JSP内置对象"></a>JSP内置对象</h2><blockquote>
+<p>所谓内置对象，就是我们可以直接在jsp页面中使用这些对象。 不用创建。</p>
+</blockquote>
+<ul>
+<li>pageContext</li>
+<li>request</li>
+<li>session</li>
+<li>application</li>
+</ul>
+<p>以上4个是作用域对象 , </p>
+<ul>
+<li>作用域 </li>
+</ul>
+<blockquote>
+<p>表示这些对象可以存值，他们的取值范围有限定。  setAttribute   和  getAttribute</p>
+</blockquote>
+<pre><code>使用作用域来存储数据&lt;br&gt;
+
+&lt;%
+    pageContext.setAttribute(&quot;name&quot;, &quot;page&quot;);
+    request.setAttribute(&quot;name&quot;, &quot;request&quot;);
+    session.setAttribute(&quot;name&quot;, &quot;session&quot;);
+    application.setAttribute(&quot;name&quot;, &quot;application&quot;);
+%&gt;
+
+取出四个作用域中的值&lt;br&gt;
+
+&lt;%=pageContext.getAttribute(&quot;name&quot;)%&gt;
+&lt;%=request.getAttribute(&quot;name&quot;)%&gt;
+&lt;%=session.getAttribute(&quot;name&quot;)%&gt;
+&lt;%=application.getAttribute(&quot;name&quot;)%&gt;
+</code></pre><p>作用域范围大小：</p>
+<pre><code>pageContext -- request --- session -- application 
+</code></pre><h3 id="四个作用域的区别"><a href="#四个作用域的区别" class="headerlink" title="四个作用域的区别"></a>四个作用域的区别</h3><ul>
+<li>pageContext 【PageContext】</li>
+</ul>
+<blockquote>
+<p>作用域仅限于当前的页面。  </p>
+</blockquote>
+<blockquote>
+<p>还可以获取到其他八个内置对象。</p>
+</blockquote>
+<ul>
+<li>request 【HttpServletRequest】</li>
+</ul>
+<blockquote>
+<p>作用域仅限于一次请求， 只要服务器对该请求做出了响应。 这个域中存的值就没有了。</p>
+</blockquote>
+<ul>
+<li>session 【HttpSession】</li>
+</ul>
+<blockquote>
+<p>作用域限于一次会话（多次请求与响应） 当中。 </p>
+</blockquote>
+<ul>
+<li>application 【ServletContext】</li>
+</ul>
+<blockquote>
+<p>整个工程都可以访问， 服务器关闭后就不能访问了。 </p>
+</blockquote>
+<ul>
+<li>out         【JspWriter】<ul>
+<li>response  【HttpServletResponse】</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2018/11/04/前端/10.JSP EL JSTL/img01.png" alt="icon"></p>
+<ul>
+<li>exception  【Throwable】<ul>
+<li>page     【Object】 —就是这个jsp翻译成的java类的实例对象<ul>
+<li>config 【ServletConfig】</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h2><blockquote>
+<p>是为了简化咱们的jsp代码，具体一点就是为了简化在jsp里面写的那些java代码。</p>
+</blockquote>
+<ul>
+<li>写法格式</li>
+</ul>
+<p>${表达式 }</p>
+<blockquote>
+<p>如果从作用域中取值，会先从小的作用域开始取，如果没有，就往下一个作用域取。  一直把四个作用域取完都没有， 就没有显示。</p>
+</blockquote>
+<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><h3 id="1-取出4个作用域中存放的值。"><a href="#1-取出4个作用域中存放的值。" class="headerlink" title="1. 取出4个作用域中存放的值。"></a>1. 取出4个作用域中存放的值。</h3><pre><code>&lt;%
+    pageContext.setAttribute(&quot;name&quot;, &quot;page&quot;);
+    request.setAttribute(&quot;name&quot;, &quot;request&quot;);
+    session.setAttribute(&quot;name&quot;, &quot;session&quot;);
+    application.setAttribute(&quot;name&quot;, &quot;application&quot;);
+%&gt;
+
+按普通手段取值&lt;br&gt;
+
+&lt;%= pageContext.getAttribute(&quot;name&quot;)%&gt;
+&lt;%= request.getAttribute(&quot;name&quot;)%&gt;
+&lt;%= session.getAttribute(&quot;name&quot;)%&gt;
+&lt;%= application.getAttribute(&quot;name&quot;)%&gt;
+
+&lt;br&gt;使用EL表达式取出作用域中的值&lt;br&gt;
+
+${ pageScope.name }
+${ requestScope.name }
+${ sessionScope.name }
+${ applicationScope.name }
+</code></pre><ol start="2">
+<li><p>如果域中所存的是数组</p>
+<pre><code>&lt;%
+       String [] a = {&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot;dd&quot;};
+       pageContext.setAttribute(&quot;array&quot;, a);
+   %&gt;
+
+使用EL表达式取出作用域中数组的值&lt;br&gt;
+
+${array[0] } , ${array[1] },${array[2] },${array[3] }
+</code></pre></li>
+</ol>
+<ol start="3">
+<li>如果域中锁存的是集合</li>
+</ol>
+<pre><code>使用EL表达式取出作用域中集合的值&lt;br&gt;
+
+${li[0] } , ${li[1] },${li[2] },${li[3] }
+
+&lt;br&gt;-------------Map数据----------------&lt;br&gt;
+&lt;%
+    Map map = new HashMap();
+    map.put(&quot;name&quot;, &quot;zhangsna&quot;);
+    map.put(&quot;age&quot;,18);
+    map.put(&quot;address&quot;,&quot;北京..&quot;);
+
+    map.put(&quot;address.aa&quot;,&quot;深圳..&quot;);
+
+
+    pageContext.setAttribute(&quot;map&quot;, map);
+%&gt;
+</code></pre><ol start="4">
+<li><p>取出Map集合的值</p>
+<pre><code>&lt;%
+       Map map = new HashMap();
+       map.put(&quot;name&quot;, &quot;zhangsna&quot;);
+       map.put(&quot;age&quot;,18);
+       map.put(&quot;address&quot;,&quot;北京..&quot;);
+
+    map.put(&quot;address.aa&quot;,&quot;深圳..&quot;);
+</code></pre></li>
+</ol>
+<pre><code>    pageContext.setAttribute(&quot;map&quot;, map);
+%&gt;
+使用EL表达式取出作用域中Map的值&lt;br&gt;
+
+${map.name } , ${map.age } , ${map.address }  , ${map[&quot;address.aa&quot;] }
+</code></pre><h3 id="取值细节："><a href="#取值细节：" class="headerlink" title="取值细节："></a>取值细节：</h3><ol>
+<li><p>从域中取值。  得先存值。<br>&lt;%</p>
+<pre><code>//pageContext.setAttribute(&quot;name&quot;, &quot;zhangsan&quot;);
+session.setAttribute(&quot;name&quot;, &quot;lisi...&quot;);
+</code></pre><p>%&gt;</p>
+<p><br>直接指定说了，到这个作用域里面去找这个name<br><br>${ pageScope.name } </p>
+</li>
+</ol>
+<p>   <br>//先从page里面找，没有去request找，去session，去application <br><br>   ${ name }</p>
+<p>   <br>指定从session中取值<br><br>   ${ sessionScope.name }  </p>
+<ol start="2">
+<li>取值方式</li>
+</ol>
+<p>如果这份值是有下标的，那么直接使用[]</p>
+<pre><code>&lt;%
+    String [] array = {&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;}
+    session.setAttribute(&quot;array&quot;,array);
+%&gt;
+
+
+${ array[1] } --&gt; 这里array说的是attribute的name 
+</code></pre><p>如果没有下标， 直接使用 .的方式去取</p>
+<pre><code>&lt;%
+    User user = new User(&quot;zhangsan&quot;,18);
+
+    session.setAttribute(&quot;u&quot;, user);
+%&gt;
+
+${ u.name }  , ${ u.age } 
+</code></pre><blockquote>
+<p>一般使用EL表达式，用的比较多的，都是从一个对象中取出它的属性值，比如取出某一个学生的姓名。</p>
+</blockquote>
+<h2 id="EL表达式-的11个内置对象。"><a href="#EL表达式-的11个内置对象。" class="headerlink" title="EL表达式 的11个内置对象。"></a>EL表达式 的11个内置对象。</h2><p>${ 对象名.成员 }</p>
+<ul>
+<li>pageContext </li>
+</ul>
+<p>作用域相关对象</p>
+<ul>
+<li>pageScope</li>
+<li>requestScope</li>
+<li>sessionScope</li>
+<li>applicationScope</li>
+</ul>
+<p>头信息相关对象</p>
+<ul>
+<li>header</li>
+<li>headerValues</li>
+</ul>
+<p>参数信息相关对象</p>
+<ul>
+<li>param</li>
+<li>paramValues</li>
+</ul>
+<ul>
+<li>cookie<br>全局初始化参数</li>
+<li>initParam</li>
+</ul>
+<h2 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h2><blockquote>
+<p>全称 ： JSP Standard Tag Library  jsp标准标签库</p>
+</blockquote>
+<blockquote>
+<p>简化jsp的代码编写。 替换 &lt;%%&gt; 写法。 一般与EL表达式配合</p>
+</blockquote>
+<h3 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h3><ol>
+<li><p>导入jar文件到工程的WebContent/Web-Inf/lib  jstl.jar standard.jar</p>
+</li>
+<li><p>在jsp页面上，使用taglib 指令，来引入标签库</p>
+</li>
+<li><p>注意： 如果想支持 EL表达式，那么引入的标签库必须选择1.1的版本，1.0的版本不支持EL表达式。</p>
+</li>
+</ol>
+<pre><code>&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;
+</code></pre><h3 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h3><p>&lt;c:set&gt;&lt;/c:set&gt;<br>&lt;c:if test=””&gt;&lt;/c:if&gt;<br>&lt;c:forEach&gt;&lt;/c:forEach&gt;</p>
+<ul>
+<li>c:set</li>
+</ul>
+<pre><code>&lt;!-- 声明一个对象name， 对象的值 zhangsan , 存储到了page（默认） ， 指定是session --&gt;
+&lt;c:set var=&quot;name&quot; value=&quot;zhangsan&quot; scope=&quot;session&quot;&gt;&lt;/c:set&gt;
+
+${sessionScope.name }
+</code></pre><ul>
+<li>c:if</li>
+</ul>
+<blockquote>
+<p>判断test里面的表达式是否满足，如果满足，就执行c:if标签中的输出 ， c:if 是没有else的。 </p>
+</blockquote>
+<pre><code>&lt;c:set var=&quot;age&quot; value=&quot;18&quot; &gt;&lt;/c:set&gt;
+&lt;c:if test=&quot;${ age &gt; 26 }&quot;&gt;
+    年龄大于了26岁...
+&lt;/c:if&gt;
+
+&lt;c:if test=&quot;${ age &lt;= 26 }&quot;&gt;
+    年龄小于了26岁...
+&lt;/c:if&gt;
+
+
+------------------------------
+
+定义一个变量名 flag  去接收前面表达式的值，然后存在session域中
+
+&lt;c:if test=&quot;${ age &gt; 26 }&quot; var=&quot;flag&quot; scope=&quot;session&quot;&gt;
+    年龄大于了26岁...
+&lt;/c:if&gt;
+</code></pre><ul>
+<li>c:forEach</li>
+</ul>
+<pre><code>从1 开始遍历到10 ，得到的结果 ，赋值给 i ,并且会存储到page域中， step , 增幅为2， 
+&lt;c:forEach begin=&quot;1&quot; end=&quot;10&quot; var=&quot;i&quot; step=&quot;2&quot;&gt;
+    ${i }
+&lt;/c:forEach&gt;
+
+
+-----------------------------------------------
+
+&lt;!-- items : 表示遍历哪一个对象，注意，这里必须写EL表达式。 
+var: 遍历出来的每一个元素用user 去接收。 --&gt;
+&lt;c:forEach var=&quot;user&quot; items=&quot;${list }&quot;&gt;
+    ${user.name } ----${user.age }
+&lt;/c:forEach&gt;
+</code></pre><h2 id="学生信息管理系统"><a href="#学生信息管理系统" class="headerlink" title="学生信息管理系统"></a>学生信息管理系统</h2><ul>
+<li>需求分析</li>
+</ul>
+<p><img src="/2018/11/04/前端/10.JSP EL JSTL/img02.png" alt="icon"></p>
+<ol>
+<li><p>先写 login.jsp , 并且搭配一个LoginServlet 去获取登录信息。</p>
+</li>
+<li><p>创建用户表， 里面只要有id , username  和 password</p>
+</li>
+<li><p>创建UserDao, 定义登录的方法 </p>
+<pre><code>/**
+</code></pre><ul>
+<li><p>该dao定义了对用户表的访问规则<br> */<br>public interface UserDao {</p>
+<pre><code>/**
+</code></pre><ul>
+<li>这里简单就返回一个Boolean类型， 成功或者失败即可。<ul>
+<li>​</li>
+<li>但是开发的时候，登录的方法，一旦成功。这里应该返回该用户的个人信息</li>
+<li>@param userName </li>
+<li>@param password</li>
+<li>​</li>
+<li>@return true : 登录成功， false : 登录失败。<br> */<br>  boolean login(String userName , String password);<br>  }</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="4">
+<li>创建UserDaoImpl , 实现刚才定义的登录方法。</li>
+</ol>
+<pre><code>public class UserDaoImpl implements UserDao {
+
+    @Override
+    public boolean login(String userName , String password) {
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs   = null;
+        try {
+            //1. 得到连接对象
+            conn = JDBCUtil.getConn();
+
+            String sql = &quot;select * from t_user where username=? and password=?&quot;;
+
+            //2. 创建ps对象
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, userName);
+            ps.setString(2, password);
+
+
+            //3. 开始执行。
+            rs = ps.executeQuery();
+
+            //如果能够成功移到下一条记录，那么表明有这个用户。 
+            return rs.next();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.release(conn, ps, rs);
+        }
+        return false;
+    }
+
+}
+</code></pre><ol start="5">
+<li><p>在LoginServlet里面访问UserDao， 判断登录结果。 以区分对待</p>
+</li>
+<li><p>创建stu_list.jsp , 让登录成功的时候跳转过去。</p>
+</li>
+<li><p>创建学生表 ， 里面字段随意。 </p>
+</li>
+<li><p>定义学生的Dao . StuDao  </p>
+</li>
+</ol>
+<pre><code>public interface StuDao {
+
+    /**
+     * 查询出来所有的学生信息
+     * @return List集合
+     */
+    List&lt;Student&gt; findAll();
+}
+</code></pre><ol start="9">
+<li><p>对上面定义的StuDao 做出实现 StuDaoImpl</p>
+<pre><code>public class StuDaoImpl implements StuDao {
+
+    @Override
+    public List&lt;Student&gt; findAll() {
+        List&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs   = null;
+        try {
+            //1. 得到连接对象
+            conn = JDBCUtil.getConn();
+
+            String sql = &quot;select * from t_stu&quot;;
+
+            ps = conn.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+</code></pre></li>
+</ol>
+<p>   ​<br>                   //数据多了，用对象装， 对象也多了呢？ 用集合装。<br>                   while(rs.next()){ //10 次 ，10个学生</p>
+<pre><code>                Student stu = new Student();
+
+                stu.setId(rs.getInt(&quot;id&quot;));
+                stu.setAge(rs.getInt(&quot;age&quot;));
+                stu.setName(rs.getString(&quot;name&quot;));
+                stu.setGender(rs.getString(&quot;gender&quot;));
+                stu.setAddress(rs.getString(&quot;address&quot;));
+
+                list.add(stu);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.release(conn, ps, rs);
+        }
+
+        return list;
+    }
+
+}
+</code></pre><ol start="10">
+<li><p>在登录成功的时候，完成三件事情。</p>
+</li>
+<li><p>查询所有的学生</p>
+<ol start="2">
+<li><p>把这个所有的学生集合存储到作用域中。</p>
+</li>
+<li><p>跳转到stu_list.jsp</p>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    //提交的数据有可能有中文， 怎么处理。
+    request.setCharacterEncoding(&quot;UTF-8&quot;);
+    response.setContentType(&quot;text/html;charset=utf-8&quot;);
+
+    //1. 获取客户端提交的信息
+    String userName = request.getParameter(&quot;username&quot;);
+    String password = request.getParameter(&quot;password&quot;);
+
+    //2. 去访问dao ， 看看是否满足登录。
+    UserDao dao = new UserDaoImpl();
+    boolean isSuccess = dao.login(userName, password);
+
+    //3. 针对dao的返回结果，做出响应
+    if(isSuccess){
+        //response.getWriter().write(&quot;登录成功.&quot;);
+
+        //1. 查询出来所有的学生信息。
+        StuDao stuDao = new StuDaoImpl();
+        List&lt;Student&gt; list = stuDao.findAll();
+
+        //2. 先把这个集合存到作用域中。
+        request.getSession().setAttribute(&quot;list&quot;, list);
+
+        //2. 重定向
+        response.sendRedirect(&quot;stu_list.jsp&quot;);
+
+    }else{
+        response.getWriter().write(&quot;用户名或者密码错误！&quot;);
+    }
+}
+</code></pre><ol start="11">
+<li>在stu_list.jsp中，取出域中的集合，然后使用c标签 去遍历集合。 </li>
+</ol>
+<pre><code>    &lt;table border=&quot;1&quot; width=&quot;700&quot;&gt;
+    &lt;tr align=&quot;center&quot;&gt;
+        &lt;td&gt;编号&lt;/td&gt;
+        &lt;td&gt;姓名&lt;/td&gt;
+        &lt;td&gt;年龄&lt;/td&gt;
+        &lt;td&gt;性别&lt;/td&gt;
+        &lt;td&gt;住址&lt;/td&gt;
+        &lt;td&gt;操作&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;c:forEach items=&quot;${list }&quot; var=&quot;stu&quot;&gt;
+        &lt;tr align=&quot;center&quot;&gt;
+            &lt;td&gt;${stu.id }&lt;/td&gt;
+            &lt;td&gt;${stu.name }&lt;/td&gt;
+            &lt;td&gt;${stu.age }&lt;/td&gt;
+            &lt;td&gt;${stu.gender }&lt;/td&gt;
+            &lt;td&gt;${stu.address }&lt;/td&gt;
+            &lt;td&gt;&lt;a href=&quot;# &quot;&gt;更新&lt;/a&gt;   &lt;a href=&quot;# &quot;&gt;删除&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/c:forEach&gt;
+&lt;/table&gt;
+</code></pre><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ul>
+<li><p>JSP</p>
+<pre><code>三大指令
+
+    page
+    include
+    taglib
+
+三个动作标签
+    &lt;jsp:include&gt;
+    &lt;jsp:forward&gt;
+    &lt;jsp:param&gt;
+</code></pre></li>
+</ul>
+<pre><code>九个内置对象
+
+    四个作用域
+        pageContext
+        request
+        session
+        application
+
+    out
+    exception
+    response
+    page
+    config
+</code></pre><p>​            </p>
+<ul>
+<li><p>EL</p>
+<p>${ 表达式 }</p>
+<p>取4个作用域中的值</p>
+<pre><code>${ name }
+</code></pre><p>有11个内置对象。</p>
+<pre><code>pageContext
+
+pageScope
+requestScope
+sessionScope
+applicationScope
+
+header
+headerValues
+
+param
+paramValues
+
+cookie
+initParam
+</code></pre></li>
+<li><p>JSTL</p>
+</li>
+</ul>
+<blockquote>
+<p>使用1.1的版本， 支持EL表达式， 1.0不支持EL表达式</p>
+</blockquote>
+<blockquote>
+<p>拷贝jar包， 通过taglib 去引入标签库</p>
+</blockquote>
+<pre><code>&lt;c:set&gt;
+&lt;c:if&gt;
+&lt;c:forEach&gt;
+</code></pre><p>​    </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Icebearice">
+            
+              <p class="site-author-name" itemprop="name">Icebearice</p>
+              <div class="site-description motion-element" itemprop="description">后端开发 大三学生 实习ing 比较闲情雅致的 学习ing</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/164751245" title="164751245 &rarr; 164751245"><i class="fa fa-fw fa-qq"></i>164751245</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/icebearice" title="GitHub &rarr; https://github.com/icebearice" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/icebearice@qq.com" title="icebearice@qq.com &rarr; icebearice@qq.com"><i class="fa fa-fw fa-envelope"></i>icebearice@qq.com</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.cnblogs.com/Elvis827" title="博客园 &rarr; https://www.cnblogs.com/Elvis827" rel="noopener" target="_blank"><i class="fa fa-fw fa-vk"></i>博客园</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Icebearice</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共48.4k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="/js/src/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'oaY0uDqkCsuX94AxTtnV6scO-gzGzoHsz',
+    appKey: 'HKU5SJPAd8KyYqk6Q8fdArL5',
+    placeholder: '写了评论, offer还会远吗? ----记得填写邮箱哦~如果可以填写你的网站互相参考就更好啦',
+    avatar: 'retro',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+  //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+</script>
+
+
+
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/click.js"></script>-->
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":240,"height":480},"mobile":{"show":false},"react":{"opacityDefault":1,"opacityOnHover":1},"log":false,"tagMode":false});</script></body>
+</html>

@@ -363,7 +363,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/04/25/小脚本/时间戳生成器/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/07/数据库/数据库优化总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -383,7 +383,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/04/25/小脚本/时间戳生成器/" class="post-title-link" itemprop="url">时间戳生成器</a>
+                <a href="/2019/05/07/数据库/数据库优化总结/" class="post-title-link" itemprop="url">数据库优化总结</a>
               
             
           </h1>
@@ -408,7 +408,7 @@
              
              
 
-              <time title="创建时间：2019-04-25 20:00:49 / 修改时间：21:02:42" itemprop="dateCreated datePublished" datetime="2019-04-25T20:00:49+08:00">2019-04-25 20:00:49</time>
+              <time title="创建时间：2019-05-07 15:30:15 / 修改时间：15:30:40" itemprop="dateCreated datePublished" datetime="2019-05-07T15:30:15+08:00">2019-05-07 15:30:15</time>
             
 
             
@@ -428,8 +428,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-04-25T21:02:42+08:00" content="2019-04-25">
-                2019-04-25 21:02:42
+              <time itemprop="dateUpdated" datetime="2019-05-07T15:30:40+08:00" content="2019-05-07">
+                2019-05-07 15:30:40
               </time>
             </span>
           
@@ -450,7 +450,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/小脚本/" itemprop="url" rel="index"><span itemprop="name">小脚本</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DataBase/" itemprop="url" rel="index"><span itemprop="name">DataBase</span></a></span>
 
                 
                 
@@ -469,8 +469,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/04/25/小脚本/时间戳生成器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/25/小脚本/时间戳生成器/" itemprop="commentCount"></span>
+                <a href="/2019/05/07/数据库/数据库优化总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/07/数据库/数据库优化总结/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -500,24 +500,69 @@
       
         
           
-            <p>想着经常会改博客的生成时间, 所以写了个时间戳生成代码, 每次都不用自己一点点改时间啦</p>
+            <h1 id="数据库优化总结"><a href="#数据库优化总结" class="headerlink" title="数据库优化总结"></a>数据库优化总结</h1><h3 id="数据库优化的目的"><a href="#数据库优化的目的" class="headerlink" title="数据库优化的目的"></a>数据库优化的目的</h3><h4 id="避免出现页面访问错误"><a href="#避免出现页面访问错误" class="headerlink" title="避免出现页面访问错误**"></a>避免出现页面访问错误**</h4><ol>
+<li>由于数据库链接timeout产生的页面5xx错误</li>
+<li>由于<strong>慢查询</strong>造成页面无法加载</li>
+<li>由于<strong>阻塞</strong>造成数据无法提交</li>
+</ol>
+<h4 id="增加数据库的稳定性"><a href="#增加数据库的稳定性" class="headerlink" title="增加数据库的稳定性**"></a>增加数据库的稳定性**</h4><ol>
+<li>很多数据库问题都是由于<strong>低效的查询</strong>引起的</li>
+</ol>
+<p><strong>优化用户体验</strong></p>
 <ol>
-<li><p>生成的时间戳输出到文件中</p>
-</li>
-<li><p>生成的时间戳还不如复制到剪切板</p>
-</li>
-<li><p>于是就查了查怎么访问剪切板</p>
-</li>
-<li><p>代码是.java文件, 如何将编译后的.class文件转成windows支持的.exe文件, 双击即可生成呢?</p>
-</li>
-<li><p>自行食用, 不搬运了, 用的是exe4j  + jar包<a href="https://blog.csdn.net/zzzgd_666/article/details/80756430" target="_blank" rel="noopener">https://blog.csdn.net/zzzgd_666/article/details/80756430</a></p>
-</li>
-<li><p>我做好的 直接打开 按ctrl+v 粘贴 即可生成时间戳</p>
-<p>链接: <a href="https://pan.baidu.com/s/1aq6a0oLLW6bJ80pGZVhf4Q" target="_blank" rel="noopener">https://pan.baidu.com/s/1aq6a0oLLW6bJ80pGZVhf4Q</a> 提取码: 1dve 复制这段内容后打开百度网盘手机App，操作更方便哦</p>
+<li>流畅页面的访问速度</li>
+<li>良好的网站功能体验</li>
+</ol>
+<p><img src="/2019/05/07/数据库/数据库优化总结/1557145683349.png" alt="1557145683349"></p>
+<h3 id="如何进行数据库优化"><a href="#如何进行数据库优化" class="headerlink" title="如何进行数据库优化?"></a>如何进行数据库优化?</h3><h4 id="针对SQL语句进行优化"><a href="#针对SQL语句进行优化" class="headerlink" title="针对SQL语句进行优化"></a>针对SQL语句进行优化</h4><ol>
+<li>借用相关工具对SQL语句的执行进行检测, 针对查询次数多锁占有时间长的 磁盘IO的内存大的 未命中索引的SQL 进行优化, 找出了对应的SQL语句之后, 借助explain语句查询和分析SQL的执行计划, 针对执行计划进行优化, 通过执行计划的extra列可得到他是否有是由临时表来存储结果, 需要进行额外的步骤对返回的行进行排序, 是否使用了索引, 针对执行计划来对SQL语句进行优化, 没有使用索引的要尽量使用索引</li>
+</ol>
+<p>有使用临时表来存储结果的要尽量避免, 子查询有时候就会需要使用临时表来存储结果, 将子查询改成连接查询, 同时要注意连接查询是否存在一对多的关系 可能存在重复数据 需要去重</p>
+<h4 id="说到索引"><a href="#说到索引" class="headerlink" title="说到索引"></a>说到索引</h4><ol>
+<li>尽量使where order by 后面的条件字段</li>
+<li>索引字段越小越好</li>
+<li>针对联合索引, 离散度大的列要放在最前面</li>
+<li>避免重复索引和冗余索引, 我们同样可以使用相关工具对索引进行一系列的检测, pt系列的工具</li>
+<li>删除不需要的索引</li>
+</ol>
+<h4 id="数据存储方面-要选择合适的数据类型"><a href="#数据存储方面-要选择合适的数据类型" class="headerlink" title="数据存储方面, 要选择合适的数据类型"></a>数据存储方面, 要选择合适的数据类型</h4><ol>
+<li>使用可以存下数据的最小数据类型, 例如id用11位能存 就不要开20位来存</li>
+<li>尽量使用简单的数据类型 例如int要比varchar类型在mysql处理上简单</li>
+<li>尽可能使用not null定义字段 这样MySQL不需要针对每种不同字段额外定义空字段</li>
+</ol>
+<h4 id="表的范式化优化"><a href="#表的范式化优化" class="headerlink" title="表的范式化优化"></a>表的范式化优化</h4><ol>
+<li>要让表符合第三范式, 不存在传递函数依赖</li>
+</ol>
+<h4 id="表的反范式优化"><a href="#表的反范式优化" class="headerlink" title="表的反范式优化"></a>表的反范式优化</h4><ol>
+<li>有时候, 需要频繁获取较多的信息需要跨越多个表进行查询, 我们这时候就要让表有冗余数据, 方便查询</li>
+</ol>
+<h4 id="表的垂直拆分"><a href="#表的垂直拆分" class="headerlink" title="表的垂直拆分"></a>表的垂直拆分</h4><ol>
+<li>把原来一个有很多列的表拆分成多个表, 解决表的宽度问题<ol>
+<li>把不常用的字段的单独放到一个表中</li>
+<li>把大字段单独放到一个表中</li>
+<li>把经常一起使用的字段放到一个表中</li>
+</ol>
 </li>
 </ol>
-<h4 id="输出到文件"><a href="#输出到文件" class="headerlink" title="输出到文件"></a>输出到文件</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.datatransfer.Clipboard;</span><br><span class="line"><span class="keyword">import</span> java.awt.datatransfer.StringSelection;</span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created By icebearice on 2019/4/25 19:43</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeStampGenerator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 生成当前时间</span></span><br><span class="line">        Date date = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="comment">// 输出到NowTime.txt</span></span><br><span class="line">        File file = <span class="keyword">new</span> File(<span class="string">"NowTime.txt"</span>);</span><br><span class="line">        PrintWriter output = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            output = <span class="keyword">new</span> PrintWriter(file);</span><br><span class="line">            <span class="comment">// 将时间按照自己想要的格式格式化</span></span><br><span class="line">            SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">            output.println(simpleDateFormat.format(date));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">// 记得关闭output哦 不然文件会是空的</span></span><br><span class="line">            output.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="输出到剪切板"><a href="#输出到剪切板" class="headerlink" title="输出到剪切板"></a>输出到剪切板</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.datatransfer.Clipboard;</span><br><span class="line"><span class="keyword">import</span> java.awt.datatransfer.StringSelection;</span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created By icebearice on 2019/4/25 19:43</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeStampGenerator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 生成当前时间</span></span><br><span class="line">        Date date = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 格式化时间</span></span><br><span class="line">            SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">            <span class="comment">// 将字符串赋值到剪切板上</span></span><br><span class="line">            <span class="comment">// 访问系统剪切板</span></span><br><span class="line">            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();</span><br><span class="line">            <span class="comment">// 字符串转换成 传输选取类型的文本 剪切板识别传输选取类型的文本 StringSelection</span></span><br><span class="line">            StringSelection selection = <span class="keyword">new</span> StringSelection(simpleDateFormat.format(date));</span><br><span class="line">            <span class="comment">// 将传输选取类型文本赋值给剪切板</span></span><br><span class="line">            clipboard.setContents(selection, <span class="keyword">null</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">//output.close();</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="表的水平拆分"><a href="#表的水平拆分" class="headerlink" title="表的水平拆分"></a>表的水平拆分</h4><ol>
+<li>为了解决单表的数据量过大的问题, 水平拆分的表每一个表的结构都是一致的, 例如针对id进行hash运算, 取模5后, 为0的值为一个表, 为1 的值为一个表 为2的值为一个表 等等</li>
+</ol>
+<h4 id="数据库系统配置优化"><a href="#数据库系统配置优化" class="headerlink" title="数据库系统配置优化"></a>数据库系统配置优化</h4><ol>
+<li>linux系统\<ol>
+<li>tcp支持的队列数量</li>
+<li>打开文件数的最大值限制</li>
+</ol>
+</li>
+<li>MySQL<ol>
+<li>设置配置文件的一些值 例如连接池的最大数量</li>
+</ol>
+</li>
+</ol>
+<h4 id="服务器硬件优化"><a href="#服务器硬件优化" class="headerlink" title="服务器硬件优化"></a>服务器硬件优化</h4><ol>
+<li>加大内存</li>
+<li>不是cpu越多越好 有些工作只用到单核cpu</li>
+<li>针对io的策略进行优化</li>
+</ol>
 
           
         
@@ -574,7 +619,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/04/25/项目/秒杀系统总结/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/06/数据库/数据库优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -594,7 +639,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/04/25/项目/秒杀系统总结/" class="post-title-link" itemprop="url">秒杀系统项目总结（未完结）</a>
+                <a href="/2019/05/06/数据库/数据库优化/" class="post-title-link" itemprop="url">数据库优化</a>
               
             
           </h1>
@@ -616,27 +661,15 @@
               
 
              
-                
-              
+             
+             
 
-              <time title="创建时间：2019-04-25 19:39:40" itemprop="dateCreated datePublished" datetime="2019-04-25T19:39:40+08:00">2019-04-25 19:39:40</time>
+              <time title="创建时间：2019-05-06 20:24:46 / 修改时间：20:25:12" itemprop="dateCreated datePublished" datetime="2019-05-06T20:24:46+08:00">2019-05-06 20:24:46</time>
             
 
             
               
             <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time> 
               -->
               <!-- new version -->
                         
@@ -651,8 +684,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
-                2019-04-26 22:50:06
+              <time itemprop="dateUpdated" datetime="2019-05-06T20:25:12+08:00" content="2019-05-06">
+                2019-05-06 20:25:12
               </time>
             </span>
           
@@ -673,14 +706,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/" itemprop="url" rel="index"><span itemprop="name">项目</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/秒杀系统/" itemprop="url" rel="index"><span itemprop="name">秒杀系统</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DataBase/" itemprop="url" rel="index"><span itemprop="name">DataBase</span></a></span>
 
                 
                 
@@ -699,8 +725,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/04/25/项目/秒杀系统总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/25/项目/秒杀系统总结/" itemprop="commentCount"></span>
+                <a href="/2019/05/06/数据库/数据库优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/06/数据库/数据库优化/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -730,94 +756,155 @@
       
         
           
-            <h4 id="项目的业务逻辑是"><a href="#项目的业务逻辑是" class="headerlink" title="项目的业务逻辑是:"></a>项目的业务逻辑是:</h4><ol>
-<li>商家添加商品库存,商品供用户进行秒杀</li>
-<li>用户打开商品列表,选择某个商品,跳转到秒杀页面</li>
-<li>若秒杀开启了,则用户进行秒杀商品</li>
-<li>秒杀成功的话,买家付款,商家发货</li>
-</ol>
-<h4 id="我在项目中主要实现的部分业务逻辑是"><a href="#我在项目中主要实现的部分业务逻辑是" class="headerlink" title="我在项目中主要实现的部分业务逻辑是"></a>我在项目中主要实现的部分业务逻辑是</h4><ol>
-<li>用户打开商品列表,点击某样需要秒杀的商品</li>
-<li>当前商品若开启秒杀,则进行秒杀</li>
-<li>秒杀成功,则商品减库存</li>
-<li>针对这个秒杀的过程进行优化,防止商品超卖,能达到一定的并发量</li>
-<li>我是借助这个秒杀系统的项目,来对高并发领域进行初步的接触与学习</li>
-</ol>
-<h4 id="实现秒杀的过程-如何考虑秒杀的需求"><a href="#实现秒杀的过程-如何考虑秒杀的需求" class="headerlink" title="实现秒杀的过程(如何考虑秒杀的需求):"></a>实现秒杀的过程(如何考虑秒杀的需求):</h4><ol>
-<li>先对秒杀进行简单的模拟</li>
-<li>从商品列表中,点开具体商品</li>
-<li>然后根据数据库中存在的秒杀商品的开始时间 结束时间 库存量 进行判断<ol>
-<li>若秒杀未开启,则隐藏秒杀接口,并显示秒杀未开启</li>
-<li>若秒杀正在进行中,分成两种情况<ol>
-<li>商品库存量未达到零,则暴露秒杀接口,并显示秒杀进行中</li>
-<li>商品库存量达到零,则隐藏秒杀接口,并显示秒杀已结束</li>
+            <h3 id="数据库优化的目的"><a href="#数据库优化的目的" class="headerlink" title="数据库优化的目的"></a>数据库优化的目的</h3><ol>
+<li><strong>避免出现页面访问错误</strong><ol>
+<li>由于数据库链接timeout产生的页面5xx错误</li>
+<li>由于<strong>慢查询</strong>造成页面无法加载</li>
+<li>由于<strong>阻塞</strong>造成数据无法提交</li>
 </ol>
 </li>
-<li>若秒杀已经结束,则隐藏秒杀接口,并显示秒杀已结束</li>
+<li><strong>增加数据库的稳定性</strong><ol>
+<li>很多数据库问题都是由于<strong>低效的查询</strong>引起的</li>
 </ol>
 </li>
-<li>如果执行了秒杀,我们记录秒杀订单,减少库存</li>
+<li><strong>优化用户体验</strong><ol>
+<li>流畅页面的访问速度</li>
+<li>良好的网站功能体验</li>
 </ol>
-<h4 id="如何防止商品超卖-库存超卖"><a href="#如何防止商品超卖-库存超卖" class="headerlink" title="如何防止商品超卖(库存超卖)"></a>如何防止商品超卖(库存超卖)</h4><ol>
-<li><p>暴露秒杀接口后,在前端使按钮防重复,若是重复点击,会造成提交多次请求</p>
 </li>
-<li><p>在减库存的sql语句中的where条件中判断库存量&gt;0</p>
+</ol>
+<p><img src="/2019/05/06/数据库/数据库优化/1557145683349.png" alt="1557145683349"></p>
+<p>硬件为CPU IO 内存的改善 只能减少阻塞的可能, 成本高且效果不明显</p>
+<p>系统配置为TCP/IP允许通过的文件数, 若已打开文件数已经达到了最大值, 无法被开启的新文件就会频繁的进行IO操作, 加大磁盘IO的负担</p>
+<p>从数据库表的层次解耦表与表之间的关系</p>
+<p>优化SQL与索引为优化数据库最好的最根本的方式</p>
+<h3 id="如何发现有问题的SQL"><a href="#如何发现有问题的SQL" class="headerlink" title="如何发现有问题的SQL?"></a>如何发现有问题的SQL?</h3><ol>
+<li><p>使用MySQL慢查询日志对有效率问题的SQL进行监控</p>
 </li>
-<li><p>如果出现超卖现象, 还有可能是因为出现了幻读现象</p>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">show variables like &apos;slow_query_log&apos;;</span><br><span class="line">set global slow_query_log_file = &apos;&apos;;</span><br><span class="line">set global log_queries_not_using_indexes = on;</span><br><span class="line">set global long_query_time = 0;</span><br></pre></td></tr></table></figure>
+<p>慢查询日志所包含的内容</p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557146725891.png" alt="1557146725891"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557146714505.png" alt="1557146714505"></p>
+</li>
+</ol>
+<h3 id="MySQL慢查询日志分析工具之mysqldumpslow"><a href="#MySQL慢查询日志分析工具之mysqldumpslow" class="headerlink" title="MySQL慢查询日志分析工具之mysqldumpslow"></a>MySQL慢查询日志分析工具之mysqldumpslow</h3><p>MySQL自带的日志分析查询工具 mysqldumpslow </p>
+<p>有关的信息较少, 只有SQL语句的运行时间 锁的持有时间 查询得到的行数 还有更好的工具</p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557146949865.png" alt="1557146949865"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557146932829.png" alt="1557146932829"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557146963201.png" alt="1557146963201"></p>
+<h3 id="MySQL慢查日志的分析工具之-pt-query-digest"><a href="#MySQL慢查日志的分析工具之-pt-query-digest" class="headerlink" title="MySQL慢查日志的分析工具之 pt-query-digest"></a>MySQL慢查日志的分析工具之 pt-query-digest</h3><p><img src="/2019/05/06/数据库/数据库优化/1557147118735.png" alt="1557147118735"></p>
+<p><strong>纵观分析结果图1</strong></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557147107172.png" alt="1557147107172"></p>
 <ol>
-<li><p><a href="https://icebearice.gitee.io/2019/04/26/数据库/关于事务MVCC多版本并发控制的思考">跳转: 关于事务MVCC多版本并发控制的思考</a></p>
-<p>MySQL的默认事务隔离级别为: Repeated Read (此处可延伸事务隔离级别) 在<strong>默认隔离级别的基础</strong>上 将秒杀方法放入同步锁synchronized代码块中, 始终会有<strong>幻读问题</strong>, 于是扩大了锁的范围, 就没有幻读的现象了, 但是同步锁会严重影响并发性能</p>
-<blockquote>
-<p>Spring事务是通过AOP实现的, synchronized代码块是在事务之内执行的, synchronized代码块执行完之后, 事务还未提交, 事务的范围大于锁的范围, 于是将同步锁加到了Controller层, 使锁的范围大于事务的范围, 就不会有幻读问题了</p>
-</blockquote>
-</li>
-<li><p>将事务隔离级别改成可串行化, 也是严重影响并发性能</p>
-</li>
-<li><p>乐观锁改进(将实际秒杀后减少的库存量与预计秒杀后减少的库存量进行比较, 若相等则提交事务, 若不相等则回滚事务)</p>
-</li>
+<li>有显示总查询和实际普通查询的数量, 可表示查询的优化程度 </li>
 </ol>
+<p><img src="/2019/05/06/数据库/数据库优化/1557147579583.png" alt="1557147579583"></p>
+<p>总查询数量和实际普通查询数量为1 : 9 说明把9000个查询抽象成了1000多个查询</p>
+<ol start="2">
+<li>针对执行时间 锁的持有时间 总共发送的行数 扫描的行数</li>
+</ol>
+<p><img src="/2019/05/06/数据库/数据库优化/1557147634443.png" alt="1557147634443"></p>
+<p>扫描的行数大于发送的行数 说明了表的索引以及SQL语句没有优化好</p>
+<p><strong>纵观分析结果图2</strong></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557147352085.png" alt="1557147352085"></p>
+<ol start="3">
+<li>按照表的调用次数和响应时间进行排序, 可明显看到哪个表是被访问的次数是最多的</li>
+</ol>
+<p><strong>纵观分析结果图3</strong></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557147368630.png" alt="1557147368630"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557147996655.png" alt="1557147996655"></p>
+<ol start="4">
+<li>针对指定sql语句的执行次数和锁持有时间 对指定sql语句进行分析</li>
+</ol>
+<h3 id="如何通过慢查询日志发现有问题的SQL"><a href="#如何通过慢查询日志发现有问题的SQL" class="headerlink" title="如何通过慢查询日志发现有问题的SQL?"></a>如何通过慢查询日志发现有问题的SQL?</h3><ol>
+<li>查询次数多且每次查询占有时间长的SQL, 通常为pt-query-digest分析的前几个查询</li>
+<li>IO大的SQL, 注意pt-query-digest分析中的Rows examine项</li>
+<li>未命中索引的SQL, 注意pt-query-digest分析中Rows examine 和 Rows Send 的对比</li>
+</ol>
+<h3 id="通过explain查询和分析SQL的执行计划"><a href="#通过explain查询和分析SQL的执行计划" class="headerlink" title="通过explain查询和分析SQL的执行计划"></a>通过explain查询和分析SQL的执行计划</h3><p><img src="/2019/05/06/数据库/数据库优化/1557148890990.png" alt="1557148890990"></p>
+<ul>
+<li><p>table 显示这一行的数据是关于哪张表的</p>
 </li>
-</ol>
-<h4 id="乐观锁改进之后-还能如何提升我们的并发量呢"><a href="#乐观锁改进之后-还能如何提升我们的并发量呢" class="headerlink" title="乐观锁改进之后, 还能如何提升我们的并发量呢???"></a>乐观锁改进之后, 还能如何提升我们的并发量呢???</h4><ol>
-<li>redis缓存, 作用其实就是在高并发访问多个商品的时候, 商品的种类数量超过了上限, 导致不断地重复访问数据库, 造成缓存雪崩, 处理缓存雪崩的方式是不断地进行更新缓存, 更新缓存会出现脏读, 那就不断的删除缓存</li>
-<li>加上redis缓存, 发现当缓;存满了的时候, <strong>缓存雪崩</strong>, 缓存就没有作用了, 于是更新缓存</li>
-<li>发现<strong>更新缓存出现了脏读</strong>, 于是<strong>删除缓存</strong></li>
-<li><strong>缓存预加载</strong></li>
-<li>网络延迟<ol>
-<li>调换事务顺序, 原来先减库存后查, 变成先查后减</li>
-<li>将秒杀的数据库操作过程写成存储过程, 全权交给Mysql, 提高吞吐量</li>
-</ol>
+<li><p>type 这是重要的列, 显示连接使用了何种类型. 从最好的到最差的链接类型为const eq_reg ref range index ALL</p>
 </li>
-</ol>
-<h4 id="目前所遇到的问题"><a href="#目前所遇到的问题" class="headerlink" title="目前所遇到的问题"></a>目前所遇到的问题</h4><ol>
-<li>redis的缓存概念 如 缓存雪崩 缓存预热 缓存穿透 缓存击穿 缓存更新</li>
-<li>redis本身在项目中存储的是序列化后的对象, 从redis中将其反序列化即可得到对象, 有对应的对象, 即可读取其的商品ID, 商品名称, 商品库存量</li>
-<li>涉及到需要redis缓存的高并发, 必定都是读, 而不是写, redis起到的作用就是将需要读的数据存储到缓存中, 避免多次执行sql语句进行select操作</li>
-<li>项目中存在两种高并发的情况:<ol>
-<li><strong>原来 本来就是动态加载</strong> 但是用户还是会不断刷新 好吧<ol>
-<li>用户不断刷新的话 需要处理高并发</li>
-<li><strong>   秒杀即将开始时, 用户不断的在秒杀商品的页面不断地刷新, 进入秒杀界面?</strong></li>
-<li><strong>为什么这里不用ajax实现自动更新 然后 到点了就自动变更接口呢?</strong><ol>
-<li>如果用ajax的话 我需要对时间一直进行判断 动态请求 等时间到了 接口直接转换成秒杀接口 </li>
-<li><strong>那这样子整的话 ajax可以和redis结合 redis负责刷新的时候 直接读取对应商品对象 读取出来之后 利用对象中的库存量 开始时间 结束时间 来对接口进行ajax动态化 ajax会造成延迟吗? 好像不会</strong></li>
-</ol>
+<li><p>possible_keys 显示可能应用在这张表中的索引, 如果为空, 没有可能的索引</p>
 </li>
-</ol>
+<li><p>key 实际使用的索引, 如果为null, 则没有使用索引</p>
 </li>
-<li>多个用户对同一物品进行秒杀操作, 点击秒杀后, 会产生大量秒杀请求</li>
-</ol>
+<li><p>key_len 使用索引的长度, 在不损失精确性的情况下, 长度越短越好</p>
 </li>
-<li>如何处理高并发的情况<ol>
-<li>针对用户刷新的情况 即用redis 并且更新商品页的对应信息  防止多次访问sql 获取相应商品信息</li>
-<li>针对秒杀的并发操作,<ol>
-<li>减少行级锁持有时间, 优化sql语句</li>
-<li>存储过程, 深度优化</li>
-<li>还有什么优化 请听下回分解</li>
-</ol>
+<li><p>ref 显示索引的哪一列被使用了, 如果可能的话, 是一个常数</p>
 </li>
-</ol>
+<li><p>rows MYSQL认为必须检查的用来返回请求数据的行数</p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557149165340.png" alt="1557149165340"></p>
 </li>
-</ol>
+</ul>
+<h3 id="Max-的优化"><a href="#Max-的优化" class="headerlink" title="Max()的优化"></a>Max()的优化</h3><p><img src="/2019/05/06/数据库/数据库优化/1557149357316.png" alt="1557149357316"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557149327778.png" alt="1557149327778"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557149338038.png" alt="1557149338038"></p>
+<h3 id="Count-的优化"><a href="#Count-的优化" class="headerlink" title="Count()的优化"></a>Count()的优化</h3><p><img src="/2019/05/06/数据库/数据库优化/1557149454282.png" alt="1557149454282"></p>
+<p>count(*)是包括null的</p>
+<h3 id="子查询的优化"><a href="#子查询的优化" class="headerlink" title="子查询的优化"></a>子查询的优化</h3><p><img src="/2019/05/06/数据库/数据库优化/1557149730262.png" alt="1557149730262"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557149941622.png" alt="1557149941622"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557149771102.png" alt="1557149771102"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557149746763.png" alt="1557149746763"></p>
+<p><strong>为什么join查询方式比子查询的方式速度更快呢?</strong></p>
+<ul>
+<li>因为join查询不需要内建临时表处理. use temporary</li>
+</ul>
+<h3 id="Group-by的优化"><a href="#Group-by的优化" class="headerlink" title="Group by的优化"></a>Group by的优化</h3><p>优化前</p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557150200596.png" alt="1557150200596"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557150222117.png" alt="1557150222117"></p>
+<p>优化后</p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557150209406.png" alt="1557150209406"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557150256131.png" alt="1557150256131"></p>
+<h3 id="Limit的优化"><a href="#Limit的优化" class="headerlink" title="Limit的优化"></a>Limit的优化</h3><p>优化前</p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557150299978.png" alt="1557150299978"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557150375390.png" alt="1557150375390"></p>
+<p>优化后</p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557150393161.png" alt="1557150393161"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557150449515.png" alt="1557150449515"></p>
+<p><strong>随着数量的增加 IO增大</strong></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557150480364.png" alt="1557150480364"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557150497631.png" alt="1557150497631"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557150573212.png" alt="1557150573212"></p>
+<h3 id="如何选择合适的列建立索引"><a href="#如何选择合适的列建立索引" class="headerlink" title="如何选择合适的列建立索引?"></a>如何选择合适的列建立索引?</h3><p><img src="/2019/05/06/数据库/数据库优化/1557211796875.png" alt="1557211796875"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557211886798.png" alt="1557211886798"></p>
+<h3 id="索引的维护及优化—重复及冗余索引"><a href="#索引的维护及优化—重复及冗余索引" class="headerlink" title="索引的维护及优化—重复及冗余索引"></a>索引的维护及优化—重复及冗余索引</h3><p>索引过多会降低查询和写入的效率 select insert update 因为在查询或写入的时候 MySQL首先会选择使用哪一个索引进行查询 如果索引越多 分析的过程就会越慢 所以所以过多会影响效率</p>
+<h4 id="重复索引"><a href="#重复索引" class="headerlink" title="重复索引"></a>重复索引</h4><p><img src="/2019/05/06/数据库/数据库优化/1557211934335.png" alt="1557211934335"></p>
+<h4 id="冗余索引"><a href="#冗余索引" class="headerlink" title="冗余索引"></a>冗余索引</h4><p><img src="/2019/05/06/数据库/数据库优化/1557212281205.png" alt="1557212281205"></p>
+<h4 id="如何查找重复及冗余索引"><a href="#如何查找重复及冗余索引" class="headerlink" title="如何查找重复及冗余索引"></a>如何查找重复及冗余索引</h4><h5 id="使用sql语句"><a href="#使用sql语句" class="headerlink" title="使用sql语句"></a>使用sql语句</h5><p><img src="/2019/05/06/数据库/数据库优化/1557212411117.png" alt="1557212411117"></p>
+<h5 id="使用pt-duplicate-key-checker"><a href="#使用pt-duplicate-key-checker" class="headerlink" title="使用pt-duplicate-key-checker"></a>使用pt-duplicate-key-checker</h5><p><img src="/2019/05/06/数据库/数据库优化/1557212700438.png" alt="1557212700438"></p>
+<h3 id="索引维护方式"><a href="#索引维护方式" class="headerlink" title="索引维护方式"></a>索引维护方式</h3><p><img src="/2019/05/06/数据库/数据库优化/1557212803080.png" alt="1557212803080"></p>
+<h3 id="选择合适的数据类型"><a href="#选择合适的数据类型" class="headerlink" title="选择合适的数据类型"></a>选择合适的数据类型</h3><p><img src="/2019/05/06/数据库/数据库优化/1557212896828.png" alt="1557212896828"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557213013093.png" alt="1557213013093"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557213070118.png" alt="1557213070118"></p>
+<h3 id="数据库表的范式化优化"><a href="#数据库表的范式化优化" class="headerlink" title="数据库表的范式化优化"></a>数据库表的范式化优化</h3><p><img src="/2019/05/06/数据库/数据库优化/1557213131071.png" alt="1557213131071"></p>
+<p>第一范式（1NF）是指数据库表的每一列都是不可分割的基本数据项</p>
+<p>第二范式（2NF）要求实体的属性完全依赖于主关键字</p>
+<p>第三范式（3NF）：如果关系模式R（U，F）中的所有非主属性对任何候选关键字都不存在传递依赖，则称关系R是属于第三范式的。</p>
+<p><a href="https://baike.baidu.com/item/BCNF/9446795" target="_blank" rel="noopener">BCNF</a>：如果<a href="https://baike.baidu.com/item/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">关系模式</a>R（U，F）的所有属性（包括<a href="https://baike.baidu.com/item/%E4%B8%BB%E5%B1%9E%E6%80%A7/120103" target="_blank" rel="noopener">主属性</a>和<a href="https://baike.baidu.com/item/%E9%9D%9E%E4%B8%BB%E5%B1%9E%E6%80%A7/3462646" target="_blank" rel="noopener">非主属性</a>）都不传递依赖于R的任何<a href="https://baike.baidu.com/item/%E5%80%99%E9%80%89%E5%85%B3%E9%94%AE%E5%AD%97/9797654" target="_blank" rel="noopener">候选关键字</a>，那么称关系R是属于BCNF的。或是关系模式R，如果每个决定因素都包含关键字（而不是被关键字所包含），则关系R是RCNF的关系模式。</p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557213369732.png" alt="1557213369732"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557213410173.png" alt="1557213410173"></p>
+<h3 id="数据库的反范式化优化"><a href="#数据库的反范式化优化" class="headerlink" title="数据库的反范式化优化"></a>数据库的反范式化优化</h3><p><img src="/2019/05/06/数据库/数据库优化/1557213454270.png" alt="1557213454270"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557213585454.png" alt="1557213585454"></p>
+<h3 id="数据库表的垂直拆分"><a href="#数据库表的垂直拆分" class="headerlink" title="数据库表的垂直拆分"></a>数据库表的垂直拆分</h3><p><img src="/2019/05/06/数据库/数据库优化/1557213616845.png" alt="1557213616845"></p>
+<h3 id="数据库表的水平拆分"><a href="#数据库表的水平拆分" class="headerlink" title="数据库表的水平拆分"></a>数据库表的水平拆分</h3><p><img src="/2019/05/06/数据库/数据库优化/1557213680419.png" alt="1557213680419"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557213692312.png" alt="1557213692312"></p>
+<h3 id="数据库系统配置优化"><a href="#数据库系统配置优化" class="headerlink" title="数据库系统配置优化"></a>数据库系统配置优化</h3><p><img src="/2019/05/06/数据库/数据库优化/1557213828389.png" alt="1557213828389"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557213905330.png" alt="1557213905330"></p>
+<h3 id="MySQL配置文件优化"><a href="#MySQL配置文件优化" class="headerlink" title="MySQL配置文件优化"></a>MySQL配置文件优化</h3><p><img src="/2019/05/06/数据库/数据库优化/1557213935981.png" alt="1557213935981"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557213953695.png" alt="1557213953695"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557213965797.png" alt="1557213965797"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557213978164.png" alt="1557213978164"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557213989036.png" alt="1557213989036"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557214004685.png" alt="1557214004685"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557214036358.png" alt="1557214036358"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557214044941.png" alt="1557214044941"></p>
+<h3 id="第三方配置工具"><a href="#第三方配置工具" class="headerlink" title="第三方配置工具"></a>第三方配置工具</h3><p><img src="/2019/05/06/数据库/数据库优化/1557214079059.png" alt="1557214079059"></p>
+<h3 id="服务器硬件优化"><a href="#服务器硬件优化" class="headerlink" title="服务器硬件优化"></a>服务器硬件优化</h3><p><img src="/2019/05/06/数据库/数据库优化/1557214111436.png" alt="1557214111436"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557214137446.png" alt="1557214137446"></p>
+<p><img src="/2019/05/06/数据库/数据库优化/1557214164823.png" alt="1557214164823"></p>
 
           
         
@@ -863,7 +950,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -907,7 +994,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -964,7 +1051,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1017,7 +1108,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1129,7 +1224,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共42k字</span>
+  <span class="post-count">博客全站共48.4k字</span>
 </div>
         
 <div class="busuanzi-count">
