@@ -363,7 +363,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/08/Java/关于Java内存泄漏的思考/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -383,7 +383,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/08/Java/关于Java内存泄漏的思考/" class="post-title-link" itemprop="url">关于Java内存泄漏的思考</a>
+                <a href="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/" class="post-title-link" itemprop="url">本地虚拟机连接XSHELL或SecureCRT</a>
               
             
           </h1>
@@ -408,7 +408,7 @@
              
              
 
-              <time title="创建时间：2019-05-08 10:16:23 / 修改时间：10:18:19" itemprop="dateCreated datePublished" datetime="2019-05-08T10:16:23+08:00">2019-05-08 10:16:23</time>
+              <time title="创建时间：2019-05-19 20:21:10 / 修改时间：21:25:49" itemprop="dateCreated datePublished" datetime="2019-05-19T20:21:10+08:00">2019-05-19 20:21:10</time>
             
 
             
@@ -428,8 +428,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-05-08T10:18:19+08:00" content="2019-05-08">
-                2019-05-08 10:18:19
+              <time itemprop="dateUpdated" datetime="2019-05-19T21:25:49+08:00" content="2019-05-19">
+                2019-05-19 21:25:49
               </time>
             </span>
           
@@ -450,7 +450,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/虚拟机/" itemprop="url" rel="index"><span itemprop="name">虚拟机</span></a></span>
 
                 
                 
@@ -469,8 +476,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/08/Java/关于Java内存泄漏的思考/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/08/Java/关于Java内存泄漏的思考/" itemprop="commentCount"></span>
+                <a href="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -500,17 +507,61 @@
       
         
           
-            <h1 id="关于Java内存泄漏的思考"><a href="#关于Java内存泄漏的思考" class="headerlink" title="关于Java内存泄漏的思考"></a>关于Java内存泄漏的思考</h1><h3 id="Java内存回收的机制"><a href="#Java内存回收的机制" class="headerlink" title="Java内存回收的机制"></a>Java内存回收的机制</h3><p>Java虚拟机针对垃圾回收有一套自己的良好的机制, 但是, 即便在Java看似完美的垃圾回收机制下, 除了内存溢出 Out of memory 和 堆栈溢出 Stack overflow 两大异常之外, 其实还有内存溢出 Memory leak的现象</p>
-<h3 id="Java内存泄露引起的原因"><a href="#Java内存泄露引起的原因" class="headerlink" title="Java内存泄露引起的原因"></a>Java内存泄露引起的原因</h3><p>内存泄漏是指无用对象(不再使用的对象)持续占有内存或无用对象得不到内存释放, 从而造成的内存空间的浪费称为内存泄漏.</p>
-<p>内存泄漏不严重的时候, 根本察觉不到, 但严重时, JVM会抛出Out of memory的异常</p>
-<h4 id="根本原因"><a href="#根本原因" class="headerlink" title="根本原因"></a>根本原因</h4><p>长生命周期对象对短生命周期对象的引用, 导致内存泄漏</p>
-<p>尽管短生命周期已经不需要再被使用, 但长生命周期对象持有对它的引用而导致JVM不能对其进行回收, 造成内存泄漏</p>
-<ol>
-<li><p>静态集合类的内存泄漏</p>
-<p>静态集合类Static Vector 或者 Static HashMap 的生命周期和应用程序是一致的, 他们所引用的所有的对象Object也不能被释放</p>
+            <blockquote>
+<p>用VMware Workstation装的虚拟机, 具体安装过程请自行百度啦, 搜索关键字CentOS对应版本的安装 就出来啦.</p>
+<p>来公司的第一件事, 老大叫我配个Go环境的虚拟机, 虚拟机的安装倒是跟着教程一步步的弄好了, 想要用SecureCRT连接本地虚拟机, 总不能用VMware Workstation自带的界面吧, 人家毕竟是专门做虚拟机的, 又不是专门做Shell工具的</p>
+<p>常见的Shell工具有Xshell和SecureCRT两种啦, SecureCRT有自带的文件传输功能, XShell想要传文件可能需要另一个产品叫XFTP, XFTP的远程文件系统就比SecureCRT的功能要多一些了, 如果只是有上传文件和下载文件功能的需求 又不想装多一个东西的话, 用SecureCRT自带的sz和rz命令就可以啦, 如果需要在图形界面远程浏览虚拟机的文件系统, 就下XFTP吧</p>
+</blockquote>
+<p><strong>上面都是废话, 下面才是主要内容</strong></p>
+<h3 id="虚拟机环境"><a href="#虚拟机环境" class="headerlink" title="虚拟机环境"></a>虚拟机环境</h3><p>VMware Workstation 10 + CentOS 6.8 + Windows10</p>
+<h3 id="连接工具"><a href="#连接工具" class="headerlink" title="连接工具"></a>连接工具</h3><p>SecureCRT或者XShell 这里用的是SecureCRT</p>
+<h3 id="连接前提"><a href="#连接前提" class="headerlink" title="连接前提"></a>连接前提</h3><ol>
+<li>虚拟机和远程终端工具</li>
+<li>配置静态IP, 免得每次连接的时候都要查看IP, 如果没有设置静态IP的话, IP会随着你每次联网而不断变更的(下文会讲解如何配置静态IP)</li>
+<li>虚拟机连接模式为NAT模式</li>
+</ol>
+<h3 id="如何配置虚拟机的静态IP"><a href="#如何配置虚拟机的静态IP" class="headerlink" title="如何配置虚拟机的静态IP"></a>如何配置虚拟机的静态IP</h3><ol>
+<li><p>查看网卡IP名 cd /etc/sysconfig/network-scripts/<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558269665512.png" alt="1558269665512"><img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558269751071.png" alt="1558269751071"></p>
+<p>ifcfg-eth开头的就都是你的网卡IP名啦, 你可能有多个, 没关系, 挑一个来用就行了</p>
+</li>
+<li><p>编辑网卡文件 vim ifcfg-eth0<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558269852776.png" alt="1558269852776"></p>
+</li>
+<li><p>确认ONBOOT项为yes, 将IPADDR NETMASK GATEWAK DNS1改为对应项(见下文)<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558270032883.png" alt="1558270032883"></p>
+</li>
+<li><p>打开VMware Workstation 选择菜单 编辑-虚拟网络编辑器</p>
+</li>
+<li><p>如果信息框都是灰的, 没关系, 点击更改设置 赋予管理员权限<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558270574164.png" alt="1558270574164"></p>
+</li>
+<li><p>选择VMnet8 修改其子网 网段随意 子网掩码192的是24位 即 255.255.255.0<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558270698346.png" alt="1558270698346"></p>
+</li>
+<li><p>设置完后, 点击NAT设置, 修改网关入口, 修改完后确定<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558270740396.png" alt="1558270740396"></p>
+</li>
+<li><p>再次点击确定, 需要等一会, 因为他在修改你的网卡设置</p>
+</li>
+<li><p>按道理来说, 目前所有的步骤设置完之后, 是没有问题的, 保险起见, 我们去适配器设置看看VMnet8网卡配置是否正确</p>
+</li>
+<li><p><img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558270928990.png" alt="1558270928990"></p>
+</li>
+<li><p>没问题之后, 将上面那个配置文件的IP 掩码和网关都配置好 dns配不配应该是没关系的<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558270032883.png" alt="1558270032883"></p>
+</li>
+<li><p>配置完后, 保存退出, 输入命令 service network restart<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558271120001.png" alt="1558271120001"></p>
+</li>
+<li><p>如果都是绿色的话 就没问题啦 如果有红色 配置肯定有问题的 可打ifconfig查看一下ip配置情况 有eth0的网卡配置就说明没问题啦<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558271728794.png" alt="1558271728794"></p>
+</li>
+<li><p>通过ifconfig获取的ip 地址 192.168.120.128(你有你的IP地址 自己查) 就可以用来远程连接了</p>
+</li>
+<li><p>打开SecureCRT或者XShell 建立新的连接 输入ip地址 并且输入用户名root或者你自己的用户名<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558271854996.png" alt="1558271854996"></p>
+</li>
+<li><p>连接成功<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558271863990.png" alt="1558271863990"></p>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Static Vector v = <span class="keyword">new</span> Vector(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;<span class="number">100</span>; i++) &#123;</span><br><span class="line">	Object o = <span class="keyword">new</span> Object();</span><br><span class="line">	v.add(o);</span><br><span class="line">	o = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="迁移了虚拟机-无法联网-怎么处理"><a href="#迁移了虚拟机-无法联网-怎么处理" class="headerlink" title="迁移了虚拟机 无法联网 怎么处理"></a>迁移了虚拟机 无法联网 怎么处理</h3><ol>
+<li>在关闭虚拟机的情况下, 右键虚拟机-设置-网络适配器-高级<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558272157363.png" alt="1558272157363"></li>
+<li>未关闭虚拟机的的情况下, 生成键是不可选的, 需关闭虚拟机才可以点击, 关闭后点击生成, 会生成mac地址</li>
+<li>修改 ifcfg-eth0文件的HWADDR hardware地址 硬件地址即物理地址 修改为生成的mac地址<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558272140519.png" alt="1558272140519"></li>
+<li>修改后, 重启网络 service network restart 应该是不行的, 会显示失败</li>
+<li>重启虚拟机即可解决</li>
+</ol>
 
           
         
@@ -567,7 +618,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/07/并发/并发常见方法/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/19/计算机网络/1.1计算机网络的形成与发展/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -587,7 +638,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/07/并发/并发常见方法/" class="post-title-link" itemprop="url">并发常见方法</a>
+                <a href="/2019/05/19/计算机网络/1.1计算机网络的形成与发展/" class="post-title-link" itemprop="url">1.1 计算机网络的形成与发展</a>
               
             
           </h1>
@@ -612,7 +663,7 @@
              
              
 
-              <time title="创建时间：2019-05-07 16:36:03 / 修改时间：16:36:59" itemprop="dateCreated datePublished" datetime="2019-05-07T16:36:03+08:00">2019-05-07 16:36:03</time>
+              <time title="创建时间：2019-05-19 15:52:32 / 修改时间：15:55:40" itemprop="dateCreated datePublished" datetime="2019-05-19T15:52:32+08:00">2019-05-19 15:52:32</time>
             
 
             
@@ -632,8 +683,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-05-07T16:36:59+08:00" content="2019-05-07">
-                2019-05-07 16:36:59
+              <time itemprop="dateUpdated" datetime="2019-05-19T15:55:40+08:00" content="2019-05-19">
+                2019-05-19 15:55:40
               </time>
             </span>
           
@@ -654,7 +705,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/1-计算机网络概论/" itemprop="url" rel="index"><span itemprop="name">1 计算机网络概论</span></a></span>
 
                 
                 
@@ -673,8 +731,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/07/并发/并发常见方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/07/并发/并发常见方法/" itemprop="commentCount"></span>
+                <a href="/2019/05/19/计算机网络/1.1计算机网络的形成与发展/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/19/计算机网络/1.1计算机网络的形成与发展/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -704,51 +762,107 @@
       
         
           
-            <h1 id="并发常见方法"><a href="#并发常见方法" class="headerlink" title="并发常见方法"></a>并发常见方法</h1><h3 id="sleep方法"><a href="#sleep方法" class="headerlink" title="sleep方法"></a>sleep方法</h3><p>sleep是Thread类的静态方法, 暂停当前线程的活动, 休眠指定的毫秒数, 会抛出InterruptedException异常</p>
-<h3 id="run方法"><a href="#run方法" class="headerlink" title="run方法"></a>run方法</h3><p>Runnable是接口, 实现多线程的方式之一, 直接调用run方法, 只会执行同一线程中的任务, 而不会启动新线程. </p>
-<h3 id="start方法"><a href="#start方法" class="headerlink" title="start方法"></a>start方法</h3><p>调用Thread.start方法, 这个方法将创建一个执行run方法的新线程, 在底层创建新线程之后, 会执行run方法</p>
-<h3 id="return方法"><a href="#return方法" class="headerlink" title="return方法"></a>return方法</h3><p>正常结束, 或者中断进程</p>
-<h3 id="Stop方法"><a href="#Stop方法" class="headerlink" title="Stop方法"></a>Stop方法</h3><p>其他线程可以调用它终止线程, 已被弃用, 弃用的原因是 stop方法是终止当前线程所有未结束的方法, 当线程被终止时, 立即释放所有相关对象的锁, 导致对象处于与原来不一致的状态, 且无法还原</p>
-<h3 id="Suspend方法"><a href="#Suspend方法" class="headerlink" title="Suspend方法"></a>Suspend方法</h3><p>挂起一个持有一个锁的线程, 不释放锁, 该锁在回复之前都是不可用的, 很容易造成死锁</p>
-<h3 id="resume方法"><a href="#resume方法" class="headerlink" title="resume方法"></a>resume方法</h3><p>唤醒一个被挂起的线程, 该方法在suspend方法后调用</p>
-<h3 id="线程运行的状态"><a href="#线程运行的状态" class="headerlink" title="线程运行的状态"></a>线程运行的状态</h3><ul>
-<li>new 新创建</li>
-<li>runnable 可运行 一旦启用start方法,  线程则处于runnable状态 可运行分为 <ul>
-<li>正在运行</li>
-<li>没有运行 没有运行则可能是 以下三种状态的一种<ul>
-<li>blocked 阻塞 请求锁 得到锁后 变成可运行状态</li>
-<li>waiting 等待 等待通知 被通知后 变成可运行</li>
-<li>timed waiting 超时等待 等待通知 被通知或者超时后 变成可运行</li>
-</ul>
+            <blockquote>
+<p>最近想着复习一下计算机网络, 从计网的发展历史开始学起, 怎么说呢, 了解计算机网络的发展历史, 有助于我们加强对计算机网络的知识点的梳理, 让我们计算机网络这一块的知识的主干更加的稳固, 观察其每一步的发展, 你会发现, 其实每一步的改变都是有理有据的</p>
+<p>PS: 这种过于理论的东西, 不想看的还是别看了哈哈, 不然很浪费时间和精力的, 付出和收获不成正比, 直接看下一部分吧</p>
+</blockquote>
+<h3 id="计算机网络发展阶段的划分"><a href="#计算机网络发展阶段的划分" class="headerlink" title="计算机网络发展阶段的划分"></a>计算机网络发展阶段的划分</h3><p><strong>经历了四个阶段:</strong></p>
+<ol>
+<li><strong>计算机网络技术与理论准备阶段</strong><ol>
+<li><strong>数据通信技术</strong>奠定了<strong>技术基础</strong></li>
+<li><strong>分组交换概念</strong>的提出奠定了<strong>理论基础</strong></li>
+</ol>
 </li>
-</ul>
+<li><strong>计算机网络的形成</strong><ol>
+<li><strong>ARPANET的成功运行</strong>证明了<strong>分组交换理论的正确性</strong></li>
+<li><strong>TCP/IP协议的广泛应用</strong>为<strong>更大规模的网络互联</strong>奠定了坚实的基础</li>
+<li>E-mail FTP TELNET BBS等应用展现出网络技术广阔的应用前景</li>
+</ol>
 </li>
-<li>terminated 被终止 执行exits方法</li>
-</ul>
-<h3 id="getState方法"><a href="#getState方法" class="headerlink" title="getState方法"></a>getState方法</h3><p>获取一个线程的当前状态</p>
-<h3 id="被终止的线程"><a href="#被终止的线程" class="headerlink" title="被终止的线程"></a>被终止的线程</h3><ul>
-<li>原因有两种<ul>
-<li>因为run方法正常退出return而自然死亡</li>
-<li>因为一个没有捕获的异常throws终止了run方法而意外死亡<ul>
-<li>stop杀死一个线程的时候, 该方法抛出ThreadDeath错误对象异常, 由此杀死线程</li>
-</ul>
+<li><strong>网络体系结构的研究</strong><ol>
+<li><strong>开放系统互连(Open System Interconnection, OSI)参考模型</strong>的研究对<strong>网络理论体系</strong>的形成与发展, 以及在网络协议标准化研究方面起了重要的推动作用</li>
+<li><strong>TCP/IP</strong>经受了市场和用户的检验, 吸引了大量的投资, 推动了Internet应用的发展, 成为业界标准</li>
+</ol>
 </li>
-</ul>
+<li><strong>Internet应用 无线网络与网络安全技术研究的发展</strong><ol>
+<li>Internet作为<strong>全球性的国际网与大型信息系统</strong>, 在当今各个领域如政治 经济 社会生活等方面发挥了重要作用</li>
+<li>Internet大规模介入推动了<strong>接入技术</strong>的发展, 促进<strong>三网融合</strong></li>
+<li><strong>对等(Peer-to-Peer, P2P)网络技术</strong>的研究, 使得”<strong>即时通信</strong>“等新的网络应用不断涌现, 进一步丰富了人与人之间信息交互与共享</li>
+<li><strong>无线个人区域网</strong> <strong>无线局域网</strong>与<strong>无线城域网</strong>技术日益成熟</li>
+<li>Internet应用中数据采集与录入从<strong>人工方式</strong>逐步扩展到<strong>自动方式</strong>, 通过<strong>射频标签RFID 各种类型的传感器与传感器网络(Sence Network), 以及光学视频感知与摄录设备</strong>, 能够方便 自动地采集各种物品与环境信息, 拓宽了人与人 人与物 物与物之间更为广泛的信息交互, 促进了<strong>物联网(Internet of Things, IoT)</strong>技术的形成与发展</li>
+<li>随着网络应用的快速增长, 社会对<strong>网络安全问题</strong>的重视程度也越来越高. 推动了<strong>网络安全技术</strong>的快速发展</li>
+</ol>
 </li>
-</ul>
-<h3 id="join方法"><a href="#join方法" class="headerlink" title="join方法"></a>join方法</h3><p>等待指定线程终止, 可带参数, 指等待指定毫秒数</p>
-<h3 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h3><p>为其他线程提供服务, 比如ftp服务, 若所有进程中, 只有守护进程在运行, 虚拟机就会退出, 守护进程不应该去访问固有资源例如数据库, 因为守护进程随时可能被一个操作中断</p>
-<h3 id="竞争条件"><a href="#竞争条件" class="headerlink" title="竞争条件"></a>竞争条件</h3><p>两个或两个以上的线程需要共享同一个数据的存取, 则存在竞争条件</p>
-<h3 id="可重入锁RenntrantLock类"><a href="#可重入锁RenntrantLock类" class="headerlink" title="可重入锁RenntrantLock类"></a>可重入锁RenntrantLock类</h3><p>通过创建可重入锁的实力, 临界区的开始调用lock方法, 一般用try catch finally代码块限制临界区确保临界区的代码执行完之后, finally块需要释放锁unlock(), 可重入锁有一个对象持有数计数器, 用于锁的嵌套调用, 表明目前持有的对象数量, 当持有计数为0时, 线程释放锁</p>
-<p>可重入锁可以有多个条件对象, 根据条件对象来让线程进入条件的等待集中</p>
-<p>锁被释放的时候, 调用signalAll接触该条件的等待集中的所有线程的阻塞状态</p>
-<p>若调用signal方法, 该条件会随机选择一个线程 释放其阻塞状态 这种方法有风险 如果该线程不满足条件的话  其他被阻塞的线程就永远都不会再运行了, 就造成死锁的现象了 </p>
-<p>ReentrantLock的构造方法可以构造一个公平策略的可重入锁, 公平锁会优先选择等待时间最长的线程, 即便是这样, 如果线程调度器因为策略选择忽略这个线程, 即便这个线程等待了很长时间, 他也会被忽略, 不能确保完全公平</p>
-<h3 id="Synchronized内在锁-固有锁"><a href="#Synchronized内在锁-固有锁" class="headerlink" title="Synchronized内在锁 固有锁"></a>Synchronized内在锁 固有锁</h3><p>对象自带的内部所, 和lock不一样的是, 内部对象锁只可以有一个相关条件</p>
-<p>用wait方法添加一个线程到等待集中, 用notifyAll/ notify接触等待线程的阻塞状态, notify同样也是随机接触一个线程, 有死锁的风险</p>
-<h3 id="死锁的场景"><a href="#死锁的场景" class="headerlink" title="死锁的场景"></a>死锁的场景</h3><p>可重入锁或者同步对象锁 用signal或者notify随机唤醒一个线程, 导致死锁</p>
-<p>suspend方法挂起一个线程后, suspend是不会释放锁的, 若线程试图获取同一个锁, 程序会变死锁</p>
-<p>MySQL并发修改同一记录或封锁同一范围导致相互等待</p>
+</ol>
+<h3 id="计算机网络的形成与发展"><a href="#计算机网络的形成与发展" class="headerlink" title="计算机网络的形成与发展"></a>计算机网络的形成与发展</h3><p><strong>两个条件</strong></p>
+<ol>
+<li>强烈的社会需求</li>
+<li>前期技术的成熟</li>
+</ol>
+<p><strong>ARPANET研究</strong></p>
+<ol>
+<li>针对<strong>部分网络设备或通信线路遭到破坏</strong>时, 网络系统<strong>仍能利用剩余的网络设备与通信线路继续工作</strong>, 称为<strong>“可生存系统”</strong>, 需要解决两个基本问题: <strong>网络拓扑结构</strong>与<strong>数据传输方式</strong></li>
+<li>针对<strong>网络拓扑结构</strong>的问题<ol>
+<li>提出了<strong>集中式</strong>和<strong>非集中式</strong>的拓扑构型<ol>
+<li><strong>集中式</strong>的星形网络中, <strong>所有主机都与一个中心交换节点相连</strong>, 主机发送的<strong>数据</strong>都要<strong>通过中心节点转发</strong>. 如果<strong>中心节点受到破坏</strong>, 就会<strong>造成整个网络的瘫痪</strong></li>
+<li><strong>非集中式</strong>网络采用的是<strong>星-星结构</strong>, 星形结构结构<strong>固有的缺点</strong>仍然<strong>难以避免</strong></li>
+</ol>
+</li>
+<li>提出了<strong>分布式网络(distributed network)</strong>结构<ol>
+<li>分布式网络<strong>没有中心交换节点</strong>, <strong>每个节点与相邻节点链接</strong>, 从而构成一个<strong>网状结构</strong>.</li>
+<li>在网状结构中, <strong>任意两点之间</strong>可以有<strong>多条传输路径</strong>, 如果网络中<strong>某个节点或线路损坏</strong>, 数据还可以通过<strong>其他的路径传输</strong></li>
+<li>这是一种具有<strong>高度容错性</strong>的网络拓扑结构</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>针对<strong>数据传输方式</strong>的问题<ol>
+<li>交换机的<strong>线路交换(circuit switching)</strong><ol>
+<li>电话交换网 在用户通话之前, 需要通过<strong>交换机的线路交换</strong>, 在两部电话机之间<strong>建立线路连接</strong></li>
+<li>由于电话交换网是为<strong>人与人之间模拟的语音信号</strong>传输设计的, 如果直接<strong>利用电话交换网来传输计算机的数字数据信号</strong>存在两个主要的问题<ol>
+<li>通信线路的<strong>利用率很低</strong>, 造成资源浪费</li>
+<li><strong>误码率高</strong>, 计算机通信要求能<strong>准确传输每个比特</strong>, 故电话交换网直接用于计算机的数据传输是<strong>不适合的</strong></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong>分组交换技术(packet switching)</strong><ol>
+<li><strong>特征</strong>如下<ol>
+<li>网络中<strong>没有一个中心控制节点</strong>, 联网<strong>计算机独立的完成数据接收和转发</strong>的功能</li>
+<li>发送数据的主机<strong>预先将待发送的数据</strong>  <strong>封装成多个短的 有固定格式的分组</strong></li>
+<li>如果发送主机与接受主机之间<strong>没有直接连接的通信线路</strong>, 那么就需要通过<strong>中间节点</strong>采用”<strong>存储转发</strong>“的方法转发分组, 这种<strong>中间转发节点就是目前广泛使用的路由器</strong></li>
+<li><strong>每个路由器</strong>都可以独立地根据<strong>链路状态</strong>与<strong>分组的目的地址</strong>, 通过<strong>路由选择算法</strong>为每个分组<strong>选择合适的传输路径</strong></li>
+<li>当<strong>目的主机</strong>接收到属于一个报文的所有分组之后, 再将分组中<strong>多个数据字段组合起来</strong>, <strong>还原成发送主机发送的报文</strong>.</li>
+</ol>
+</li>
+<li>构成<strong>分组交换技术</strong>的<strong>三个重要概念</strong>: <strong>分组 路由选择 存储转发</strong><ol>
+<li>最简单的<strong>路由选择算法</strong>是<strong>“热土豆法”</strong>, 当它接收到一个<strong>待转发的数据分组</strong>时, 它会<strong>尽快地寻找一个输出路径转发出去</strong></li>
+<li>好的路由选择算法应<strong>具有自适应能力</strong>, 应该能够发现网络中<strong>任何一个中间节点或一段链路出现故障</strong>时, 具有<strong>选择绕过故障的节点或链路</strong>来转发分组的能力</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong>ARPANET设计思想</strong><ol>
+<li>ARPANET要求连接不同型号的计算机, 必须满足”可生存网络”的要求, 保证数据传输的可靠性</li>
+<li>ARPANET采取分组交换的思想, 将ARPANET分为两个部分<ol>
+<li>通信子网 通信子网的转发节点用小型计算机实现, 称为接口报文处理器(Interface Message Processors, IMP). <ol>
+<li>IMP根据通信协议的规定将计算机发送的报文数据分成多个长度一定的数据块, 并封装成分组, 然后通过路由选择算法, 为每个分组选择输出路径, 然后将这些分组分别向下一个IMP发送.</li>
+<li>下一个IMP在正确地接收到一个分组并存储之后, 向发送该分组地前一个IMP返回一个确认”ACK”分组, 再继续向下一个IMP转发.</li>
+<li>如果出错, 则用”NAK”分组报告传输出错, 通知上一个IMP重传</li>
+<li>就这样通过一个个IMP的接续, 直到分组正确地传输到目的主机为止</li>
+<li>由源主机 发出的同一个报文的不同分组到达目的主机所经过的路径可能是不同的</li>
+<li>在到达目的主机之前, 如果出现传输错误, 则丢失该传输, 并重复传输直到传输正确为止, 并且由于路径的不同, 可能出现传输乱序的现象</li>
+</ol>
+</li>
+<li>资源子网 用于资源传输</li>
+</ol>
+</li>
+<li>TCP/IP的研究与发展</li>
+</ol>
+</li>
+</ol>
 
           
         
@@ -794,7 +908,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -838,7 +952,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1068,7 +1182,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共48.4k字</span>
+  <span class="post-count">博客全站共50.7k字</span>
 </div>
         
 <div class="busuanzi-count">

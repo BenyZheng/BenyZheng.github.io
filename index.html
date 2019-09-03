@@ -363,7 +363,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/08/29/Java/Java知识体系串讲/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/09/03/Java/Java知识体系串讲2-对象与类/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -383,7 +383,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/29/Java/Java知识体系串讲/" class="post-title-link" itemprop="url">Java基础知识体系串讲</a>
+                <a href="/2019/09/03/Java/Java知识体系串讲2-对象与类/" class="post-title-link" itemprop="url">Java基础知识体系串讲2-对象与类</a>
               
             
           </h1>
@@ -405,12 +405,34 @@
               
 
              
-                
-              
+             
+             
 
-              <time title="创建时间：2019-08-29 22:20:40" itemprop="dateCreated datePublished" datetime="2019-08-29T22:20:40+08:00">2019-08-29 22:20:40</time>
+              <time title="创建时间：2019-09-03 15:20:40 / 修改时间：15:55:40" itemprop="dateCreated datePublished" datetime="2019-09-03T15:20:40+08:00">2019-09-03 15:20:40</time>
             
 
+            
+              
+            <!--  old version
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-09-03T15:55:40+08:00" content="2019-09-03">
+                2019-09-03 15:55:40
+              </time>
+            </span>
+          
             
           </span>
 
@@ -447,8 +469,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/08/29/Java/Java知识体系串讲/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/29/Java/Java知识体系串讲/" itemprop="commentCount"></span>
+                <a href="/2019/09/03/Java/Java知识体系串讲2-对象与类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/03/Java/Java知识体系串讲2-对象与类/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -478,389 +500,165 @@
       
         
           
-            <h2 id="Java基础知识体系串讲"><a href="#Java基础知识体系串讲" class="headerlink" title="Java基础知识体系串讲"></a>Java基础知识体系串讲</h2><h4 id="知识层次分布"><a href="#知识层次分布" class="headerlink" title="知识层次分布"></a>知识层次分布</h4><ul>
-<li><p>特性</p>
+            <h2 id="Java基础知识体系串讲2-对象与类"><a href="#Java基础知识体系串讲2-对象与类" class="headerlink" title="Java基础知识体系串讲2-对象与类"></a>Java基础知识体系串讲2-对象与类</h2><h4 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h4><ul>
+<li><p>一个类应该有</p>
 <ul>
-<li>简单性<ul>
-<li>Java没有头文件 指针运算 结构体 联合 操作符重载 等C++的特性 使用起来相对简单</li>
+<li>实例域 私有的数据域<ul>
+<li>公有的域访问器和域更改器 getter 和 setter</li>
 </ul>
 </li>
-<li>面向对象<ul>
-<li>面向对象是一种程序设计技术，它将重点放在数据（即对象）和对象的接口上</li>
-<li>与C++不同的点在于多重继承，Java取而代之的是接口概念</li>
+<li>构造方法</li>
+<li>toString()方法</li>
 </ul>
 </li>
-<li>分布式（加粗为总结 非加粗为原文）<ul>
-<li><strong>我的理解：为什么Java有分布式的特性：</strong><ul>
-<li><strong>Java有丰富的库，用于处理TCP/IP协议，即可通过对应协议处理URL访问对应网络对象，从而可以建立起一条网络对象与网络对象之间沟通的渠道，从而实现分布式通信网络互联的多处理机体系结构上</strong></li>
-</ul>
-</li>
-<li>Java有丰富的库，用于处理像HTTP和FTP之类的TCP/IP协议</li>
-<li>Java应用程序能够通过URL打开和访问网络上的对象，极其便携</li>
-<li>分布式软件系统是支持分布式处理的软件系统，是在由<strong>通信网络互联</strong>的<strong>多处理机体系结构</strong>上执行任务的系统。它包括分布式操作系统、分布式程序设计语言及其编译（解释）系统、分布式文件系统和分布式数据库系统等</li>
-</ul>
-</li>
-<li>健壮性<ul>
-<li><strong>Java编译器能够检测许多在其他语言仅在运行时才能够检测出来的问题</strong></li>
-<li><strong>Java采取的指针模型消除了重写内存和损坏数据的可能性</strong></li>
-<li>Java投入了大量的精力进行了早期的问题检测、后期动态的（运行时）的检测</li>
-</ul>
-</li>
-<li>安全性<ul>
-<li>Java能够防范各种攻击<ul>
-<li>运行时堆栈的溢出。如蠕虫和病毒常用的攻击手段</li>
-<li>破坏自己的进程空间之外的内存</li>
-<li>未经授权读写文件</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>体系结构中立<ul>
-<li>编译器生成一个体系结构中立的目标文件格式，这是一种编译过的代码，称为字节码</li>
-<li>Java编译器通过生成与特定的计算机体系结构无关的字节码指令来实现这一特性</li>
-<li>精心设计的字节码可以在任何机器上解释运行</li>
-<li>实际运行的环境为机器上的虚拟机<ul>
-<li>解释虚拟机指令肯定会比全速运行机器指令药慢很多</li>
-<li>虚拟机也可以将执行最频繁的字节码序列翻译成机器吗，这一过程称为即时编译</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>可移植性<ul>
-<li>Java由于上述虚拟机的存在，所有的数据类型都有固定的大小</li>
-<li>二进制数据以固定的格式进行存储和传输，消除了字节顺序的困扰</li>
-<li>字符串是以表转的unicode格式存储的</li>
-<li>Java语言编译程序只需将<strong>编译</strong>生成在Java虚拟机运行的字节码，Java虚拟机在执行字节码时，把字节码<strong>解释</strong>成目标平台的机器吗，进行执行，“一次编译，到处运行”</li>
-</ul>
-</li>
-<li>解释型<ul>
-<li>Java解释器可以在任何移植了解释器的机器上执行Java字节码</li>
-</ul>
-</li>
-<li>高性能</li>
-<li>多线程<ul>
-<li>针对多线程有自己的一套库的处理机制</li>
-</ul>
-</li>
-<li>动态性</li>
-</ul>
-</li>
-<li><p>基本数据类型（不包括引用数据类型）</p>
+<li><p>隐式参数和显式参数</p>
 <ul>
-<li>整形<ul>
-<li>int        4byte      -20亿～20亿（大于20亿） -2^31~2^31-1</li>
-<li>short    2byte      -32768～32767 -2^15~2^15-1</li>
-<li>long    8byte        -2^63~2^63-1</li>
-<li>Byte     1byte       -2^7~-2^7-1</li>
-<li>进制前缀 二进制 0b 八进制 0 十六进制 0x 例如0xCAFE（魔数）</li>
-</ul>
-</li>
-<li>浮点型<ul>
-<li>float    4byte    </li>
-<li>double   8byte</li>
-<li>默认为double float后面有后缀F或f 没有后缀F默认为double</li>
-<li>原因是float类型的精度很难满足需求</li>
-<li>存在三种特殊的浮点数值<ul>
-<li>正无穷大 Double.POSITIVE_INFINITY</li>
-<li>负无穷大 Double.NEGATIVE_INFINITY</li>
-<li>NaN（is not number）Douboe.NaN  判断是否是一个数值 Double.isNaN(x)</li>
+<li>Number007.raiseSalary(5)<ul>
+<li>出现在方法名前的是隐式参数 number007</li>
+<li>出现在方法名后面括号中的数值是显式参数 5</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Unicode和char类型<ul>
-<li>2字节 16位 Unicode-16</li>
-</ul>
+<li><p>一个方法可以访问所属类的所有对象的私有数据</p>
 </li>
-<li>boolean类型<ul>
-<li>两个字节 与short同等大小 2byte 16位</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>变量与对象</p>
+<li><p>final实例域</p>
 <ul>
-<li>变量一定要初始化，初始化为对应的值，无默认</li>
-</ul>
+<li><p>一个构造器执行之后，这个域的值被设置，并且在后面的操作中，不能够再对它的值进行修改</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>常量</p>
+<li><p>final关键字若修饰对象的话，只是表示存储在evaluations变量中的对象引用不会再指示其他StringBuilder对象，但是对象是可以修改的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> StringBuilder evaluations = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">giveGoldStar</span><span class="params">()</span></span>&#123;</span><br><span class="line">	evaluations.append(LocalDate.now(): <span class="string">":Gold star!\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>static域与static方法</p>
 <ul>
-<li>关键字final表示这个变量只能被赋值一次。一旦被赋值之后，就不能再更改</li>
-<li>习惯上，常量名使用全大写</li>
-<li>使用static final来定义一个类常量</li>
-<li>普通常量定义在方法的内部，仅供方法使用</li>
-<li>类常量定义在方法外部，可供一个类中的多个方法使用</li>
-</ul>
-</li>
-<li><p>0</p>
+<li><p>静态域</p>
 <ul>
-<li><p>整数被除0将会产生一个异常，而浮点数被0除将会得到无穷大或者NaN的结果</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static final double NaN = 0.0d / 0.0;</span><br><span class="line">public static final double POSITIVE_INFINITY = 1.0 / 0.0;</span><br><span class="line">public static final double NEGATIVE_INFINITY = -1.0 / 0.0;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>emmm Java中浮点数除以0 是无穷大 记住吧 比较特殊</p>
-</li>
-</ul>
-</li>
-<li><p>Math方法</p>
-<ul>
-<li><p>Math方法是可以直接调用的，无须import</p>
-</li>
-<li><p>import static java.lang.Math.*;  此为静态导入 静态导入后 调用方法时，无需添加前缀Math</p>
-</li>
-<li><p>常用方法</p>
-<ul>
-<li>max</li>
-<li>min</li>
-<li>pow</li>
-<li>sqrt</li>
-<li>Random 此处贴上一份关于Random的研究</li>
-<li>随机数也可以使用Random类来实现 是伪随机数</li>
-<li><a href="https://blog.csdn.net/qq_33101675/article/details/81028210" target="_blank" rel="noopener">https://blog.csdn.net/qq_33101675/article/details/81028210</a></li>
-<li>round 四舍五入</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>强制类型转换    </p>
-<ul>
-<li><p>注意精度</p>
-<ul>
-<li>int转换为float long转换为float long转换为double 都可能损失精度</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>自增自减运算符</p>
-<ul>
-<li><p>前缀形式的 会先完成加一 再使用加一后的新变量 ++i</p>
-</li>
-<li><p>后缀形式的 会先使用旧变量 再完成加一 i++</p>
-</li>
-</ul>
-</li>
-<li><p>位运算符</p>
-<ul>
-<li>&amp; and | or ^ xor(异或) ~ nor(同或) </li>
-<li>&lt;&lt; 位模式左移 逻辑左移 右边补0</li>
-<li>>&gt; 位模式右移 逻辑右移 左边补符号位</li>
-<li>>&gt;&gt; 无符号位模式右移 无符号右移 左边补0</li>
-<li>优先级 括号优先 判断优先 其次运算 最后赋值</li>
-</ul>
-</li>
-<li><p>枚举类型</p>
-<ul>
-<li><p>变量的取值只在一个有限的集合内，若直接存放在变量中，可能会保存为错误的值</p>
-</li>
-<li><p>可自定义枚举类型，枚举类型包括有限个命名的值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Size&#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&#125;</span><br><span class="line">Size s = Size.MEDIUM;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Size类型的变量只能存储这个类型声明中给定的某个枚举值，或者null，null表示这个变量没有设置任何值</p>
-</li>
-</ul>
-</li>
-<li><p>String</p>
-<ul>
-<li><p>概念上讲，Java字符串就是Unicode字符序列</p>
-</li>
-<li><p>Java标准类库中提供了String的预定义类，每个双引号扩起来的字符串都是String类的一个实例</p>
-</li>
-<li><p>《深入理解Java虚拟机》中写到，String是存放在常量池中的</p>
-</li>
-<li><p>严谨点的话，String并不是Java中的基本数据类型，是属于引用数据类型，上面讲的其实都是基本数据类型</p>
-</li>
-<li><p>获取子串</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String greeting = <span class="string">"Hello"</span>;</span><br><span class="line">String s = greeting.substring(<span class="number">0</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-<p>得到“Hel”子串，首参数为开始的位置，次参数为结束的位置（不包括结束位置本身）</p>
-</li>
-<li><p>拼接字符串</p>
-<ul>
-<li><p>用+号拼接</p>
-</li>
-<li><p>int也可以参与拼接</p>
-</li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">456</span>;</span><br><span class="line">String s = a + <span class="string">""</span> + b;	<span class="comment">// 输出 123456</span></span><br><span class="line">String ss = a + b + <span class="string">""</span>;	<span class="comment">// 输出 579</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>字符串在Java中是不可变的，需要变化字符串靠拆分与拼接</p>
-</li>
-<li><p>不可变的好处 编辑器可以让字符串共享 </p>
-</li>
-<li><p>从jdk6及以前，String常量池存放在方法区中的运行时常量池中，方法区位于永久代</p>
-</li>
-<li><p>jdk7，String常量池转移到堆中</p>
-</li>
-<li><p>Jdk8，永久代被取消，新增MetaSpace</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// TODO 虚拟机也得好好复习一遍了 好多东西讲的不是很清楚 串不起来</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>String.intern()</p>
-<ul>
-<li>intern()方法设计的初衷，就是重用String对象，以节省内存消耗</li>
-</ul>
-</li>
-<li><p>使用intern()方法，运行时间增长，这是因为，虚拟机会先new String后再intern指向常量池中的引用</p>
-<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  String s = <span class="keyword">new</span> String(<span class="string">"1"</span>);  <span class="comment">//常量池中添加“1”，生成堆对象s，返回指向堆中s的引用</span></span><br><span class="line">	String intern = s.intern();  <span class="comment">//常量池中已有“1”，返回常量池中“1”的引用</span></span><br><span class="line">	String s2 = <span class="string">"1"</span>;  <span class="comment">//常量池中已有“1”，返回常量池中“1”的引用</span></span><br><span class="line">System.out.println(s2 == intern);<span class="comment">//true  两者返回的都是常量池中“1”的引用</span></span><br><span class="line">  System.out.println(s == intern);<span class="comment">//false  堆引用地址和常量池引用地址不相等</span></span><br><span class="line"></span><br><span class="line">	原文链接：https:<span class="comment">//blog.csdn.net/hz90s/article/details/80819619</span></span><br></pre></td></tr></table></figure>
-</code></pre></li>
-</ul>
-</li>
-</ul>
-<pre><code>- 实验证明，如引用常量池中的String，会有限返回intern生成的新的堆引用地址的String
-</code></pre><ul>
-<li><p>String.equal()</p>
-<ul>
-<li>比较字符串的内容是否相等</li>
-<li>如果用等号==来比较，会比较位置是否相等，而不是比较内容是否相等</li>
-</ul>
-</li>
-<li><p>空串和null</p>
-<ul>
-<li><p>空串即长度为0或者内容为空</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String = <span class="string">""</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>null即表示目前没有任何对象与该变量关联</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(str == <span class="keyword">null</span>)	<span class="comment">// probably appear error</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<li><p>每个类只有一个这样的域，而每个对象对于所有的实例域却都有自己的一份拷贝，这个类的所有实例将共享一个nextId域</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">xxx</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> nextId = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li><p>码点与代码单元</p>
+<li>它只属于类，不属于任何独立的对象</li>
+</ul>
+</li>
+<li><p>静态常量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> PI = <span class="number">3.1415</span>......</span><br></pre></td></tr></table></figure>
 <ul>
-<li>emmm 这是个我认为比较偏的概念 core 卷1上讲的云里雾里的 如果你求知欲很强的话 就看下去 我会用比较接地气的方式解释这个名词 个人认为 不了解 只是少个知识点而已 影响不大 可不看</li>
-<li>但是 谁叫我 什么东西都想知道全面一点呢 没办法 还是吃掉这个知识点吧</li>
-<li>先讲两个名词解释</li>
-<li>码点：就是某个任意字符在Unicode编码表中对应的代码值</li>
-<li>代码单元：是在计算机中用来表示码点的，大部分码点只需要一个代码单元表示，但是有一些是需要两个代码单元来表示的</li>
-<li>上面讲到 我们的char采用utf-16编码表示unicode字符 占两个字节 16位 故utf-16的代码单元占2个字节 如果是utf-8的话 就占1个字节</li>
-<li>大多数的常用的Unicode字符使用两个字节就能表示 但是 实际上 两个字节 16位 也不够用了 已经出现一些字符 超过两个字节</li>
-<li>就比如 U+1D546 长这样 𝕆 要两个代码单元 </li>
-<li>为了对比明显 列举一个只要一个代码单元的 U+0022 长这样 “ 就是我们的双引号啦</li>
-<li><img src="/Users/icebearice/Desktop/屏幕快照 2019-08-29 下午5.23.15.png" alt="屏幕快照 2019-08-29 下午5.23.15"></li>
-<li>不要使用char放 放不下啊兄弟</li>
+<li>可以采用Math.PI获得</li>
 </ul>
 </li>
-<li><p>StringAPI (括号中的括号为可选的意思)</p>
+<li><p>静态方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Math.pow(x, a) <span class="comment">// x的a次方</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>char charAt(int index)</p>
-</li>
-<li><p>boolean equal(Object other)</p>
-</li>
-<li><p>boolean startsWith(String prefix) </p>
-</li>
-<li><p>boolean endsWith(String suffix)</p>
-</li>
-<li><p>如果字符串以prefix 或者 suffxi 开头或结尾 返回true</p>
-</li>
-<li><p>int indexOf(String str (int fromIndex))</p>
-</li>
-<li><p>int indexOf(int cp (int fromIndex))</p>
-</li>
-<li><p>返回子串或者字符的位置 从fromIndex开始（可选）</p>
-</li>
-<li><p>length() 整个Java中 只有String有length() 加括号 而数组长度为 length 其他什么找长度的 都是size</p>
-</li>
-<li><p>String substring(int beginIndex, (int endIndex))</p>
-</li>
-<li><p>String toLowerCase() </p>
-</li>
-<li><p>String toUpperCase()</p>
-</li>
-<li><p>String trim() — 修 剪</p>
-</li>
-<li><p>删除字符串头部和尾部的空格</p>
-</li>
-<li><p>String join(CharSequence delimiter, CharSequence … elements)</p>
-</li>
-<li><p>看不懂？ 给你个样例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String[] arrStr=<span class="keyword">new</span> String[]&#123;<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>&#125;;</span><br><span class="line"></span><br><span class="line">System.out.println(String.join(<span class="string">"-"</span>, arrStr));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line"><span class="number">1</span>-<span class="number">2</span>-<span class="number">3</span></span><br><span class="line">a-b-c</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>String replace（CharSequence oldString, CharSequence newString）</p>
+<li>没有隐式参数，只有显式参数</li>
+<li>静态方法是一种不能向对象实施操作的方法</li>
+<li>在下面两种情况下使用静态方法<ul>
+<li>一个方法不需要访问对象状态，其所需参数都是通过显式参数提供 Math.pow(x, a)</li>
+<li>一个方法只需访问类的静态域 Employee.getNextId()</li>
+</ul>
 </li>
 </ul>
 </li>
-<li><p>StringBuilderAPI</p>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>工厂方法</p>
 <ul>
-<li>int length()</li>
-<li>StringBUilder append(String str)</li>
-<li>StringBuilder append(char c)</li>
-<li>StringBuilder appendCodePoint(int codepoint)</li>
-<li>追加一个码点，并将其转换为一个或两个代码大院并返回this</li>
-<li>void setCharAt(int i, char c)</li>
-<li>将第i个代码单元设置为c</li>
-<li>StringBuilder insert(int offset, String str / Char c)</li>
-<li>StringBuilder delete(int startIndex, int endIndex)</li>
-<li>delete startIndex ~ endIndex-1</li>
-<li>toString()</li>
+<li>使用工厂方法来构造对象</li>
+<li>为什么不利用构造器来完成这些操作呢？<ul>
+<li>无法命名构造器，所有的构造器只有参数不同，无法根据名字来选择所需要的对象</li>
+<li>当好似哟给你构造器时，无法改变所构造的对象类型，构造器获得的对象永远都是初始，不能是继承的对象</li>
 </ul>
 </li>
-<li><p>输入输出(两种方式)</p>
+</ul>
+</li>
+<li><p>方法参数</p>
 <ul>
-<li>Scanner in = new Scanner(System.in);<ul>
-<li>String in.nextLine() 下一行</li>
-<li>String in.next(); 下一个单词</li>
-<li>int in.nextInt(); </li>
-<li>double in.nextDouble();</li>
-<li>boolean in.hasNext();</li>
-<li>boolean in.hasNextInt();</li>
-<li>boolean in.hasNextDouble();</li>
-</ul>
-</li>
-<li>BufferReader buffer = new BufferedReader(new InputStreamReader(System.in))<ul>
-<li>buffer.readLine();</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>格式化输出</p>
+<li><p>在程序设计语言中，方法接收参数传递的方式有两种</p>
 <ul>
-<li>System.out.printf(“%s”, s);<ul>
-<li>d 十进制整数</li>
-<li>x 十六进制整数</li>
-<li>o 八进制整数</li>
-<li>f 定点浮点数</li>
-<li>e 指数浮点数</li>
-<li>g 通用浮点数</li>
-<li>a 十六进制浮点数</li>
-<li>s 字符串</li>
-<li>c 字符</li>
-<li>b 布尔</li>
-<li>h 散列码</li>
-<li>tx or Tx 日期时间</li>
-<li>% 百分号 （要输入百分号的时候 要打 %%）</li>
-<li>n 与平台的分隔符有关 windows相当于\n\r unix相当于\r</li>
+<li>值调用 值传递<ul>
+<li>表示方法接受的是调用者提供的值</li>
+</ul>
+</li>
+<li>引用调用 引用传递<ul>
+<li>表示方法接收的是调用者传递的变量地址</li>
+</ul>
+</li>
+<li>名调用（已成为历史）<ul>
+<li>Algol 最古老的程序设计语言之一 用的就是这种调用方式</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>Switch</p>
+<li><p>Java总是按值调用 方法得到的是所有参数值的一个拷贝</p>
+</li>
+<li><p>方法不能修改传递给它的任何参数变量的内容</p>
+</li>
+<li><p>而对象引用作为参数就不同了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">tripleSalary</span><span class="params">(Employee x)</span></span>&#123;	<span class="comment">// works</span></span><br><span class="line">  x.raiseSalary(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line">harry = <span class="keyword">new</span> Employee(. . .);</span><br><span class="line">tripleSalary(harry);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>x被初始化为harry值的拷贝，这里是一个对象的引用</li>
+<li>raiseSalary方法应用于这个对象引用，x和harry同时引用的那个Employee对象的薪金提高了200%</li>
+<li>方法结束后，参数变量x不再使用。当然，对象变量harry继续引用那个薪金增值3倍的雇员对象</li>
+</ol>
+</li>
+<li><p>Java中参数的使用情况</p>
 <ul>
-<li>这里提及switch语句是有私心的 因为 我只是想说一下 switch 在go里面 是默认带break的 哈哈哈</li>
+<li>一个方法不能修改一个基本数据类型的参数</li>
+<li>一个方法可以改变一个对象参数的状态</li>
+<li>一个方法不能让对象参数引用一个新的对象</li>
 </ul>
 </li>
-<li><p>大数值</p>
+</ul>
+</li>
+<li><p>突然想到一个问题 我们要如何主动回收对象 在Java里面 emmm 我为什么会想到这呢 我也不知道 emmm</p>
 <ul>
-<li>若基本的整数和浮点数精度不能够满足需求，java.math有两个很有用的类<ul>
-<li>BigInteger and BigDecimal （我竟然不知道decimal是小数的意思）</li>
-<li>前者实现了任意精度的整数运算，后者实现了任意精度的浮点数运算</li>
+<li>搜索另一篇文章 辣鸡回收 GC finalize 方法小结</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p>数组</p>
+<li><p>重载</p>
 <ul>
-<li>爱怎么初始化怎么初始化<ul>
-<li>int[] a</li>
-<li>int a[]</li>
-<li>int [] a = new int[100]</li>
+<li>有些类有多个构造器，有相同的名字和不同的参数，便产生了重载</li>
+<li>如果在构造器中没有显式地给域赋予初值，那么就会自动地赋予默认值：0、false或者null<ul>
+<li>这样子会影响代码的可读性</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>不规则数组</p>
+<li><p>无参数的构造器</p>
 <ul>
-<li>Java实际上没有多维数组，只有一维数组。多维数组被解释为“数组的数组”</li>
+<li>编写一个类时没有编写构造器，那么系统就会提供一个无参数构造器，这个构造器将所有的实例域设置为默认值</li>
+<li>如果类中提供了至少一个构造器，但是没有提供无参数的构造器，则在构造对象时如果没有提供参数就会被视为不合法</li>
 </ul>
+</li>
+<li><p>一种另类的构造器</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(<span class="keyword">double</span> s)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// calls Employee(String, double);</span></span><br><span class="line">	<span class="keyword">this</span>(<span class="string">"Employee #"</span> + nextId, s)</span><br><span class="line">	nextID ++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化快</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> nextId;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">double</span> salary;</span><br><span class="line">	<span class="comment">// object initialization block</span></span><br><span class="line">	&#123;</span><br><span class="line">		id = nextId;</span><br><span class="line">		nextId ++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(String n, <span class="keyword">double</span> s)</span> </span>&#123;</span><br><span class="line">		name = n;</span><br><span class="line">		salary = s;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>无论使用哪个构造器构造对象，id域都在对象初始化块中被初始化</li>
+</ul>
+</li>
+<li><p>对象析构与finalize方法</p>
+<ul>
+<li>C++有显式的析构器方法，其中放置一些当对象不再使用时需要执行的清理代码，在析构器中，最常见的操作时回收分配给对象的存储空间</li>
+<li>由于Java有自动的垃圾回收器，固Java不支持析构器</li>
+<li>可以为任何一个类添加finalize方法，将在垃圾回收器清理对象之前调用。在实际应用中，不要依赖于使用finalize方法回收任何短缺的资源，这是因为很难知道这个方法什么时候才能调用</li>
+<li>如果某个资源需要在使用完毕后立刻关闭，那么就需要由人工来管理。对象用完时，可以应用一个close方法完成相应的清理操作</li>
+</ul>
+</li>
+<li><p>类的导入</p>
+<ul>
+<li>每个类名之前添加完整的包名</li>
+<li>使用import语句，无需添加包前缀</li>
+<li>静态导入 import static 无需添加 类名前缀</li>
+</ul>
+</li>
+<li><p>Java成员变量的作用域</p>
+<p>  | 作用域    | 当前类 | 同一package | 子类   | 其他package |<br>  | :——– | —— | ———– | —— | ———– |<br>  | public    | 可见   | 可见        | 可见   | 可见        |<br>  | protected | 可见   | 可见        | 可见   | 不可见      |<br>  | default   | 可见   | 可见        | 不可见 | 不可见      |<br>  | private   | 可见   | 不可见      | 不可见 | 不可见      |</p>
 </li>
 </ul>
 
@@ -919,7 +717,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/08/09/Supervisor学习/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/09/03/问题集/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -939,7 +737,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/09/Supervisor学习/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/2019/09/03/问题集/" class="post-title-link" itemprop="url">未命名</a>
               
             
           </h1>
@@ -964,7 +762,7 @@
                 
               
 
-              <time title="创建时间：2019-08-09 16:26:14" itemprop="dateCreated datePublished" datetime="2019-08-09T16:26:14+08:00">2019-08-09 16:26:14</time>
+              <time title="创建时间：2019-09-03 09:34:16" itemprop="dateCreated datePublished" datetime="2019-09-03T09:34:16+08:00">2019-09-03 09:34:16</time>
             
 
             
@@ -985,8 +783,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/08/09/Supervisor学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/09/Supervisor学习/" itemprop="commentCount"></span>
+                <a href="/2019/09/03/问题集/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/03/问题集/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1016,40 +814,10 @@
       
         
           
-            <h3 id="操作系统与Linux综合学习"><a href="#操作系统与Linux综合学习" class="headerlink" title="操作系统与Linux综合学习"></a>操作系统与Linux综合学习</h3><h4 id="内核"><a href="#内核" class="headerlink" title="内核"></a>内核</h4><p>内核 Kernel 是一个用来管理软件发出的数据I/O要求的计算机程序，将这些要求转译为数据处理的指令并交由中央处理器（CPU）及计算机中其他电子组件进行处理，是现在操作系统中最基本的部分。本来计算机中的应用程序是可以直接地调入计算机中执行的，但是直接对硬件进行操作是非常复杂的。所以内核通常提供一种硬件抽象的方法，来完成这些操作，所以从某种程度上来说，内核也不是必要的组成部分。</p>
-<p>简而言之，内核控制计算机资源，提供程序的运行环境</p>
-<h5 id="内核分类"><a href="#内核分类" class="headerlink" title="内核分类"></a>内核分类</h5><p>分为宏内核和微内核两大架构，宏内核与微内核之间，还有一种混合内核；微内核之下还有一种极端的设计方式，成为外内核</p>
-<h5 id="宏内核"><a href="#宏内核" class="headerlink" title="宏内核"></a>宏内核</h5><p>宏内核结构在硬件的基础上，定义了一个高阶的抽象接口，应用一组原语（或者叫系统调用system call）来实现操作系统的功能，例如进程管理，文件系统和存储管理等等，这些功能由多个运行在内核态的模块来完成。</p>
-<p>尽管每一个模块都是单独地服务这些操作，内核代码是高度集成的，一个宏内核相当于是一个二进制的大应用程序，模块间的通讯是通过直接调用其他模块中的函数实现的，而不是通过消息传递，系统服务的实现以及系统的基本操作规则是耦合的。因此一个使某模块功能瘫痪的bug会使整个系统需要崩溃重启</p>
-<p>然而，如果开发顺利，单内核结构就可以从运行效率上得到好处</p>
-<p>常见的宏内核有Linux和Unix</p>
-<h5 id="微内核"><a href="#微内核" class="headerlink" title="微内核"></a>微内核</h5><p>微内核结构是由一个非常简单的硬件抽象和一组比较关键的原语或系统调用组成；这些原语，仅仅包括了创建一个系统必须的几个部分；如线程管理、地址空间和行程间通讯（进程或线程）</p>
-<p>微内核的目标是将系统服务的实现和系统的基本操作规则分离开来。一个服务组件的失效并不会导致整个系统的崩溃，内核需要做的，仅仅是重启这个组件，而不影响其他部分。</p>
-<p>然而，微内核相比单内核可能有一点运行效率上的差别，在调用模块的时候，宏内核是采用的是方法间的调用，微内核采用的是组件的调用</p>
-<p>微内核经常被用于机器人和医疗器械的嵌入式设计中</p>
-<p>宏内核和微内核的共同点，就是他们都有创建一个系统的必要组成部分：线程管理、地址空间和行程间通讯</p>
-<h5 id="混合内核"><a href="#混合内核" class="headerlink" title="混合内核"></a>混合内核</h5><p>混合内核的设计理念来自微内核，只不过它让一些微核结构运行在用户空间的代码运行在内核空间，让内核的运行效率更高</p>
-<h5 id="外内核"><a href="#外内核" class="headerlink" title="外内核"></a>外内核</h5><p>外内核系统，也被称为纵向结构操作系统，是一种比较极端的设计方法</p>
-<p>它的设计理念是让用户程序的设计者来决定硬件接口的设计。外内核本身非常的小，它通常只负责系统保护和系统资源复用相关的服务</p>
-<p>传统的内核设计都对硬件作了抽象，把硬件资源或设备驱动程序都隐藏在硬件抽象层下。比方说，在这些系统中，如果分配一段物理存储，应用程序并不知道它的实际位置。</p>
-<p>而外核的目标就是让应用程序直接请求一块特定的物理孔家你、一块待定的磁盘块等等。系统本身只保证被请求的资源当前是空闲的，应用程序就允许直接访问它。既然外核系统只提供了比较低级的硬件操作，而没有像其他系统一样提供高级的硬件抽象，那么就需要增加额外的运行库支持，这些运行库运行在外核之上，给用户程序提供了完成的功能。</p>
-<p>理论上，这种设计可以让各种操作系统运行在一个外核之上，如Windows和Unix。并且设计人员可以根据运行效率调整系统的各部分功能。</p>
-<p>现在，外核设计还停留在研究阶段，没有任何一个商业系统采用了这种设计。几种概念上的操作系统正在被开发，如<a href="https://wiwiwiki.kfd.me/wiki/%E5%89%91%E6%A1%A5%E5%A4%A7%E5%AD%A6" target="_blank" rel="noopener">剑桥大学</a>的Nemesis，格拉斯哥大学的Citrix系统和瑞士计算机科学院的一套系统。<a href="https://wiwiwiki.kfd.me/wiki/%E9%BA%BB%E7%9C%81%E7%90%86%E5%B7%A5%E5%AD%A6%E9%99%A2" target="_blank" rel="noopener">麻省理工学院</a>也在进行着这类研究。PID简介</p>
-<p>进程标识符 process identifier，简称进程ID process ID，PID，是大多数操作系统的内核用于唯一标识进程的一个数值。这一数值可以作为许多函数调用的参数，以使调整进程优先级、杀死进程之类的进程控制行为成为可能</p>
-<h4 id="Pstree-命令"><a href="#Pstree-命令" class="headerlink" title="Pstree 命令"></a>Pstree 命令</h4><p>pstree命令是用于查看进程树之间的关系，即哪个进程是父进程，哪个进程是子进程，可以清楚的看出进程与进程之间的关系</p>
-<p><strong>几个重要的参数：</strong></p>
-<p>-A：各进程树之间的连接以ASCII码字符来连接</p>
-<p>-U：各进程树之间的连接以UTF8码字符来链接</p>
-<p>-p：同时列出每个进程的PID</p>
-<p>-u：同时列出每个进程的所属账号名称</p>
-<p><img src="/2019/08/09/Supervisor学习/Users\2010104-0288\AppData\Roaming\Typora\typora-user-images\1564654452444.png" alt="1564654452444"></p>
-<p><img src="/2019/08/09/Supervisor学习/Users\2010104-0288\AppData\Roaming\Typora\typora-user-images\1564654412033.png" alt="1564654412033"></p>
-<h4 id="Supervisor学习"><a href="#Supervisor学习" class="headerlink" title="Supervisor学习"></a>Supervisor学习</h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>Supervisor是基于Python开发的一个client/server服务，是Linux/Unix系统下的一个进程管理工具，不支持Windows系统，可以很方便的监听、启动、停止、重启一个或多个进程。此外，若有进程无法在其运行崩溃之后自行重新启动，Supervisor将会重新启动 相关进程 作为 子进程，并自动的加载进程相关配置</p>
-<p>supervisor安装完成后会生成三个执行程序：supervisortd、supervisorctl、echo_supervisord_conf，分别是supervisor的守护进程服务（用于接收进程管理命令）、客户端（用于和守护进程通信，发送管理进程的指令）、生成初始配置文件程序。</p>
-<p>相关blog与官方文档</p>
-<p><a href="https://blog.csdn.net/xyang81/article/details/51555473" target="_blank" rel="noopener">https://blog.csdn.net/xyang81/article/details/51555473</a></p>
-<p><a href="http://supervisord.org/introduction.html" target="_blank" rel="noopener">http://supervisord.org/introduction.html</a></p>
-<p>K8S Docker LISP ipvs</p>
+            <h3 id="问题集"><a href="#问题集" class="headerlink" title="问题集"></a>问题集</h3><ol>
+<li>slice可以序列化后反序列化为原来的slice吗</li>
+<li>/<em>[]GameLoginTime 和 []/</em>GmaeLoginTime 区别</li>
+</ol>
 
           
         
@@ -1095,7 +863,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1139,7 +907,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1369,7 +1137,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共48.4k字</span>
+  <span class="post-count">博客全站共50.7k字</span>
 </div>
         
 <div class="busuanzi-count">

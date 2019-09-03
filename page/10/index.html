@@ -363,7 +363,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/04/26/面试/CVTE一面/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/06/Linux/Linux常见命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -383,7 +383,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/04/26/面试/CVTE一面/" class="post-title-link" itemprop="url">CVTE一面</a>
+                <a href="/2019/05/06/Linux/Linux常见命令/" class="post-title-link" itemprop="url">Linux常见命令</a>
               
             
           </h1>
@@ -408,7 +408,7 @@
              
              
 
-              <time title="创建时间：2019-04-26 20:04:03 / 修改时间：20:04:32" itemprop="dateCreated datePublished" datetime="2019-04-26T20:04:03+08:00">2019-04-26 20:04:03</time>
+              <time title="创建时间：2019-05-06 14:42:13 / 修改时间：14:48:20" itemprop="dateCreated datePublished" datetime="2019-05-06T14:42:13+08:00">2019-05-06 14:42:13</time>
             
 
             
@@ -428,8 +428,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-04-26T20:04:32+08:00" content="2019-04-26">
-                2019-04-26 20:04:32
+              <time itemprop="dateUpdated" datetime="2019-05-06T14:48:20+08:00" content="2019-05-06">
+                2019-05-06 14:48:20
               </time>
             </span>
           
@@ -450,7 +450,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -469,8 +469,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/04/26/面试/CVTE一面/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/26/面试/CVTE一面/" itemprop="commentCount"></span>
+                <a href="/2019/05/06/Linux/Linux常见命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/06/Linux/Linux常见命令/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -500,20 +500,223 @@
       
         
           
-            <h4 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h4><p>线程状态之间的转换</p>
-<p>多线程中常见的方法</p>
-<p>串行执行线程的多种方式</p>
-<p>多线程的创建的三种方法</p>
-<h4 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h4><p>IOC原理</p>
-<p>IOC实现过程</p>
-<p>AOP实现过程</p>
-<p>AOP原理</p>
-<p>两种动态代理模式的底层实现</p>
-<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p>数据库表的设计</p>
-<p>数据库的前三范式</p>
-<p>常见的索引形式</p>
-<p>索引的底层实现 数据结构</p>
-<p>B+树的插入过程</p>
+            <p>部分转载自: JavaGuide开源项目 <a href="https://snailclimb.gitee.io/javaguide/#/operating-system/%E5%90%8E%E7%AB%AF%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E5%A4%87%E7%9A%84Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86?id=%E5%9B%9B-linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4" target="_blank" rel="noopener">Github-后端程序员必备的Linux基础</a></p>
+<h3 id="Linux支持的5种文件类型"><a href="#Linux支持的5种文件类型" class="headerlink" title="Linux支持的5种文件类型"></a>Linux支持的5种文件类型</h3><p>普通文件 目录文件 链接文件 设备文件 命名管道FIFO</p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1645f1a7d64def1a" alt="getPositionæä&quot;¶ç±&quot;å"></p>
+<p>关于链接的种类有: 硬链接和软连接 可点击跳转 查看 <a href="https://icebearice.gitee.io/2019/05/06/Linux/Linux硬链接和软链接">Linux硬链接与软连接</a></p>
+<h3 id="目录切换命令"><a href="#目录切换命令" class="headerlink" title="目录切换命令"></a>目录切换命令</h3><ul>
+<li><strong>cd usr：</strong> 切换到该目录下usr目录</li>
+<li><strong>cd ..（或cd../）：</strong> 切换到上一层目录</li>
+<li><strong>cd /：</strong> 切换到系统根目录</li>
+<li><strong>cd ~：</strong> 切换到用户主目录</li>
+<li><strong>cd -：</strong> 切换到上一个操作所在目录</li>
+</ul>
+<h3 id="目录的操作命令"><a href="#目录的操作命令" class="headerlink" title="目录的操作命令"></a>目录的操作命令</h3><ol>
+<li><p><strong>mkdir 目录名称：</strong> 增加目录</p>
+</li>
+<li><p><strong>ls或者ll</strong>（ll是ls -l的别名，ll命令可以看到该目录下的所有目录和文件的详细信息）：查看目录信息</p>
+</li>
+<li><p><strong>find 目录 参数：</strong> 寻找目录（查）</p>
+<p>示例：</p>
+<ul>
+<li>列出当前目录及子目录下所有文件和文件夹: <code>find .</code></li>
+<li>在<code>/home</code>目录下查找以.txt结尾的文件名:<code>find /home -name &quot;*.txt&quot;</code></li>
+<li>同上，但忽略大小写: <code>find /home -iname &quot;*.txt&quot;</code></li>
+<li>当前目录及子目录下查找所有以.txt和.pdf结尾的文件:<code>find . \( -name &quot;*.txt&quot; -o -name &quot;*.pdf&quot; \)</code>或<code>find . -name &quot;*.txt&quot; -o -name &quot;*.pdf&quot;</code></li>
+</ul>
+</li>
+<li><p><strong>mv 目录名称 新目录名称：</strong> 修改目录的名称（改）</p>
+<p>注意：mv的语法不仅可以对目录进行重命名而且也可以对各种文件，压缩包等进行 重命名的操作。mv命令用来对文件或目录重新命名，或者将文件从一个目录移到另一个目录中。后面会介绍到mv命令的另一个用法。</p>
+</li>
+<li><p><strong>mv 目录名称 目录的新位置：</strong> 移动目录的位置—剪切（改）</p>
+<p>注意：mv语法不仅可以对目录进行剪切操作，对文件和压缩包等都可执行剪切操作。另外mv与cp的结果不同，mv好像文件“搬家”，文件个数并未增加。而cp对文件进行复制，文件个数增加了。</p>
+</li>
+<li><p><strong>cp -r 目录名称 目录拷贝的目标位置：</strong> 拷贝目录（改），-r代表递归拷贝</p>
+<p>注意：cp命令不仅可以拷贝目录还可以拷贝文件，压缩包等，拷贝文件和压缩包时不 用写-r递归</p>
+</li>
+<li><p><strong>rm [-rf] 目录:</strong> 删除目录（删）</p>
+<p>注意：rm不仅可以删除目录，也可以删除其他文件或压缩包，为了增强大家的记忆， 无论删除任何目录或文件，都直接使用<code>rm -rf</code> 目录/文件/压缩包</p>
+</li>
+</ol>
+<h3 id="文件的操作命令"><a href="#文件的操作命令" class="headerlink" title="文件的操作命令"></a>文件的操作命令</h3><ol>
+<li><p><strong>touch 文件名称:</strong> 文件的创建（增）</p>
+</li>
+<li><p><strong>cat/more/less/tail 文件名称</strong> 文件的查看（查）</p>
+<ul>
+<li><strong>cat：</strong> 查看显示文件内容</li>
+<li><strong>more：</strong> 可以显示百分比，回车可以向下一行， 空格可以向下一页，q可以退出查看</li>
+<li><strong>less：</strong> 可以使用键盘上的PgUp和PgDn向上 和向下翻页，q结束查看</li>
+<li><strong>tail-10 ：</strong> 查看文件的后10行，Ctrl+C结束</li>
+</ul>
+<p>注意：命令 tail -f 文件 可以对某个文件进行动态监控，例如tomcat的日志文件， 会随着程序的运行，日志会变化，可以使用tail -f catalina-2016-11-11.log 监控 文 件的变化</p>
+</li>
+<li><p><strong>vim 文件：</strong> 修改文件的内容（改）</p>
+<p>vim编辑器是Linux中的强大组件，是vi编辑器的加强版，vim编辑器的命令和快捷方式有很多，但此处不一一阐述，大家也无需研究的很透彻，使用vim编辑修改文件的方式基本会使用就可以了。</p>
+<p><strong>在实际开发中，使用vim编辑器主要作用就是修改配置文件，下面是一般步骤：</strong></p>
+<p>vim 文件——&gt;进入文件—–&gt;命令模式——&gt;按i进入编辑模式—–&gt;编辑文件 ——-&gt;按Esc进入底行模式—–&gt;输入：wq/q! （输入wq代表写入内容并退出，即保存；输入q!代表强制退出不保存。）</p>
+</li>
+<li><p><strong>rm -rf 文件：</strong> 删除文件（删）</p>
+<p>同目录删除：熟记 <code>rm -rf</code> 文件 即可</p>
+</li>
+</ol>
+<h3 id="压缩文件的操作命令"><a href="#压缩文件的操作命令" class="headerlink" title="压缩文件的操作命令"></a>压缩文件的操作命令</h3><p><strong>1）打包并压缩文件：</strong></p>
+<p>Linux中的打包文件一般是以.tar结尾的，压缩的命令一般是以.gz结尾的。</p>
+<p>而一般情况下打包和压缩是一起进行的，打包并压缩后的文件的后缀名一般.tar.gz。 命令：<strong>tar -zcvf 打包压缩后的文件名 要打包压缩的文件</strong> 其中：</p>
+<p>z：调用gzip压缩命令进行压缩</p>
+<p>c：打包文件</p>
+<p>v：显示运行过程</p>
+<p>f：指定文件名</p>
+<p>比如：加入test目录下有三个文件分别是：aaa.txt bbb.txt ccc.txt，如果我们要打包test目录并指定压缩后的压缩包名称为test.tar.gz可以使用命令：<strong>tar -zcvf test.tar.gz aaa.txt bbb.txt ccc.txt或：tar -zcvf test.tar.gz       /test/</strong></p>
+<p><strong>2）解压压缩包：</strong></p>
+<p>命令：tar [-xvf] 压缩文件</p>
+<p>其中：x：代表解压</p>
+<p>示例：</p>
+<p>1 将/test下的test.tar.gz解压到当前目录下可以使用命令：<strong>tar -xvf test.tar.gz</strong></p>
+<p>2 将/test下的test.tar.gz解压到根目录/usr下:<strong>tar -xvf xxx.tar.gz -C /usr</strong>（- C代表指定解压的位置）</p>
+<h3 id="Linux的权限命令"><a href="#Linux的权限命令" class="headerlink" title="Linux的权限命令"></a>Linux的权限命令</h3><p>操作系统中每个文件都拥有特定的权限、所属用户和所属组。权限是操作系统用来限制资源访问的机制，在Linux中权限一般分为读(readable)、写(writable)和执行(excutable)，分为三组。分别对应文件的属主(owner)，属组(group)和其他用户(other)，通过这样的机制来限制哪些用户、哪些组可以对特定的文件进行什么样的操作。通过 <strong>ls -l</strong> 命令我们可以 查看某个目录下的文件或目录的权限</p>
+<p>示例：在随意某个目录下<code>ls -l</code></p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1646955be781daaa" alt="img"></p>
+<p>第一列的内容的信息解释如下：</p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/16469565b6951791" alt="img"></p>
+<blockquote>
+<p>下面将详细讲解文件的类型、Linux中权限以及文件有所有者、所在组、其它组具体是什么？</p>
+</blockquote>
+<p><strong>文件的类型：</strong></p>
+<ul>
+<li>d： 代表目录</li>
+<li>-： 代表文件</li>
+<li>l： 代表软链接（可以认为是window中的快捷方式）</li>
+</ul>
+<p><strong>Linux中权限分为以下几种：</strong></p>
+<ul>
+<li>r：代表权限是可读，r也可以用数字4表示</li>
+<li>w：代表权限是可写，w也可以用数字2表示</li>
+<li>x：代表权限是可执行，x也可以用数字1表示</li>
+</ul>
+<p><strong>文件和目录权限的区别：</strong></p>
+<p>对文件和目录而言，读写执行表示不同的意义。</p>
+<p>对于文件：</p>
+<table>
+<thead>
+<tr>
+<th>权限名称</th>
+<th>可执行操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>可以使用cat查看文件的内容</td>
+</tr>
+<tr>
+<td>w</td>
+<td>可以修改文件的内容</td>
+</tr>
+<tr>
+<td>x</td>
+<td>可以将其运行为二进制文件</td>
+</tr>
+</tbody>
+</table>
+<p>对于目录：</p>
+<table>
+<thead>
+<tr>
+<th>权限名称</th>
+<th>可执行操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>可以查看目录下列表</td>
+</tr>
+<tr>
+<td>w</td>
+<td>可以创建和删除目录下文件</td>
+</tr>
+<tr>
+<td>x</td>
+<td>可以使用cd进入目录</td>
+</tr>
+</tbody>
+</table>
+<p><strong>需要注意的是超级用户可以无视普通用户的权限，即使文件目录权限是000，依旧可以访问。</strong> <strong>在linux中的每个用户必须属于一个组，不能独立于组外。在linux中每个文件有所有者、所在组、其它组的概念。</strong></p>
+<ul>
+<li><p><strong>所有者</strong></p>
+<p>一般为文件的创建者，谁创建了该文件，就天然的成为该文件的所有者，用ls ‐ahl命令可以看到文件的所有者 也可以使用chown 用户名 文件名来修改文件的所有者 。</p>
+</li>
+<li><p><strong>文件所在组</strong></p>
+<p>当某个用户创建了一个文件后，这个文件的所在组就是该用户所在的组 用ls ‐ahl命令可以看到文件的所有组 也可以使用chgrp 组名 文件名来修改文件所在的组。</p>
+</li>
+<li><p><strong>其它组</strong></p>
+<p>除开文件的所有者和所在组的用户外，系统的其它用户都是文件的其它组</p>
+</li>
+</ul>
+<blockquote>
+<p>我们再来看看如何修改文件/目录的权限。</p>
+</blockquote>
+<p><strong>修改文件/目录的权限的命令：chmod</strong></p>
+<p>示例：修改/test下的aaa.txt的权限为属主有全部权限，属主所在的组有读写权限， 其他用户只有读的权限</p>
+<p><strong>chmod u=rwx,g=rw,o=r aaa.txt</strong></p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/164697447dc6ecac" alt="img"></p>
+<p>上述示例还可以使用数字表示：</p>
+<p>chmod 764 aaa.txt</p>
+<p><strong>补充一个比较常用的东西:</strong></p>
+<p>假如我们装了一个zookeeper，我们每次开机到要求其自动启动该怎么办？</p>
+<ol>
+<li>新建一个脚本zookeeper</li>
+<li>为新建的脚本zookeeper添加可执行权限，命令是:<code>chmod +x zookeeper</code></li>
+<li>把zookeeper这个脚本添加到开机启动项里面，命令是：<code>chkconfig --add  zookeeper</code></li>
+<li>如果想看看是否添加成功，命令是：<code>chkconfig --list</code></li>
+</ol>
+<h3 id="跨机器文件的相互拷贝"><a href="#跨机器文件的相互拷贝" class="headerlink" title="跨机器文件的相互拷贝"></a>跨机器文件的相互拷贝</h3><p>从192.0.0.101的temp/下 复制var下的所有文件  到本地的test目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># scp root@192.0.0.101:/temp/var/* /test/</span><br></pre></td></tr></table></figure>
+<p>将本地temp/var/下的所有文件 复制到192.0.0.101的test目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># scp /temp/var/* root@192.0.0.102:/test/</span><br></pre></td></tr></table></figure>
+<h3 id="Vim编辑器下的常用命令"><a href="#Vim编辑器下的常用命令" class="headerlink" title="Vim编辑器下的常用命令"></a>Vim编辑器下的常用命令</h3><p>跳转至指定25行 25G</p>
+<h3 id="查看负载的三种方式"><a href="#查看负载的三种方式" class="headerlink" title="查看负载的三种方式"></a>查看负载的三种方式</h3><p><a href="https://icebearice.gitee.io/2019/05/06/Linux/Linux查看负载的三种方式">Linux查看负载的三种方式</a></p>
+<h3 id="查看文件的相关指令"><a href="#查看文件的相关指令" class="headerlink" title="查看文件的相关指令"></a>查看文件的相关指令</h3><h4 id="Word-Count-工具命令大全"><a href="#Word-Count-工具命令大全" class="headerlink" title="Word Count 工具命令大全"></a>Word Count 工具命令大全</h4><p>查看指定文件的行数 wc -l(或者–lines) file.log</p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1557130326261.png" alt="1557130326261"></p>
+<p>查看指定文件的字节数 wc -c(或者–bytes) file.log</p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1557130753990.png" alt="1557130753990"></p>
+<p>查看指定文件的字符数 wc -m(或者 –chars) file.log</p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1557130790249.png" alt="1557130790249"></p>
+<p>查看指定文件的最长行的长度 wc -L(或者 –max-line-length) file.log</p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1557130878291.png" alt="1557130878291"></p>
+<p>查看指定文件的总字数 wc -w(或者 –words) file.log</p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1557130948729.png" alt="1557130948729"></p>
+<p>查看帮助 wc –help</p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1557130579158.png" alt="1557130579158"></p>
+<h4 id="查看档案-文件-内容的相关行数命令"><a href="#查看档案-文件-内容的相关行数命令" class="headerlink" title="查看档案(文件)内容的相关行数命令"></a>查看档案(文件)内容的相关行数命令</h4><h5 id="head命令-从头查询-前n个XXX-的命令"><a href="#head命令-从头查询-前n个XXX-的命令" class="headerlink" title="head命令 从头查询(前n个XXX)的命令"></a>head命令 从头查询(前n个XXX)的命令</h5><p>查看指定文件的前n个字节内容 head -c(或者 –bytes) 100 file.log</p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1557131342665.png" alt="1557131342665"></p>
+<p>查看指定文件的前n行的内容 head -l(或者 –lines) 100 file.log</p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1557131415277.png" alt="1557131415277"></p>
+<p>查看帮助 head –help</p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1557131146582.png" alt="1557131146582"></p>
+<h5 id="tail命令-从尾查询-后n个XXX-的命令"><a href="#tail命令-从尾查询-后n个XXX-的命令" class="headerlink" title="tail命令 从尾查询(后n个XXX)的命令"></a>tail命令 从尾查询(后n个XXX)的命令</h5><p><strong>(重点重点!!!!)动态加载指定文件的内容</strong>(当文件增长时, 输出后续添加的数据) </p>
+<p>tail -f(或者–follow) file.log </p>
+<p>(一般会用tail -f catalina.log 查看tomcat的日志) </p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1557132196951.png" alt="1557132196951"></p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1557132261101.png" alt="1557132261101"></p>
+<p>退出按Ctrl+Z或者Ctrl+C Ctrl+Z会挂起当前tail进程 <strong>后面有关于退出指令的区别描述</strong></p>
+<p>查看指定文件的后n个字节 tail -c(或者 –bytes) 100 file.log</p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1557132280930.png" alt="1557132280930"></p>
+<p>查看指定文件的后n行 tail -n(或者 –lines) 100 file.log</p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1557132455736.png" alt="1557132455736"></p>
+<p>查看帮助 tail –help</p>
+<p>查看版本号 tail –version</p>
+<p><img src="/2019/05/06/Linux/Linux常见命令/1557132480306.png" alt="1557132480306"></p>
+<h3 id="Linux-Ctrl-C-Ctrl-Z-Ctrl-D的区别"><a href="#Linux-Ctrl-C-Ctrl-Z-Ctrl-D的区别" class="headerlink" title="Linux Ctrl+C Ctrl+Z Ctrl+D的区别"></a>Linux Ctrl+C Ctrl+Z Ctrl+D的区别</h3><p><strong>ctrl-c:</strong> ( kill foreground process ) 发送 SIGINT 信号给前台进程组中的所有进程，强制终止程序的执行；</p>
+<p><strong>ctrl-z:</strong> ( suspend foreground process ) 发送 SIGTSTP 信号给前台进程组中的所有进程，常用于挂起一个进程，而并非结束进程，用户可以使用使用<strong>fg/bg</strong>操作恢复执行前台或后台的进程。</p>
+<p><strong>fg</strong> 命令在前台恢复执行被挂起的进程，此时可以使用ctrl-z再次挂起该进程，<strong>bg </strong>命令在后台恢复执行被挂起的进程，而此时将无法使用ctrl-z再次挂起该进程；</p>
+<p>一个比较常用的功能：</p>
+<p><strong>正在使用vi编辑一个文件时，需要执行shell命令查询一些需要的信息，可以使用ctrl-z挂起vi，等执行完shell命令后再使用fg恢复vi继续编辑你的文件（当然，也可以在vi中使用！command方式执行shell命令但是没有该方法方便）</strong></p>
+<p><strong>ctrl-d:</strong> ( Terminate input, or exit shell ) 一个特殊的二进制值，表示 EOF，作用相当于在终端中输入exit后回车；</p>
+<h3 id="Linux-Grep-正则表达式的使用"><a href="#Linux-Grep-正则表达式的使用" class="headerlink" title="Linux Grep 正则表达式的使用"></a>Linux Grep 正则表达式的使用</h3><h4 id="pattern正则表达式主要参数："><a href="#pattern正则表达式主要参数：" class="headerlink" title="pattern正则表达式主要参数："></a>pattern正则表达式主要参数：</h4><p>\： 忽略正则表达式中特殊字符的原有含义。(转义)<br>^：匹配正则表达式的开始行。<br>$: 匹配正则表达式的结束行。<br>\&lt;：从匹配正则表达式的行开始。<br>>：到匹配正则表达式的行结束。<br>[ ]：单个字符，如[A]即A符合要求 。<br>[ - ]：范围，如[A-Z]，即A、B、C一直到Z都符合要求 。<br>。：所有的单个字符。<br>* ：有字符，长度可以为0。</p>
+<h4 id="grep命令使用简单实例"><a href="#grep命令使用简单实例" class="headerlink" title="grep命令使用简单实例"></a>grep命令使用简单实例</h4><p><strong>$ grep ‘test’ d*</strong><br>显示所有以d开头的文件中包含 test的行。<br><strong>$ grep ‘test’ aa bb cc</strong><br>显示在aa，bb，cc文件中匹配test的行。<br><strong>$ grep ‘[a-z]{5}’ aa</strong><br>显示所有包含每个字符串至少有5个连续小写字符的字符串的行。<br><strong>$ grep ‘w(es)t.*\1′ aa</strong><br>如果west被匹配，则es就被存储到内存中，并标记为1，然后搜索任意个字符(.<em>)，这些字符后面紧跟着 另外一个es(\1)，找到就显示该行。如果用egrep或grep -E，就不用”\”号进行转义，直接写成’w(es)t.</em>\1′就可以了。</p>
+<h5 id="贴上Java正则表达式的捕获组-有兴趣的自行食用"><a href="#贴上Java正则表达式的捕获组-有兴趣的自行食用" class="headerlink" title="贴上Java正则表达式的捕获组 有兴趣的自行食用"></a>贴上Java正则表达式的捕获组 有兴趣的自行食用</h5><p>捕获组分为 普通捕获组和命名捕获组</p>
+<p><a href="https://www.runoob.com/w3cnote/java-capture-group.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/java-capture-group.html</a></p>
 
           
         
@@ -570,7 +773,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/04/26/面试/美团一面/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/06/Linux/Linux查看负载的三种方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -590,7 +793,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/04/26/面试/美团一面/" class="post-title-link" itemprop="url">美团一面</a>
+                <a href="/2019/05/06/Linux/Linux查看负载的三种方式/" class="post-title-link" itemprop="url">Linux查看负载的三种方式</a>
               
             
           </h1>
@@ -615,7 +818,7 @@
              
              
 
-              <time title="创建时间：2019-04-26 19:59:23 / 修改时间：20:04:32" itemprop="dateCreated datePublished" datetime="2019-04-26T19:59:23+08:00">2019-04-26 19:59:23</time>
+              <time title="创建时间：2019-05-06 14:21:37 / 修改时间：14:22:46" itemprop="dateCreated datePublished" datetime="2019-05-06T14:21:37+08:00">2019-05-06 14:21:37</time>
             
 
             
@@ -635,8 +838,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-04-26T20:04:32+08:00" content="2019-04-26">
-                2019-04-26 20:04:32
+              <time itemprop="dateUpdated" datetime="2019-05-06T14:22:46+08:00" content="2019-05-06">
+                2019-05-06 14:22:46
               </time>
             </span>
           
@@ -657,7 +860,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -676,8 +879,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/04/26/面试/美团一面/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/26/面试/美团一面/" itemprop="commentCount"></span>
+                <a href="/2019/05/06/Linux/Linux查看负载的三种方式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/06/Linux/Linux查看负载的三种方式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -707,31 +910,26 @@
       
         
           
-            <ol>
-<li>自我介绍</li>
-<li>介绍项目 根据项目出发问题</li>
-<li>项目中如何实现秒杀</li>
-<li>项目中如何防止超卖(没问我准备好的乐观锁)</li>
-<li>redis怎么用</li>
-<li>redis底层原理有没有了解过</li>
-<li>redis为什么可以缓解高并发</li>
-<li>检测链表中是否存在环</li>
-<li>mysql有什么索引 主键索引和非主键索引的区别 索引的优缺点</li>
-<li>主键索引是什么索引 没听太懂</li>
-<li>innodb底层是什么索引</li>
-<li>知道什么数据结构</li>
-<li>有看过hashmap源码吗 讲一下put方法</li>
-<li>hashmap为什么线程不安全 从底层实现模拟线程不安全的情况</li>
-<li>hashmap的初始容量</li>
-<li>讲一下冒泡的过程</li>
-<li>时间复杂度和空间复杂度的意义 联系实际分析细节</li>
-<li>有什么要问我的</li>
-</ol>
-<hr>
-<h5 id="最近得了个病-叫-面试焦虑病"><a href="#最近得了个病-叫-面试焦虑病" class="headerlink" title="最近得了个病 叫 面试焦虑病"></a>最近得了个病 叫 面试焦虑病</h5><ol>
-<li>面试官问我问到我回答不上来 心里就想 有些没回答上来的问题 我是不是没希望了</li>
-<li>面试官问我问的刚好都是我会的 心里就想 完了 怎么感觉问的深度还不够深 他们是不是根本不缺人 只是走下流程 我是不是没希望了</li>
-</ol>
+            <p>转载自: <a href="https://www.cnblogs.com/zhaozhenguo666/p/5512701.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhaozhenguo666/p/5512701.html</a></p>
+<p><strong>1 uptime 显示当前机器的负载情况</strong></p>
+<p><img src="/2019/05/06/Linux/Linux查看负载的三种方式/1557124059004.png" alt="1557124059004"></p>
+<p><strong>2 w 显示当前机器的负载情况, 并列出所有user分别的负载情况</strong></p>
+<p><img src="/2019/05/06/Linux/Linux查看负载的三种方式/1557124106155.png" alt="1557124106155"></p>
+<p>load average: 过去1分钟 5分钟 15分钟的负载平均值</p>
+<p><strong>以上两个命令为单纯的反映出负载, 还有更为使用的查看服务器负载的命令</strong></p>
+<p><strong>3 top 实时监控当前的服务器负载情况, 清晰的罗列出每一个进程占有的cpu使用和内存使用</strong>, 输入q退出</p>
+<p><img src="/2019/05/06/Linux/Linux查看负载的三种方式/1557124373862.png" alt="1557124373862"></p>
+<p>Tasks: 目前的进程总数, 以及所处状态, running表示可运行进程, sleeping表示暂停进程, stopped表示停止运行, zombie表示僵尸进程, 若zombie不为0则表示进程出现问题</p>
+<p>Cpu(s): 展示了当前CPU的状态，us表示用户进程占用CPU比例，sy表示内核进程占用CPU比例，id表示空闲CPU百分比，wa表示IO等待所占用的CPU时间的百分比。<strong>wa占用超过30%则表示IO压力很大</strong>。</p>
+<p>Mem: [展示了当前内存的状态，total是总的内存大小，userd是已使用的，free是剩余的，buffers是目录缓存。</p>
+<p>Swap: 同Mem行，cached表示缓存，用户已打开的文件。<strong>如果Swap的used很高，则表示系统内存不足</strong>。</p>
+<p><strong>按1, 可以展示出服务器有多少CPU, 以及每个CPU的使用情况</strong></p>
+<p>在top命令下，按<strong>shift + “c”</strong>，则将进程按照CPU使用率从大到小排序，按shift+”p”，则将进程按照内存使用率从大到小排序，很容易能够定位出哪些服务占用了较高的CPU和内存。</p>
+<p><strong>仅仅有top命令是不够的</strong>，因为它仅能展示CPU和内存的使用情况，对于负载升高的另一重要原因——<strong>IO没有清晰明确的展示</strong>。linux提供了<strong>iostat</strong>命令，可以了解io的开销。</p>
+<p>输入<strong>iostat -x 1 10</strong>命令，表示开始<strong>监控输入输出状态</strong>，<strong>-x表示显示所有参数信息</strong>，<strong>1表示每隔1秒监控一次，10表示共监控10次</strong>。</p>
+<p>没有iostat命令的话  yum/apt-get install sysstat -y 即可</p>
+<p><img src="/2019/05/06/Linux/Linux查看负载的三种方式/1557124840872.png" alt="1557124840872"></p>
+<p>其中rsec/s表示读入，wsec/s表示每秒写入，这两个参数某一个特别高的时候就表示磁盘IO有很大压力，util表示IO使用率，如果接近100%，说明IO满负荷运转。 </p>
 
           
         
@@ -777,7 +975,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -821,7 +1019,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1051,7 +1249,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共48.4k字</span>
+  <span class="post-count">博客全站共50.7k字</span>
 </div>
         
 <div class="busuanzi-count">
