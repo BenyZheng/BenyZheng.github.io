@@ -145,17 +145,18 @@
 
 
 
-  <meta name="description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
-<meta name="keywords" content="后端开发, Java, Icebearice, Golang">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Icebearice">
-<meta property="og:url" content="https://icebearice.gitee.io/page/2/index.html">
+  <meta name="description" content="Java基础知识体系串讲3-继承继承-extend关键字 关键字extends表明正在构造的新类派生于一个已存在的类。  已存在的类称为超类、基类或父类，新类称为子类、派生类或者孩子类  super的用法 12super.getSalary()	// 调用方法super(n, s, year, month, day)	// 调用构造方法    当子类没有显式调用父类构造器时  自动地调用超类（默认">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础知识体系串讲3-继承">
+<meta property="og:url" content="https://icebearice.gitee.io/2019/09/03/Java/Java知识体系串讲3-继承/index.html">
 <meta property="og:site_name" content="Icebearice">
-<meta property="og:description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
+<meta property="og:description" content="Java基础知识体系串讲3-继承继承-extend关键字 关键字extends表明正在构造的新类派生于一个已存在的类。  已存在的类称为超类、基类或父类，新类称为子类、派生类或者孩子类  super的用法 12super.getSalary()	// 调用方法super(n, s, year, month, day)	// 调用构造方法    当子类没有显式调用父类构造器时  自动地调用超类（默认">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-03T07:55:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Icebearice">
-<meta name="twitter:description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
+<meta name="twitter:title" content="Java基础知识体系串讲3-继承">
+<meta name="twitter:description" content="Java基础知识体系串讲3-继承继承-extend关键字 关键字extends表明正在构造的新类派生于一个已存在的类。  已存在的类称为超类、基类或父类，新类称为子类、派生类或者孩子类  super的用法 12super.getSalary()	// 调用方法super(n, s, year, month, day)	// 调用构造方法    当子类没有显式调用父类构造器时  自动地调用超类（默认">
 
 
 
@@ -163,7 +164,7 @@
 
   
   
-  <link rel="canonical" href="https://icebearice.gitee.io/page/2/">
+  <link rel="canonical" href="https://icebearice.gitee.io/2019/09/03/Java/Java知识体系串讲3-继承/">
 
 
 
@@ -173,7 +174,7 @@
   };
 </script>
 
-  <title>Icebearice</title>
+  <title>Java基础知识体系串讲3-继承 | Icebearice</title>
   
 
 
@@ -221,8 +222,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -368,9 +368,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -385,7 +385,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/09/03/问题集/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/09/03/Java/Java知识体系串讲3-继承/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -402,10 +402,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/09/03/问题集/" class="post-title-link" itemprop="url">未命名</a>
+          <h1 class="post-title" itemprop="name headline">Java基础知识体系串讲3-继承
+
               
             
           </h1>
@@ -427,180 +425,34 @@
               
 
              
-                
-              
-
-              <time title="创建时间：2019-09-03 09:34:16" itemprop="dateCreated datePublished" datetime="2019-09-03T09:34:16+08:00">2019-09-03 09:34:16</time>
-            
-
-            
-          </span>
-
-
-          
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/09/03/问题集/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/03/问题集/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              问题集
-slice可以序列化后反序列化为原来的slice吗
-/[]GameLoginTime 和 []/GmaeLoginTime 区别
-
-
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/03/问题集/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/08/29/Java/Java知识体系串讲1-基础知识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Icebearice">
-      <meta itemprop="description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Icebearice">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/29/Java/Java知识体系串讲1-基础知识/" class="post-title-link" itemprop="url">Java基础知识体系串讲1-基础知识</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
              
-                
-              
+             
 
-              <time title="创建时间：2019-08-29 22:20:40" itemprop="dateCreated datePublished" datetime="2019-08-29T22:20:40+08:00">2019-08-29 22:20:40</time>
+              <time title="创建时间：2019-09-03 15:20:40 / 修改时间：15:55:40" itemprop="dateCreated datePublished" datetime="2019-09-03T15:20:40+08:00">2019-09-03 15:20:40</time>
             
 
+            
+              
+            <!--  old version
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-09-03T15:55:40+08:00" content="2019-09-03">
+                2019-09-03 15:55:40
+              </time>
+            </span>
+          
             
           </span>
 
@@ -637,8 +489,8 @@ slice可以序列化后反序列化为原来的slice吗
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/08/29/Java/Java知识体系串讲1-基础知识/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/29/Java/Java知识体系串讲1-基础知识/" itemprop="commentCount"></span>
+                <a href="/2019/09/03/Java/Java知识体系串讲3-继承/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/03/Java/Java知识体系串讲3-继承/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -647,6 +499,13 @@ slice可以序列化后反序列化为原来的slice吗
           
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
           
 
           
@@ -666,32 +525,229 @@ slice可以序列化后反序列化为原来的slice吗
       
 
       
-        
-          
-            <p>
-              Java基础知识体系串讲1-基础知识知识层次分布
-特性
+        <h2 id="Java基础知识体系串讲3-继承"><a href="#Java基础知识体系串讲3-继承" class="headerlink" title="Java基础知识体系串讲3-继承"></a>Java基础知识体系串讲3-继承</h2><h4 id="继承-extend关键字"><a href="#继承-extend关键字" class="headerlink" title="继承-extend关键字"></a>继承-extend关键字</h4><ul>
+<li><p>关键字extends表明正在构造的新类派生于一个已存在的类。</p>
+</li>
+<li><p>已存在的类称为超类、基类或父类，新类称为子类、派生类或者孩子类</p>
+</li>
+<li><p>super的用法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>.getSalary()	<span class="comment">// 调用方法</span></span><br><span class="line"><span class="keyword">super</span>(n, s, year, month, day)	<span class="comment">// 调用构造方法</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>当子类没有显式调用父类构造器时</p>
+<ul>
+<li>自动地调用超类（默认没有参数）</li>
+<li>如果超类没有不带参数的构造器，Java编译器将报告错误</li>
+</ul>
+</li>
+<li><p>Java中使用super调用超类的方法，而在C++中则采用超类名加上::操作符的形式。例如，在Manager类的getSalary方法中，应该将super.getSalary替换为Employee::getSalary</p>
+</li>
+<li><p>由一个公共超类派生出来的所有类的集合被称为继承层次，从某个特定的类到其祖先的路径被称为该类的继承链</p>
+</li>
+<li><p>Java不支持多继承</p>
+</li>
+<li><p>多态</p>
+<ul>
+<li><p>多态是同一个行为具有多的不同表现形式或形态的能力</p>
+</li>
+<li><p>多态就是同一个接口，使用不同的实例而执行不同操作</p>
+</li>
+<li><p>在此处讲一下C++中的虚函数</p>
+<ul>
+<li><p>C++的多态是通过虚函数来实现的，在C++中，方法被virtual修饰的话，该方法为虚函数，可以被子类覆盖</p>
+</li>
+<li><p>纯虚函数在基类中没有定义，但要求任何派生类都要定义实现自己的方法，在基类中实现纯虚函数的方法是在函数原型后加“=0”</p>
+</li>
+<li><p>类中至少有一个函数被声明为纯虚函数，则这个类就是抽象类，所以一个抽象类是可以有纯虚函数与虚函数与非虚函数的</p>
+</li>
+<li><p>如果子类没有重写纯虚函数，就尝试实例化该函数的话，会导致编译错误</p>
+</li>
+<li><p>下面的代码是通过地址来调用方法的，没接触过的，耐心点看，也看得懂的啦</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc1</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"A::vfunc1()"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc2</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"A::vfunc2()"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"A::func1()"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"A::func2()"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">int</span> data1_;</span><br><span class="line">	<span class="keyword">int</span> data2_;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> :</span><span class="keyword">public</span> A &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc1</span><span class="params">()</span> override </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"B::vfunc1()"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"B::func2()"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">int</span> data3_;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> :</span><span class="keyword">public</span> B &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfunc1</span><span class="params">()</span> override </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"C::vfunc1()"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"C::func2()"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">int</span> data1_, data4_;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//演示了手动调用虚函数的过程</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	B a;</span><br><span class="line">	<span class="function"><span class="keyword">typedef</span> <span class="title">void</span><span class="params">(*Fun)</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line">	Fun pFun = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"虚函数表地址："</span> &lt;&lt; (<span class="keyword">int</span>*)(&amp;a) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"虚函数表第1个函数地址："</span>&lt;&lt;(<span class="keyword">int</span>*)*(<span class="keyword">int</span>*)(&amp;a) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"虚函数表第2个函数地址："</span> &lt;&lt; (<span class="keyword">int</span>*)*(<span class="keyword">int</span>*)(&amp;a) + <span class="number">1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	pFun = (Fun)*((<span class="keyword">int</span>*)*(<span class="keyword">int</span>*)(&amp;a));</span><br><span class="line">	pFun();</span><br><span class="line">	pFun = (Fun)*((<span class="keyword">int</span>*)*(<span class="keyword">int</span>*)(&amp;a) + <span class="number">1</span>);</span><br><span class="line">	pFun();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「i_chaoren」的原创文章，遵循 CC <span class="number">4.0</span> BY-SA 版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https:<span class="comment">//blog.csdn.net/i_chaoren/article/details/77281785</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>所以，其实，Java中不存在虚函数（压根没有virtual修饰符），但其实在方法中已经默认用了虚函数这个概念，所以不需要修饰符，即可通过@Override实现重写，直接撰写重载后的同名构造方法，直接通过父类实现不同的接口，得到不同的对象</p>
+</li>
+<li><p>所以，多态的概念派生出了了覆盖（重载和重写）和重载（同名函数）</p>
+</li>
+<li><p>但其实说来说去，有了继承才有多态，所以说继承和多态可以说成一个概念，也不是不行</p>
+</li>
+<li><p>所以，面向对象的基本特征就是两个：封装和继承（继承包括多态），你也可以说三个：封装、继承和多态</p>
+</li>
+<li><p>为什么我会有这个疑问呢，附上链接<br><a href="https://blog.csdn.net/baidu_33714003/article/details/52290627" target="_blank" rel="noopener">https://blog.csdn.net/baidu_33714003/article/details/52290627</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>虚拟机中的方法的动态绑定</p>
+<ul>
+<li>emmm 暂时不写 留着 留个坑</li>
+</ul>
+</li>
+<li><p>final类和final方法</p>
+<ul>
+<li><p>阻止继承，若希望阻止某类定义子类，则使用final修饰符声明</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Executive</span> <span class="keyword">extends</span> <span class="title">Manager</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- final类下的所有方法自动地变成了final方法，final修饰的方法无法被覆盖（重载或重写）
+</code></pre><ul>
+<li><p>父子类的强制类型转换</p>
+<ul>
+<li><p>只能在继承层次内进行类型转换</p>
+<ul>
+<li><p>在将超类转换成子类之前，应该使用instanceof进行检查</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (staff[<span class="number">1</span>] <span class="keyword">instanceof</span> Manager) &#123;</span><br><span class="line">	boss = (Manager) staff[<span class="number">1</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- Instanceof运算符是用来运行时指出对象是否是特定类的一个实例
 
-简单性
-Java没有头文件 指针运算 结构体 联合 操作符重载 等C++的特性 使用起来相对简单
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = object <span class="keyword">instanceof</span> <span class="class"><span class="keyword">class</span></span></span><br></pre></td></tr></table></figure>
 
 
-面向对象
-面向对象是一种程序设计技术，它将重点放在数据（即对象）和对象的接口上
-与C++不同的点在于多重继承，Java取而代之的是接口概念
+- 如果要进行强制类型转换，一般说明你的父类设计的有问题
+</code></pre><ul>
+<li><p>抽象类</p>
+<ul>
+<li><p>被abstract修饰的方法叫抽象方法，抽象方法不需要被实现</p>
+<ul>
+<li><p>包含一个或多个抽象方法的类本身必须被声明为抽象的，称为抽象类</p>
+</li>
+<li><p>Java中的抽象类与C++中的抽象类一样，都允许包含具体数据与具体方法</p>
+</li>
+<li><p>抽象方法充当着占位的角色</p>
+</li>
+<li><p>扩展抽象类有两种选择</p>
+<ul>
+<li>在抽象类 中定义部分抽象类方法或不定义抽象类方法，这种情况下，子类也需标记为抽象类</li>
+<li>在抽象类中定义全部的抽象方法，这种情况下，子类就不需要是抽象的了</li>
+</ul>
+</li>
+<li><p>类即使不含抽象方法，也可以将类声明为抽象类</p>
+</li>
+<li><p>抽象类不能被实例化，但是可以被定义</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person p = <span class="keyword">new</span> Student(<span class="string">"hhha"</span>); <span class="comment">// Person是抽象类，Student是Person的子类</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Object类：所有类的超类</p>
+<ul>
+<li><p>可以使用Object类型的变量引用任何类型的对象：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Employee(<span class="string">"Harry Hacker"</span>, <span class="number">35000</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- 在Java中，只有基本数据类型不是对象
+</code></pre><ul>
+<li><p>equals方法</p>
+<ul>
+<li>用于检测一个对象与另一个对象是否具有相同的引用</li>
+<li>Java语言规范要求equals方法具有下面的特性：<ul>
+<li>自反性：对于任何非空引用x，x.equals(x)应返回true</li>
+<li>对称性：对于任何引用x和y，当且仅当y.equals(x)返回true，x.equals(y)也应该返回true</li>
+<li>传递性：对于任何引用x、y和z，如果x.equals(y)返回true，y.equals(z)返回true，x.equals(z)也应该返回true</li>
+<li>一致性：如果x和y引用的对象没有发生变化，反复调用x.equals(y)应该返回同样的结果</li>
+<li>对于任意非空引用x，x.equals(null)应该返回false</li>
+</ul>
+</li>
+<li>hashCode方法<ul>
+<li>若重新定义了equals方法，就必须重新定义hashCode方法，以便用户可以将对象插入到散列表中</li>
+<li>如果x.equals(y)返回true，那么x.hashCode()就必须等于y.hashCode()具有相同的值，需要根据equals的定义来定义hashCode方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>toString方法</p>
+<ul>
+<li>用于返回表示对象值的字符串</li>
+</ul>
+</li>
+<li><p>泛型数组列表</p>
+<ul>
+<li><p>Java中，允许在运行时确定数组的大小</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> actualSize = . . .;</span><br><span class="line">Employee[] staff = <span class="keyword">new</span> Employee[actualSizxe];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当然，这段代码并没有完全解决运行时动态更改数组的问题。一旦首次确定了数组的大小，就没那么容易改变数组的大小了，是一种假动态</p>
+</li>
+<li><p>要用就用ArrayList</p>
+</li>
+</ul>
+</li>
+<li><p>类型化与原始数组列表的兼容性</p>
+<ul>
+<li><p>jdk5之前，还没有泛型，存在着原始遗留代码</p>
+</li>
+<li><p>下面看一些没有使用类型参数的代码</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmployeeDB</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(ArrayList list)</span>	</span>&#123;. . .&#125;	<span class="comment">// ArrayList没有指定类型参数</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> ArrayList <span class="title">find</span><span class="params">(String query)</span>	</span>&#123;. . .&#125;	<span class="comment">// 同上</span></span><br><span class="line">&#125;</span><br><span class="line">ArrayList&lt;Employee&gt; staff = . . .;</span><br><span class="line">employeeDB.update(staff);	<span class="comment">// 这样子是不会报错的</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>尽管编译器不会报错，但如果添加进去的数组元素不是Employee类型，这就麻烦咯</p>
+</li>
+<li><p>相反地，将一个原始的ArrayList赋给一个类型化ArrayList会得到一个警告</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Employee&gt; result = employeeDB.find(query);	<span class="comment">// yields warning</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用类型转换的时候，避免不了警告</p>
+</li>
+<li><p>一旦能确保不会造成严重的后果，可以使用@SuperessWarnings(“unchecked”)标注来标记这个变量能够接受类型转换</p>
+</li>
+</ul>
+</li>
+<li><p>对象包装器与自动装箱</p>
+<ul>
+<li>所有的基本类型都有一个与之对应的类，这些类称为包装器</li>
+<li>int与Integer会自动变换，这种变换称为自动装箱与自动拆箱</li>
+</ul>
+</li>
+<li><p>参数可变的方法</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> PrintStream <span class="title">printf</span><span class="params">(String fmt, Object... args)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>…表明这份方法可以接受任意数量的对象，用数组的方式访问</li>
+</ul>
+</li>
+<li><p>反射</p>
+<ul>
+<li>反射库提供了一个非常丰富且精心设计的工具集，以便编写能够动态操纵java代码的程序</li>
+<li>能够分析类能力的程序称为反射，反射机制可以用来：<ul>
+<li>在运行时分析类的能力</li>
+<li>在运行时查看对象，例如，编写一个toString方法供所有使用</li>
+<li>实现通用的数组操作代码</li>
+<li>利用Method对象，这个 对象很像C++中的函数指针</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Class类</p>
+<ul>
+<li>Java运行时，系统始终为所有的对象维护一个被称为运行时的类型标识，这个信息跟踪着每个对象所属的类。虚拟机利用运行时类型信息选择相应的方法执行。</li>
+<li>保存这些信息的类被称为Class，Object类中的getClass()方法将会返回一个Class类型的实例</li>
+<li>Class对象实际上表示的是一种类型，而这个类型未必一定是一种类。例如，int不是类，int.class是一个Class类型的对象</li>
+<li>可以利用==运算符实现两个类对象比较操作</li>
+</ul>
+</li>
+<li><p>捕获异常</p>
+<ul>
+<li>异常分为：未检查异常和已检查异常</li>
+<li>对于已检查代码，编译器将会检查是否提供了处理器。try catch就是常见的捕获异常</li>
+<li>未检查代码，编译器会直接抛出异常，例如null引用，是属于未检查异常</li>
+<li>所有异常若未处理，编译器就会给出错误报告</li>
+</ul>
+</li>
+<li></li>
+</ul>
 
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/08/29/Java/Java知识体系串讲1-基础知识/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
@@ -712,14 +768,36 @@ Java没有头文件 指针运算 结构体 联合 操作符重载 等C++的特�
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/03/Java/Java知识体系串讲2-对象与类/" rel="next" title="Java基础知识体系串讲2-对象与类">
+                <i class="fa fa-chevron-left"></i> Java基础知识体系串讲2-对象与类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -729,18 +807,19 @@ Java没有头文件 指针运算 结构体 联合 操作符重载 等C++的特�
   </article>
 
 
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -760,8 +839,17 @@ Java没有头文件 指针运算 结构体 联合 操作符重载 等C++的特�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -972,6 +1060,23 @@ Java没有头文件 指针运算 结构体 联合 操作符重载 等C++的特�
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java基础知识体系串讲3-继承"><span class="nav-number">1.</span> <span class="nav-text">Java基础知识体系串讲3-继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#继承-extend关键字"><span class="nav-number">1.0.1.</span> <span class="nav-text">继承-extend关键字</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1124,6 +1229,10 @@ Java没有头文件 指针运算 结构体 联合 操作符重载 等C++的特�
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -1176,6 +1285,8 @@ Java没有头文件 指针运算 结构体 联合 操作符重载 等C++的特�
 
 
 
+
+  
 
 
   
