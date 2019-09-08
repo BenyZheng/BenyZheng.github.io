@@ -121,7 +121,7 @@
     root: '/',
     scheme: 'Muse',
     version: '7.1.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
     back2top_sidebar: false,
     fancybox: false,
@@ -145,18 +145,18 @@
 
 
 
-  <meta name="description" content="Java基础知识体系串讲3-继承继承-extend关键字 关键字extends表明正在构造的新类派生于一个已存在的类。  已存在的类称为超类、基类或父类，新类称为子类、派生类或者孩子类  super的用法 12super.getSalary()	// 调用方法super(n, s, year, month, day)	// 调用构造方法    当子类没有显式调用父类构造器时  自动地调用超类（默认">
+  <meta name="description" content="Java基础知识体系串讲3-继承继承-extend关键字             default 默认                         primary 优先                         success 成功                         info 信息                         warning 警告">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java基础知识体系串讲3-继承">
 <meta property="og:url" content="https://icebearice.gitee.io/2019/09/03/Java/Java知识体系串讲3-继承/index.html">
 <meta property="og:site_name" content="Icebearice">
-<meta property="og:description" content="Java基础知识体系串讲3-继承继承-extend关键字 关键字extends表明正在构造的新类派生于一个已存在的类。  已存在的类称为超类、基类或父类，新类称为子类、派生类或者孩子类  super的用法 12super.getSalary()	// 调用方法super(n, s, year, month, day)	// 调用构造方法    当子类没有显式调用父类构造器时  自动地调用超类（默认">
+<meta property="og:description" content="Java基础知识体系串讲3-继承继承-extend关键字             default 默认                         primary 优先                         success 成功                         info 信息                         warning 警告">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-09-03T07:55:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础知识体系串讲3-继承">
-<meta name="twitter:description" content="Java基础知识体系串讲3-继承继承-extend关键字 关键字extends表明正在构造的新类派生于一个已存在的类。  已存在的类称为超类、基类或父类，新类称为子类、派生类或者孩子类  super的用法 12super.getSalary()	// 调用方法super(n, s, year, month, day)	// 调用构造方法    当子类没有显式调用父类构造器时  自动地调用超类（默认">
+<meta name="twitter:description" content="Java基础知识体系串讲3-继承继承-extend关键字             default 默认                         primary 优先                         success 成功                         info 信息                         warning 警告">
 
 
 
@@ -525,16 +525,33 @@
       
 
       
-        <h2 id="Java基础知识体系串讲3-继承"><a href="#Java基础知识体系串讲3-继承" class="headerlink" title="Java基础知识体系串讲3-继承"></a>Java基础知识体系串讲3-继承</h2><h4 id="继承-extend关键字"><a href="#继承-extend关键字" class="headerlink" title="继承-extend关键字"></a>继承-extend关键字</h4><ul>
+        <h2 id="Java基础知识体系串讲3-继承"><a href="#Java基础知识体系串讲3-继承" class="headerlink" title="Java基础知识体系串讲3-继承"></a>Java基础知识体系串讲3-继承</h2><h4 id="继承-extend关键字"><a href="#继承-extend关键字" class="headerlink" title="继承-extend关键字"></a>继承-extend关键字</h4><div class="note default">
+            <p>default 默认</p>
+          </div>
+<div class="note primary">
+            <p>primary 优先</p>
+          </div>
+<div class="note success">
+            <p>success 成功</p>
+          </div>
+<div class="note info">
+            <p>info 信息</p>
+          </div>
+<div class="note warning">
+            <p>warning 警告</p>
+          </div>
+<div class="note danger">
+            <p>danger 危险 别紧张 我就是测试一下 新功能哈哈哈</p>
+          </div>
+<ul>
 <li><p>关键字extends表明正在构造的新类派生于一个已存在的类。</p>
 </li>
 <li><p>已存在的类称为超类、基类或父类，新类称为子类、派生类或者孩子类</p>
 </li>
-<li><p>super的用法</p>
+<li><p>super的用法<br><code>code</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>.getSalary()	<span class="comment">// 调用方法</span></span><br><span class="line"><span class="keyword">super</span>(n, s, year, month, day)	<span class="comment">// 调用构造方法</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 </li>
-</ul>
-<ul>
 <li><p>当子类没有显式调用父类构造器时</p>
 <ul>
 <li>自动地调用超类（默认没有参数）</li>
@@ -1158,6 +1175,8 @@
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
         
+          <span id="scrollpercent"><span>0</span>%</span>
+        
       </div>
     
 
@@ -1644,5 +1663,5 @@
 
 <!-- 页面点击小红心 -->
 <!-- <script type="text/javascript" src="/js/src/click.js"></script>-->
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":240,"height":480},"mobile":{"show":false},"react":{"opacityDefault":1,"opacityOnHover":1},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacityDefault":1,"opacityOnHover":1},"log":false,"tagMode":false});</script></body>
 </html>
