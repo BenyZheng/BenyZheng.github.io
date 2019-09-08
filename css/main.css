@@ -1815,7 +1815,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #da4a55;
+  background: #ff9560;
 }
 .feed-link,
 .chat {
@@ -2686,4 +2686,7 @@ body {
 .links-of-author a,
 .links-of-author span.exturl {
   color: #fff;
+}
+code {
+  background: rgg(255, 105, 180);
 }
