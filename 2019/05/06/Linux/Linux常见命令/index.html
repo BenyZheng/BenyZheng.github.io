@@ -179,6 +179,7 @@
 <meta property="og:image" content="https://icebearice.gitee.io/2019/05/06/Linux/Linux常见命令/1557132280930.png">
 <meta property="og:image" content="https://icebearice.gitee.io/2019/05/06/Linux/Linux常见命令/1557132455736.png">
 <meta property="og:image" content="https://icebearice.gitee.io/2019/05/06/Linux/Linux常见命令/1557132480306.png">
+<meta property="og:image" content="https://icebearice.gitee.io/2019/05/06/Linux/Linux常见命令/image-20190909150224200.png">
 <meta property="og:updated_time" content="2019-05-06T06:48:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常见命令">
@@ -337,7 +338,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">47</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">48</span></a>
 
   </li>
 
@@ -775,7 +776,9 @@
 <h4 id="grep命令使用简单实例"><a href="#grep命令使用简单实例" class="headerlink" title="grep命令使用简单实例"></a>grep命令使用简单实例</h4><p><strong>$ grep ‘test’ d*</strong><br>显示所有以d开头的文件中包含 test的行。<br><strong>$ grep ‘test’ aa bb cc</strong><br>显示在aa，bb，cc文件中匹配test的行。<br><strong>$ grep ‘[a-z]{5}’ aa</strong><br>显示所有包含每个字符串至少有5个连续小写字符的字符串的行。<br><strong>$ grep ‘w(es)t.*\1′ aa</strong><br>如果west被匹配，则es就被存储到内存中，并标记为1，然后搜索任意个字符(.<em>)，这些字符后面紧跟着 另外一个es(\1)，找到就显示该行。如果用egrep或grep -E，就不用”\”号进行转义，直接写成’w(es)t.</em>\1′就可以了。</p>
 <h5 id="贴上Java正则表达式的捕获组-有兴趣的自行食用"><a href="#贴上Java正则表达式的捕获组-有兴趣的自行食用" class="headerlink" title="贴上Java正则表达式的捕获组 有兴趣的自行食用"></a>贴上Java正则表达式的捕获组 有兴趣的自行食用</h5><p>捕获组分为 普通捕获组和命名捕获组</p>
 <p><a href="https://www.runoob.com/w3cnote/java-capture-group.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/java-capture-group.html</a></p>
-
+<h5 id="Linux-Unix-时间输出妙用"><a href="#Linux-Unix-时间输出妙用" class="headerlink" title="Linux/Unix 时间输出妙用"></a>Linux/Unix 时间输出妙用</h5><div class="note success">
+            <p><code>date “+%Y:%m:%d %H:%M:%S”</code>，即可输出对应格式时间</p><p><img src="/2019/05/06/Linux/Linux常见命令/image-20190909150224200.png" alt="image-20190909150224200"></p><p>参考链接：<a href="https://blog.csdn.net/jk110333/article/details/8590746" target="_blank" rel="noopener">https://blog.csdn.net/jk110333/article/details/8590746</a></p>
+          </div>
       
     </div>
 
@@ -898,7 +901,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1102,7 +1105,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux支持的5种文件类型"><span class="nav-number">1.</span> <span class="nav-text">Linux支持的5种文件类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录切换命令"><span class="nav-number">2.</span> <span class="nav-text">目录切换命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录的操作命令"><span class="nav-number">3.</span> <span class="nav-text">目录的操作命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的操作命令"><span class="nav-number">4.</span> <span class="nav-text">文件的操作命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩文件的操作命令"><span class="nav-number">5.</span> <span class="nav-text">压缩文件的操作命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux的权限命令"><span class="nav-number">6.</span> <span class="nav-text">Linux的权限命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨机器文件的相互拷贝"><span class="nav-number">7.</span> <span class="nav-text">跨机器文件的相互拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim编辑器下的常用命令"><span class="nav-number">8.</span> <span class="nav-text">Vim编辑器下的常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看负载的三种方式"><span class="nav-number">9.</span> <span class="nav-text">查看负载的三种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看文件的相关指令"><span class="nav-number">10.</span> <span class="nav-text">查看文件的相关指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Word-Count-工具命令大全"><span class="nav-number">10.1.</span> <span class="nav-text">Word Count 工具命令大全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看档案-文件-内容的相关行数命令"><span class="nav-number">10.2.</span> <span class="nav-text">查看档案(文件)内容的相关行数命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#head命令-从头查询-前n个XXX-的命令"><span class="nav-number">10.2.1.</span> <span class="nav-text">head命令 从头查询(前n个XXX)的命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tail命令-从尾查询-后n个XXX-的命令"><span class="nav-number">10.2.2.</span> <span class="nav-text">tail命令 从尾查询(后n个XXX)的命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-Ctrl-C-Ctrl-Z-Ctrl-D的区别"><span class="nav-number">11.</span> <span class="nav-text">Linux Ctrl+C Ctrl+Z Ctrl+D的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-Grep-正则表达式的使用"><span class="nav-number">12.</span> <span class="nav-text">Linux Grep 正则表达式的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pattern正则表达式主要参数："><span class="nav-number">12.1.</span> <span class="nav-text">pattern正则表达式主要参数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#grep命令使用简单实例"><span class="nav-number">12.2.</span> <span class="nav-text">grep命令使用简单实例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#贴上Java正则表达式的捕获组-有兴趣的自行食用"><span class="nav-number">12.2.1.</span> <span class="nav-text">贴上Java正则表达式的捕获组 有兴趣的自行食用</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux支持的5种文件类型"><span class="nav-number">1.</span> <span class="nav-text">Linux支持的5种文件类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录切换命令"><span class="nav-number">2.</span> <span class="nav-text">目录切换命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录的操作命令"><span class="nav-number">3.</span> <span class="nav-text">目录的操作命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的操作命令"><span class="nav-number">4.</span> <span class="nav-text">文件的操作命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩文件的操作命令"><span class="nav-number">5.</span> <span class="nav-text">压缩文件的操作命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux的权限命令"><span class="nav-number">6.</span> <span class="nav-text">Linux的权限命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨机器文件的相互拷贝"><span class="nav-number">7.</span> <span class="nav-text">跨机器文件的相互拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim编辑器下的常用命令"><span class="nav-number">8.</span> <span class="nav-text">Vim编辑器下的常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看负载的三种方式"><span class="nav-number">9.</span> <span class="nav-text">查看负载的三种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看文件的相关指令"><span class="nav-number">10.</span> <span class="nav-text">查看文件的相关指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Word-Count-工具命令大全"><span class="nav-number">10.1.</span> <span class="nav-text">Word Count 工具命令大全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看档案-文件-内容的相关行数命令"><span class="nav-number">10.2.</span> <span class="nav-text">查看档案(文件)内容的相关行数命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#head命令-从头查询-前n个XXX-的命令"><span class="nav-number">10.2.1.</span> <span class="nav-text">head命令 从头查询(前n个XXX)的命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tail命令-从尾查询-后n个XXX-的命令"><span class="nav-number">10.2.2.</span> <span class="nav-text">tail命令 从尾查询(后n个XXX)的命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-Ctrl-C-Ctrl-Z-Ctrl-D的区别"><span class="nav-number">11.</span> <span class="nav-text">Linux Ctrl+C Ctrl+Z Ctrl+D的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-Grep-正则表达式的使用"><span class="nav-number">12.</span> <span class="nav-text">Linux Grep 正则表达式的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pattern正则表达式主要参数："><span class="nav-number">12.1.</span> <span class="nav-text">pattern正则表达式主要参数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#grep命令使用简单实例"><span class="nav-number">12.2.</span> <span class="nav-text">grep命令使用简单实例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#贴上Java正则表达式的捕获组-有兴趣的自行食用"><span class="nav-number">12.2.1.</span> <span class="nav-text">贴上Java正则表达式的捕获组 有兴趣的自行食用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Linux-Unix-时间输出妙用"><span class="nav-number">12.2.2.</span> <span class="nav-text">Linux/Unix 时间输出妙用</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1145,7 +1148,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共53.7k字</span>
+  <span class="post-count">博客全站共54.3k字</span>
 </div>
         
 <div class="busuanzi-count">

@@ -153,18 +153,23 @@
 
 
 
-  <meta name="description" content="SprintBoot秒杀项目">
+  <meta name="description" content="本文为关于练习Java项目写下的相关笔记，涉及到SpringBoot、Tomcat云端部署、线程池优化、分布式Nginx、分布式token扩展、缓存系列Redis、本地缓存、lua缓存、cdn优化、令牌与RocketMQ消息队列实现流量削峰、JMeter压力测试等知识体系，因为是练习项目，笔记内容可能比较混杂，我会遇到问题不断的延伸，所以才有了这么一份总结">
 <meta name="keywords" content="项目">
 <meta property="og:type" content="article">
-<meta property="og:title" content="秒杀系统项目总结（未完结）">
-<meta property="og:url" content="https://icebearice.gitee.io/2019/04/25/项目/SpringBoot秒杀项目/index.html">
+<meta property="og:title" content="SpringBoot秒杀项目">
+<meta property="og:url" content="https://icebearice.gitee.io/2019/09/08/项目/SpringBoot秒杀项目/index.html">
 <meta property="og:site_name" content="Icebearice">
-<meta property="og:description" content="SprintBoot秒杀项目">
+<meta property="og:description" content="本文为关于练习Java项目写下的相关笔记，涉及到SpringBoot、Tomcat云端部署、线程池优化、分布式Nginx、分布式token扩展、缓存系列Redis、本地缓存、lua缓存、cdn优化、令牌与RocketMQ消息队列实现流量削峰、JMeter压力测试等知识体系，因为是练习项目，笔记内容可能比较混杂，我会遇到问题不断的延伸，所以才有了这么一份总结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-26T14:50:06.000Z">
+<meta property="og:image" content="https://icebearice.gitee.io/2019/09/08/项目/SpringBoot秒杀项目/spring-boot.png">
+<meta property="og:image" content="https://icebearice.gitee.io/2019/09/08/项目/SpringBoot秒杀项目/image-20190909160722417.png">
+<meta property="og:image" content="https://icebearice.gitee.io/2019/09/08/项目/SpringBoot秒杀项目/image-20190909160817443.png">
+<meta property="og:image" content="https://icebearice.gitee.io/2019/09/08/项目/SpringBoot秒杀项目/Center-20190909162327048.png">
+<meta property="og:updated_time" content="2019-09-09T15:42:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="秒杀系统项目总结（未完结）">
-<meta name="twitter:description" content="SprintBoot秒杀项目">
+<meta name="twitter:title" content="SpringBoot秒杀项目">
+<meta name="twitter:description" content="本文为关于练习Java项目写下的相关笔记，涉及到SpringBoot、Tomcat云端部署、线程池优化、分布式Nginx、分布式token扩展、缓存系列Redis、本地缓存、lua缓存、cdn优化、令牌与RocketMQ消息队列实现流量削峰、JMeter压力测试等知识体系，因为是练习项目，笔记内容可能比较混杂，我会遇到问题不断的延伸，所以才有了这么一份总结">
+<meta name="twitter:image" content="https://icebearice.gitee.io/2019/09/08/项目/SpringBoot秒杀项目/spring-boot.png">
 
 
 
@@ -172,7 +177,7 @@
 
   
   
-  <link rel="canonical" href="https://icebearice.gitee.io/2019/04/25/项目/SpringBoot秒杀项目/">
+  <link rel="canonical" href="https://icebearice.gitee.io/2019/09/08/项目/SpringBoot秒杀项目/">
 
 
 
@@ -182,7 +187,7 @@
   };
 </script>
 
-  <title>秒杀系统项目总结（未完结） | Icebearice</title>
+  <title>SpringBoot秒杀项目 | Icebearice</title>
   
 
 
@@ -318,7 +323,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">47</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">48</span></a>
 
   </li>
 
@@ -399,7 +404,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/04/25/项目/SpringBoot秒杀项目/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/09/08/项目/SpringBoot秒杀项目/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -416,7 +421,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">秒杀系统项目总结（未完结）
+          <h1 class="post-title" itemprop="name headline">SpringBoot秒杀项目
 
               
             
@@ -442,7 +447,7 @@
                 
               
 
-              <time title="创建时间：2019-04-25 19:39:40" itemprop="dateCreated datePublished" datetime="2019-04-25T19:39:40+08:00">2019-04-25 19:39:40</time>
+              <time title="创建时间：2019-09-08 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-08T00:00:00+08:00">2019-09-08 00:00:00</time>
             
 
             
@@ -459,7 +464,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time> 
+              <time title="修改时间：2019-09-09 23:42:14" itemprop="dateModified" datetime="2019-09-09T23:42:14+08:00">2019-09-09</time> 
               -->
               <!-- new version -->
                         
@@ -474,8 +479,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
-                2019-04-26 22:50:06
+              <time itemprop="dateUpdated" datetime="2019-09-09T23:42:14+08:00" content="2019-09-09">
+                2019-09-09 23:42:14
               </time>
             </span>
           
@@ -522,8 +527,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/04/25/项目/SpringBoot秒杀项目/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/25/项目/SpringBoot秒杀项目/" itemprop="commentCount"></span>
+                <a href="/2019/09/08/项目/SpringBoot秒杀项目/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/08/项目/SpringBoot秒杀项目/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -558,7 +563,39 @@
       
 
       
-        <h2 id="SprintBoot秒杀项目"><a href="#SprintBoot秒杀项目" class="headerlink" title="SprintBoot秒杀项目"></a>SprintBoot秒杀项目</h2>
+        <p><img src="/2019/09/08/项目/SpringBoot秒杀项目/spring-boot.png" alt="âSpringbootâçå¾çæç´¢ç»æ"></p>
+<div class="note success">
+            <p>本文为关于练习Java项目写下的相关笔记，涉及到SpringBoot、Tomcat云端部署、线程池优化、分布式Nginx、分布式token扩展、缓存系列Redis、本地缓存、lua缓存、cdn优化、令牌与RocketMQ消息队列实现流量削峰、JMeter压力测试等知识体系，因为是练习项目，笔记内容可能比较混杂，我会遇到问题不断的延伸，所以才有了这么一份总结</p>
+          </div>
+<h3 id="两种archetype-quickstart和webapp的区别"><a href="#两种archetype-quickstart和webapp的区别" class="headerlink" title="两种archetype quickstart和webapp的区别"></a>两种<code>archetype</code> <code>quickstart</code>和<code>webapp</code>的区别</h3><p><code>archetype</code>是骨架的意思，<code>maven</code>为我们开发制定好了一份<code>项目的原始模版</code>，我们可以在<code>原始模版</code>的<code>基础</code>上，进行<code>扩展</code>与<code>延伸</code>。</p>
+<p>maven有提供各种各样的<code>模版</code>，这里只讲<code>quickstart</code>和<code>webapp</code>的区别</p>
+<ol>
+<li><code>maven-archetype-quickstart</code></li>
+<li><code>maven-archetype-webapp</code></li>
+</ol>
+<a id="more"></a>
+<p><code>maven</code>配置路径如下，我用的是自带的<code>maven3</code>，仓库和配置文件的位置比较奇葩，请勿模仿，要放就放一个地方：</p>
+<p><img src="/2019/09/08/项目/SpringBoot秒杀项目/image-20190909160722417.png" alt="image-20190909160722417"></p>
+<h5 id="区别-项目结构不同"><a href="#区别-项目结构不同" class="headerlink" title="区别:项目结构不同"></a>区别:项目结构不同</h5><p><code>quickstart</code>的项目结构图</p>
+<p><img src="/2019/09/08/项目/SpringBoot秒杀项目/image-20190909160817443.png" alt="image-20190909160817443"></p>
+<p>基本内容包括：</p>
+<ol>
+<li><code>一个包含junit的依赖生命的pom.xml</code></li>
+<li><code>src/main/java主代码目录及一个名为App的类</code></li>
+<li><code>src/test/java测试代码目录及一个名为AppTest的测试用例</code></li>
+</ol>
+<p><code>webapp</code>的项目结构图</p>
+<p><img src="/2019/09/08/项目/SpringBoot秒杀项目/Center-20190909162327048.png" alt="img"></p>
+<p>基本内容包括：</p>
+<ol>
+<li><code>一个packaging为war且带有junit依赖声明的pom.xml</code></li>
+<li><code>src/main/webapp/目录</code></li>
+<li><code>src/main/webapp/index.jsp文件</code></li>
+<li><code>src/main/webapp/WEB-INF/web.xml文件</code></li>
+</ol>
+<h5 id="为什么会有这样的结构的区别呢"><a href="#为什么会有这样的结构的区别呢" class="headerlink" title="为什么会有这样的结构的区别呢"></a>为什么会有这样的结构的区别呢</h5><p>其实两个骨架除了文件目录结构上的区别外，区别就是<code>quickstart</code>已经将<code>SpringBoot</code>的配置文件<code>application.properties</code>给创建好了，不需要我们额外的去创建该配置文件，是传统的<code>webapp</code>向<code>SpringBoot</code>的一个转型，为了<code>SpringBoot</code>去制定的一个<code>Archetype</code></p>
+<p>### </p>
+
       
     </div>
 
@@ -594,8 +631,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/23/数据库/关于数据库索引的思考/" rel="next" title="关于数据库索引的思考">
-                <i class="fa fa-chevron-left"></i> 关于数据库索引的思考
+              <a href="/2019/09/03/Java/Java知识体系串讲3-继承/" rel="next" title="Java基础知识体系串讲3-继承">
+                <i class="fa fa-chevron-left"></i> Java基础知识体系串讲3-继承
               </a>
             
           </div>
@@ -604,8 +641,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/25/项目/秒杀系统总结/" rel="prev" title="秒杀系统项目总结（未完结）">
-                秒杀系统项目总结（未完结） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/09/Java/JavaGuide阅读笔记/" rel="prev" title="JavaGuide阅读笔记">
+                JavaGuide阅读笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -681,7 +718,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -885,7 +922,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SprintBoot秒杀项目"><span class="nav-number">1.</span> <span class="nav-text">SprintBoot秒杀项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种archetype-quickstart和webapp的区别"><span class="nav-number">1.</span> <span class="nav-text">两种archetype quickstart和webapp的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#区别-项目结构不同"><span class="nav-number">1.0.1.</span> <span class="nav-text">区别:项目结构不同</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么会有这样的结构的区别呢"><span class="nav-number">1.0.2.</span> <span class="nav-text">为什么会有这样的结构的区别呢</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -928,7 +965,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共53.7k字</span>
+  <span class="post-count">博客全站共54.3k字</span>
 </div>
         
 <div class="busuanzi-count">

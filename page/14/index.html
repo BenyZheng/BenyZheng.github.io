@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">47</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">48</span></a>
 
   </li>
 
@@ -383,6 +383,416 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2018/11/20/Maven/14.Maven-软件项目管理工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/11/20/Maven/14.Maven-软件项目管理工具/" class="post-title-link" itemprop="url">14 Maven-软件项目管理工具</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2018-11-20 21:03:10" itemprop="dateCreated datePublished" datetime="2018-11-20T21:03:10+08:00">2018-11-20 21:03:10</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Maven/" itemprop="url" rel="index"><span itemprop="name">Maven</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/11/20/Maven/14.Maven-软件项目管理工具/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/20/Maven/14.Maven-软件项目管理工具/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Maven-软件项目管理工具"><a href="#Maven-软件项目管理工具" class="headerlink" title="Maven-软件项目管理工具"></a>Maven-软件项目管理工具</h1><ul>
+<li><h3 id="目录文件夹介绍"><a href="#目录文件夹介绍" class="headerlink" title="目录文件夹介绍"></a>目录文件夹介绍</h3><ul>
+<li>bin目录包含mvn的运行脚本 m2.conf-配置文件</li>
+<li>boot目录包含一个类加载器的框架</li>
+<li>conf目录包含一些配置文件</li>
+<li>lib目录包含自身的一些类库</li>
+</ul>
+</li>
+<li><h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><ul>
+<li>M2_HOME对应maven目录</li>
+<li>Path配置bin目录</li>
+<li>测试：shell中 mvn -v 查看版本</li>
+</ul>
+</li>
+<li><h3 id="Pom-xml配置"><a href="#Pom-xml配置" class="headerlink" title="Pom.xml配置"></a>Pom.xml配置</h3><ul>
+<li>groupId是项目的包名</li>
+<li>artifactID是项目模块名，即项目名</li>
+<li>version是版本好，初始我们会命名为1.0-SNAPSHOT<ul>
+<li>SNAPSHOT为快照版本的意思，在一般开发的时候，我们可以频繁的发布SNAPSHOT版本，以便让其他项目能实时的使用到最新的功能做联调；当版本趋于稳定时，再发一个正式版本，供正式使用</li>
+<li>在做正式发布的时候，确保当前项目的依赖项中不包含对任何SNAPSHOT版本的依赖，保证正式版本的稳定性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="Maven约定好的目录结构"><a href="#Maven约定好的目录结构" class="headerlink" title="Maven约定好的目录结构"></a>Maven约定好的目录结构</h3><ul>
+<li>src<ul>
+<li>main<ul>
+<li>java<ul>
+<li>package</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>test<ul>
+<li>java<ul>
+<li>package</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>resources</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h3><ul>
+<li>compile 编译</li>
+<li>test 测试</li>
+<li>package 打包</li>
+<li>clean 删除target maven所生成的目标文件</li>
+<li>install 安装jar包到本地仓库中</li>
+</ul>
+</li>
+<li><h3 id="archetype插件"><a href="#archetype插件" class="headerlink" title="archetype插件"></a>archetype插件</h3><ul>
+<li><p>用于创建符合maven规定的目录骨架</p>
+</li>
+<li><p>快速创建maven骨架</p>
+<ul>
+<li><p>archetype:generate 按照提示进行选择</p>
+</li>
+<li><p>archetype:generate -DgroupID=组织名，公司网址的反写+项目名</p>
+<p>​                    -DartifactId=项目名-模块名</p>
+<p>​                    -Dversion=版本号</p>
+<p>​                    -Dpackage=代码所存在的包名</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="maven中的坐标和仓库"><a href="#maven中的坐标和仓库" class="headerlink" title="maven中的坐标和仓库"></a>maven中的坐标和仓库</h3><ul>
+<li>groupId和artifactId还有version就是坐标</li>
+<li>仓库<ul>
+<li>本地仓库</li>
+<li>远程仓库</li>
+<li>中央仓库-全球默认仓库</li>
+<li>镜像仓库-国内的镜像仓库 解决无法访问外网问题</li>
+</ul>
+</li>
+<li>更改仓库位置 conf.xml改变localReposities</li>
+</ul>
+</li>
+<li><h3 id="Maven插件安装"><a href="#Maven插件安装" class="headerlink" title="Maven插件安装"></a>Maven插件安装</h3></li>
+<li><h3 id="完整的项目构建过程"><a href="#完整的项目构建过程" class="headerlink" title="完整的项目构建过程"></a>完整的项目构建过程</h3><ul>
+<li>清理</li>
+<li>编译</li>
+<li>单元测试<ul>
+<li>针对程序模块（软件设计的最小单元）来进行正确性检验的测试工作。程序单元是应用和最小的可测试部件，在编写程序时可能要进行很多次单元测试，以证实程序达到软件规格书要求的工作目标</li>
+</ul>
+</li>
+<li>打包</li>
+<li>集成测试<ul>
+<li>又称组装测试，即对程序模块采用一次性或增值方式组装起来，对系统的接口进行正确性的检验</li>
+</ul>
+</li>
+<li>验证<ul>
+<li>功能没问题了，我们需要验证结果的正确性</li>
+</ul>
+</li>
+<li>部署</li>
+</ul>
+</li>
+<li><h3 id="maven生命周期"><a href="#maven生命周期" class="headerlink" title="maven生命周期"></a>maven生命周期</h3><ul>
+<li>clean 清理项目<ul>
+<li>pre-clean 执行清理前的工作</li>
+<li>clean 清理上一次构建生成的所有文件</li>
+<li>post-clean 执行清理后的文件</li>
+</ul>
+</li>
+<li>default 构建项目-核心<ul>
+<li>compile</li>
+<li>test</li>
+<li>package</li>
+<li>install</li>
+</ul>
+</li>
+<li>site 生成项目站点<ul>
+<li>pre-site 在生成项目站点前要完成的工作</li>
+<li>site 生成项目的站点文档</li>
+<li>post-site 在生成项目站点后要完成的工作</li>
+<li>site-deploy 发布生成的站点到服务器是上</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="plugins与dependencies的区别"><a href="#plugins与dependencies的区别" class="headerlink" title="plugins与dependencies的区别"></a>plugins与dependencies的区别</h3><ul>
+<li>dependency：编译/运行时需要的，运行时开发都需要用到的jar包，比如项目中需要一个Json的jar包，就需要添加一个依赖，这个依赖在项目运行时也需要，因此在项目打包时需要把这些依赖也打包进项目里</li>
+<li>plugin：编译时需要，在项目开发的时候需要，在项目运行时不需要，因此在项目开发完成后不需要把插件打包进项目中，比如有个可以在编译时需要某些调节参数的插件，编译结束后就没用了，所以项目打包时并不需要把插件加进去</li>
+</ul>
+</li>
+<li><h3 id="pom-xml解析"><a href="#pom-xml解析" class="headerlink" title="pom.xml解析"></a>pom.xml解析</h3><ul>
+<li><h4 id="坐标信息-（前三必要）"><a href="#坐标信息-（前三必要）" class="headerlink" title="坐标信息-（前三必要）"></a>坐标信息-（前三必要）</h4><ul>
+<li><strong>groupId 反写公司网址+项目名</strong></li>
+<li><strong>artifactId 项目名+模块名</strong></li>
+<li><strong>version 版本号</strong><ul>
+<li>第一位-大版本号 第二位-分支版本号 第三位-小版本号 0.0.1</li>
+<li>snapshot-快照版本</li>
+<li>alpha-内部测试 第一版本 内测</li>
+<li>beta-公测 第二版本 公测</li>
+<li>release-稳定 稳定版</li>
+<li>GA(General Availability)-正式发布 </li>
+</ul>
+</li>
+<li>packaging-项目描述名</li>
+<li>name-项目描述名</li>
+<li>url-项目地址</li>
+<li>description-项目描述</li>
+</ul>
+</li>
+<li><p>如何指定依赖</p>
+<ul>
+<li>指定坐标信息</li>
+<li>指定范围-scope</li>
+<li>设置依赖是否可选-默认为false</li>
+<li>排除依赖传递列表-exclusions、exclusion</li>
+</ul>
+</li>
+<li><p>依赖管理-dependencyManagement</p>
+</li>
+<li><p>build-构建</p>
+<ul>
+<li>plugins</li>
+</ul>
+</li>
+<li><p>parent-子模块对父模块的继承</p>
+</li>
+<li><p>modules-多个模块</p>
+</li>
+</ul>
+</li>
+<li><h3 id="依赖范围-scope"><a href="#依赖范围-scope" class="headerlink" title="依赖范围-scope"></a>依赖范围-scope</h3><ul>
+<li>compile<strong>（编译范围）</strong>-默认的范围，编译测试运行都有效</li>
+<li>provided<strong>（已提供范围）</strong>-在编译和测试时有效（打包的时候不会被包进去，别的web container会提供）</li>
+<li>runtime<strong>（运行时范围）</strong>-在测试和运行时有效</li>
+<li>test<strong>（测试范围）</strong>-只在测试时有效</li>
+<li>system<strong>（系统范围）</strong>-与本机系统相关联，可移植性差</li>
+<li>import-导入的范围，它只是用在dependencyManagement中表示从其他的pom中导入dependency的配置</li>
+</ul>
+</li>
+<li><h3 id="maven依赖传递-dependencys"><a href="#maven依赖传递-dependencys" class="headerlink" title="maven依赖传递-dependencys"></a>maven依赖传递-dependencys</h3><ul>
+<li>将子依赖包clean后install打包后到本地仓库 后 才可进行 依赖传递</li>
+<li>排除依赖-exclusions</li>
+</ul>
+</li>
+<li><h3 id="依赖冲突"><a href="#依赖冲突" class="headerlink" title="依赖冲突"></a>依赖冲突</h3><ul>
+<li>1 短路优先-优先解析路径短的版本</li>
+<li>2 先声明先优先-同长度路径情况</li>
+</ul>
+</li>
+<li><h3 id="聚合-modules"><a href="#聚合-modules" class="headerlink" title="聚合-modules"></a>聚合-modules</h3><ul>
+<li>如果我们想要一次构建两个或多个项目，而不是到两到三个模块下分别执行mvn命令，就会用到聚合</li>
+</ul>
+</li>
+<li><h3 id="继承-denpendencyManagement"><a href="#继承-denpendencyManagement" class="headerlink" title="继承-denpendencyManagement"></a>继承-denpendencyManagement</h3><ul>
+<li>解决重复问题</li>
+<li>设置父类依赖 denpendencyManagement  使用该标签 该标签中的依赖不会在该项目中运行</li>
+<li>子类继承依赖 parent标签 继承父类依赖</li>
+</ul>
+</li>
+<li><h3 id="使用maven构建web项目"><a href="#使用maven构建web项目" class="headerlink" title="使用maven构建web项目"></a>使用maven构建web项目</h3><ul>
+<li>构建的是 webapp </li>
+<li>为什么springboot是quickstart </li>
+</ul>
+</li>
+<li>添加servlet依赖</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1609,624 +2019,6 @@ public class StudentServiceImpl implements StudentService{
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Icebearice">
-      <meta itemprop="description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Icebearice">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/" class="post-title-link" itemprop="url">11 事务&数据库连接池&DBUtils</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2018-11-05 11:15:12" itemprop="dateCreated datePublished" datetime="2018-11-05T11:15:12+08:00">2018-11-05 11:15:12</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
-                2019-04-26 22:50:06
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DataBase/" itemprop="url" rel="index"><span itemprop="name">DataBase</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="事务-amp-数据库连接池-amp-DBUtils"><a href="#事务-amp-数据库连接池-amp-DBUtils" class="headerlink" title="事务&amp;数据库连接池&amp;DBUtils"></a>事务&amp;数据库连接池&amp;DBUtils</h1><h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><blockquote>
-<p>Transaction  其实指的一组操作，里面包含许多个单一的逻辑。只要有一个逻辑没有执行成功，那么都算失败。 所有的数据都回归到最初的状态(回滚)</p>
-</blockquote>
-<ul>
-<li>为什么要有事务?</li>
-</ul>
-<blockquote>
-<p>为了确保逻辑的成功。 例子： 银行的转账。 </p>
-</blockquote>
-<h3 id="使用命令行方式演示事务。"><a href="#使用命令行方式演示事务。" class="headerlink" title="使用命令行方式演示事务。"></a>使用命令行方式演示事务。</h3><ul>
-<li><p>开启事务</p>
-<p>  start transaction;</p>
-</li>
-<li><p>提交或者回滚事务</p>
-<p>  commit; 提交事务， 数据将会写到磁盘上的数据库<br>  rollback ;  数据回滚，回到最初的状态。</p>
-</li>
-</ul>
-<ol>
-<li>关闭自动提交功能。</li>
-</ol>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img01.png" alt="icon"></p>
-<ol start="2">
-<li>演示事务</li>
-</ol>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img02.png" alt="icon"></p>
-<h3 id="使用代码方式演示事务"><a href="#使用代码方式演示事务" class="headerlink" title="使用代码方式演示事务"></a>使用代码方式演示事务</h3><blockquote>
-<p>代码里面的事务，主要是针对连接来的。 </p>
-<ol>
-<li>通过conn.setAutoCommit（false ）来关闭自动提交的设置。</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li>提交事务  conn.commit();</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="3">
-<li>回滚事务 conn.rollback();</li>
-</ol>
-</blockquote>
-<pre><code>@Test
-public void testTransaction(){
-
-    Connection conn = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
-    try {
-        conn = JDBCUtil.getConn();
-
-        //连接，事务默认就是自动提交的。 关闭自动提交。
-        conn.setAutoCommit(false);
-
-        String sql = &quot;update account set money = money - ? where id = ?&quot;;
-        ps = conn.prepareStatement(sql);
-
-        //扣钱， 扣ID为1 的100块钱
-        ps.setInt(1, 100);
-        ps.setInt(2, 1);
-        ps.executeUpdate();
-</code></pre><p>​<br>​            int a = 10 /0 ;<br>​<br>​            //加钱， 给ID为2 加100块钱<br>​            ps.setInt(1, -100);<br>​            ps.setInt(2, 2);<br>​            ps.executeUpdate();<br>​<br>​            //成功： 提交事务。<br>​            conn.commit();<br>​<br>​        } catch (SQLException e) {<br>​            try {<br>​                //事变： 回滚事务<br>​                conn.rollback();<br>​            } catch (SQLException e1) {<br>​                e1.printStackTrace();<br>​            }<br>​            e.printStackTrace();<br>​<br>​        }finally {<br>​            JDBCUtil.release(conn, ps, rs);<br>​        }<br>​    }</p>
-<h3 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h3><ul>
-<li>原子性</li>
-</ul>
-<blockquote>
-<p>指的是 事务中包含的逻辑，不可分割。 </p>
-</blockquote>
-<ul>
-<li>一致性</li>
-</ul>
-<blockquote>
-<p>指的是 事务执行前后。数据完整性</p>
-</blockquote>
-<ul>
-<li>隔离性</li>
-</ul>
-<blockquote>
-<p>指的是 事务在执行期间不应该受到其他事务的影响</p>
-</blockquote>
-<ul>
-<li>持久性</li>
-</ul>
-<blockquote>
-<p>指的是 事务执行成功，那么数据应该持久保存到磁盘上。</p>
-</blockquote>
-<h3 id="事务的安全隐患"><a href="#事务的安全隐患" class="headerlink" title="事务的安全隐患"></a>事务的安全隐患</h3><blockquote>
-<p>不考虑隔离级别设置，那么会出现以下问题。</p>
-</blockquote>
-<ul>
-<li>读<blockquote>
-<p>脏读 不可重读读  幻读.</p>
-</blockquote>
-</li>
-</ul>
-<pre><code>* 脏读
-
-&gt; 一个事务读到另外一个事务还未提交的数据
-
-* 不可重复读 
-
-&gt; 一个事务读到了另外一个事务提交的数据 ，造成了前后两次查询结果不一致。
-</code></pre><h2 id="读未提交-演示"><a href="#读未提交-演示" class="headerlink" title="##  读未提交 演示"></a>##  读未提交 演示</h2><ol>
-<li><p>设置A窗口的隔离级别为 读未提交<br><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img03.png" alt="icon"></p>
-</li>
-<li><p>两个窗口都分别开启事务</p>
-</li>
-</ol>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img04.png" alt="icon"></p>
-<ul>
-<li>写</li>
-</ul>
-<blockquote>
-<p>丢失更新</p>
-</blockquote>
-<h2 id="读已提交演示"><a href="#读已提交演示" class="headerlink" title="##   读已提交演示"></a>##   读已提交演示</h2><ol>
-<li>设置A窗口的隔离级别为 读已提交</li>
-</ol>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img05.png" alt="icon"></p>
-<ol start="2">
-<li>A B 两个窗口都开启事务， 在B窗口执行更新操作。</li>
-</ol>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img06.png" alt="icon"></p>
-<ol start="3">
-<li>在A窗口执行的查询结果不一致。 一次是在B窗口提交事务之前，一次是在B窗口提交事务之后。</li>
-</ol>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img07.png" alt="icon"></p>
-<blockquote>
-<p>这个隔离级别能够屏蔽 脏读的现象， 但是引发了另一个问题  ，不可重复读。</p>
-</blockquote>
-<h3 id="可串行化"><a href="#可串行化" class="headerlink" title="可串行化"></a>可串行化</h3><blockquote>
-<p>如果有一个连接的隔离级别设置为了串行化 ，那么谁先打开了事务， 谁就有了先执行的权利， 谁后打开事务，谁就只能得着，等前面的那个事务，提交或者回滚后，才能执行。  但是这种隔离级别一般比较少用。 容易造成性能上的问题。 效率比较低。</p>
-</blockquote>
-<ul>
-<li>按效率划分，从高到低</li>
-</ul>
-<blockquote>
-<p>读未提交  &gt; 读已提交  &gt; 可重复读  &gt; 可串行化</p>
-</blockquote>
-<ul>
-<li>按拦截程度 ，从高到底</li>
-</ul>
-<blockquote>
-<p>可串行化 &gt; 可重复读 &gt; 读已提交 &gt;  读未提交</p>
-</blockquote>
-<h2 id="事务总结"><a href="#事务总结" class="headerlink" title="事务总结"></a>事务总结</h2><h3 id="需要掌握的"><a href="#需要掌握的" class="headerlink" title="需要掌握的"></a>需要掌握的</h3><ol>
-<li><p>在代码里面会使用事务 </p>
-<pre><code>conn.setAutoCommit(false);
-</code></pre></li>
-</ol>
-<pre><code>conn.commit();
-
-conn.rollback();
-</code></pre><ol start="2">
-<li><p>事务只是针对连接连接对象，如果再开一个连接对象，那么那是默认的提交。</p>
-</li>
-<li><p>事务是会自动提交的。 </p>
-</li>
-</ol>
-<h3 id="需要了解的"><a href="#需要了解的" class="headerlink" title="需要了解的"></a>需要了解的</h3><h2 id="安全隐患"><a href="#安全隐患" class="headerlink" title="##  安全隐患"></a>##  安全隐患</h2><pre><code>读
-    脏读
-        一个事务读到了另一个事务未提交的数据
-    不可重复读
-        一个事务读到了另一个事务已提交的数据，造成前后两次查询结果不一致
-    幻读
-        一个事务读到了另一个事务insert的数据 ，造成前后查询结果不一致 。
-
-写
-
-    丢失更新。
-</code></pre><h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="##  隔离级别"></a>##  隔离级别</h2><p>读未提交</p>
-<blockquote>
-<p>引发问题： 脏读 </p>
-</blockquote>
-<p>读已提交</p>
-<blockquote>
-<p>解决： 脏读 ， 引发： 不可重复读</p>
-</blockquote>
-<p>可重复读</p>
-<blockquote>
-<p>解决： 脏读 、 不可重复读 ， 未解决： 幻读</p>
-</blockquote>
-<p>可串行化</p>
-<blockquote>
-<p>解决： 脏读、 不可重复读 、 幻读。</p>
-</blockquote>
-<p>mySql 默认的隔离级别是 可重复读</p>
-<p>Oracle 默认的隔离级别是  读已提交</p>
-<h3 id="丢失更新"><a href="#丢失更新" class="headerlink" title="丢失更新"></a>丢失更新</h3><p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img08.png" alt="icon"></p>
-<h3 id="解决丢失更新"><a href="#解决丢失更新" class="headerlink" title="解决丢失更新"></a>解决丢失更新</h3><ul>
-<li>悲观锁</li>
-</ul>
-<blockquote>
-<p>可以在查询的时候，加入 for update</p>
-</blockquote>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img09.png" alt="icon"></p>
-<ul>
-<li>乐观锁</li>
-</ul>
-<blockquote>
-<p>要求程序员自己控制。 </p>
-</blockquote>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img10.png" alt="icon"></p>
-<h2 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h2><blockquote>
-<ol>
-<li>数据库的连接对象创建工作，比较消耗性能。 </li>
-</ol>
-</blockquote>
-<blockquote>
-<p>2.一开始现在内存中开辟一块空间（集合） ， 一开先往池子里面放置 多个连接对象。  后面需要连接的话，直接从池子里面去。不要去自己创建连接了。  使用完毕， 要记得归还连接。确保连接对象能循环利用。</p>
-</blockquote>
-<p><img src="/2018/11/05/数据库/11.事务 数据库连接池 DBUtils/img11.png" alt="icon"></p>
-<h3 id="自定义数据库连接池"><a href="#自定义数据库连接池" class="headerlink" title="自定义数据库连接池"></a>自定义数据库连接池</h3><ul>
-<li><p>代码实现</p>
-</li>
-<li><p>出现的问题：</p>
-<ol>
-<li><p>需要额外记住 addBack方法</p>
-<ol start="2">
-<li><p>单例。</p>
-</li>
-<li><p>无法面向接口编程。 </p>
-<p>UserDao dao = new UserDaoImpl();<br>dao.insert();</p>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-<pre><code>    DataSource dataSource = new MyDataSource();
-
-    因为接口里面没有定义addBack方法。 
-
-4. 怎么解决?   以addBack 为切入点。
-</code></pre><h3 id="解决自定义数据库连接池出现的问题。"><a href="#解决自定义数据库连接池出现的问题。" class="headerlink" title="解决自定义数据库连接池出现的问题。"></a>解决自定义数据库连接池出现的问题。</h3><blockquote>
-<p>由于多了一个addBack 方法，所以使用这个连接池的地方，需要额外记住这个方法，并且还不能面向接口编程。</p>
-</blockquote>
-<blockquote>
-<p>我们打算修改接口中的那个close方法。  原来的Connection对象的close方法，是真的关闭连接。<br>打算修改这个close方法，以后在调用close， 并不是真的关闭，而是归还连接对象。</p>
-</blockquote>
-<h3 id="如何扩展某一个方法"><a href="#如何扩展某一个方法" class="headerlink" title="如何扩展某一个方法?"></a>如何扩展某一个方法?</h3><blockquote>
-<p>原有的方法逻辑，不是我们想要的。 想修改自己的逻辑</p>
-</blockquote>
-<ol>
-<li><p>直接改源码  无法实现。</p>
-</li>
-<li><p>继承， 必须得知道这个接口的具体实现是谁。 </p>
-</li>
-<li><p>使用装饰者模式。 </p>
-</li>
-</ol>
-<h2 id="开源连接池"><a href="#开源连接池" class="headerlink" title="开源连接池"></a>开源连接池</h2><h2 id="DBCP"><a href="#DBCP" class="headerlink" title="##   DBCP"></a>##   DBCP</h2><ol>
-<li><p>导入jar文件</p>
-</li>
-<li><p>不使用配置文件：</p>
-</li>
-</ol>
-<pre><code>public void testDBCP01(){
-</code></pre><p>​<br>​            Connection conn = null;<br>​            PreparedStatement ps = null;<br>​            try {<br>​<br>​                //1. 构建数据源对象<br>​                BasicDataSource dataSource = new BasicDataSource();<br>​                //连的是什么类型的数据库， 访问的是哪个数据库 ， 用户名， 密码。。<br>​                //jdbc:mysql://localhost/bank 主协议：子协议 ://本地/数据库<br>​                dataSource.setDriverClassName(“com.mysql.jdbc.Driver”);<br>​                dataSource.setUrl(“jdbc:mysql://localhost/bank”);<br>​                dataSource.setUsername(“root”);<br>​                dataSource.setPassword(“root”);</p>
-<p>​<br>​                //2. 得到连接对象<br>​                conn = dataSource.getConnection();<br>​                String sql = “insert into account values(null , ? , ?)”;<br>​                ps = conn.prepareStatement(sql);<br>​                ps.setString(1, “admin”);<br>​                ps.setInt(2, 1000);<br>​<br>​                ps.executeUpdate();<br>​<br>​            } catch (SQLException e) {<br>​                e.printStackTrace();<br>​            }finally {<br>​                JDBCUtil.release(conn, ps);<br>​            }<br>​<br>​        }</p>
-<ol start="2">
-<li>使用配置文件方式：</li>
-</ol>
-<pre><code>Connection conn = null;
-PreparedStatement ps = null;
-try {
-    BasicDataSourceFactory factory = new BasicDataSourceFactory();
-    Properties properties = new Properties();
-    InputStream is = new FileInputStream(&quot;src//dbcpconfig.properties&quot;);
-    properties.load(is);
-    DataSource dataSource = factory.createDataSource(properties);
-
-    //2. 得到连接对象
-    conn = dataSource.getConnection();
-    String sql = &quot;insert into account values(null , ? , ?)&quot;;
-    ps = conn.prepareStatement(sql);
-    ps.setString(1, &quot;liangchaowei&quot;);
-    ps.setInt(2, 100);
-
-    ps.executeUpdate();
-
-} catch (Exception e) {
-    e.printStackTrace();
-}finally {
-    JDBCUtil.release(conn, ps);
-}
-</code></pre><p>​        </p>
-<ul>
-<li>C3P0</li>
-</ul>
-<blockquote>
-<p>拷贝jar文件 到 lib目录</p>
-</blockquote>
-<h3 id="不使用配置文件方式"><a href="#不使用配置文件方式" class="headerlink" title="不使用配置文件方式"></a>不使用配置文件方式</h3><pre><code>Connection conn = null;
-PreparedStatement ps = null;
-try {
-    //1. 创建datasource
-    ComboPooledDataSource dataSource = new ComboPooledDataSource();
-    //2. 设置连接数据的信息
-    dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
-
-    //忘记了---&gt; 去以前的代码 ---&gt; jdbc的文档
-    dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost/bank&quot;);
-    dataSource.setUser(&quot;root&quot;);
-    dataSource.setPassword(&quot;root&quot;);
-
-    //2. 得到连接对象
-    conn = dataSource.getConnection();
-    String sql = &quot;insert into account values(null , ? , ?)&quot;;
-    ps = conn.prepareStatement(sql);
-    ps.setString(1, &quot;admi234n&quot;);
-    ps.setInt(2, 103200);
-
-    ps.executeUpdate();
-
-} catch (Exception e) {
-    e.printStackTrace();
-}finally {
-    JDBCUtil.release(conn, ps);
-}
-</code></pre><h3 id="使用配置文件方式"><a href="#使用配置文件方式" class="headerlink" title="使用配置文件方式"></a>使用配置文件方式</h3><pre><code>//默认会找 xml 中的 default-config 分支。 
-ComboPooledDataSource dataSource = new ComboPooledDataSource();
-//2. 设置连接数据的信息
-dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
-
-
-//忘记了---&gt; 去以前的代码 ---&gt; jdbc的文档
-dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost/bank&quot;);
-dataSource.setUser(&quot;root&quot;);
-dataSource.setPassword(&quot;root&quot;);
-
-//2. 得到连接对象
-conn = dataSource.getConnection();
-String sql = &quot;insert into account values(null , ? , ?)&quot;;
-ps = conn.prepareStatement(sql);
-ps.setString(1, &quot;admi234n&quot;);
-ps.setInt(2, 103200);
-</code></pre><h2 id="DBUtils"><a href="#DBUtils" class="headerlink" title="DBUtils"></a>DBUtils</h2><h3 id="增删改"><a href="#增删改" class="headerlink" title="增删改"></a>增删改</h3><pre><code>        //dbutils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作。 不在他的考虑范围
-QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
-</code></pre><p>​<br>​        //增加<br>​        //queryRunner.update(“insert into account values (null , ? , ? )”, “aa” ,1000);<br>​<br>​        //删除<br>​        //queryRunner.update(“delete from account where id = ?”, 5);<br>​<br>​        //更新<br>​        //queryRunner.update(“update account set money = ? where id = ?”, 10000000 , 6);</p>
-<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><ol>
-<li>直接new接口的匿名实现类</li>
-</ol>
-<pre><code>QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
-
-
-Account  account =  queryRunner.query(&quot;select * from account where id = ?&quot;, new ResultSetHandler&lt;Account&gt;(){
-
-    @Override
-    public Account handle(ResultSet rs) throws SQLException {
-        Account account  =  new Account();
-        while(rs.next()){
-            String name = rs.getString(&quot;name&quot;);
-            int money = rs.getInt(&quot;money&quot;);
-
-            account.setName(name);
-            account.setMoney(money);
-        }
-        return account;
-    }
-
- }, 6);
-
-System.out.println(account.toString());
-</code></pre><ol start="2">
-<li>直接使用框架已经写好的实现类。</li>
-</ol>
-<pre><code>* 查询单个对象
-
-    QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
-    //查询单个对象
-    Account account = queryRunner.query(&quot;select * from account where id = ?&quot;, 
-            new BeanHandler&lt;Account&gt;(Account.class), 8);
-</code></pre><p>​<br>​    <em> 查询多个对象<br>​<br>​        QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());<br>​        List<account> list = queryRunner.query(“select </account></em> from account “,<br>​                new BeanListHandler<account>(Account.class));</account></p>
-<h3 id="ResultSetHandler-常用的实现类"><a href="#ResultSetHandler-常用的实现类" class="headerlink" title="ResultSetHandler 常用的实现类"></a>ResultSetHandler 常用的实现类</h3><p>以下两个是使用频率最高的</p>
-<pre><code>BeanHandler,  查询到的单个数据封装成一个对象
-BeanListHandler, 查询到的多个数据封装 成一个List&lt;对象&gt;
-</code></pre><hr>
-<pre><code>ArrayHandler,  查询到的单个数据封装成一个数组
-ArrayListHandler,  查询到的多个数据封装成一个集合 ，集合里面的元素是数组。 
-</code></pre><p>​<br>​<br>​    MapHandler,  查询到的单个数据封装成一个map<br>​    MapListHandler,查询到的多个数据封装成一个集合 ，集合里面的元素是map。 </p>
-<p>ColumnListHandler<br>KeyedHandler<br>ScalarHandler</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="事务-1"><a href="#事务-1" class="headerlink" title="事务"></a>事务</h2><pre><code>使用命令行演示
-
-使用代码演示
-</code></pre><p>脏读、</p>
-<p>不可重复读、</p>
-<p>幻读<br>丢失更新</p>
-<pre><code>悲观锁
-乐观锁
-
-4个隔离级别
-    读未提交
-    读已提交
-    可重复读
-    可串行化
-</code></pre><h2 id="数据连接池"><a href="#数据连接池" class="headerlink" title="数据连接池"></a>数据连接池</h2><ul>
-<li><p>DBCP</p>
-<p>  不使用配置</p>
-<p>  使用配置</p>
-</li>
-<li><p>C3P0</p>
-<p>  不使用配置</p>
-<p>  使用配置 （必须掌握）</p>
-</li>
-<li><p>自定义连接池 </p>
-<p>  装饰者模式</p>
-</li>
-</ul>
-<h2 id="DBUtils-1"><a href="#DBUtils-1" class="headerlink" title="DBUtils"></a>DBUtils</h2><blockquote>
-<p>简化了我们的CRUD ， 里面定义了通用的CRUD方法。 </p>
-</blockquote>
-<pre><code>queryRunner.update();
-queryRunner.query
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2275,7 +2067,7 @@ queryRunner.query
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2505,7 +2297,7 @@ queryRunner.query
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共53.7k字</span>
+  <span class="post-count">博客全站共54.3k字</span>
 </div>
         
 <div class="busuanzi-count">
