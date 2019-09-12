@@ -399,7 +399,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/08/29/Java/辣鸡回收 GC finallize 方法小结 /">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/08/29/Java/Java知识体系串讲1-基础知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -419,7 +419,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/29/Java/辣鸡回收 GC finallize 方法小结 /" class="post-title-link" itemprop="url">垃圾回收GC finalize方法 小结</a>
+                <a href="/2019/08/29/Java/Java知识体系串讲1-基础知识/" class="post-title-link" itemprop="url">Java基础知识体系串讲1-基础知识</a>
               
             
           </h1>
@@ -483,8 +483,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/08/29/Java/辣鸡回收 GC finallize 方法小结 /#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/29/Java/辣鸡回收 GC finallize 方法小结 /" itemprop="commentCount"></span>
+                <a href="/2019/08/29/Java/Java知识体系串讲1-基础知识/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/29/Java/Java知识体系串讲1-基础知识/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -514,27 +514,391 @@
       
         
           
-            <h2 id="垃圾回收GC-finalize方法-小结"><a href="#垃圾回收GC-finalize方法-小结" class="headerlink" title="垃圾回收GC finalize方法 小结"></a>垃圾回收GC finalize方法 小结</h2><blockquote>
-<p>這是屬於 java.lang.Object 上的一個 method, 其設計目的是保證物件在被 GC 之前完成特定資源的回收作業. 不過由於這東西真的太不穩定了, 所以從 JDK 9 開始已經被標成 deprecated 了.</p>
-<p>至於這個…, 就把它當作時代的眼淚吧. 這在業界裡基本上是一再證明不是個好方案了, 所以在 JDK 9 中已經被標註為 deprecated 了. 除非你有特殊原因, 不然不要去實作這個方法, 也不要期待透過這個方法來進行 GC. 原因很簡單: 因為你沒有辦法確保 finalize 的執行時間. 就算執行了, 也不確定是否能符合預期 (這要扯到 JVM 的 GC 機制, 這邊沒地方寫了). 使用不當還會影響性能, 進而導致 dead lock, hanging 等問題.</p>
-</blockquote>
-<h4 id="手动垃圾回收的三种方式"><a href="#手动垃圾回收的三种方式" class="headerlink" title="手动垃圾回收的三种方式"></a>手动垃圾回收的三种方式</h4><ul>
-<li><p>其实小标题是一种误导，这根本不是三种方式，因为我们可以做的只是通过手动的形式 增加一些机会 执行一些内存清理释放的方法 的机会</p>
-<ol>
-<li>将对象设为null，GC会优先回收 String xx = null;</li>
-<li>finallize方法，GC在回收对象之前调用该方法，你可以重写此方法来增加一些close和什么鬼的方法，统一资源清理（已经不推荐了）</li>
-<li>System.gc 会添加GC的机会，其实这个gc()函数的作用只是提醒虚拟机：程序员希望进行一次垃圾回收。但是它不能保证垃圾回收一定会进行，而且具体什么时候进行是取决于具体的虚拟机的，不同的虚拟机有不同的对策。</li>
-</ol>
-</li>
-<li><p>finalize()是Object的protected方法，子类可以覆盖该方法以实现资源清理工作，GC在回收对象之前调用该方法。</p>
+            <h2 id="Java基础知识体系串讲1-基础知识"><a href="#Java基础知识体系串讲1-基础知识" class="headerlink" title="Java基础知识体系串讲1-基础知识"></a>Java基础知识体系串讲1-基础知识</h2><h4 id="知识层次分布"><a href="#知识层次分布" class="headerlink" title="知识层次分布"></a>知识层次分布</h4><ul>
+<li><p>特性</p>
 <ul>
-<li>finalize()与C++中的析构函数不是对应的。C++中的析构函数调用的时机是确定的（对象离开作用域或delete掉），但Java中的finalize的调用具有不确定性</li>
-<li>不建议用finalize方法完成“非内存资源”的清理工作，但建议用于：① 清理本地对象(通过JNI创建的对象)；② 作为确保某些非内存资源(如Socket、文件等)释放的一个补充：在finalize方法中显式调用其他资源释放方法。其原因可见下文[finalize的问题]</li>
+<li>简单性<ul>
+<li>Java没有头文件 指针运算 结构体 联合 操作符重载 等C++的特性 使用起来相对简单</li>
 </ul>
 </li>
-<li>System.gc()与System.runFinalization()方法增加了finalize方法执行的机会，但不可盲目依赖它们</li>
+<li>面向对象<ul>
+<li>面向对象是一种程序设计技术，它将重点放在数据（即对象）和对象的接口上</li>
+<li>与C++不同的点在于多重继承，Java取而代之的是接口概念</li>
 </ul>
-<p>这东西 有点难讲清楚 我决定等我复习 虚拟机那本书 再来看看吧 </p>
+</li>
+<li>分布式（加粗为总结 非加粗为原文）<ul>
+<li><strong>我的理解：为什么Java有分布式的特性：</strong><ul>
+<li><strong>Java有丰富的库，用于处理TCP/IP协议，即可通过对应协议处理URL访问对应网络对象，从而可以建立起一条网络对象与网络对象之间沟通的渠道，从而实现分布式通信网络互联的多处理机体系结构上</strong></li>
+</ul>
+</li>
+<li>Java有丰富的库，用于处理像HTTP和FTP之类的TCP/IP协议</li>
+<li>Java应用程序能够通过URL打开和访问网络上的对象，极其便携</li>
+<li>分布式软件系统是支持分布式处理的软件系统，是在由<strong>通信网络互联</strong>的<strong>多处理机体系结构</strong>上执行任务的系统。它包括分布式操作系统、分布式程序设计语言及其编译（解释）系统、分布式文件系统和分布式数据库系统等</li>
+</ul>
+</li>
+<li>健壮性<ul>
+<li><strong>Java编译器能够检测许多在其他语言仅在运行时才能够检测出来的问题</strong></li>
+<li><strong>Java采取的指针模型消除了重写内存和损坏数据的可能性</strong></li>
+<li>Java投入了大量的精力进行了早期的问题检测、后期动态的（运行时）的检测</li>
+</ul>
+</li>
+<li>安全性<ul>
+<li>Java能够防范各种攻击<ul>
+<li>运行时堆栈的溢出。如蠕虫和病毒常用的攻击手段</li>
+<li>破坏自己的进程空间之外的内存</li>
+<li>未经授权读写文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>体系结构中立<ul>
+<li>编译器生成一个体系结构中立的目标文件格式，这是一种编译过的代码，称为字节码</li>
+<li>Java编译器通过生成与特定的计算机体系结构无关的字节码指令来实现这一特性</li>
+<li>精心设计的字节码可以在任何机器上解释运行</li>
+<li>实际运行的环境为机器上的虚拟机<ul>
+<li>解释虚拟机指令肯定会比全速运行机器指令药慢很多</li>
+<li>虚拟机也可以将执行最频繁的字节码序列翻译成机器吗，这一过程称为即时编译</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>可移植性<ul>
+<li>Java由于上述虚拟机的存在，所有的数据类型都有固定的大小</li>
+<li>二进制数据以固定的格式进行存储和传输，消除了字节顺序的困扰</li>
+<li>字符串是以表转的unicode格式存储的</li>
+<li>Java语言编译程序只需将<strong>编译</strong>生成在Java虚拟机运行的字节码，Java虚拟机在执行字节码时，把字节码<strong>解释</strong>成目标平台的机器吗，进行执行，“一次编译，到处运行”</li>
+</ul>
+</li>
+<li>解释型<ul>
+<li>Java解释器可以在任何移植了解释器的机器上执行Java字节码</li>
+</ul>
+</li>
+<li>高性能</li>
+<li>多线程<ul>
+<li>针对多线程有自己的一套库的处理机制</li>
+</ul>
+</li>
+<li>动态性</li>
+</ul>
+</li>
+<li><p>基本数据类型（不包括引用数据类型）</p>
+<ul>
+<li>整形<ul>
+<li>int        4byte      -20亿～20亿（大于20亿） -2^31~2^31-1</li>
+<li>short    2byte      -32768～32767 -2^15~2^15-1</li>
+<li>long    8byte        -2^63~2^63-1</li>
+<li>Byte     1byte       -2^7~-2^7-1</li>
+<li>进制前缀 二进制 0b 八进制 0 十六进制 0x 例如0xCAFE（魔数）</li>
+</ul>
+</li>
+<li>浮点型<ul>
+<li>float    4byte    </li>
+<li>double   8byte</li>
+<li>默认为double float后面有后缀F或f 没有后缀F默认为double</li>
+<li>原因是float类型的精度很难满足需求</li>
+<li>存在三种特殊的浮点数值<ul>
+<li>正无穷大 Double.POSITIVE_INFINITY</li>
+<li>负无穷大 Double.NEGATIVE_INFINITY</li>
+<li>NaN（is not number）Douboe.NaN  判断是否是一个数值 Double.isNaN(x)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Unicode和char类型<ul>
+<li>2字节 16位 Unicode-16</li>
+</ul>
+</li>
+<li>boolean类型<ul>
+<li>两个字节 与short同等大小 2byte 16位</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>变量与对象</p>
+<ul>
+<li>变量一定要初始化，初始化为对应的值，无默认</li>
+</ul>
+</li>
+<li><p>常量</p>
+<ul>
+<li>关键字final表示这个变量只能被赋值一次。一旦被赋值之后，就不能再更改</li>
+<li>习惯上，常量名使用全大写</li>
+<li>使用static final来定义一个类常量</li>
+<li>普通常量定义在方法的内部，仅供方法使用</li>
+<li>类常量定义在方法外部，可供一个类中的多个方法使用</li>
+</ul>
+</li>
+<li><p>0</p>
+<ul>
+<li><p>整数被除0将会产生一个异常，而浮点数被0除将会得到无穷大或者NaN的结果</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static final double NaN = 0.0d / 0.0;</span><br><span class="line">public static final double POSITIVE_INFINITY = 1.0 / 0.0;</span><br><span class="line">public static final double NEGATIVE_INFINITY = -1.0 / 0.0;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>emmm Java中浮点数除以0 是无穷大 记住吧 比较特殊</p>
+</li>
+</ul>
+</li>
+<li><p>Math方法</p>
+<ul>
+<li><p>Math方法是可以直接调用的，无须import</p>
+</li>
+<li><p>import static java.lang.Math.*;  此为静态导入 静态导入后 调用方法时，无需添加前缀Math</p>
+</li>
+<li><p>常用方法</p>
+<ul>
+<li>max</li>
+<li>min</li>
+<li>pow</li>
+<li>sqrt</li>
+<li>Random 此处贴上一份关于Random的研究</li>
+<li>随机数也可以使用Random类来实现 是伪随机数</li>
+<li><a href="https://blog.csdn.net/qq_33101675/article/details/81028210" target="_blank" rel="noopener">https://blog.csdn.net/qq_33101675/article/details/81028210</a></li>
+<li>round 四舍五入</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>强制类型转换    </p>
+<ul>
+<li><p>注意精度</p>
+<ul>
+<li>int转换为float long转换为float long转换为double 都可能损失精度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>自增自减运算符</p>
+<ul>
+<li><p>前缀形式的 会先完成加一 再使用加一后的新变量 ++i</p>
+</li>
+<li><p>后缀形式的 会先使用旧变量 再完成加一 i++</p>
+</li>
+</ul>
+</li>
+<li><p>位运算符</p>
+<ul>
+<li>&amp; and | or ^ xor(异或) ~ nor(同或) </li>
+<li>&lt;&lt; 位模式左移 逻辑左移 右边补0</li>
+<li>>&gt; 位模式右移 逻辑右移 左边补符号位</li>
+<li>>&gt;&gt; 无符号位模式右移 无符号右移 左边补0</li>
+<li>优先级 括号优先 判断优先 其次运算 最后赋值</li>
+</ul>
+</li>
+<li><p>枚举类型</p>
+<ul>
+<li><p>变量的取值只在一个有限的集合内，若直接存放在变量中，可能会保存为错误的值</p>
+</li>
+<li><p>可自定义枚举类型，枚举类型包括有限个命名的值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Size&#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&#125;</span><br><span class="line">Size s = Size.MEDIUM;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Size类型的变量只能存储这个类型声明中给定的某个枚举值，或者null，null表示这个变量没有设置任何值</p>
+</li>
+</ul>
+</li>
+<li><p>String</p>
+<ul>
+<li><p>概念上讲，Java字符串就是Unicode字符序列</p>
+</li>
+<li><p>Java标准类库中提供了String的预定义类，每个双引号扩起来的字符串都是String类的一个实例</p>
+</li>
+<li><p>《深入理解Java虚拟机》中写到，String是存放在常量池中的</p>
+</li>
+<li><p>严谨点的话，String并不是Java中的基本数据类型，是属于引用数据类型，上面讲的其实都是基本数据类型</p>
+</li>
+<li><p>获取子串</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String greeting = <span class="string">"Hello"</span>;</span><br><span class="line">String s = greeting.substring(<span class="number">0</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<p>得到“Hel”子串，首参数为开始的位置，次参数为结束的位置（不包括结束位置本身）</p>
+</li>
+<li><p>拼接字符串</p>
+<ul>
+<li><p>用+号拼接</p>
+</li>
+<li><p>int也可以参与拼接</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">456</span>;</span><br><span class="line">String s = a + <span class="string">""</span> + b;	<span class="comment">// 输出 123456</span></span><br><span class="line">String ss = a + b + <span class="string">""</span>;	<span class="comment">// 输出 579</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>字符串在Java中是不可变的，需要变化字符串靠拆分与拼接</p>
+</li>
+<li><p>不可变的好处 编辑器可以让字符串共享 </p>
+</li>
+<li><p>从jdk6及以前，String常量池存放在方法区中的运行时常量池中，方法区位于永久代</p>
+</li>
+<li><p>jdk7，String常量池转移到堆中</p>
+</li>
+<li><p>Jdk8，永久代被取消，新增MetaSpace</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// TODO 虚拟机也得好好复习一遍了 好多东西讲的不是很清楚 串不起来</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>String.intern()</p>
+<ul>
+<li>intern()方法设计的初衷，就是重用String对象，以节省内存消耗</li>
+</ul>
+</li>
+<li><p>使用intern()方法，运行时间增长，这是因为，虚拟机会先new String后再intern指向常量池中的引用</p>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  String s = <span class="keyword">new</span> String(<span class="string">"1"</span>);  <span class="comment">//常量池中添加“1”，生成堆对象s，返回指向堆中s的引用</span></span><br><span class="line">  	String intern = s.intern();  <span class="comment">//常量池中已有“1”，返回常量池中“1”的引用</span></span><br><span class="line">  	String s2 = <span class="string">"1"</span>;  <span class="comment">//常量池中已有“1”，返回常量池中“1”的引用</span></span><br><span class="line">System.out.println(s2 == intern);<span class="comment">//true  两者返回的都是常量池中“1”的引用</span></span><br><span class="line">  System.out.println(s == intern);<span class="comment">//false  堆引用地址和常量池引用地址不相等</span></span><br><span class="line">  </span><br><span class="line">  	原文链接：https:<span class="comment">//blog.csdn.net/hz90s/article/details/80819619</span></span><br></pre></td></tr></table></figure>
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<pre><code>- 实验证明，如引用常量池中的String，会有限返回intern生成的新的堆引用地址的String
+</code></pre><ul>
+<li><p>String.equal()</p>
+<ul>
+<li>比较字符串的内容是否相等</li>
+<li>如果用等号==来比较，会比较位置是否相等，而不是比较内容是否相等</li>
+</ul>
+</li>
+<li><p>空串和null</p>
+<ul>
+<li><p>空串即长度为0或者内容为空</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String = <span class="string">""</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>null即表示目前没有任何对象与该变量关联</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(str == <span class="keyword">null</span>)	<span class="comment">// probably appear error</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>码点与代码单元</p>
+<ul>
+<li>emmm 这是个我认为比较偏的概念 core 卷1上讲的云里雾里的 如果你求知欲很强的话 就看下去 我会用比较接地气的方式解释这个名词 个人认为 不了解 只是少个知识点而已 影响不大 可不看</li>
+<li>但是 谁叫我 什么东西都想知道全面一点呢 没办法 还是吃掉这个知识点吧</li>
+<li>先讲两个名词解释</li>
+<li>码点：就是某个任意字符在Unicode编码表中对应的代码值</li>
+<li>代码单元：是在计算机中用来表示码点的，大部分码点只需要一个代码单元表示，但是有一些是需要两个代码单元来表示的</li>
+<li>上面讲到 我们的char采用utf-16编码表示unicode字符 占两个字节 16位 故utf-16的代码单元占2个字节 如果是utf-8的话 就占1个字节</li>
+<li>大多数的常用的Unicode字符使用两个字节就能表示 但是 实际上 两个字节 16位 也不够用了 已经出现一些字符 超过两个字节</li>
+<li>就比如 U+1D546 长这样 𝕆 要两个代码单元 </li>
+<li>为了对比明显 列举一个只要一个代码单元的 U+0022 长这样 “ 就是我们的双引号啦</li>
+<li><img src="/Users/icebearice/Desktop/屏幕快照 2019-08-29 下午5.23.15.png" alt="屏幕快照 2019-08-29 下午5.23.15"></li>
+<li>不要使用char放 放不下啊兄弟</li>
+</ul>
+</li>
+<li><p>StringAPI (括号中的括号为可选的意思)</p>
+<ul>
+<li><p>char charAt(int index)</p>
+</li>
+<li><p>boolean equal(Object other)</p>
+</li>
+<li><p>boolean startsWith(String prefix) </p>
+</li>
+<li><p>boolean endsWith(String suffix)</p>
+</li>
+<li><p>如果字符串以prefix 或者 suffxi 开头或结尾 返回true</p>
+</li>
+<li><p>int indexOf(String str (int fromIndex))</p>
+</li>
+<li><p>int indexOf(int cp (int fromIndex))</p>
+</li>
+<li><p>返回子串或者字符的位置 从fromIndex开始（可选）</p>
+</li>
+<li><p>length() 整个Java中 只有String有length() 加括号 而数组长度为 length 其他什么找长度的 都是size</p>
+</li>
+<li><p>String substring(int beginIndex, (int endIndex))</p>
+</li>
+<li><p>String toLowerCase() </p>
+</li>
+<li><p>String toUpperCase()</p>
+</li>
+<li><p>String trim() — 修 剪</p>
+</li>
+<li><p>删除字符串头部和尾部的空格</p>
+</li>
+<li><p>String join(CharSequence delimiter, CharSequence … elements)</p>
+</li>
+<li><p>看不懂？ 给你个样例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String[] arrStr=<span class="keyword">new</span> String[]&#123;<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>&#125;;</span><br><span class="line"></span><br><span class="line">System.out.println(String.join(<span class="string">"-"</span>, arrStr));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line"><span class="number">1</span>-<span class="number">2</span>-<span class="number">3</span></span><br><span class="line">a-b-c</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>String replace（CharSequence oldString, CharSequence newString）</p>
+</li>
+</ul>
+</li>
+<li><p>StringBuilderAPI</p>
+<ul>
+<li>int length()</li>
+<li>StringBUilder append(String str)</li>
+<li>StringBuilder append(char c)</li>
+<li>StringBuilder appendCodePoint(int codepoint)</li>
+<li>追加一个码点，并将其转换为一个或两个代码大院并返回this</li>
+<li>void setCharAt(int i, char c)</li>
+<li>将第i个代码单元设置为c</li>
+<li>StringBuilder insert(int offset, String str / Char c)</li>
+<li>StringBuilder delete(int startIndex, int endIndex)</li>
+<li>delete startIndex ~ endIndex-1</li>
+<li>toString()</li>
+</ul>
+</li>
+<li><p>输入输出(两种方式)</p>
+<ul>
+<li>Scanner in = new Scanner(System.in);<ul>
+<li>String in.nextLine() 下一行</li>
+<li>String in.next(); 下一个单词</li>
+<li>int in.nextInt(); </li>
+<li>double in.nextDouble();</li>
+<li>boolean in.hasNext();</li>
+<li>boolean in.hasNextInt();</li>
+<li>boolean in.hasNextDouble();</li>
+</ul>
+</li>
+<li>BufferReader buffer = new BufferedReader(new InputStreamReader(System.in))<ul>
+<li>buffer.readLine();</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>格式化输出</p>
+<ul>
+<li>System.out.printf(“%s”, s);<ul>
+<li>d 十进制整数</li>
+<li>x 十六进制整数</li>
+<li>o 八进制整数</li>
+<li>f 定点浮点数</li>
+<li>e 指数浮点数</li>
+<li>g 通用浮点数</li>
+<li>a 十六进制浮点数</li>
+<li>s 字符串</li>
+<li>c 字符</li>
+<li>b 布尔</li>
+<li>h 散列码</li>
+<li>tx or Tx 日期时间</li>
+<li>% 百分号 （要输入百分号的时候 要打 %%）</li>
+<li>n 与平台的分隔符有关 windows相当于\n\r unix相当于\r</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Switch</p>
+<ul>
+<li>这里提及switch语句是有私心的 因为 我只是想说一下 switch 在go里面 是默认带break的 哈哈哈</li>
+</ul>
+</li>
+<li><p>大数值</p>
+<ul>
+<li>若基本的整数和浮点数精度不能够满足需求，java.math有两个很有用的类<ul>
+<li>BigInteger and BigDecimal （我竟然不知道decimal是小数的意思）</li>
+<li>前者实现了任意精度的整数运算，后者实现了任意精度的浮点数运算</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数组</p>
+<ul>
+<li>爱怎么初始化怎么初始化<ul>
+<li>int[] a</li>
+<li>int a[]</li>
+<li>int [] a = new int[100]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>不规则数组</p>
+<ul>
+<li>Java实际上没有多维数组，只有一维数组。多维数组被解释为“数组的数组”</li>
+</ul>
+</li>
+</ul>
 
           
         
