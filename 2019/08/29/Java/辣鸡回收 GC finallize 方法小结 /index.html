@@ -299,7 +299,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">20</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span></a>
 
   </li>
         
@@ -319,6 +319,25 @@
     
 
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">48</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
 
@@ -403,7 +422,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
-      <meta itemprop="description" content="后端开发 大三学生 实习ing 比较闲情雅致的 学习ing">
+      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
       <meta itemprop="image" content="/uploads/avatar.jpg">
     </span>
 
@@ -522,15 +541,13 @@
 <p>至於這個…, 就把它當作時代的眼淚吧. 這在業界裡基本上是一再證明不是個好方案了, 所以在 JDK 9 中已經被標註為 deprecated 了. 除非你有特殊原因, 不然不要去實作這個方法, 也不要期待透過這個方法來進行 GC. 原因很簡單: 因為你沒有辦法確保 finalize 的執行時間. 就算執行了, 也不確定是否能符合預期 (這要扯到 JVM 的 GC 機制, 這邊沒地方寫了). 使用不當還會影響性能, 進而導致 dead lock, hanging 等問題.</p>
 </blockquote>
 <h4 id="手动垃圾回收的三种方式"><a href="#手动垃圾回收的三种方式" class="headerlink" title="手动垃圾回收的三种方式"></a>手动垃圾回收的三种方式</h4><ul>
-<li><p>其实小标题是一种误导，这根本不是三种方式，因为我们可以做的只是通过手动的形式 增加一些机会 执行一些内存清理释放的方法 的机会</p>
-<ol>
+<li>其实小标题是一种误导，这根本不是三种方式，因为我们可以做的只是通过手动的形式 增加一些机会 执行一些内存清理释放的方法 的机会<ol>
 <li>将对象设为null，GC会优先回收 String xx = null;</li>
 <li>finallize方法，GC在回收对象之前调用该方法，你可以重写此方法来增加一些close和什么鬼的方法，统一资源清理（已经不推荐了）</li>
-<li>System.gc 会添加GC的机会，其实这个gc()函数的作用只是提醒虚拟机：程序员希望进行一次垃圾回收。但是它不能保证垃圾回收一定会进行，而且具体什么时候进行是取决于具体的虚拟机的，不同的虚拟机有不同的对策。</li>
+<li>System.gc 会添加GC的机会，其实这个gc()函数的作用只是提醒虚拟机：程序员希望进行一次垃圾回收。但是它不能保证垃圾回收一定会进行，而且具体什么时候进行是取决于具体的虚拟机的，不同的虚拟机有不同的对策。<a id="more"></a></li>
 </ol>
 </li>
-<li><p>finalize()是Object的protected方法，子类可以覆盖该方法以实现资源清理工作，GC在回收对象之前调用该方法。</p>
-<ul>
+<li>finalize()是Object的protected方法，子类可以覆盖该方法以实现资源清理工作，GC在回收对象之前调用该方法。<ul>
 <li>finalize()与C++中的析构函数不是对应的。C++中的析构函数调用的时机是确定的（对象离开作用域或delete掉），但Java中的finalize的调用具有不确定性</li>
 <li>不建议用finalize方法完成“非内存资源”的清理工作，但建议用于：① 清理本地对象(通过JNI创建的对象)；② 作为确保某些非内存资源(如Socket、文件等)释放的一个补充：在finalize方法中显式调用其他资源释放方法。其原因可见下文[finalize的问题]</li>
 </ul>
@@ -584,8 +601,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/03/问题集/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/02/Java/Java知识体系串讲2-对象与类/" rel="prev" title="Java基础知识体系串讲2-对象与类">
+                Java基础知识体系串讲2-对象与类 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -651,7 +668,7 @@
               <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Icebearice">
             
               <p class="site-author-name" itemprop="name">Icebearice</p>
-              <div class="site-description motion-element" itemprop="description">后端开发 大三学生 实习ing 比较闲情雅致的 学习ing</div>
+              <div class="site-description motion-element" itemprop="description">后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing</div>
           </div>
 
           
@@ -718,11 +735,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -773,13 +786,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -908,7 +915,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共54.3k字</span>
+  <span class="post-count">博客全站共54.4k字</span>
 </div>
         
 <div class="busuanzi-count">
