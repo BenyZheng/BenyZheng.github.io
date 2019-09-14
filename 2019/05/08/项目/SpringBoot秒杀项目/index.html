@@ -613,7 +613,33 @@
 <li><code>src/main/webapp/WEB-INF/web.xml文件</code></li>
 </ol>
 <h5 id="为什么会有这样的结构的区别呢"><a href="#为什么会有这样的结构的区别呢" class="headerlink" title="为什么会有这样的结构的区别呢"></a>为什么会有这样的结构的区别呢</h5><p>其实两个骨架除了文件目录结构上的区别外，区别就是<code>quickstart</code>已经将<code>SpringBoot</code>的配置文件<code>application.properties</code>给创建好了，不需要我们额外的去创建该配置文件，是传统的<code>webapp</code>向<code>SpringBoot</code>的一个转型，为了<code>SpringBoot</code>去制定的一个<code>Archetype</code></p>
-<p>### </p>
+<p>quickstart创建的是以jar包的方式，提供一个对外的统一输出</p>
+<p>原来的webapp创建的是以war包的方式，部署在Tomcat或者JBoss这种J2EE的这种容器里面</p>
+<h4 id="Building-a-RESFul-Web-Service"><a href="#Building-a-RESFul-Web-Service" class="headerlink" title="Building a RESFul Web Service"></a>Building a RESFul Web Service</h4><ol>
+<li>引入对应的pom文件的spring start 依赖<ol>
+<li>Spring-boot-starter-parent 指定父pom</li>
+<li>Spring-boot-starter-web 依赖关系如下<ol>
+<li>maven 支持 jar</li>
+<li>logging jar</li>
+<li>tomcat jar</li>
+<li>web jar</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>groupId和artifactId和version<ol>
+<li>请看maven篇</li>
+</ol>
+</li>
+<li>emmm 导包过程中 突然想起一道笔试题 <ol>
+<li>在import语句上只可以有注释<ol>
+<li>还可以有包名 我是猪吧 🐷</li>
+</ol>
+</li>
+<li>8090端口被ssr占用</li>
+</ol>
+</li>
+</ol>
 
       
     </div>
@@ -931,7 +957,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种archetype-quickstart和webapp的区别"><span class="nav-number">1.</span> <span class="nav-text">两种archetype quickstart和webapp的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#区别-项目结构不同"><span class="nav-number">1.0.1.</span> <span class="nav-text">区别:项目结构不同</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么会有这样的结构的区别呢"><span class="nav-number">1.0.2.</span> <span class="nav-text">为什么会有这样的结构的区别呢</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种archetype-quickstart和webapp的区别"><span class="nav-number">1.</span> <span class="nav-text">两种archetype quickstart和webapp的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#区别-项目结构不同"><span class="nav-number">1.0.1.</span> <span class="nav-text">区别:项目结构不同</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么会有这样的结构的区别呢"><span class="nav-number">1.0.2.</span> <span class="nav-text">为什么会有这样的结构的区别呢</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Building-a-RESFul-Web-Service"><span class="nav-number">1.1.</span> <span class="nav-text">Building a RESFul Web Service</span></a></li></ol></div>
             
 
           </div>
@@ -974,7 +1000,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共54.4k字</span>
+  <span class="post-count">博客全站共54.6k字</span>
 </div>
         
 <div class="busuanzi-count">
