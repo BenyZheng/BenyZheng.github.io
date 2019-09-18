@@ -154,7 +154,7 @@
 
 
   <meta name="description" content="本文为关于练习Java项目写下的相关笔记，涉及到SpringBoot、Tomcat云端部署、线程池优化、分布式Nginx、分布式token扩展、缓存系列Redis、本地缓存、lua缓存、cdn优化、令牌与RocketMQ消息队列实现流量削峰、JMeter压力测试等知识体系，因为是练习项目，笔记内容可能比较混杂，我会遇到问题不断的延伸，所以才有了这么一份总结">
-<meta name="keywords" content="项目">
+<meta name="keywords" content="notFinished">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot秒杀项目(更新中……未完结)">
 <meta property="og:url" content="https://icebearice.gitee.io/2019/05/08/项目/SpringBoot秒杀项目/index.html">
@@ -323,7 +323,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">48</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">49</span></a>
 
   </li>
         
@@ -396,6 +396,8 @@
 
 </div>
     </header>
+
+<a href="https://github.com/icebearice" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
     
 
@@ -520,14 +522,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/" itemprop="url" rel="index"><span itemprop="name">项目</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/秒杀系统/" itemprop="url" rel="index"><span itemprop="name">秒杀系统</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/notFinished/" itemprop="url" rel="index"><span itemprop="name">notFinished</span></a></span>
 
                 
                 
@@ -637,9 +632,42 @@
 </ol>
 </li>
 <li>8090端口被ssr占用</li>
+<li>本地仓库老是无法更新索引 找个机会 把他弄成nexus的本地镜像仓库 现在先凑合着用 好</li>
+<li>需要关注pom.xml的结构</li>
 </ol>
 </li>
 </ol>
+<h4 id="EnableAutoConfiguration"><a href="#EnableAutoConfiguration" class="headerlink" title="@EnableAutoConfiguration"></a>@EnableAutoConfiguration</h4><blockquote>
+<p>启用 Spring 应用程序上下文的自动配置，试图猜测和配置您可能需要的bean。自动配置类通常采用基于你的 classpath 和已经定义的 beans 对象进行应用。<br>被 @EnableAutoConfiguration 注解的类所在的包有特定的意义，并且作为默认配置使用。例如，当扫描 <a href="https://github.com/entity" target="_blank" rel="noopener">@entity</a>类的时候它将本使用。通常推荐将 @EnableAutoConfiguration 配置在 root 包下，这样所有的子包、类都可以被查找到。</p>
+</blockquote>
+<blockquote>
+<p>Auto-configuration类是常规的 Spring 配置 Bean。它们使用的是 SpringFactoriesLoader 机制（以 EnableAutoConfiguration 类路径为 key）。通常 auto-configuration beans 是 <a href="https://github.com/conditional" target="_blank" rel="noopener">@conditional</a> beans（在大多数情况下配合 @ConditionalOnClass 和 @ConditionalOnMissingBean 注解进行使用）。</p>
+</blockquote>
+<p>密码和用户的info信息是分开存储的</p>
+<p>密码采用encrpt加密方式加密</p>
+<p>@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。</p>
+<p>找个机会看看@Controller是怎么实现的</p>
+<p>dao层中的UserDO和UserPasswordDO（DO-DataObject）仅仅只是 用来mapper映射的数据传输模型</p>
+<p>真正被作为业务逻辑处理的其实是在service层的model层 它会汇集所有的来自dao不同的数据 属于同一个对象</p>
+<p>就像info的password是属于一个对象的 但是却是来自不同的表的</p>
+<h4 id="添加-ResponseBody-与不添加的区别"><a href="#添加-ResponseBody-与不添加的区别" class="headerlink" title="添加@ResponseBody 与不添加的区别"></a>添加@ResponseBody 与不添加的区别</h4><p>添加了之后, 返回的json 数据会直接被添加到 http response body(响应体) 中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/manage/login"</span>)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Student <span class="title">login</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Student student = <span class="keyword">new</span> Student();</span><br><span class="line">  	student.setName(<span class="string">"张三"</span>);</span><br><span class="line">  	student.setId(<span class="number">1</span>);</span><br><span class="line">  	<span class="keyword">return</span> Student;	<span class="comment">// 返回的是 Student 转换成的 json 形式的数据 并且由于 ResponseBody 的注解存在</span></span><br><span class="line">  									<span class="comment">// 将 json形式的数据 直接写入到 HTTP Response Body 即响应体中</span></span><br><span class="line">  									<span class="comment">// 如果不添加 @ResponseBody 的话, 相当于返回的 url 为空, 页面的 url 不变</span></span><br><span class="line">  									<span class="comment">// 在 SpringBoot 中返回404</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>未添加的话, 将会根据返回的 String 形式的 url 进行跳转</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/manage/login"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">login</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"/admin/login"</span>;	<span class="comment">// 返回的是 String 形式的 url, 根据对应的 url 跳转请求</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>找机会研究一下 common-lang3</p>
+<p>mapper.insertSelective 会对参数进行判空 如未 null 则不添加该语句的 insert , 完全依赖于数据库的默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keyProperty=&quot;id&quot; useGeneratedKeys=&quot;true&quot;</span><br></pre></td></tr></table></figure>
+<p>将自增 id 取出, 后赋值给对应的 userModel 的 id, 自增的 id 被取出, 赋值给对应的对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@CrossOrigin</span>(allowCredentials = <span class="string">"true"</span>, allowedHeaders = <span class="string">"*"</span>)</span><br><span class="line"><span class="comment">// 解决跨域问题</span></span><br><span class="line">ajax 中:        xhrFields:&#123;withCredentials:<span class="keyword">true</span>&#125;,</span><br></pre></td></tr></table></figure>
+<h4 id="RequestMapping注解中consumes与produces的区别"><a href="#RequestMapping注解中consumes与produces的区别" class="headerlink" title="RequestMapping注解中consumes与produces的区别"></a>RequestMapping注解中consumes与produces的区别</h4><p>consumes - 消费者, 限制 HTTP Header 里的 ContentType, 客户端(即用户)可消费当前服务端(即服务器)的服务, 只能以 对应格式 进行消费, 就比如我只接收 application/json 不接收 application/xml, 就好像现在的一些不良商铺, 只接收支付宝和微信转账, 不接收现金, 要知道, 不接收现金是犯中华人民共和国人民币法的第三条法律哦!</p>
+<p>produces - 生产者, 限制  HTTP Header 里的 Accpet, 用来告诉客户端, 我只生产 对应格式 的消费对象, 我只会传给前端指定的 格式的数据</p>
+<p>那这两个注解有什么用呢? 如果不设置的话, 好像这个注解也是可以使用的, 你不需要去指定格式类型</p>
+<p>使用 @RequestMapping 注解的 produces 和 consumes 这两个元素来缩小请求映射类型的范围, 提高请求的处理的效率, 并可以限制开发时候的数据格式类型统一, 避免前后端传输的数据不是一种类型的, 但是却始终可以正常运行对应的数据格式, 算是一种规范化吧</p>
+<p>hibernate-validator 好东西</p>
+<p>如果一个service有多个实现, 那autowired是怎么实现自动注入的呢? 如何判断要注入的是哪一个impl呢?</p>
+<p><a href="https://blog.csdn.net/caidingnu/article/details/100906554" target="_blank" rel="noopener">https://blog.csdn.net/caidingnu/article/details/100906554</a></p>
+<p>LocalDateTime Java8 ?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime now = LocalDateTime.now();</span><br><span class="line">now.format(DateTimeFormatter.ISO_DATE);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -663,7 +691,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/项目/" rel="tag"># 项目</a>
+            <a href="/tags/notFinished/" rel="tag"># notFinished</a>
           
         </div>
       
@@ -763,7 +791,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -957,7 +985,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种archetype-quickstart和webapp的区别"><span class="nav-number">1.</span> <span class="nav-text">两种archetype quickstart和webapp的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#区别-项目结构不同"><span class="nav-number">1.0.1.</span> <span class="nav-text">区别:项目结构不同</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么会有这样的结构的区别呢"><span class="nav-number">1.0.2.</span> <span class="nav-text">为什么会有这样的结构的区别呢</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Building-a-RESFul-Web-Service"><span class="nav-number">1.1.</span> <span class="nav-text">Building a RESFul Web Service</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种archetype-quickstart和webapp的区别"><span class="nav-number">1.</span> <span class="nav-text">两种archetype quickstart和webapp的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#区别-项目结构不同"><span class="nav-number">1.0.1.</span> <span class="nav-text">区别:项目结构不同</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么会有这样的结构的区别呢"><span class="nav-number">1.0.2.</span> <span class="nav-text">为什么会有这样的结构的区别呢</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Building-a-RESFul-Web-Service"><span class="nav-number">1.1.</span> <span class="nav-text">Building a RESFul Web Service</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EnableAutoConfiguration"><span class="nav-number">1.2.</span> <span class="nav-text">@EnableAutoConfiguration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加-ResponseBody-与不添加的区别"><span class="nav-number">1.3.</span> <span class="nav-text">添加@ResponseBody 与不添加的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RequestMapping注解中consumes与produces的区别"><span class="nav-number">1.4.</span> <span class="nav-text">RequestMapping注解中consumes与produces的区别</span></a></li></ol></div>
             
 
           </div>
@@ -1000,7 +1028,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共54.6k字</span>
+  <span class="post-count">博客全站共55.9k字</span>
 </div>
         
 <div class="busuanzi-count">
