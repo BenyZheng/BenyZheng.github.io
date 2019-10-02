@@ -304,7 +304,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">18</span></a>
 
   </li>
         
@@ -323,7 +323,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">49</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">52</span></a>
 
   </li>
         
@@ -695,6 +695,10 @@
 <h5 id="深度拷贝-System-arraycopy"><a href="#深度拷贝-System-arraycopy" class="headerlink" title="深度拷贝-System.arraycopy"></a>深度拷贝-System.arraycopy</h5><h5 id="浅度拷贝-Collections-copy"><a href="#浅度拷贝-Collections-copy" class="headerlink" title="浅度拷贝-Collections.copy"></a>浅度拷贝-Collections.copy</h5><h5 id="B-树和B树"><a href="#B-树和B树" class="headerlink" title="B+树和B树"></a>B+树和B树</h5><p>B树：首先要阶数为M，M阶B树，每个节点的关键字的个数最大值为M-1 最小值为M/2（向上取整）再-1，可以有的子节点为三个，每个子节点的关键字的个数限制与父节点相同，当节点的关键字的个数达到M个时，树中的节点的结构是需要调整的，或先是往上改变父节点的关键字，再是往下，添加B树的层数，保持B树的平衡，性能相当于二分查找</p>
 <p>B+树：基本相同，区别为：每个关键字都只用来索引，不存放数据；所有数据都保存在叶子结点中；为所有叶子结点存放一个链指针，链接所有的叶子结点；相比B树来说，更适合做文件索引系统，效率高的原因是减少了IO，减少了盘快读取的次数，减少了IO次数</p>
 <p>B*树：就是在B+树的基础上，在非根非叶子结点间添加一个指向兄弟的指针，当节点满的时候，会直接移动到兄弟节点上去，空间利用率更高，分配新节点的概率较低，效率也有所提升</p>
+<h4 id="还没到我面试，总结一下并发的容器把"><a href="#还没到我面试，总结一下并发的容器把" class="headerlink" title="还没到我面试，总结一下并发的容器把"></a>还没到我面试，总结一下并发的容器把</h4><p>并发系列的容器有ConcurrentHashMap CopyOnWriteArrayList 阻塞队列和非阻塞队列</p>
+<p>1 1.8以前 采用segment数组和HashEntry 分段可重入锁的形式 保证 线程安全</p>
+<p>通过分段锁的形式，降低了</p>
+<p>#### </p>
 
       
     </div>
@@ -731,8 +735,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/04/Java/Java知识体系串讲3-继承/" rel="next" title="Java基础知识体系串讲3-继承">
-                <i class="fa fa-chevron-left"></i> Java基础知识体系串讲3-继承
+              <a href="/2019/09/07/问题集/" rel="next" title="问题集">
+                <i class="fa fa-chevron-left"></i> 问题集
               </a>
             
           </div>
@@ -741,8 +745,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/07/问题集/" rel="prev" title="问题集">
-                问题集 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/15/容器/docker/" rel="prev" title="Docker使用总结">
+                Docker使用总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -818,7 +822,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -875,7 +879,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -926,7 +932,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1012,7 +1020,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-程序从源代码到运行一般有下面3步："><span class="nav-number">1.</span> <span class="nav-text">Java 程序从源代码到运行一般有下面3步：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#String的使用陷阱"><span class="nav-number">1.1.</span> <span class="nav-text">String的使用陷阱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StringBuilder与StringBuffer"><span class="nav-number">1.2.</span> <span class="nav-text">StringBuilder与StringBuffer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#锁竞争为什么会导致性能降低呢"><span class="nav-number">1.3.</span> <span class="nav-text">锁竞争为什么会导致性能降低呢?</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#String不可变的原因是因为-底层使用了final修饰"><span class="nav-number">1.3.1.</span> <span class="nav-text">String不可变的原因是因为 底层使用了final修饰</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java中定义一个不做事且没有参数的构造方法的作用"><span class="nav-number">1.4.</span> <span class="nav-text">Java中定义一个不做事且没有参数的构造方法的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口的一些问题"><span class="nav-number">1.5.</span> <span class="nav-text">接口的一些问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局部变量不可以用static修饰，没有意义呀，因为static一般是跟着某个方法或者某个类的，是从属的，被static修饰的变量是属于实例的，被static修饰的方法是属于类的，对象存放在堆内存中，而局部变量存放在栈内存中"><span class="nav-number">1.6.</span> <span class="nav-text">局部变量不可以用static修饰，没有意义呀，因为static一般是跟着某个方法或者某个类的，是从属的，被static修饰的变量是属于实例的，被static修饰的方法是属于类的，对象存放在堆内存中，而局部变量存放在栈内存中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String的搬家历程"><span class="nav-number">1.7.</span> <span class="nav-text">String的搬家历程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IO相关-BIO-NIO-AIO"><span class="nav-number">1.8.</span> <span class="nav-text">IO相关 BIO NIO AIO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java的IO"><span class="nav-number">1.9.</span> <span class="nav-text">Java的IO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顺带一提-线程池-emmm-再见-我明天再看吧"><span class="nav-number">1.10.</span> <span class="nav-text">顺带一提 线程池 emmm 再见 我明天再看吧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顺带一提-数据库连接池-常见有-C3P0-Druid的数据库连接池-1-加载jdbc-2-通过jdbc连接数据库-3-访问数据库-执行sql语句-4-断开数据库连接"><span class="nav-number">1.11.</span> <span class="nav-text">顺带一提 数据库连接池 常见有 C3P0 Druid的数据库连接池 1 加载jdbc 2 通过jdbc连接数据库 3 访问数据库 执行sql语句 4 断开数据库连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Socket详解"><span class="nav-number">1.12.</span> <span class="nav-text">Socket详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#epoll的优点："><span class="nav-number">1.13.</span> <span class="nav-text">epoll的优点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tansient字段-修饰了-不会被序列化"><span class="nav-number">1.14.</span> <span class="nav-text">tansient字段 修饰了 不会被序列化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#键盘输入的两种方式"><span class="nav-number">1.15.</span> <span class="nav-text">键盘输入的两种方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java内存模型"><span class="nav-number">1.16.</span> <span class="nav-text">Java内存模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java内存区域"><span class="nav-number">1.17.</span> <span class="nav-text">Java内存区域</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#程序计数器"><span class="nav-number">1.17.1.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#虚拟机栈"><span class="nav-number">1.17.2.</span> <span class="nav-text">虚拟机栈</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#本地方法栈"><span class="nav-number">1.17.3.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#堆"><span class="nav-number">1.17.4.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法区"><span class="nav-number">1.17.5.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元空间"><span class="nav-number">1.17.6.</span> <span class="nav-text">元空间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运行时常量池"><span class="nav-number">1.17.7.</span> <span class="nav-text">运行时常量池</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java对象创建的过程"><span class="nav-number">1.18.</span> <span class="nav-text">Java对象创建的过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象的内存布局"><span class="nav-number">1.19.</span> <span class="nav-text">对象的内存布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象访问定位"><span class="nav-number">1.20.</span> <span class="nav-text">对象访问定位</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#深度拷贝-System-arraycopy"><span class="nav-number">1.20.1.</span> <span class="nav-text">深度拷贝-System.arraycopy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#浅度拷贝-Collections-copy"><span class="nav-number">1.20.2.</span> <span class="nav-text">浅度拷贝-Collections.copy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#B-树和B树"><span class="nav-number">1.20.3.</span> <span class="nav-text">B+树和B树</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-程序从源代码到运行一般有下面3步："><span class="nav-number">1.</span> <span class="nav-text">Java 程序从源代码到运行一般有下面3步：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#String的使用陷阱"><span class="nav-number">1.1.</span> <span class="nav-text">String的使用陷阱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StringBuilder与StringBuffer"><span class="nav-number">1.2.</span> <span class="nav-text">StringBuilder与StringBuffer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#锁竞争为什么会导致性能降低呢"><span class="nav-number">1.3.</span> <span class="nav-text">锁竞争为什么会导致性能降低呢?</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#String不可变的原因是因为-底层使用了final修饰"><span class="nav-number">1.3.1.</span> <span class="nav-text">String不可变的原因是因为 底层使用了final修饰</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java中定义一个不做事且没有参数的构造方法的作用"><span class="nav-number">1.4.</span> <span class="nav-text">Java中定义一个不做事且没有参数的构造方法的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口的一些问题"><span class="nav-number">1.5.</span> <span class="nav-text">接口的一些问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局部变量不可以用static修饰，没有意义呀，因为static一般是跟着某个方法或者某个类的，是从属的，被static修饰的变量是属于实例的，被static修饰的方法是属于类的，对象存放在堆内存中，而局部变量存放在栈内存中"><span class="nav-number">1.6.</span> <span class="nav-text">局部变量不可以用static修饰，没有意义呀，因为static一般是跟着某个方法或者某个类的，是从属的，被static修饰的变量是属于实例的，被static修饰的方法是属于类的，对象存放在堆内存中，而局部变量存放在栈内存中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String的搬家历程"><span class="nav-number">1.7.</span> <span class="nav-text">String的搬家历程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IO相关-BIO-NIO-AIO"><span class="nav-number">1.8.</span> <span class="nav-text">IO相关 BIO NIO AIO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java的IO"><span class="nav-number">1.9.</span> <span class="nav-text">Java的IO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顺带一提-线程池-emmm-再见-我明天再看吧"><span class="nav-number">1.10.</span> <span class="nav-text">顺带一提 线程池 emmm 再见 我明天再看吧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顺带一提-数据库连接池-常见有-C3P0-Druid的数据库连接池-1-加载jdbc-2-通过jdbc连接数据库-3-访问数据库-执行sql语句-4-断开数据库连接"><span class="nav-number">1.11.</span> <span class="nav-text">顺带一提 数据库连接池 常见有 C3P0 Druid的数据库连接池 1 加载jdbc 2 通过jdbc连接数据库 3 访问数据库 执行sql语句 4 断开数据库连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Socket详解"><span class="nav-number">1.12.</span> <span class="nav-text">Socket详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#epoll的优点："><span class="nav-number">1.13.</span> <span class="nav-text">epoll的优点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tansient字段-修饰了-不会被序列化"><span class="nav-number">1.14.</span> <span class="nav-text">tansient字段 修饰了 不会被序列化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#键盘输入的两种方式"><span class="nav-number">1.15.</span> <span class="nav-text">键盘输入的两种方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java内存模型"><span class="nav-number">1.16.</span> <span class="nav-text">Java内存模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java内存区域"><span class="nav-number">1.17.</span> <span class="nav-text">Java内存区域</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#程序计数器"><span class="nav-number">1.17.1.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#虚拟机栈"><span class="nav-number">1.17.2.</span> <span class="nav-text">虚拟机栈</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#本地方法栈"><span class="nav-number">1.17.3.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#堆"><span class="nav-number">1.17.4.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法区"><span class="nav-number">1.17.5.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元空间"><span class="nav-number">1.17.6.</span> <span class="nav-text">元空间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运行时常量池"><span class="nav-number">1.17.7.</span> <span class="nav-text">运行时常量池</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java对象创建的过程"><span class="nav-number">1.18.</span> <span class="nav-text">Java对象创建的过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象的内存布局"><span class="nav-number">1.19.</span> <span class="nav-text">对象的内存布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象访问定位"><span class="nav-number">1.20.</span> <span class="nav-text">对象访问定位</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#深度拷贝-System-arraycopy"><span class="nav-number">1.20.1.</span> <span class="nav-text">深度拷贝-System.arraycopy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#浅度拷贝-Collections-copy"><span class="nav-number">1.20.2.</span> <span class="nav-text">浅度拷贝-Collections.copy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#B-树和B树"><span class="nav-number">1.20.3.</span> <span class="nav-text">B+树和B树</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#还没到我面试，总结一下并发的容器把"><span class="nav-number">1.21.</span> <span class="nav-text">还没到我面试，总结一下并发的容器把</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1055,7 +1063,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共66k字</span>
+  <span class="post-count">博客全站共68.6k字</span>
 </div>
         
 <div class="busuanzi-count">
