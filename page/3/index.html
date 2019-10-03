@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">52</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">55</span></a>
 
   </li>
         
@@ -439,7 +439,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/08/29/Java/Java知识体系串讲1-基础知识/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/09/15/数据结构与算法分析/算法分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -459,7 +459,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/29/Java/Java知识体系串讲1-基础知识/" class="post-title-link" itemprop="url">Java基础知识体系串讲1-基础知识</a>
+                <a href="/2019/09/15/数据结构与算法分析/算法分析/" class="post-title-link" itemprop="url">数学定理复习</a>
               
             
           </h1>
@@ -484,7 +484,7 @@
                 
               
 
-              <time title="创建时间：2019-08-29 22:20:40" itemprop="dateCreated datePublished" datetime="2019-08-29T22:20:40+08:00">2019-08-29 22:20:40</time>
+              <time title="创建时间：2019-09-15 23:42:14" itemprop="dateCreated datePublished" datetime="2019-09-15T23:42:14+08:00">2019-09-15 23:42:14</time>
             
 
             
@@ -504,7 +504,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构与算法分析/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法分析</span></a></span>
 
                 
                 
@@ -523,8 +523,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/08/29/Java/Java知识体系串讲1-基础知识/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/29/Java/Java知识体系串讲1-基础知识/" itemprop="commentCount"></span>
+                <a href="/2019/09/15/数据结构与算法分析/算法分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/15/数据结构与算法分析/算法分析/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -553,35 +553,19 @@
 
       
         
-          <h2 id="Java基础知识体系串讲1-基础知识"><a href="#Java基础知识体系串讲1-基础知识" class="headerlink" title="Java基础知识体系串讲1-基础知识"></a>Java基础知识体系串讲1-基础知识</h2><h4 id="知识层次分布"><a href="#知识层次分布" class="headerlink" title="知识层次分布"></a>知识层次分布</h4><ul>
-<li><p>特性</p>
-<ul>
-<li>简单性<ul>
-<li>Java没有头文件 指针运算 结构体 联合 操作符重载 等C++的特性 使用起来相对简单</li>
-</ul>
-</li>
-<li>面向对象<ul>
-<li>面向对象是一种程序设计技术，它将重点放在数据（即对象）和对象的接口上</li>
-<li>与C++不同的点在于多重继承，Java取而代之的是接口概念</li>
-</ul>
-</li>
-<li>分布式（加粗为总结 非加粗为原文）<ul>
-<li><strong>我的理解：为什么Java有分布式的特性：</strong><ul>
-<li><strong>Java有丰富的库，用于处理TCP/IP协议，即可通过对应协议处理URL访问对应网络对象，从而可以建立起一条网络对象与网络对象之间沟通的渠道，从而实现分布式通信网络互联的多处理机体系结构上</strong></li>
-</ul>
-</li>
-<li>Java有丰富的库，用于处理像HTTP和FTP之类的TCP/IP协议</li>
-<li>Java应用程序能够通过URL打开和访问网络上的对象，极其便携</li>
-<li>分布式软件系统是支持分布式处理的软件系统，是在由<strong>通信网络互联</strong>的<strong>多处理机体系结构</strong>上执行任务的系统。它包括分布式操作系统、分布式程序设计语言及其编译（解释）系统、分布式文件系统和分布式数据库系统等</li></ul></li></ul></li></ul>
-          <!--noindex-->
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/08/29/Java/Java知识体系串讲1-基础知识/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
+            <p>###递归定义</p>
+<p>当一个函数用它自己来定义时就称为<code>递归</code></p>
+<p><code>递归调用</code>将反复进行直到<code>基准情形</code>出现，如果<code>基准情形</code>不可能出现，则不可能得到答案</p>
+<p>所以，有<code>递归</code>的基本法则两条：</p>
+<ol>
+<li><code>基准情形</code>，必须总要有某些基准的情形，它们不用递归就能求解</li>
+<li><code>不断推进</code>，对于那些要<code>递归</code>求解的情形，<code>递归调用</code>必须总能朝着一个<code>基准情形</code>推进</li>
+<li><code>设计法则</code>，假设所有的递归调用都能运行</li>
+<li><code>合成效益法则</code>，在求解一个问题的同一实例时，<strong>切勿</strong>在<strong>不同的递归调用</strong>中做<code>重复性工作</code></li>
+</ol>
+
           
-          <!--/noindex-->
         
       
     </div>
@@ -636,7 +620,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/08/29/Java/辣鸡回收 GC finallize 方法小结 /">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/09/07/Java/JavaGuide阅读笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -656,7 +640,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/29/Java/辣鸡回收 GC finallize 方法小结 /" class="post-title-link" itemprop="url">垃圾回收GC finalize方法 小结</a>
+                <a href="/2019/09/07/Java/JavaGuide阅读笔记/" class="post-title-link" itemprop="url">JavaGuide阅读笔记</a>
               
             
           </h1>
@@ -681,193 +665,7 @@
                 
               
 
-              <time title="创建时间：2019-08-29 22:20:40" itemprop="dateCreated datePublished" datetime="2019-08-29T22:20:40+08:00">2019-08-29 22:20:40</time>
-            
-
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/08/29/Java/辣鸡回收 GC finallize 方法小结 /#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/29/Java/辣鸡回收 GC finallize 方法小结 /" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="垃圾回收GC-finalize方法-小结"><a href="#垃圾回收GC-finalize方法-小结" class="headerlink" title="垃圾回收GC finalize方法 小结"></a>垃圾回收GC finalize方法 小结</h2><blockquote>
-<p>這是屬於 java.lang.Object 上的一個 method, 其設計目的是保證物件在被 GC 之前完成特定資源的回收作業. 不過由於這東西真的太不穩定了, 所以從 JDK 9 開始已經被標成 deprecated 了.</p>
-<p>至於這個…, 就把它當作時代的眼淚吧. 這在業界裡基本上是一再證明不是個好方案了, 所以在 JDK 9 中已經被標註為 deprecated 了. 除非你有特殊原因, 不然不要去實作這個方法, 也不要期待透過這個方法來進行 GC. 原因很簡單: 因為你沒有辦法確保 finalize 的執行時間. 就算執行了, 也不確定是否能符合預期 (這要扯到 JVM 的 GC 機制, 這邊沒地方寫了). 使用不當還會影響性能, 進而導致 dead lock, hanging 等問題.</p>
-</blockquote>
-<h4 id="手动垃圾回收的三种方式"><a href="#手动垃圾回收的三种方式" class="headerlink" title="手动垃圾回收的三种方式"></a>手动垃圾回收的三种方式</h4><ul>
-<li>其实小标题是一种误导，这根本不是三种方式，因为我们可以做的只是通过手动的形式 增加一些机会 执行一些内存清理释放的方法 的机会<ol>
-<li>将对象设为null，GC会优先回收 String xx = null;</li>
-<li>finallize方法，GC在回收对象之前调用该方法，你可以重写此方法来增加一些close和什么鬼的方法，统一资源清理（已经不推荐了）</li>
-<li>System.gc 会添加GC的机会，其实这个gc()函数的作用只是提醒虚拟机：程序员希望进行一次垃圾回收。但是它不能保证垃圾回收一定会进行，而且具体什么时候进行是取决于具体的虚拟机的，不同的虚拟机有不同的对策。</li></ol></li></ul>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/08/29/Java/辣鸡回收 GC finallize 方法小结 /#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/08/27/Linux/操作系统与Linux综合学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Icebearice">
-      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Icebearice">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/27/Linux/操作系统与Linux综合学习/" class="post-title-link" itemprop="url">操作系统与Linux综合学习</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-08-27 21:04:09" itemprop="dateCreated datePublished" datetime="2019-08-27T21:04:09+08:00">2019-08-27 21:04:09</time>
+              <time title="创建时间：2019-09-07 21:04:09" itemprop="dateCreated datePublished" datetime="2019-09-07T21:04:09+08:00">2019-09-07 21:04:09</time>
             
 
             
@@ -884,7 +682,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-08-29 21:04:09" itemprop="dateModified" datetime="2019-08-29T21:04:09+08:00">2019-08-29</time> 
+              <time title="修改时间：2019-09-24 21:04:09" itemprop="dateModified" datetime="2019-09-24T21:04:09+08:00">2019-09-24</time> 
               -->
               <!-- new version -->
                         
@@ -899,8 +697,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-08-29T21:04:09+08:00" content="2019-08-29">
-                2019-08-29 21:04:09
+              <time itemprop="dateUpdated" datetime="2019-09-24T21:04:09+08:00" content="2019-09-24">
+                2019-09-24 21:04:09
               </time>
             </span>
           
@@ -921,7 +719,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
 
                 
                 
@@ -940,8 +738,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/08/27/Linux/操作系统与Linux综合学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/27/Linux/操作系统与Linux综合学习/" itemprop="commentCount"></span>
+                <a href="/2019/09/07/Java/JavaGuide阅读笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/07/Java/JavaGuide阅读笔记/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -970,17 +768,336 @@
 
       
         
-          <h4 id="内核"><a href="#内核" class="headerlink" title="内核"></a>内核</h4><p>内核 Kernel 是一个用来管理软件发出的数据I/O要求的计算机程序，将这些要求转译为数据处理的指令并交由中央处理器（CPU）及计算机中其他电子组件进行处理，是现在操作系统中最基本的部分。本来计算机中的应用程序是可以直接地调入计算机中执行的，但是直接对硬件进行操作是非常复杂的。所以内核通常提供一种硬件抽象的方法，来完成这些操作，所以从某种程度上来说，内核也不是必要的组成部分。</p>
-<p>简而言之，内核控制计算机资源，提供程序的运行环境</p>
-<h5 id="内核分类"><a href="#内核分类" class="headerlink" title="内核分类"></a>内核分类</h5><p>分为宏内核和微内核两大架构，宏内核与微内核之间，还有一种混合内核；微内核之下还有一种极端的设计方式，成为外内核</p>
-<h5 id="宏内核"><a href="#宏内核" class="headerlink" title="宏内核"></a>宏内核</h5><p>宏内核结构在硬件的基础上，定义了一个高阶的抽象接口，应用一组原语（或者叫系统调用system call）来实现操作系统的功能，例如进程管理，文件系统和存储管理等等，这些功能由多个运行在内核态的模块来完成。</p>
-<p>尽管每一个模块都是单独地服务这些操作，内核代码是高度集成的，一个宏内核相当于是一个二进制的大应用程序，模块间的通讯是通过直接调用其他模块中的函数实现的，而不是通过消息传递，系统服务的实现以及系统的基本操作规则是耦合的。因此一个使某模块功能瘫痪的bug会使整个系统需要崩溃重启</p>
-<p>然而，如果开发顺利，单内核结构就可以从运行效率上得到好处</p>
-<p>常见的宏内核有Linux和Unix<br></p>
+          
+            <div class="note info">
+            <p>观开源博客项目<code>JavaGuide</code>，有些比较细枝末节的点，以及自己的延伸思考，想要重点记录一下</p><p>博客地址：<a href="https://snailclimb.gitee.io/javaguide/" target="_blank" rel="noopener">https://snailclimb.gitee.io/javaguide/</a></p>
+          </div>
+<h3 id="Java-程序从源代码到运行一般有下面3步："><a href="#Java-程序从源代码到运行一般有下面3步：" class="headerlink" title="Java 程序从源代码到运行一般有下面3步："></a><strong>Java 程序从源代码到运行一般有下面3步：</strong></h3><p><img src="/2019/09/07/Java/JavaGuide阅读笔记/Java 程序运行过程.png" alt="Javaç¨åºè¿è¡è¿ç¨"></p>
+<p>从<code>字节码</code>到<code>机器码</code>这一步，JVM类加载器会首先加载<code>字节码</code>文件，然后通过解释器逐行解释执行，称为边解释变执行</p>
+<ol>
+<li>JIt和AOt</li>
+<li>GPL</li>
+<li>C++</li>
+<li>JApplet</li>
+<li>Char字节大小 不够放</li>
+<li>构造器不可以被重写</li>
+</ol>
+<blockquote>
+<p>HotSpot采用了惰性评估(Lazy Evaluation)的做法，根据二八定律，消耗大部分系统资源的只有那一小部分的代码（热点代码），而这也就是JIT所需要编译的部分。JVM会根据代码每次被执行的情况收集信息并相应地做出一些优化，因此执行的次数越多，它的速度就越快。JDK 9引入了一种新的编译模式AOT(Ahead of Time Compilation)，它是直接将字节码编译成机器码，这样就避免了JIT预热等各方面的开销。JDK支持分层编译和AOT协作使用。但是 ，AOT 编译器的编译质量是肯定比不上 JIT 编译器的。</p>
+<p>JIT就是运行时编译,AOT是运行前编译,一种是动态的形式,一种是静态的形式,Java程序从源码到运行一般分为三步,1 生成Java文件 预处理检查没问题  2 java文件编译成class文件, 2 class文件通过JVM解释成对应机器的机器码而当AOT遇到需要动态类加载的时候的时候,AOT为预先编译, 如果说需要Class.forName的形式 根据类名动态加载类的话,就会导致运行前编译没有考虑到这些需要编译的动态的类,所以AOT的编译质量是不如JIT的</p>
+<p>但是速度比JIT快,毕竟预编译嘛</p>
+</blockquote>
+<p>String.intern()方法的目的是为了, 重用一些String对象, 每次调用都会引用最新的相同值不同对象的地址的String,为什么这么说呢,因为当你定义一个String s = “abc” 调用s.intren()理所当然会返回预先定义的对象 而 你在定义一个String s1 = “abc”的话 你会发现 先前调用的intern()存的对象 会等于第二个对象 他会实时的 调用最新的引用</p>
+<h4 id="String的使用陷阱"><a href="#String的使用陷阱" class="headerlink" title="String的使用陷阱"></a>String的使用陷阱</h4><p>当定义一个String是s的内容为”ab” 然后再s 追加一个b 这时候 相当于是 丢弃了ab对象  新建了abc对象 会导致大量的副本字符串 就是被我们丢弃的ab 留在内存里 极其影响程序的性能</p>
+<h4 id="StringBuilder与StringBuffer"><a href="#StringBuilder与StringBuffer" class="headerlink" title="StringBuilder与StringBuffer"></a>StringBuilder与StringBuffer</h4><p>两个都是google引入的类</p>
+<p>StringBuffer : 相对而言性能较低 因为在很多其内的方法中有sychonize关键字修饰了 而线程安全就会有锁竞争可能导致程序性能降低</p>
+<h4 id="锁竞争为什么会导致性能降低呢"><a href="#锁竞争为什么会导致性能降低呢" class="headerlink" title="锁竞争为什么会导致性能降低呢?"></a>锁竞争为什么会导致性能降低呢?</h4><p>锁竞争发生的前提是多线程并发执行某程序段导致的, 因为在Java持有锁是取决于一个线程是否占有对应程序段的执行权的唯一因素，Java中锁的变化有三种形态：</p>
+<p>1 偏向锁：大多数情况下，锁不仅不存在锁竞争，而且总是有同一个线程访问多次获得对应锁，为了让线程更低代价的获取锁，而不是一味的CAS的去加锁解锁，只需访问对象头中和当前线程的栈帧中存放的线程ID，当前线程的栈帧中存放着对应的对应的线程ID，所以我们只需简单的测试一下对象头中存放的线程ID与当前线程中的线程ID是否一致，如果一致则表示线程已经获得了偏向锁，对象偏向对应线程，并将标识为设置为1，如果没有对应上线程ID，则简单测试标志位是否为1，如果为1则再次存储线程ID，让偏向所指向当前线程，如果为0，则CAS竞争锁使用</p>
+<p>2 轻量级锁：在执行线程同步的时候，JVM会先将当前线程中的栈帧中创建存储锁记录的空间，并将对象头中的MarkWord复制到锁记录中，会Display Mark Word，使用使用CAS将对象头的锁指针指向到栈帧中锁记录（即对象头存放栈帧中的锁记录的位置），成功则当前线程获取对应的锁，否则则CAS竞争，若产生并发CAS竞争的话，则升级为重量级锁</p>
+<p>3 重量级锁：由于不断的CAS自旋锁会不断消耗CPU资源，为了避免无用的CAS，直接上重量级锁，标识为发生变化后，线程会直接阻塞，停止自旋，当占用锁的线程释放锁的时候，会唤醒所有处于阻塞的线程，让他们继续自旋竞争锁</p>
+<p>对象头的话，如果对象是非数组类型，则用2个字宽八个字节来存储对象头，每个字宽分别存MarkWord和指向对象数据的指针（对象数据存放在堆中），MarkWord用于存放hashCode和锁信息，锁信息有对应的标志位，轻量级锁为00，偏向所为01，重量级锁为10，11则表示GC位，对象该被回收了</p>
+<p>如果是数组类型的话，则多一个字宽，用来存放数组长度，共三个字宽</p>
+<p>String Builder : 相对而言性能较高, 但会导致线程不安全 jdk1.5 为了解决效率问题 </p>
+<p>都继承AbstractStringBuilder 它实现了 CharSequence 表示可读可写的字符串  appendable实现追加操作</p>
+<p>charsequence是为了实现可读可写是char数组 而appenadable实现追加操作</p>
+<h5 id="String不可变的原因是因为-底层使用了final修饰"><a href="#String不可变的原因是因为-底层使用了final修饰" class="headerlink" title="String不可变的原因是因为 底层使用了final修饰"></a>String不可变的原因是因为 底层使用了final修饰</h5><p>为什么要有不变模式：？</p>
+<p>1 当对象被创建时，内部数据不再发生变化</p>
+<p>2 对象会被频繁的访问，被多线程频繁访问</p>
+<p>不变模式是在逃避问题，而不是从解决本质上改变问题，通过投机取巧的形式，用不变模式，解决多线程访问控制的问题</p>
+<p>不变模式的实现：</p>
+<p>1 去除了setter以及修改自身属性的方法</p>
+<p>2 所有属性设为私有 并用final标记，确保不被修改</p>
+<p>3 确保没有子类重载</p>
+<h4 id="Java中定义一个不做事且没有参数的构造方法的作用"><a href="#Java中定义一个不做事且没有参数的构造方法的作用" class="headerlink" title="Java中定义一个不做事且没有参数的构造方法的作用"></a>Java中定义一个不做事且没有参数的构造方法的作用</h4><p>如果什么构造方法都不定义，则自动生成一个默认无参构造函数，而如果只定义有参构造的话，是编译不成功的，因为当你未定义无参构造的话，Java则必须要定义一个无参构造，这是一种严谨的思维，免得你没输入参数构造函数，导致程序崩溃</p>
+<h4 id="接口的一些问题"><a href="#接口的一些问题" class="headerlink" title="接口的一些问题"></a>接口的一些问题</h4><p>默认为public，（jdk8之后，接口可以有默认实现，可以定义静态方法），抽象类本身可以有抽象方法，接口相当于默认用abstract修饰，也就是说默认是抽象接口，里面的方法也默认为抽象方法</p>
+<p>接口中除了static final变量外，不能有其他变量，而抽象类不一定，因为是类</p>
+<p>接口为行为的一种抽象，而抽象类是对类的抽象，所以性质会有所不同</p>
+<p>抽象方法可以有很多修饰，例如public default和protected 但是不能用private 用了private 就不能继承了，不能重写方法了，违背了抽象类的原始定义</p>
+<h4 id="局部变量不可以用static修饰，没有意义呀，因为static一般是跟着某个方法或者某个类的，是从属的，被static修饰的变量是属于实例的，被static修饰的方法是属于类的，对象存放在堆内存中，而局部变量存放在栈内存中"><a href="#局部变量不可以用static修饰，没有意义呀，因为static一般是跟着某个方法或者某个类的，是从属的，被static修饰的变量是属于实例的，被static修饰的方法是属于类的，对象存放在堆内存中，而局部变量存放在栈内存中" class="headerlink" title="局部变量不可以用static修饰，没有意义呀，因为static一般是跟着某个方法或者某个类的，是从属的，被static修饰的变量是属于实例的，被static修饰的方法是属于类的，对象存放在堆内存中，而局部变量存放在栈内存中"></a>局部变量不可以用static修饰，没有意义呀，因为static一般是跟着某个方法或者某个类的，是从属的，被static修饰的变量是属于实例的，被static修饰的方法是属于类的，对象存放在堆内存中，而局部变量存放在栈内存中</h4><h4 id="String的搬家历程"><a href="#String的搬家历程" class="headerlink" title="String的搬家历程"></a>String的搬家历程</h4><p>jdk6之前，存在于的方法区的永久代（永久代是方法去的一个实现，永久代是热点代码的概念，方法区市Java虚拟机中的一种规范）（各个线程共享的内存区域，用于存储已被虚拟机加载的类信息、常量信息、静态变量、即时编译产生的代码等数据，方法区的大小有限，可以通过相关的JVM参数调节方法区的初始大小和最大大小，垃圾回收行为在方法区会比较少出现，所以才有了方法永久代的说法，因为永久存在）中的运行时常量池（因为是final变量嘛嘛）中。</p>
+<p>jdk7后，整个运行时常量池（包含字面量（文本字符串 final常量 基本数据类型的值 ）和 符号引用（类和结构的完全限定名即唯一名字 字段名称和描述符 方法名称和描述符））被转移到堆中，此后常量池的最大容量与堆的大小有关，与永久代无关</p>
+<p>jdk8之后，永久代被取消，新增元空间，使用直接内存，妈妈再也不担心我堆溢出了</p>
+<h4 id="IO相关-BIO-NIO-AIO"><a href="#IO相关-BIO-NIO-AIO" class="headerlink" title="IO相关 BIO NIO AIO"></a>IO相关 BIO NIO AIO</h4><p>BIO 同步阻塞 进程发起IO请求后，必须等待IO操作的完成，只有完成了IO操作，用户进程才能运行，Java传统的IO模型就是基于这种方式</p>
+<p>NIO 同步非阻塞 进程发起IO请求后，可以做别的事情，用户进程需要不断的询问IO操作是否就绪，这就需要用户不断的询问，从而引入了不必要的CPU资源浪费 可以理解为while死循环 闻到了 才退出</p>
+<p>AIO 异步非阻塞 进程发起IO请求后，不等内核IO完成操作，等内核完成IO操作后，通知应用程序，我完成了IO操作，异步操作，异步是通过回调函数callback实现的 就是 方法完成了之后 会告诉方法执行者 我完成了</p>
+<h4 id="Java的IO"><a href="#Java的IO" class="headerlink" title="Java的IO"></a>Java的IO</h4><p>Java BIO 同步阻塞 假设一对客户端和服务端，当客户端发出请求，服务端就会启动一个线程进行处理，这个连接如果不做任何事情，就会造成不必要的线程开销，可以通过线程池（先帮你预热好线程，创建好，直接从线程池中拿，就行了）的机制改善</p>
+<p>Java NIO 同步非阻塞 客户端的连接请求会注册到多路复用器上，多路复用器会轮询判断连接的IO请求时才能启动一个线程进行处理。用户进程也需要不断的询问IO操作是否就绪</p>
+<p>Java IO Multiplexing 多路复用 异步阻塞 Selector 不等内核IO操作的完成 等内核IO操作完成时会通知 阻塞的原因是因为时通过系统调用的select和epoll实现的 jdk7后 都是epoll实现的 </p>
+<p>Java AIO 异步非阻塞 非多路复用的形式 就是等通知</p>
+<p>适用场景：</p>
+<p>1 BIO适合连接数目少的固定架构 要求服务器硬件资源较高 jdk4</p>
+<p>2 NIO适合连接数目多且较短连接的架构 比如聊天  jdk4</p>
+<p>3 AIO适合连接数目多且较长连接的架构 比如相册服务器 jdk7 </p>
+<h4 id="顺带一提-线程池-emmm-再见-我明天再看吧"><a href="#顺带一提-线程池-emmm-再见-我明天再看吧" class="headerlink" title="顺带一提 线程池 emmm 再见 我明天再看吧"></a>顺带一提 线程池 emmm 再见 我明天再看吧</h4><h4 id="顺带一提-数据库连接池-常见有-C3P0-Druid的数据库连接池-1-加载jdbc-2-通过jdbc连接数据库-3-访问数据库-执行sql语句-4-断开数据库连接"><a href="#顺带一提-数据库连接池-常见有-C3P0-Druid的数据库连接池-1-加载jdbc-2-通过jdbc连接数据库-3-访问数据库-执行sql语句-4-断开数据库连接" class="headerlink" title="顺带一提 数据库连接池 常见有 C3P0 Druid的数据库连接池 1 加载jdbc 2 通过jdbc连接数据库 3 访问数据库 执行sql语句 4 断开数据库连接"></a>顺带一提 数据库连接池 常见有 C3P0 Druid的数据库连接池 1 加载jdbc 2 通过jdbc连接数据库 3 访问数据库 执行sql语句 4 断开数据库连接</h4><p>statement和preparestatement的区别 1 pre是预编译，对于批量处理可以大大提升效率 就好比预编译语句 只需传入参数即可</p>
+<p>2 statement只执行一次，非批量处理速度比pre快</p>
+<p>3 statement会造成sql注入攻击</p>
+<h4 id="Socket详解"><a href="#Socket详解" class="headerlink" title="Socket详解"></a>Socket详解</h4><p>网络编程的核心对象为Socket，创建socket时会在底层文件系统创建一个socket对象，这个对象包括了发送缓存区，接受缓存区，等待队列，recv函数用于某一个socket中接收流量，但这个函数在被调用入进程会一直处于阻塞状态，直到从该socket收到数据为止，recv函数只能控制一个socket，如果有多个socket，则需要多个recv，多个进程，这时候就需要select和epoll同时监控多个socket了</p>
+<p>select监控socket的实现细节：</p>
+<p>1 把进程加入到socket等待队列中，然后进程由于需要处理这些socket队列，进程阻塞</p>
+<p>2 当进程处理完队列中的一个socket之后，将所有的socket从等待队列中移出，并把进程重新加入到CPU工作队列中，让进程就绪</p>
+<p>3 进程被CPU调用后，遍历一遍队列，再次寻找有返回数据的socket，继续处理当前数据，</p>
+<p>4 然后再次将进程加入队列中，继续进入阻塞状态</p>
+<p>由于他会将socket队列中所有socket移出后重新加入队列，性能不高，因此监控的socket数量有限，1024个</p>
+<p>epoll监控socket实现细节：</p>
+<p>1 epoll的对象eventpoll会维护一个等待队列</p>
+<p>2 当对象进入socket队列中，cpu阻塞</p>
+<p>3 当socket返回数据时，直接寻找队列中的等待唤醒的进程，继续处理数据</p>
+<p>4 被唤醒的进程继续获取socket读取数据</p>
+<p>5 操作完数据这些可读数据的socket，就会重复第一步，将进程加入到socket队列中，继续阻塞</p>
+<h4 id="epoll的优点："><a href="#epoll的优点：" class="headerlink" title="epoll的优点："></a>epoll的优点：</h4><p>1 epoll不需要频繁的操作所有的socket对象的等待队列，只需操作对象的等待队列即可</p>
+<p>2 进程被唤醒后，无需遍历即可知道哪些socket数据是好了的</p>
+<p>3  在socket队列中的 都是活跃的 socket 有数据的socket 不会像select一样 需要遍历 无用的socket</p>
+<p>socket结构：1 addr长度 2 协议簇 说明为ipv6还是ipv4 3 16位端口号 4 32位IP地址 八个0</p>
+<p>当我们要将端口号和IP地址进行数据绑定时，将数据赋值给socket</p>
+<p>所以socket是用来存放ip和端口的，表示主机的ip和端口，从而判断来源</p>
+<h4 id="tansient字段-修饰了-不会被序列化"><a href="#tansient字段-修饰了-不会被序列化" class="headerlink" title="tansient字段 修饰了 不会被序列化"></a>tansient字段 修饰了 不会被序列化</h4><h4 id="键盘输入的两种方式"><a href="#键盘输入的两种方式" class="headerlink" title="键盘输入的两种方式"></a>键盘输入的两种方式</h4><p>Scanner input = new Scanner(System.in);<br>String s  = input.nextLine();<br>input.close();</p>
+<p>BufferedReader input = new BufferedReader(new InputStreamReader(System.in));<br>String s = input.readLine(); </p>
+<h4 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h4><p><img src="/2019/09/07/Java/JavaGuide阅读笔记/image-20190924034428142.png" alt="image-20190924034428142"></p>
+<p>每个线程有每个线程的私有内存空间，而内存与内存之间的交互式通过主内存中的共享内存来实现的，Java中实现线程通信是基于主内存中的共享内存来实现的，并非是消息传递。</p>
+<p>故Java的内存模型即为多个线程有自己的私有内存，并且存有共享内存的副本，主内存中存放着共享变量，供线程间通信</p>
+<h4 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h4><p><img src="/2019/09/07/Java/JavaGuide阅读笔记/image-20190924034814484.png" alt="image-20190924034814484"></p>
+<p><img src="/2019/09/07/Java/JavaGuide阅读笔记/image-20190924034823458.png" alt="image-20190924034823458"></p>
+<p>线程私有：</p>
+<p>程序计数器</p>
+<p>虚拟机栈</p>
+<p>本地方法栈</p>
+<p>线程共享：</p>
+<p>堆</p>
+<p>方法区</p>
+<p>直接内存</p>
+<h5 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h5><p>较小的内存空间，看作是当前线程所执行的字节码的行号指示器。通过改变这个计数器来选去下一条需要执行的字节码指令。</p>
+<p><strong>注意：程序计数器是唯一一个不会出现 OutOfMemoryError 的内存区域，它的生命周期随着线程的创建而创建，随着线程的结束而死亡。</strong></p>
+<h5 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h5><p>线程私有，Java方法的内存数据，存放方法的局部变量表，另一部分变量在1.6之前存放在永久代，1.8之后存放在堆中。Java虚拟机栈是由一个个栈帧组成，每个栈帧中都有：局部变量表、操作数栈、动态链接、方法出口信息</p>
+<h5 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h5><p>和虚拟机栈发挥的作用很相似，但是返回的是本地方法服务，即Java调用非Java代码的服务，而虚拟机栈调用的是Java代码的服务</p>
+<h5 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h5><p>内存中最大的一块，有限制，线程共享，存放所有的对象实例、数组（数组也是对象），垃圾回收的主要去处，也称为GC堆，细分为新生代和老年代，新声代有三个空间，eden空间 s0空间 s1空间 老年代为tentird空间，目的是为了更好更快的回收内存用来重新划分分配</p>
+<h5 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h5><p>方法区是线程共享的区域，存储已被虚拟机加载的类信息、常量、静态变量等 永久代是方法区的一个实现，由于垃圾回收很少在这里行动，所以可以说数据进入方法区就是永久存在了，但是也不是那么绝对</p>
+<h5 id="元空间"><a href="#元空间" class="headerlink" title="元空间"></a>元空间</h5><p>Java1.8之后，方法区被替换成元空间，元空间使用的是本机内存，受本机内存限制，永远不会获得outofmemory，也可以通过对应参数设置元空间大小，jdk7之前，方法区可以通过参数设置大小</p>
+<h5 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h5><p>包含字面量（文本字符串 final常量 基本数据类型的值 ）和 符号引用（类和结构的完全限定名即唯一名字 字段名称和描述符 方法名称和描述符 jdk1.7之后被移到了堆中 </p>
+<p>java的8种基本数据类型除了float和double外，常量池内存放了-128～127的常量池数据，预定义</p>
+<p>为什么是-128～127 不说了吧 不懂再问我 其实就是方便</p>
+<h4 id="Java对象创建的过程"><a href="#Java对象创建的过程" class="headerlink" title="Java对象创建的过程"></a>Java对象创建的过程</h4><p>1 类加载机制  查看类是否已被加载 解析 或初始化过 没有则进行对应的类加载</p>
+<p>2 分配内存    分配方式有指针碰撞和空闲列表 取决于是否规整 未规整则指针碰撞 规整则空闲列表</p>
+<p>3 初始化零值 </p>
+<p>4 设置对象头 对象头有三个部分 上面说了 都要设置好 hashcode gc信息 锁信息 元数据</p>
+<p>5 执行init方法 执行初始化</p>
+<h4 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h4><p>1 对象头 对象头存放对象自身的存储数据 hashcode 和 锁标志 和分代年龄 这些 和 指向对象实例的指针</p>
+<p>2 实例数据为实例 数据为 某些元数据例如属于类的静态变量 方法完全限定名 方法的相关数据 等</p>
+<p>3 对其填充部分 对象的起始地址必须是8字节的整数倍 没有数据填满时 要填满补空对齐 为了方便底层内存存储的操作 若有空 则会一定程度上的影响效率 可能会被cpu当作空闲内存来处理 然后引用了假的空闲内存 导致更加多的底层的复杂操作 降低性能</p>
+<h4 id="对象访问定位"><a href="#对象访问定位" class="headerlink" title="对象访问定位"></a>对象访问定位</h4><p>1 句柄</p>
+<p>2 直接指针</p>
+<h5 id="深度拷贝-System-arraycopy"><a href="#深度拷贝-System-arraycopy" class="headerlink" title="深度拷贝-System.arraycopy"></a>深度拷贝-System.arraycopy</h5><h5 id="浅度拷贝-Collections-copy"><a href="#浅度拷贝-Collections-copy" class="headerlink" title="浅度拷贝-Collections.copy"></a>浅度拷贝-Collections.copy</h5><h5 id="B-树和B树"><a href="#B-树和B树" class="headerlink" title="B+树和B树"></a>B+树和B树</h5><p>B树：首先要阶数为M，M阶B树，每个节点的关键字的个数最大值为M-1 最小值为M/2（向上取整）再-1，可以有的子节点为三个，每个子节点的关键字的个数限制与父节点相同，当节点的关键字的个数达到M个时，树中的节点的结构是需要调整的，或先是往上改变父节点的关键字，再是往下，添加B树的层数，保持B树的平衡，性能相当于二分查找</p>
+<p>B+树：基本相同，区别为：每个关键字都只用来索引，不存放数据；所有数据都保存在叶子结点中；为所有叶子结点存放一个链指针，链接所有的叶子结点；相比B树来说，更适合做文件索引系统，效率高的原因是减少了IO，减少了盘快读取的次数，减少了IO次数</p>
+<p>B*树：就是在B+树的基础上，在非根非叶子结点间添加一个指向兄弟的指针，当节点满的时候，会直接移动到兄弟节点上去，空间利用率更高，分配新节点的概率较低，效率也有所提升</p>
+<h4 id="还没到我面试，总结一下并发的容器把"><a href="#还没到我面试，总结一下并发的容器把" class="headerlink" title="还没到我面试，总结一下并发的容器把"></a>还没到我面试，总结一下并发的容器把</h4><p>并发系列的容器有ConcurrentHashMap CopyOnWriteArrayList 阻塞队列和非阻塞队列</p>
+<p>1 1.8以前 采用segment数组和HashEntry 分段可重入锁的形式 保证 线程安全</p>
+<p>通过分段锁的形式，降低了</p>
+<p>#### </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/09/04/Java/Java知识体系串讲3-继承/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/09/04/Java/Java知识体系串讲3-继承/" class="post-title-link" itemprop="url">Java基础知识体系串讲3-继承</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+             
+             
+
+              <time title="创建时间：2019-09-04 12:42:54 / 修改时间：16:16:23" itemprop="dateCreated datePublished" datetime="2019-09-04T12:42:54+08:00">2019-09-04 12:42:54</time>
+            
+
+            
+              
+            <!--  old version
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-09-04T16:16:23+08:00" content="2019-09-04">
+                2019-09-04 16:16:23
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/09/04/Java/Java知识体系串讲3-继承/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/04/Java/Java知识体系串讲3-继承/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img src="/2019/09/04/Java/Java知识体系串讲3-继承/728da9773912b31b2b7d9e968e18367adab4e178.jpg" alt="img"></p>
+<div class="note success">
+            <p><code>继承</code>是java面向对象编程技术的一块基石，因为它允许创建分等级层次的类。</p><p><code>继承</code>就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的实例域和方法，或子类从父类继承方法，使得子类具有父类相同的行为。</p>
+          </div>
+<ul>
+<li><p>关键字extends表明正在构造的新类派生于一个已存在的类。</p>
+</li>
+<li><p>已存在的类称为超类、基类或父类，新类称为子类、派生类或者孩子类</p>
+</li>
+<li><p>super的用法<br><code>code</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>.getSalary()	<span class="comment">// 调用方法</span></span><br><span class="line"><span class="keyword">super</span>(n, s, year, month, day)	<span class="comment">// 调用构造方法</span></span><br></pre></td></tr></table></figure></li></ul>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/08/27/Linux/操作系统与Linux综合学习/#more" rel="contents">
+              <a class="btn" href="/2019/09/04/Java/Java知识体系串讲3-继承/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1029,7 +1146,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1073,7 +1190,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1297,7 +1414,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共68.6k字</span>
+  <span class="post-count">博客全站共69k字</span>
 </div>
         
 <div class="busuanzi-count">

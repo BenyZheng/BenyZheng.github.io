@@ -153,17 +153,20 @@
 
 
 
-  <meta name="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
-<meta name="keywords" content="后端开发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Icebearice">
-<meta property="og:url" content="https://icebearice.gitee.io/archives/2019/05/page/2/index.html">
+  <meta name="description" content="Linux文件系统ext2基本结构 操作系统将磁盘上的分区分成同样大小的块进行管理，并为每块磁盘号编号 每个块组包括以下五个部分 超级快 组描述符表 块位图 inode位图 inode表">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux文件系统-ext2">
+<meta property="og:url" content="https://icebearice.gitee.io/2019/10/03/Linux/Linux文件系统-ext2/index.html">
 <meta property="og:site_name" content="Icebearice">
-<meta property="og:description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+<meta property="og:description" content="Linux文件系统ext2基本结构 操作系统将磁盘上的分区分成同样大小的块进行管理，并为每块磁盘号编号 每个块组包括以下五个部分 超级快 组描述符表 块位图 inode位图 inode表">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570096858761&di=7557fe5d06384fe93e8f9e5880e1d7e6&imgtype=0&src=http%3A%2F%2Fdocs.linuxtone.org%2Febooks%2FC%26CPP%2Fc%2Fimages%2Ffs.ext2layout.png">
+<meta property="og:updated_time" content="2019-10-03T09:48:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Icebearice">
-<meta name="twitter:description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+<meta name="twitter:title" content="Linux文件系统-ext2">
+<meta name="twitter:description" content="Linux文件系统ext2基本结构 操作系统将磁盘上的分区分成同样大小的块进行管理，并为每块磁盘号编号 每个块组包括以下五个部分 超级快 组描述符表 块位图 inode位图 inode表">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570096858761&di=7557fe5d06384fe93e8f9e5880e1d7e6&imgtype=0&src=http%3A%2F%2Fdocs.linuxtone.org%2Febooks%2FC%26CPP%2Fc%2Fimages%2Ffs.ext2layout.png">
 
 
 
@@ -171,7 +174,7 @@
 
   
   
-  <link rel="canonical" href="https://icebearice.gitee.io/archives/2019/05/page/2/">
+  <link rel="canonical" href="https://icebearice.gitee.io/2019/10/03/Linux/Linux文件系统-ext2/">
 
 
 
@@ -181,7 +184,7 @@
   };
 </script>
 
-  <title>归档 | Icebearice</title>
+  <title>Linux文件系统-ext2 | Icebearice</title>
   
 
 
@@ -229,7 +232,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -305,7 +308,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -317,7 +320,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">52</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">55</span></a>
 
   </li>
         
@@ -355,25 +358,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -422,81 +406,247 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-         
-          
-        不错! 目前共计 52 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/10/03/Linux/Linux文件系统-ext2/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/05/06/Linux/Linux查看负载的三种方式/" itemprop="url">
-            
-              <span itemprop="name">Linux查看负载的三种方式</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Linux文件系统-ext2
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-06T14:21:37+08:00" content="2019-05-06">
-          05-06
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+             
+             
+
+              <time title="创建时间：2019-10-03 15:10:03 / 修改时间：17:48:20" itemprop="dateCreated datePublished" datetime="2019-10-03T15:10:03+08:00">2019-10-03 15:10:03</time>
+            
+
+            
+              
+            <!--  old version
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-03T17:48:20+08:00" content="2019-10-03">
+                2019-10-03 17:48:20
+              </time>
+            </span>
+          
+            
+          </span>
 
 
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/03/Linux/Linux文件系统-ext2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/03/Linux/Linux文件系统-ext2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h4 id="Linux文件系统ext2基本结构"><a href="#Linux文件系统ext2基本结构" class="headerlink" title="Linux文件系统ext2基本结构"></a>Linux文件系统ext2基本结构</h4><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1570096858761&amp;di=7557fe5d06384fe93e8f9e5880e1d7e6&amp;imgtype=0&amp;src=http%3A%2F%2Fdocs.linuxtone.org%2Febooks%2FC%26CPP%2Fc%2Fimages%2Ffs.ext2layout.png" alt="img"></p>
+<p>操作系统将磁盘上的分区分成同样大小的块进行管理，并为每块磁盘号编号</p>
+<p>每个块组包括以下五个部分</p>
+<p>超级快</p>
+<p>组描述符表</p>
+<p>块位图</p>
+<p>inode位图</p>
+<p>inode表</p>
+
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/03/学习日记/清单/" rel="next" title="2019.10.3 问题集">
+                <i class="fa fa-chevron-left"></i> 2019.10.3 问题集
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/03/学习日记/Day 2/" rel="prev" title="Day 2">
+                Day 2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2019/05/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/2019/05/">1</a><span class="page-number current">2</span>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -516,8 +666,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -534,7 +693,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -722,6 +881,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux文件系统ext2基本结构"><span class="nav-number">1.</span> <span class="nav-text">Linux文件系统ext2基本结构</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -758,7 +934,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共68.6k字</span>
+  <span class="post-count">博客全站共69k字</span>
 </div>
         
 <div class="busuanzi-count">
@@ -876,6 +1052,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -928,6 +1108,8 @@
 
 
 
+
+  
 
 
   
