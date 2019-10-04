@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">55</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">57</span></a>
 
   </li>
         
@@ -423,6 +423,415 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/10/03/学习日记/Day 2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/03/学习日记/Day 2/" class="post-title-link" itemprop="url">Day 2</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+             
+             
+
+              <time title="创建时间：2019-10-03 18:43:51 / 修改时间：19:36:41" itemprop="dateCreated datePublished" datetime="2019-10-03T18:43:51+08:00">2019-10-03 18:43:51</time>
+            
+
+            
+              
+            <!--  old version
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-03T19:36:41+08:00" content="2019-10-03">
+                2019-10-03 19:36:41
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习日记/" itemprop="url" rel="index"><span itemprop="name">学习日记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/03/学习日记/Day 2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/03/学习日记/Day 2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Linux软链接和硬链接"><a href="#Linux软链接和硬链接" class="headerlink" title="Linux软链接和硬链接"></a>Linux软链接和硬链接</h3><div class="note info">
+            <p>希望你看完之后，可以知道下面几个问题的答案</p><ol><li>Linux文件系统-EXT 是怎么分配内存空间的</li><li><code>硬链接</code>和<code>软链接</code>是干什么的</li><li>两者的区别是什么</li></ol>
+          </div>
+<h6 id="如果想要深入一点的学习Linux文件系统的话，建议先看《Linux编程基础》P98～99页，看下文件系统是如何分块的"><a href="#如果想要深入一点的学习Linux文件系统的话，建议先看《Linux编程基础》P98～99页，看下文件系统是如何分块的" class="headerlink" title="如果想要深入一点的学习Linux文件系统的话，建议先看《Linux编程基础》P98～99页，看下文件系统是如何分块的"></a>如果想要深入一点的学习<code>Linux文件系统</code>的话，建议先看《Linux编程基础》P98～99页，看下文件系统是如何分块的</h6><h6 id="如果看了这两页书，你就知道inode和数据块是存在哪里的啦"><a href="#如果看了这两页书，你就知道inode和数据块是存在哪里的啦" class="headerlink" title="如果看了这两页书，你就知道inode和数据块是存在哪里的啦"></a>如果看了这两页书，你就知道inode和数据块是存在哪里的啦</h6><h4 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h4><p>想看<code>短小精悍</code>介绍的，看这里，够应付面试-&gt;<a href="https://icebearice.gitee.io/2019/05/06/Linux/Linux硬链接与软链接/">https://icebearice.gitee.io/2019/05/06/Linux/Linux%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/</a></p>
+<p>想看<code>深入了解</code>的，看这里，够详细-&gt;<a href="https://www.cnblogs.com/crazylqy/p/5821105.html" target="_blank" rel="noopener">https://www.cnblogs.com/crazylqy/p/5821105.html</a></p>
+<h3 id="GCC的过程"><a href="#GCC的过程" class="headerlink" title="GCC的过程"></a>GCC的过程</h3><p>看《Linux编程基础》P30页最上面，写得清清楚楚</p>
+<p>我能补充书本上面没有的就是命令了</p>
+<p>第一步：预处理 gcc -E 生成后缀.i的文件 （一般不生成）</p>
+<p>第二步：编译 gcc -c 生成后缀.o的文件</p>
+<p>第三步：汇编 gcc -S 生成后缀.s的文件</p>
+<p>第四步：链接 gcc -o 生成后缀.exe 即执行文件啦</p>
+<p>百度实在找不到pdf 无法复制 你们看书吧 哈哈哈</p>
+<h3 id="进程间的通信机制"><a href="#进程间的通信机制" class="headerlink" title="进程间的通信机制"></a>进程间的通信机制</h3><p>《Linux编程基础》P143页 慢慢看</p>
+<h3 id="线程间的通信机制"><a href="#线程间的通信机制" class="headerlink" title="线程间的通信机制"></a>线程间的通信机制</h3><p><a href="https://blog.csdn.net/dreamcatcher1314/article/details/79303812" target="_blank" rel="noopener">https://blog.csdn.net/dreamcatcher1314/article/details/79303812</a></p>
+<h3 id="Limit优化"><a href="#Limit优化" class="headerlink" title="Limit优化"></a>Limit优化</h3><p><a href="https://www.cnblogs.com/icebutterfly/p/9199202.html" target="_blank" rel="noopener">https://www.cnblogs.com/icebutterfly/p/9199202.html</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/10/03/Linux/Linux文件系统-ext2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/03/Linux/Linux文件系统-ext2/" class="post-title-link" itemprop="url">Linux文件系统-ext2</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+             
+             
+
+              <time title="创建时间：2019-10-03 15:10:03 / 修改时间：17:48:20" itemprop="dateCreated datePublished" datetime="2019-10-03T15:10:03+08:00">2019-10-03 15:10:03</time>
+            
+
+            
+              
+            <!--  old version
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-03T17:48:20+08:00" content="2019-10-03">
+                2019-10-03 17:48:20
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/03/Linux/Linux文件系统-ext2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/03/Linux/Linux文件系统-ext2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Linux文件系统ext2基本结构"><a href="#Linux文件系统ext2基本结构" class="headerlink" title="Linux文件系统ext2基本结构"></a>Linux文件系统ext2基本结构</h4><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1570096858761&amp;di=7557fe5d06384fe93e8f9e5880e1d7e6&amp;imgtype=0&amp;src=http%3A%2F%2Fdocs.linuxtone.org%2Febooks%2FC%26CPP%2Fc%2Fimages%2Ffs.ext2layout.png" alt="img"></p>
+<p>操作系统将磁盘上的分区分成同样大小的块进行管理，并为每块磁盘号编号</p>
+<p>每个块组包括以下五个部分</p>
+<p>超级快</p>
+<p>组描述符表</p>
+<p>块位图</p>
+<p>inode位图</p>
+<p>inode表</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -597,388 +1006,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/10/02/学习日记/Day 1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Icebearice">
-      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Icebearice">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/02/学习日记/Day 1/" class="post-title-link" itemprop="url">Day 1</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-             
-             
-
-              <time title="创建时间：2019-10-02 17:18:40 / 修改时间：19:36:41" itemprop="dateCreated datePublished" datetime="2019-10-02T17:18:40+08:00">2019-10-02 17:18:40</time>
-            
-
-            
-              
-            <!--  old version
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-02T19:36:41+08:00" content="2019-10-02">
-                2019-10-02 19:36:41
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习日记/" itemprop="url" rel="index"><span itemprop="name">学习日记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/02/学习日记/Day 1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/学习日记/Day 1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Select-poll-epoll监控socket实现的细节区别"><a href="#Select-poll-epoll监控socket实现的细节区别" class="headerlink" title="Select poll epoll监控socket实现的细节区别"></a>Select poll epoll监控socket实现的细节区别</h3><div class="note primary">
-            <p>要知道这三个东西是做什么的，首先你要知道几个概念：</p><ol><li>端（服务端）与端（客户端）之间，通过<code>HTTP</code>（HTTP是TCP/IP的实现）建立连接后，是通过套接字（<code>Socket</code>）进行通信的</li><li><code>Socket</code>由<code>IP</code>地址和<code>Port</code>端口组成，可用于描述双方通信进程，所以说，有IP地址和端口，就能找到对应IP的服务器上的服务端口，对应的服务端口进程就会将<code>Socket</code>中的数据进行处理</li><li>所谓的<code>I/O</code>操作，即为数据的读取与写入，<code>Socket</code>的<code>I/O</code>操作，就是针对<code>Socket</code>内数据的读取与写入</li><li><code>Socket</code>的<code>I/O</code>方式有两种：阻塞和非阻塞，非阻塞的模式需要由轮询系统来实现，轮询后，若得到返回值，则完成调用（可以理解为while循环，不断询问）</li><li>多路复用（<code>I/O multiplexing</code>）其实没有那么复杂，我个人认为这个翻译是有问题的，其实意思是“1个通道，多个<code>socket</code>共同使用”，我觉得应该叫单路复用，为什么叫单路复用呢，一会下面我会贴个图</li><li><code>select</code> <code>poll</code> <code>epoll</code> 就是多路复用的三种形式，与非阻塞的轮询结合，形成<code>Socket</code>的多路复用轮询系统</li><li>普通的非阻塞I/O只会不断轮询一个<code>socket</code>，而多路复用的非阻塞<code>I/O</code>会轮询一个队列的socket</li></ol>
-          </div>
-<h4 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h4><p>如下图所示，这就是<code>多路复用</code>，是不是叫单路复用比较好……</p>
-<p><img src="/2019/10/02/学习日记/Day 1/5d8e39d83e931da6ba3b6bc496302e5c_hd.jpg" alt="img"></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/10/02/学习日记/Day 1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/09/15/数据结构与算法分析/数学定理复习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Icebearice">
-      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Icebearice">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/09/15/数据结构与算法分析/数学定理复习/" class="post-title-link" itemprop="url">数学定理复习</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-09-15 23:42:14" itemprop="dateCreated datePublished" datetime="2019-09-15T23:42:14+08:00">2019-09-15 23:42:14</time>
-            
-
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构与算法分析/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法分析</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/09/15/数据结构与算法分析/数学定理复习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/15/数据结构与算法分析/数学定理复习/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="指数"><a href="#指数" class="headerlink" title="指数"></a>指数</h3><p>$$<br>X^aX^b = X^{a+b}\<br>\frac{X^a}{X^b} = X^{a-b}\<br>(X^a)^b = X^{ab}\<br>X^n+X^n = 2X^n\<br>2^n+2^n = 2^{n+1}<br>$$</p>
-<p><img src="/2019/09/15/数据结构与算法分析/数学定理复习/b812c8fcc3cec3fd47669a2bde88d43f87942717.jpg" alt="img"></p>
-<h3 id="对数"><a href="#对数" class="headerlink" title="对数"></a>对数</h3><p>$$<br>\log AB = \log A + \log B \<br>\log \frac{A}{B} = \log A - \log B \<br>\log (A^B) = B\log A \<br>\log A &lt; A 「对所有的A&gt;0成立」<br>$$</p>
-<p><img src="/2019/09/15/数据结构与算法分析/数学定理复习/0dd7912397dda14461d8c791b0b7d0a20df486c4.jpg" alt="img"></p>
-<h3 id="级数-将数列的项依次用加号连接起来的函数"><a href="#级数-将数列的项依次用加号连接起来的函数" class="headerlink" title="级数-将数列的项依次用加号连接起来的函数"></a>级数-将数列的项依次用加号连接起来的函数</h3><p>$$<br>\sum^N_{i=0}A^i = \frac{A^{N+1} -1}{A-1}(A &gt; 1)\<br>\sum^N_{i=0}A^i = N + 1(A=1)\<br>\sum^N_{i=0}A^i \leq \frac{1}{1-A}(0&lt;A&lt;1)\<br>\sum^N_{i=1}i = \frac{N(N+1)}{2}\<br>\sum^N_{i=1}i^2 = \frac{N(N+1)(2N+1)}{6}\<br>\sum^N_{i=1}a_i=S_n=\frac{n(a_1+a_n)}{2}=na_1+\frac{n(n-1)d}{2}(等差数列前n项和)\<br>\sum^N_{i=1}a_i=S_n=a_1\frac{1-q^n}{1-q}=a_1\frac{q^n-1}{q-1}=\frac{a_1-a_nq}{1-q}(等比数列前n项和)<br>$$</p>
-<p>例如 2^0+2^1+2^2+2^3就等于2^4 - 1 = 15</p>
-<p>求证过程：看书P3页，前n项和为S=1+A^1+…+A^n，AS=A+A^2+…+A^n+1 S-AS即可推导出公式</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1027,7 +1054,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1251,7 +1278,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共69k字</span>
+  <span class="post-count">博客全站共70.9k字</span>
 </div>
         
 <div class="busuanzi-count">

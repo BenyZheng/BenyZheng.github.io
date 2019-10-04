@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">55</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">57</span></a>
 
   </li>
         
@@ -423,6 +423,432 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/10/04/学习日记/Day 3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/04/学习日记/Day 3/" class="post-title-link" itemprop="url">Day 3</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+             
+             
+
+              <time title="创建时间：2019-10-04 18:12:10 / 修改时间：18:20:00" itemprop="dateCreated datePublished" datetime="2019-10-04T18:12:10+08:00">2019-10-04 18:12:10</time>
+            
+
+            
+              
+            <!--  old version
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-04T18:20:00+08:00" content="2019-10-04">
+                2019-10-04 18:20:00
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习日记/" itemprop="url" rel="index"><span itemprop="name">学习日记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/04/学习日记/Day 3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/04/学习日记/Day 3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="操作系统的基本特征"><a href="#操作系统的基本特征" class="headerlink" title="操作系统的基本特征"></a>操作系统的基本特征</h3><h4 id="并发（Concurrence）"><a href="#并发（Concurrence）" class="headerlink" title="并发（Concurrence）"></a>并发（Concurrence）</h4><p>  并发性两个或多个时间在同一时间间隔内发生。在多道程序环境下，并发性是指在一段时间内宏观上有多个程序在同时运行，但在单处理机系统中，每一时刻却只有一道程序执行，故微观上这些程序只能是分时地交替执行。与之区别的是并行性，并行性是指两个或多个事件在同一时刻发生。</p>
+<h4 id="共享（Sharing）"><a href="#共享（Sharing）" class="headerlink" title="共享（Sharing）"></a>共享（Sharing）</h4><p>​    OS环境下的资源共享又称为资源复用，是指系统中的资源可供内存中多个并发执行的进程共同使用。宏观上即限定了时间（进程在内存期间），也限定了地点（内存）。由于系统中的资源远远少于多道程序需求的总和，会形成它们对共享资源的争夺。 因此，系统必须对资源共享进行妥善的管理。由于资源属性的不同，进程对资源复用的方式也不太相同。有两种方式：</p>
+<p>互斥共享方式 当进程A要访问某些资源时，必须提出请求。若此时该资源空闲，系统便可将之分配给请求进程A使用。此后若再有其它进程也要访问该资源，只要A未用完就必须等待。仅当A访问完并释放系统资源后，才允许另一进程对资源进行访问。把这种在一段时间内只允许一个进程访问的资源，称为临界资源（或独占资源）。<br>同时访问方式 系统中还有另一类资源，允许在一段时间内由多个进程“同时”对它进行访问。“同时”，在单处理机环境下是宏观意义上的，而在微观下，这些进程对该资源的访问是交替进行的。<br>并发和共享是多用户（多任务）OS的两个最基本的特征。</p>
+<h4 id="虚拟（Virtual）"><a href="#虚拟（Virtual）" class="headerlink" title="虚拟（Virtual）"></a>虚拟（Virtual）</h4><p>   在OS中，把同归某种技术将一个物理实体变为若干个逻辑上的对应物的功能称为“虚拟”。利用时分复用和空分复用技术来实现虚拟。</p>
+<p>时分复用技术 利用某设备为一用户服务的空闲时间，又转去为其他用户服务，使设备得到充分的利用。<br>空分复用技术 利用存储器的空闲空间分区域存放和运行其它的多道程序，以此来提高内存的利用率。<br>虚拟的实现，如果采用分时复用的方法，即对某一物理设备进行分时使用，设N是某物理设备对应的虚拟的逻辑设备数，则每台虚拟设备的平均速度必然等于或小于物理设备速度的1/N。类似地，如果利用空分复用的方法实现虚拟，此时一台虚拟设备平均占用的空间必然也等于或低于物理设备所拥有空间的1/N</p>
+<h4 id="异步（Asynchronism）"><a href="#异步（Asynchronism）" class="headerlink" title="异步（Asynchronism）"></a>异步（Asynchronism）</h4><p>  进程的异步性是指进程是以人们不可预知的速度向前推进的。只要在OS中配置完善的进程同步进制，且运行环境相同，则作业即经过多次运行，也都会获得完全相同的结果。因此异步运行方式是允许的，而且是操作系统的一个重要特征。<br>————————————————<br>版权声明：本文为CSDN博主「WYFVV」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/WYFVV/article/details/86301050" target="_blank" rel="noopener">https://blog.csdn.net/WYFVV/article/details/86301050</a></p>
+<h3 id="请你解释为什么会出现4-0-3-6-0-40000001这种现象？"><a href="#请你解释为什么会出现4-0-3-6-0-40000001这种现象？" class="headerlink" title="请你解释为什么会出现4.0-3.6=0.40000001这种现象？"></a>请你解释为什么会出现4.0-3.6=0.40000001这种现象？</h3><p>Java浮点数的内存存储<a href="https://www.cnblogs.com/loren-Yang/p/7519593.html" target="_blank" rel="noopener">https://www.cnblogs.com/loren-Yang/p/7519593.html</a></p>
+<p>十进制小数如何转化为二进制数</p>
+<p>​           算法是<strong>乘以2</strong>直到没有了小数为止。举个例子，0.9表示成二进制数</p>
+<p>​                     0.9*2=1.8                   取整数部分  1</p>
+<p>​                     0.8(1.8的小数部分)*2=1.6    取整数部分  1</p>
+<p>​                     0.6*2=1.2  　　　　　　　　 取整数部分  1</p>
+<p>​                     0.2*2=0.4  　　　　　　　　 取整数部分  0</p>
+<p>​                     0.4*2=0.8  　　　　　　　　 取整数部分  0</p>
+<p>​                     0.8*2=1.6  　　　　　　　　 取整数部分  1</p>
+<p>​                     0.6*2=1.2   　　　　　　　　取整数部分  0</p>
+<p>下面的浮点数为了方便计算 我们取3个字节表示浮点数（第一个字节表示整数部分，第二个字节表示浮点数部分）</p>
+<p>4.0的浮点数形式 00000<strong>1</strong>00 00000000 00000000</p>
+<p>3.6的浮点数形式 00000011 10011001 10011001（后面的1001是死循环）</p>
+<p>小数位的数 每个位都为1的话 对应的就是 0.5（1/2） 0.25（1/4） 0.125（1/8） 0.075（1/16） </p>
+<p>我们单独看0.6 小数部分的 后2 个字节</p>
+<p>10011001 10011001</p>
+<p>第一个1为0.5，第二个一（在第四位）为0.0625，第三个一（在第五位）为0.03125，第四个一（在第八位）为0.00390625，0.0625+0.03125=0.09375 0.09385+0.00390625=0.09765625，如果继续往后加，会无限趋近于0.1（即0.099999999999999999），但不等于0.1</p>
+<p>所以最后4.0-3.6=0.4000000(不知道几个0)0001</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/10/04/并发/针对并发的思考/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/04/并发/针对并发的思考/" class="post-title-link" itemprop="url">未命名</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+             
+             
+
+              <time title="创建时间：2019-10-04 08:40:10 / 修改时间：10:32:59" itemprop="dateCreated datePublished" datetime="2019-10-04T08:40:10+08:00">2019-10-04 08:40:10</time>
+            
+
+            
+              
+            <!--  old version
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-04T10:32:59+08:00" content="2019-10-04">
+                2019-10-04 10:32:59
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/04/并发/针对并发的思考/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/04/并发/针对并发的思考/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h4 id="死锁发生的情形"><a href="#死锁发生的情形" class="headerlink" title="死锁发生的情形"></a>死锁发生的情形</h4><ol>
+<li>一个线程两次申请锁</li>
+<li>两个线程互相申请对方的锁，但是对方都不释放锁</li>
+</ol>
+<h4 id="产生死锁的条件与破坏条件的方式"><a href="#产生死锁的条件与破坏条件的方式" class="headerlink" title="产生死锁的条件与破坏条件的方式"></a>产生死锁的条件与破坏条件的方式</h4><ol>
+<li><p>互斥：一个资源每次只能被一个进程使用</p>
+<p><code>无法解决，互斥是设备的固有属性，有了互斥才能保证每个进程对资源的顺利占有使用</code></p>
+</li>
+<li><p>请求与保持：一个进程因请求资源而阻塞，对已获得的资源保持不放</p>
+<p><code>要求进程一次性获取所有资源，保证进程的运行的顺利执行，效率较低</code></p>
+</li>
+<li><p>不剥夺：进程已获得的资源，在未使用完之外，不能强行剥夺</p>
+<p><code>当某进程所需新的资源被其他进程占有时，释放已占有资源</code></p>
+</li>
+<li><p>循环等待：若干进程之间形成一种头尾相接的循环等待资源关系</p>
+<p><code>通过定义资源类型，使其根据类型来顺序执行，效率较低</code></p>
+</li>
+</ol>
+<h4 id="处理死锁的四种方法"><a href="#处理死锁的四种方法" class="headerlink" title="处理死锁的四种方法"></a>处理死锁的四种方法</h4><ol>
+<li><p>死锁预防：通过确保死锁的一个必要条件不会满足，预防死锁</p>
+<p><code>四个破坏条件的方式，即预防死锁</code></p>
+</li>
+<li><p>死锁避免：防止系统进入不安全状态-可能产生死锁的状态即不安全状态</p>
+<p><code>进程启动拒绝和资源分配拒绝（银行家算法，采用资源分配拒绝）</code></p>
+<p><a href="https://blog.csdn.net/cout_sev/article/details/24980627" target="_blank" rel="noopener">https://blog.csdn.net/cout_sev/article/details/24980627</a></p>
+<p><a href="https://blog.csdn.net/qq_33414271/article/details/80245715" target="_blank" rel="noopener">https://blog.csdn.net/qq_33414271/article/details/80245715</a></p>
+</li>
+<li><p>死锁检测：允许死锁的发生，通过系统设置的检测机制来检测死锁的发生，通常与死锁解除搭配使用</p>
+<p><code>通过资源分配表来实现</code></p>
+</li>
+<li><p>死锁解除：通常与死锁检测搭配使用，已监测到了死锁，通过挂起进程或者撤销进程的形式，回收资源加以分配</p>
+<p><code>资源剥夺法和撤销进程法</code></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -604,415 +1030,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/10/03/学习日记/Day 2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Icebearice">
-      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Icebearice">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/03/学习日记/Day 2/" class="post-title-link" itemprop="url">Day 2</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-             
-             
-
-              <time title="创建时间：2019-10-03 18:43:51 / 修改时间：19:36:41" itemprop="dateCreated datePublished" datetime="2019-10-03T18:43:51+08:00">2019-10-03 18:43:51</time>
-            
-
-            
-              
-            <!--  old version
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-03T19:36:41+08:00" content="2019-10-03">
-                2019-10-03 19:36:41
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习日记/" itemprop="url" rel="index"><span itemprop="name">学习日记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/03/学习日记/Day 2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/03/学习日记/Day 2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Linux软链接和硬链接"><a href="#Linux软链接和硬链接" class="headerlink" title="Linux软链接和硬链接"></a>Linux软链接和硬链接</h3><div class="note info">
-            <p>希望你看完之后，可以知道下面几个问题的答案</p><ol><li>Linux文件系统-EXT 是怎么分配内存空间的</li><li><code>硬链接</code>和<code>软链接</code>是干什么的</li><li>两者的区别是什么</li></ol>
-          </div>
-<h6 id="如果想要深入一点的学习Linux文件系统的话，建议先看《Linux编程基础》P98～99页，看下文件系统是如何分块的"><a href="#如果想要深入一点的学习Linux文件系统的话，建议先看《Linux编程基础》P98～99页，看下文件系统是如何分块的" class="headerlink" title="如果想要深入一点的学习Linux文件系统的话，建议先看《Linux编程基础》P98～99页，看下文件系统是如何分块的"></a>如果想要深入一点的学习<code>Linux文件系统</code>的话，建议先看《Linux编程基础》P98～99页，看下文件系统是如何分块的</h6><h6 id="如果看了这两页书，你就知道inode和数据块是存在哪里的啦"><a href="#如果看了这两页书，你就知道inode和数据块是存在哪里的啦" class="headerlink" title="如果看了这两页书，你就知道inode和数据块是存在哪里的啦"></a>如果看了这两页书，你就知道inode和数据块是存在哪里的啦</h6><h4 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h4><p>想看<code>短小精悍</code>介绍的，看这里，够应付面试-&gt;<a href="https://icebearice.gitee.io/2019/05/06/Linux/Linux硬链接与软链接/">https://icebearice.gitee.io/2019/05/06/Linux/Linux%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/</a></p>
-<p>想看<code>深入了解</code>的，看这里，够详细-&gt;<a href="https://www.cnblogs.com/crazylqy/p/5821105.html" target="_blank" rel="noopener">https://www.cnblogs.com/crazylqy/p/5821105.html</a></p>
-<h3 id="GCC的过程"><a href="#GCC的过程" class="headerlink" title="GCC的过程"></a>GCC的过程</h3><p>看《Linux编程基础》P30页最上面，写得清清楚楚</p>
-<p>我能补充书本上面没有的就是命令了</p>
-<p>第一步：预处理 gcc -E 生成后缀.i的文件 （一般不生成）</p>
-<p>第二步：编译 gcc -c 生成后缀.o的文件</p>
-<p>第三步：汇编 gcc -S 生成后缀.s的文件</p>
-<p>第四步：链接 gcc -o 生成后缀.exe 即执行文件啦</p>
-<p>百度实在找不到pdf 无法复制 你们看书吧 哈哈哈</p>
-<h3 id="进程间的通信机制"><a href="#进程间的通信机制" class="headerlink" title="进程间的通信机制"></a>进程间的通信机制</h3><p>《Linux编程基础》P143页 慢慢看</p>
-<h3 id="线程间的通信机制"><a href="#线程间的通信机制" class="headerlink" title="线程间的通信机制"></a>线程间的通信机制</h3><p><a href="https://blog.csdn.net/dreamcatcher1314/article/details/79303812" target="_blank" rel="noopener">https://blog.csdn.net/dreamcatcher1314/article/details/79303812</a></p>
-<h3 id="Limit优化"><a href="#Limit优化" class="headerlink" title="Limit优化"></a>Limit优化</h3><p><a href="https://www.cnblogs.com/icebutterfly/p/9199202.html" target="_blank" rel="noopener">https://www.cnblogs.com/icebutterfly/p/9199202.html</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/10/03/Linux/Linux文件系统-ext2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Icebearice">
-      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Icebearice">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/03/Linux/Linux文件系统-ext2/" class="post-title-link" itemprop="url">Linux文件系统-ext2</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-             
-             
-
-              <time title="创建时间：2019-10-03 15:10:03 / 修改时间：17:48:20" itemprop="dateCreated datePublished" datetime="2019-10-03T15:10:03+08:00">2019-10-03 15:10:03</time>
-            
-
-            
-              
-            <!--  old version
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-03T17:48:20+08:00" content="2019-10-03">
-                2019-10-03 17:48:20
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/03/Linux/Linux文件系统-ext2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/03/Linux/Linux文件系统-ext2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="Linux文件系统ext2基本结构"><a href="#Linux文件系统ext2基本结构" class="headerlink" title="Linux文件系统ext2基本结构"></a>Linux文件系统ext2基本结构</h4><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1570096858761&amp;di=7557fe5d06384fe93e8f9e5880e1d7e6&amp;imgtype=0&amp;src=http%3A%2F%2Fdocs.linuxtone.org%2Febooks%2FC%26CPP%2Fc%2Fimages%2Ffs.ext2layout.png" alt="img"></p>
-<p>操作系统将磁盘上的分区分成同样大小的块进行管理，并为每块磁盘号编号</p>
-<p>每个块组包括以下五个部分</p>
-<p>超级快</p>
-<p>组描述符表</p>
-<p>块位图</p>
-<p>inode位图</p>
-<p>inode表</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1061,7 +1078,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1285,7 +1302,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共69k字</span>
+  <span class="post-count">博客全站共70.9k字</span>
 </div>
         
 <div class="busuanzi-count">
