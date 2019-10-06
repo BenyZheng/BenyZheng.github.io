@@ -153,23 +153,20 @@
 
 
 
-  <meta name="description" content="JVM(1)之内存区域之内存区域\jvm内存区域.png) 了解如何通过参数来控制各区域的内存大小 之内存区域\jvm内存参数.png) 控制参数：  -Xms：设置堆的最小空间大小。 -Xmx：设置堆的最大空间大小。 -XX:NewSize：设置新生代最小空间大小。 -XX:MaxNewSize：设置新生代最大空间大小。 -XX:PermSize：设置永久代最小空间大小。 -XX:MaxPerm">
-<meta name="keywords" content="JVM">
+  <meta name="description" content="多线程(一)进程和线程的基本概念进程：系统中能独立运行并作为资源分配的基本单位 进程的特征： 1.动态性：进程的实质是程序的一次执行过程，进程是动态产生，动态消亡的。2.并发性：任何进程都可以同其他进程一起并发执行。3.独立性：进程是一个能独立运行的基本单位，同时也是系统分配资源和调度的独立单位。4.异步性：由于进程间的相互制约，使进程具有执行的间断性，即进程按各自独立的、不可预知的速度向前推进。">
+<meta name="keywords" content="并发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM(1)之内存区域">
-<meta property="og:url" content="https://benyzheng.github.io/2019/05/26/jvm/JVM(1)之内存区域/JVM(1)之内存区域/index.html">
-<meta property="og:site_name" content="Beny blogs">
-<meta property="og:description" content="JVM(1)之内存区域之内存区域\jvm内存区域.png) 了解如何通过参数来控制各区域的内存大小 之内存区域\jvm内存参数.png) 控制参数：  -Xms：设置堆的最小空间大小。 -Xmx：设置堆的最大空间大小。 -XX:NewSize：设置新生代最小空间大小。 -XX:MaxNewSize：设置新生代最大空间大小。 -XX:PermSize：设置永久代最小空间大小。 -XX:MaxPerm">
+<meta property="og:title" content="多线程(一)">
+<meta property="og:url" content="https://benyzheng.github.io/2019/05/26/并发/多线程1/index.html">
+<meta property="og:site_name" content="Beny&#39;s blog">
+<meta property="og:description" content="多线程(一)进程和线程的基本概念进程：系统中能独立运行并作为资源分配的基本单位 进程的特征： 1.动态性：进程的实质是程序的一次执行过程，进程是动态产生，动态消亡的。2.并发性：任何进程都可以同其他进程一起并发执行。3.独立性：进程是一个能独立运行的基本单位，同时也是系统分配资源和调度的独立单位。4.异步性：由于进程间的相互制约，使进程具有执行的间断性，即进程按各自独立的、不可预知的速度向前推进。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/jvm/JVM(1)之内存区域/JVM(1)之内存区域/JVM(1">
-<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/jvm/JVM(1)之内存区域/JVM(1)之内存区域/JVM(1">
-<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/jvm/JVM(1)之内存区域/JVM(1)之内存区域/JVM(1">
-<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/jvm/JVM(1)之内存区域/JVM(1)之内存区域/JVM(1">
-<meta property="og:updated_time" content="2019-10-06T15:50:03.796Z">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/并发/多线程1/线程生命周期.png">
+<meta property="og:updated_time" content="2019-10-06T17:40:14.858Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM(1)之内存区域">
-<meta name="twitter:description" content="JVM(1)之内存区域之内存区域\jvm内存区域.png) 了解如何通过参数来控制各区域的内存大小 之内存区域\jvm内存参数.png) 控制参数：  -Xms：设置堆的最小空间大小。 -Xmx：设置堆的最大空间大小。 -XX:NewSize：设置新生代最小空间大小。 -XX:MaxNewSize：设置新生代最大空间大小。 -XX:PermSize：设置永久代最小空间大小。 -XX:MaxPerm">
-<meta name="twitter:image" content="https://benyzheng.github.io/2019/05/26/jvm/JVM(1)之内存区域/JVM(1)之内存区域/JVM(1">
+<meta name="twitter:title" content="多线程(一)">
+<meta name="twitter:description" content="多线程(一)进程和线程的基本概念进程：系统中能独立运行并作为资源分配的基本单位 进程的特征： 1.动态性：进程的实质是程序的一次执行过程，进程是动态产生，动态消亡的。2.并发性：任何进程都可以同其他进程一起并发执行。3.独立性：进程是一个能独立运行的基本单位，同时也是系统分配资源和调度的独立单位。4.异步性：由于进程间的相互制约，使进程具有执行的间断性，即进程按各自独立的、不可预知的速度向前推进。">
+<meta name="twitter:image" content="https://benyzheng.github.io/2019/05/26/并发/多线程1/线程生命周期.png">
 
 
 
@@ -177,7 +174,7 @@
 
   
   
-  <link rel="canonical" href="https://benyzheng.github.io/2019/05/26/jvm/JVM(1)之内存区域/JVM(1)之内存区域/">
+  <link rel="canonical" href="https://benyzheng.github.io/2019/05/26/并发/多线程1/">
 
 
 
@@ -187,7 +184,7 @@
   };
 </script>
 
-  <title>JVM(1)之内存区域 | Beny blogs</title>
+  <title>多线程(一) | Beny's blog</title>
   
 
 
@@ -246,7 +243,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Beny blogs</span>
+        <span class="site-title">Beny's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -410,7 +407,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/jvm/JVM(1)之内存区域/JVM(1)之内存区域/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/并发/多线程1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -419,7 +416,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny blogs">
+      <meta itemprop="name" content="Beny's blog">
     </span>
 
     
@@ -427,7 +424,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JVM(1)之内存区域
+          <h1 class="post-title" itemprop="name headline">多线程(一)
 
               
             
@@ -470,7 +467,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-06 23:50:03" itemprop="dateModified" datetime="2019-10-06T23:50:03+08:00">2019-10-06</time> 
+              <time title="修改时间：2019-10-07 01:40:14" itemprop="dateModified" datetime="2019-10-07T01:40:14+08:00">2019-10-07</time> 
               -->
               <!-- new version -->
                         
@@ -485,8 +482,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-06T23:50:03+08:00" content="2019-10-06">
-                2019-10-06 23:50:03
+              <time itemprop="dateUpdated" datetime="2019-10-07T01:40:14+08:00" content="2019-10-07">
+                2019-10-07 01:40:14
               </time>
             </span>
           
@@ -507,7 +504,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
 
                 
                 
@@ -526,8 +523,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/jvm/JVM(1)之内存区域/JVM(1)之内存区域/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/jvm/JVM(1)之内存区域/JVM(1)之内存区域/" itemprop="commentCount"></span>
+                <a href="/2019/05/26/并发/多线程1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/并发/多线程1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -562,85 +559,90 @@
       
 
       
-        <h1 id="JVM-1-之内存区域"><a href="#JVM-1-之内存区域" class="headerlink" title="JVM(1)之内存区域"></a>JVM(1)之内存区域</h1><p><img src="/2019/05/26/jvm/JVM(1)之内存区域/JVM(1)之内存区域/JVM(1" alt>之内存区域\jvm内存区域.png)</p>
-<p>了解如何通过参数来控制各区域的内存大小</p>
-<p><img src="/2019/05/26/jvm/JVM(1)之内存区域/JVM(1)之内存区域/JVM(1" alt>之内存区域\jvm内存参数.png)</p>
-<p>控制参数：</p>
+        <h3 id="多线程-一"><a href="#多线程-一" class="headerlink" title="多线程(一)"></a>多线程(一)</h3><h5 id="进程和线程的基本概念"><a href="#进程和线程的基本概念" class="headerlink" title="进程和线程的基本概念"></a>进程和线程的基本概念</h5><p>进程：系统中能独立运行并作为资源分配的基本单位</p>
+<p>进程的特征：</p>
+<p>1.动态性：进程的实质是程序的一次执行过程，进程是动态产生，动态消亡的。<br>2.并发性：任何进程都可以同其他进程一起并发执行。<br>3.独立性：进程是一个能独立运行的基本单位，同时也是系统分配资源和调度的独立单位。<br>4.异步性：由于进程间的相互制约，使进程具有执行的间断性，即进程按各自独立的、不可预知的速度向前推进。</p>
+<p>线程：是进程中的一个实体，作为系统调度和分派的基本单位。</p>
+<p>线程的性质：</p>
+<p>1.线程是进程内的一个相对独立的可执行的单元。若把进程称为任务的话，那么线程则是应用中的一个子任务的执行。<br>2.由于线程是被调度的基本单元，而进程不是调度单元。所以，每个进程在创建时，至少需要同时为该进程创建一个线程。即进程中至少要有一个或一个以上的线程，否则该进程无法被调度执行。<br>3.进程是被分给并拥有资源的基本单元。同一进程内的多个线程共享该进程的资源，但线程并不拥有资源，只是使用他们。<br>4.线程是操作系统中基本调度单元，因此线程中应包含有调度所需要的必要信息，且在生命周期中有状态的变化。<br>5.由于共享资源【包括数据和文件】，所以线程间需要通信和同步机制，且需要时线程可以创建其他线程，但线程间不存在父子关系。</p>
+<p>进程与线程的区别：</p>
+<p>1、调度：在传统的操作系统中，CPU调度和分派的基本单位是进程。在引入线程的操作系统中，则把线程作为CPU调度和分派的基本单位，进程则作为资源拥有的基本单位，将线程作为cpu调度和分派，进程则作为资源拥有的基本单位，显著提高系统的并发性（同一进程中的线程切换不会引起进程切换，不同进程中的线程切换才会引起进程切换）</p>
+<p>2、并发性：进程之间可以并发执行，同一个进程之间的线程也可以并发执行，提高系统资源和系统吞吐量</p>
+<p>（例如，在一个为引入线程的单CPU操作系统中，若仅设置一个文件服务进程，当它由于某种原因被封锁时，便没有其他的文件服务进程来提供服务。在引入线程的操作系统中，可以在一个文件服务进程设置多个服务线程。当第一个线程等待时，文件服务进程中的第二个线程可以继续运行；当第二个线程封锁时，第三个线程可以继续执行，从而显著地提高了文件服务的质量以及系统的吞吐量。）</p>
+<p>3、拥有资源：进程拥系统资源的独立单位，线程不能拥有自己的资源，但可以访问隶属进程的资源（代码段、数据段以及系统资源，可供同一个进程的其他线程共享）</p>
+<p>4、独立性：在同一进程中的不同线程之间的独立性要比不同进程之间的独立性低得多，这是因为为了防止进程之间彼此干扰和破坏，每个进程都拥有一个独立的地址空间和其它资源，除了共享全局变量外，不允许其它进程的访问。</p>
+<p>5、系统开销：由于在创建或撤销进程时，系统都要为之分配或回收资源，如内存空间、I/O设备等。因此，操作系统为此所付出的开销将显著地大于在创建或撤消线程时的开销。</p>
+<p>6、支持多处理机系统： 在多处理机系统中，对于传统的进程，即单线程进程，不管有多少处理机，该进程只能运行在一个处理机上。但对于多线程进程，就可以将一个进程中的多个线程分配到多个处理机上，使它们并行执行，这无疑将加速进程的完成。</p>
+<h5 id="创建和启动线程"><a href="#创建和启动线程" class="headerlink" title="创建和启动线程"></a>创建和启动线程</h5><p>1、继承Thread类创建线程类</p>
+<p>步骤：</p>
 <ul>
-<li>-Xms：设置堆的最小空间大小。</li>
-<li>-Xmx：设置堆的最大空间大小。</li>
-<li>-XX:NewSize：设置新生代最小空间大小。</li>
-<li>-XX:MaxNewSize：设置新生代最大空间大小。</li>
-<li>-XX:PermSize：设置永久代最小空间大小。</li>
-<li>-XX:MaxPermSize：设置永久代最大空间大小。</li>
-<li>-Xss：设置每个线程的堆栈大小。</li>
+<li>定义一个继承Thread类的子类，并重写该类的run()方法</li>
+<li>创建子类的实例，即创建线程对象</li>
+<li>调用该线程对象的start()方法启动线程</li>
 </ul>
-<p>没有直接设置老年代的参数，但是可以设置堆空间大小和新生代空间大小两个参数来间接控制。</p>
-<p>老年代空间大小=堆空间大小-年轻代大空间大小</p>
-<h3 id="程序计数器-program-counter-register"><a href="#程序计数器-program-counter-register" class="headerlink" title="程序计数器(program counter register)"></a>程序计数器(program counter register)</h3><p>程序计数器的作用：</p>
-<p>当前线程所执行的字节码的行号指示器，字节码的解析工作就是通过改变这个计数器的值来选取下一个需要执行的字节码指令，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器完成。（<strong>线程私有的</strong>）</p>
-<p>程序计数器的记录内容：</p>
-<p>如果线程正在执行一个java方法，则程序计数器里面记录着正在执行的虚拟机字节码指令的地址；</p>
-<p>如果正在执行的是native方法，则程序计数器里面为null。</p>
-<p>特殊例子：</p>
-<p>此内存区域是唯一一个在java虚拟机规范中没有OutOfMemoryError情况的区域。</p>
-<h3 id="java虚拟机栈-JVM-Stacks"><a href="#java虚拟机栈-JVM-Stacks" class="headerlink" title="java虚拟机栈(JVM Stacks)"></a>java虚拟机栈(JVM Stacks)</h3><p>生命周期：与线程相同，<strong>线程私有</strong>。</p>
-<p>虚拟机栈描述的是java方法执行的内存模型。</p>
-<p>JVM栈的作用：每个方法被执行的时候，都会同时创建一个栈帧(stack frame)用于存储<strong>局部变量表</strong>、<strong>操作数栈</strong>、<strong>动态链接</strong>、<strong>方法出口</strong>等信息。每个方法被调用至执行完成的过程，其实就是一个栈帧从入栈到出栈的过程。</p>
-<p>局部变量表存放了的内容：</p>
-<p>存放着编译期可知的各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（reference类型，它不等同于对象本身，根据不同的虚拟机实现，它可能是一个指向对象起始地址的引用指针，也可能指向一个代表对象的句柄或者其他与此对象相关的位置）和returnAddress类型（指向了一条字节码指令的地址）。</p>
-<p>理解性内容：</p>
-<p>其中64位长度的long和double类型的数据会占用2个局部变量空间（Slot），其余的数据类型只占用1个。局部变量表所需的内存空间在编译期间完成分配，当进入一个方法时，这个方法需要在帧中分配多大的局部变量空间是完全确定的，在方法运行期间不会改变局部变量表的大小。</p>
-<p>该区域的异常状况：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeThead</span> <span class="keyword">extends</span> <span class="title">Thraad</span>   </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span>   </span>&#123; </span><br><span class="line">     <span class="comment">//do something here  </span></span><br><span class="line">    &#125;  </span><br><span class="line"> &#125; </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"> SomeThread oneThread = <span class="keyword">new</span> SomeThread();   </span><br><span class="line">  <span class="comment">//启动线程：   </span></span><br><span class="line"> oneThread.start(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、实现Runnable接口创建线程类</p>
+<p>步骤：</p>
 <ul>
-<li>如果线程请求的栈深度大于虚拟机所允许的深度，将抛出StackOverflowError异常；</li>
-<li>如果虚拟机栈可以动态扩展（当前大部分的Java虚拟机都可动态扩展，只不过Java虚拟机规范中也允许固定长度的虚拟机栈），当扩展时无法申请到足够的内存时会抛出OutOfMemoryError异常。</li>
+<li>定义Runnable接口的实现类，并重写该接口的的run()方法</li>
+<li>创建该实现类的实例</li>
+<li>以此实例作为创建Thread对象的参数，该Thread对象即是线程对象</li>
 </ul>
-<h3 id="本地方法栈-native-method-stacks"><a href="#本地方法栈-native-method-stacks" class="headerlink" title="本地方法栈(native method stacks)"></a>本地方法栈(native method stacks)</h3><p>本地方法栈（Native Method Stacks）与虚拟机栈所发挥的作用是非常相似的，其区别不过是虚拟机栈为虚拟机执行Java方法（也就是字节码）服务，而<strong>本地方法栈则是为虚拟机使用到的Native方法服务。</strong></p>
-<h3 id="java堆-java-heap"><a href="#java堆-java-heap" class="headerlink" title="java堆(java heap)"></a>java堆(java heap)</h3><p>对于大多数应用来说，Java堆（Java Heap）是Java虚拟机所管理的内存中<strong>最大</strong>的一块。（<strong>线程共享</strong>）</p>
-<p>Java堆是被所有线程共享的一块内存区域，在<strong>虚拟机启动时</strong>创建。</p>
-<p>作用：此内存区域的唯一目的就是<strong>存放对象实例</strong>，<strong>几乎所有的对象实例都在这里分配内存</strong>。</p>
-<p>Java堆是垃圾收集器管理的主要区域，因此很多时候也被称做“<strong>GC堆</strong>”。</p>
-<p>如果从内存回收的角度看，由于现在收集器基本都是采用的分代收集算法，所以Java堆中还可以细分为：<strong>新生代和老年代；再细分年轻代的有Eden空间、From Survivor空间、To Survivor空间等。(默认比例8:1:1)</strong>（详情在GC算法和回收中提到）</p>
-<p>理解性：</p>
-<p>根据Java虚拟机规范的规定，Java堆可以处于物理上不连续的内存空间中，只要逻辑上是连续的即可，就像我们的磁盘空间一样。在实现时，既可以实现成固定大小的，也可以是可扩展的，不过当前主流的虚拟机都是按照可扩展来实现的（通过-Xmx和-Xms控制）。</p>
-<p>异常状况：</p>
-<p>如果在堆中没有内存完成实例分配，并且堆也无法再扩展时，将会抛出OutOfMemoryError异常。</p>
-<h3 id="方法区-method-area"><a href="#方法区-method-area" class="headerlink" title="方法区(method area)"></a>方法区(method area)</h3><p>方法区和Java堆一样，是各个线程共享的内存区域</p>
-<p>作用：<strong>它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</strong></p>
-<p>Java虚拟机规范对这个区域的限制非常宽松，除了和Java堆一样不需要连续的内存和可以选择固定大小或者可扩展外，还可以选择不实现垃圾收集。</p>
-<p>这个区域的内存回收目标主要是<strong>针对常量池的回收</strong>和<strong>对类型的卸载</strong></p>
-<p>异常状况：</p>
-<p>根据Java 虚拟机规范的规定，当方法区无法满足内存分配需求时，将抛出OutOfMemoryError 异常。</p>
-<h3 id="运行时常量池-runtime-constant-pool"><a href="#运行时常量池-runtime-constant-pool" class="headerlink" title="运行时常量池(runtime constant pool)"></a>运行时常量池(runtime constant pool)</h3><p>运行时的常量池属于方法区的一部分。</p>
-<p>作用：用于存放编译期生成的<strong>各种字面量</strong>和<strong>符号引用</strong>，这部分内容将在类加载后存放到方法区的运行时常量池中。编译器和运行期(String 的 intern() )都可以将常量放入池中。</p>
-<p>异常状况</p>
-<p>当常量池无法再申请到内存时会抛出OutOfMemoryError 异常。</p>
-<h3 id="直接内存-direct-memory"><a href="#直接内存-direct-memory" class="headerlink" title="直接内存(direct memory)"></a>直接内存(direct memory)</h3><p>直接内存（Direct Memory）并不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范中定义的内存区域，但是这部分内存也被频繁地使用，而且也可能导致OutOfMemoryError 异常出现。</p>
-<p>本机直接内存的分配不会受到Java 堆大小的限制，但是，既然是内存，则肯定还是会受到本机总内存（包括RAM 及SWAP 区或者分页文件）的大小及处理器寻址空间的限制。服务器管理员配置虚拟机参数时，一般会根据实际内存设置-Xmx等参数信息，但经常会忽略掉直接内存，使得各个内存区域的总和大于物理内存限制（包括物理上的和操作系统级的限制），从而导致动态扩展时出现OutOfMemoryError异常。</p>
-<h3 id="对象访问"><a href="#对象访问" class="headerlink" title="对象访问"></a>对象访问</h3><p>Object obj = new Object();</p>
-<p>最简单的访问，却涉及Java 栈、Java 堆、方法区这三个最重要内存区</p>
-<p>假设这句代码出现在方法体中，那“Object obj”这部分的语义将会反映到Java 栈的本地变量表中，作为一个reference 类型数据出现。</p>
-<p>“new Object()”这部分的语义将会反映到Java 堆中，形成一块存储了Object 类型所有实例数据值（Instance Data，对象中各个实例字段的数据）的结构化内存，根据具体类型以及虚拟机实现的对象内存布局（Object Memory Layout）的不同，这块内存的长度是不固定的。</p>
-<p>在Java 堆中还必须包含能查找到此对象类型数据（如对象类型、父类、实现的接口、方法等）的地址信息，这些类型数据则存储在方法区中。</p>
-<p>由于reference 类型在Java 虚拟机规范里面只规定了一个指向对象的引用，并没有定义这个引用应该通过哪种方式去定位，以及访问到Java 堆中的对象的具体位置，因此不同虚拟机实现的对象访问方式会有所不同，主流的访问方式有两种：使用句柄和直接指针。</p>
-<p>如果使用<strong>句柄访问方式</strong>，Java 堆中将会划分出一块内存来作为句柄池，reference中存储的就是对象的句柄地址，而句柄中包含了对象实例数据和类型数据各自的具体地址信息</p>
-<p><img src="/2019/05/26/jvm/JVM(1)之内存区域/JVM(1)之内存区域/JVM(1" alt>之内存区域\jvm内存区域句柄.jpg)</p>
-<p>如果使用<strong>直接指针访问方式</strong>，Java 堆对象的布局中就必须考虑如何放置访问类型数据的相关信息，reference 中直接存储的就是对象地址</p>
-<p><img src="/2019/05/26/jvm/JVM(1)之内存区域/JVM(1)之内存区域/JVM(1" alt>之内存区域\jvm内存区域直接访问.jpg)</p>
-<p>使用句柄访问方式的最大好处就是reference 中存储的是稳定的句柄地址，在对象被移动（垃圾收集时移动对象是非常普遍的行为）时只会改变句柄中的实例数据指针，而reference 本身不需要被修改。</p>
-<p>使用直接指针访问方式的最大好处就是速度更快，它节省了一次指针定位的时间开销，由于对象的访问在Java 中非常频繁，因此这类开销积少成多后也是一项非常可观的执行成本。</p>
-<p>就主要虚拟机Sun HotSpot 而言，它是使用第二种方式进行对象访问的，但从整个软件开发的范围来看，各种语言和框架使用句柄来访问的情况也十分常见。</p>
-<h3 id="OutOfMemoryError分析-OOM"><a href="#OutOfMemoryError分析-OOM" class="headerlink" title="OutOfMemoryError分析(OOM)"></a>OutOfMemoryError分析(OOM)</h3><p>java堆溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError：Java heap space</span><br></pre></td></tr></table></figure>
-<p>java栈溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.StackOverflowError</span><br></pre></td></tr></table></figure>
-<p>运行时常量池溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError：PermGen space</span><br></pre></td></tr></table></figure>
-<p>方法区溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError：PermGen space</span><br></pre></td></tr></table></figure>
-<p>本机直接内存溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span>   </span>&#123; </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span>   </span>&#123; </span><br><span class="line">  <span class="comment">//do something here  </span></span><br><span class="line">  &#125;  </span><br><span class="line">&#125; </span><br><span class="line">Runnable oneRunnable = <span class="keyword">new</span> SomeRunnable();   </span><br><span class="line">Thread oneThread = <span class="keyword">new</span> Thread(oneRunnable);   </span><br><span class="line">oneThread.start();</span><br></pre></td></tr></table></figure>
+<p>3、通过Callable和Future创建对象</p>
+<p>步骤：</p>
+<ul>
+<li>创建Callable接口的实现类，并实现call()方法，该call()方法作为线程执行体，并且有返回值</li>
+<li>创建Callable实现类的实例</li>
+<li>使用FutureTask类来包装Callable对象，该FutureTask对象封装Callable对象的call()方法的返回值</li>
+<li>使用FutureTask对象作为Thread对象的target创建并启动新线程</li>
+<li>调用FutureTask对象的get()方法获取子线程执行结束后的返回值</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Callable</span>   </span>&#123; </span><br><span class="line">  <span class="function">V <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;  </span><br><span class="line"> &#125; </span><br><span class="line">  步骤<span class="number">1</span>：创建实现Callable接口的类SomeCallable(略);   </span><br><span class="line">  步骤<span class="number">2</span>：创建一个类对象： </span><br><span class="line">      Callable oneCallable = <span class="keyword">new</span> SomeCallable(); </span><br><span class="line">  步骤<span class="number">3</span>：由Callable创建一个FutureTask对象：   </span><br><span class="line">    FutureTask oneTask = <span class="keyword">new</span> FutureTask(oneCallable); </span><br><span class="line">  注释： FutureTask是一个包装器，它通过接受Callable来创建，它同时实现了 Future和Runnable接口。 </span><br><span class="line">  步骤<span class="number">4</span>：由FutureTask创建一个Thread对象：   </span><br><span class="line">    Thread oneThread = <span class="keyword">new</span> Thread(oneTask);   </span><br><span class="line">  步骤<span class="number">5</span>：启动线程：  </span><br><span class="line">    oneThread.start();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Callable&lt;Integer&gt; myCallable = <span class="keyword">new</span> MyCallable();    <span class="comment">// 创建MyCallable对象</span></span><br><span class="line">        FutureTask&lt;Integer&gt; ft = <span class="keyword">new</span> FutureTask&lt;Integer&gt;(myCallable); <span class="comment">//使用FutureTask来包装MyCallable对象</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" "</span> + i);</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">30</span>) &#123;</span><br><span class="line">                Thread thread = <span class="keyword">new</span> Thread(ft);   <span class="comment">//FutureTask对象作为Thread对象的target创建新的线程</span></span><br><span class="line">                thread.start();                      <span class="comment">//线程进入到就绪状态</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"主线程for循环执行完毕.."</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = ft.get();            <span class="comment">//取得新创建的新线程中的call()方法返回的结果</span></span><br><span class="line">            System.out.println(<span class="string">"sum = "</span> + sum);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCallable</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 与run()方法不同的是，call()方法具有返回值</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" "</span> + i);</span><br><span class="line">            sum += i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h5><p><img src="/2019/05/26/并发/多线程1/线程生命周期.png" alt></p>
+<p>1、新建状态</p>
+<p>   用new关键字和Thread类或其子类建立一个线程对象后，该线程对象就处于新生状态。处于新生状态的线程有自己的内存空间，通过调用start方法进入就绪状态（runnable）。</p>
+<p>2、就绪状态</p>
+<p>处于就绪状态的线程已经具备了运行条件，但还没有分配到CPU，处于线程就绪队列（尽管是采用队列形式，事实上，把它称为可运行池而不是可运行队列。因为cpu的调度不一定是按照先进先出的顺序来调度的），等待系统为其分配CPU。等待状态并不是执行状态，当系统选定一个等待执行的Thread对象后，它就会从等待执行状态进入执行状态，系统挑选的动作称之为“cpu调度”。一旦获得CPU，线程就进入运行状态并自动调用自己的run方法。</p>
+<p>提示：如果希望子线程调用start()方法后立即执行，可以使用Thread.sleep()方式使主线程睡眠一伙儿，转去执行子线程。</p>
+<p>3、运行状态</p>
+<p>处于就绪状态的线程，如果获得了cpu的调度，就会从就绪状态变为运行状态，执行run()方法中的任务。</p>
+<p>运行状态-&gt;就绪状态：1.失去cpu资源 2.调用yield()方法</p>
+<p>运行状态-&gt;阻塞状态：</p>
+<p>1.调用sleep()方法主动放弃cpu资源</p>
+<p>2.线程调用一个阻塞式IO方法，在该方法返回之前，线程被阻塞</p>
+<p>3.线程试图获取一个同步监视器（锁），但该同步监视器正被其他线程所持有</p>
+<p>4.线程在等待某个通知（notify）</p>
+<p>5.程序调用线程的suspend方法被线程挂起（容易导致死锁）</p>
+<p>4、阻塞状态</p>
+<p>只有当引起阻塞的原因消除时，如睡眠时间已到，或等待的I/O设备空闲下来，线程便转入就绪状态，重新到就绪队列中排队等待，被系统选中后从原来停止的位置开始继续运行。</p>
+<p>5、死亡状态</p>
+<p> 当线程的run()方法执行完，或者被强制性地终止，就认为它死去。这个线程对象也许是活的，但是，它已经不是一个单独执行的线程。线程一旦死亡，就不能复生。 </p>
+<h5 id="线程管理"><a href="#线程管理" class="headerlink" title="线程管理"></a>线程管理</h5><p>1、线程睡眠sleep</p>
+<p>让当前正在执行的线程暂停一段时间，并进入阻塞状态，且当前线程不会失去锁</p>
+<p>sleep是静态方法，最好不要用Thread的实例对象调用它，因为它睡眠的始终是当前正在运行的线程，而不是调用它的线程对象，它只对正在运行状态的线程对象有效</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;  </span><br><span class="line">        System.out.println(Thread.currentThread().getName());  </span><br><span class="line">        MyThread myThread=<span class="keyword">new</span> MyThread();  </span><br><span class="line">        myThread.start();  </span><br><span class="line">        myThread.sleep(<span class="number">1000</span>);<span class="comment">//这里sleep的就是main线程，而非myThread线程  </span></span><br><span class="line">        Thread.sleep(<span class="number">10</span>);  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)&#123;  </span><br><span class="line">            System.out.println(<span class="string">"main"</span>+i);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用sleep方法之后，线程是进入阻塞状态的，只有当睡眠的时间结束，才会重新进入到就绪状态，而就绪状态进入到运行状态，是由系统控制的，我们不可能精准的去干涉它，所以如果调用Thread.sleep(1000)使得线程睡眠1秒，可能结果会大于1秒。</p>
+<p>2、线程让步yield()</p>
+<p>yield()方法和sleep()方法有点相似，它也是Thread类提供的一个静态的方法，它也可以让当前正在执行的线程暂停，让出cpu资源给其他的线程。但是和sleep()方法不同的是，它不会进入到阻塞状态，而是进入到就绪状态。</p>
+<p>3、线程合并join()</p>
+<p>线程的合并的含义就是将几个并行线程的线程合并为一个单线程执行，应用场景是当一个线程必须等待另一个线程执行完毕才能执行时，Thread类提供了join方法来完成这个功能，它不是静态方法。<br>从上面的方法的列表可以看到，它有3个重载的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">()</span>      </span></span><br><span class="line"><span class="function">     当前线程等该加入该线程后面，等待该线程终止。    </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">long</span> millis)</span>  </span></span><br><span class="line"><span class="function">     当前线程等待该线程终止的时间最长为 millis 毫秒。 如果在millis时间内，该线程没有执行完，那么当前线程进入就绪状态，重新等待cpu调度  </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">long</span> millis,<span class="keyword">int</span> nanos)</span>   </span></span><br><span class="line"><span class="function">     等待该线程终止的时间最长为 millis 毫秒 + nanos 纳秒。如果在millis时间内，该线程没有执行完，那么当前线程进入就绪状态，重新等待cpu调度</span></span><br></pre></td></tr></table></figure>
+<p>4、设置线程优先级</p>
+<p>每个线程默认的优先级都与创建它的父线程具有相同的优先级，在默认情况下，main线程具有普通优先级。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MAX_PRIORITY   =<span class="number">10</span></span><br><span class="line"></span><br><span class="line">MIN_PRIORITY   =<span class="number">1</span></span><br><span class="line"></span><br><span class="line">NORM_PRIORITY   =<span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong>虽然Java提供了10个优先级别，但这些优先级别需要操作系统的支持。不同的操作系统的优先级并不相同，而且也不能很好的和Java的10个优先级别对应。所以我们应该使用MAX_PRIORITY、MIN_PRIORITY和NORM_PRIORITY三个静态常量来设定优先级，这样才能保证程序最好的可移植性。</p>
+<p>5、后台(守护)线程</p>
+<p>JVM的垃圾回收、内存管理等线程都是守护线程。还有就是在做数据库应用时候，使用的数据库连接池，连接池本身也包含着很多后台线程，监控连接个数、超时时间、状态等等。</p>
+<p>守护线程的用途为：</p>
+<p>​     • 守护线程通常用于执行一些后台作业，例如在应用程序运行时播放背景音乐，在文字编辑器里做自动语法检查、自动保存等功能。</p>
+<p>​     • Java的垃圾回收也是一个守护线程。守护线的好处就是你不需要关心它的结束问题。例如你在你的应用程序运行的时候希望播放背景音乐，如果将这个播放背景音乐的线程设定为非守护线程，那么在用户请求退出的时候，不仅要退出主线程，还要通知播放背景音乐的线程退出；如果设定为守护线程则不需要了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public final void setDaemon(boolean on)        </span><br><span class="line">将该线程标记为守护线程或用户线程。当正在运行的线程都是守护线程时，Java 虚拟机退出。    </span><br><span class="line">         </span><br><span class="line">该方法必须在启动线程前调用。 该方法首先调用该线程的 checkAccess 方法，且不带任何参数。这可能抛出 SecurityException（在当前线程中）。   </span><br><span class="line">  参数：</span><br><span class="line">     on - 如果为 true，则将该线程标记为守护线程。    </span><br><span class="line">  抛出：    </span><br><span class="line">    IllegalThreadStateException - 如果该线程处于活动状态。    </span><br><span class="line">    SecurityException - 如果当前线程无法修改该线程。</span><br></pre></td></tr></table></figure>
+<p>6、正确结束线程</p>
+<p>Thread.stop()、Thread.suspend、Thread.resume、Runtime.runFinalizersOnExit这些终止线程运行的方法已经被废弃了，使用它们是极端不安全的！想要安全有效的结束一个线程，可以使用下面的方法：</p>
+<p>​    • 正常执行完run方法，然后结束掉；</p>
+<p>​    • 控制循环条件和判断条件的标识符来结束掉线程。</p>
 
       
     </div>
@@ -664,7 +666,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JVM/" rel="tag"># JVM</a>
+            <a href="/tags/并发/" rel="tag"># 并发</a>
           
         </div>
       
@@ -677,8 +679,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/26/jvm/JVM(2)之垃圾收集器与内存分配/JVM(2)之垃圾收集器与内存分配/" rel="next" title="JVM(2)之垃圾收集器与内存分配">
-                <i class="fa fa-chevron-left"></i> JVM(2)之垃圾收集器与内存分配
+              <a href="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/" rel="next" title="JVM之垃圾收集器与内存分配">
+                <i class="fa fa-chevron-left"></i> JVM之垃圾收集器与内存分配
               </a>
             
           </div>
@@ -687,8 +689,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/26/java集合类/集合类之SET/集合类之SET/" rel="prev" title="集合类之SET">
-                集合类之SET <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/26/jvm/JVM之类的加载机制/" rel="prev" title="JVM之类的加载机制">
+                JVM之类的加载机制 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -895,7 +897,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM-1-之内存区域"><span class="nav-number">1.</span> <span class="nav-text">JVM(1)之内存区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序计数器-program-counter-register"><span class="nav-number">1.0.1.</span> <span class="nav-text">程序计数器(program counter register)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java虚拟机栈-JVM-Stacks"><span class="nav-number">1.0.2.</span> <span class="nav-text">java虚拟机栈(JVM Stacks)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地方法栈-native-method-stacks"><span class="nav-number">1.0.3.</span> <span class="nav-text">本地方法栈(native method stacks)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java堆-java-heap"><span class="nav-number">1.0.4.</span> <span class="nav-text">java堆(java heap)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法区-method-area"><span class="nav-number">1.0.5.</span> <span class="nav-text">方法区(method area)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行时常量池-runtime-constant-pool"><span class="nav-number">1.0.6.</span> <span class="nav-text">运行时常量池(runtime constant pool)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接内存-direct-memory"><span class="nav-number">1.0.7.</span> <span class="nav-text">直接内存(direct memory)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象访问"><span class="nav-number">1.0.8.</span> <span class="nav-text">对象访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OutOfMemoryError分析-OOM"><span class="nav-number">1.0.9.</span> <span class="nav-text">OutOfMemoryError分析(OOM)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程-一"><span class="nav-number">1.</span> <span class="nav-text">多线程(一)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#进程和线程的基本概念"><span class="nav-number">1.0.1.</span> <span class="nav-text">进程和线程的基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建和启动线程"><span class="nav-number">1.0.2.</span> <span class="nav-text">创建和启动线程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程的生命周期"><span class="nav-number">1.0.3.</span> <span class="nav-text">线程的生命周期</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程管理"><span class="nav-number">1.0.4.</span> <span class="nav-text">线程管理</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -938,7 +940,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共42k字</span>
+  <span class="post-count">博客全站共41.7k字</span>
 </div>
         
 <div class="busuanzi-count">
