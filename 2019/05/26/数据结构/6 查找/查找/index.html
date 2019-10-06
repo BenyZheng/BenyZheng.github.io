@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/libs/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/libs/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_small.ico?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="查找查找：在数据集合中寻找满足某种条件的数据元素的过程  关键字：数据元素中某个可以唯一标识该元素的数据项 平均查找长度  顺序查找   折半查找     分块查找分块查找又称为索引顺序查找    二叉排序树  二叉排序树查找递归代码  二叉排序树查找非递归代码  二叉排序树插入关键字代码  时间复杂度 有n个结点就需要插入n个结点操作，插入一个的时间复杂度为O(log2n)，构造复杂度为O(nl">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查找">
+<meta property="og:url" content="https://benyzheng.github.io/2019/05/26/数据结构/6 查找/查找/index.html">
+<meta property="og:site_name" content="Beny blogs">
+<meta property="og:description" content="查找查找：在数据集合中寻找满足某种条件的数据元素的过程  关键字：数据元素中某个可以唯一标识该元素的数据项 平均查找长度  顺序查找   折半查找     分块查找分块查找又称为索引顺序查找    二叉排序树  二叉排序树查找递归代码  二叉排序树查找非递归代码  二叉排序树插入关键字代码  时间复杂度 有n个结点就需要插入n个结点操作，插入一个的时间复杂度为O(log2n)，构造复杂度为O(nl">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/1%20查找表.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/2%20平均查找长度.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/3%20顺序查找过程.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/4%20顺序查找ASL.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/5%20顺序查找时间复杂度.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/6%20折半查找.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/7%20折半查找判定树.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/8%20折半查找时间复杂度.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/9%20折半查找成功ASL.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/10%20折半查找失败ASL.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/11%20分块查找概念.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/12%20分块查找思路.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/13%20分块查找ASL.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/14%20二叉排序树概念.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/15%20二叉排序树查找思路.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/16%20二叉排序树查找递归代码.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/17%20二叉排序树非递归代码.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/18%20二叉排序树插入关键字.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/19%20二叉排序树构造代码.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/20%20二叉排序树删除结点.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/21%20二叉排序树删除叶子结点.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/22%20二叉排序树删除只有左子树或右子树结点.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/23%20二叉排序树删除左右子树都有的结点1.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/24%20二叉排序树删除左右子树都有的结点2.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/25%20二叉排序树分析.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/26%20平衡二叉树.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/27%20最小不平衡子树.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/28%20最小不平衡子树类型.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/29%20构建平衡二叉树1.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/30%20构建平衡二叉树2.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/31%20构建平衡二叉树3.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/32%20构建平衡二叉树4.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/33%20构建平衡二叉树5.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/34%20构建平衡二叉树6.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/35%20构建平衡二叉树7.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/36%20构建平衡二叉树8.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/37%20构建平衡二叉树9.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/38%20构建平衡二叉树10.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/39%20平衡二叉树结点规律.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/40%202-3树.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/41%202-3-4树.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/42%20B树.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/43%20B树查找操作.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/44%20B树插入操作.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/45%20B树插入操作2.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/46%20B树插入操作3.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/47%20B树插入操作4.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/48%20B树删除操作1.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/49%20B树删除操作2-1.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/50%20B树删除操作2-2.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/51%20B树删除操作3-1.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/52%20B树删除操作3-2.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/53%20B树删除操作3-3.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/54%20B树删除操作4-1.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/55%20B树删除操作4-2.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/56%20B树删除操作4-3.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/57%20B树删除操作4-4.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/58%20B树删除操作5-1.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/59%20B树删除操作5-2.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/60%20B树删除操作5-3.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/61%20B+树.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/62%20B+树与B树区别.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/63%20散列表基本概念.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/64%20散列表Hash函数构造方法.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/65%20散列表Hash函数构造方法2.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/66%20散列表Hash函数构造方法3.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/67%20散列表冲突处理.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/68%20散列表冲突处理2.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/69%20散列表冲突处理3.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/70%20散列表冲突处理4.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/71%20散列表查找过程和性能.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/72%20散列表实例.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/73%20散列表实例2.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/74%20散列表实例3.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/75%20字符串模式匹配.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/76%20BF算法代码.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/77%20BF算法效率.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/78%20KMP算法.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/79%20KMP算法2.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/80%20KMP算法next数组.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/81%20KMP算法next数组代码.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/82%20KMP算法next数组例子.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/83%20KMP算法next数组例子2.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/84%20KMP算法next数组例子3.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/85%20KMP算法next数组例子4.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/86%20next数组例子5.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/87%20next数组例子6.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/88%20next数组例子7.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/89%20next数组例子8.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/90%20KMP算法代码.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/91%20KMP算法效率.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/92%20KMP算法手动next数组1.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/93%20KMP算法手动next数组2.png">
+<meta property="og:updated_time" content="2019-10-06T14:23:26.972Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="查找">
+<meta name="twitter:description" content="查找查找：在数据集合中寻找满足某种条件的数据元素的过程  关键字：数据元素中某个可以唯一标识该元素的数据项 平均查找长度  顺序查找   折半查找     分块查找分块查找又称为索引顺序查找    二叉排序树  二叉排序树查找递归代码  二叉排序树查找非递归代码  二叉排序树插入关键字代码  时间复杂度 有n个结点就需要插入n个结点操作，插入一个的时间复杂度为O(log2n)，构造复杂度为O(nl">
+<meta name="twitter:image" content="https://benyzheng.github.io/2019/05/26/数据结构/6%20查找/查找/1%20查找表.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://benyzheng.github.io/2019/05/26/数据结构/6 查找/查找/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>查找 | Beny blogs</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Beny blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Nothing worth having comes easy.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">5</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">19</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+<a href="https://github.com/bengzheng" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据结构/6 查找/查找/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">查找
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-06 22:23:26" itemprop="dateModified" datetime="2019-10-06T22:23:26+08:00">2019-10-06</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-06T22:23:26+08:00" content="2019-10-06">
+                2019-10-06 22:23:26
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/数据结构/6 查找/查找/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据结构/6 查找/查找/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>查找：在数据集合中寻找满足某种条件的数据元素的过程</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/1 查找表.png" alt></p>
+<p>关键字：数据元素中某个可以唯一标识该元素的数据项</p>
+<p>平均查找长度</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/2 平均查找长度.png" alt></p>
+<h5 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h5><p><img src="/2019/05/26/数据结构/6 查找/查找/3 顺序查找过程.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/4 顺序查找ASL.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/5 顺序查找时间复杂度.png" alt></p>
+<h5 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h5><p><img src="/2019/05/26/数据结构/6 查找/查找/6 折半查找.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/7 折半查找判定树.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/8 折半查找时间复杂度.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/9 折半查找成功ASL.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/10 折半查找失败ASL.png" alt></p>
+<h5 id="分块查找"><a href="#分块查找" class="headerlink" title="分块查找"></a>分块查找</h5><p>分块查找又称为索引顺序查找</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/11 分块查找概念.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/12 分块查找思路.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/13 分块查找ASL.png" alt></p>
+<h5 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h5><p><img src="/2019/05/26/数据结构/6 查找/查找/14 二叉排序树概念.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/15 二叉排序树查找思路.png" alt></p>
+<p>二叉排序树查找递归代码</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/16 二叉排序树查找递归代码.png" alt></p>
+<p>二叉排序树查找非递归代码</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/17 二叉排序树非递归代码.png" alt></p>
+<p>二叉排序树插入关键字代码</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/18 二叉排序树插入关键字.png" alt></p>
+<p>时间复杂度</p>
+<p>有n个结点就需要插入n个结点操作，插入一个的时间复杂度为O(log<sub>2</sub>n)，构造复杂度为O(nlog2n)</p>
+<p>二叉排序树构造代码</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/19 二叉排序树构造代码.png" alt></p>
+<p>二叉排序树删除结点</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/20 二叉排序树删除结点.png" alt></p>
+<p>删除叶子结点</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/21 二叉排序树删除叶子结点.png" alt></p>
+<p>删除只有左子树或者右子树的结点</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/22 二叉排序树删除只有左子树或右子树结点.png" alt></p>
+<p>删除左右子树都有的结点</p>
+<p>找到该结点的前驱和后继(即中序遍历的前驱和后继)</p>
+<p>前驱替代结点</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/23 二叉排序树删除左右子树都有的结点1.png" alt></p>
+<p>后继替代结点</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/24 二叉排序树删除左右子树都有的结点2.png" alt></p>
+<p>二叉排序树分析</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/25 二叉排序树分析.png" alt></p>
+<h5 id="平衡二叉树-AVL树"><a href="#平衡二叉树-AVL树" class="headerlink" title="平衡二叉树(AVL树)"></a>平衡二叉树(AVL树)</h5><p><img src="/2019/05/26/数据结构/6 查找/查找/26 平衡二叉树.png" alt></p>
+<p>最小不平衡子树</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/27 最小不平衡子树.png" alt></p>
+<p>不平衡二叉树类型</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/28 最小不平衡子树类型.png" alt></p>
+<p>构建平衡二叉树过程</p>
+<p>LL调整</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/29 构建平衡二叉树1.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/30 构建平衡二叉树2.png" alt></p>
+<p>RR调整</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/31 构建平衡二叉树3.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/32 构建平衡二叉树4.png" alt></p>
+<p>RL调整</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/33 构建平衡二叉树5.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/34 构建平衡二叉树6.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/35 构建平衡二叉树7.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/36 构建平衡二叉树8.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/37 构建平衡二叉树9.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/38 构建平衡二叉树10.png" alt></p>
+<p>平衡二叉树结点规律</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/39 平衡二叉树结点规律.png" alt></p>
+<h5 id="B树和B-树"><a href="#B树和B-树" class="headerlink" title="B树和B+树"></a>B树和B+树</h5><p>2-3树：</p>
+<p>2-3是一种多路查找树：2和3的意思就是2-3树包含两种结点</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/40 2-3树.png" alt></p>
+<p>2-3-4树：<br><img src="/2019/05/26/数据结构/6 查找/查找/41 2-3-4树.png" alt></p>
+<p>B树</p>
+<p>磁盘管理系统中的目录管理，以及数据库系统中的索引组织多数都采用B树数据结构</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/42 B树.png" alt></p>
+<p>B树查找操作</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/43 B树查找操作.png" alt></p>
+<p>B树插入操作</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/44 B树插入操作.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/45 B树插入操作2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/46 B树插入操作3.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/47 B树插入操作4.png" alt></p>
+<p>B树删除操作</p>
+<p>删除的关键字在终端结点上(最底层非叶子结点)</p>
+<p>第一种情况</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/48 B树删除操作1.png" alt></p>
+<p>第二种情况</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/49 B树删除操作2-1.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/50 B树删除操作2-2.png" alt></p>
+<p>第三中情况</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/51 B树删除操作3-1.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/52 B树删除操作3-2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/53 B树删除操作3-3.png" alt></p>
+<p>删除关键字不在终端结点上(最底层非叶子结点)</p>
+<p>第一种情况</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/54 B树删除操作4-1.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/55 B树删除操作4-2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/56 B树删除操作4-3.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/57 B树删除操作4-4.png" alt></p>
+<p>第二种情况</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/58 B树删除操作5-1.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/59 B树删除操作5-2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/60 B树删除操作5-3.png" alt></p>
+<p>B+树</p>
+<p>B+树是B树的变形树，适合用于文件索引系统</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/61 B+树.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/62 B+树与B树区别.png" alt></p>
+<h5 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h5><p>散列表基本概念</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/63 散列表基本概念.png" alt></p>
+<p>散列函数和冲突处理方法</p>
+<p>常用Hash函数的构造方法</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/64 散列表Hash函数构造方法.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/65 散列表Hash函数构造方法2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/66 散列表Hash函数构造方法3.png" alt></p>
+<p>常用Hash函数的冲突处理方法</p>
+<p>开放地址法</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/67 散列表冲突处理.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/68 散列表冲突处理2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/69 散列表冲突处理3.png" alt></p>
+<p>拉链法(链地址法)</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/70 散列表冲突处理4.png" alt></p>
+<p>散列表的查找过程和性能</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/71 散列表查找过程和性能.png" alt></p>
+<p>散列表实例</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/72 散列表实例.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/73 散列表实例2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/74 散列表实例3.png" alt></p>
+<p>ASL计算方式：查找成功ASL看关键字，查找失败ASL看地址个数</p>
+<p>开放地址法(线性探测再散列法)计算ASL：<a href="https://blog.csdn.net/wangran51/article/details/8826633/" target="_blank" rel="noopener">https://blog.csdn.net/wangran51/article/details/8826633/</a></p>
+<h5 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h5><p>KMP算法是用于解决字符串模式匹配的问题，字符串的模式匹配，是求一个字符串（模式串）在另一个字符串（主串）中的位置</p>
+<p>BF(Brute-Force)算法</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/75 字符串模式匹配.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/76 BF算法代码.png" alt></p>
+<p>BF算法效率O(n*m)</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/77 BF算法效率.png" alt></p>
+<p>KMP算法</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/78 KMP算法.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/79 KMP算法2.png" alt></p>
+<p>KMP算法next数组</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/80 KMP算法next数组.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/81 KMP算法next数组代码.png" alt></p>
+<p>next例子情况</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/82 KMP算法next数组例子.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/83 KMP算法next数组例子2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/84 KMP算法next数组例子3.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/85 KMP算法next数组例子4.png" alt></p>
+<p>当P[k] == P[j]时，</p>
+<p>有next[j+1] == next[j] + 1</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/86 next数组例子5.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/87 next数组例子6.png" alt></p>
+<p>当P[k] != P[j]</p>
+<p>像上边的例子，我们已经不可能找到[ A，B，A，B ]这个最长的后缀串了，但我们还是可能找到[ A，B ]、[ B ]这样的前缀串的。所以这个过程像不像在定位[ A，B，A，C ]这个串，当C和主串不一样了（也就是k位置不一样了），那当然是把指针移动到next[k]啦。</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/88 next数组例子7.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/89 next数组例子8.png" alt></p>
+<p>KMP算法代码</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/90 KMP算法代码.png" alt></p>
+<p>KMP算法效率</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/91 KMP算法效率.png" alt></p>
+<p>手动求解next数组的值</p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/92 KMP算法手动next数组1.png" alt></p>
+<p><img src="/2019/05/26/数据结构/6 查找/查找/93 KMP算法手动next数组2.png" alt></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/26/数据结构/5 图/图/" rel="next" title="图">
+                <i class="fa fa-chevron-left"></i> 图
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/26/数据结构/3 栈和队列/栈和队列/" rel="prev" title="栈和队列">
+                栈和队列 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Beny">
+            
+              <p class="site-author-name" itemprop="name">Beny</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/1105397915" title="1105397915 &rarr; 1105397915"><i class="fa fa-fw fa-qq"></i>1105397915</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/benyzheng" title="GitHub &rarr; https://github.com/benyzheng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/zhengbeny@qq.com" title="zhengbeny@qq.com &rarr; zhengbeny@qq.com"><i class="fa fa-fw fa-envelope"></i>zhengbeny@qq.com</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查找"><span class="nav-number">1.</span> <span class="nav-text">查找</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#顺序查找"><span class="nav-number">1.0.1.</span> <span class="nav-text">顺序查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#折半查找"><span class="nav-number">1.0.2.</span> <span class="nav-text">折半查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分块查找"><span class="nav-number">1.0.3.</span> <span class="nav-text">分块查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二叉排序树"><span class="nav-number">1.0.4.</span> <span class="nav-text">二叉排序树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#平衡二叉树-AVL树"><span class="nav-number">1.0.5.</span> <span class="nav-text">平衡二叉树(AVL树)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#B树和B-树"><span class="nav-number">1.0.6.</span> <span class="nav-text">B树和B+树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#散列表"><span class="nav-number">1.0.7.</span> <span class="nav-text">散列表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#KMP算法"><span class="nav-number">1.0.8.</span> <span class="nav-text">KMP算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Beny</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共42k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="/js/src/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'oaY0uDqkCsuX94AxTtnV6scO-gzGzoHsz',
+    appKey: 'HKU5SJPAd8KyYqk6Q8fdArL5',
+    placeholder: '写了评论, offer还会远吗? ----记得填写邮箱哦~如果可以填写你的网站互相参考就更好啦',
+    avatar: 'retro',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+  //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/click.js"></script>-->
+</body>
+</html>
