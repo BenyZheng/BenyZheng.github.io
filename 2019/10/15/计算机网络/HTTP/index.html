@@ -161,10 +161,13 @@
 <meta property="og:site_name" content="Beny&#39;s blog">
 <meta property="og:description" content="http请求信息格式请求行、请求头、空行、请求数据 请求行描述客户端的请求方式、请求资源的名称、http协议的版本号。 例如： GET/BOOK/JAVA.HTML HTTP/1.1 请求头客户机请求的服务器主机名，客户机的环境信息等 Accept：用于告诉服务器，客户机支持的数据类型  （例如：Accept:text/html,image/*）Accept-Charset：用于告诉服务器，客户机">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-18T16:51:23.553Z">
+<meta property="og:image" content="https://benyzheng.github.io/2019/10/15/计算机网络/HTTP/1567493242362.4bbb6a2c.png">
+<meta property="og:image" content="https://benyzheng.github.io/2019/10/15/计算机网络/HTTP/1567493438627.900e0bee.png">
+<meta property="og:updated_time" content="2019-10-20T16:20:52.045Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP">
 <meta name="twitter:description" content="http请求信息格式请求行、请求头、空行、请求数据 请求行描述客户端的请求方式、请求资源的名称、http协议的版本号。 例如： GET/BOOK/JAVA.HTML HTTP/1.1 请求头客户机请求的服务器主机名，客户机的环境信息等 Accept：用于告诉服务器，客户机支持的数据类型  （例如：Accept:text/html,image/*）Accept-Charset：用于告诉服务器，客户机">
+<meta name="twitter:image" content="https://benyzheng.github.io/2019/10/15/计算机网络/HTTP/1567493242362.4bbb6a2c.png">
 
 
 
@@ -303,7 +306,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">10</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">11</span></a>
 
   </li>
         
@@ -322,7 +325,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">27</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">33</span></a>
 
   </li>
 
@@ -465,7 +468,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-19 00:51:23" itemprop="dateModified" datetime="2019-10-19T00:51:23+08:00">2019-10-19</time> 
+              <time title="修改时间：2019-10-21 00:20:52" itemprop="dateModified" datetime="2019-10-21T00:20:52+08:00">2019-10-21</time> 
               -->
               <!-- new version -->
                         
@@ -480,8 +483,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-19T00:51:23+08:00" content="2019-10-19">
-                2019-10-19 00:51:23
+              <time itemprop="dateUpdated" datetime="2019-10-21T00:20:52+08:00" content="2019-10-21">
+                2019-10-21 00:20:52
               </time>
             </span>
           
@@ -616,7 +619,7 @@
 <h5 id="2"><a href="#2" class="headerlink" title="2**"></a>2**</h5><table>
 <thead>
 <tr>
-<th style="text-align:center">200</th>
+<th style="text-align:center">200*</th>
 <th>OK</th>
 <th>请求成功。一般用于GET与POST请求</th>
 </tr>
@@ -638,7 +641,7 @@
 <td>非授权信息。请求成功。但返回的meta信息不在原始的服务器，而是一个副本</td>
 </tr>
 <tr>
-<td style="text-align:center">204</td>
+<td style="text-align:center">204*</td>
 <td>No Content</td>
 <td>无内容。服务器成功处理，但未返回内容。在未更新网页的情况下，可确保浏览器继续显示当前文档</td>
 </tr>
@@ -648,7 +651,7 @@
 <td>重置内容。服务器处理成功，用户终端（例如：浏览器）应重置文档视图。可通过此返回码清除浏览器的表单域</td>
 </tr>
 <tr>
-<td style="text-align:center">206</td>
+<td style="text-align:center">206*</td>
 <td>Partial Content</td>
 <td>部分内容。服务器成功处理了部分GET请求</td>
 </tr>
@@ -664,22 +667,22 @@
 </thead>
 <tbody>
 <tr>
-<td>301</td>
+<td>301*</td>
 <td>Moved Permanently</td>
 <td>永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替</td>
 </tr>
 <tr>
-<td>302</td>
+<td>302*</td>
 <td>Found</td>
 <td>临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI</td>
 </tr>
 <tr>
-<td>303</td>
+<td>303*</td>
 <td>See Other</td>
 <td>查看其它地址。与301类似。使用GET和POST请求查看</td>
 </tr>
 <tr>
-<td>304</td>
+<td>304*</td>
 <td>Not Modified</td>
 <td>未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源</td>
 </tr>
@@ -694,7 +697,7 @@
 <td>已经被废弃的HTTP状态码</td>
 </tr>
 <tr>
-<td>307</td>
+<td>307*</td>
 <td>Temporary Redirect</td>
 <td>临时重定向。与302类似。使用GET请求重定向</td>
 </tr>
@@ -703,14 +706,14 @@
 <h5 id="4"><a href="#4" class="headerlink" title="4**"></a>4**</h5><table>
 <thead>
 <tr>
-<th>400</th>
+<th>400*</th>
 <th>Bad Request</th>
 <th>客户端请求的语法错误，服务器无法理解</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>401</td>
+<td>401*</td>
 <td>Unauthorized</td>
 <td>请求要求用户的身份认证</td>
 </tr>
@@ -720,12 +723,12 @@
 <td>保留，将来使用</td>
 </tr>
 <tr>
-<td>403</td>
+<td>403*</td>
 <td>Forbidden</td>
 <td>服务器理解请求客户端的请求，但是拒绝执行此请求</td>
 </tr>
 <tr>
-<td>404</td>
+<td>404*</td>
 <td>Not Found</td>
 <td>服务器无法根据客户端的请求找到资源（网页）。通过此代码，网站设计人员可设置”您所请求的资源无法找到”的个性页面</td>
 </tr>
@@ -799,7 +802,7 @@
 <h5 id="5"><a href="#5" class="headerlink" title="5**"></a>5**</h5><table>
 <thead>
 <tr>
-<th>500</th>
+<th>500*</th>
 <th>Internal Server Error</th>
 <th>服务器内部错误，无法完成请求</th>
 </tr>
@@ -816,7 +819,7 @@
 <td>作为网关或者代理工作的服务器尝试执行请求时，从远程服务器接收到了一个无效的响应</td>
 </tr>
 <tr>
-<td>503</td>
+<td>503*</td>
 <td>Service Unavailable</td>
 <td>由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中</td>
 </tr>
@@ -832,6 +835,93 @@
 </tr>
 </tbody>
 </table>
+<h4 id="http请求方法"><a href="#http请求方法" class="headerlink" title="http请求方法"></a>http请求方法</h4><p>HTTP1.0 定义了三种请求方法： GET, POST 和 HEAD方法。</p>
+<p>HTTP1.1 新增了六种请求方法：OPTIONS、PUT、PATCH、DELETE、TRACE 和 CONNECT 方法。</p>
+<table>
+<thead>
+<tr>
+<th>GET</th>
+<th>请求指定的页面信息，并返回实体主体。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HEAD</td>
+<td>类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST 请求可能会导致新的资源的建立和/或已有资源的修改。</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>从客户端向服务器传送的数据取代指定的文档的内容。</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>请求服务器删除指定的页面。</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td>HTTP/1.1 协议中预留给能够将连接改为管道方式的代理服务器。</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>允许客户端查看服务器的性能。</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>回显服务器收到的请求，主要用于测试或诊断。</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>是对 PUT 方法的补充，用来对已知资源进行局部更新 。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="HTTP的keep-alive是干什么的？"><a href="#HTTP的keep-alive是干什么的？" class="headerlink" title="HTTP的keep-alive是干什么的？"></a>HTTP的keep-alive是干什么的？</h4><p>在早期的HTTP/1.0中，每次http请求都要创建一个连接，而创建连接的过程需要消耗资源和时间，为了减少资源消耗，缩短响应时间，就需要重用连接。在后来的HTTP/1.0中以及HTTP/1.1中，引入了重用连接的机制，就是在http请求头中加入<strong>Connection: keep-alive</strong>来告诉对方这个请求响应完成后不要关闭，下一次咱们还用这个请求继续交流。协议规定HTTP/1.0如果想要保持长连接，需要在请求头中加上Connection: keep-alive。</p>
+<p>keep-alive的优点：</p>
+<ul>
+<li>较少的CPU和内存的使用（由于同时打开的连接的减少了）</li>
+<li>允许请求和应答的HTTP管线化</li>
+<li>降低拥塞控制 （TCP连接减少了）</li>
+<li>减少了后续请求的延迟（无需再进行握手）</li>
+<li>报告错误无需关闭TCP连接</li>
+</ul>
+<h4 id="什么是长连接、短连接？"><a href="#什么是长连接、短连接？" class="headerlink" title="什么是长连接、短连接？"></a>什么是长连接、短连接？</h4><p>在HTTP/1.0中默认使用短连接。也就是说，客户端和服务器每进行一次HTTP操作，就建立一次连接，任务结束就中断连接。当客户端浏览器访问的某个HTML或其他类型的Web页中包含有其他的Web资源（如JavaScript文件、图像文件、CSS文件等），每遇到这样一个Web资源，浏览器就会重新建立一个HTTP会话。</p>
+<p>而从HTTP/1.1起，默认使用长连接，用以保持连接特性。使用长连接的HTTP协议，会在响应头加入这行代码：Connection:keep-alive</p>
+<p>在使用长连接的情况下，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，客户端再次访问这个服务器时，会继续使用这一条已经建立的连接。Keep-Alive不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache）中设定这个时间。实现长连接需要客户端和服务端都支持长连接。</p>
+<p>HTTP协议的长连接和短连接，实质上是TCP协议的长连接和短连接。</p>
+<h4 id="HTTP2相对于HTTP1-x有什么优势和特点？"><a href="#HTTP2相对于HTTP1-x有什么优势和特点？" class="headerlink" title="HTTP2相对于HTTP1.x有什么优势和特点？"></a>HTTP2相对于HTTP1.x有什么优势和特点？</h4><h5 id="二进制分帧"><a href="#二进制分帧" class="headerlink" title="二进制分帧"></a>二进制分帧</h5><p>帧：HTTP/2 数据通信的最小单位消息：指 HTTP/2 中逻辑上的 HTTP 消息。例如请求和响应等，消息由一个或多个帧组成。</p>
+<p>流：存在于连接中的一个虚拟通道。流可以承载双向消息，每个流都有一个唯一的整数ID</p>
+<p>HTTP/2 采用二进制格式传输数据，而非 HTTP 1.x 的文本格式，二进制协议解析起来更高效。</p>
+<h5 id="头部压缩"><a href="#头部压缩" class="headerlink" title="头部压缩"></a>头部压缩</h5><p>HTTP/1.x会在请求和响应中中重复地携带不常改变的、冗长的头部数据，给网络带来额外的负担。</p>
+<ul>
+<li>HTTP/2在客户端和服务器端使用“首部表”来跟踪和存储之前发送的键－值对，对于相同的数据，不再通过每次请求和响应发送</li>
+<li>首部表在HTTP/2的连接存续期内始终存在，由客户端和服务器共同渐进地更新;</li>
+<li>每个新的首部键－值对要么被追加到当前表的末尾，要么替换表中之前的值。</li>
+</ul>
+<blockquote>
+<p>你可以理解为只发送差异数据，而不是全部发送，从而减少头部的信息量</p>
+</blockquote>
+<p><img src="/2019/10/15/计算机网络/HTTP/1567493242362.4bbb6a2c.png" alt></p>
+<h5 id="服务器推送"><a href="#服务器推送" class="headerlink" title="服务器推送"></a>服务器推送</h5><p>服务端可以在发送页面HTML时主动推送其它资源，而不用等到浏览器解析到相应位置，发起请求再响应。例如服务端可以主动把JS和CSS文件推送给客户端，而不需要客户端解析HTML时再发送这些请求。</p>
+<p>服务端可以主动推送，客户端也有权利选择是否接收。如果服务端推送的资源已经被浏览器缓存过，浏览器可以通过发送RST_STREAM帧来拒收。主动推送也遵守同源策略，服务器不会随便推送第三方资源给客户端。</p>
+<h5 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h5><p>HTTP 1.x 中，如果想并发多个请求，必须使用多个 TCP 链接，且浏览器为了控制资源，还会对单个域名有 6-8个的TCP链接请求限制。</p>
+<p>HTTP2中：</p>
+<ul>
+<li>同域名下所有通信都在单个连接上完成。</li>
+<li>单个连接可以承载任意数量的双向数据流。</li>
+<li>数据流以消息的形式发送，而消息又由一个或多个帧组成，多个帧之间可以乱序发送，因为根据帧首部的流标识可以重新组装</li>
+</ul>
+<h4 id="HTTP的缓存的过程是怎样的？"><a href="#HTTP的缓存的过程是怎样的？" class="headerlink" title="HTTP的缓存的过程是怎样的？"></a>HTTP的缓存的过程是怎样的？</h4><p>通常情况下的步骤是:</p>
+<ol>
+<li>客户端向服务器发出请求，请求资源</li>
+<li>服务器返回资源，并通过响应头决定缓存策略</li>
+<li>客户端根据响应头的策略决定是否缓存资源（这里假设是），并将响应头与资源缓存下来</li>
+<li>在客户端再次请求且命中资源的时候，此时客户端去检查上次缓存的缓存策略，根据策略的不同、是否过期等判断是直接读取本地缓存还是与服务器协商缓存</li>
+</ol>
+<p><img src="/2019/10/15/计算机网络/HTTP/1567493438627.900e0bee.png" alt></p>
 
       
     </div>
@@ -868,8 +958,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/10/面经/面经/" rel="next" title="面经">
-                <i class="fa fa-chevron-left"></i> 面经
+              <a href="/2019/10/15/计算机网络/HTTPS和HTTP的区别/" rel="next" title="HTTPS和HTTP的区别">
+                <i class="fa fa-chevron-left"></i> HTTPS和HTTP的区别
               </a>
             
           </div>
@@ -877,6 +967,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/19/计算机网络/GET和POST的区别/" rel="prev" title="GET和POST的区别">
+                GET和POST的区别 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -951,7 +1045,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -990,7 +1084,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1027,7 +1123,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1102,7 +1200,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#http请求信息格式"><span class="nav-number">1.</span> <span class="nav-text">http请求信息格式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#请求行"><span class="nav-number">1.1.</span> <span class="nav-text">请求行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#请求头"><span class="nav-number">1.2.</span> <span class="nav-text">请求头</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#空行"><span class="nav-number">1.3.</span> <span class="nav-text">空行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#请求数据"><span class="nav-number">1.4.</span> <span class="nav-text">请求数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http响应信息格式"><span class="nav-number">2.</span> <span class="nav-text">http响应信息格式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#状态行"><span class="nav-number">2.1.</span> <span class="nav-text">状态行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#消息报头"><span class="nav-number">2.2.</span> <span class="nav-text">消息报头</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#响应正文"><span class="nav-number">2.3.</span> <span class="nav-text">响应正文</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http状态码"><span class="nav-number">3.</span> <span class="nav-text">http状态码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1"><span class="nav-number">3.1.</span> <span class="nav-text">1**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2"><span class="nav-number">3.2.</span> <span class="nav-text">2**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3"><span class="nav-number">3.3.</span> <span class="nav-text">3**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4"><span class="nav-number">3.4.</span> <span class="nav-text">4**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5"><span class="nav-number">3.5.</span> <span class="nav-text">5**</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#http请求信息格式"><span class="nav-number">1.</span> <span class="nav-text">http请求信息格式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#请求行"><span class="nav-number">1.1.</span> <span class="nav-text">请求行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#请求头"><span class="nav-number">1.2.</span> <span class="nav-text">请求头</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#空行"><span class="nav-number">1.3.</span> <span class="nav-text">空行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#请求数据"><span class="nav-number">1.4.</span> <span class="nav-text">请求数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http响应信息格式"><span class="nav-number">2.</span> <span class="nav-text">http响应信息格式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#状态行"><span class="nav-number">2.1.</span> <span class="nav-text">状态行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#消息报头"><span class="nav-number">2.2.</span> <span class="nav-text">消息报头</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#响应正文"><span class="nav-number">2.3.</span> <span class="nav-text">响应正文</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http状态码"><span class="nav-number">3.</span> <span class="nav-text">http状态码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1"><span class="nav-number">3.1.</span> <span class="nav-text">1**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2"><span class="nav-number">3.2.</span> <span class="nav-text">2**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3"><span class="nav-number">3.3.</span> <span class="nav-text">3**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4"><span class="nav-number">3.4.</span> <span class="nav-text">4**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5"><span class="nav-number">3.5.</span> <span class="nav-text">5**</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http请求方法"><span class="nav-number">4.</span> <span class="nav-text">http请求方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP的keep-alive是干什么的？"><span class="nav-number">5.</span> <span class="nav-text">HTTP的keep-alive是干什么的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是长连接、短连接？"><span class="nav-number">6.</span> <span class="nav-text">什么是长连接、短连接？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP2相对于HTTP1-x有什么优势和特点？"><span class="nav-number">7.</span> <span class="nav-text">HTTP2相对于HTTP1.x有什么优势和特点？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#二进制分帧"><span class="nav-number">7.1.</span> <span class="nav-text">二进制分帧</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#头部压缩"><span class="nav-number">7.2.</span> <span class="nav-text">头部压缩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#服务器推送"><span class="nav-number">7.3.</span> <span class="nav-text">服务器推送</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多路复用"><span class="nav-number">7.4.</span> <span class="nav-text">多路复用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP的缓存的过程是怎样的？"><span class="nav-number">8.</span> <span class="nav-text">HTTP的缓存的过程是怎样的？</span></a></li></ol></div>
             
 
           </div>
@@ -1145,7 +1243,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共69.4k字</span>
+  <span class="post-count">博客全站共76.5k字</span>
 </div>
         
 <div class="busuanzi-count">
