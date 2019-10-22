@@ -299,7 +299,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">12</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">13</span></a>
 
   </li>
         
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">42</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">44</span></a>
 
   </li>
 
@@ -385,6 +385,625 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/jvm/JVM之垃圾收集器与内存分配/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/" class="post-title-link" itemprop="url">JVM之垃圾收集器与内存分配</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-07 01:38:07" itemprop="dateModified" datetime="2019-10-07T01:38:07+08:00">2019-10-07</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-07T01:38:07+08:00" content="2019-10-07">
+                2019-10-07 01:38:07
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/jvm/" itemprop="url" rel="index"><span itemprop="name">jvm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JVM之垃圾收集器与内存分配"><a href="#JVM之垃圾收集器与内存分配" class="headerlink" title="JVM之垃圾收集器与内存分配"></a>JVM之垃圾收集器与内存分配</h1><p>垃圾回收区域：</p>
+<p>程序计数器、虚拟机栈、本地方法栈 3 个区域随线程生灭(因为是线程私有)，栈中的栈帧随着方法的进入和退出而有条不紊地执行着出栈和入栈操作。</p>
+<p>而 Java 堆和方法区则不一样，一个接口中的多个实现类需要的内存可能不一样，一个方法中的多个分支需要的内存也可能不一样，我们只有在程序处于运行期才知道那些对象会创建，这部分内存的分配和回收都是动态的，垃圾回收期所关注的就是java堆和方法区。</p>
+<h3 id="判断对象死活"><a href="#判断对象死活" class="headerlink" title="判断对象死活"></a>判断对象死活</h3><p><strong>引用计数法：</strong></p>
+<p>给对象添加一个引用计数器。但是难以解决循环引用问题。</p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/垃圾回收引用计数法.png" alt></p>
+<p>对象objA和objB都有字段instance，赋值令objA.instance = objB及objB.instance = objA，除此以外，这两个对象再无任何引用，实际上这两个对象已经不可能再被访问，但是它们因为互相引用着对方，导致它们的引用计数都不为0,如果不下小心直接把 Obj1-reference 和 Obj2-reference 置 null。则在 Java 堆当中的两块内存依然保持着互相引用无法回收。</p>
+<p><strong>可达性分析(根搜索算法)</strong>：</p>
+<p>通过一系列的 ‘GC Roots’ 的对象作为起始点，从这些节点出发所走过的路径称为引用链。当一个对象到 GC Roots 没有任何引用链相连的时候说明对象不可用。</p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/垃圾回收根搜索算法.jpg" alt></p>
+<p>可作为 GC Roots 的对象：</p>
+<ul>
+<li>虚拟机栈(栈帧中的本地变量表)中引用的对象</li>
+<li>方法区中类静态属性引用的对象</li>
+<li>方法区中常量引用的对象</li>
+<li>本地方法栈中 JNI(即一般说的 Native 方法) 引用的对象</li>
+</ul>
+<p><strong>引用的类别：</strong></p>
+<ul>
+<li>强引用：类似于 <code>Object obj = new Object();</code> 创建的，只要强引用在就不回收。</li>
+<li>软引用：SoftReference 类实现软引用。在系统要发生内存溢出异常之前，将会把这些对象列进回收范围之中进行二次回收。</li>
+<li>弱引用：WeakReference 类实现弱引用。对象只能生存到下一次垃圾收集之前。在垃圾收集器工作时，无论内存是否足够都会回收掉只被弱引用关联的对象。</li>
+<li>虚引用：PhantomReference 类实现虚引用。无法通过虚引用获取一个对象的实例，为一个对象设置虚引用关联的唯一目的就是能在这个对象被收集器回收时收到一个系统通知。</li>
+</ul>
+<h3 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h3><p>在堆中，尤其是在新生代中，一次垃圾回收一般可以回收 70% ~ 95% 的空间，而永久代的垃圾收集效率远低于此。</p>
+<p>永久代垃圾回收主要两部分内容：废弃的常量和无用的类。  </p>
+<p>判断废弃常量：一般是判断没有该常量的引用。</p>
+<p>判断无用的类：要以下三个条件都满足</p>
+<ul>
+<li>该类所有的实例都已经回收，也就是 Java 堆中不存在该类的任何实例</li>
+<li>加载该类的 ClassLoader 已经被回收</li>
+<li>该类对应的 java.lang.Class 对象没有任何地方被引用，无法在任何地方通过反射访问该类的方法</li>
+</ul>
+<h3 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h3><p>标记-清除算法：</p>
+<p>标记所有需要回收的对象，标记完成后统一进行回收被标记的对象</p>
+<p>缺点：</p>
+<ul>
+<li>效率不高</li>
+<li>空间产生大量碎片</li>
+</ul>
+<p>复制算法：</p>
+<p>思路：把空间分成两块，每次只对其中一块进行 GC。当这块内存使用完时，就将还存活的对象复制到另一块上面。</p>
+<p>解决前一种方法的不足，但是会造成空间利用率低下。因为大多数新生代对象都不会熬过第一次 GC。所以没必要 1 : 1 划分空间。可以分一块较大的 Eden 空间和两块较小的 Survivor 空间，每次使用 Eden 空间和其中一块 Survivor。当回收时，将 Eden 和 Survivor 中还存活的对象一次性复制到另一块 Survivor 上，最后清理 Eden 和 Survivor 空间。大小比例一般是 8 : 1 : 1，每次浪费 10% 的 Survivor 空间。</p>
+<p>但是这里有一个问题就是如果存活的大于 10% 怎么办？这里采用一种分配担保策略：多出来的对象直接进入老年代。</p>
+<p>标记-整理算法：</p>
+<p>与标记-清除算法不同的一点是，会把存活对象移动一端，解决空间产生大量碎片的缺点。</p>
+<p>分代收集算法：</p>
+<p>当前商业虚拟机的垃圾收集都采用分代收集算法。</p>
+<p>把java堆分成新生代和老年代，根据各个年代的特点采用最合适的收集算法。</p>
+<p>在新生代中，每次垃圾回收时都发现大批对象死去，只有少量存活，选用复制算法，只需要付出少量存活对象的复制成本就可以完成收集。</p>
+<p>在老年代中，对象存活率高，没有额外空间对他进行分配担保，就使用标记清除或者标记整理算法回收。</p>
+<h3 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h3><p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/垃圾回收收集器.jpg" alt></p>
+<p>说明：如果两个收集器之间存在连线说明他们之间可以搭配使用。</p>
+<p><strong>serial收集器</strong></p>
+<p>这是一个单线程收集器。意味着它只会使用一个 CPU 或一条收集线程去完成收集工作，并且在进行垃圾回收时必须暂停其它所有的工作线程直到收集结束。</p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/serial收集器.jpg" alt></p>
+<p><strong>ParNew收集器</strong></p>
+<p> Serial 收集器的多线程版本，许多运行在server模式下的虚拟机中首选的新生代收集器，原因是处理Serial收集器，只有它能与CMS收集器配合工作(真正意义上的并发收集器，实现让垃圾收集线程和用户线程同时工作)</p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/ParNew收集器.jpg" alt></p>
+<p><strong>Parallel Scavenge收集器</strong></p>
+<p>并行和并发区别：</p>
+<ul>
+<li>并行(Parallel)：指多条垃圾收集线程并行工作，但此时用户线程仍然处于等待状态</li>
+<li>并发(Concurrent)：指用户线程与垃圾收集线程同时执行（但不一定是并行的，可能会交替执行），用户线程继续运行，而垃圾收集程序运行于另一个CPU上。</li>
+</ul>
+<p>这是一个<strong>新生代收集器</strong>，也是使用复制算法实现，同时也是<strong>并行</strong>的<strong>多线程</strong>收集器。</p>
+<p>CMS 等收集器的关注点是尽可能地缩短<strong>垃圾收集时用户线程所停顿的时间</strong>，而 Parallel Scavenge 收集器的目的是<strong>达到一个可控制的吞吐量</strong>(Throughput = 运行用户代码时间 / (运行用户代码时间 + 垃圾收集时间)  )。</p>
+<p>Parallel Scavenge收集器提供两个参数用于精确控制吞吐量，分别是<strong>控制最大垃圾收集停顿时间</strong>的-XX:MaxGCPauseMillis参数和<strong>直接设置吞吐量大小</strong>的-XX:GCTimeRatio参数。</p>
+<p>-XX:MaxGCPauseMillis：允许的值是一个大于0的毫秒数，收集器将尽力保证内存回收花费的时间不超过设定值。GC停顿时间缩短是以牺牲吞吐量和新生代空间来换取的(并不是把参数设置越小越好)</p>
+<p>-XX:GCTimeRatio：是一个大于0小于100的整数，是垃圾收集时间占总时间的比率，相当于吞吐量的倒数。</p>
+<p>-XX:+UserAdaptiveSIzePolicy：作为一个吞吐量优先的收集器，虚拟机会根据当前系统的运行情况收集性能监控信息，动态调整停顿时间。这就是 GC 的<strong>自适应调整策略</strong>(GC Ergonomics)。</p>
+<p><strong>Serial Old收集器</strong></p>
+<p>收集器的老年代版本，单线程，使用 <code>标记 —— 整理</code>。</p>
+<p><strong>Parallel Old收集器</strong></p>
+<p>Parallel Old 是 Parallel Scavenge 收集器的老年代版本。多线程，使用 <code>标记 —— 整理</code></p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/parallelold收集器.png" alt></p>
+<p><strong>CMS收集器</strong></p>
+<p>CMS (Concurrent Mark Sweep) 收集器是一种以<strong>获取最短回收停顿时间</strong>为目标的收集器。基于 <code>标记 —— 清除</code> 算法实现。</p>
+<p>运作步骤：</p>
+<ul>
+<li>初始标记(CMS initial mark)：标记 GC Roots 能直接关联到的对象</li>
+<li>并发标记(CMS concurrent mark)：进行 GC Roots Tracing(根搜索算法)</li>
+<li>重新标记(CMS remark)：修正并发标记期间的变动部分</li>
+<li>并发清除(CMS concurrent sweep)</li>
+</ul>
+<p>其中初始标记、重新标记这两个步骤仍然需要“Stop The World”。初始标记仅仅只是标记一下GC Roots能直接关联到的对象，速度很快，并发标记阶段就是进行GC Roots Tracing的过程，而重新标记阶段则是为了修正并发标记期间，因用户程序继续运作而导致标记产生变动的那一部分对象的标记记录，这个阶段的停顿时间一般会比初始标记阶段稍长一些，但远比并发标记的时间短。</p>
+<p>由于整个过程中耗时最长的并发标记和并发清除过程中，收集器线程都可以与用户线程一起工作，所以总体上来说，CMS收集器的内存回收过程是与用户线程一起并发地执行。老年代收集器（新生代使用ParNew）。</p>
+<p><strong>优点</strong>: 并发收集、低停顿<br><strong>缺点</strong>: 对 CPU 资源敏感、无法收集浮动垃圾、<code>标记 —— 清除</code> 算法带来的空间碎片</p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/CMS收集器.png" alt></p>
+<p><strong>G1收集器</strong></p>
+<p>G1是目前技术发展的最前沿成果之一，HotSpot开发团队赋予它的使命是未来可以替换掉JDK1.5中发布的CMS收集器。与CMS收集器相比G1收集器有以下特点：</p>
+<ol>
+<li><strong>空间整合</strong>，G1收集器采用标记整理算法，不会产生内存空间碎片。分配大对象时不会因为无法找到连续空间而提前触发下一次GC。</li>
+<li><strong>可预测停顿</strong>，这是G1的另一大优势，降低停顿时间是G1和CMS的共同关注点，但G1除了追求低停顿外，还能建立可预测的停顿时间模型，能让使用者明确指定在一个长度为N毫秒的时间片段内，消耗在垃圾收集上的时间不得超过N毫秒，这几乎已经是实时Java（RTSJ）的垃圾收集器的特征了。</li>
+</ol>
+<p>上面提到的垃圾收集器，收集的范围都是整个新生代或者老年代，而G1不再是这样。使用G1收集器时，Java堆的内存布局与其他收集器有很大差别，它将整个Java堆划分为<strong>多个大小相等的独立区域</strong>（Region），虽然还保留有新生代和老年代的概念，但新生代和老年代不再是物理隔阂了，它们都是一部分（物理可以不连续、逻辑连续的一段内存）Region的集合。</p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/G1垃圾回收器.png" alt></p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/G1步骤.png" alt></p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/G1收集器运行.png" alt></p>
+<p>G1的新生代收集跟ParNew类似，当新生代占用达到一定比例的时候，开始出发收集。和CMS类似，G1收集器收集老年代对象会有短暂停顿。</p>
+<p>收集步骤：</p>
+<p>1、标记阶段，首先初始标记(Initial-Mark),这个阶段是停顿的(Stop the World Event)，并且会触发一次普通Mintor GC。对应GC log:GC pause (young) (inital-mark)</p>
+<p>2、Root Region Scanning根区域扫描，程序运行过程中会回收survivor区(存活到老年代)，这一过程必须在young GC之前完成。</p>
+<p>3、Concurrent Marking并发标记，在整个堆中进行并发标记(和应用程序并发执行)，此过程可能被young GC中断。在并发标记阶段，若发现区域对象中的所有对象都是垃圾，那个这个区域会被立即回收(图中打X)。同时，并发标记过程中，会计算每个区域的对象活性(区域中存活对象的比例)。</p>
+<p>4、Remark, 最终标记，会有短暂停顿(STW:stop the world)。再标记阶段是用来收集 并发标记阶段 产生新的垃圾(并发阶段和应用程序一同运行)；G1中采用了比CMS更快的初始快照算法:snapshot-at-the-beginning (SATB)。</p>
+<p>5、Copy/Clean up，多线程清除失活对象，会有STW。G1将回收区域的存活对象拷贝到新区域，清除Remember Sets，并发清空回收区域并把它返回到空闲区域链表中。</p>
+<p>6、复制/清除过程后。回收区域的活性对象已经被集中回收到深蓝色和深绿色区域。</p>
+<h3 id="内存分配与回收策略"><a href="#内存分配与回收策略" class="headerlink" title="内存分配与回收策略"></a>内存分配与回收策略</h3><p>对象的内存分配，往大方向上讲，就是在堆上分配（但也可能经过JIT编译后被拆散为标量类型并间接地在栈上分配），对象主要分配在新生代的Eden区上，如果启动本地线程分配缓冲(TLAB)，将线程上优先在TLAB上分配少数情况下也可能会直接分配在老年代中，其细节取决于当前使用的是哪一种垃圾收集器组合，还有虚拟机中与内存相关的参数配置。</p>
+<p><strong>对象优先在Eden分配</strong></p>
+<p>对象主要分配在新生代的 Eden 区上，如果启动了本地线程分配缓冲区，将线程优先在 (TLAB) 上分配。少数情况会直接分配在老年代中。</p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/java堆内存模型.png" alt></p>
+<p>新生代和老年代：</p>
+<ul>
+<li>新生代GC(minor GC)：发生在新生代的垃圾回收动作，频繁，速度快。</li>
+<li>老年代GC(Major GC / Full GC)：发生在老年代的垃圾回收动作，出现了 Major GC 经常会伴随至少一次 Minor GC(非绝对)。Major GC 的速度一般会比 Minor GC 慢十倍以上。</li>
+</ul>
+<p><strong>大对象直接进入老年代</strong></p>
+<p>大对象指的是需要大量连续内存空间的java对象，最典型的大对象是那种很长字符串及数组(byte[]数组就是典型大对象)</p>
+<p>虚拟机提供一个-XX:PretenureSizeThreshold参数，令大于这个设置值的对象直接在老年代中分配。目的是避免在Eden区及两个Survivor区之间发生大量的内存拷贝。</p>
+<p><strong>长期存活的对象直接进入老年代</strong></p>
+<p>虚拟机为每个对象定义了一个年龄计数器，如果对象经过了1次Minor GC那么对象会进入Survivor区，之后每经过一次Minor GC那么对象的年龄加1，知道达到阀值对象进入老年区。</p>
+<p><strong>动态对象年龄判断</strong></p>
+<p>如果Survivor区中相同年龄的所有对象大小的总和大于Survivor空间的一半，年龄大于或等于该年龄的对象可以直接进入老年代。</p>
+<p><strong>空间分配担保</strong></p>
+<p>每次进行Minor GC时，JVM会计算Survivor区移至老年区的对象的平均大小，如果这个值大于老年区的剩余值大小则进行一次Full GC，如果小于检查HandlePromotionFailure设置，如果true则只进行Monitor GC,如果false则进行Full GC。 </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/并发/多线程1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/并发/多线程1/" class="post-title-link" itemprop="url">多线程(一)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-07 01:40:14" itemprop="dateModified" datetime="2019-10-07T01:40:14+08:00">2019-10-07</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-07T01:40:14+08:00" content="2019-10-07">
+                2019-10-07 01:40:14
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/并发/多线程1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/并发/多线程1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="多线程-一"><a href="#多线程-一" class="headerlink" title="多线程(一)"></a>多线程(一)</h3><h5 id="进程和线程的基本概念"><a href="#进程和线程的基本概念" class="headerlink" title="进程和线程的基本概念"></a>进程和线程的基本概念</h5><p>进程：系统中能独立运行并作为资源分配的基本单位</p>
+<p>进程的特征：</p>
+<p>1.动态性：进程的实质是程序的一次执行过程，进程是动态产生，动态消亡的。<br>2.并发性：任何进程都可以同其他进程一起并发执行。<br>3.独立性：进程是一个能独立运行的基本单位，同时也是系统分配资源和调度的独立单位。<br>4.异步性：由于进程间的相互制约，使进程具有执行的间断性，即进程按各自独立的、不可预知的速度向前推进。</p>
+<p>线程：是进程中的一个实体，作为系统调度和分派的基本单位。</p>
+<p>线程的性质：</p>
+<p>1.线程是进程内的一个相对独立的可执行的单元。若把进程称为任务的话，那么线程则是应用中的一个子任务的执行。<br>2.由于线程是被调度的基本单元，而进程不是调度单元。所以，每个进程在创建时，至少需要同时为该进程创建一个线程。即进程中至少要有一个或一个以上的线程，否则该进程无法被调度执行。<br>3.进程是被分给并拥有资源的基本单元。同一进程内的多个线程共享该进程的资源，但线程并不拥有资源，只是使用他们。<br>4.线程是操作系统中基本调度单元，因此线程中应包含有调度所需要的必要信息，且在生命周期中有状态的变化。<br>5.由于共享资源【包括数据和文件】，所以线程间需要通信和同步机制，且需要时线程可以创建其他线程，但线程间不存在父子关系。</p>
+<p>进程与线程的区别：</p>
+<p>1、调度：在传统的操作系统中，CPU调度和分派的基本单位是进程。在引入线程的操作系统中，则把线程作为CPU调度和分派的基本单位，进程则作为资源拥有的基本单位，将线程作为cpu调度和分派，进程则作为资源拥有的基本单位，显著提高系统的并发性（同一进程中的线程切换不会引起进程切换，不同进程中的线程切换才会引起进程切换）</p>
+<p>2、并发性：进程之间可以并发执行，同一个进程之间的线程也可以并发执行，提高系统资源和系统吞吐量</p>
+<p>（例如，在一个为引入线程的单CPU操作系统中，若仅设置一个文件服务进程，当它由于某种原因被封锁时，便没有其他的文件服务进程来提供服务。在引入线程的操作系统中，可以在一个文件服务进程设置多个服务线程。当第一个线程等待时，文件服务进程中的第二个线程可以继续运行；当第二个线程封锁时，第三个线程可以继续执行，从而显著地提高了文件服务的质量以及系统的吞吐量。）</p>
+<p>3、拥有资源：进程拥系统资源的独立单位，线程不能拥有自己的资源，但可以访问隶属进程的资源（代码段、数据段以及系统资源，可供同一个进程的其他线程共享）</p>
+<p>4、独立性：在同一进程中的不同线程之间的独立性要比不同进程之间的独立性低得多，这是因为为了防止进程之间彼此干扰和破坏，每个进程都拥有一个独立的地址空间和其它资源，除了共享全局变量外，不允许其它进程的访问。</p>
+<p>5、系统开销：由于在创建或撤销进程时，系统都要为之分配或回收资源，如内存空间、I/O设备等。因此，操作系统为此所付出的开销将显著地大于在创建或撤消线程时的开销。</p>
+<p>6、支持多处理机系统： 在多处理机系统中，对于传统的进程，即单线程进程，不管有多少处理机，该进程只能运行在一个处理机上。但对于多线程进程，就可以将一个进程中的多个线程分配到多个处理机上，使它们并行执行，这无疑将加速进程的完成。</p>
+<h5 id="创建和启动线程"><a href="#创建和启动线程" class="headerlink" title="创建和启动线程"></a>创建和启动线程</h5><p>1、继承Thread类创建线程类</p>
+<p>步骤：</p>
+<ul>
+<li>定义一个继承Thread类的子类，并重写该类的run()方法</li>
+<li>创建子类的实例，即创建线程对象</li>
+<li>调用该线程对象的start()方法启动线程</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeThead</span> <span class="keyword">extends</span> <span class="title">Thraad</span>   </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span>   </span>&#123; </span><br><span class="line">     <span class="comment">//do something here  </span></span><br><span class="line">    &#125;  </span><br><span class="line"> &#125; </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"> SomeThread oneThread = <span class="keyword">new</span> SomeThread();   </span><br><span class="line">  <span class="comment">//启动线程：   </span></span><br><span class="line"> oneThread.start(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、实现Runnable接口创建线程类</p>
+<p>步骤：</p>
+<ul>
+<li>定义Runnable接口的实现类，并重写该接口的的run()方法</li>
+<li>创建该实现类的实例</li>
+<li>以此实例作为创建Thread对象的参数，该Thread对象即是线程对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span>   </span>&#123; </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span>   </span>&#123; </span><br><span class="line">  <span class="comment">//do something here  </span></span><br><span class="line">  &#125;  </span><br><span class="line">&#125; </span><br><span class="line">Runnable oneRunnable = <span class="keyword">new</span> SomeRunnable();   </span><br><span class="line">Thread oneThread = <span class="keyword">new</span> Thread(oneRunnable);   </span><br><span class="line">oneThread.start();</span><br></pre></td></tr></table></figure>
+<p>3、通过Callable和Future创建对象</p>
+<p>步骤：</p>
+<ul>
+<li>创建Callable接口的实现类，并实现call()方法，该call()方法作为线程执行体，并且有返回值</li>
+<li>创建Callable实现类的实例</li>
+<li>使用FutureTask类来包装Callable对象，该FutureTask对象封装Callable对象的call()方法的返回值</li>
+<li>使用FutureTask对象作为Thread对象的target创建并启动新线程</li>
+<li>调用FutureTask对象的get()方法获取子线程执行结束后的返回值</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Callable</span>   </span>&#123; </span><br><span class="line">  <span class="function">V <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;  </span><br><span class="line"> &#125; </span><br><span class="line">  步骤<span class="number">1</span>：创建实现Callable接口的类SomeCallable(略);   </span><br><span class="line">  步骤<span class="number">2</span>：创建一个类对象： </span><br><span class="line">      Callable oneCallable = <span class="keyword">new</span> SomeCallable(); </span><br><span class="line">  步骤<span class="number">3</span>：由Callable创建一个FutureTask对象：   </span><br><span class="line">    FutureTask oneTask = <span class="keyword">new</span> FutureTask(oneCallable); </span><br><span class="line">  注释： FutureTask是一个包装器，它通过接受Callable来创建，它同时实现了 Future和Runnable接口。 </span><br><span class="line">  步骤<span class="number">4</span>：由FutureTask创建一个Thread对象：   </span><br><span class="line">    Thread oneThread = <span class="keyword">new</span> Thread(oneTask);   </span><br><span class="line">  步骤<span class="number">5</span>：启动线程：  </span><br><span class="line">    oneThread.start();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Callable&lt;Integer&gt; myCallable = <span class="keyword">new</span> MyCallable();    <span class="comment">// 创建MyCallable对象</span></span><br><span class="line">        FutureTask&lt;Integer&gt; ft = <span class="keyword">new</span> FutureTask&lt;Integer&gt;(myCallable); <span class="comment">//使用FutureTask来包装MyCallable对象</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" "</span> + i);</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">30</span>) &#123;</span><br><span class="line">                Thread thread = <span class="keyword">new</span> Thread(ft);   <span class="comment">//FutureTask对象作为Thread对象的target创建新的线程</span></span><br><span class="line">                thread.start();                      <span class="comment">//线程进入到就绪状态</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"主线程for循环执行完毕.."</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = ft.get();            <span class="comment">//取得新创建的新线程中的call()方法返回的结果</span></span><br><span class="line">            System.out.println(<span class="string">"sum = "</span> + sum);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCallable</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 与run()方法不同的是，call()方法具有返回值</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" "</span> + i);</span><br><span class="line">            sum += i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h5><p><img src="/2019/05/26/并发/多线程1/线程生命周期.png" alt></p>
+<p>1、新建状态</p>
+<p>   用new关键字和Thread类或其子类建立一个线程对象后，该线程对象就处于新生状态。处于新生状态的线程有自己的内存空间，通过调用start方法进入就绪状态（runnable）。</p>
+<p>2、就绪状态</p>
+<p>处于就绪状态的线程已经具备了运行条件，但还没有分配到CPU，处于线程就绪队列（尽管是采用队列形式，事实上，把它称为可运行池而不是可运行队列。因为cpu的调度不一定是按照先进先出的顺序来调度的），等待系统为其分配CPU。等待状态并不是执行状态，当系统选定一个等待执行的Thread对象后，它就会从等待执行状态进入执行状态，系统挑选的动作称之为“cpu调度”。一旦获得CPU，线程就进入运行状态并自动调用自己的run方法。</p>
+<p>提示：如果希望子线程调用start()方法后立即执行，可以使用Thread.sleep()方式使主线程睡眠一伙儿，转去执行子线程。</p>
+<p>3、运行状态</p>
+<p>处于就绪状态的线程，如果获得了cpu的调度，就会从就绪状态变为运行状态，执行run()方法中的任务。</p>
+<p>运行状态-&gt;就绪状态：1.失去cpu资源 2.调用yield()方法</p>
+<p>运行状态-&gt;阻塞状态：</p>
+<p>1.调用sleep()方法主动放弃cpu资源</p>
+<p>2.线程调用一个阻塞式IO方法，在该方法返回之前，线程被阻塞</p>
+<p>3.线程试图获取一个同步监视器（锁），但该同步监视器正被其他线程所持有</p>
+<p>4.线程在等待某个通知（notify）</p>
+<p>5.程序调用线程的suspend方法被线程挂起（容易导致死锁）</p>
+<p>4、阻塞状态</p>
+<p>只有当引起阻塞的原因消除时，如睡眠时间已到，或等待的I/O设备空闲下来，线程便转入就绪状态，重新到就绪队列中排队等待，被系统选中后从原来停止的位置开始继续运行。</p>
+<p>5、死亡状态</p>
+<p> 当线程的run()方法执行完，或者被强制性地终止，就认为它死去。这个线程对象也许是活的，但是，它已经不是一个单独执行的线程。线程一旦死亡，就不能复生。 </p>
+<h5 id="线程管理"><a href="#线程管理" class="headerlink" title="线程管理"></a>线程管理</h5><p>1、线程睡眠sleep</p>
+<p>让当前正在执行的线程暂停一段时间，并进入阻塞状态，且当前线程不会失去锁</p>
+<p>sleep是静态方法，最好不要用Thread的实例对象调用它，因为它睡眠的始终是当前正在运行的线程，而不是调用它的线程对象，它只对正在运行状态的线程对象有效</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;  </span><br><span class="line">        System.out.println(Thread.currentThread().getName());  </span><br><span class="line">        MyThread myThread=<span class="keyword">new</span> MyThread();  </span><br><span class="line">        myThread.start();  </span><br><span class="line">        myThread.sleep(<span class="number">1000</span>);<span class="comment">//这里sleep的就是main线程，而非myThread线程  </span></span><br><span class="line">        Thread.sleep(<span class="number">10</span>);  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)&#123;  </span><br><span class="line">            System.out.println(<span class="string">"main"</span>+i);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用sleep方法之后，线程是进入阻塞状态的，只有当睡眠的时间结束，才会重新进入到就绪状态，而就绪状态进入到运行状态，是由系统控制的，我们不可能精准的去干涉它，所以如果调用Thread.sleep(1000)使得线程睡眠1秒，可能结果会大于1秒。</p>
+<p>2、线程让步yield()</p>
+<p>yield()方法和sleep()方法有点相似，它也是Thread类提供的一个静态的方法，它也可以让当前正在执行的线程暂停，让出cpu资源给其他的线程。但是和sleep()方法不同的是，它不会进入到阻塞状态，而是进入到就绪状态。</p>
+<p>3、线程合并join()</p>
+<p>线程的合并的含义就是将几个并行线程的线程合并为一个单线程执行，应用场景是当一个线程必须等待另一个线程执行完毕才能执行时，Thread类提供了join方法来完成这个功能，它不是静态方法。<br>从上面的方法的列表可以看到，它有3个重载的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">()</span>      </span></span><br><span class="line"><span class="function">     当前线程等该加入该线程后面，等待该线程终止。    </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">long</span> millis)</span>  </span></span><br><span class="line"><span class="function">     当前线程等待该线程终止的时间最长为 millis 毫秒。 如果在millis时间内，该线程没有执行完，那么当前线程进入就绪状态，重新等待cpu调度  </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">long</span> millis,<span class="keyword">int</span> nanos)</span>   </span></span><br><span class="line"><span class="function">     等待该线程终止的时间最长为 millis 毫秒 + nanos 纳秒。如果在millis时间内，该线程没有执行完，那么当前线程进入就绪状态，重新等待cpu调度</span></span><br></pre></td></tr></table></figure>
+<p>4、设置线程优先级</p>
+<p>每个线程默认的优先级都与创建它的父线程具有相同的优先级，在默认情况下，main线程具有普通优先级。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MAX_PRIORITY   =<span class="number">10</span></span><br><span class="line"></span><br><span class="line">MIN_PRIORITY   =<span class="number">1</span></span><br><span class="line"></span><br><span class="line">NORM_PRIORITY   =<span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong>虽然Java提供了10个优先级别，但这些优先级别需要操作系统的支持。不同的操作系统的优先级并不相同，而且也不能很好的和Java的10个优先级别对应。所以我们应该使用MAX_PRIORITY、MIN_PRIORITY和NORM_PRIORITY三个静态常量来设定优先级，这样才能保证程序最好的可移植性。</p>
+<p>5、后台(守护)线程</p>
+<p>JVM的垃圾回收、内存管理等线程都是守护线程。还有就是在做数据库应用时候，使用的数据库连接池，连接池本身也包含着很多后台线程，监控连接个数、超时时间、状态等等。</p>
+<p>守护线程的用途为：</p>
+<p>​     • 守护线程通常用于执行一些后台作业，例如在应用程序运行时播放背景音乐，在文字编辑器里做自动语法检查、自动保存等功能。</p>
+<p>​     • Java的垃圾回收也是一个守护线程。守护线的好处就是你不需要关心它的结束问题。例如你在你的应用程序运行的时候希望播放背景音乐，如果将这个播放背景音乐的线程设定为非守护线程，那么在用户请求退出的时候，不仅要退出主线程，还要通知播放背景音乐的线程退出；如果设定为守护线程则不需要了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public final void setDaemon(boolean on)        </span><br><span class="line">将该线程标记为守护线程或用户线程。当正在运行的线程都是守护线程时，Java 虚拟机退出。    </span><br><span class="line">         </span><br><span class="line">该方法必须在启动线程前调用。 该方法首先调用该线程的 checkAccess 方法，且不带任何参数。这可能抛出 SecurityException（在当前线程中）。   </span><br><span class="line">  参数：</span><br><span class="line">     on - 如果为 true，则将该线程标记为守护线程。    </span><br><span class="line">  抛出：    </span><br><span class="line">    IllegalThreadStateException - 如果该线程处于活动状态。    </span><br><span class="line">    SecurityException - 如果当前线程无法修改该线程。</span><br></pre></td></tr></table></figure>
+<p>6、正确结束线程</p>
+<p>Thread.stop()、Thread.suspend、Thread.resume、Runtime.runFinalizersOnExit这些终止线程运行的方法已经被废弃了，使用它们是极端不安全的！想要安全有效的结束一个线程，可以使用下面的方法：</p>
+<p>​    • 正常执行完run方法，然后结束掉；</p>
+<p>​    • 控制循环条件和判断条件的标识符来结束掉线程。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1200,6 +1819,212 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/零散记/sizeOf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/零散记/sizeOf/" class="post-title-link" itemprop="url">sizeOf</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-18 16:07:12" itemprop="dateModified" datetime="2019-10-18T16:07:12+08:00">2019-10-18</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-18T16:07:12+08:00" content="2019-10-18">
+                2019-10-18 16:07:12
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/零散记/" itemprop="url" rel="index"><span itemprop="name">零散记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/零散记/sizeOf/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/零散记/sizeOf/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.cnblogs.com/qiulinzhang/p/9570867.html" target="_blank" rel="noopener">https://www.cnblogs.com/qiulinzhang/p/9570867.html</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/零散记/占用多少个字节数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1381,212 +2206,6 @@
 </tr>
 </tbody>
 </table>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/零散记/sizeOf/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/零散记/sizeOf/" class="post-title-link" itemprop="url">sizeOf</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-18 16:07:12" itemprop="dateModified" datetime="2019-10-18T16:07:12+08:00">2019-10-18</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-18T16:07:12+08:00" content="2019-10-18">
-                2019-10-18 16:07:12
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/零散记/" itemprop="url" rel="index"><span itemprop="name">零散记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/零散记/sizeOf/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/零散记/sizeOf/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.cnblogs.com/qiulinzhang/p/9570867.html" target="_blank" rel="noopener">https://www.cnblogs.com/qiulinzhang/p/9570867.html</a></p>
 
           
         
@@ -2456,538 +3075,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/java集合类/集合类之SET/集合类之SET/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/java集合类/集合类之SET/集合类之SET/" class="post-title-link" itemprop="url">集合类之SET</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-06 23:55:57" itemprop="dateModified" datetime="2019-10-06T23:55:57+08:00">2019-10-06</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-06T23:55:57+08:00" content="2019-10-06">
-                2019-10-06 23:55:57
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/集合框架/" itemprop="url" rel="index"><span itemprop="name">集合框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/java集合类/集合类之SET/集合类之SET/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/java集合类/集合类之SET/集合类之SET/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="集合类之SET"><a href="#集合类之SET" class="headerlink" title="集合类之SET"></a>集合类之SET</h1><p>set集合可以存储多个对象，但并不会记住元素的存储顺序，也不允许集合中有重复元素(不同的set集合有不同的判断方法)。</p>
-<h3 id="1-HashSet"><a href="#1-HashSet" class="headerlink" title="1.HashSet"></a>1.HashSet</h3><p>HashSet按照Hash算法存储集合中的元素，具有很好的存取和查找性能。当向HashSet中添加一些元素时，HashSet会根据该对象的HashCode()方法来得到该对象的HashCode值，然后根据这些HashCode的值来决定元素的位置。(HashSet的底层原理是HashMap)</p>
-<p>HashSet的特点：1.存储顺序和添加的顺序不同</p>
-<p>　　　　　　　　2.HashSet不是同步的，如果多个线程同时访问一个HashSet，假设有两个或更多的线程修改了                集合中的值，则必须通过代码使线程同步。</p>
-<p>　　　　　　　　3.HastSet允许集合中的元素为null。</p>
-<p>​                   4.非线程安全</p>
-<p>在Hashset集合中，<strong>判断两个元素相同的标准是：两个对象通过equals()方法相等，且HashCode()方法的返回值也相等。</strong>如果有两个元素通过equals()方法比较相等，而HashCode()的返回值不同，HashSet会将这两个对象保存在不同的地方。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashSet</span>&lt;<span class="title">E</span>&gt;  </span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractSet</span>&lt;<span class="title">E</span>&gt;  </span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">Set</span>&lt;<span class="title">E</span>&gt;, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>  </span></span><br><span class="line"><span class="class"></span>&#123;  </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">5024744406713321676L</span>;  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 底层使用HashMap来保存HashSet中所有元素。  </span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">transient</span> HashMap&lt;E,Object&gt; map;  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 定义一个虚拟的Object对象作为HashMap的value，将此对象定义为static final。  </span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object PRESENT = <span class="keyword">new</span> Object();  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 默认的无参构造器，构造一个空的HashSet。 </span></span><br><span class="line"><span class="comment">     *  </span></span><br><span class="line"><span class="comment">     * 实际底层会初始化一个空的HashMap，并使用默认初始容量为16和加载因子0.75。 </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    map = <span class="keyword">new</span> HashMap&lt;E,Object&gt;();  </span><br><span class="line">    &#125;  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 构造一个包含指定collection中的元素的新set。 </span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * 实际底层使用默认的加载因子0.75和足以包含指定 </span></span><br><span class="line"><span class="comment">     * collection中所有元素的初始容量来创建一个HashMap。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> c 其中的元素将存放在此set中的collection。 </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;  </span><br><span class="line">    map = <span class="keyword">new</span> HashMap&lt;E,Object&gt;(Math.max((<span class="keyword">int</span>) (c.size()/.<span class="number">75f</span>) + <span class="number">1</span>, <span class="number">16</span>));  </span><br><span class="line">    addAll(c);  </span><br><span class="line">    &#125;  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 以指定的initialCapacity和loadFactor构造一个空的HashSet。 </span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * 实际底层以相应的参数构造一个空的HashMap。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> initialCapacity 初始容量。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> loadFactor 加载因子。 </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;  </span><br><span class="line">    map = <span class="keyword">new</span> HashMap&lt;E,Object&gt;(initialCapacity, loadFactor);  </span><br><span class="line">    &#125;  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 以指定的initialCapacity构造一个空的HashSet。 </span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * 实际底层以相应的参数及加载因子loadFactor为0.75构造一个空的HashMap。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> initialCapacity 初始容量。 </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>&#123;  </span><br><span class="line">    map = <span class="keyword">new</span> HashMap&lt;E,Object&gt;(initialCapacity);  </span><br><span class="line">    &#125;  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 以指定的initialCapacity和loadFactor构造一个新的空链接哈希集合。 </span></span><br><span class="line"><span class="comment">     * 此构造函数为包访问权限，不对外公开，实际只是是对LinkedHashSet的支持。 </span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * 实际底层会以指定的参数构造一个空LinkedHashMap实例来实现。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> initialCapacity 初始容量。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> loadFactor 加载因子。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dummy 标记。 </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    HashSet(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor, <span class="keyword">boolean</span> dummy) &#123;  </span><br><span class="line">    map = <span class="keyword">new</span> LinkedHashMap&lt;E,Object&gt;(initialCapacity, loadFactor);  </span><br><span class="line">    &#125;  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 返回对此set中元素进行迭代的迭代器。返回元素的顺序并不是特定的。 </span></span><br><span class="line"><span class="comment">     *  </span></span><br><span class="line"><span class="comment">     * 底层实际调用底层HashMap的keySet来返回所有的key。 </span></span><br><span class="line"><span class="comment">     * 可见HashSet中的元素，只是存放在了底层HashMap的key上， </span></span><br><span class="line"><span class="comment">     * value使用一个static final的Object对象标识。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 对此set中元素进行迭代的Iterator。 </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> map.keySet().iterator();  </span><br><span class="line">    &#125;  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 返回此set中的元素的数量（set的容量）。 </span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * 底层实际调用HashMap的size()方法返回Entry的数量，就得到该Set中元素的个数。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 此set中的元素的数量（set的容量）。 </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> map.size();  </span><br><span class="line">    &#125;  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 如果此set不包含任何元素，则返回true。 </span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * 底层实际调用HashMap的isEmpty()判断该HashSet是否为空。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 如果此set不包含任何元素，则返回true。 </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> map.isEmpty();  </span><br><span class="line">    &#125;  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 如果此set包含指定元素，则返回true。 </span></span><br><span class="line"><span class="comment">     * 更确切地讲，当且仅当此set包含一个满足(o==null ? e==null : o.equals(e)) </span></span><br><span class="line"><span class="comment">     * 的e元素时，返回true。 </span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * 底层实际调用HashMap的containsKey判断是否包含指定key。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> o 在此set中的存在已得到测试的元素。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 如果此set包含指定元素，则返回true。 </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> map.containsKey(o);  </span><br><span class="line">    &#125;  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 如果此set中尚未包含指定元素，则添加指定元素。 </span></span><br><span class="line"><span class="comment">     * 更确切地讲，如果此 set 没有包含满足(e==null ? e2==null : e.equals(e2)) </span></span><br><span class="line"><span class="comment">     * 的元素e2，则向此set 添加指定的元素e。 </span></span><br><span class="line"><span class="comment">     * 如果此set已包含该元素，则该调用不更改set并返回false。 </span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * 底层实际将将该元素作为key放入HashMap。 </span></span><br><span class="line"><span class="comment">     * 由于HashMap的put()方法添加key-value对时，当新放入HashMap的Entry中key </span></span><br><span class="line"><span class="comment">     * 与集合中原有Entry的key相同（hashCode()返回值相等，通过equals比较也返回true）， </span></span><br><span class="line"><span class="comment">     * 新添加的Entry的value会将覆盖原来Entry的value，但key不会有任何改变， </span></span><br><span class="line"><span class="comment">     * 因此如果向HashSet中添加一个已经存在的元素时，新添加的集合元素将不会被放入HashMap中， </span></span><br><span class="line"><span class="comment">     * 原来的元素也不会有任何改变，这也就满足了Set中元素不重复的特性。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> e 将添加到此set中的元素。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 如果此set尚未包含指定元素，则返回true。 </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> map.put(e, PRESENT)==<span class="keyword">null</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 如果指定元素存在于此set中，则将其移除。 </span></span><br><span class="line"><span class="comment">     * 更确切地讲，如果此set包含一个满足(o==null ? e==null : o.equals(e))的元素e， </span></span><br><span class="line"><span class="comment">     * 则将其移除。如果此set已包含该元素，则返回true </span></span><br><span class="line"><span class="comment">     * （或者：如果此set因调用而发生更改，则返回true）。（一旦调用返回，则此set不再包含该元素）。 </span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * 底层实际调用HashMap的remove方法删除指定Entry。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> o 如果存在于此set中则需要将其移除的对象。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 如果set包含指定元素，则返回true。 </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> map.remove(o)==PRESENT;  </span><br><span class="line">    &#125;  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 从此set中移除所有元素。此调用返回后，该set将为空。 </span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * 底层实际调用HashMap的clear方法清空Entry中所有元素。 </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    map.clear();  </span><br><span class="line">    &#125;  </span><br><span class="line"> </span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 返回此HashSet实例的浅表副本：并没有复制这些元素本身。 </span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * 底层实际调用HashMap的clone()方法，获取HashMap的浅表副本，并设置到HashSet中。 </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">clone</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">            HashSet&lt;E&gt; newSet = (HashSet&lt;E&gt;) <span class="keyword">super</span>.clone();  </span><br><span class="line">            newSet.map = (HashMap&lt;E, Object&gt;) map.clone();  </span><br><span class="line">            <span class="keyword">return</span> newSet;  </span><br><span class="line">        &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;  </span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> InternalError();  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>HashSet所有方法都直接在HashMap上运用，了解HashMap自然可以了解HashSet。</p>
-<p>其中需要了解一下HashSet的加载因子和容量：</p>
-<p>在HashSet中我们new对象的时候会创建一个<strong>初始默认容量是16</strong>的HashSet集合；其中默认的一个值loadFactor：<br> 加载因子：0.75<br> 加载因子是数组的长度的百分比；16*0.75 = 12；<br> 意思就是数组中的桶数达到12个时数组就要扩容；（复制），扩容到原来的2倍；<br> 0.75是一个折中的数据；是增删改查的最优速度；<br> new的时候可以直接初始化数组长度和loadFactor（加载因子）来改变加载因子；</p>
-<p>注意：</p>
-<ul>
-<li>对于HashSet中保存的对象，主要要正确重写equals方法和hashCode方法，以保证放入Set对象的唯一性</li>
-<li>虽说是Set是对于重复的元素不放入，<strong>倒不如直接说是底层的Map直接把原值替代了</strong></li>
-<li>HashSet没有提供get()方法，愿意是同HashMap一样，Set内部是无序的，只能通过迭代的方式获得</li>
-</ul>
-<h3 id="2-LinkedHashSet"><a href="#2-LinkedHashSet" class="headerlink" title="2.LinkedHashSet"></a>2.LinkedHashSet</h3><p>LinkedHashSet是继承自HashSet，底层实现是LinkedHashMap。并且其初始化时直接<code>super(......)</code></p>
-<p>查看了LinkedHashMap的构造方法后，发现其因为继承自HashMap，所以其底层实现也是HashMap!!!，然后发现了LinkedHashMap调用父类构造方法初始化时，还顺便设置了变量<code>accessOrder = false</code>，看上面得源码可以知道，这是给了迭代器一个参数，<strong>false代表迭代时使用插入得顺序</strong></p>
-<h3 id="3-TreeSet"><a href="#3-TreeSet" class="headerlink" title="3.TreeSet"></a>3.TreeSet</h3><p>1、TreeSet(树集)是一个有序集合，可以按照任何顺序将元素插入该集合，当对该集合进行迭代时，各个值将自动以排序后的顺序出现。TreeSet中的元素按照升序排列，缺省是按照自然顺序进行排序，意味着TreeSet中的元素要实现Comparable接口，或者有一个自定义的比较器Comparator。</p>
-<p>2、TreeSet底层使用的是TreeMap，TreeMap的底层实现是红黑树</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public TreeSet()</span><br><span class="line">&#123;</span><br><span class="line">       this(new TreeMap&lt;E,Object&gt;());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意：</p>
-<p>　　1、TreeSet的排列顺序必须是全局顺序，也就是说任何两个元素都是必须可比的，同时只有当他们比较相同时才返回0。</p>
-<p>　　2、如果树集包含了n个元素，那么平均需要进行log2n次比较，才能找到新元素的正确位置。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/java集合类/集合类之MAP/集合类之MAP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/java集合类/集合类之MAP/集合类之MAP/" class="post-title-link" itemprop="url">集合类之MAP</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-06 23:55:21" itemprop="dateModified" datetime="2019-10-06T23:55:21+08:00">2019-10-06</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-06T23:55:21+08:00" content="2019-10-06">
-                2019-10-06 23:55:21
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/集合框架/" itemprop="url" rel="index"><span itemprop="name">集合框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/java集合类/集合类之MAP/集合类之MAP/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/java集合类/集合类之MAP/集合类之MAP/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="集合类之MAP"><a href="#集合类之MAP" class="headerlink" title="集合类之MAP"></a>集合类之MAP</h1><h3 id="map架构"><a href="#map架构" class="headerlink" title="map架构"></a>map架构</h3><p><img src="/2019/05/26/java集合类/集合类之MAP/集合类之MAP/map架构图.jpg" alt></p>
-<p>如上图：<br>(1) Map 是<strong>映射接口</strong>，Map中存储的内容是<strong>键值对*</strong>(key-value)*。<br>(2) AbstractMap 是<strong>继承于Map的抽象类，它实现了Map中的大部分API</strong>。其它Map的实现类可以通过继承AbstractMap来减少重复编码。<br>(3) SortedMap 是继承于Map的接口。SortedMap中的内容是<strong>排序的键值对</strong>，排序的方法是通过比较器(Comparator)。<br>(4) NavigableMap 是继承于SortedMap的接口。相比于SortedMap，NavigableMap有一系列的导航方法；如”获取大于/等于某对象的键值对”、“获取小于/等于某对象的键值对”等等。<br>(5) TreeMap 继承于AbstractMap，且实现了NavigableMap接口；因此，TreeMap中的内容是“<strong>有序的键值对</strong>”！<br>(6) HashMap 继承于AbstractMap，但没实现NavigableMap接口；因此，HashMap的内容是“<strong>键值对，但不保证次序</strong>”！<br>(7) Hashtable 虽然不是继承于AbstractMap，但它继承于Dictionary(Dictionary也是键值对的接口)，而且也实现Map接口；因此，Hashtable的内容也是“<strong>键值对，也不保证次序</strong>”。但和HashMap相比，Hashtable是线程安全的，而且它支持通过Enumeration去遍历。<br>(8) WeakHashMap 继承于AbstractMap。它和HashMap的键类型不同，<strong>WeakHashMap的键是“弱键”</strong>。</p>
-<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>1、HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。</p>
-<p>2、HashMap 继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。</p>
-<p>3、HashMap 的实现不是同步的，这意味着它不是线程安全的。它的key、value都可以为null。</p>
-<p>4、HashMap中的映射<strong>不是有序</strong>的。</p>
-<p>HashMap 的实例有两个参数影响其性能：“<strong>初始容量</strong>” 和 “<strong>加载因子</strong>”。容量 是哈希表中桶的数量，初始容量 只是哈希表在创建时的容量。加载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度。当哈希表中的条目数超出了加载因子与当前容量的乘积时，则要对该哈希表进行 rehash 操作（即重建内部数据结构），从而哈希表将具有<strong>大约两倍</strong>的桶数。<br>通常，<strong>默认加载因子是 0.75</strong>, 这是在时间和空间成本上寻求一种折衷。加载因子过高虽然减少了空间开销，但同时也增加了查询成本（在大多数 HashMap 类的操作中，包括 get 和 put 操作，都反映了这一点）。在设置初始容量时应该考虑到映射中所需的条目数及其加载因子，以便最大限度地减少 rehash 操作次数。如果初始容量大于最大条目数除以加载因子，则不会发生 rehash 操作。</p>
-<p><img src="/2019/05/26/java集合类/集合类之MAP/集合类之MAP/HashMap接口.jpg" alt="HashMap接口"></p>
-<p>从图中可以看出：<br>(01) HashMap继承于AbstractMap类，实现了Map接口。Map是”key-value键值对”接口，AbstractMap实现了”键值对”的通用函数接口。<br>(02) HashMap是通过”拉链法”实现的哈希表。它包括几个重要的成员变量：table, size, threshold, loadFactor, modCount。<br>　　table是一个Entry[]数组类型，而Entry实际上就是一个单向链表。哈希表的”key-value键值对”都是存储在Entry数组中的。<br>　　size是HashMap的大小，它是HashMap保存的键值对的数量。<br>　　threshold是HashMap的阈值，用于判断是否需要调整HashMap的容量。threshold的值=”容量*加载因子”，当HashMap中存储数据的数量达到threshold时，就需要将HashMap的容量加倍。<br>　　loadFactor就是加载因子。<br>　　modCount是用来实现fail-fast机制的。</p>
-<p>1、存储结构</p>
-<ol>
-<li><p>hashmap底层是以数组方式进行存储。将key-value对作为数组中的一个元素进行存储。</p>
-</li>
-<li><p>key-value都是Map.Entry中的属性。其中将key的值进行hash之后进行存储，即每一个key都是计算hash值，然后再存储。每一个Hash值对应一个数组下标，<strong>数组下标</strong>是根据<strong>hash值和数组长度</strong>计算得来。</p>
-</li>
-<li><p>由于不同的key有可能hash值相同，即该位置的数组中的元素出现两个，对于这种情况，hashmap采用链表形式进行存储。</p>
-</li>
-<li><p>下图描述了hashmap的存储结构图 </p>
-<p><img src="/2019/05/26/java集合类/集合类之MAP/集合类之MAP/HashMap存储结构.png" alt="HashMap存储结构"></p>
-</li>
-</ol>
-<p>Entry结构分析</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> K key;<span class="comment">// map中key值，可以为null。</span></span><br><span class="line">        V value; <span class="comment">// map中的value值，可以为null。</span></span><br><span class="line">        Entry&lt;K,V&gt; next;<span class="comment">// 链表引用，防止key值不同，hash值相同。</span></span><br><span class="line">        <span class="keyword">int</span> hash; <span class="comment">// 每个key的hash值</span></span><br><span class="line">        <span class="comment">// 构造函数</span></span><br><span class="line">        Entry(<span class="keyword">int</span> h, K k, V v, Entry&lt;K,V&gt; n) &#123;</span><br><span class="line">            value = v;</span><br><span class="line">            next = n;</span><br><span class="line">            key = k;</span><br><span class="line">            hash = h;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> K <span class="title">getKey</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> key;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> V <span class="title">getValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> value;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 同一个key时，新值替换旧值，返回旧值</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> V <span class="title">setValue</span><span class="params">(V newValue)</span> </span>&#123;</span><br><span class="line">            V oldValue = value;</span><br><span class="line">            value = newValue;</span><br><span class="line">            <span class="keyword">return</span> oldValue;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="comment">// key值重写equals方法</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!(o <span class="keyword">instanceof</span> Map.Entry))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            Map.Entry e = (Map.Entry)o;</span><br><span class="line">            Object k1 = getKey();</span><br><span class="line">            Object k2 = e.getKey();</span><br><span class="line">            <span class="keyword">if</span> (k1 == k2 || (k1 != <span class="keyword">null</span> &amp;&amp; k1.equals(k2))) &#123;</span><br><span class="line">                Object v1 = getValue();</span><br><span class="line">                Object v2 = e.getValue();</span><br><span class="line">                <span class="keyword">if</span> (v1 == v2 || (v1 != <span class="keyword">null</span> &amp;&amp; v1.equals(v2)))</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="comment">// 重写hashCode值</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Objects.hashCode(getKey()) ^ Objects.hashCode(getValue());</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> getKey() + <span class="string">"="</span> + getValue();</span><br><span class="line">        &#125;</span><br><span class="line">      <span class="comment">// 其他方法省略</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>HashMap属性分析</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *默认情况下，hashmap大小为16.即1&lt;&lt;4就是1乘以2的4次幂=16</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>; <span class="comment">// aka 16</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">      * hashMap的最大值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 默认加载加载因子，即使用空间达到总空间的0.75时，需要扩容。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 声明hashmap一个空数组。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> Entry&lt;?,?&gt;[] EMPTY_TABLE = &#123;&#125;;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 最开始时，hashmap是一个空数组。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">transient</span> Entry&lt;K,V&gt;[] table = (Entry&lt;K,V&gt;[]) EMPTY_TABLE;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * map的元素的个数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">transient</span> <span class="keyword">int</span> size;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * hashmap的实际存储空间大小。这个空间是总空间*加载因子得出的大小。</span></span><br><span class="line"><span class="comment">     * 比如默认是16，加载因子是0.74。则threshold就是12。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">int</span> threshold;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 加载因子，即使用空间达到总空间的0.75时，需要扩容。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">float</span> loadFactor;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">transient</span> <span class="keyword">int</span> modCount;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  threshold这个值的最大值就是Integer.MAX_VALUE</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ALTERNATIVE_HASHING_THRESHOLD_DEFAULT = Integer.MAX_VALUE;</span><br></pre></td></tr></table></figure>
-<p>put方法</p>
-<p>put（key,value）方法是hashmap中最重要的方法，使用hashmap最主要的就是使用put,get两个方法。可以从put方法的源码进行分析</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 首次存储元素，初始化存储空间</span></span><br><span class="line">       <span class="keyword">if</span> (table == EMPTY_TABLE) &#123;</span><br><span class="line">           inflateTable(threshold);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 如果key为null，则将null放入元素的第一个位置</span></span><br><span class="line">       <span class="keyword">if</span> (key == <span class="keyword">null</span>)</span><br><span class="line">           <span class="keyword">return</span> putForNullKey(value);</span><br><span class="line">       <span class="comment">// 计算key的hash值    </span></span><br><span class="line">       <span class="keyword">int</span> hash = hash(key);</span><br><span class="line">       <span class="comment">// 根据key的hash值，数组长度计算该Entry&lt;key,value&gt;的数组下标</span></span><br><span class="line">       <span class="keyword">int</span> i = indexFor(hash, table.length);</span><br><span class="line">       <span class="comment">/**</span></span><br><span class="line"><span class="comment">       **如果当前key的已经存在于map中，则将新值替换成旧值。</span></span><br><span class="line"><span class="comment">       **/</span></span><br><span class="line">       <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[i]; e != <span class="keyword">null</span>; e = e.next) &#123;</span><br><span class="line">           Object k;</span><br><span class="line">           <span class="comment">// 判断同一个key，既要判断hash值相同，还要判断key是同一个key，因为</span></span><br><span class="line">           <span class="comment">// 相同的key有可能hash值也相同。双重判断保证是同一个key。</span></span><br><span class="line">           <span class="keyword">if</span> (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) &#123;</span><br><span class="line">               V oldValue = e.value;</span><br><span class="line">               e.value = value;</span><br><span class="line">               e.recordAccess(<span class="keyword">this</span>);</span><br><span class="line">               <span class="keyword">return</span> oldValue;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">      <span class="comment">// 如果是新的key需要存储，则增加操作次数modCount++</span></span><br><span class="line">       modCount++;</span><br><span class="line">       <span class="comment">// 将新增key-value键值对添加中map中。</span></span><br><span class="line">       addEntry(hash, key, value, i);</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>addEntry方法</p>
-<ol>
-<li>addEntry方法是将新增的key-value键值对存入到map中。该方法主要完成两个功能：<br>1.1. 添加新元素前， 判断是否需要对map的数组进行扩容，如果需要扩容，则扩容空间大小是原来的两倍<br>1.2. 对于新增key-value键值对，如果key的hash值相同，则构造单向列表。</li>
-<li>从源码分析结果如下：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">**  hash:key的hash值</span></span><br><span class="line"><span class="comment">**  key:存储的键</span></span><br><span class="line"><span class="comment">**  value：存储的value对象值</span></span><br><span class="line"><span class="comment">*** bucketIndex：数组下标位置，即key-value在数组中的位置。</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEntry</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">int</span> bucketIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ((size &gt;= threshold) &amp;&amp; (<span class="keyword">null</span> != table[bucketIndex])) &#123;</span><br><span class="line">            resize(<span class="number">2</span> * table.length);<span class="comment">//扩容两倍</span></span><br><span class="line">            hash = (<span class="keyword">null</span> != key) ? hash(key) : <span class="number">0</span>;</span><br><span class="line">            bucketIndex = indexFor(hash, table.length);</span><br><span class="line">        &#125;</span><br><span class="line">      <span class="comment">// 往数组中添加新的key-value键值对</span></span><br><span class="line">      createEntry(hash, key, value, bucketIndex);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>createEntry方法</p>
-<ul>
-<li><p>该方法主要完成两个功能</p>
-<p>1、添加新的key到Entry数组中</p>
-<p>2、对于不同key的hash值相同的情况下，在同一个数组下标处，构建单向链表进行存储。</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createEntry</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">int</span> bucketIndex)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// 取出当前位置的元素，如果是新添加的key,则e为null，已经有的元素为不为空。</span></span><br><span class="line">       Entry&lt;K,V&gt; e = table[bucketIndex];</span><br><span class="line">       <span class="comment">// 添加新的key-value值或构建链表</span></span><br><span class="line">       table[bucketIndex] = <span class="keyword">new</span> Entry&lt;&gt;(hash, key, value, e);</span><br><span class="line">       size++;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>遍历HashMap的键</p>
-<ol>
-<li>根据keySet()获取HashMap的“键”的Set集合。</li>
-<li>通过Iterator迭代器遍历“第一步”得到的集合</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设map是HashMap对象</span></span><br><span class="line"><span class="comment">// map中的key是String类型，value是Integer类型</span></span><br><span class="line">String key = <span class="keyword">null</span>;</span><br><span class="line">Integer integ = <span class="keyword">null</span>;</span><br><span class="line">Iterator iter = map.keySet().iterator();</span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">        <span class="comment">// 获取key</span></span><br><span class="line">    key = (String)iter.next();</span><br><span class="line">        <span class="comment">// 根据key，获取value</span></span><br><span class="line">    integ = (Integer)map.get(key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>遍历HashMap的值</p>
-<ol>
-<li>根据value()获取HashMap的“值”的集合。</li>
-<li>通过Iterator迭代器遍历“第一步”得到的集合。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设map是HashMap对象</span></span><br><span class="line"><span class="comment">// map中的key是String类型，value是Integer类型</span></span><br><span class="line">Integer value = <span class="keyword">null</span>;</span><br><span class="line">Collection c = map.values();</span><br><span class="line">Iterator iter= c.iterator();</span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">    value = (Integer)iter.next();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><ol>
-<li>TreeMap 是一个<strong>有序的key-value集合</strong>，它是通过红黑树实现的。</li>
-<li>TreeMap <strong>继承于AbstractMap</strong>，所以它是一个Map，即一个key-value集合。</li>
-<li>TreeMap 实现了NavigableMap接口，意味着它<strong>支持一系列的导航方法。</strong>比如返回有序的key集合。</li>
-<li>TreeMap 实现了Cloneable接口，意味着<strong>它能被克隆</strong>。</li>
-<li>TreeMap 实现了java.io.Serializable接口，意味着<strong>它支持序列化</strong>。</li>
-<li>TreeMap基于<strong>红黑树（Red-Black tree）实现</strong>。该映射根据<strong>其键的自然顺序进行排序</strong>，或者根据<strong>创建映射时提供的 Comparator 进行排序</strong>，具体取决于使用的构造方法。</li>
-<li>TreeMap的基本操作 containsKey、get、put 和 remove 的时间复杂度是 log(n)（jdk1.8之后加入红黑树由o(n)变为o( log(n) )  ） 。</li>
-<li>TreeMap是<strong>非同步</strong>的。 它的iterator 方法返回的<strong>迭代器是fail-fastl</strong>的</li>
-</ol>
-<p><img src="/2019/05/26/java集合类/集合类之MAP/集合类之MAP/Treemap接口图.jpg" alt></p>
-<p>从图中可以看出：<br>(1) TreeMap实现继承于AbstractMap，并且实现了NavigableMap接口。<br>(2) TreeMap的本质是R-B Tree(红黑树)，它包含几个重要的成员变量： root, size, comparator。<br>　　root 是红黑数的根节点。它是Entry类型，Entry是红黑数的节点，它包含了红黑数的6个基本组成成分：key(键)、value(值)、left(左孩子)、right(右孩子)、parent(父节点)、color(颜色)。Entry节点根据key进行排序，Entry节点包含的内容为value。<br>　　红黑数排序时，根据Entry中的key进行排序；Entry中的key比较大小是根据比较器comparator来进行判断的。size是红黑数中节点的个数。</p>
-<p>数据结构</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    K key;    <span class="comment">//键</span></span><br><span class="line">    V value;    <span class="comment">//值</span></span><br><span class="line">    Entry&lt;K,V&gt; left = <span class="keyword">null</span>;     <span class="comment">//左孩子节点</span></span><br><span class="line">    Entry&lt;K,V&gt; right = <span class="keyword">null</span>;    <span class="comment">//右孩子节点</span></span><br><span class="line">    Entry&lt;K,V&gt; parent;          <span class="comment">//父节点</span></span><br><span class="line">    <span class="keyword">boolean</span> color = BLACK;      <span class="comment">//节点的颜色，在红黑树种，只有两种颜色，红色和黑色</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//构造方法，用指定的key,value ,parent初始化，color默认为黑色</span></span><br><span class="line">    Entry(K key, V value, Entry&lt;K,V&gt; parent) &#123;</span><br><span class="line">        <span class="keyword">this</span>.key = key;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">        <span class="keyword">this</span>.parent = parent;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回key</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> K <span class="title">getKey</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回该节点对应的value</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> V <span class="title">getValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//替换节点的值，并返回旧值</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> V <span class="title">setValue</span><span class="params">(V value)</span> </span>&#123;</span><br><span class="line">        V oldValue = <span class="keyword">this</span>.value;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">        <span class="keyword">return</span> oldValue;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//重写equals()方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!(o <span class="keyword">instanceof</span> Map.Entry))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        Map.Entry&lt;?,?&gt; e = (Map.Entry&lt;?,?&gt;)o;</span><br><span class="line">        <span class="comment">//两个节点的key相等，value相等，这两个节点才相等</span></span><br><span class="line">        <span class="keyword">return</span> valEquals(key,e.getKey()) &amp;&amp; valEquals(value,e.getValue());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//重写hashCode()方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> keyHash = (key==<span class="keyword">null</span> ? <span class="number">0</span> : key.hashCode());</span><br><span class="line">        <span class="keyword">int</span> valueHash = (value==<span class="keyword">null</span> ? <span class="number">0</span> : value.hashCode());</span><br><span class="line">        <span class="comment">//key和vale hash值得异或运算，相同则为零，不同则为1 </span></span><br><span class="line">        <span class="keyword">return</span> keyHash ^ valueHash;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//重写toString()方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> key + <span class="string">"="</span> + value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>构造方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造方法，comparator用键的顺序做比较</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TreeMap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    comparator = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//构造方法，提供比较器，用指定比较器排序</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TreeMap</span><span class="params">(Comparator&lt;? <span class="keyword">super</span> K&gt; comparator)</span> </span>&#123;</span><br><span class="line">    his.comparator = comparator;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将m中的元素转化daoTreeMap中，按照键的顺序做比较排序</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TreeMap</span><span class="params">(Map&lt;? extends K, ? extends V&gt; m)</span> </span>&#123;</span><br><span class="line">    comparator = <span class="keyword">null</span>;</span><br><span class="line">    putAll(m);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//构造方法，指定的参数为SortedMap</span></span><br><span class="line"><span class="comment">//采用m的比较器排序</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TreeMap</span><span class="params">(SortedMap&lt;K, ? extends V&gt; m)</span> </span>&#123;</span><br><span class="line">    comparator = m.comparator();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        buildFromSorted(m.size(), m.entrySet().iterator(), <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (java.io.IOException cannotHappen) &#123;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ClassNotFoundException cannotHappen) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>TreeMap提供了四个构造方法，实现了方法的重载。无参构造方法中比较器的值为null,采用自然排序的方法，如果指定了比较器则称之为定制排序.</p>
-<ul>
-<li>自然排序：TreeMap的所有key必须实现Comparable接口，所有的key都是同一个类的对象</li>
-<li>定制排序：创建TreeMap对象传入了一个Comparator对象，该对象负责对TreeMap中所有的key进行排序，采用定制排序不要求Map的key实现Comparable接口。</li>
-</ul>
-<p>Put()方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    Entry&lt;K,V&gt; t = root;     <span class="comment">//红黑树的根节点</span></span><br><span class="line">    <span class="keyword">if</span> (t == <span class="keyword">null</span>) &#123;        <span class="comment">//红黑树是否为空</span></span><br><span class="line">        compare(key, key); <span class="comment">// type (and possibly null) check</span></span><br><span class="line">        <span class="comment">//构造根节点，因为根节点没有父节点，传入null值。 </span></span><br><span class="line">        root = <span class="keyword">new</span> Entry&lt;&gt;(key, value, <span class="keyword">null</span>);  </span><br><span class="line">        size = <span class="number">1</span>;     <span class="comment">//size值加1</span></span><br><span class="line">        modCount++;    <span class="comment">//改变修改的次数</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;    <span class="comment">//返回null </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> cmp;</span><br><span class="line">    Entry&lt;K,V&gt; parent;    <span class="comment">//定义节点</span></span><br><span class="line"></span><br><span class="line">    Comparator&lt;? <span class="keyword">super</span> K&gt; cpr = comparator;     <span class="comment">//获取比较器</span></span><br><span class="line">    <span class="keyword">if</span> (cpr != <span class="keyword">null</span>) &#123;      <span class="comment">//如果定义了比较器，采用自定义比较器进行比较</span></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            parent = t;      <span class="comment">//将红黑树根节点赋值给parent</span></span><br><span class="line">            cmp = cpr.compare(key, t.key);     <span class="comment">//比较key, 与根节点的大小</span></span><br><span class="line">            <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>)      <span class="comment">//如果key &lt; t.key , 指向左子树</span></span><br><span class="line">                t = t.left;   <span class="comment">//t = t.left  , t == 它的做孩子节点</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>)</span><br><span class="line">                t = t.right;  <span class="comment">//如果key &gt; t.key , 指向它的右孩子节点</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> t.setValue(value);      <span class="comment">//如果它们相等，替换key的值</span></span><br><span class="line">        &#125; <span class="keyword">while</span> (t != <span class="keyword">null</span>);        <span class="comment">//循环遍历</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//自然排序方式，没有指定比较器</span></span><br><span class="line">        <span class="keyword">if</span> (key == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();  <span class="comment">//抛出异常</span></span><br><span class="line">        Comparable&lt;? <span class="keyword">super</span> K&gt; k = (Comparable&lt;? <span class="keyword">super</span> K&gt;) key;    <span class="comment">//类型转换</span></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            parent = t;</span><br><span class="line">            cmp = k.compareTo(t.key);</span><br><span class="line">            <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>)     <span class="comment">// key &lt; t.key </span></span><br><span class="line">                t = t.left;   <span class="comment">//左孩子</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>)   <span class="comment">// key &gt; t.key </span></span><br><span class="line">                t = t.right;    <span class="comment">//右孩子</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> t.setValue(value);   <span class="comment">//t == t.key , 替换value值</span></span><br><span class="line">        &#125; <span class="keyword">while</span> (t != <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Entry&lt;K,V&gt; e = <span class="keyword">new</span> Entry&lt;&gt;(key, value, parent);   <span class="comment">//创建新节点，并制定父节点</span></span><br><span class="line">    <span class="comment">//根据比较结果，决定新节点为父节点的左孩子或者右孩子</span></span><br><span class="line">    <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>)</span><br><span class="line">        parent.left = e;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        parent.right = e;</span><br><span class="line">    fixAfterInsertion(e);   <span class="comment">//新插入节点后重新调整红黑树 </span></span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//比较方法，如果comparator==null ,采用comparable.compartTo进行比较，否则采用指定比较器比较大小</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Object k1, Object k2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> comparator==<span class="keyword">null</span> ? ((Comparable&lt;? <span class="keyword">super</span> K&gt;)k1).compareTo((K)k2)</span><br><span class="line">        : comparator.compare((K)k1, (K)k2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fixAfterInsertion</span><span class="params">(Entry&lt;K,V&gt; x)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//插入的节点默认的颜色为红色</span></span><br><span class="line">    x.color = RED;    <span class="comment">//</span></span><br><span class="line">    <span class="comment">//情形1： 新节点x 是树的根节点，没有父节点不需要任何操作</span></span><br><span class="line">    <span class="comment">//情形2： 新节点x 的父节点颜色是黑色的，也不需要任何操作</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (x != <span class="keyword">null</span> &amp;&amp; x != root &amp;&amp; x.parent.color == RED) &#123;</span><br><span class="line">    <span class="comment">//情形3：新节点x的父节点颜色是红色的</span></span><br><span class="line">    <span class="comment">//判断x的节点的父节点位置，是否属于左孩子</span></span><br><span class="line">    <span class="keyword">if</span> (parentOf(x) == leftOf(parentOf(parentOf(x)))) &#123;</span><br><span class="line">          <span class="comment">//获取x节点的父节点的兄弟节点，上面语句已经判断出x节点的父节点为左孩子，所以直接取右孩子</span></span><br><span class="line">         Entry&lt;K,V&gt; y = rightOf(parentOf(parentOf(x)));</span><br><span class="line">         <span class="comment">//判断是否x节点的父节点的兄弟节点为红色。</span></span><br><span class="line">         <span class="keyword">if</span> (colorOf(y) == RED) &#123;</span><br><span class="line">              setColor(parentOf(x), BLACK); <span class="comment">// x节点的父节点设置为黑色</span></span><br><span class="line">              setColor(y, BLACK);           <span class="comment">// y节点的颜色设置为黑色</span></span><br><span class="line">              setColor(parentOf(parentOf(x)), RED); <span class="comment">// x.parent.parent设置为红色</span></span><br><span class="line">              x = parentOf(parentOf(x)); <span class="comment">// x == x.parent.parent ,进行遍历。</span></span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="comment">//x的父节点的兄弟节点是黑色或者缺少的</span></span><br><span class="line">               <span class="keyword">if</span> (x == rightOf(parentOf(x))) &#123;   <span class="comment">//判断x节点是否为父节点的右孩子</span></span><br><span class="line">                    x = parentOf(x);     <span class="comment">//x == 父节点</span></span><br><span class="line">                    rotateLeft(x);    <span class="comment">//左旋转操作</span></span><br><span class="line">               &#125;</span><br><span class="line">               <span class="comment">//x节点是其父的左孩子</span></span><br><span class="line">               setColor(parentOf(x), BLACK);</span><br><span class="line">               setColor(parentOf(parentOf(x)), RED);  <span class="comment">//上面两句将x.parent 和x.parent.parent的颜色做调换</span></span><br><span class="line">               rotateRight(parentOf(parentOf(x)));   <span class="comment">//进行右旋转</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Entry&lt;K,V&gt; y = leftOf(parentOf(parentOf(x)));  <span class="comment">//y 是x 节点的祖父节点的左孩子</span></span><br><span class="line">            <span class="keyword">if</span> (colorOf(y) == RED) &#123;    <span class="comment">//判断颜色</span></span><br><span class="line">                setColor(parentOf(x), BLACK);    <span class="comment">//父节点设置为黑色</span></span><br><span class="line">                setColor(y, BLACK);         <span class="comment">//父节点的兄弟节点设置为黑色</span></span><br><span class="line">                setColor(parentOf(parentOf(x)), RED);   <span class="comment">//祖父节点设置为红色</span></span><br><span class="line">                x = parentOf(parentOf(x));   <span class="comment">//将祖父节点作为新插入的节点，遍历调整</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (x == leftOf(parentOf(x))) &#123;     <span class="comment">//x 是其父亲的左孩子</span></span><br><span class="line">                    x = parentOf(x);</span><br><span class="line">                    rotateRight(x);    <span class="comment">//以父节点为旋转点，进行右旋操作</span></span><br><span class="line">                &#125;</span><br><span class="line">                setColor(parentOf(x), BLACK);    <span class="comment">//父节点为设置为黑色</span></span><br><span class="line">                setColor(parentOf(parentOf(x)), RED);  <span class="comment">//祖父节点设置为红色</span></span><br><span class="line">                rotateLeft(parentOf(parentOf(x)));  <span class="comment">//以父节点为旋转点，进行左旋操作</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    root.color = BLACK; <span class="comment">//通过节点位置的调整，最终将红色的节点条调换到了根节点的位置，根节点重新设置为黑色</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>增加删除节点都运用了红黑树的原理，红黑树有五个特点：</p>
-<ol>
-<li>每个节点只能是红色或者黑色</li>
-<li>根节点永远是黑色的</li>
-<li>所有的叶子的子节点都是空节点，并且都是黑色的</li>
-<li>每个红色节点的两个子节点都是黑色的（不会有两个连续的红色节点）</li>
-<li>从任一个节点到其子树中每个叶子节点的路径都包含相同数量的黑色节点（叶子节点到根节点的黑色节点数量每条路径都相同）</li>
-</ol>
-<p>红黑树插入新节点的三个关键地方：<br>1、插入新节点总是红色节点。<br>2、插入节点的父节点是黑色，能维持性质。<br>3、如果插入节点的父节点是红色，破坏了性质。故插入算法就是通过重新着色或旋转，来维持性质</p>
-<p>deleteEntry()方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">deleteEntry</span><span class="params">(Entry&lt;K,V&gt; p)</span> </span>&#123;</span><br><span class="line">        modCount++;      <span class="comment">//修改次数 +1</span></span><br><span class="line">        size--;          <span class="comment">//元素个数 -1</span></span><br><span class="line"> </span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 被删除节点的左子树和右子树都不为空，那么就用 p节点的中序后继节点代替 p 节点</span></span><br><span class="line"><span class="comment">         * successor(P)方法为寻找P的替代节点。规则是右分支最左边，或者 左分支最右边的节点</span></span><br><span class="line"><span class="comment">         * ---------------------（1）</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">if</span> (p.left != <span class="keyword">null</span> &amp;&amp; p.right != <span class="keyword">null</span>) &#123;  </span><br><span class="line">            Entry&lt;K,V&gt; s = successor(p);</span><br><span class="line">            p.key = s.key;</span><br><span class="line">            p.value = s.value;</span><br><span class="line">            p = s;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="comment">//replacement为替代节点，如果P的左子树存在那么就用左子树替代，否则用右子树替代</span></span><br><span class="line">        Entry&lt;K,V&gt; replacement = (p.left != <span class="keyword">null</span> ? p.left : p.right);</span><br><span class="line"> </span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 删除节点，分为上面提到的三种情况</span></span><br><span class="line"><span class="comment">         * -----------------------（2）</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="comment">//如果替代节点不为空</span></span><br><span class="line">        <span class="keyword">if</span> (replacement != <span class="keyword">null</span>) &#123;</span><br><span class="line">            replacement.parent = p.parent;</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             *replacement来替代P节点</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="comment">//若P没有父节点，则跟节点直接变成replacement</span></span><br><span class="line">            <span class="keyword">if</span> (p.parent == <span class="keyword">null</span>)</span><br><span class="line">                root = replacement;</span><br><span class="line">            <span class="comment">//如果P为左节点，则用replacement来替代为左节点</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p == p.parent.left)</span><br><span class="line">                p.parent.left  = replacement;</span><br><span class="line">          <span class="comment">//如果P为右节点，则用replacement来替代为右节点</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                p.parent.right = replacement;</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//同时将P节点从这棵树中剔除掉</span></span><br><span class="line">            p.left = p.right = p.parent = <span class="keyword">null</span>;</span><br><span class="line"> </span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             * 若P为红色直接删除，红黑树保持平衡</span></span><br><span class="line"><span class="comment">             * 但是若P为黑色，则需要调整红黑树使其保持平衡</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="keyword">if</span> (p.color == BLACK)</span><br><span class="line">                fixAfterDeletion(replacement);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p.parent == <span class="keyword">null</span>) &#123;     <span class="comment">//p没有父节点，表示为P根节点，直接删除即可</span></span><br><span class="line">            root = <span class="keyword">null</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;      <span class="comment">//P节点不存在子节点，直接删除即可</span></span><br><span class="line">            <span class="keyword">if</span> (p.color == BLACK)         <span class="comment">//如果P节点的颜色为黑色，对红黑树进行调整</span></span><br><span class="line">                fixAfterDeletion(p);</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//删除P节点</span></span><br><span class="line">            <span class="keyword">if</span> (p.parent != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (p == p.parent.left)</span><br><span class="line">                    p.parent.left = <span class="keyword">null</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (p == p.parent.right)</span><br><span class="line">                    p.parent.right = <span class="keyword">null</span>;</span><br><span class="line">                p.parent = <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>TreeMap还有很多地方没有写全，后续再来补学。</p>
-<p>TreeMap问题集锦</p>
-<p>1、TreeMap的键、值能否为null</p>
-<ul>
-<li>value是可以为null的</li>
-<li>当未实现 Comparator 接口时，key 不可以为null，否则抛 NullPointerException 异常；</li>
-<li>当实现 Comparator 接口时，若未对 null 情况进行判断，则可能抛 NullPointerException 异常。如果针对null情况实现了，可以存入，但是却不能正常使用get()访问，只能通过遍历去访问。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">测试Value能否为<span class="keyword">null</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TreeMap&lt;String, Integer&gt; treeMap = <span class="keyword">new</span> TreeMap&lt;&gt;();</span><br><span class="line">        treeMap.put(<span class="string">"1"</span>,<span class="number">1</span>);</span><br><span class="line">        treeMap.put(<span class="string">"2"</span>,<span class="keyword">null</span>);</span><br><span class="line">        System.out.println(treeMap.get(<span class="string">"2"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    结果：<span class="keyword">null</span></span><br><span class="line">    </span><br><span class="line">测试key能否为<span class="keyword">null</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TreeMap&lt;String, Integer&gt; treeMap = <span class="keyword">new</span> TreeMap&lt;&gt;();</span><br><span class="line">        treeMap.put(<span class="string">"1"</span>,<span class="number">1</span>);</span><br><span class="line">        treeMap.put(<span class="keyword">null</span>,<span class="keyword">null</span>);</span><br><span class="line">        System.out.println(treeMap.get(<span class="string">"2"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    结果：Exception in thread <span class="string">"main"</span> java.lang.NullPointerException</span><br><span class="line">	at java.util.TreeMap.put(TreeMap.java:<span class="number">563</span>)</span><br><span class="line">	at com.crazy_june.test_treemap.main(test_treemap.java:<span class="number">9</span>)</span><br><span class="line">	</span><br><span class="line">测试当自己实现一个comparator接口时</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TreeMap&lt;String, Integer&gt; treeMap = <span class="keyword">new</span> TreeMap&lt;&gt;(<span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String o1, String o2)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(o1==<span class="keyword">null</span>)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> o2.charAt(<span class="number">0</span>)-o1.charAt(<span class="number">0</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        treeMap.put(<span class="string">"1"</span>,<span class="number">1</span>);</span><br><span class="line">        treeMap.put(<span class="keyword">null</span>,<span class="number">12</span>);</span><br><span class="line">        treeMap.put(<span class="string">"2"</span>,<span class="number">2</span>);</span><br><span class="line">        System.out.println(treeMap.get(<span class="keyword">null</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    结果：<span class="keyword">null</span></span><br><span class="line">    证明不能通过get()取出来</span><br><span class="line">    </span><br><span class="line">测试通过遍历entry可以取出来不</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;String,Integer&gt; entry:treeMap.entrySet())&#123;</span><br><span class="line">            System.out.println(entry.getKey()+<span class="string">":"</span>+entry.getValue());</span><br><span class="line">        &#125;</span><br><span class="line">   结果：</span><br><span class="line">        <span class="number">2</span>:<span class="number">2</span></span><br><span class="line">        <span class="number">1</span>:<span class="number">1</span></span><br><span class="line">        <span class="keyword">null</span>:<span class="number">12</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3036,7 +3123,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3079,7 +3166,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -3120,7 +3209,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -3221,7 +3312,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共82.6k字</span>
+  <span class="post-count">博客全站共86.5k字</span>
 </div>
         
 <div class="busuanzi-count">
