@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">44</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">46</span></a>
 
   </li>
 
@@ -401,7 +401,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/15/计算机网络/HTTPS和HTTP的区别/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/19/计算机网络/GET和POST的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -421,7 +421,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/15/计算机网络/HTTPS和HTTP的区别/" class="post-title-link" itemprop="url">HTTPS和HTTP的区别</a>
+                <a href="/2019/10/19/计算机网络/GET和POST的区别/" class="post-title-link" itemprop="url">GET和POST的区别</a>
               
             
           </h1>
@@ -446,7 +446,7 @@
                 
               
 
-              <time title="创建时间：2019-10-15 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-15T12:12:57+08:00">2019-10-15 12:12:57</time>
+              <time title="创建时间：2019-10-19 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-19T12:12:57+08:00">2019-10-19 12:12:57</time>
             
 
             
@@ -463,7 +463,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-20 23:13:46" itemprop="dateModified" datetime="2019-10-20T23:13:46+08:00">2019-10-20</time> 
+              <time title="修改时间：2019-10-20 22:27:24" itemprop="dateModified" datetime="2019-10-20T22:27:24+08:00">2019-10-20</time> 
               -->
               <!-- new version -->
                         
@@ -478,8 +478,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-20T23:13:46+08:00" content="2019-10-20">
-                2019-10-20 23:13:46
+              <time itemprop="dateUpdated" datetime="2019-10-20T22:27:24+08:00" content="2019-10-20">
+                2019-10-20 22:27:24
               </time>
             </span>
           
@@ -519,8 +519,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/15/计算机网络/HTTPS和HTTP的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/15/计算机网络/HTTPS和HTTP的区别/" itemprop="commentCount"></span>
+                <a href="/2019/10/19/计算机网络/GET和POST的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/19/计算机网络/GET和POST的区别/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -550,39 +550,15 @@
       
         
           
-            <h4 id="HTTPS和HTTP的区别"><a href="#HTTPS和HTTP的区别" class="headerlink" title="HTTPS和HTTP的区别"></a>HTTPS和HTTP的区别</h4><ul>
-<li><p>HTTPS协议需要到CA申请证书，一般免费证书很少，需要交费。</p>
-</li>
-<li><p>HTTP协议运行在TCP之上，所有传输的内容都是明文，HTTPS运行在SSL/TLS之上，SSL/TLS运行在TCP之上，所有传输的内容都经过加密的。</p>
-</li>
-<li><p>HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</p>
-</li>
-<li><p>HTTP的连接很简单，是无状态的。Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
-<p>(无状态的意思是其数据包的发送、传输和接收都是相互独立的。</p>
-<p>无连接的意思是指通信双方都不长久的维持对方的任何信息。)</p>
-</li>
+            <ul>
+<li>数据传输方式不同：GET请求通过URL传输数据，而POST的数据通过请求体传输。</li>
+<li>安全性不同：POST的数据因为在请求主体内，所以有一定的安全性保证，而GET的数据在URL中，通过历史记录，缓存很容易查到数据信息。</li>
+<li>数据类型不同：GET只允许 ASCII 字符，而POST无限制</li>
+<li>后退页面的反应：get请求页面后退时，不产生影响；post请求页面后退时，会重新提交请求  </li>
+<li>特性不同：GET是安全（这里的安全是指只读特性，就是使用这个方法不会引起服务器状态变化）且幂等（<strong>幂等的概念是指同一个请求方法执行多次和仅执行一次的效果完全相同</strong>），而POST是非安全非幂等</li>
+<li>缓存性：get请求是可以缓存的，post请求不可以缓存  </li>
+<li>传输数据的大小：  get一般传输数据大小不超过2k-4k（根据浏览器不同，限制不一样，但相差不大）；post请求传输数据的大小根据php.ini 配置文件设定，也可以无限大。  </li>
 </ul>
-<h4 id="HTTPS的优点："><a href="#HTTPS的优点：" class="headerlink" title="HTTPS的优点："></a>HTTPS的优点：</h4><p>1、使用Https协议可认证用户和服务器，确保数据发送到正确的客户机和服务器。</p>
-<p>2、Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，要比http协议安全，可防止数据在传输过程中不被窃取、修改，确保数据的完整性。</p>
-<p>3、Https是现行架构下最安全的解决方案，虽然不是绝对安全，但它大幅增加了中间人攻击的成本。</p>
-<h4 id="HTTPS的缺点："><a href="#HTTPS的缺点：" class="headerlink" title="HTTPS的缺点："></a>HTTPS的缺点：</h4><p>1、Https协议握手阶段比较费时，会使页面的加载时间延长近。</p>
-<p>2、Https连接缓存不如Http高效，会增加数据开销，甚至已有的安全措施也会因此而受到影响；</p>
-<p>3、SSL证书通常需要绑定IP，不能在同一IP上绑定多个域名，IPv4资源不可能支撑这个消耗。</p>
-<p>4、Https协议的加密范围也比较有限。最关键的，SSL证书的信用链体系并不安全，特别是在某些国家可以控制CA根证书的情况下，中间人攻击一样可行。</p>
-<h4 id="HTTPS连接过程"><a href="#HTTPS连接过程" class="headerlink" title="HTTPS连接过程"></a>HTTPS连接过程</h4><p><img src="/2019/10/15/计算机网络/HTTPS和HTTP的区别/20180709141944471.jpg" alt></p>
-<p>①客户端的浏览器向服务器发送请求，并传送客户端SSL 协议的版本号，加密算法的种类，产生的随机数，以及其他服务器和客户端之间通讯所需要的各种信息。</p>
-<p>②服务器向客户端传送SSL 协议的版本号，加密算法的种类，随机数以及其他相关信息，同时服务器还将向客户端传送自己的证书。</p>
-<p>③客户端利用服务器传过来的信息验证服务器的合法性，服务器的合法性包括：证书是否过期，发行服务器证书的CA 是否可靠，发行者证书的公钥能否正确解开服务器证书的“发行者的数字签名”，服务器证书上的域名是否和服务器的实际域名相匹配。如果合法性验证没有通过，通讯将断开；如果合法性验证通过，将继续进行第四步。</p>
-<p>④用户端随机产生一个用于通讯的“对称密码”，然后用服务器的公钥（服务器的公钥从步骤②中的服务器的证书中获得）对其加密，然后将加密后的“预主密码”传给服务器。</p>
-<p>⑤如果服务器要求客户的身份认证（在握手过程中为可选），用户可以建立一个随机数然后对其进行数据签名，将这个含有签名的随机数和客户自己的证书以及加密过的“预主密码”一起传给服务器。</p>
-<p>⑥如果服务器要求客户的身份认证，服务器必须检验客户证书和签名随机数的合法性，具体的合法性验证过程包括：客户的证书使用日期是否有效，为客户提供证书的CA 是否可靠，发行CA 的公钥能否正确解开客户证书的发行CA 的数字签名，检查客户的证书是否在证书废止列表（CRL）中。检验如果没有通过，通讯立刻中断；如果验证通过，服务器将用自己的私钥解开加密的“预主密码”，然后执行一系列步骤来产生主通讯密码（客户端也将通过同样的方法产生相同的主通讯密码）。</p>
-<p>⑦服务器和客户端用相同的主密码即“通话密码”，一个对称密钥用于SSL 协议的安全数据通讯的加解密通讯。同时在SSL 通讯过程中还要完成数据通讯的完整性，防止数据通讯中的任何变化。</p>
-<p>⑧客户端向服务器端发出信息，指明后面的数据通讯将使用的步骤⑦中的主密码为对称密钥，同时通知服务器客户端的握手过程结束。</p>
-<p>⑨服务器向客户端发出信息，指明后面的数据通讯将使用的步骤⑦中的主密码为对称密钥，同时通知客户端服务器端的握手过程结束。</p>
-<p>⑩SSL 的握手部分结束，SSL 安全通道的数据通讯开始，客户和服务器开始使用相同的对称密钥进行数据通讯，同时进行通讯完整性的检验。</p>
-<h4 id="对称加密和非对称加密的区别"><a href="#对称加密和非对称加密的区别" class="headerlink" title="对称加密和非对称加密的区别"></a>对称加密和非对称加密的区别</h4><p>对称加密只有一把公钥，加密解密都是这个密钥进行</p>
-<p>非对称加密有公钥和私钥，用公钥加密，用私钥解密</p>
-<p>HTTPS是对称加密和非对称加密两者结合的，在传输对称加密的公钥的时候用到非对称加密进行加密传输</p>
 
           
         
@@ -1206,6 +1182,244 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/15/计算机网络/HTTPS和HTTP的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/15/计算机网络/HTTPS和HTTP的区别/" class="post-title-link" itemprop="url">HTTPS和HTTP的区别</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-15 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-15T12:12:57+08:00">2019-10-15 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-20 23:13:46" itemprop="dateModified" datetime="2019-10-20T23:13:46+08:00">2019-10-20</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-20T23:13:46+08:00" content="2019-10-20">
+                2019-10-20 23:13:46
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/15/计算机网络/HTTPS和HTTP的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/15/计算机网络/HTTPS和HTTP的区别/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="HTTPS和HTTP的区别"><a href="#HTTPS和HTTP的区别" class="headerlink" title="HTTPS和HTTP的区别"></a>HTTPS和HTTP的区别</h4><ul>
+<li><p>HTTPS协议需要到CA申请证书，一般免费证书很少，需要交费。</p>
+</li>
+<li><p>HTTP协议运行在TCP之上，所有传输的内容都是明文，HTTPS运行在SSL/TLS之上，SSL/TLS运行在TCP之上，所有传输的内容都经过加密的。</p>
+</li>
+<li><p>HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</p>
+</li>
+<li><p>HTTP的连接很简单，是无状态的。Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
+<p>(无状态的意思是其数据包的发送、传输和接收都是相互独立的。</p>
+<p>无连接的意思是指通信双方都不长久的维持对方的任何信息。)</p>
+</li>
+</ul>
+<h4 id="HTTPS的优点："><a href="#HTTPS的优点：" class="headerlink" title="HTTPS的优点："></a>HTTPS的优点：</h4><p>1、使用Https协议可认证用户和服务器，确保数据发送到正确的客户机和服务器。</p>
+<p>2、Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，要比http协议安全，可防止数据在传输过程中不被窃取、修改，确保数据的完整性。</p>
+<p>3、Https是现行架构下最安全的解决方案，虽然不是绝对安全，但它大幅增加了中间人攻击的成本。</p>
+<h4 id="HTTPS的缺点："><a href="#HTTPS的缺点：" class="headerlink" title="HTTPS的缺点："></a>HTTPS的缺点：</h4><p>1、Https协议握手阶段比较费时，会使页面的加载时间延长近。</p>
+<p>2、Https连接缓存不如Http高效，会增加数据开销，甚至已有的安全措施也会因此而受到影响；</p>
+<p>3、SSL证书通常需要绑定IP，不能在同一IP上绑定多个域名，IPv4资源不可能支撑这个消耗。</p>
+<p>4、Https协议的加密范围也比较有限。最关键的，SSL证书的信用链体系并不安全，特别是在某些国家可以控制CA根证书的情况下，中间人攻击一样可行。</p>
+<h4 id="HTTPS连接过程"><a href="#HTTPS连接过程" class="headerlink" title="HTTPS连接过程"></a>HTTPS连接过程</h4><p><img src="/2019/10/15/计算机网络/HTTPS和HTTP的区别/20180709141944471.jpg" alt></p>
+<p>①客户端的浏览器向服务器发送请求，并传送客户端SSL 协议的版本号，加密算法的种类，产生的随机数，以及其他服务器和客户端之间通讯所需要的各种信息。</p>
+<p>②服务器向客户端传送SSL 协议的版本号，加密算法的种类，随机数以及其他相关信息，同时服务器还将向客户端传送自己的证书。</p>
+<p>③客户端利用服务器传过来的信息验证服务器的合法性，服务器的合法性包括：证书是否过期，发行服务器证书的CA 是否可靠，发行者证书的公钥能否正确解开服务器证书的“发行者的数字签名”，服务器证书上的域名是否和服务器的实际域名相匹配。如果合法性验证没有通过，通讯将断开；如果合法性验证通过，将继续进行第四步。</p>
+<p>④用户端随机产生一个用于通讯的“对称密码”，然后用服务器的公钥（服务器的公钥从步骤②中的服务器的证书中获得）对其加密，然后将加密后的“预主密码”传给服务器。</p>
+<p>⑤如果服务器要求客户的身份认证（在握手过程中为可选），用户可以建立一个随机数然后对其进行数据签名，将这个含有签名的随机数和客户自己的证书以及加密过的“预主密码”一起传给服务器。</p>
+<p>⑥如果服务器要求客户的身份认证，服务器必须检验客户证书和签名随机数的合法性，具体的合法性验证过程包括：客户的证书使用日期是否有效，为客户提供证书的CA 是否可靠，发行CA 的公钥能否正确解开客户证书的发行CA 的数字签名，检查客户的证书是否在证书废止列表（CRL）中。检验如果没有通过，通讯立刻中断；如果验证通过，服务器将用自己的私钥解开加密的“预主密码”，然后执行一系列步骤来产生主通讯密码（客户端也将通过同样的方法产生相同的主通讯密码）。</p>
+<p>⑦服务器和客户端用相同的主密码即“通话密码”，一个对称密钥用于SSL 协议的安全数据通讯的加解密通讯。同时在SSL 通讯过程中还要完成数据通讯的完整性，防止数据通讯中的任何变化。</p>
+<p>⑧客户端向服务器端发出信息，指明后面的数据通讯将使用的步骤⑦中的主密码为对称密钥，同时通知服务器客户端的握手过程结束。</p>
+<p>⑨服务器向客户端发出信息，指明后面的数据通讯将使用的步骤⑦中的主密码为对称密钥，同时通知客户端服务器端的握手过程结束。</p>
+<p>⑩SSL 的握手部分结束，SSL 安全通道的数据通讯开始，客户和服务器开始使用相同的对称密钥进行数据通讯，同时进行通讯完整性的检验。</p>
+<h4 id="对称加密和非对称加密的区别"><a href="#对称加密和非对称加密的区别" class="headerlink" title="对称加密和非对称加密的区别"></a>对称加密和非对称加密的区别</h4><p>对称加密只有一把公钥，加密解密都是这个密钥进行</p>
+<p>非对称加密有公钥和私钥，用公钥加密，用私钥解密</p>
+<p>HTTPS是对称加密和非对称加密两者结合的，在传输对称加密的公钥的时候用到非对称加密进行加密传输</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/10/面经/面经/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1268,7 +1482,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-20 19:03:48" itemprop="dateModified" datetime="2019-10-20T19:03:48+08:00">2019-10-20</time> 
+              <time title="修改时间：2019-10-23 13:28:23" itemprop="dateModified" datetime="2019-10-23T13:28:23+08:00">2019-10-23</time> 
               -->
               <!-- new version -->
                         
@@ -1283,8 +1497,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-20T19:03:48+08:00" content="2019-10-20">
-                2019-10-20 19:03:48
+              <time itemprop="dateUpdated" datetime="2019-10-23T13:28:23+08:00" content="2019-10-23">
+                2019-10-23 13:28:23
               </time>
             </span>
           
@@ -1420,6 +1634,451 @@
 <p>Redis为什么可以承担高并发，为什么可以这么快</p>
 <p>zookeeper分布式锁用来干嘛的，为什么用它来解决双写数据不一致的问题</p>
 <p>可以用java的锁去解决这个问题吗</p>
+<h3 id="招商金科"><a href="#招商金科" class="headerlink" title="招商金科"></a>招商金科</h3><p>一面：<br>Redis集群脑裂怎么做<br>spring的事务<br>SimpleDateFormat那个转换日期类是否线程安全，怎么领它线程安全<br>阻塞队列blockingquenen了解吗<br>object方法了解哪个？equals方法重写注意什么<br>hashmap遍历几种方法<br>Restcontroller和controller的区别<br>Java数组怎么输出控制台，怎么在控制台输入<br>mybatis里面#和$符号区别，mybatis如何防止SQL注入<br>labada表达式</p>
+<p>二面（综合面，没问什么）</p>
+<p>简单介绍一下zookeeper，我说了项目的zookeeper分布式锁</p>
+<p>Spring的核心机制（Spring IOC和Spring AOP）</p>
+<p>数据结构学了什么内容，说说排序有哪几种，快排的时间复杂度，冒泡的时间复杂度</p>
+<p>java 里面有Synchronized和reentranlock，两者的区别</p>
+<p>java里面有个是等待所有线程一起执行的工具类循环栅栏说一下</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/Java数组怎么输出/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/02/Java基础/Java数组怎么输出/" class="post-title-link" itemprop="url">Java数组怎么输出</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-02 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-02T12:12:57+08:00">2019-10-02 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-22 01:03:40" itemprop="dateModified" datetime="2019-10-22T01:03:40+08:00">2019-10-22</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-22T01:03:40+08:00" content="2019-10-22">
+                2019-10-22 01:03:40
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/02/Java基础/Java数组怎么输出/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/Java数组怎么输出/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Java数组怎么输出"><a href="#Java数组怎么输出" class="headerlink" title="Java数组怎么输出"></a>Java数组怎么输出</h4><p>错误示范：System.out.println(array);　　</p>
+<p>这样输出的是数组的首地址，而不能打印出数组数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] array= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="comment">//方式一：for循环</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">	System.out.println(array[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式二：for each</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> a:array)</span><br><span class="line">	System.out.println(a);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式三：Arrays类中的toString方法（注意，是Arrays不是Array，Arrays类位于java.util包下）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>[] array= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line">System.out.println(Arrays.toString(array));</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/SimpleDateFormat线程安全问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/02/Java基础/SimpleDateFormat线程安全问题/" class="post-title-link" itemprop="url">SimpleDateFormat线程安全问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-02 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-02T12:12:57+08:00">2019-10-02 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-23 13:50:47" itemprop="dateModified" datetime="2019-10-23T13:50:47+08:00">2019-10-23</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-23T13:50:47+08:00" content="2019-10-23">
+                2019-10-23 13:50:47
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/02/Java基础/SimpleDateFormat线程安全问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/SimpleDateFormat线程安全问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="SimpleDateFormat线程安全问题"><a href="#SimpleDateFormat线程安全问题" class="headerlink" title="SimpleDateFormat线程安全问题"></a>SimpleDateFormat线程安全问题</h3><p>使用ExecutorService提交多个任务的方式，模拟并发环境将字符串转换为日期即测试parse方法，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testParse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ExecutorService executorService = Executors.newCachedThreadPool();</span><br><span class="line">    List&lt;String&gt; dateStrList = Lists.newArrayList(</span><br><span class="line">            <span class="string">"2018-04-01 10:00:01"</span>,</span><br><span class="line">            <span class="string">"2018-04-02 11:00:02"</span>,</span><br><span class="line">            <span class="string">"2018-04-03 12:00:03"</span>,</span><br><span class="line">            <span class="string">"2018-04-04 13:00:04"</span>,</span><br><span class="line">            <span class="string">"2018-04-05 14:00:05"</span></span><br><span class="line">    );</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd hh:mm:ss"</span>);</span><br><span class="line">    <span class="keyword">for</span> (String str : dateStrList) &#123;</span><br><span class="line">        executorService.execute(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                simpleDateFormat.parse(str);</span><br><span class="line">                TimeUnit.SECONDS.sleep(<span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>并发环境下使用SimpleDateFormat的parse方法有线程安全问题！</p>
+<p>线程安全问题的原因：</p>
+<p>在SimpleDateFormat转换日期是通过Calendar对象来操作的，SimpleDateFormat继承DateFormat类，DateFormat类中维护一个Calendar对象<br>通过DateFormat类中的注释可知：此处Calendar实例被用来进行日期-时间计算，既被用于format方法也被用于parse方法！</p>
+<p>在parse方法的最后，会调用CalendarBuilder的establish方法，入参就是SimpleDateFormat维护的Calendar实例，在establish方法中会调用calendar的clear方法</p>
+<p><img src="https://img-blog.csdn.net/20180414170538150" alt></p>
+<p><img src="https://img-blog.csdn.net/2018041417062013" alt></p>
+<p>可知SimpleDateFormat维护的用于format和parse方法计算日期-时间的calendar被清空了，如果此时线程A将calendar清空且没有设置新值，线程B也进入parse方法用到了SimpleDateFormat对象中的calendar对象，此时就会产生线程安全问题！</p>
+<p><img src="http://static.oschina.net/uploads/space/2013/0813/033057_iid0_568818.jpg" alt></p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>1、每一个使用SimpleDateFormat对象进行日期-时间进行format和parse方法的时候就创建一个新的SimpleDateFormat对象，用完就销毁即可！代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 模拟并发环境下使用SimpleDateFormat的parse方法将字符串转换成Date对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testParseThreadSafe</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ExecutorService executorService = Executors.newCachedThreadPool();</span><br><span class="line">    List&lt;String&gt; dateStrList = Lists.newArrayList(</span><br><span class="line">            <span class="string">"2018-04-01 10:00:01"</span>,</span><br><span class="line">            <span class="string">"2018-04-02 11:00:02"</span>,</span><br><span class="line">            <span class="string">"2018-04-03 12:00:03"</span>,</span><br><span class="line">            <span class="string">"2018-04-04 13:00:04"</span>,</span><br><span class="line">            <span class="string">"2018-04-05 14:00:05"</span></span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">for</span> (String str : dateStrList) &#123;</span><br><span class="line">        executorService.execute(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//创建新的SimpleDateFormat对象用于日期-时间的计算</span></span><br><span class="line">                SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd hh:mm:ss"</span>);</span><br><span class="line">                simpleDateFormat.parse(str);</span><br><span class="line">                TimeUnit.SECONDS.sleep(<span class="number">1</span>);</span><br><span class="line">                simpleDateFormat = <span class="keyword">null</span>; <span class="comment">//销毁对象</span></span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>2、使用 ThreadLocal</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DateUtil</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">// anonymous inner class. Each thread will have its own copy of the SimpleDateFormat</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> ThreadLocal&lt;simpledateformat&gt; tl = <span class="keyword">new</span> 		 ThreadLocal&lt;simpledateformat&gt;() &#123;</span><br><span class="line">        <span class="function"><span class="keyword">protected</span> SimpleDateFormat <span class="title">initialValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> SimpleDateFormat(<span class="string">"dd/MM/yyyy"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">formatDate</span><span class="params">(Date input)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (input == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">  		<span class="keyword">return</span> tl.get().format(input);</span><br><span class="line"> 	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、同步代码块 synchronized(code)</p>
+<p>或者使用装饰器设计模式包装下 SimpleDateFormat ，使之变得线程安全。</p>
+<p><img src="https://segmentfault.com/img/remote/1460000018596188" alt></p>
+<p>简单粗暴，synchronized往上一套也可以解决线程安全问题，缺点自然就是并发量大的时候会对性能有影响，线程阻塞。</p>
+<p>4、使用第三方的日期处理函数：</p>
+<p>比如 JODA 来避免这些问题，你也可以使用 commons-lang 包中的 FastDateFormat 工具类。</p>
+<p>5、基于JDK1.8的DateTimeFormatter，也是《阿里巴巴开发手册》给我们的解决方案，对之前的代码进行改造：</p>
+<p>DateTimeFormatter源码上作者也加注释说明了，他的类是不可变的，并且是线程安全的。</p>
+<p><img src="https://segmentfault.com/img/remote/1460000018596190" alt></p>
 
           
         
@@ -1725,436 +2384,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/字符流和字节流/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/02/Java基础/字符流和字节流/" class="post-title-link" itemprop="url">字符流和字节流</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-02 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-02T12:12:57+08:00">2019-10-02 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-18 16:49:07" itemprop="dateModified" datetime="2019-10-18T16:49:07+08:00">2019-10-18</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-18T16:49:07+08:00" content="2019-10-18">
-                2019-10-18 16:49:07
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/02/Java基础/字符流和字节流/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/字符流和字节流/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="什么是流"><a href="#什么是流" class="headerlink" title="什么是流"></a>什么是流</h4><ul>
-<li>流是个抽象的概念,是对输入输出设备的抽象，输入流可以看作一个输入通道，输出流可以看作一个输出通道。</li>
-<li>输入流是相对程序而言的，外部传入数据给程序需要借助输入流。</li>
-<li>输出流是相对程序而言的，程序把数据传输到外部需要借助输出流。</li>
-</ul>
-<h5 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h5><p>字节流–传输过程中，传输数据的最基本单位是字节的流。</p>
-<h5 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h5><p>字符流–传输过程中，传输数据的最基本单位是字符的流。</p>
-<p>字符编码方式不同，有时候一个字符使用的字节数也不一样，比如ASCLL方式编码的字符，占一个字节；而UTF-8方式编码的字符，一个英文字符需要一个字节，一个中文需要三个字节。</p>
-<p>字节数据是二进制形式的，要转成我们能识别的正常字符，需要选择正确的编码方式。我们生活中遇到的乱码问题就是字节数据没有选择正确的编码方式来显示成字符。</p>
-<p>从本质上来讲，写数据（即输出）的时候，字节也好，字符也好，本质上都是没有标识符的，需要去指定编码方式。</p>
-<p><img src="http://img.blog.csdn.net/20170409162923380" alt></p>
-<p>file字节流输入输出例子</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IOTest</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        OutputStream fos = <span class="keyword">null</span>;</span><br><span class="line">        InputStream fis = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">/********* 输出流写文件 ***********/</span></span><br><span class="line">            fos=<span class="keyword">new</span> FileOutputStream(<span class="string">"d:\\silly.txt"</span>);</span><br><span class="line">            String str=<span class="string">"最好的我们隔了一整个青春"</span>;</span><br><span class="line">            <span class="keyword">byte</span>[] words=str.getBytes(); <span class="comment">//把字符串编码成字节序列</span></span><br><span class="line">            <span class="comment">//写入操作</span></span><br><span class="line">            fos.write(words, <span class="number">0</span>, words.length);</span><br><span class="line">            System.out.println(<span class="string">"写入成功！"</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">/********* 输入流读文件 ***********/</span></span><br><span class="line">            fis = <span class="keyword">new</span> FileInputStream(<span class="string">"d:\\silly.txt"</span>);</span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>]; <span class="comment">//字节数组缓存数据</span></span><br><span class="line">            <span class="keyword">int</span> n = <span class="number">0</span>; <span class="comment">//记录读取的字节长度</span></span><br><span class="line">            <span class="comment">//循环读取数据</span></span><br><span class="line">            <span class="keyword">while</span>((n = fis.read(buf)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//这里使用三个参数的构造方法，因为最后一次读取的长度可能达不到buf数组的长度</span></span><br><span class="line">                <span class="comment">//所以根据实际读取的长度n去构造对象更合理</span></span><br><span class="line">                sb.append(<span class="keyword">new</span> String(buf, <span class="number">0</span>, n));</span><br><span class="line">                buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>]; <span class="comment">//重新初始化，避免数据重复</span></span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(sb.toString());</span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//释放资源</span></span><br><span class="line">                <span class="keyword">if</span>(fos != <span class="keyword">null</span>) fos.close();</span><br><span class="line">                <span class="keyword">if</span>(fis != <span class="keyword">null</span>) fis.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>file字符流输入输出例子</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileReader;</span><br><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IOTest2</span> </span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 	FileWriter:用来写入字符文件的便捷类。</span></span><br><span class="line"><span class="comment">	 *  父类：OutputStreamWriter</span></span><br><span class="line"><span class="comment">	 *  FileWriter 用于写入字符流。要写入原始字节流，请考虑使用 FileOutputStream。 </span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 输入流</span></span><br><span class="line"><span class="comment">		//1：创建字符输出便捷流</span></span><br><span class="line"><span class="comment">		FileWriter fw = new FileWriter("d:\\a.txt");</span></span><br><span class="line"><span class="comment">		//2:写数据</span></span><br><span class="line"><span class="comment">		fw.write("你好吗");</span></span><br><span class="line"><span class="comment">		//3:关闭流</span></span><br><span class="line"><span class="comment">		fw.close();</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//输出流</span></span><br><span class="line">		<span class="comment">//1:创建字符输入便捷流</span></span><br><span class="line">		FileReader fr = <span class="keyword">new</span> FileReader(<span class="string">"d:\\a.txt"</span>);</span><br><span class="line">		<span class="comment">//2:读数据</span></span><br><span class="line">		<span class="comment">//2.1 一次读取一个字符</span></span><br><span class="line">		<span class="comment">/*int num = 0;</span></span><br><span class="line"><span class="comment">		while((num = fr.read())!=-1)&#123;</span></span><br><span class="line"><span class="comment">			System.out.print((char)num);</span></span><br><span class="line"><span class="comment">		&#125;*/</span></span><br><span class="line">		<span class="comment">//2.2 一次读取一个字符数组</span></span><br><span class="line">		<span class="keyword">char</span>[] ch = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">1024</span>*<span class="number">1024</span>];</span><br><span class="line">		<span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>((num = fr.read(ch))!=-<span class="number">1</span>)&#123;</span><br><span class="line">			System.out.print(<span class="keyword">new</span> String(ch,<span class="number">0</span>,num));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//3:关闭流</span></span><br><span class="line">		fr.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/Java数组怎么输出/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/02/Java基础/Java数组怎么输出/" class="post-title-link" itemprop="url">Java数组怎么输出</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-02 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-02T12:12:57+08:00">2019-10-02 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-22 01:03:40" itemprop="dateModified" datetime="2019-10-22T01:03:40+08:00">2019-10-22</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-22T01:03:40+08:00" content="2019-10-22">
-                2019-10-22 01:03:40
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/02/Java基础/Java数组怎么输出/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/Java数组怎么输出/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="Java数组怎么输出"><a href="#Java数组怎么输出" class="headerlink" title="Java数组怎么输出"></a>Java数组怎么输出</h4><p>错误示范：System.out.println(array);　　</p>
-<p>这样输出的是数组的首地址，而不能打印出数组数据。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] array= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="comment">//方式一：for循环</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">	System.out.println(array[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式二：for each</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> a:array)</span><br><span class="line">	System.out.println(a);</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式三：Arrays类中的toString方法（注意，是Arrays不是Array，Arrays类位于java.util包下）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>[] array= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line">System.out.println(Arrays.toString(array));</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/抽象类和接口的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2329,6 +2558,226 @@
 <p>抽象类中变量修饰符都可以用</p>
 <p>抽象类中抽象方法（没有方法体）只能<strong>public</strong>和<strong>protected</strong></p>
 <p>抽象类中非抽象方法（有方法体）修饰符都可以用</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/字符流和字节流/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/02/Java基础/字符流和字节流/" class="post-title-link" itemprop="url">字符流和字节流</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-02 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-02T12:12:57+08:00">2019-10-02 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-18 16:49:07" itemprop="dateModified" datetime="2019-10-18T16:49:07+08:00">2019-10-18</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-18T16:49:07+08:00" content="2019-10-18">
+                2019-10-18 16:49:07
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/02/Java基础/字符流和字节流/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/字符流和字节流/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="什么是流"><a href="#什么是流" class="headerlink" title="什么是流"></a>什么是流</h4><ul>
+<li>流是个抽象的概念,是对输入输出设备的抽象，输入流可以看作一个输入通道，输出流可以看作一个输出通道。</li>
+<li>输入流是相对程序而言的，外部传入数据给程序需要借助输入流。</li>
+<li>输出流是相对程序而言的，程序把数据传输到外部需要借助输出流。</li>
+</ul>
+<h5 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h5><p>字节流–传输过程中，传输数据的最基本单位是字节的流。</p>
+<h5 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h5><p>字符流–传输过程中，传输数据的最基本单位是字符的流。</p>
+<p>字符编码方式不同，有时候一个字符使用的字节数也不一样，比如ASCLL方式编码的字符，占一个字节；而UTF-8方式编码的字符，一个英文字符需要一个字节，一个中文需要三个字节。</p>
+<p>字节数据是二进制形式的，要转成我们能识别的正常字符，需要选择正确的编码方式。我们生活中遇到的乱码问题就是字节数据没有选择正确的编码方式来显示成字符。</p>
+<p>从本质上来讲，写数据（即输出）的时候，字节也好，字符也好，本质上都是没有标识符的，需要去指定编码方式。</p>
+<p><img src="http://img.blog.csdn.net/20170409162923380" alt></p>
+<p>file字节流输入输出例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IOTest</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        OutputStream fos = <span class="keyword">null</span>;</span><br><span class="line">        InputStream fis = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">/********* 输出流写文件 ***********/</span></span><br><span class="line">            fos=<span class="keyword">new</span> FileOutputStream(<span class="string">"d:\\silly.txt"</span>);</span><br><span class="line">            String str=<span class="string">"最好的我们隔了一整个青春"</span>;</span><br><span class="line">            <span class="keyword">byte</span>[] words=str.getBytes(); <span class="comment">//把字符串编码成字节序列</span></span><br><span class="line">            <span class="comment">//写入操作</span></span><br><span class="line">            fos.write(words, <span class="number">0</span>, words.length);</span><br><span class="line">            System.out.println(<span class="string">"写入成功！"</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">/********* 输入流读文件 ***********/</span></span><br><span class="line">            fis = <span class="keyword">new</span> FileInputStream(<span class="string">"d:\\silly.txt"</span>);</span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>]; <span class="comment">//字节数组缓存数据</span></span><br><span class="line">            <span class="keyword">int</span> n = <span class="number">0</span>; <span class="comment">//记录读取的字节长度</span></span><br><span class="line">            <span class="comment">//循环读取数据</span></span><br><span class="line">            <span class="keyword">while</span>((n = fis.read(buf)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//这里使用三个参数的构造方法，因为最后一次读取的长度可能达不到buf数组的长度</span></span><br><span class="line">                <span class="comment">//所以根据实际读取的长度n去构造对象更合理</span></span><br><span class="line">                sb.append(<span class="keyword">new</span> String(buf, <span class="number">0</span>, n));</span><br><span class="line">                buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>]; <span class="comment">//重新初始化，避免数据重复</span></span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(sb.toString());</span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//释放资源</span></span><br><span class="line">                <span class="keyword">if</span>(fos != <span class="keyword">null</span>) fos.close();</span><br><span class="line">                <span class="keyword">if</span>(fis != <span class="keyword">null</span>) fis.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>file字符流输入输出例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileReader;</span><br><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IOTest2</span> </span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 	FileWriter:用来写入字符文件的便捷类。</span></span><br><span class="line"><span class="comment">	 *  父类：OutputStreamWriter</span></span><br><span class="line"><span class="comment">	 *  FileWriter 用于写入字符流。要写入原始字节流，请考虑使用 FileOutputStream。 </span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 输入流</span></span><br><span class="line"><span class="comment">		//1：创建字符输出便捷流</span></span><br><span class="line"><span class="comment">		FileWriter fw = new FileWriter("d:\\a.txt");</span></span><br><span class="line"><span class="comment">		//2:写数据</span></span><br><span class="line"><span class="comment">		fw.write("你好吗");</span></span><br><span class="line"><span class="comment">		//3:关闭流</span></span><br><span class="line"><span class="comment">		fw.close();</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//输出流</span></span><br><span class="line">		<span class="comment">//1:创建字符输入便捷流</span></span><br><span class="line">		FileReader fr = <span class="keyword">new</span> FileReader(<span class="string">"d:\\a.txt"</span>);</span><br><span class="line">		<span class="comment">//2:读数据</span></span><br><span class="line">		<span class="comment">//2.1 一次读取一个字符</span></span><br><span class="line">		<span class="comment">/*int num = 0;</span></span><br><span class="line"><span class="comment">		while((num = fr.read())!=-1)&#123;</span></span><br><span class="line"><span class="comment">			System.out.print((char)num);</span></span><br><span class="line"><span class="comment">		&#125;*/</span></span><br><span class="line">		<span class="comment">//2.2 一次读取一个字符数组</span></span><br><span class="line">		<span class="keyword">char</span>[] ch = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">1024</span>*<span class="number">1024</span>];</span><br><span class="line">		<span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>((num = fr.read(ch))!=-<span class="number">1</span>)&#123;</span><br><span class="line">			System.out.print(<span class="keyword">new</span> String(ch,<span class="number">0</span>,num));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//3:关闭流</span></span><br><span class="line">		fr.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2607,495 +3056,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/09/26/并发/SimpleDateFormat线程安全问题和解决方案/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/09/26/并发/SimpleDateFormat线程安全问题和解决方案/" class="post-title-link" itemprop="url">SimpleDateFormat线程安全问题和解决方案</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-09-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-09-26T12:12:57+08:00">2019-09-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-22 02:02:37" itemprop="dateModified" datetime="2019-10-22T02:02:37+08:00">2019-10-22</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-22T02:02:37+08:00" content="2019-10-22">
-                2019-10-22 02:02:37
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/09/26/并发/SimpleDateFormat线程安全问题和解决方案/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/26/并发/SimpleDateFormat线程安全问题和解决方案/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/jvm/JVM之内存区域/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/jvm/JVM之内存区域/" class="post-title-link" itemprop="url">JVM之内存区域</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-21 12:26:38" itemprop="dateModified" datetime="2019-10-21T12:26:38+08:00">2019-10-21</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-21T12:26:38+08:00" content="2019-10-21">
-                2019-10-21 12:26:38
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/jvm/JVM之内存区域/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/jvm/JVM之内存区域/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="JVM之内存区域"><a href="#JVM之内存区域" class="headerlink" title="JVM之内存区域"></a>JVM之内存区域</h1><p><img src="/2019/05/26/jvm/JVM之内存区域/jvm内存区域.png" alt></p>
-<p>了解如何通过参数来控制各区域的内存大小</p>
-<p><img src="/2019/05/26/jvm/JVM之内存区域/jvm内存参数.png" alt></p>
-<p>控制参数：</p>
-<ul>
-<li>-Xms：设置堆的最小空间大小。</li>
-<li>-Xmx：设置堆的最大空间大小。</li>
-<li>-XX:NewSize：设置新生代最小空间大小。</li>
-<li>-XX:MaxNewSize：设置新生代最大空间大小。</li>
-<li>-XX:PermSize：设置永久代最小空间大小。</li>
-<li>-XX:MaxPermSize：设置永久代最大空间大小。</li>
-<li>-Xss：设置每个线程的堆栈大小。</li>
-</ul>
-<p>没有直接设置老年代的参数，但是可以设置堆空间大小和新生代空间大小两个参数来间接控制。</p>
-<p>老年代空间大小=堆空间大小-年轻代大空间大小</p>
-<h3 id="程序计数器-program-counter-register"><a href="#程序计数器-program-counter-register" class="headerlink" title="程序计数器(program counter register)"></a>程序计数器(program counter register)</h3><p>程序计数器的作用：</p>
-<p>当前线程所执行的字节码的行号指示器，字节码的解析工作就是通过改变这个计数器的值来选取下一个需要执行的字节码指令，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器完成。（<strong>线程私有的</strong>）</p>
-<p>程序计数器的记录内容：</p>
-<p>如果线程正在执行一个java方法，则程序计数器里面记录着正在执行的虚拟机字节码指令的地址；</p>
-<p>如果正在执行的是native方法，则程序计数器里面为null。</p>
-<p>特殊例子：</p>
-<p>此内存区域是唯一一个在java虚拟机规范中没有OutOfMemoryError情况的区域。</p>
-<h3 id="java虚拟机栈-JVM-Stacks"><a href="#java虚拟机栈-JVM-Stacks" class="headerlink" title="java虚拟机栈(JVM Stacks)"></a>java虚拟机栈(JVM Stacks)</h3><p>生命周期：与线程相同，<strong>线程私有</strong>。</p>
-<p>虚拟机栈描述的是java方法执行的内存模型。</p>
-<p>JVM栈的作用：每个方法被执行的时候，都会同时创建一个栈帧(stack frame)用于存储<strong>局部变量表</strong>、<strong>操作数栈</strong>、<strong>动态链接</strong>、<strong>方法出口</strong>等信息。每个方法被调用至执行完成的过程，其实就是一个栈帧从入栈到出栈的过程。</p>
-<p>局部变量表存放了的内容：</p>
-<p>存放着编译期可知的各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（reference类型，它不等同于对象本身，根据不同的虚拟机实现，它可能是一个指向对象起始地址的引用指针，也可能指向一个代表对象的句柄或者其他与此对象相关的位置）和returnAddress类型（指向了一条字节码指令的地址）。</p>
-<p>理解性内容：</p>
-<p>其中64位长度的long和double类型的数据会占用2个局部变量空间（Slot），其余的数据类型只占用1个。局部变量表所需的内存空间在编译期间完成分配，当进入一个方法时，这个方法需要在帧中分配多大的局部变量空间是完全确定的，在方法运行期间不会改变局部变量表的大小。</p>
-<p>该区域的异常状况：</p>
-<ul>
-<li>如果线程请求的栈深度大于虚拟机所允许的深度，将抛出StackOverflowError异常；</li>
-<li>如果虚拟机栈可以动态扩展（当前大部分的Java虚拟机都可动态扩展，只不过Java虚拟机规范中也允许固定长度的虚拟机栈），当扩展时无法申请到足够的内存时会抛出OutOfMemoryError异常。</li>
-</ul>
-<h3 id="本地方法栈-native-method-stacks"><a href="#本地方法栈-native-method-stacks" class="headerlink" title="本地方法栈(native method stacks)"></a>本地方法栈(native method stacks)</h3><p>本地方法栈（Native Method Stacks）与虚拟机栈所发挥的作用是非常相似的，其区别不过是虚拟机栈为虚拟机执行Java方法（也就是字节码）服务，而<strong>本地方法栈则是为虚拟机使用到的Native方法服务</strong>。</p>
-<h3 id="java堆-java-heap"><a href="#java堆-java-heap" class="headerlink" title="java堆(java heap)"></a>java堆(java heap)</h3><p>对于大多数应用来说，Java堆（Java Heap）是Java虚拟机所管理的内存中<strong>最大</strong>的一块。（<strong>线程共享</strong>）</p>
-<p>Java堆是被所有线程共享的一块内存区域，在<strong>虚拟机启动时</strong>创建。</p>
-<p>作用：此内存区域的唯一目的就是<strong>存放对象实例</strong>，<strong>几乎所有的对象实例都在这里分配内存</strong>。</p>
-<p>Java堆是垃圾收集器管理的主要区域，因此很多时候也被称做“<strong>GC堆</strong>”。</p>
-<p>如果从内存回收的角度看，由于现在收集器基本都是采用的分代收集算法，所以Java堆中还可以细分为：<strong>新生代和老年代；再细分年轻代的有Eden空间、From Survivor空间、To Survivor空间等。(默认比例8:1:1)</strong>（详情在GC算法和回收中提到）</p>
-<p>理解性：</p>
-<p>根据Java虚拟机规范的规定，Java堆可以处于物理上不连续的内存空间中，只要逻辑上是连续的即可，就像我们的磁盘空间一样。在实现时，既可以实现成固定大小的，也可以是可扩展的，不过当前主流的虚拟机都是按照可扩展来实现的（通过-Xmx和-Xms控制）。</p>
-<p>异常状况：</p>
-<p>如果在堆中没有内存完成实例分配，并且堆也无法再扩展时，将会抛出OutOfMemoryError异常。</p>
-<h3 id="方法区-method-area"><a href="#方法区-method-area" class="headerlink" title="方法区(method area)"></a>方法区(method area)</h3><p>方法区和Java堆一样，是各个线程共享的内存区域</p>
-<p>作用：<strong>它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</strong></p>
-<p>Java虚拟机规范对这个区域的限制非常宽松，除了和Java堆一样不需要连续的内存和可以选择固定大小或者可扩展外，还可以选择不实现垃圾收集。</p>
-<p>这个区域的内存回收目标主要是<strong>针对常量池的回收</strong>和<strong>对类型的卸载</strong></p>
-<p>异常状况：</p>
-<p>根据Java 虚拟机规范的规定，当方法区无法满足内存分配需求时，将抛出OutOfMemoryError 异常。</p>
-<h3 id="运行时常量池-runtime-constant-pool"><a href="#运行时常量池-runtime-constant-pool" class="headerlink" title="运行时常量池(runtime constant pool)"></a>运行时常量池(runtime constant pool)</h3><p>运行时的常量池属于方法区的一部分。</p>
-<p>作用：用于存放编译期生成的<strong>各种字面量</strong>和<strong>符号引用</strong>，这部分内容将在类加载后存放到方法区的运行时常量池中。编译器和运行期(String 的 intern() )都可以将常量放入池中。</p>
-<p>异常状况</p>
-<p>当常量池无法再申请到内存时会抛出OutOfMemoryError 异常。</p>
-<h3 id="直接内存-direct-memory"><a href="#直接内存-direct-memory" class="headerlink" title="直接内存(direct memory)"></a>直接内存(direct memory)</h3><p>直接内存（Direct Memory）并不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范中定义的内存区域，但是这部分内存也被频繁地使用，而且也可能导致OutOfMemoryError 异常出现。</p>
-<p>本机直接内存的分配不会受到Java 堆大小的限制，但是，既然是内存，则肯定还是会受到本机总内存（包括RAM 及SWAP 区或者分页文件）的大小及处理器寻址空间的限制。服务器管理员配置虚拟机参数时，一般会根据实际内存设置-Xmx等参数信息，但经常会忽略掉直接内存，使得各个内存区域的总和大于物理内存限制（包括物理上的和操作系统级的限制），从而导致动态扩展时出现OutOfMemoryError异常。</p>
-<h3 id="对象访问"><a href="#对象访问" class="headerlink" title="对象访问"></a>对象访问</h3><p>Object obj = new Object();</p>
-<p>最简单的访问，却涉及Java 栈、Java 堆、方法区这三个最重要内存区</p>
-<p>假设这句代码出现在方法体中，那“Object obj”这部分的语义将会反映到Java 栈的本地变量表中，作为一个reference 类型数据出现。</p>
-<p>“new Object()”这部分的语义将会反映到Java 堆中，形成一块存储了Object 类型所有实例数据值（Instance Data，对象中各个实例字段的数据）的结构化内存，根据具体类型以及虚拟机实现的对象内存布局（Object Memory Layout）的不同，这块内存的长度是不固定的。</p>
-<p>在Java 堆中还必须包含能查找到此对象类型数据（如对象类型、父类、实现的接口、方法等）的地址信息，这些类型数据则存储在方法区中。</p>
-<p>由于reference 类型在Java 虚拟机规范里面只规定了一个指向对象的引用，并没有定义这个引用应该通过哪种方式去定位，以及访问到Java 堆中的对象的具体位置，因此不同虚拟机实现的对象访问方式会有所不同，主流的访问方式有两种：使用句柄和直接指针。</p>
-<p>如果使用<strong>句柄访问方式</strong>，Java 堆中将会划分出一块内存来作为句柄池，reference中存储的就是对象的句柄地址，而句柄中包含了对象实例数据和类型数据各自的具体地址信息</p>
-<p><img src="/2019/05/26/jvm/JVM之内存区域/jvm内存区域句柄.jpg" alt></p>
-<p>如果使用<strong>直接指针访问方式</strong>，Java 堆对象的布局中就必须考虑如何放置访问类型数据的相关信息，reference 中直接存储的就是对象地址</p>
-<p><img src="/2019/05/26/jvm/JVM之内存区域/jvm内存区域直接访问.jpg" alt></p>
-<p>使用句柄访问方式的最大好处就是reference 中存储的是稳定的句柄地址，在对象被移动（垃圾收集时移动对象是非常普遍的行为）时只会改变句柄中的实例数据指针，而reference 本身不需要被修改。</p>
-<p>使用直接指针访问方式的最大好处就是速度更快，它节省了一次指针定位的时间开销，由于对象的访问在Java 中非常频繁，因此这类开销积少成多后也是一项非常可观的执行成本。</p>
-<p>就主要虚拟机Sun HotSpot 而言，它是使用第二种方式进行对象访问的，但从整个软件开发的范围来看，各种语言和框架使用句柄来访问的情况也十分常见。</p>
-<h3 id="OutOfMemoryError分析-OOM"><a href="#OutOfMemoryError分析-OOM" class="headerlink" title="OutOfMemoryError分析(OOM)"></a>OutOfMemoryError分析(OOM)</h3><p>java堆溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError：Java heap space</span><br></pre></td></tr></table></figure>
-<p>java栈溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.StackOverflowError</span><br></pre></td></tr></table></figure>
-<p>运行时常量池溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError：PermGen space</span><br></pre></td></tr></table></figure>
-<p>方法区溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError：PermGen space</span><br></pre></td></tr></table></figure>
-<p>本机直接内存溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3144,7 +3104,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3333,7 +3293,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共86.5k字</span>
+  <span class="post-count">博客全站共89.2k字</span>
 </div>
         
 <div class="busuanzi-count">
