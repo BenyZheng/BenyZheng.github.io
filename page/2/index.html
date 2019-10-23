@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">46</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">47</span></a>
 
   </li>
 
@@ -385,6 +385,208 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/20/零散记/redis为什么可以承担高并发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/20/零散记/redis为什么可以承担高并发/" class="post-title-link" itemprop="url">redis为什么可以承担高并发</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+             
+             
+
+              <time title="创建时间：2019-10-20 12:12:57 / 修改时间：18:51:59" itemprop="dateCreated datePublished" datetime="2019-10-20T12:12:57+08:00">2019-10-20 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-20T18:51:59+08:00" content="2019-10-20">
+                2019-10-20 18:51:59
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/零散记/" itemprop="url" rel="index"><span itemprop="name">零散记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/20/零散记/redis为什么可以承担高并发/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/20/零散记/redis为什么可以承担高并发/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>绝大部分请求是纯粹的内存操作（非常快速）</li>
+<li>采用单线程,避免了不必要的上下文切换和竞争条件</li>
+<li>非阻塞IO 内部实现采用epoll，采用了epoll+自己实现的简单的事件框架。epoll中的读、写、关闭、连接都转化成了事件，然后利用epoll的多路复用特性，绝不在io上浪费一点时间</li>
+</ul>
+<p>　epoll既然是对select和poll的改进，就应该能避免上述的三个缺点。那epoll都是怎么解决的呢？在此之前，我们先看一下epoll和select和poll的调用接口上的不同，select和poll都只提供了一个函数——select或者poll函数。而epoll提供了三个函数，epoll_create,epoll_ctl和epoll_wait，epoll_create是创建一个epoll句柄；epoll_ctl是注册要监听的事件类型；epoll_wait则是等待事件的产生。</p>
+<p>　　对于第一个缺点，epoll的解决方案在epoll_ctl函数中。每次注册新的事件到epoll句柄中时（在epoll_ctl中指定EPOLL_CTL_ADD），会把所有的fd拷贝进内核，而不是在epoll_wait的时候重复拷贝。epoll保证了每个fd在整个过程中只会拷贝一次。</p>
+<p>　　对于第二个缺点，epoll的解决方案不像select或poll一样每次都把current轮流加入fd对应的设备等待队列中，而只在epoll_ctl时把current挂一遍（这一遍必不可少）并为每个fd指定一个回调函数，当设备就绪，唤醒等待队列上的等待者时，就会调用这个回调函数，而这个回调函数会把就绪的fd加入一个就绪链表）。epoll_wait的工作实际上就是在这个就绪链表中查看有没有就绪的fd（利用schedule_timeout()实现睡一会，判断一会的效果，和select实现中的第7步是类似的）。</p>
+<p>　　对于第三个缺点，epoll没有这个限制，它所支持的FD上限是最大可以打开文件的数目，这个数字一般远大于2048,举个例子,在1GB内存的机器上大约是10万左右，具体数目可以cat /proc/sys/fs/file-max察看,一般来说这个数目和系统内存关系很大。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1697,7 +1899,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/Java数组怎么输出/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/Java对日期操作的类/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -1717,7 +1919,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/02/Java基础/Java数组怎么输出/" class="post-title-link" itemprop="url">Java数组怎么输出</a>
+                <a href="/2019/10/02/Java基础/Java对日期操作的类/" class="post-title-link" itemprop="url">Java对日期操作的类</a>
               
             
           </h1>
@@ -1759,7 +1961,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-22 01:03:40" itemprop="dateModified" datetime="2019-10-22T01:03:40+08:00">2019-10-22</time> 
+              <time title="修改时间：2019-10-22 01:58:05" itemprop="dateModified" datetime="2019-10-22T01:58:05+08:00">2019-10-22</time> 
               -->
               <!-- new version -->
                         
@@ -1774,8 +1976,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-22T01:03:40+08:00" content="2019-10-22">
-                2019-10-22 01:03:40
+              <time itemprop="dateUpdated" datetime="2019-10-22T01:58:05+08:00" content="2019-10-22">
+                2019-10-22 01:58:05
               </time>
             </span>
           
@@ -1815,8 +2017,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/02/Java基础/Java数组怎么输出/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/Java数组怎么输出/" itemprop="commentCount"></span>
+                <a href="/2019/10/02/Java基础/Java对日期操作的类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/Java对日期操作的类/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1846,11 +2048,50 @@
       
         
           
-            <h4 id="Java数组怎么输出"><a href="#Java数组怎么输出" class="headerlink" title="Java数组怎么输出"></a>Java数组怎么输出</h4><p>错误示范：System.out.println(array);　　</p>
-<p>这样输出的是数组的首地址，而不能打印出数组数据。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] array= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="comment">//方式一：for循环</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">	System.out.println(array[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式二：for each</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> a:array)</span><br><span class="line">	System.out.println(a);</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式三：Arrays类中的toString方法（注意，是Arrays不是Array，Arrays类位于java.util包下）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>[] array= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line">System.out.println(Arrays.toString(array));</span><br></pre></td></tr></table></figure>
+            <h3 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h3><p>表示特定的瞬间，精确到毫秒（因为闰秒的原因，所以其实结果并不是特别的准确，但是如果要求不是特别严格，影响并没有很大。</p>
+<p>构造方法：Date()、Date(Long date)</p>
+<p>常用方法：</p>
+<p>void setTime(Long time)：根据毫秒数设置该日期对象，默认构造函数设置该日期对象为当前日期。</p>
+<p>Long getTime()：获取日期对象毫秒数。毫秒数都是以1970年1月1日0点0分0秒开始计算。</p>
+<p>（下面几个方法，在源代码中，实际比较的还是两个日期的毫秒数）</p>
+<p>int compareTo(Date date)：比较俩个日期顺序，比参数date小，返回负数，相等返回0，大则返回正数。</p>
+<p>boolean before(Date date)：判断是否在参数date之前，是则返回true。</p>
+<p>boolean after(Date date)：同上，判断在是否在参数之后。</p>
+<p>boolean equals(Object date)：当且仅当date不为空，是Date对象，而且毫秒数与调用方法的日期对象相等才为true。</p>
+<h3 id="SimpleDateFormat"><a href="#SimpleDateFormat" class="headerlink" title="SimpleDateFormat"></a>SimpleDateFormat</h3><p>继承DateFormat类，主要用来进行格式转换。</p>
+<p>构造函数：SimpleDateFormat(String pattern)，最常用的构造方法。根据指定格式来转换字符串与日期。</p>
+<p>常用的2个格式转换方法：</p>
+<p>字符串转换成Date类：Date parse(String date)</p>
+<p>Date类转换成字符串类型：String format(Date date)，都是继承DateFormat类的方法。</p>
+<p>其中，parse方法会抛出一个转换异常：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Date <span class="title">parse</span><span class="params">(String source)</span> <span class="keyword">throws</span> ParseException</span>&#123;</span><br><span class="line">       ParsePosition pos = <span class="keyword">new</span> ParsePosition(<span class="number">0</span>);</span><br><span class="line">       Date result = parse(source, pos);</span><br><span class="line">       <span class="keyword">if</span> (pos.index == <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> ParseException(<span class="string">"Unparseable date: \""</span> + source + <span class="string">"\""</span> ,</span><br><span class="line">               pos.errorIndex);</span><br><span class="line">       <span class="keyword">return</span> result;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>下面是一个转换的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">       <span class="comment">//对字符串格式类似为2018-09这种进行转换，年月之间用‘-’分隔</span></span><br><span class="line">	SimpleDateFormat simpleDateFormat=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM"</span>);</span><br><span class="line">	Date date=(Date)simpleDateFormat.parse(<span class="string">"2018-09"</span>);</span><br><span class="line">	System.out.println(date);</span><br><span class="line">	String dateStr=simpleDateFormat.format(date);</span><br><span class="line">	System.out.println(dateStr);</span><br><span class="line">       <span class="comment">//将转换格式应用为201809这种，年月之间没有分隔符号的，只要年月相同，结果就与上面相同</span></span><br><span class="line">	simpleDateFormat.applyPattern(<span class="string">"yyyyMM"</span>);<span class="comment">//applyPattern方法用来切换需要转换的字符串格式。</span></span><br><span class="line">	Date date2=(Date)simpleDateFormat.parse(<span class="string">"201809"</span>);</span><br><span class="line">	System.out.println(date2);</span><br><span class="line">	String dateStr2=simpleDateFormat.format(date2);</span><br><span class="line">	System.out.println(dateStr2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Calendar"><a href="#Calendar" class="headerlink" title="Calendar"></a>Calendar</h3><p>一个抽象类，为特定瞬间和一组日历字段之间的转换以及操作日历字段提供了方法。</p>
+<p>使用<strong>Calendar.getInstance</strong>获取该对象：Calendar nowTime=Calendar.getInstance();</p>
+<p>部分常用方法：</p>
+<p>void setTime(Date date)：通过该类方法指定Calendar对象表示的日期。</p>
+<p>Date getTime()：获取一个Date对象。</p>
+<p>void setTimeInMillis(Long time)：同上。</p>
+<p>void add(int field,int amount)：给当前对象的指定字段增加指定数值。Calender类为日历中的各种字段都设置了int类型的数值，比如，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> YEAR = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> MONTH = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> WEEK_OF_YEAR = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<p>字段‘年’所对应的int值为1，如果你想将当前日历类对象的年份加1年，那么只需这样做：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Calendar nowTime=Calendar.getInstance();</span><br><span class="line">System.out.println(nowTime.get(Calendar.YEAR));</span><br><span class="line">nowTime.add(YEAR,<span class="number">1</span>);</span><br><span class="line">System.out.println(nowTime.get(Calendar.YEAR));</span><br><span class="line"> </span><br><span class="line">结果：</span><br><span class="line"><span class="number">2018</span></span><br><span class="line"><span class="number">2019</span></span><br></pre></td></tr></table></figure>
+<p><strong>int compareTo(Calendar calendar)：最终还是使用毫秒数来比较的。</strong></p>
+<p><strong>boolean before(Object obj)、boolean after(Object obj)</strong>：内部都是调用上面的compareTo方法实现。</p>
+<h3 id="三个日期类的使用例子"><a href="#三个日期类的使用例子" class="headerlink" title="三个日期类的使用例子"></a>三个日期类的使用例子</h3><p>（1）一天的毫秒数：Long oneDay=Long.parseLong((24*60*60*1000)+””);</p>
+<p>（2）接收的字符串格式的时间，转化为Date类型，并且获取对应的毫秒数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">		SimpleDateFormat simpleDateFormat=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM"</span>);</span><br><span class="line">		Date date=(Date)simpleDateFormat.parse(<span class="string">"2018-09"</span>);</span><br><span class="line">		<span class="comment">//距离1970年1月1日的毫秒数</span></span><br><span class="line">		Long timeMilli=date.getTime();</span><br><span class="line">		System.out.println(date);</span><br><span class="line">		System.out.println(timeMilli);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">    结果：</span><br><span class="line">    Sat Sep <span class="number">01</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> CST <span class="number">2018</span></span><br><span class="line">    <span class="number">1535731200000</span></span><br></pre></td></tr></table></figure>
+<p>获取指定年月份中指定月的天数，比如2018年9月有30天，返回结果就应该为30，8月就应该返回31</p>
+<p>例子中，是通过传入字符串日期来进行计算的，如果能直接接收日期对象就少一个转换的过程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">	SimpleDateFormat simpleDateFormat=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);</span><br><span class="line">	<span class="comment">//将日期字符串转换为Date对象</span></span><br><span class="line">	Date date=(Date)simpleDateFormat.parse(<span class="string">"2018-08-05"</span>);</span><br><span class="line">	<span class="comment">//通过Date对象，创建一个日历对象</span></span><br><span class="line">	Calendar calendar=Calendar.getInstance();</span><br><span class="line">	calendar.setTime(date);</span><br><span class="line">	<span class="comment">//通过日历中的字段，获取一个月的天数</span></span><br><span class="line">	Integer daysNumber=calendar.getActualMaximum(Calendar.DAY_OF_MONTH);</span><br><span class="line">	System.out.println(daysNumber);</span><br><span class="line">	Date date2=(Date)simpleDateFormat.parse(<span class="string">"2018-09-05"</span>);</span><br><span class="line">	<span class="comment">//通过Date对象，创建一个日历对象</span></span><br><span class="line">	calendar.setTime(date2);</span><br><span class="line">	<span class="comment">//通过日历中的字段，获取一个月的天数</span></span><br><span class="line">	daysNumber=calendar.getActualMaximum(Calendar.DAY_OF_MONTH);</span><br><span class="line">	System.out.println(daysNumber);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   结果：</span><br><span class="line">   <span class="number">31</span></span><br><span class="line">   <span class="number">30</span></span><br></pre></td></tr></table></figure>
+<p>获取对应日期的星期数</p>
+<p>比如2018-08-19是星期天，就输出星期天，20号星期一就输出星期一</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">	SimpleDateFormat simpleDateFormat=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);</span><br><span class="line">	<span class="comment">//将日期字符串转换为Date对象</span></span><br><span class="line">	Date date=(Date)simpleDateFormat.parse(<span class="string">"2018-08-19"</span>);</span><br><span class="line">	<span class="comment">//通过Date对象，创建一个日历对象</span></span><br><span class="line">	Calendar calendar=Calendar.getInstance();</span><br><span class="line">	calendar.setTime(date);</span><br><span class="line">	<span class="comment">//获取当天对应的星期数，星期天为1，星期六为7，详见Calendar类的常量</span></span><br><span class="line">	Integer dayOfWeek=calendar.get(Calendar.DAY_OF_WEEK);</span><br><span class="line">	String dayOfWeekStr=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">switch</span>(dayOfWeek) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期天"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期一"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期二"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期三"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期四"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期五"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期六"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	System.out.println(dayOfWeekStr);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   结果：</span><br><span class="line">   星期天</span><br></pre></td></tr></table></figure>
+<p>总结：</p>
+<p>SimpleDateFormat类用于转换格式，String←→Date；</p>
+<p>Date类用于获取毫秒数，或者作为设置Calendar对象日期的参数，date.getTime()、calendar.setTime(date)</p>
+<p>Calendar类用于具体操作，比如获取指定年、月的天数，日期对应的星期数，对应的月份数等。</p>
 
           
         
@@ -2135,7 +2376,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/Java对日期操作的类/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/字符流和字节流/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -2155,7 +2396,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/02/Java基础/Java对日期操作的类/" class="post-title-link" itemprop="url">Java对日期操作的类</a>
+                <a href="/2019/10/02/Java基础/字符流和字节流/" class="post-title-link" itemprop="url">字符流和字节流</a>
               
             
           </h1>
@@ -2197,7 +2438,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-22 01:58:05" itemprop="dateModified" datetime="2019-10-22T01:58:05+08:00">2019-10-22</time> 
+              <time title="修改时间：2019-10-18 16:49:07" itemprop="dateModified" datetime="2019-10-18T16:49:07+08:00">2019-10-18</time> 
               -->
               <!-- new version -->
                         
@@ -2212,8 +2453,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-22T01:58:05+08:00" content="2019-10-22">
-                2019-10-22 01:58:05
+              <time itemprop="dateUpdated" datetime="2019-10-18T16:49:07+08:00" content="2019-10-18">
+                2019-10-18 16:49:07
               </time>
             </span>
           
@@ -2253,8 +2494,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/02/Java基础/Java对日期操作的类/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/Java对日期操作的类/" itemprop="commentCount"></span>
+                <a href="/2019/10/02/Java基础/字符流和字节流/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/字符流和字节流/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2284,50 +2525,231 @@
       
         
           
-            <h3 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h3><p>表示特定的瞬间，精确到毫秒（因为闰秒的原因，所以其实结果并不是特别的准确，但是如果要求不是特别严格，影响并没有很大。</p>
-<p>构造方法：Date()、Date(Long date)</p>
-<p>常用方法：</p>
-<p>void setTime(Long time)：根据毫秒数设置该日期对象，默认构造函数设置该日期对象为当前日期。</p>
-<p>Long getTime()：获取日期对象毫秒数。毫秒数都是以1970年1月1日0点0分0秒开始计算。</p>
-<p>（下面几个方法，在源代码中，实际比较的还是两个日期的毫秒数）</p>
-<p>int compareTo(Date date)：比较俩个日期顺序，比参数date小，返回负数，相等返回0，大则返回正数。</p>
-<p>boolean before(Date date)：判断是否在参数date之前，是则返回true。</p>
-<p>boolean after(Date date)：同上，判断在是否在参数之后。</p>
-<p>boolean equals(Object date)：当且仅当date不为空，是Date对象，而且毫秒数与调用方法的日期对象相等才为true。</p>
-<h3 id="SimpleDateFormat"><a href="#SimpleDateFormat" class="headerlink" title="SimpleDateFormat"></a>SimpleDateFormat</h3><p>继承DateFormat类，主要用来进行格式转换。</p>
-<p>构造函数：SimpleDateFormat(String pattern)，最常用的构造方法。根据指定格式来转换字符串与日期。</p>
-<p>常用的2个格式转换方法：</p>
-<p>字符串转换成Date类：Date parse(String date)</p>
-<p>Date类转换成字符串类型：String format(Date date)，都是继承DateFormat类的方法。</p>
-<p>其中，parse方法会抛出一个转换异常：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Date <span class="title">parse</span><span class="params">(String source)</span> <span class="keyword">throws</span> ParseException</span>&#123;</span><br><span class="line">       ParsePosition pos = <span class="keyword">new</span> ParsePosition(<span class="number">0</span>);</span><br><span class="line">       Date result = parse(source, pos);</span><br><span class="line">       <span class="keyword">if</span> (pos.index == <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> ParseException(<span class="string">"Unparseable date: \""</span> + source + <span class="string">"\""</span> ,</span><br><span class="line">               pos.errorIndex);</span><br><span class="line">       <span class="keyword">return</span> result;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>下面是一个转换的例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">       <span class="comment">//对字符串格式类似为2018-09这种进行转换，年月之间用‘-’分隔</span></span><br><span class="line">	SimpleDateFormat simpleDateFormat=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM"</span>);</span><br><span class="line">	Date date=(Date)simpleDateFormat.parse(<span class="string">"2018-09"</span>);</span><br><span class="line">	System.out.println(date);</span><br><span class="line">	String dateStr=simpleDateFormat.format(date);</span><br><span class="line">	System.out.println(dateStr);</span><br><span class="line">       <span class="comment">//将转换格式应用为201809这种，年月之间没有分隔符号的，只要年月相同，结果就与上面相同</span></span><br><span class="line">	simpleDateFormat.applyPattern(<span class="string">"yyyyMM"</span>);<span class="comment">//applyPattern方法用来切换需要转换的字符串格式。</span></span><br><span class="line">	Date date2=(Date)simpleDateFormat.parse(<span class="string">"201809"</span>);</span><br><span class="line">	System.out.println(date2);</span><br><span class="line">	String dateStr2=simpleDateFormat.format(date2);</span><br><span class="line">	System.out.println(dateStr2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Calendar"><a href="#Calendar" class="headerlink" title="Calendar"></a>Calendar</h3><p>一个抽象类，为特定瞬间和一组日历字段之间的转换以及操作日历字段提供了方法。</p>
-<p>使用<strong>Calendar.getInstance</strong>获取该对象：Calendar nowTime=Calendar.getInstance();</p>
-<p>部分常用方法：</p>
-<p>void setTime(Date date)：通过该类方法指定Calendar对象表示的日期。</p>
-<p>Date getTime()：获取一个Date对象。</p>
-<p>void setTimeInMillis(Long time)：同上。</p>
-<p>void add(int field,int amount)：给当前对象的指定字段增加指定数值。Calender类为日历中的各种字段都设置了int类型的数值，比如，</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> YEAR = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> MONTH = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> WEEK_OF_YEAR = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
-<p>字段‘年’所对应的int值为1，如果你想将当前日历类对象的年份加1年，那么只需这样做：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Calendar nowTime=Calendar.getInstance();</span><br><span class="line">System.out.println(nowTime.get(Calendar.YEAR));</span><br><span class="line">nowTime.add(YEAR,<span class="number">1</span>);</span><br><span class="line">System.out.println(nowTime.get(Calendar.YEAR));</span><br><span class="line"> </span><br><span class="line">结果：</span><br><span class="line"><span class="number">2018</span></span><br><span class="line"><span class="number">2019</span></span><br></pre></td></tr></table></figure>
-<p><strong>int compareTo(Calendar calendar)：最终还是使用毫秒数来比较的。</strong></p>
-<p><strong>boolean before(Object obj)、boolean after(Object obj)</strong>：内部都是调用上面的compareTo方法实现。</p>
-<h3 id="三个日期类的使用例子"><a href="#三个日期类的使用例子" class="headerlink" title="三个日期类的使用例子"></a>三个日期类的使用例子</h3><p>（1）一天的毫秒数：Long oneDay=Long.parseLong((24*60*60*1000)+””);</p>
-<p>（2）接收的字符串格式的时间，转化为Date类型，并且获取对应的毫秒数：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">		SimpleDateFormat simpleDateFormat=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM"</span>);</span><br><span class="line">		Date date=(Date)simpleDateFormat.parse(<span class="string">"2018-09"</span>);</span><br><span class="line">		<span class="comment">//距离1970年1月1日的毫秒数</span></span><br><span class="line">		Long timeMilli=date.getTime();</span><br><span class="line">		System.out.println(date);</span><br><span class="line">		System.out.println(timeMilli);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">    结果：</span><br><span class="line">    Sat Sep <span class="number">01</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> CST <span class="number">2018</span></span><br><span class="line">    <span class="number">1535731200000</span></span><br></pre></td></tr></table></figure>
-<p>获取指定年月份中指定月的天数，比如2018年9月有30天，返回结果就应该为30，8月就应该返回31</p>
-<p>例子中，是通过传入字符串日期来进行计算的，如果能直接接收日期对象就少一个转换的过程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">	SimpleDateFormat simpleDateFormat=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);</span><br><span class="line">	<span class="comment">//将日期字符串转换为Date对象</span></span><br><span class="line">	Date date=(Date)simpleDateFormat.parse(<span class="string">"2018-08-05"</span>);</span><br><span class="line">	<span class="comment">//通过Date对象，创建一个日历对象</span></span><br><span class="line">	Calendar calendar=Calendar.getInstance();</span><br><span class="line">	calendar.setTime(date);</span><br><span class="line">	<span class="comment">//通过日历中的字段，获取一个月的天数</span></span><br><span class="line">	Integer daysNumber=calendar.getActualMaximum(Calendar.DAY_OF_MONTH);</span><br><span class="line">	System.out.println(daysNumber);</span><br><span class="line">	Date date2=(Date)simpleDateFormat.parse(<span class="string">"2018-09-05"</span>);</span><br><span class="line">	<span class="comment">//通过Date对象，创建一个日历对象</span></span><br><span class="line">	calendar.setTime(date2);</span><br><span class="line">	<span class="comment">//通过日历中的字段，获取一个月的天数</span></span><br><span class="line">	daysNumber=calendar.getActualMaximum(Calendar.DAY_OF_MONTH);</span><br><span class="line">	System.out.println(daysNumber);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   结果：</span><br><span class="line">   <span class="number">31</span></span><br><span class="line">   <span class="number">30</span></span><br></pre></td></tr></table></figure>
-<p>获取对应日期的星期数</p>
-<p>比如2018-08-19是星期天，就输出星期天，20号星期一就输出星期一</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">	SimpleDateFormat simpleDateFormat=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);</span><br><span class="line">	<span class="comment">//将日期字符串转换为Date对象</span></span><br><span class="line">	Date date=(Date)simpleDateFormat.parse(<span class="string">"2018-08-19"</span>);</span><br><span class="line">	<span class="comment">//通过Date对象，创建一个日历对象</span></span><br><span class="line">	Calendar calendar=Calendar.getInstance();</span><br><span class="line">	calendar.setTime(date);</span><br><span class="line">	<span class="comment">//获取当天对应的星期数，星期天为1，星期六为7，详见Calendar类的常量</span></span><br><span class="line">	Integer dayOfWeek=calendar.get(Calendar.DAY_OF_WEEK);</span><br><span class="line">	String dayOfWeekStr=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">switch</span>(dayOfWeek) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期天"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期一"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期二"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期三"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期四"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期五"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期六"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	System.out.println(dayOfWeekStr);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   结果：</span><br><span class="line">   星期天</span><br></pre></td></tr></table></figure>
-<p>总结：</p>
-<p>SimpleDateFormat类用于转换格式，String←→Date；</p>
-<p>Date类用于获取毫秒数，或者作为设置Calendar对象日期的参数，date.getTime()、calendar.setTime(date)</p>
-<p>Calendar类用于具体操作，比如获取指定年、月的天数，日期对应的星期数，对应的月份数等。</p>
+            <h4 id="什么是流"><a href="#什么是流" class="headerlink" title="什么是流"></a>什么是流</h4><ul>
+<li>流是个抽象的概念,是对输入输出设备的抽象，输入流可以看作一个输入通道，输出流可以看作一个输出通道。</li>
+<li>输入流是相对程序而言的，外部传入数据给程序需要借助输入流。</li>
+<li>输出流是相对程序而言的，程序把数据传输到外部需要借助输出流。</li>
+</ul>
+<h5 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h5><p>字节流–传输过程中，传输数据的最基本单位是字节的流。</p>
+<h5 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h5><p>字符流–传输过程中，传输数据的最基本单位是字符的流。</p>
+<p>字符编码方式不同，有时候一个字符使用的字节数也不一样，比如ASCLL方式编码的字符，占一个字节；而UTF-8方式编码的字符，一个英文字符需要一个字节，一个中文需要三个字节。</p>
+<p>字节数据是二进制形式的，要转成我们能识别的正常字符，需要选择正确的编码方式。我们生活中遇到的乱码问题就是字节数据没有选择正确的编码方式来显示成字符。</p>
+<p>从本质上来讲，写数据（即输出）的时候，字节也好，字符也好，本质上都是没有标识符的，需要去指定编码方式。</p>
+<p><img src="http://img.blog.csdn.net/20170409162923380" alt></p>
+<p>file字节流输入输出例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IOTest</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        OutputStream fos = <span class="keyword">null</span>;</span><br><span class="line">        InputStream fis = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">/********* 输出流写文件 ***********/</span></span><br><span class="line">            fos=<span class="keyword">new</span> FileOutputStream(<span class="string">"d:\\silly.txt"</span>);</span><br><span class="line">            String str=<span class="string">"最好的我们隔了一整个青春"</span>;</span><br><span class="line">            <span class="keyword">byte</span>[] words=str.getBytes(); <span class="comment">//把字符串编码成字节序列</span></span><br><span class="line">            <span class="comment">//写入操作</span></span><br><span class="line">            fos.write(words, <span class="number">0</span>, words.length);</span><br><span class="line">            System.out.println(<span class="string">"写入成功！"</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">/********* 输入流读文件 ***********/</span></span><br><span class="line">            fis = <span class="keyword">new</span> FileInputStream(<span class="string">"d:\\silly.txt"</span>);</span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>]; <span class="comment">//字节数组缓存数据</span></span><br><span class="line">            <span class="keyword">int</span> n = <span class="number">0</span>; <span class="comment">//记录读取的字节长度</span></span><br><span class="line">            <span class="comment">//循环读取数据</span></span><br><span class="line">            <span class="keyword">while</span>((n = fis.read(buf)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//这里使用三个参数的构造方法，因为最后一次读取的长度可能达不到buf数组的长度</span></span><br><span class="line">                <span class="comment">//所以根据实际读取的长度n去构造对象更合理</span></span><br><span class="line">                sb.append(<span class="keyword">new</span> String(buf, <span class="number">0</span>, n));</span><br><span class="line">                buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>]; <span class="comment">//重新初始化，避免数据重复</span></span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(sb.toString());</span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//释放资源</span></span><br><span class="line">                <span class="keyword">if</span>(fos != <span class="keyword">null</span>) fos.close();</span><br><span class="line">                <span class="keyword">if</span>(fis != <span class="keyword">null</span>) fis.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>file字符流输入输出例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileReader;</span><br><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IOTest2</span> </span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 	FileWriter:用来写入字符文件的便捷类。</span></span><br><span class="line"><span class="comment">	 *  父类：OutputStreamWriter</span></span><br><span class="line"><span class="comment">	 *  FileWriter 用于写入字符流。要写入原始字节流，请考虑使用 FileOutputStream。 </span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 输入流</span></span><br><span class="line"><span class="comment">		//1：创建字符输出便捷流</span></span><br><span class="line"><span class="comment">		FileWriter fw = new FileWriter("d:\\a.txt");</span></span><br><span class="line"><span class="comment">		//2:写数据</span></span><br><span class="line"><span class="comment">		fw.write("你好吗");</span></span><br><span class="line"><span class="comment">		//3:关闭流</span></span><br><span class="line"><span class="comment">		fw.close();</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//输出流</span></span><br><span class="line">		<span class="comment">//1:创建字符输入便捷流</span></span><br><span class="line">		FileReader fr = <span class="keyword">new</span> FileReader(<span class="string">"d:\\a.txt"</span>);</span><br><span class="line">		<span class="comment">//2:读数据</span></span><br><span class="line">		<span class="comment">//2.1 一次读取一个字符</span></span><br><span class="line">		<span class="comment">/*int num = 0;</span></span><br><span class="line"><span class="comment">		while((num = fr.read())!=-1)&#123;</span></span><br><span class="line"><span class="comment">			System.out.print((char)num);</span></span><br><span class="line"><span class="comment">		&#125;*/</span></span><br><span class="line">		<span class="comment">//2.2 一次读取一个字符数组</span></span><br><span class="line">		<span class="keyword">char</span>[] ch = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">1024</span>*<span class="number">1024</span>];</span><br><span class="line">		<span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>((num = fr.read(ch))!=-<span class="number">1</span>)&#123;</span><br><span class="line">			System.out.print(<span class="keyword">new</span> String(ch,<span class="number">0</span>,num));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//3:关闭流</span></span><br><span class="line">		fr.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/Java数组怎么输出/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/02/Java基础/Java数组怎么输出/" class="post-title-link" itemprop="url">Java数组怎么输出</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-02 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-02T12:12:57+08:00">2019-10-02 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-22 01:03:40" itemprop="dateModified" datetime="2019-10-22T01:03:40+08:00">2019-10-22</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-22T01:03:40+08:00" content="2019-10-22">
+                2019-10-22 01:03:40
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/02/Java基础/Java数组怎么输出/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/Java数组怎么输出/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Java数组怎么输出"><a href="#Java数组怎么输出" class="headerlink" title="Java数组怎么输出"></a>Java数组怎么输出</h4><p>错误示范：System.out.println(array);　　</p>
+<p>这样输出的是数组的首地址，而不能打印出数组数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] array= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="comment">//方式一：for循环</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">	System.out.println(array[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式二：for each</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> a:array)</span><br><span class="line">	System.out.println(a);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式三：Arrays类中的toString方法（注意，是Arrays不是Array，Arrays类位于java.util包下）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>[] array= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line">System.out.println(Arrays.toString(array));</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2599,463 +3021,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/字符流和字节流/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/02/Java基础/字符流和字节流/" class="post-title-link" itemprop="url">字符流和字节流</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-02 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-02T12:12:57+08:00">2019-10-02 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-18 16:49:07" itemprop="dateModified" datetime="2019-10-18T16:49:07+08:00">2019-10-18</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-18T16:49:07+08:00" content="2019-10-18">
-                2019-10-18 16:49:07
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/02/Java基础/字符流和字节流/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/字符流和字节流/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="什么是流"><a href="#什么是流" class="headerlink" title="什么是流"></a>什么是流</h4><ul>
-<li>流是个抽象的概念,是对输入输出设备的抽象，输入流可以看作一个输入通道，输出流可以看作一个输出通道。</li>
-<li>输入流是相对程序而言的，外部传入数据给程序需要借助输入流。</li>
-<li>输出流是相对程序而言的，程序把数据传输到外部需要借助输出流。</li>
-</ul>
-<h5 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h5><p>字节流–传输过程中，传输数据的最基本单位是字节的流。</p>
-<h5 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h5><p>字符流–传输过程中，传输数据的最基本单位是字符的流。</p>
-<p>字符编码方式不同，有时候一个字符使用的字节数也不一样，比如ASCLL方式编码的字符，占一个字节；而UTF-8方式编码的字符，一个英文字符需要一个字节，一个中文需要三个字节。</p>
-<p>字节数据是二进制形式的，要转成我们能识别的正常字符，需要选择正确的编码方式。我们生活中遇到的乱码问题就是字节数据没有选择正确的编码方式来显示成字符。</p>
-<p>从本质上来讲，写数据（即输出）的时候，字节也好，字符也好，本质上都是没有标识符的，需要去指定编码方式。</p>
-<p><img src="http://img.blog.csdn.net/20170409162923380" alt></p>
-<p>file字节流输入输出例子</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IOTest</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        OutputStream fos = <span class="keyword">null</span>;</span><br><span class="line">        InputStream fis = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">/********* 输出流写文件 ***********/</span></span><br><span class="line">            fos=<span class="keyword">new</span> FileOutputStream(<span class="string">"d:\\silly.txt"</span>);</span><br><span class="line">            String str=<span class="string">"最好的我们隔了一整个青春"</span>;</span><br><span class="line">            <span class="keyword">byte</span>[] words=str.getBytes(); <span class="comment">//把字符串编码成字节序列</span></span><br><span class="line">            <span class="comment">//写入操作</span></span><br><span class="line">            fos.write(words, <span class="number">0</span>, words.length);</span><br><span class="line">            System.out.println(<span class="string">"写入成功！"</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">/********* 输入流读文件 ***********/</span></span><br><span class="line">            fis = <span class="keyword">new</span> FileInputStream(<span class="string">"d:\\silly.txt"</span>);</span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>]; <span class="comment">//字节数组缓存数据</span></span><br><span class="line">            <span class="keyword">int</span> n = <span class="number">0</span>; <span class="comment">//记录读取的字节长度</span></span><br><span class="line">            <span class="comment">//循环读取数据</span></span><br><span class="line">            <span class="keyword">while</span>((n = fis.read(buf)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//这里使用三个参数的构造方法，因为最后一次读取的长度可能达不到buf数组的长度</span></span><br><span class="line">                <span class="comment">//所以根据实际读取的长度n去构造对象更合理</span></span><br><span class="line">                sb.append(<span class="keyword">new</span> String(buf, <span class="number">0</span>, n));</span><br><span class="line">                buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>]; <span class="comment">//重新初始化，避免数据重复</span></span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(sb.toString());</span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//释放资源</span></span><br><span class="line">                <span class="keyword">if</span>(fos != <span class="keyword">null</span>) fos.close();</span><br><span class="line">                <span class="keyword">if</span>(fis != <span class="keyword">null</span>) fis.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>file字符流输入输出例子</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileReader;</span><br><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IOTest2</span> </span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 	FileWriter:用来写入字符文件的便捷类。</span></span><br><span class="line"><span class="comment">	 *  父类：OutputStreamWriter</span></span><br><span class="line"><span class="comment">	 *  FileWriter 用于写入字符流。要写入原始字节流，请考虑使用 FileOutputStream。 </span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 输入流</span></span><br><span class="line"><span class="comment">		//1：创建字符输出便捷流</span></span><br><span class="line"><span class="comment">		FileWriter fw = new FileWriter("d:\\a.txt");</span></span><br><span class="line"><span class="comment">		//2:写数据</span></span><br><span class="line"><span class="comment">		fw.write("你好吗");</span></span><br><span class="line"><span class="comment">		//3:关闭流</span></span><br><span class="line"><span class="comment">		fw.close();</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//输出流</span></span><br><span class="line">		<span class="comment">//1:创建字符输入便捷流</span></span><br><span class="line">		FileReader fr = <span class="keyword">new</span> FileReader(<span class="string">"d:\\a.txt"</span>);</span><br><span class="line">		<span class="comment">//2:读数据</span></span><br><span class="line">		<span class="comment">//2.1 一次读取一个字符</span></span><br><span class="line">		<span class="comment">/*int num = 0;</span></span><br><span class="line"><span class="comment">		while((num = fr.read())!=-1)&#123;</span></span><br><span class="line"><span class="comment">			System.out.print((char)num);</span></span><br><span class="line"><span class="comment">		&#125;*/</span></span><br><span class="line">		<span class="comment">//2.2 一次读取一个字符数组</span></span><br><span class="line">		<span class="keyword">char</span>[] ch = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">1024</span>*<span class="number">1024</span>];</span><br><span class="line">		<span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>((num = fr.read(ch))!=-<span class="number">1</span>)&#123;</span><br><span class="line">			System.out.print(<span class="keyword">new</span> String(ch,<span class="number">0</span>,num));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//3:关闭流</span></span><br><span class="line">		fr.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/01/java集合类/ArrayList遍历与删除/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/01/java集合类/ArrayList遍历与删除/" class="post-title-link" itemprop="url">ArrayList遍历与删除</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-01 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-01T12:12:57+08:00">2019-10-01 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-22 01:01:29" itemprop="dateModified" datetime="2019-10-22T01:01:29+08:00">2019-10-22</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-22T01:01:29+08:00" content="2019-10-22">
-                2019-10-22 01:01:29
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/集合框架/" itemprop="url" rel="index"><span itemprop="name">集合框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/01/java集合类/ArrayList遍历与删除/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/01/java集合类/ArrayList遍历与删除/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="ArrayList遍历三种方式"><a href="#ArrayList遍历三种方式" class="headerlink" title="ArrayList遍历三种方式"></a>ArrayList遍历三种方式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">arrayListTraversal</span><span class="params">(List&lt;Integer&gt; lists)</span></span>&#123;</span><br><span class="line"><span class="number">3</span>         <span class="comment">/* 第一种遍历方式 */</span></span><br><span class="line"><span class="number">4</span>         System.out.print(<span class="string">"for循环的遍历方式："</span>);</span><br><span class="line"><span class="number">5</span>         <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lists.size(); i++) &#123;</span><br><span class="line"><span class="number">6</span>             System.out.print(lists.get(i));</span><br><span class="line"><span class="number">7</span>         &#125;</span><br><span class="line"><span class="number">8</span>         System.out.println();</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span>         <span class="comment">/* 第二种遍历方式 */</span></span><br><span class="line"><span class="number">11</span>         System.out.print(<span class="string">"for each的遍历方式："</span>);</span><br><span class="line"><span class="number">12</span>         <span class="keyword">for</span> (Integer list : lists) &#123;</span><br><span class="line"><span class="number">13</span>             System.out.print(list);</span><br><span class="line"><span class="number">14</span>         &#125;</span><br><span class="line"><span class="number">15</span>         System.out.println();</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">17</span>         <span class="comment">/* 第三种遍历方式 */</span></span><br><span class="line"><span class="number">18</span>         System.out.print(<span class="string">"Iterator的遍历方式："</span>);</span><br><span class="line"><span class="number">19</span>         <span class="keyword">for</span> (Iterator&lt;Integer&gt; list = lists.iterator(); list.hasNext();) &#123;</span><br><span class="line"><span class="number">20</span>             System.out.print(list.next());</span><br><span class="line"><span class="number">21</span>         &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ArrayList遍历删除的坑"><a href="#ArrayList遍历删除的坑" class="headerlink" title="ArrayList遍历删除的坑"></a>ArrayList遍历删除的坑</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListRemove</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">　　<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[]args)</span></span></span><br><span class="line"><span class="function">　　</span>&#123;</span><br><span class="line">　　　　ArrayList&lt;String&gt; list=<span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">　　　　list.add(<span class="string">"a"</span>);</span><br><span class="line">　　　　list.add(<span class="string">"b"</span>);</span><br><span class="line">　　　　list.add(<span class="string">"b"</span>);</span><br><span class="line">　　　　list.add(<span class="string">"c"</span>);</span><br><span class="line">　　　　list.add(<span class="string">"c"</span>);</span><br><span class="line">　　　　list.add(<span class="string">"c"</span>);</span><br><span class="line">　　　　remove(list);</span><br><span class="line">　　　　<span class="keyword">for</span>(Strings:list)</span><br><span class="line">　　　　&#123;</span><br><span class="line">　　　　　　System.out.println(<span class="string">"element : "</span>+s);</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;</span><br><span class="line">　　<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(ArrayList&lt;String&gt; list)</span></span></span><br><span class="line"><span class="function">　　</span>&#123;</span><br><span class="line">　　<span class="comment">// <span class="doctag">TODO:</span></span></span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="错误的例子1"><a href="#错误的例子1" class="headerlink" title="错误的例子1"></a>错误的例子1</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(ArrayList&lt;String&gt; list)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(inti=<span class="number">0</span>;i&lt;list.size();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        String s=list.get(i);</span><br><span class="line">        <span class="keyword">if</span>(s.equals(<span class="string">"b"</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            list.remove(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>错误的原因：这种最普通的循环写法执行后会发现第二个“b”的字符串没有删掉。</p>
-<p>实例一的错误原因。翻开JDK的ArrayList源码，先看下ArrayList中的remove方法（注意ArrayList中的remove有两个同名方法，只是入参不同，这里看的是入参为Object的remove方法）是怎么实现的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(o==<span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> index=<span class="number">0</span>;index&lt;size;index++)</span><br><span class="line">            <span class="keyword">if</span>(elementData[index]==<span class="keyword">null</span>)&#123;</span><br><span class="line">                fastRemove(index);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125; </span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">for</span>(intindex=<span class="number">0</span>;index&lt;size;index++)</span><br><span class="line">                <span class="keyword">if</span>(o.equals(elementData[index]))&#123;</span><br><span class="line">                fastRemove(index);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>一般情况下程序的执行路径会走到else路径下最终调用faseRemove()方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fastRemove</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">        modCount++;</span><br><span class="line">        <span class="keyword">int</span> numMoved=size-index-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(numMoved&gt;<span class="number">0</span>)             </span><br><span class="line">        　　System.arraycopy(elementData,index+<span class="number">1</span>,elementData,index,numMoved);</span><br><span class="line">        elementData[--size]=<span class="keyword">null</span>;<span class="comment">// Let gc do its work</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以看到会执行System.arraycopy方法，导致删除元素时涉及到数组元素的移动。针对错误写法一，在遍历第一个字符串b时因为符合删除条件，所以将该元素从数组中删除，并且将后一个元素移动（也就是第二个字符串b）至当前位置，导致下一次循环遍历时后一个字符串b并没有遍历到，所以无法删除。</p>
-<p>针对这种情况可以倒序删除的方式来避免或者在删除的时候下标减1</p>
-<p>倒序删除的方式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(ArrayList&lt;String&gt; list)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(inti=list.size()-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        String s=list.get(i);</span><br><span class="line">        <span class="keyword">if</span>(s.equals(<span class="string">"b"</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            list.remove(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>正序遍历时在删除时下标减一</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*基本原理是，每次list删除元素后，后面的元素都要往前移动一位，就相当于i多加了1，remove后继续遍历就会错过一个元素，所以就需要代码中的i--，抵消remove后，后面元素前移一位的影响*/</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;list.size(); i++)&#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">    <span class="keyword">if</span>(list.get(i).equals(<span class="string">"C"</span>))&#123;</span><br><span class="line">        list.remove(list.get(i));</span><br><span class="line">        i--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="错误的例子2"><a href="#错误的例子2" class="headerlink" title="错误的例子2"></a>错误的例子2</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(ArrayList&lt;String&gt; list)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(Strings:list)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(s.equals(<span class="string">"b"</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            list.remove(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>误的原因：这种for-each写法会报出著名的并发修改异常：java.util.ConcurrentModificationException。</p>
-<p>错误二产生的原因却是foreach写法是对实际的Iterable、hasNext、next方法的简写，问题同样处在上文的fastRemove方法中，可以看到第一行把modCount变量的值加一，但在ArrayList返回的迭代器（该代码在其父类AbstractList中）：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Itr();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里返回的是AbstractList类内部的迭代器实现private class Itr implements Iterator，看这个类的next方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        checkForComodification();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            E next = get(cursor);</span><br><span class="line">            lastRet = cursor++;</span><br><span class="line">            <span class="keyword">return</span> next;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IndexOutOfBoundsException e) &#123;</span><br><span class="line">            checkForComodification();</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>第一行checkForComodification方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (modCount != expectedModCount)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里会做迭代器内部修改次数检查，因为上面的remove(Object)方法修改了modCount的值，所以才会报出并发修改异常。要避免这种情况的出现则在使用迭代器迭代时（显示或for-each的隐式）不要使用ArrayList的remove，改为用Iterator的remove即可。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(ArrayList&lt;String&gt; list)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Iterator&lt;String&gt; it = list.iterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) </span><br><span class="line">        &#123;</span><br><span class="line">            String s = it.next();</span><br><span class="line">            <span class="keyword">if</span> (s.equals(<span class="string">"b"</span>)) </span><br><span class="line">            &#123;</span><br><span class="line">                it.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用foreach或者迭代器都是会用到迭代器，所以必须使用迭代器来删除，不然会报异常</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    Integer[] arr = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">    List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    list.addAll(Arrays.asList(arr));</span><br><span class="line">    <span class="keyword">for</span> (Iterator&lt;Integer&gt; iter = list.iterator(); iter.hasNext(); ) &#123;</span><br><span class="line">        Integer tar = iter.next();</span><br><span class="line">        <span class="keyword">if</span> (tar == <span class="number">2</span>)</span><br><span class="line">            list.remove(tar);</span><br><span class="line">        <span class="comment">//iter.remove(tar);</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//这里相当于脱裤子放屁，用了迭代器，却用list删除，报异常，</span></span><br></pre></td></tr></table></figure>
-<h3 id="再多一个例子"><a href="#再多一个例子" class="headerlink" title="再多一个例子"></a>再多一个例子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Integer[] arr = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">list.addAll(Arrays.asList(arr));</span><br><span class="line"><span class="keyword">for</span> (Integer tar : list) &#123;</span><br><span class="line">    <span class="keyword">if</span> (tar == <span class="number">2</span>)&#123;</span><br><span class="line">        list.remove(tar);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>答案：报错<code>ConcurrentModificationException</code><br>位置在下面代码的倒数第三行，下面是 <code>ArrayList</code>中的迭代器。当我们使用<code>foreach</code>时，就是使用这个迭代器工作的，<code>cursor</code>是游标，指示当前已取出元素的下一个元素，<code>lastRet</code>指示当前已取出元素，<code>expectedModCount</code>是期待的修改次数,<code>modCount</code>是实际修改次数，每次循环都会先调用<code>hasNext()</code>，当游标不等于(即小于)<code>list.size()</code>时说明还有下一个元素，再调用<code>next</code>取出下一个值，<code>next()</code>方法的第一个方法就是<code>checkForComodification()</code>，检查期待的修改次数是否与实际相等，不相等就抛异常，<code>expectedModCount</code>变量范围是这个迭代器，使用<code>list.remove(Object obj)</code>只会使<code>modCount++</code>,<code>expectedModCount</code>的值不变自然就出错了。所以采用<code>Iterator</code>遍历是个明智的选择，它的<code>remove()</code>方法里面<code>ArrayList.this.remove(lastRet)</code>会 让<code>modCount++</code>，但随后又把<code>modCount</code>的值赋给了<code>expectedModCount</code>，继续循环不会出问题。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cursor;       <span class="comment">// index of next element to return</span></span><br><span class="line">    <span class="keyword">int</span> lastRet = -<span class="number">1</span>; <span class="comment">// index of last element returned; -1 if no such</span></span><br><span class="line">    <span class="keyword">int</span> expectedModCount = modCount;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cursor != size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        checkForComodification();</span><br><span class="line">        <span class="keyword">int</span> i = cursor;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= size)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">        Object[] elementData = ArrayList.<span class="keyword">this</span>.elementData;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= elementData.length)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">        cursor = i + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> (E) elementData[lastRet = i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (lastRet &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</span><br><span class="line">        checkForComodification();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ArrayList.<span class="keyword">this</span>.remove(lastRet);</span><br><span class="line">            cursor = lastRet;</span><br><span class="line">            lastRet = -<span class="number">1</span>;</span><br><span class="line">            expectedModCount = modCount;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IndexOutOfBoundsException ex) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (modCount != expectedModCount)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="小提问：把上面的遍历tar-2改成tar-3还会错吗？"><a href="#小提问：把上面的遍历tar-2改成tar-3还会错吗？" class="headerlink" title="小提问：把上面的遍历tar == 2改成tar == 3还会错吗？"></a>小提问：把上面的遍历<code>tar == 2</code>改成<code>tar == 3</code>还会错吗？</h5><p>如果你把上面的解释仔细看了的话，想必已经知道答案了，不会。<br>解答：当<code>tar == 3</code>时，当前游标<code>cursor</code>是4,<code>size</code>是5,但当删除了<code>tar</code>，<code>size</code>就变成了4,和<code>cursor</code>相等了，到下一次循环，<code>hasNext()</code>判断时为<code>false</code>，所以结束了循环，不给它抛异常的机会。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3104,7 +3069,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3293,7 +3258,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共89.2k字</span>
+  <span class="post-count">博客全站共91.7k字</span>
 </div>
         
 <div class="busuanzi-count">
