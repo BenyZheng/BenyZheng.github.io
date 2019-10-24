@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">47</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">54</span></a>
 
   </li>
 
@@ -385,6 +385,446 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/Java数组怎么输出/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/02/Java基础/Java数组怎么输出/" class="post-title-link" itemprop="url">Java数组怎么输出</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-02 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-02T12:12:57+08:00">2019-10-02 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-22 01:03:40" itemprop="dateModified" datetime="2019-10-22T01:03:40+08:00">2019-10-22</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-22T01:03:40+08:00" content="2019-10-22">
+                2019-10-22 01:03:40
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/02/Java基础/Java数组怎么输出/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/Java数组怎么输出/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Java数组怎么输出"><a href="#Java数组怎么输出" class="headerlink" title="Java数组怎么输出"></a>Java数组怎么输出</h4><p>错误示范：System.out.println(array);　　</p>
+<p>这样输出的是数组的首地址，而不能打印出数组数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] array= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="comment">//方式一：for循环</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">	System.out.println(array[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式二：for each</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> a:array)</span><br><span class="line">	System.out.println(a);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式三：Arrays类中的toString方法（注意，是Arrays不是Array，Arrays类位于java.util包下）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>[] array= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line">System.out.println(Arrays.toString(array));</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/抽象类和接口的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/02/Java基础/抽象类和接口的区别/" class="post-title-link" itemprop="url">抽象类和接口的区别</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-02 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-02T12:12:57+08:00">2019-10-02 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-18 23:37:58" itemprop="dateModified" datetime="2019-10-18T23:37:58+08:00">2019-10-18</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-18T23:37:58+08:00" content="2019-10-18">
+                2019-10-18 23:37:58
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/02/Java基础/抽象类和接口的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/抽象类和接口的区别/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>抽象类总结</p>
+<ol>
+<li>抽象类不能被实例化(初学者很容易犯的错)，如果被实例化，就会报错，编译无法通过。只有抽象类的非抽象子类可以创建对象。</li>
+<li>抽象类中不一定包含抽象方法，但是有抽象方法的类必定是抽象类。</li>
+<li>抽象类中的抽象方法只是声明，不包含方法体，就是不给出方法的具体实现也就是方法的具体功能。</li>
+<li>构造方法，类方法（用 static 修饰的方法）不能声明为抽象方法。</li>
+<li>抽象类的子类必须给出抽象类中的抽象方法的具体实现，除非该子类也是抽象类。</li>
+</ol>
+<p>接口和抽象类的区别</p>
+<p>本质：从设计层面来说，抽象是对类的抽象，是一种模板设计，接口是行为的抽象，是一种行为的规范</p>
+<p>区别：<br>1.接口的方法默认是public，所有方法在接口中不能有实现，抽象类可以有非抽象的方法</p>
+<p>2.接口中的实例变量默认是static final类型的，而抽象类中则不一定</p>
+<p>3.一个类可以实现多个接口，但最多只能实现一个抽象类</p>
+<p>4.一个类实现接口的话要实现接口的所有方法，而抽象类不一定（子类可以实现部分方法，所以子类也是抽象类）</p>
+<p>5.接口不能用new实例化，但可以声明，但是必须引用一个实现该接口的对象</p>
+<p>接口变量、方法修饰符（static 、final、public、private、protected、default）</p>
+<p>1.接口中的所有属性默认为：<strong>public static final</strong> ；</p>
+<p>2.接口中的所有方法默认为：<strong>public abstract</strong> ；</p>
+<p>接口中变量只能public ，不可以protected、private，缺省不写默认public</p>
+<p>接口中方法只能public，不可以protected、private，缺省不写默认public</p>
+<p>接口如果abstract，不可以加方法体，如果是<strong>static</strong>或<strong>default</strong>可以加方法体（jdk1.8特性）</p>
+<p>抽象类变量、方法修饰符（static 、final、public、private、protected、default）</p>
+<p>抽象类中变量修饰符都可以用</p>
+<p>抽象类中抽象方法（没有方法体）只能<strong>public</strong>和<strong>protected</strong></p>
+<p>抽象类中非抽象方法（有方法体）修饰符都可以用</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -843,7 +1283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/jvm/JVM之垃圾收集器与内存分配/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/27/并发/Lock体系/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -863,7 +1303,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/" class="post-title-link" itemprop="url">JVM之垃圾收集器与内存分配</a>
+                <a href="/2019/05/27/并发/Lock体系/" class="post-title-link" itemprop="url">Lock体系</a>
               
             
           </h1>
@@ -888,7 +1328,7 @@
                 
               
 
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+              <time title="创建时间：2019-05-27 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-27T12:12:57+08:00">2019-05-27 12:12:57</time>
             
 
             
@@ -905,7 +1345,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-07 01:38:07" itemprop="dateModified" datetime="2019-10-07T01:38:07+08:00">2019-10-07</time> 
+              <time title="修改时间：2019-10-25 01:08:38" itemprop="dateModified" datetime="2019-10-25T01:08:38+08:00">2019-10-25</time> 
               -->
               <!-- new version -->
                         
@@ -920,8 +1360,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-07T01:38:07+08:00" content="2019-10-07">
-                2019-10-07 01:38:07
+              <time itemprop="dateUpdated" datetime="2019-10-25T01:08:38+08:00" content="2019-10-25">
+                2019-10-25 01:08:38
               </time>
             </span>
           
@@ -942,7 +1382,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/jvm/" itemprop="url" rel="index"><span itemprop="name">jvm</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
 
                 
                 
@@ -961,8 +1401,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/" itemprop="commentCount"></span>
+                <a href="/2019/05/27/并发/Lock体系/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/27/并发/Lock体系/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -992,132 +1432,147 @@
       
         
           
-            <h1 id="JVM之垃圾收集器与内存分配"><a href="#JVM之垃圾收集器与内存分配" class="headerlink" title="JVM之垃圾收集器与内存分配"></a>JVM之垃圾收集器与内存分配</h1><p>垃圾回收区域：</p>
-<p>程序计数器、虚拟机栈、本地方法栈 3 个区域随线程生灭(因为是线程私有)，栈中的栈帧随着方法的进入和退出而有条不紊地执行着出栈和入栈操作。</p>
-<p>而 Java 堆和方法区则不一样，一个接口中的多个实现类需要的内存可能不一样，一个方法中的多个分支需要的内存也可能不一样，我们只有在程序处于运行期才知道那些对象会创建，这部分内存的分配和回收都是动态的，垃圾回收期所关注的就是java堆和方法区。</p>
-<h3 id="判断对象死活"><a href="#判断对象死活" class="headerlink" title="判断对象死活"></a>判断对象死活</h3><p><strong>引用计数法：</strong></p>
-<p>给对象添加一个引用计数器。但是难以解决循环引用问题。</p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/垃圾回收引用计数法.png" alt></p>
-<p>对象objA和objB都有字段instance，赋值令objA.instance = objB及objB.instance = objA，除此以外，这两个对象再无任何引用，实际上这两个对象已经不可能再被访问，但是它们因为互相引用着对方，导致它们的引用计数都不为0,如果不下小心直接把 Obj1-reference 和 Obj2-reference 置 null。则在 Java 堆当中的两块内存依然保持着互相引用无法回收。</p>
-<p><strong>可达性分析(根搜索算法)</strong>：</p>
-<p>通过一系列的 ‘GC Roots’ 的对象作为起始点，从这些节点出发所走过的路径称为引用链。当一个对象到 GC Roots 没有任何引用链相连的时候说明对象不可用。</p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/垃圾回收根搜索算法.jpg" alt></p>
-<p>可作为 GC Roots 的对象：</p>
-<ul>
-<li>虚拟机栈(栈帧中的本地变量表)中引用的对象</li>
-<li>方法区中类静态属性引用的对象</li>
-<li>方法区中常量引用的对象</li>
-<li>本地方法栈中 JNI(即一般说的 Native 方法) 引用的对象</li>
-</ul>
-<p><strong>引用的类别：</strong></p>
-<ul>
-<li>强引用：类似于 <code>Object obj = new Object();</code> 创建的，只要强引用在就不回收。</li>
-<li>软引用：SoftReference 类实现软引用。在系统要发生内存溢出异常之前，将会把这些对象列进回收范围之中进行二次回收。</li>
-<li>弱引用：WeakReference 类实现弱引用。对象只能生存到下一次垃圾收集之前。在垃圾收集器工作时，无论内存是否足够都会回收掉只被弱引用关联的对象。</li>
-<li>虚引用：PhantomReference 类实现虚引用。无法通过虚引用获取一个对象的实例，为一个对象设置虚引用关联的唯一目的就是能在这个对象被收集器回收时收到一个系统通知。</li>
-</ul>
-<h3 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h3><p>在堆中，尤其是在新生代中，一次垃圾回收一般可以回收 70% ~ 95% 的空间，而永久代的垃圾收集效率远低于此。</p>
-<p>永久代垃圾回收主要两部分内容：废弃的常量和无用的类。  </p>
-<p>判断废弃常量：一般是判断没有该常量的引用。</p>
-<p>判断无用的类：要以下三个条件都满足</p>
-<ul>
-<li>该类所有的实例都已经回收，也就是 Java 堆中不存在该类的任何实例</li>
-<li>加载该类的 ClassLoader 已经被回收</li>
-<li>该类对应的 java.lang.Class 对象没有任何地方被引用，无法在任何地方通过反射访问该类的方法</li>
-</ul>
-<h3 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h3><p>标记-清除算法：</p>
-<p>标记所有需要回收的对象，标记完成后统一进行回收被标记的对象</p>
-<p>缺点：</p>
-<ul>
-<li>效率不高</li>
-<li>空间产生大量碎片</li>
-</ul>
-<p>复制算法：</p>
-<p>思路：把空间分成两块，每次只对其中一块进行 GC。当这块内存使用完时，就将还存活的对象复制到另一块上面。</p>
-<p>解决前一种方法的不足，但是会造成空间利用率低下。因为大多数新生代对象都不会熬过第一次 GC。所以没必要 1 : 1 划分空间。可以分一块较大的 Eden 空间和两块较小的 Survivor 空间，每次使用 Eden 空间和其中一块 Survivor。当回收时，将 Eden 和 Survivor 中还存活的对象一次性复制到另一块 Survivor 上，最后清理 Eden 和 Survivor 空间。大小比例一般是 8 : 1 : 1，每次浪费 10% 的 Survivor 空间。</p>
-<p>但是这里有一个问题就是如果存活的大于 10% 怎么办？这里采用一种分配担保策略：多出来的对象直接进入老年代。</p>
-<p>标记-整理算法：</p>
-<p>与标记-清除算法不同的一点是，会把存活对象移动一端，解决空间产生大量碎片的缺点。</p>
-<p>分代收集算法：</p>
-<p>当前商业虚拟机的垃圾收集都采用分代收集算法。</p>
-<p>把java堆分成新生代和老年代，根据各个年代的特点采用最合适的收集算法。</p>
-<p>在新生代中，每次垃圾回收时都发现大批对象死去，只有少量存活，选用复制算法，只需要付出少量存活对象的复制成本就可以完成收集。</p>
-<p>在老年代中，对象存活率高，没有额外空间对他进行分配担保，就使用标记清除或者标记整理算法回收。</p>
-<h3 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h3><p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/垃圾回收收集器.jpg" alt></p>
-<p>说明：如果两个收集器之间存在连线说明他们之间可以搭配使用。</p>
-<p><strong>serial收集器</strong></p>
-<p>这是一个单线程收集器。意味着它只会使用一个 CPU 或一条收集线程去完成收集工作，并且在进行垃圾回收时必须暂停其它所有的工作线程直到收集结束。</p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/serial收集器.jpg" alt></p>
-<p><strong>ParNew收集器</strong></p>
-<p> Serial 收集器的多线程版本，许多运行在server模式下的虚拟机中首选的新生代收集器，原因是处理Serial收集器，只有它能与CMS收集器配合工作(真正意义上的并发收集器，实现让垃圾收集线程和用户线程同时工作)</p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/ParNew收集器.jpg" alt></p>
-<p><strong>Parallel Scavenge收集器</strong></p>
-<p>并行和并发区别：</p>
-<ul>
-<li>并行(Parallel)：指多条垃圾收集线程并行工作，但此时用户线程仍然处于等待状态</li>
-<li>并发(Concurrent)：指用户线程与垃圾收集线程同时执行（但不一定是并行的，可能会交替执行），用户线程继续运行，而垃圾收集程序运行于另一个CPU上。</li>
-</ul>
-<p>这是一个<strong>新生代收集器</strong>，也是使用复制算法实现，同时也是<strong>并行</strong>的<strong>多线程</strong>收集器。</p>
-<p>CMS 等收集器的关注点是尽可能地缩短<strong>垃圾收集时用户线程所停顿的时间</strong>，而 Parallel Scavenge 收集器的目的是<strong>达到一个可控制的吞吐量</strong>(Throughput = 运行用户代码时间 / (运行用户代码时间 + 垃圾收集时间)  )。</p>
-<p>Parallel Scavenge收集器提供两个参数用于精确控制吞吐量，分别是<strong>控制最大垃圾收集停顿时间</strong>的-XX:MaxGCPauseMillis参数和<strong>直接设置吞吐量大小</strong>的-XX:GCTimeRatio参数。</p>
-<p>-XX:MaxGCPauseMillis：允许的值是一个大于0的毫秒数，收集器将尽力保证内存回收花费的时间不超过设定值。GC停顿时间缩短是以牺牲吞吐量和新生代空间来换取的(并不是把参数设置越小越好)</p>
-<p>-XX:GCTimeRatio：是一个大于0小于100的整数，是垃圾收集时间占总时间的比率，相当于吞吐量的倒数。</p>
-<p>-XX:+UserAdaptiveSIzePolicy：作为一个吞吐量优先的收集器，虚拟机会根据当前系统的运行情况收集性能监控信息，动态调整停顿时间。这就是 GC 的<strong>自适应调整策略</strong>(GC Ergonomics)。</p>
-<p><strong>Serial Old收集器</strong></p>
-<p>收集器的老年代版本，单线程，使用 <code>标记 —— 整理</code>。</p>
-<p><strong>Parallel Old收集器</strong></p>
-<p>Parallel Old 是 Parallel Scavenge 收集器的老年代版本。多线程，使用 <code>标记 —— 整理</code></p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/parallelold收集器.png" alt></p>
-<p><strong>CMS收集器</strong></p>
-<p>CMS (Concurrent Mark Sweep) 收集器是一种以<strong>获取最短回收停顿时间</strong>为目标的收集器。基于 <code>标记 —— 清除</code> 算法实现。</p>
-<p>运作步骤：</p>
-<ul>
-<li>初始标记(CMS initial mark)：标记 GC Roots 能直接关联到的对象</li>
-<li>并发标记(CMS concurrent mark)：进行 GC Roots Tracing(根搜索算法)</li>
-<li>重新标记(CMS remark)：修正并发标记期间的变动部分</li>
-<li>并发清除(CMS concurrent sweep)</li>
-</ul>
-<p>其中初始标记、重新标记这两个步骤仍然需要“Stop The World”。初始标记仅仅只是标记一下GC Roots能直接关联到的对象，速度很快，并发标记阶段就是进行GC Roots Tracing的过程，而重新标记阶段则是为了修正并发标记期间，因用户程序继续运作而导致标记产生变动的那一部分对象的标记记录，这个阶段的停顿时间一般会比初始标记阶段稍长一些，但远比并发标记的时间短。</p>
-<p>由于整个过程中耗时最长的并发标记和并发清除过程中，收集器线程都可以与用户线程一起工作，所以总体上来说，CMS收集器的内存回收过程是与用户线程一起并发地执行。老年代收集器（新生代使用ParNew）。</p>
-<p><strong>优点</strong>: 并发收集、低停顿<br><strong>缺点</strong>: 对 CPU 资源敏感、无法收集浮动垃圾、<code>标记 —— 清除</code> 算法带来的空间碎片</p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/CMS收集器.png" alt></p>
-<p><strong>G1收集器</strong></p>
-<p>G1是目前技术发展的最前沿成果之一，HotSpot开发团队赋予它的使命是未来可以替换掉JDK1.5中发布的CMS收集器。与CMS收集器相比G1收集器有以下特点：</p>
+            <h2 id="初识Lock与AbstractQueuedSynchronizer-AQS"><a href="#初识Lock与AbstractQueuedSynchronizer-AQS" class="headerlink" title="初识Lock与AbstractQueuedSynchronizer(AQS)"></a>初识Lock与AbstractQueuedSynchronizer(AQS)</h2><h3 id="1-concurrent包的结构层次"><a href="#1-concurrent包的结构层次" class="headerlink" title="1. concurrent包的结构层次"></a>1. concurrent包的结构层次</h3><p><img src="https://user-gold-cdn.xitu.io/2018/5/3/163260cff7a637f5?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<p>其中包含了两个子包：atomic以及lock，另外在concurrent下的阻塞队列以及executors,</p>
+<p>从整体上来看concurrent包的整体实现图如下图所示：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/163260cff7cb847c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<h3 id="2-lock简介"><a href="#2-lock简介" class="headerlink" title="2. lock简介"></a>2. lock简介</h3><p>锁是用来控制多个线程访问共享资源的方式，一般来说，一个锁能够防止多个线程同时访问共享资源。在Lock接口出现之前，java程序主要是靠synchronized关键字实现锁功能的，而java SE5之后，并发包中增加了lock接口，它提供了与synchronized一样的锁功能。<strong>虽然它失去了像synchronize关键字隐式加锁解锁的便捷性，但是却拥有了锁获取和释放的可操作性，可中断的获取锁以及超时获取锁等多种synchronized关键字所不具备的同步特性。</strong>通常使用显示使用lock的形式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Lock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">lock.lock();</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	.......</span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">	lock.unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>synchronized同步块执行完成或者遇到异常是锁会自动释放，而lock必须调用unlock()方法释放锁，因此在finally块中释放锁。</p>
+<h4 id="2-1-Lock接口API"><a href="#2-1-Lock接口API" class="headerlink" title="2.1 Lock接口API"></a>2.1 Lock接口API</h4><p>lock接口定义的五个方法：</p>
+<p>void lock(); //获取锁 </p>
+<p>void lockInterruptibly() throws InterruptedException；//获取锁的过程能够响应中断 </p>
+<p>boolean tryLock();//尝试非阻塞的获取锁，调用该方法后立刻返回，如果能够获取则返回true，否则返回false</p>
+<p>boolean tryLock(long time, TimeUnit unit) throws InterruptedException;//超时获取锁，在超时内或者未中断的情况下能够获取锁 </p>
+<p>void unlock();//释放锁</p>
+<p>Condition newCondition();//获取与lock绑定的等待通知组件，当前线程必须获得了锁才能进行等待，进行等待时会先释放锁，当再次获取锁时才能从等待中返回</p>
+<p>ReentrantLock并没有多少源码，另外有一个很明显的特点是：<strong>基本上所有的方法的实现实际上都是调用了其静态内存类Sync中的方法，而Sync类继承了AbstractQueuedSynchronizer（AQS）</strong>。可以看出要想理解ReentrantLock关键核心在于对队列同步器AbstractQueuedSynchronizer（简称同步器）的理解。</p>
+<h4 id="2-2-初识AQS"><a href="#2-2-初识AQS" class="headerlink" title="2.2 初识AQS"></a>2.2 初识AQS</h4><p>同步器是用来构建锁和其他同步组件的基础框架，它的实现主要依赖一个int成员变量来表示同步状态以及通过一个FIFO队列构成等待队列。它的<strong>子类必须重写AQS的几个protected修饰的用来改变同步状态的方法</strong>，其他方法主要是实现了排队和阻塞机制。<strong>状态的更新使用getState,setState以及compareAndSetState这三个方法</strong>。</p>
+<p>子类被<strong>推荐定义为自定义同步组件的静态内部类</strong>，同步器自身没有实现任何同步接口，它仅仅是定义了若干同步状态的获取和释放方法来供自定义同步组件的使用，同步器既支持独占式获取同步状态，也可以支持共享式获取同步状态，这样就可以方便的实现不同类型的同步组件。</p>
+<p>同步器是实现锁（也可以是任意同步组件）的关键，在锁的实现中聚合同步器，利用同步器实现锁的语义。可以这样理解二者的关系：<strong>锁是面向使用者，它定义了使用者与锁交互的接口，隐藏了实现细节；同步器是面向锁的实现者，它简化了锁的实现方式，屏蔽了同步状态的管理，线程的排队，等待和唤醒等底层操作</strong>。锁和同步器很好的隔离了使用者和实现者所需关注的领域。</p>
+<h4 id="2-3-AQS的模板方法设计模式"><a href="#2-3-AQS的模板方法设计模式" class="headerlink" title="2.3 AQS的模板方法设计模式"></a>2.3 AQS的模板方法设计模式</h4><p>AQS的设计是使用模板方法设计模式，它将<strong>一些方法开放给子类进行重写，而同步器给同步组件所提供模板方法又会重新调用被子类所重写的方法</strong>。举个例子，AQS中需要重写的方法tryAcquire：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ReentrantLock中NonfairSync（继承AQS）会重写该方法为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">int</span> acquires)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> nonfairTryAcquire(acquires);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而AQS中的模板方法acquire():</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (!tryAcquire(arg) &amp;&amp;</span><br><span class="line">           acquireQueued(addWaiter(Node.EXCLUSIVE), arg))</span><br><span class="line">           selfInterrupt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>会调用tryAcquire方法，而此时当继承AQS的NonfairSync调用模板方法acquire时就会调用已经被NonfairSync重写的tryAcquire方法。这就是使用AQS的方式，在弄懂这点后会lock的实现理解有很大的提升。可以归纳总结为这么几点：</p>
 <ol>
-<li><strong>空间整合</strong>，G1收集器采用标记整理算法，不会产生内存空间碎片。分配大对象时不会因为无法找到连续空间而提前触发下一次GC。</li>
-<li><strong>可预测停顿</strong>，这是G1的另一大优势，降低停顿时间是G1和CMS的共同关注点，但G1除了追求低停顿外，还能建立可预测的停顿时间模型，能让使用者明确指定在一个长度为N毫秒的时间片段内，消耗在垃圾收集上的时间不得超过N毫秒，这几乎已经是实时Java（RTSJ）的垃圾收集器的特征了。</li>
+<li>同步组件（这里不仅仅值锁，还包括CountDownLatch等）的实现依赖于同步器AQS，在同步组件实现中，使用AQS的方式被推荐定义继承AQS的静态内存类；</li>
+<li>AQS采用模板方法进行设计，AQS的protected修饰的方法需要由继承AQS的子类进行重写实现，当调用AQS的子类的方法时就会调用被重写的方法；</li>
+<li>AQS负责同步状态的管理，线程的排队，等待和唤醒这些底层操作，而Lock等同步组件主要专注于实现同步语义；</li>
+<li>在重写AQS的方式时，使用AQS提供的<code>getState(),setState(),compareAndSetState()</code>方法进行修改同步状态</li>
 </ol>
-<p>上面提到的垃圾收集器，收集的范围都是整个新生代或者老年代，而G1不再是这样。使用G1收集器时，Java堆的内存布局与其他收集器有很大差别，它将整个Java堆划分为<strong>多个大小相等的独立区域</strong>（Region），虽然还保留有新生代和老年代的概念，但新生代和老年代不再是物理隔阂了，它们都是一部分（物理可以不连续、逻辑连续的一段内存）Region的集合。</p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/G1垃圾回收器.png" alt></p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/G1步骤.png" alt></p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/G1收集器运行.png" alt></p>
-<p>G1的新生代收集跟ParNew类似，当新生代占用达到一定比例的时候，开始出发收集。和CMS类似，G1收集器收集老年代对象会有短暂停顿。</p>
-<p>收集步骤：</p>
-<p>1、标记阶段，首先初始标记(Initial-Mark),这个阶段是停顿的(Stop the World Event)，并且会触发一次普通Mintor GC。对应GC log:GC pause (young) (inital-mark)</p>
-<p>2、Root Region Scanning根区域扫描，程序运行过程中会回收survivor区(存活到老年代)，这一过程必须在young GC之前完成。</p>
-<p>3、Concurrent Marking并发标记，在整个堆中进行并发标记(和应用程序并发执行)，此过程可能被young GC中断。在并发标记阶段，若发现区域对象中的所有对象都是垃圾，那个这个区域会被立即回收(图中打X)。同时，并发标记过程中，会计算每个区域的对象活性(区域中存活对象的比例)。</p>
-<p>4、Remark, 最终标记，会有短暂停顿(STW:stop the world)。再标记阶段是用来收集 并发标记阶段 产生新的垃圾(并发阶段和应用程序一同运行)；G1中采用了比CMS更快的初始快照算法:snapshot-at-the-beginning (SATB)。</p>
-<p>5、Copy/Clean up，多线程清除失活对象，会有STW。G1将回收区域的存活对象拷贝到新区域，清除Remember Sets，并发清空回收区域并把它返回到空闲区域链表中。</p>
-<p>6、复制/清除过程后。回收区域的活性对象已经被集中回收到深蓝色和深绿色区域。</p>
-<h3 id="内存分配与回收策略"><a href="#内存分配与回收策略" class="headerlink" title="内存分配与回收策略"></a>内存分配与回收策略</h3><p>对象的内存分配，往大方向上讲，就是在堆上分配（但也可能经过JIT编译后被拆散为标量类型并间接地在栈上分配），对象主要分配在新生代的Eden区上，如果启动本地线程分配缓冲(TLAB)，将线程上优先在TLAB上分配少数情况下也可能会直接分配在老年代中，其细节取决于当前使用的是哪一种垃圾收集器组合，还有虚拟机中与内存相关的参数配置。</p>
-<p><strong>对象优先在Eden分配</strong></p>
-<p>对象主要分配在新生代的 Eden 区上，如果启动了本地线程分配缓冲区，将线程优先在 (TLAB) 上分配。少数情况会直接分配在老年代中。</p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/java堆内存模型.png" alt></p>
-<p>新生代和老年代：</p>
-<ul>
-<li>新生代GC(minor GC)：发生在新生代的垃圾回收动作，频繁，速度快。</li>
-<li>老年代GC(Major GC / Full GC)：发生在老年代的垃圾回收动作，出现了 Major GC 经常会伴随至少一次 Minor GC(非绝对)。Major GC 的速度一般会比 Minor GC 慢十倍以上。</li>
-</ul>
-<p><strong>大对象直接进入老年代</strong></p>
-<p>大对象指的是需要大量连续内存空间的java对象，最典型的大对象是那种很长字符串及数组(byte[]数组就是典型大对象)</p>
-<p>虚拟机提供一个-XX:PretenureSizeThreshold参数，令大于这个设置值的对象直接在老年代中分配。目的是避免在Eden区及两个Survivor区之间发生大量的内存拷贝。</p>
-<p><strong>长期存活的对象直接进入老年代</strong></p>
-<p>虚拟机为每个对象定义了一个年龄计数器，如果对象经过了1次Minor GC那么对象会进入Survivor区，之后每经过一次Minor GC那么对象的年龄加1，知道达到阀值对象进入老年区。</p>
-<p><strong>动态对象年龄判断</strong></p>
-<p>如果Survivor区中相同年龄的所有对象大小的总和大于Survivor空间的一半，年龄大于或等于该年龄的对象可以直接进入老年代。</p>
-<p><strong>空间分配担保</strong></p>
-<p>每次进行Minor GC时，JVM会计算Survivor区移至老年区的对象的平均大小，如果这个值大于老年区的剩余值大小则进行一次Full GC，如果小于检查HandlePromotionFailure设置，如果true则只进行Monitor GC,如果false则进行Full GC。 </p>
-
+<p>AQS提供的模板方法可以分为3类：</p>
+<ol>
+<li>独占式获取与释放同步状态；</li>
+<li>共享式获取与释放同步状态；</li>
+<li>查询同步队列中等待线程情况；</li>
+</ol>
+<h4 id="3-一个例子"><a href="#3-一个例子" class="headerlink" title="3. 一个例子"></a>3. 一个例子</h4><p>下面使用一个例子来进一步理解下AQS的使用。这个例子也是来源于AQS源码中的example。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mutex</span> <span class="keyword">implements</span> <span class="title">Lock</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Our internal helper class</span></span><br><span class="line">    <span class="comment">// 继承AQS的静态内部类</span></span><br><span class="line">    <span class="comment">// 重写方法</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Sync</span> <span class="keyword">extends</span> <span class="title">AbstractQueuedSynchronizer</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Reports whether in locked state</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">isHeldExclusively</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> getState() == <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Acquires the lock if state is zero</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">int</span> acquires)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">assert</span> acquires == <span class="number">1</span>; <span class="comment">// Otherwise unused</span></span><br><span class="line">            <span class="keyword">if</span> (compareAndSetState(<span class="number">0</span>, <span class="number">1</span>)) &#123;</span><br><span class="line">                setExclusiveOwnerThread(Thread.currentThread());</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Releases the lock by setting state to zero</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">tryRelease</span><span class="params">(<span class="keyword">int</span> releases)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">assert</span> releases == <span class="number">1</span>; <span class="comment">// Otherwise unused</span></span><br><span class="line">            <span class="keyword">if</span> (getState() == <span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalMonitorStateException();</span><br><span class="line">            setExclusiveOwnerThread(<span class="keyword">null</span>);</span><br><span class="line">            setState(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Provides a Condition</span></span><br><span class="line">        <span class="function">Condition <span class="title">newCondition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ConditionObject();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Deserializes properly</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(ObjectInputStream s)</span></span></span><br><span class="line"><span class="function">                <span class="keyword">throws</span> IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">            s.defaultReadObject();</span><br><span class="line">            setState(<span class="number">0</span>); <span class="comment">// reset to unlocked state</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// The sync object does all the hard work. We just forward to it.</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Sync sync = <span class="keyword">new</span> Sync();</span><br><span class="line">    <span class="comment">//使用同步器的模板方法实现自己的同步语义</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        sync.acquire(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryLock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sync.tryAcquire(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        sync.release(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Condition <span class="title">newCondition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sync.newCondition();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isLocked</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sync.isHeldExclusively();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasQueuedThreads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sync.hasQueuedThreads();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lockInterruptibly</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        sync.acquireInterruptibly(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryLock</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sync.tryAcquireNanos(<span class="number">1</span>, unit.toNanos(timeout));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MutexDemo：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MutextDemo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Mutex mutex = <span class="keyword">new</span> Mutex();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            Thread thread = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">                mutex.lock();</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                    mutex.unlock();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            thread.start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行情况：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/163260cff934a80f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
+<p>上面的这个例子实现了独占锁的语义，在同一个时刻只允许一个线程占有锁。MutexDemo新建了10个线程，分别睡眠3s。从执行情况也可以看出来当前Thread-6正在执行占有锁而其他Thread-7,Thread-8等线程处于WAIT状态。按照推荐的方式，Mutex定义了一个<strong>继承AQS的静态内部类Sync</strong>,并且重写了AQS的tryAcquire等等方法，而对state的更新也是利用了setState(),getState()，compareAndSetState()这三个方法。在实现lock接口中的方法也只是调用了AQS提供的模板方法（因为Sync继承AQS）。</p>
+<p>从这个例子就可以很清楚的看出来，在同步组件的实现上主要是利用了AQS，而AQS“屏蔽”了同步状态的修改，线程排队等底层实现，通过AQS的模板方法可以很方便的给同步组件的实现者进行调用。而针对用户来说，只需要调用同步组件提供的方法来实现并发编程即可。同时在新建一个同步组件时需要把握的两个关键点是：</p>
+<ol>
+<li>实现同步组件时推荐定义继承AQS的静态内存类，并重写需要的protected修饰的方法；</li>
+<li>同步组件语义的实现依赖于AQS的模板方法，而AQS模板方法又依赖于被AQS的子类所重写的方法。</li>
+</ol>
+<p>通俗点说，因为AQS整体设计思路采用模板方法设计模式，同步组件以及AQS的功能实际上别切分成各自的两部分：</p>
+<p><strong>同步组件实现者的角度</strong>：</p>
+<p>通过可重写的方法：<strong>独占式</strong>： tryAcquire()(独占式获取同步状态），tryRelease()（独占式释放同步状态）；<strong>共享式</strong> ：tryAcquireShared()(共享式获取同步状态)，tryReleaseShared()(共享式释放同步状态)；<strong>告诉AQS怎样判断当前同步状态是否成功获取或者是否成功释放</strong>。同步组件专注于对当前同步状态的逻辑判断，从而实现自己的同步语义。这句话比较抽象，举例来说，上面的Mutex例子中通过tryAcquire方法实现自己的同步语义，在该方法中如果当前同步状态为0（即该同步组件没被任何线程获取），当前线程可以获取同时将状态更改为1返回true，否则，该组件已经被线程占用返回false。很显然，该同步组件只能在同一时刻被线程占用，Mutex专注于获取释放的逻辑来实现自己想要表达的同步语义。</p>
+<p><strong>AQS的角度</strong></p>
+<p>而对AQS来说，只需要同步组件返回的true和false即可，因为AQS会对true和false会有不同的操作，true会认为当前线程获取同步组件成功直接返回，而false的话就AQS也会将当前线程插入同步队列等一系列的方法。</p>
+<p>总的来说，同步组件通过重写AQS的方法实现自己想要表达的同步语义，而AQS只需要同步组件表达的true和false即可，AQS会针对true和false不同的情况做不同的处理</p>
+<h2 id="深入理解AbstractQueuedSynchronizer-AQS"><a href="#深入理解AbstractQueuedSynchronizer-AQS" class="headerlink" title="深入理解AbstractQueuedSynchronizer(AQS)"></a>深入理解AbstractQueuedSynchronizer(AQS)</h2><h3 id="1-AQS简介"><a href="#1-AQS简介" class="headerlink" title="1. AQS简介"></a>1. AQS简介</h3><p>在同步组件的实现中，AQS是核心部分，同步组件的实现者通过使用AQS提供的模板方法实现同步组件语义，AQS则实现了对<strong>同步状态的管理，以及对阻塞线程进行排队，等待通知</strong>等等一些底层的实现处理。AQS的核心也包括了这些方面:<strong>同步队列，独占式锁的获取和释放，共享锁的获取和释放以及可中断锁，超时等待锁获取这些特性的实现</strong>，而这些实际上则是AQS提供出来的模板方法，归纳整理如下：</p>
+<p>独占式锁</p>
+<blockquote>
+<p>void acquire(int arg)：独占式获取同步状态，如果获取失败则插入同步队列进行等待； </p>
+<p>void acquireInterruptibly(int arg)：与acquire方法相同，但在同步队列中进行等待的时候可以检测中断； </p>
+<p>boolean tryAcquireNanos(int arg, long nanosTimeout)：在acquireInterruptibly基础上增加了超时等待功能，在超时时间内没有获得同步状态返回false; </p>
+<p>boolean release(int arg)：释放同步状态，该方法会唤醒在同步队列中的下一个节点</p>
+</blockquote>
+<p>共享式锁：</p>
+<blockquote>
+<p>void acquireShared(int arg)：共享式获取同步状态，与独占式的区别在于同一时刻有多个线程获取同步状态； </p>
+<p>void acquireSharedInterruptibly(int arg)：在acquireShared方法基础上增加了能响应中断的功能； </p>
+<p>boolean tryAcquireSharedNanos(int arg, long nanosTimeout)：在acquireSharedInterruptibly基础上增加了超时等待的功能； </p>
+<p>boolean releaseShared(int arg)：共享式释放同步状态</p>
+</blockquote>
+<h3 id="2-同步队列"><a href="#2-同步队列" class="headerlink" title="2. 同步队列"></a>2. 同步队列</h3><p>当共享资源被某个线程占有，其他请求该资源的线程将会阻塞，从而进入同步队列。就数据结构而言，队列的实现方式无外乎两者一是通过数组的形式，另外一种则是链表的形式。AQS中的同步队列则是<strong>通过链式方式</strong>进行实现。接下来，疑问：<strong>1. 节点的数据结构是什么样的？2. 是单向还是双向？3. 是带头结点的还是不带头节点的？</strong></p>
+<p>在AQS有一个静态内部类Node，其中有这样一些属性：</p>
+<blockquote>
+<p>volatile int waitStatus //节点状态 </p>
+<p>volatile Node prev //当前节点/线程的前驱节点 </p>
+<p>volatile Node next; //当前节点/线程的后继节点 </p>
+<p>volatile Thread thread;//加入同步队列的线程引用 </p>
+<p>Node nextWaiter;//等待队列中的下一个节点</p>
+</blockquote>
+<p>节点的状态有以下这些：</p>
+<blockquote>
+<p>int CANCELLED =  1//节点从同步队列中取消 </p>
+<p>int SIGNAL    = -1//后继节点的线程处于等待状态，如果当前节点释放同步状态会通知后继节点，使得后继节点的线程能够运行； </p>
+<p>int CONDITION = -2//当前节点进入等待队列中 </p>
+<p>int PROPAGATE = -3//表示下一次共享式同步状态获取将会无条件传播下去 </p>
+<p>int INITIAL = 0;//初始状态</p>
+</blockquote>
+<p>每个节点拥有其前驱和后继节点，很显然这是<strong>一个双向队列</strong>。可以用一段demo看一下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LockDemo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ReentrantLock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">            Thread thread = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                    lock.unlock();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            thread.start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实例代码中开启了5个线程，先获取锁之后再睡眠10S中，实际上这里让线程睡眠是想模拟出当线程无法获取锁时进入同步队列的情况。通过debug，当Thread-4（在本例中最后一个线程）获取锁失败后进入同步时，AQS时现在的同步队列如图所示：</p>
+<p><img src="/2019/05/27/并发/Lock体系/163261637bcef7e2" alt></p>
+<p>Thread-0先获得锁后进行睡眠，其他线程（Thread-1,Thread-2,Thread-3,Thread-4）获取锁失败进入同步队列，同时也可以很清楚的看出来每个节点有两个域：prev(前驱)和next(后继)，并且每个节点用来保存获取同步状态失败的线程引用以及等待状态等信息。另外AQS中有两个重要的成员变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">volatile</span> Node head;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">volatile</span> Node tail;</span><br></pre></td></tr></table></figure>
+<p>也就是说AQS实际上通过头尾指针来管理同步队列，同时实现包括获取锁失败的线程进行入队，释放锁时对同步队列中的线程进行通知等核心方法。其示意图如下：</p>
+<p><img src="/2019/05/27/并发/Lock体系/163261637bb25796" alt></p>
+<p>通过对源码的理解以及做实验的方式，现在我们可以清楚的知道这样几点：</p>
+<ol>
+<li>节点的数据结构，即AQS的静态内部类Node,节点的等待状态等信息；</li>
+<li>同步队列是一个双向队列，AQS通过持有头尾指针管理同步队列；</li>
+</ol>
+<h3 id="3-独占锁"><a href="#3-独占锁" class="headerlink" title="3. 独占锁"></a>3. 独占锁</h3><h4 id="3-1-独占锁的获取（acquire方法）"><a href="#3-1-独占锁的获取（acquire方法）" class="headerlink" title="3.1 独占锁的获取（acquire方法）"></a>3.1 独占锁的获取（acquire方法）</h4><p>调用lock()方法是获取独占式锁，获取失败就将当前线程加入同步队列，成功则线程执行。而lock()方法实际上会调用AQS的<strong>acquire()</strong>方法，源码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//先看同步状态是否获取成功，如果成功则方法结束返回</span></span><br><span class="line">		<span class="comment">//若失败则先调用addWaiter()方法再调用acquireQueued()方法</span></span><br><span class="line">        <span class="keyword">if</span> (!tryAcquire(arg) &amp;&amp;</span><br><span class="line">            acquireQueued(addWaiter(Node.EXCLUSIVE), arg))</span><br><span class="line">            selfInterrupt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>acquire根据当前获得同步状态成功与否做了两件事情：</p>
+<ol>
+<li>成功，则方法结束返回，</li>
+<li>失败，则先调用addWaiter()然后在调用acquireQueued()方法。</li>
+</ol>
+<p>当线程获取独占式锁失败后就会将当前线程加入同步队列，那么加入队列的方式是看addWaiter()和acquireQueued()。addWaiter()源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">addWaiter</span><span class="params">(Node mode)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 1. 将当前线程构建成Node类型</span></span><br><span class="line">        Node node = <span class="keyword">new</span> Node(Thread.currentThread(), mode);</span><br><span class="line">        <span class="comment">// Try the fast path of enq; backup to full enq on failure</span></span><br><span class="line">        <span class="comment">// 2. 当前尾节点是否为null？</span></span><br><span class="line">		Node pred = tail;</span><br><span class="line">        <span class="keyword">if</span> (pred != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">// 2.2 将当前节点尾插入的方式插入同步队列中</span></span><br><span class="line">            node.prev = pred;</span><br><span class="line">            <span class="keyword">if</span> (compareAndSetTail(pred, node)) &#123;</span><br><span class="line">                pred.next = node;</span><br><span class="line">                <span class="keyword">return</span> node;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">// 2.1. 当前同步队列尾节点为null，说明当前线程是第一个加入同步队列进行等待的线程</span></span><br><span class="line">        enq(node);</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序的逻辑主要分为两个部分：<strong>1. 当前同步队列的尾节点为null，调用方法enq()插入;2. 当前队列的尾节点不为null，则采用尾插入（compareAndSetTail（）方法）的方式入队</strong>。</p>
+<p>另外还会有另外一个问题：如果 <code>if (compareAndSetTail(pred, node))</code>为false怎么办？会继续执行到enq()方法，同时很明显compareAndSetTail是一个CAS操作，通常来说如果CAS操作失败会继续自旋（死循环）进行重试。</p>
+<p>因此，经过这样的分析，enq()方法可能承担两个任务：<strong>1. 处理当前同步队列尾节点为null时进行入队操作；2. 如果CAS尾插入节点失败后负责自旋进行尝试。</strong>那么是不是真的就像我们分析的一样了？只有源码会告诉我们答案:),enq()源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">enq</span><span class="params">(<span class="keyword">final</span> Node node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            Node t = tail;</span><br><span class="line">			<span class="keyword">if</span> (t == <span class="keyword">null</span>) &#123; <span class="comment">// Must initialize</span></span><br><span class="line">				<span class="comment">//1. 构造头结点</span></span><br><span class="line">                <span class="keyword">if</span> (compareAndSetHead(<span class="keyword">new</span> Node()))</span><br><span class="line">                    tail = head;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="comment">//2. 尾插入，CAS操作失败自旋尝试</span></span><br><span class="line">                node.prev = t;</span><br><span class="line">                <span class="keyword">if</span> (compareAndSetTail(t, node)) &#123;</span><br><span class="line">                    t.next = node;</span><br><span class="line">                    <span class="keyword">return</span> t;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的分析中可以看出在第1步中会先创建头结点，说明同步队列是<strong>带头结点的链式存储结构</strong>。带头结点与不带头结点相比，会在入队和出队的操作中获得更大的便捷性，因此同步队列选择了带头结点的链式存储结构。那么带头节点的队列初始化时机是什么？自然而然是在<strong>tail为null时，即当前线程是第一次插入同步队列</strong>。compareAndSetTail(t, node)方法会利用CAS操作设置尾节点，如果CAS操作失败会在<code>for (;;)</code>for死循环中不断尝试，直至成功return返回为止。因此，对enq()方法可以做这样的总结：</p>
+<ol>
+<li><strong>在当前线程是第一个加入同步队列时，调用compareAndSetHead(new Node())方法，完成链式队列的头结点的初始化</strong>；</li>
+<li><strong>自旋不断尝试CAS尾插入节点直至成功为止</strong>。</li>
+</ol>
+<p>在同步队列中的节点（线程）会做什么事情了来保证自己能够有机会获得独占式锁了？带着这样的问题我们就来看看acquireQueued()方法，从方法名就可以很清楚，这个方法的作用就是排队获取锁的过程，源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">acquireQueued</span><span class="params">(<span class="keyword">final</span> Node node, <span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> failed = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">boolean</span> interrupted = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">				<span class="comment">// 1. 获得当前节点的先驱节点</span></span><br><span class="line">                <span class="keyword">final</span> Node p = node.predecessor();</span><br><span class="line">				<span class="comment">// 2. 当前节点能否获取独占式锁					</span></span><br><span class="line">				<span class="comment">// 2.1 如果当前节点的先驱节点是头结点并且成功获取同步状态，即可以获得独占式锁</span></span><br><span class="line">                <span class="keyword">if</span> (p == head &amp;&amp; tryAcquire(arg)) &#123;</span><br><span class="line">					<span class="comment">//队列头指针用指向当前节点</span></span><br><span class="line">                    setHead(node);</span><br><span class="line">					<span class="comment">//释放前驱节点</span></span><br><span class="line">                    p.next = <span class="keyword">null</span>; <span class="comment">// help GC</span></span><br><span class="line">                    failed = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">return</span> interrupted;</span><br><span class="line">                &#125;</span><br><span class="line">				<span class="comment">// 2.2 获取锁失败，线程进入等待状态等待获取独占式锁</span></span><br><span class="line">                <span class="keyword">if</span> (shouldParkAfterFailedAcquire(p, node) &amp;&amp;</span><br><span class="line">                    parkAndCheckInterrupt())</span><br><span class="line">                    interrupted = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (failed)</span><br><span class="line">                cancelAcquire(node);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>整体来看这是一个这又是一个自旋的过程（for (;;)），代码首先获取当前节点的先驱节点，<strong>如果先驱节点是头结点的并且成功获得同步状态的时候（if (p == head &amp;&amp; tryAcquire(arg))），当前节点所指向的线程能够获取锁</strong>。反之，获取锁失败进入等待状态。整体示意图为下图：</p>
+<p><img src="/2019/05/27/并发/Lock体系/163261637c5fc765" alt></p>
+<p>获取锁的节点出队的逻辑是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//队列头结点引用指向当前节点</span></span><br><span class="line">setHead(node);</span><br><span class="line"><span class="comment">//释放前驱节点</span></span><br><span class="line">p.next = <span class="keyword">null</span>; <span class="comment">// help GC</span></span><br><span class="line">failed = <span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">return</span> interrupted;</span><br></pre></td></tr></table></figure>
+<p>setHead()方法为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setHead</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">        head = node;</span><br><span class="line">        node.thread = <span class="keyword">null</span>;</span><br><span class="line">        node.prev = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将当前节点通过setHead()方法设置为队列的头结点，然后将之前的头结点的next域设置为null并且pre域也为null，即与队列断开，无任何引用方便GC时能够将内存进行回收。示意图如下：</p>
+<p><img src="/2019/05/27/并发/Lock体系/163261637c63a47a" alt></p>
+<p>那么当获取锁失败的时候会调用shouldParkAfterFailedAcquire()方法和parkAndCheckInterrupt()方法，看看他们做了什么事情。shouldParkAfterFailedAcquire()方法源码为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">shouldParkAfterFailedAcquire</span><span class="params">(Node pred, Node node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ws = pred.waitStatus;</span><br><span class="line">    <span class="keyword">if</span> (ws == Node.SIGNAL)</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * This node has already set status asking a release</span></span><br><span class="line"><span class="comment">         * to signal it, so it can safely park.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (ws &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * Predecessor was cancelled. Skip over predecessors and</span></span><br><span class="line"><span class="comment">         * indicate retry.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            node.prev = pred = pred.prev;</span><br><span class="line">        &#125; <span class="keyword">while</span> (pred.waitStatus &gt; <span class="number">0</span>);</span><br><span class="line">        pred.next = node;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * waitStatus must be 0 or PROPAGATE.  Indicate that we</span></span><br><span class="line"><span class="comment">         * need a signal, but don't park yet.  Caller will need to</span></span><br><span class="line"><span class="comment">         * retry to make sure it cannot acquire before parking.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        compareAndSetWaitStatus(pred, ws, Node.SIGNAL);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>shouldParkAfterFailedAcquire()方法主要逻辑是使用<code>compareAndSetWaitStatus(pred, ws, Node.SIGNAL)</code>使用CAS将节点状态由INITIAL设置成SIGNAL，表示当前线程阻塞。</p>
+<p>当compareAndSetWaitStatus设置失败则说明shouldParkAfterFailedAcquire方法返回false，然后会在acquireQueued()方法中for (;;)死循环中会继续重试，直至compareAndSetWaitStatus设置节点状态位为SIGNAL时shouldParkAfterFailedAcquire返回true时才会执行方法parkAndCheckInterrupt()方法，该方法的源码为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">parkAndCheckInterrupt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//使得该线程阻塞</span></span><br><span class="line">		LockSupport.park(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">return</span> Thread.interrupted();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该方法的关键是会调用LookSupport.park()方法，该方法是用来阻塞当前线程的。因此到这里就应该清楚了，acquireQueued()在自旋过程中主要完成了两件事情：</p>
+<ol>
+<li><strong>如果当前节点的前驱节点是头节点，并且能够获得同步状态的话，当前线程能够获得锁该方法执行结束退出</strong>；</li>
+<li><strong>获取锁失败的话，先将节点状态设置成SIGNAL，然后调用LookSupport.park方法使得当前线程阻塞</strong>。</li>
+</ol>
+<p>经过上面的分析，独占式锁的获取过程也就是acquire()方法的执行流程如下图所示：</p>
+<p><img src="/2019/05/27/并发/Lock体系/163261637c891cc2" alt></p>
+<h4 id="3-2-独占锁的释放（release-方法）"><a href="#3-2-独占锁的释放（release-方法）" class="headerlink" title="3.2 独占锁的释放（release()方法）"></a>3.2 独占锁的释放（release()方法）</h4>
           
         
       
@@ -1401,6 +1856,1064 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError：PermGen space</span><br></pre></td></tr></table></figure>
 <p>本机直接内存溢出</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/jvm/JVM之类的加载机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/jvm/JVM之类的加载机制/" class="post-title-link" itemprop="url">JVM之类的加载机制</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-07 01:38:36" itemprop="dateModified" datetime="2019-10-07T01:38:36+08:00">2019-10-07</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-07T01:38:36+08:00" content="2019-10-07">
+                2019-10-07 01:38:36
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/jvm/JVM之类的加载机制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/jvm/JVM之类的加载机制/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JVM之类的加载机制"><a href="#JVM之类的加载机制" class="headerlink" title="JVM之类的加载机制"></a>JVM之类的加载机制</h1><h3 id="什么是类的加载"><a href="#什么是类的加载" class="headerlink" title="什么是类的加载"></a>什么是类的加载</h3><p>类的加载指的是将类的.class文件中的二进制数据读入到内存中，将其放在运行时数据区的方法区内，然后在堆区创建一个 <code>java.lang.Class</code>对象，用来封装类在方法区内的数据结构。类的加载的最终产品是位于堆区中的 <code>Class</code>对象。</p>
+<p> <code>Class</code>对象封装了类在方法区内的数据结构，并且向Java程序员提供了访问方法区内的数据结构的接口。</p>
+<p><img src="/2019/05/26/jvm/JVM之类的加载机制/什么是类加载.jpg" alt></p>
+<p>类加载器并不需要等到某个类被“首次主动使用”时再加载它，JVM规范允许类加载器在预料某个类将要被使用时就预先加载它，如果在预先加载的过程中遇到了.class文件缺失或存在错误，类加载器必须在程序首次主动使用该类时才报告错误（LinkageError错误）如果这个类一直没有被程序主动使用，那么类加载器就不会报告错误。</p>
+<p><strong>加载.class文件的方式</strong></p>
+<ul>
+<li>从本地系统中直接加载</li>
+<li>通过网络下载.class文件</li>
+<li>从zip，jar等归档文件中加载.class文件</li>
+<li>从专有数据库中提取.class文件</li>
+<li>将Java源文件动态编译为.class文件</li>
+</ul>
+<h3 id="类的生命周期"><a href="#类的生命周期" class="headerlink" title="类的生命周期"></a>类的生命周期</h3><p><img src="/2019/05/26/jvm/JVM之类的加载机制/类的生命周期.png" alt></p>
+<p>其中类加载的过程包括了加载、验证、准备、解析、初始化五个阶段。在这五个阶段中，加载、验证、准备和初始化这四个阶段发生的顺序是确定的，而解析阶段则不一定，它在某些情况下可以在初始化阶段之后开始，这是为了支持Java语言的运行时绑定（也成为动态绑定或晚期绑定）。另外注意这里的几个阶段是按顺序开始，而不是按顺序进行或完成，因为这些阶段通常都是互相交叉地混合进行的，通常在一个阶段执行的过程中调用或激活另一个阶段。</p>
+<h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><p>在加载阶段，虚拟机需要完成以下三件事情：</p>
+<ul>
+<li>通过一个类的全限定名来获取其定义的二进制字节流。</li>
+<li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。</li>
+<li>在Java堆中生成一个代表这个类的 <code>java.lang.Class</code>对象，作为对方法区中这些数据的访问入口。</li>
+</ul>
+<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p><strong>验证：确保被加载的类的正确性</strong></p>
+<p>验证是连接阶段的第一步，这一阶段的目的是为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。验证阶段大致会完成4个阶段的检验动作：</p>
+<ul>
+<li><strong>文件格式验证</strong>：验证字节流是否符合Class文件格式的规范；例如：是否以 <code>0xCAFEBABE</code>开头、主次版本号是否在当前虚拟机的处理范围之内、常量池中的常量是否有不被支持的类型。</li>
+<li><strong>元数据验证</strong>：对字节码描述的信息进行语义分析（注意：对比javac编译阶段的语义分析），以保证其描述的信息符合Java语言规范的要求；例如：这个类是否有父类，除了 <code>java.lang.Object</code>之外。</li>
+<li><strong>字节码验证</strong>：通过数据流和控制流分析，确定程序语义是合法的、符合逻辑的。</li>
+<li><strong>符号引用验证</strong>：确保解析动作能正确执行。</li>
+</ul>
+<p>验证阶段是非常重要的，但不是必须的，它对程序运行期没有影响，如果所引用的类经过反复验证，那么可以考虑采用 <code>-Xverifynone</code>参数来关闭大部分的类验证措施，以缩短虚拟机类加载的时间。</p>
+<p><strong>准备：为类的静态变量分配内存，并将其初始化为默认值</strong></p>
+<p>准备阶段是正式为类变量分配内存并设置类变量初始值的阶段，这些内存都将在方法区中分配。对于该阶段有以下几点需要注意：</p>
+<ul>
+<li>1、这时候进行内存分配的仅包括类变量（static），而不包括实例变量，实例变量会在对象实例化时随着对象一块分配在Java堆中。</li>
+<li>2、这里所设置的初始值通常情况下是数据类型默认的零值（如0、0L、null、false等），而不是被在Java代码中被显式地赋予的值。</li>
+</ul>
+<p>假设一个类变量的定义为： <code>public static int value=3</code>；</p>
+<p>那么变量value在准备阶段过后的初始值为0，而不是3，因为这时候尚未开始执行任何Java方法，而把value赋值为3的 <code>public static</code>指令是在程序编译后，存放于类构造器 <code>&lt;clinit&gt;（）</code>方法之中的，所以把value赋值为3的动作将在初始化阶段才会执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">这里还需要注意如下几点：</span><br><span class="line"></span><br><span class="line">1、对基本数据类型来说，对于类变量（static）和全局变量，如果不显式地对其赋值而直接使用，则系统会为其赋予默认的零值，而对于局部变量来说，在使用前必须显式地为其赋值，否则编译时不通过。</span><br><span class="line"></span><br><span class="line">2、对于同时被static和final修饰的常量，必须在声明的时候就为其显式地赋值，否则编译时不通过；而只被final修饰的常量则既可以在声明时显式地为其赋值，也可以在类初始化时显式地为其赋值，总之，在使用前必须为其显式地赋值，系统不会为其赋予默认零值。</span><br><span class="line"></span><br><span class="line">3、对于引用数据类型reference来说，如数组引用、对象引用等，如果没有对其进行显式地赋值而直接使用，系统都会为其赋予默认的零值，即null。</span><br><span class="line"></span><br><span class="line">4、如果在数组初始化时没有对数组中的各元素赋值，那么其中的元素将根据对应的数据类型而被赋予默认的零值。</span><br><span class="line"></span><br><span class="line">一句话总结以上几点，类变量、引用数据类型赋予默认值，常量、局部变量必须在声明或者初始化之前显示赋值，不然不通过编译</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3、如果类字段的字段属性表中存在 <code>ConstantValue</code>属性，即同时被final和static修饰，那么在准备阶段变量value就会被初始化为ConstValue属性所指定的值。</li>
+</ul>
+<p>假设上面的类变量value被定义为： <code>public static final int value=3</code>；</p>
+<p>编译时Javac将会为value生成ConstantValue属性，在准备阶段虚拟机就会根据 <code>ConstantValue</code>的设置将value赋值为3。我们可以理解为static final常量在编译期就将其结果放入了调用它的类的常量池中</p>
+<p><strong>解析：把类中的符号引用转换为直接引用</strong></p>
+<p>解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程，解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符  7类符号引用进行。符号引用就是一组符号来描述目标，可以是任何字面量。</p>
+<p>直接引用就是直接指向目标的指针、相对偏移量或一个间接定位到目标的句柄。</p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>初始化，为类的静态变量赋予正确的初始值，JVM负责对类进行初始化，主要对类变量进行初始化。在Java中对类变量进行初始值设定有两种方式：</p>
+<ul>
+<li>①声明类变量是指定初始值</li>
+<li>②使用静态代码块为类变量指定初始值</li>
+</ul>
+<p>JVM初始化步骤：</p>
+<ul>
+<li>1、假如这个类还没有被加载和连接，则程序先加载并连接该类</li>
+<li>2、假如该类的直接父类还没有被初始化，则先初始化其直接父类</li>
+<li>3、假如类中有初始化语句，则系统依次执行这些初始化语句</li>
+</ul>
+<p>类初始化时机：只有当对类的主动使用的时候才会导致类的初始化，类的主动使用包括以下六种：</p>
+<ul>
+<li>创建类的实例，也就是new的方式</li>
+<li>访问某个类或接口的静态变量，或者对该静态变量赋值</li>
+<li>调用类的静态方法</li>
+<li>反射（如 <code>Class.forName(“com.shengsiyuan.Test”)</code>）</li>
+<li>初始化某个类的子类，则其父类也会被初始化</li>
+<li>Java虚拟机启动时被标明为启动类的类（ <code>JavaTest</code>），直接使用 <code>java.exe</code>命令来运行某个主类</li>
+</ul>
+<h3 id="结束生命周期"><a href="#结束生命周期" class="headerlink" title="结束生命周期"></a>结束生命周期</h3><p>在如下几种情况下，Java虚拟机将结束生命周期</p>
+<ul>
+<li>执行了 <code>System.exit()</code>方法</li>
+<li>程序正常执行结束</li>
+<li>程序在执行过程中遇到了异常或错误而异常终止</li>
+<li>由于操作系统出现错误而导致Java虚拟机进程终止</li>
+</ul>
+<h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p><img src="/2019/05/26/jvm/JVM之类的加载机制/类加载器.jpg" alt></p>
+<p>站在Java开发人员的角度来看，类加载器可以大致划分为以下三类：</p>
+<p><strong>启动类加载器</strong>： <code>BootstrapClassLoader</code>，负责加载存放在 <code>JDK\jre\lib</code>(JDK代表JDK的安装目录，下同)下，或被 <code>-Xbootclasspath</code>参数指定的路径中的，并且能被虚拟机识别的类库（如rt.jar，所有的java.开头的类均被 <code>BootstrapClassLoader</code>加载）。启动类加载器是无法被Java程序直接引用的。<br><strong>扩展类加载器</strong>： <code>ExtensionClassLoader</code>，该加载器由 <code>sun.misc.Launcher$ExtClassLoader</code>实现，它负责加载 <code>JDK\jre\lib\ext</code>目录中，或者由 <code>java.ext.dirs</code>系统变量指定的路径中的所有类库（如javax.开头的类），开发者可以直接使用扩展类加载器。<br><strong>应用程序类加载器</strong>： <code>ApplicationClassLoader</code>，该类加载器由 <code>sun.misc.Launcher$AppClassLoader</code>来实现，它负责加载用户类路径（ClassPath）所指定的类，开发者可以直接使用该类加载器，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。</p>
+<p>应用程序都是由这三种类加载器互相配合进行加载的，如果有必要，我们还可以加入自定义的类加载器。因为JVM自带的ClassLoader只是懂得从本地文件系统加载标准的java class文件，因此如果编写了自己的ClassLoader，便可以做到如下几点：</p>
+<ul>
+<li>1、在执行非置信代码之前，自动验证数字签名。</li>
+<li>2、动态地创建符合用户特定需要的定制化构建类。</li>
+<li>3、从特定的场所取得java class，例如数据库中和网络中。</li>
+</ul>
+<h3 id="JVM加载机制"><a href="#JVM加载机制" class="headerlink" title="JVM加载机制"></a>JVM加载机制</h3><ul>
+<li><strong>全盘负责</strong>，当一个类加载器负责加载某个Class时，该Class所依赖的和引用的其他Class也将由该类加载器负责载入，除非显示使用另外一个类加载器来载入</li>
+<li><strong>父类委托</strong>，先让父类加载器试图加载该类，只有在父类加载器无法加载该类时才尝试从自己的类路径中加载该类</li>
+<li><strong>缓存机制</strong>，缓存机制将会保证所有加载过的Class都会被缓存，当程序中需要使用某个Class时，类加载器先从缓存区寻找该Class，只有缓存区不存在，系统才会读取该类对应的二进制数据，并将其转换成Class对象，存入缓存区。这就是为什么修改了Class后，必须重启JVM，程序的修改才会生效</li>
+</ul>
+<p>类的加载三种方式：</p>
+<ul>
+<li>1、命令行启动应用时候由JVM初始化加载</li>
+<li>2、通过Class.forName()方法动态加载</li>
+<li>3、通过ClassLoader.loadClass()方法动态加载</li>
+</ul>
+<p><strong>Class.forName()和ClassLoader.loadClass()区别</strong></p>
+<ul>
+<li><code>Class.forName()</code>：将类的.class文件加载到jvm中之外，还会对类进行解释，执行类中的static块；</li>
+<li><code>ClassLoader.loadClass()</code>：只干一件事情，就是将.class文件加载到jvm中，不会执行static中的内容,只有在newInstance才会去执行static块。</li>
+<li><code>Class.forName(name,initialize,loader)</code>带参函数也可控制是否加载static块。并且只有调用了newInstance()方法采用调用构造函数，创建类的对象 。</li>
+</ul>
+<h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>双亲委派模型的工作流程是：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把请求委托给父加载器去完成，依次向上，因此，所有的类加载请求最终都应该被传递到顶层的启动类加载器中，只有当父加载器在它的搜索范围中没有找到所需的类时，即无法完成该加载，子加载器才会尝试自己去加载该类。</p>
+<p>双亲委派机制:</p>
+<ul>
+<li>1、当 <code>AppClassLoader</code>加载一个class时，它首先不会自己去尝试加载这个类，而是把类加载请求委派给父类加载器<code>ExtClassLoader</code>去完成。</li>
+<li>2、当 <code>ExtClassLoader</code>加载一个class时，它首先也不会自己去尝试加载这个类，而是把类加载请求委派给BootStrapClassLoader<code>`</code>去完成。</li>
+<li>3、如果 <code>BootStrapClassLoader</code>加载失败（例如在 <code>$JAVA_HOME/jre/lib</code>里未查找到该class），会使用 <code>ExtClassLoader</code>来尝试加载；</li>
+<li>4、若ExtClassLoader也加载失败，则会使用 <code>AppClassLoader</code>来加载，如果 <code>AppClassLoader</code>也加载失败，则会报出异常 <code>ClassNotFoundException</code>。</li>
+</ul>
+<p>ClassLoader源码分析：</p>
+<p>双亲委派模型意义：</p>
+<ul>
+<li>系统类防止内存中出现多份同样的字节码</li>
+<li>保证Java程序安全稳定运行</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/并发/Java并发编程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/并发/Java并发编程/" class="post-title-link" itemprop="url">Java并发编程</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-24 22:03:57" itemprop="dateModified" datetime="2019-10-24T22:03:57+08:00">2019-10-24</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-24T22:03:57+08:00" content="2019-10-24">
+                2019-10-24 22:03:57
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/并发/Java并发编程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/并发/Java并发编程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Java并发编程"><a href="#Java并发编程" class="headerlink" title="Java并发编程"></a>Java并发编程</h1><h2 id="并发基础知识"><a href="#并发基础知识" class="headerlink" title="并发基础知识"></a>并发基础知识</h2><h3 id="为什么用到并发编程"><a href="#为什么用到并发编程" class="headerlink" title="为什么用到并发编程"></a>为什么用到并发编程</h3><ul>
+<li>充分利用多核cpu的计算能力</li>
+<li>方便进行业务拆分</li>
+</ul>
+<h3 id="并发编程的缺点"><a href="#并发编程的缺点" class="headerlink" title="并发编程的缺点"></a>并发编程的缺点</h3><ul>
+<li><p>频繁的上下文切换</p>
+<ul>
+<li><p>无锁并发编程</p>
+<ul>
+<li>可以参照concurrentHashMap锁分段的思想，不同的线程处理不同段的数据，这样在多线程竞争的条件下，可以减少上下文切换的时间。</li>
+</ul>
+</li>
+<li><p>CAS算法</p>
+<ul>
+<li>利用Atomic包下使用CAS算法来更新数据，使用了乐观锁，可以有效的减少一部分不必要的锁竞争带来的上下文切换</li>
+</ul>
+</li>
+<li><p>使用最少的线程</p>
+<ul>
+<li>避免创建不需要的线程，比如任务很少，但是创建了很多的线程，这样会造成大量的线程都处于等待状态</li>
+</ul>
+</li>
+<li><p>协程</p>
+<ul>
+<li>在单线程里实现多任务的调度，并在单线程里维持多个任务间的切换</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>线程安全的问题</p>
+<ul>
+<li>死锁的代码（会写）</li>
+<li><p>死锁的概念介绍</p>
+<ul>
+<li>如果一个进程集合里面的每个进程都在等待这个集合中的其他一个进程（包括自身）才能继续往下执行，若无外力他们将无法推进，这种情况就是死锁，处于死锁状态的进程称为死锁进程</li>
+</ul>
+</li>
+<li><p>死锁产生的原因</p>
+<ul>
+<li>因竞争资源发生死锁现象：系统中供多个进程共享的资源的数目不足以满足全部进程的需要时，就会引起对诸资源的竞争而发生死锁现象</li>
+<li>进程推进顺序不当发生死锁</li>
+</ul>
+</li>
+<li><p>产生死锁的四个必要条件</p>
+<ul>
+<li><p>互斥条件（线程的特性，不可解决）</p>
+<ul>
+<li>进程对所分配到的资源不允许其他进程进行访问，若其他进程访问该资源，只能等待，直至占有该资源的进程使用完成后释放该资源</li>
+</ul>
+</li>
+<li><p>请求和保持条件</p>
+<ul>
+<li>进程获得一定的资源之后，又对其他资源发出请求，但是该资源可能被其他进程占有，此事请求阻塞，但又对自己获得的资源保持不放</li>
+</ul>
+</li>
+<li><p>不可剥夺的条件</p>
+<ul>
+<li>是指进程已获得的资源，在未完成使用之前，不可被剥夺，只能在使用完后自己释放</li>
+</ul>
+</li>
+<li><p>循环等待条件</p>
+<ul>
+<li>是指进程发生死锁后，必然存在一个进程–资源之间的环形链</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>处理死锁的基本策略</p>
+<ul>
+<li><p>预防死锁</p>
+<ul>
+<li>通过设置一些限制条件，去破坏产生死锁的必要条件</li>
+<li>破坏”请求与保持条件“：第一种方法静态分配即每个进程在开始执行时就申请他所需要的全部资源。第二种是动态分配即每个进程在申请所需要的资源时他本身不占用系统资源。</li>
+<li>破坏“不可剥夺”条件：一个进程不能获得所需要的全部资源时便处于等待状态，等待期间他占有的资源将被隐式的释放重新加入到 系统的资源列表中，可以被其他的进程使用，而等待的进程只有重新获得自己原有的资源以及新申请的资源才可以重新启动，执行。</li>
+<li>破坏“循环等待”条件：采用资源有序分配其基本思想是将系统中的所有资源顺序编号，将紧缺的，稀少的采用较大的编号，在申请资源时必须按照编号的顺序进行，一个进程只有获得较小编号的进程才能申请较大编号的进程。</li>
+</ul>
+</li>
+<li><p>避免死锁</p>
+<ul>
+<li>在资源分配过程中，使用某种方法避免系统进入不安全的状态，从而避免发生死锁</li>
+<li><p>银行家算法</p>
+<ul>
+<li>最大分配矩阵</li>
+<li>已分配矩阵</li>
+<li>求出需求分配矩阵</li>
+<li>资源最大矩阵</li>
+<li>剩余待分配矩阵</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>检测死锁</p>
+<ul>
+<li>允许死锁的发生，但是通过系统的检测之后，采取一些措施，将死锁清除掉</li>
+</ul>
+</li>
+<li><p>解除死锁</p>
+<ul>
+<li>该方法与检测死锁配合使用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>java层面的避免死锁</p>
+<ul>
+<li>避免一个线程同时获得多个锁；</li>
+<li>避免一个线程在锁内部占有多个资源，尽量保证每个锁只占用一个资源；</li>
+<li>尝试使用定时锁，使用lock.tryLock(timeOut)，当超时等待时当前线程不会阻塞；</li>
+<li>对于数据库锁，加锁和解锁必须在一个数据库连接里，否则会出现解锁失败的情况</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="了解基本概念"><a href="#了解基本概念" class="headerlink" title="了解基本概念"></a>了解基本概念</h3><ul>
+<li><p>同步与异步</p>
+<ul>
+<li>同步和异步通常用来形容一次方法调用。同步方法调用一开始，调用者必须等待被调用的方法结束后，调用者后面的代码才能执行。而异步调用，指的是，调用者不用管被调用方法是否完成，都会继续执行后面的代码，当被调用的方法完成后会通知调用者。</li>
+</ul>
+</li>
+<li><p>并发与并行</p>
+<ul>
+<li>并发指的是多个任务交替进行，而并行则是指真正意义上的“同时进行”。实际上，如果系统内只有一个CPU，而使用多线程时，那么真实系统环境下不能并行，只能通过切换时间片的方式交替进行，而成为并发执行任务。真正的并行也只能出现在拥有多个CPU的系统中。</li>
+</ul>
+</li>
+<li><p>阻塞与非阻塞</p>
+<ul>
+<li>阻塞和非阻塞通常用来形容多线程间的相互影响，比如一个线程占有了临界区资源，那么其他线程需要这个资源就必须进行等待该资源的释放，会导致等待的线程挂起，这种情况就是阻塞，而非阻塞就恰好相反，它强调没有一个线程可以阻塞其他线程，所有的线程都会尝试地往前运行。</li>
+</ul>
+</li>
+<li><p>临界区</p>
+<ul>
+<li>临界区用来表示一种公共资源或者说是共享数据，可以被多个线程使用。但是每个线程使用时，一旦临界区资源被一个线程占有，那么其他线程必须等待。</li>
+</ul>
+</li>
+</ul>
+<h2 id="线程状态与操作"><a href="#线程状态与操作" class="headerlink" title="线程状态与操作"></a>线程状态与操作</h2><h3 id="新建线程"><a href="#新建线程" class="headerlink" title="新建线程"></a>新建线程</h3><ul>
+<li>继承Thread类，重写run方法</li>
+<li>实现runable接口</li>
+<li><p>实现callable接口</p>
+<ul>
+<li>实现callable接口，提交给ExecutorService返回的是异步执行的结果，另外，通常也可以利用FutureTask(Callable callable)将callable进行包装然后FeatureTask提交给ExecutorsService</li>
+<li>可以通过Executors将Runable转换成Callable，具体方法是：Callable callable(Runnable task, T result)， Callable callable(Runnable task)。</li>
+</ul>
+</li>
+</ul>
+<h3 id="线程状态转换"><a href="#线程状态转换" class="headerlink" title="线程状态转换"></a>线程状态转换</h3><ul>
+<li>初始状态</li>
+<li>运行状态</li>
+<li>阻塞状态</li>
+<li>等待状态</li>
+<li>超时等待状态</li>
+<li>终止状态</li>
+</ul>
+<h3 id="线程状态基本操作"><a href="#线程状态基本操作" class="headerlink" title="线程状态基本操作"></a>线程状态基本操作</h3><ul>
+<li><p>interrupted</p>
+<ul>
+<li>它表示了一个运行中的线程是否被其他线程进行了中断操作。中断好比其他线程对该线程打了一个招呼。其他线程可以调用该线程的interrupt()方法对其进行中断操作，同时该线程可以调用</li>
+<li>isInterrupted（）来感知其他线程对其自身的中断操作，从而做出响应。另外，同样可以调用Thread的静态方法</li>
+<li>interrupted（）对当前线程进行中断操作，该方法会清除中断标志位。需要注意的是，当抛出InterruptedException时候，会清除中断标志位，也就是说在调用isInterrupted会返回false。</li>
+</ul>
+</li>
+<li><p>join</p>
+<ul>
+<li>如果一个线程实例A执行了threadB.join(),其含义是：当前线程A会等待threadB线程终止后threadA才会继续执行。关于join方法一共提供如下这些方法:</li>
+</ul>
+</li>
+<li><p>sleep</p>
+<ul>
+<li>public static native void sleep(long millis)方法显然是Thread的静态方法，很显然它是让当前线程按照指定的时间休眠，其休眠时间的精度取决于处理器的计时器和调度器。需要注意的是如果当前线程获得了锁，sleep方法并不会失去锁。</li>
+<li><p>wait和sleep区别</p>
+<ul>
+<li>sleep()方法是Thread的静态方法，而wait是Object实例方法</li>
+<li>wait()方法必须要在同步方法或者同步块中调用，也就是必须已经获得对象锁。而sleep()方法没有这个限制可以在任何地方种使用。另外，wait()方法会释放占有的对象锁，使得该线程进入等待池中，等待下一次获取资源。而sleep()方法只是会让出CPU并不会释放掉对象锁；</li>
+<li>sleep()方法在休眠时间达到后如果再次获得CPU时间片就会继续执行，而wait()方法必须等待Object.notify/Object.notifyAll通知后，才会离开等待池，并且再次获得CPU时间片才会继续执行。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>yield</p>
+<ul>
+<li>public static native void yield();这是一个静态方法，一旦执行，它会是当前线程让出CPU，但是，需要注意的是，让出的CPU并不是代表当前线程不再运行了，如果在下一次竞争中，又获得了CPU时间片当前线程依然会继续运行。另外，让出的时间片只会分配给当前线程相同优先级的线程。</li>
+<li><p>sleep和yield区别</p>
+<ul>
+<li>sleep()和yield()方法，同样都是当前线程会交出处理器资源，而它们不同的是，sleep()交出来的时间片其他线程都可以去竞争，也就是说都有机会获得当前线程让出的时间片。而yield()方法只允许与当前线程具有相同优先级的线程能够获得释放出来的CPU时间片。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="守护线程"><a href="#守护线程" class="headerlink" title="守护线程"></a>守护线程</h3><ul>
+<li>守护线程是一种特殊的线程，就和它的名字一样，它是系统的守护者，在后台默默地守护一些系统服务，比如垃圾回收线程，JIT线程就可以理解守护线程。与之对应的就是用户线程，用户线程就可以认为是系统的工作线程，它会完成整个系统的业务操作。用户线程完全结束后就意味着整个系统的业务任务全部结束了，因此系统就没有对象需要守护的了，守护线程自然而然就会退。</li>
+</ul>
+<h2 id="Java内存模型JMM"><a href="#Java内存模型JMM" class="headerlink" title="Java内存模型JMM"></a>Java内存模型JMM</h2><h3 id="线程安全介绍"><a href="#线程安全介绍" class="headerlink" title="线程安全介绍"></a>线程安全介绍</h3><ul>
+<li>概念：当多个线程访问同一个对象时，如果不用考虑这些线程在运行时环境下的调度和交替运行，也不需要进行额外的同步，或者在调用方进行任何其他的协调操作，调用这个对象的行为都可以获取正确的结果，那这个对象是线程安全的。</li>
+<li>线程安全出现的原因：出现线程安全的问题一般是因为主内存和工作内存数据不一致性和重排序导致的，</li>
+</ul>
+<h3 id="线程通信"><a href="#线程通信" class="headerlink" title="线程通信"></a>线程通信</h3><ul>
+<li>共享内存</li>
+<li>消息传递</li>
+</ul>
+<h3 id="共享变量"><a href="#共享变量" class="headerlink" title="共享变量"></a>共享变量</h3><ul>
+<li>在java程序中所有实例域，静态域和数组元素都是放在堆内存中（所有线程均可访问到，是可以共享的），而局部变量，方法定义参数和异常处理器参数不会在线程间共享。共享数据会出现线程安全的问题，而非共享数据不会出现线程安全的问题。</li>
+</ul>
+<h3 id="JMM抽象结构模型"><a href="#JMM抽象结构模型" class="headerlink" title="JMM抽象结构模型"></a>JMM抽象结构模型</h3><ul>
+<li>CPU的处理速度和主存的读写速度不是一个量级的，为了平衡这种巨大的差距，每个CPU都会有缓存。因此，共享变量会先放在主存中，每个线程都有属于自己的工作内存，并且会把位于主存中的共享变量拷贝到自己的工作内存，之后的读写操作均使用位于工作内存的变量副本，并在某个时刻将工作内存的变量副本写回到主存中去。JMM就从抽象层次定义了这种方式，并且JMM决定了一个线程对共享变量的写入何时对其他线程是可见的。</li>
+<li>1-线程A从主内存中将共享变量读入线程A的工作内存后并进行操作，之后将数据重新写回到主内存中；</li>
+<li>2-线程B从主存中读取最新的共享变量</li>
+</ul>
+<h3 id="重排序"><a href="#重排序" class="headerlink" title="重排序"></a>重排序</h3><ul>
+<li>在不改变程序执行结果的前提下，尽可能提高并行度。JMM对底层尽量减少约束，使其能够发挥自身优势。因此，在执行程序时，为了提高性能，编译器和处理器常常会对指令进行重排序。</li>
+<li><p>编译器重排序</p>
+<ul>
+<li>1-编译器优化的重排序。编译器在不改变单线程程序语义的前提下，可以重新安排语句的执行顺序；</li>
+</ul>
+</li>
+<li><p>处理器重排序</p>
+<ul>
+<li>2-指令级并行的重排序。现代处理器采用了指令级并行技术来将多条指令重叠执行。如果不存在数据依赖性，处理器可以改变语句对应机器指令的执行顺序；</li>
+<li>3-内存系统的重排序。由于处理器使用缓存和读/写缓冲区，这使得加载和存储操作看上去可能是在乱序执行的。</li>
+</ul>
+</li>
+<li><p>针对编译器重排序，JMM的编译器重排序规则会禁止一些特定类型的编译器重排序；针对处理器重排序，编译器在生成指令序列的时候会通过插入内存屏障指令来禁止某些特殊的处理器重排序。</p>
+</li>
+<li>编译器和处理器在重排序时，会遵守数据依赖性，编译器和处理器不会改变存在数据依赖性关系的两个操作的执行顺序</li>
+</ul>
+<h3 id="happens-before规则"><a href="#happens-before规则" class="headerlink" title="happens-before规则"></a>happens-before规则</h3><ul>
+<li>JMM可以通过happens-before关系向程序员提供跨线程的内存可见性保证（如果A线程的写操作a与B线程的读操作b之间存在happens-before关系，尽管a操作和b操作在不同的线程中执行，但JMM向程序员保证a操作将对b操作可见）</li>
+<li><p>as-if-serial VS happens-before</p>
+<ul>
+<li>as-if-serial语义保证单线程内程序的执行结果不被改变，happens-before关系保证正确同步的多线程程序的执行结果不被改变。</li>
+<li>as-if-serial语义给编写单线程程序的程序员创造了一个幻境：单线程程序是按程序的顺序来执行的。happens-before关系给编写正确同步的多线程程序的程序员创造了一个幻境：正确同步的多线程程序是按happens-before指定的顺序来执行的。</li>
+<li>as-if-serial语义和happens-before这么做的目的，都是为了在不改变程序执行结果的前提下，尽可能地提高程序执行的并行度。</li>
+</ul>
+</li>
+<li><p>具体规则</p>
+<ul>
+<li>程序顺序规则：一个线程中的每个操作，happens-before于该线程中的任意后续操作。</li>
+<li>监视器锁规则：对一个锁的解锁，happens-before于随后对这个锁的加锁。</li>
+<li>volatile变量规则：对一个volatile域的写，happens-before于任意后续对这个volatile域的读。</li>
+<li>传递性：如果A happens-before B，且B happens-before C，那么A happens-before C。</li>
+<li>start()规则：如果线程A执行操作ThreadB.start()（启动线程B），那么A线程的ThreadB.start()操作happens-before于线程B中的任意操作。</li>
+<li>join()规则：如果线程A执行操作ThreadB.join()并成功返回，那么线程B中的任意操作happens-before于线程A从ThreadB.join()操作成功返回。</li>
+<li>程序中断规则：对线程interrupted()方法的调用先行于被中断线程的代码检测到中断时间的发生。</li>
+<li>对象finalize规则：一个对象的初始化完成（构造函数执行结束）先行于发生它的finalize()方法的开始。</li>
+</ul>
+</li>
+</ul>
+<h2 id="并发关键字"><a href="#并发关键字" class="headerlink" title="并发关键字"></a>并发关键字</h2><h3 id="Synchronized"><a href="#Synchronized" class="headerlink" title="Synchronized"></a>Synchronized</h3><ul>
+<li><p>synchronized实现原理</p>
+<ul>
+<li><p>方法</p>
+<ul>
+<li><p>实例方法</p>
+<ul>
+<li>锁住类的实例对象</li>
+</ul>
+</li>
+<li><p>静态方法</p>
+<ul>
+<li>锁住类对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>代码块</p>
+<ul>
+<li><p>实例对象</p>
+<ul>
+<li>锁住类的实例对象</li>
+</ul>
+</li>
+<li><p>class对象</p>
+<ul>
+<li>锁住类对象</li>
+</ul>
+</li>
+<li><p>任意实例对象Object</p>
+<ul>
+<li>实例对象Object</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>对象锁(Monitor)机制</p>
+<ul>
+<li>任意一个对象都拥有自己的监视器，当这个对象由同步块或者这个对象的同步方法调用时，执行方法的线程必须先获取该对象的监视器才能进入同步块和同步方法，如果没有获取到监视器的线程将会被阻塞在同步块和同步方法的入口处，进入到BLOCKED状态</li>
+</ul>
+</li>
+<li><p>Synchronized优化</p>
+<ul>
+<li><p>CAS操作</p>
+<ul>
+<li>CAS操作（又称为无锁操作）是一种乐观锁策略，它假设所有线程访问共享资源的时候不会出现冲突，既然不会出现冲突自然而然就不会阻塞其他线程的操作。因此，线程就不会出现阻塞停顿的状态。</li>
+<li>无锁操作是使用<strong>CAS(compare and swap)</strong>又叫做比较交换来鉴别线程是否出现冲突，出现冲突就重试当前操作直到没有冲突为止。</li>
+<li>CAS比较交换的过程可以通俗的理解为CAS(V,O,N)，包含三个值分别为：V 内存地址存放的实际值；O 预期的值（旧值）；N 更新的新值。当V和O相同时，也就是说旧值和内存中实际的值相同表明该值没有被其他线程更改过，即该旧值O就是目前来说最新的值了，自然而然可以将新值N赋值给V。反之，V和O不相同，表明该值已经被其他线程改过了则该旧值O不是最新版本的值了，所以不能将新值N赋给V，返回V即可。当多个线程使用CAS操作一个变量是，只有一个线程会成功，并成功更新，其余会失败。失败的线程会重新尝试，当然也可以选择挂起线程</li>
+<li><p>Synchronized VS CAS</p>
+<ul>
+<li>Synchronized(未优化前)最主要的问题是：在存在线程竞争的情况下会出现线程阻塞和唤醒锁带来的性能问题，因为这是一种互斥同步（阻塞同步）。</li>
+<li>而CAS并不是武断的间线程挂起，当CAS操作失败后会进行一定的尝试，而非进行耗时的挂起唤醒的操作，因此也叫做非阻塞同步。这是两者主要的区别。</li>
+</ul>
+</li>
+<li><p>CAS应用场景</p>
+<ul>
+<li>在Lock实现中会有CAS改变state变量</li>
+<li>在atomic包中的实现类也几乎都是用CAS实现</li>
+</ul>
+</li>
+<li><p>CAS问题</p>
+<ul>
+<li><p>ABA问题</p>
+<ul>
+<li>因为CAS会检查旧值有没有变化，这里存在这样一个有意思的问题。比如一个旧值A变为了成B，然后再变成A，刚好在做CAS时检查发现旧值并没有变化依然为A，但是实际上的确发生了变化。解决方案可以沿袭数据库中常用的乐观锁方式，添加一个版本号可以解决。原来的变化路径A-&gt;B-&gt;A就变成了1A-&gt;2B-&gt;3C。在java 1.5后的atomic包中提供了AtomicStampedReference来解决ABA问题</li>
+</ul>
+</li>
+<li><p>自旋时间过长</p>
+<ul>
+<li>使用CAS时非阻塞同步，也就是说不会将线程挂起，会自旋（无非就是一个死循环）进行下一次尝试，如果这里自旋时间过长对性能是很大的消耗。</li>
+</ul>
+</li>
+<li><p>只能保证一个共享变量的原子操作</p>
+<ul>
+<li>当对一个共享变量执行操作时CAS能保证其原子性，如果对多个共享变量进行操作,CAS就不能保证其原子性。有一个解决方案是利用对象整合多个共享变量，即一个类中的成员变量就是这几个共享变量。然后将这个对象做CAS操作就可以保证其原子性。atomic中提供了AtomicReference来保证引用对象之间的原子性。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>对象头</p>
+<ul>
+<li>在同步的时候是获取对象的monitor,即获取到对象的锁。那么对象的锁就是类似对对象的一个标志，那么这个标志就是存放在Java对象的对象头。Java对象头里的Mark Word里默认的存放的对象的Hashcode,分代年龄和锁标记位。</li>
+<li>锁一共有4种状态，级别从低到高依次是：无锁状态、偏向锁状态、轻量级锁状态和重量级锁状态，这几个状态会随着竞争情况逐渐升级。锁可以升级但不能降级，意味着偏向锁升级成轻量级锁后不能降级成偏向锁。这种锁升级却不能降级的策略，目的是为了提高获得锁和释放锁的效率。</li>
+</ul>
+</li>
+<li><p>偏向锁</p>
+<ul>
+<li><p>偏向锁的获取</p>
+<ul>
+<li>当一个线程访问同步块并获取锁时，会在对象头和栈帧中的锁记录里存储锁偏向的线程ID，以后该线程在进入和退出同步块时不需要进行CAS操作来加锁和解锁，只需简单地测试一下对象头的Mark Word里是否存储着指向当前线程的偏向锁。如果测试成功，表示线程已经获得了锁。如果测试失败，则需要再测试一下Mark Word中偏向锁的标识是否设置成1（表示当前是偏向锁）：如果没有设置，则使用CAS竞争锁；如果设置了，则尝试使用CAS将对象头的偏向锁指向当前线程</li>
+</ul>
+</li>
+<li><p>偏向锁的撤销</p>
+<ul>
+<li>偏向锁使用了一种等到竞争出现才释放锁的机制，所以当其他线程尝试竞争偏向锁时，持有偏向锁的线程才会释放锁。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>轻量级锁</p>
+<ul>
+<li><p>加锁</p>
+<ul>
+<li>线程在执行同步块之前，JVM会先在当前线程的栈桢中创建用于存储锁记录的空间，并将对象头中的Mark Word复制到锁记录中，官方称为Displaced Mark Word。然后线程尝试使用CAS将对象头中的Mark Word替换为指向锁记录的指针。如果成功，当前线程获得锁，如果失败，表示其他线程竞争锁，当前线程便尝试使用自旋来获取锁。</li>
+</ul>
+</li>
+<li><p>解锁</p>
+<ul>
+<li>轻量级解锁时，会使用原子的CAS操作将Displaced Mark Word替换回到对象头，如果成功，则表示没有竞争发生。如果失败，表示当前锁存在竞争，锁就会膨胀成重量级锁。</li>
+<li>因为自旋会消耗CPU，为了避免无用的自旋（比如获得锁的线程被阻塞住了），一旦锁升级成重量级锁，就不会再恢复到轻量级锁状态。当锁处于这个状态下，其他线程试图获取锁时，都会被阻塞住，当持有锁的线程释放锁之后会唤醒这些线程，被唤醒的线程就会进行新一轮的夺锁之争。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>各种锁的比较</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><ul>
+<li>被volatile修饰的变量能够保证每个线程能够获取该变量的最新值，从而避免出现数据脏读的现象。</li>
+<li><p>volatile实现原理</p>
+<ul>
+<li>在生成汇编代码时会在volatile修饰的共享变量进行写操作的时候会多出Lock前缀的指令，那么Lock前缀的指令在多核处理器下主要有这两个方面的影响：<br>1.将当前处理器缓存行的数据写回系统内存；<br>2.这个写回内存的操作会使得其他CPU里缓存了该内存地址的数据无效</li>
+<li>为了提高处理速度，处理器不直接和内存进行通信，而是先将系统内存的数据读到内部缓存（L1，L2或其他）后再进行操作，但操作完不知道何时会写到内存。如果对声明了volatile的变量进行写操作，JVM就会向处理器发送一条Lock前缀的指令，将这个变量所在缓存行的数据写回到系统内存。但是，就算写回到内存，如果其他处理器缓存的值还是旧的，再执行计算操作就会有问题。所以，在多处理器下，为了保证各个处理器的缓存是一致的，就会实现缓存一致性协议，每个处理器通过嗅探在总线上传播的数据来检查自己缓存的值是不是过期了，当处理器发现自己缓存行对应的内存地址被修改，就会将当前处理器的缓存行设置成无效状态，当处理器对这个数据进行修改操作的时候，会重新从系统内存中把数据读到处理器缓存里。因此，经过分析我们可以得出如下结论：</li>
+<li>1、Lock前缀的指令会引起处理器缓存写回内存；</li>
+<li>2、一个处理器的缓存回写到内存会导致其他处理器的缓存失效；</li>
+<li>3、当处理器发现本地缓存失效后，就会从内存中重读该变量数据，即可以获取当前最新值。</li>
+<li>这样针对volatile变量通过这样的机制就使得每个线程都能获得该变量的最新值。</li>
+</ul>
+</li>
+<li><p>volatile的happens-before关系</p>
+</li>
+<li><p>volatile的内存语义</p>
+<ul>
+<li>为了性能优化，JMM在不改变正确语义的前提下，会允许编译器和处理器对指令序列进行重排序，那如果想阻止重排序要怎么办了？答案是可以添加内存屏障。</li>
+<li>JMM内存屏障分为四类</li>
+<li>为了实现volatile内存语义时，编译器在生成字节码时，会在指令序列中插入内存屏障来禁止特定类型的处理器重排序。对于编译器来说，发现一个最优布置来最小化插入屏障的总数几乎是不可能的，为此，JMM采取了保守策略：</li>
+<li>1、在每个volatile写操作的前面插入一个StoreStore屏障；<br>2、在每个volatile写操作的后面插入一个StoreLoad屏障；<br>3、在每个volatile读操作的后面插入一个LoadLoad屏障；<br>4、在每个volatile读操作的后面插入一个LoadStore屏障。</li>
+<li>需要注意的是：volatile写是在前面和后面分别插入内存屏障，而volatile读操作是在后面插入两个内存屏障</li>
+<li>StoreStore屏障：禁止上面的普通写和下面的volatile写重排序；<br>StoreLoad屏障：防止上面的volatile写与下面可能有的volatile读/写重排序<br>LoadLoad屏障：禁止下面所有的普通读操作和上面的volatile读重排序<br>LoadStore屏障：禁止下面所有的普通写操作和上面的volatile读重排序</li>
+</ul>
+</li>
+</ul>
+<h3 id="final"><a href="#final" class="headerlink" title="final"></a>final</h3><ul>
+<li><p>final的简介</p>
+<ul>
+<li>final可以修饰变量，方法和类，用于表示所修饰的内容一旦赋值之后就不会再被改变，比如String类就是一个final类型的类。</li>
+</ul>
+</li>
+<li><p>final的使用场景</p>
+<ul>
+<li><p>变量</p>
+<ul>
+<li>当final变量未初始化时系统不会进行隐式初始化，会出现报错。</li>
+<li><p>final成员变量</p>
+<ul>
+<li><p>类变量（static修饰的变量）</p>
+<ul>
+<li>必须要在静态初始化块中指定初始值或者声明该类变量时指定初始值，而且只能在这两个地方之一进行指定；</li>
+</ul>
+</li>
+<li><p>实例变量</p>
+<ul>
+<li>必须要在非静态初始化块，声明该实例变量时或者在构造器中指定初始值，而且只能在这三个地方进行指定。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>final局部变量</p>
+<ul>
+<li>final局部变量由程序员进行显式初始化，如果final局部变量已经进行了初始化则后面就不能再次进行更改，如果final变量未进行初始化，可以进行赋值，当且仅有一次赋值，一旦赋值之后再次赋值就会出错。</li>
+<li>当final修饰基本数据类型变量时，不能对基本数据类型变量重新赋值，因此基本数据类型变量不能被改变。而对于引用类型变量而言，它仅仅保存的是一个引用，final只保证这个引用类型变量所引用的地址不会发生改变，即一直引用这个对象，但这个对象属性是可以改变的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>方法</p>
+<ul>
+<li>被final修饰的方法不能够被子类所重写（覆盖）。</li>
+<li>final方法是可以被重载的</li>
+</ul>
+</li>
+<li><p>类</p>
+<ul>
+<li>当一个类被final修饰时，表名该类是不能被子类继承的</li>
+<li><p>不变类</p>
+<ul>
+<li>使用private和final修饰符来修饰该类的成员变量</li>
+<li>提供带参的构造器用于初始化类的成员变量；</li>
+<li>仅为该类的成员变量提供getter方法，不提供setter方法，因为普通方法无法修改fina修饰的成员变量；</li>
+<li>如果有必要就重写Object类 的hashCode()和equals()方法，应该保证用equals()判断相同的两个对象其Hashcode值也是相等的。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>final域重排序规则</p>
+<ul>
+<li><p>final域是基本类型</p>
+<ul>
+<li><p>写final域重排序规则</p>
+<ul>
+<li>写final域的重排序规则禁止对final域的写重排序到构造函数之外，这个规则的实现主要包含了两个方面：<br>1、JMM禁止编译器把final域的写重排序到构造函数之外；<br>2、编译器会在final域写之后，构造函数return之前，插入一个storestore屏障。这个屏障可以禁止处理器把final域的写重排序到构造函数之外。</li>
+<li>写final域的重排序规则可以确保：在对象引用为任意线程可见之前，对象的final域已经被正确初始化过了，而普通域就不具有这个保障。</li>
+</ul>
+</li>
+<li><p>读final域重排序规则</p>
+<ul>
+<li>在一个线程中，初次读对象引用和初次读该对象包含的final域，JMM会禁止这两个操作的重排序。（注意，这个规则仅仅是针对处理器），处理器会在读final域操作的前面插入一个LoadLoad屏障。实际上，读对象的引用和读该对象的final域存在间接依赖性，一般处理器不会重排序这两个操作。但是有一些处理器会重排序，因此，这条禁止重排序规则就是针对这些处理器而设定的。</li>
+<li>读final域的重排序规则可以确保：在读一个对象的final域之前，一定会先读这个包含这个final域的对象的引用。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>final域为引用类型</p>
+<ul>
+<li><p>对final修饰的对象的成员域写操作</p>
+<ul>
+<li>针对引用数据类型，final域写针对编译器和处理器重排序增加了这样的约束：在构造函数内对一个final修饰的对象的成员域的写入，与随后在构造函数之外把这个被构造的对象的引用赋给一个引用变量，这两个操作是不能被重排序的。注意这里的是“增加”也就说前面对final基本数据类型的重排序规则在这里还是使用。</li>
+</ul>
+</li>
+<li><p>对final修饰的对象的成员域读操作</p>
+<ul>
+<li>JMM可以确保线程C至少能看到写线程A对final引用的对象的成员域的写入，即能看下arrays[0] = 1，而写线程B对数组元素的写入可能看到可能看不到。JMM不保证线程B的写入对线程C可见，线程B和线程C之间存在数据竞争，此时的结果是不可预知的。如果可见的，可使用锁或者volatile。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>final重排序总结</p>
+<ul>
+<li><p>基本数据类型:</p>
+<ul>
+<li>final域写：禁止final域写与构造方法重排序，即禁止final域写重排序到构造方法之外，从而保证该对象对所有线程可见时，该对象的final域全部已经初始化过。</li>
+<li>final域读：禁止初次读对象的引用与读该对象包含的final域的重排序。</li>
+</ul>
+</li>
+<li><p>引用数据类型：</p>
+<ul>
+<li>额外增加约束：禁止在构造函数对一个final修饰的对象的成员域的写入与随后将这个被构造的对象的引用赋值给引用变量 重排序</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>final的实现原理</p>
+</li>
+<li>为什么final引用不能从构造函数中“溢出”</li>
+</ul>
+<h3 id="并发三大性质"><a href="#并发三大性质" class="headerlink" title="并发三大性质"></a>并发三大性质</h3><ul>
+<li><p>两个核心</p>
+<ul>
+<li>JMM抽象内存模型</li>
+<li>happens-before规则</li>
+</ul>
+</li>
+<li><p>三大性质</p>
+<ul>
+<li><p>原子性</p>
+<ul>
+<li>一个操作是不可中断的，要么全部执行成功要么全部执行失败，有着“同生共死”的感觉</li>
+<li><p>java内存模型8个操作是原子性的</p>
+<ul>
+<li>lock(锁定)：作用于主内存中的变量，它把一个变量标识为一个线程独占的状态；</li>
+<li>unlock(解锁):作用于主内存中的变量，它把一个处于锁定状态的变量释放出来，释放后的变量才可以被其他线程锁定</li>
+<li>read（读取）：作用于主内存的变量，它把一个变量的值从主内存传输到线程的工作内存中，以便后面的load动作使用；</li>
+<li>load（载入）：作用于工作内存中的变量，它把read操作从主内存中得到的变量值放入工作内存中的变量副本</li>
+<li>use（使用）：作用于工作内存中的变量，它把工作内存中一个变量的值传递给执行引擎，每当虚拟机遇到一个需要使用到变量的值的字节码指令时将会执行这个操作；</li>
+<li>assign（赋值）：作用于工作内存中的变量，它把一个从执行引擎接收到的值赋给工作内存的变量，每当虚拟机遇到一个给变量赋值的字节码指令时执行这个操作；</li>
+<li>store（存储）：作用于工作内存的变量，它把工作内存中一个变量的值传送给主内存中以便随后的write操作使用；</li>
+<li>write（操作）：作用于主内存的变量，它把store操作从工作内存中得到的变量的值放入主内存的变量中。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>有序性</p>
+</li>
+<li>可见性</li>
+</ul>
+</li>
+</ul>
 
           
         
@@ -1968,1028 +3481,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/jvm/JVM之类的加载机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/jvm/JVM之类的加载机制/" class="post-title-link" itemprop="url">JVM之类的加载机制</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-07 01:38:36" itemprop="dateModified" datetime="2019-10-07T01:38:36+08:00">2019-10-07</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-07T01:38:36+08:00" content="2019-10-07">
-                2019-10-07 01:38:36
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/jvm/JVM之类的加载机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/jvm/JVM之类的加载机制/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="JVM之类的加载机制"><a href="#JVM之类的加载机制" class="headerlink" title="JVM之类的加载机制"></a>JVM之类的加载机制</h1><h3 id="什么是类的加载"><a href="#什么是类的加载" class="headerlink" title="什么是类的加载"></a>什么是类的加载</h3><p>类的加载指的是将类的.class文件中的二进制数据读入到内存中，将其放在运行时数据区的方法区内，然后在堆区创建一个 <code>java.lang.Class</code>对象，用来封装类在方法区内的数据结构。类的加载的最终产品是位于堆区中的 <code>Class</code>对象。</p>
-<p> <code>Class</code>对象封装了类在方法区内的数据结构，并且向Java程序员提供了访问方法区内的数据结构的接口。</p>
-<p><img src="/2019/05/26/jvm/JVM之类的加载机制/什么是类加载.jpg" alt></p>
-<p>类加载器并不需要等到某个类被“首次主动使用”时再加载它，JVM规范允许类加载器在预料某个类将要被使用时就预先加载它，如果在预先加载的过程中遇到了.class文件缺失或存在错误，类加载器必须在程序首次主动使用该类时才报告错误（LinkageError错误）如果这个类一直没有被程序主动使用，那么类加载器就不会报告错误。</p>
-<p><strong>加载.class文件的方式</strong></p>
-<ul>
-<li>从本地系统中直接加载</li>
-<li>通过网络下载.class文件</li>
-<li>从zip，jar等归档文件中加载.class文件</li>
-<li>从专有数据库中提取.class文件</li>
-<li>将Java源文件动态编译为.class文件</li>
-</ul>
-<h3 id="类的生命周期"><a href="#类的生命周期" class="headerlink" title="类的生命周期"></a>类的生命周期</h3><p><img src="/2019/05/26/jvm/JVM之类的加载机制/类的生命周期.png" alt></p>
-<p>其中类加载的过程包括了加载、验证、准备、解析、初始化五个阶段。在这五个阶段中，加载、验证、准备和初始化这四个阶段发生的顺序是确定的，而解析阶段则不一定，它在某些情况下可以在初始化阶段之后开始，这是为了支持Java语言的运行时绑定（也成为动态绑定或晚期绑定）。另外注意这里的几个阶段是按顺序开始，而不是按顺序进行或完成，因为这些阶段通常都是互相交叉地混合进行的，通常在一个阶段执行的过程中调用或激活另一个阶段。</p>
-<h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><p>在加载阶段，虚拟机需要完成以下三件事情：</p>
-<ul>
-<li>通过一个类的全限定名来获取其定义的二进制字节流。</li>
-<li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。</li>
-<li>在Java堆中生成一个代表这个类的 <code>java.lang.Class</code>对象，作为对方法区中这些数据的访问入口。</li>
-</ul>
-<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p><strong>验证：确保被加载的类的正确性</strong></p>
-<p>验证是连接阶段的第一步，这一阶段的目的是为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。验证阶段大致会完成4个阶段的检验动作：</p>
-<ul>
-<li><strong>文件格式验证</strong>：验证字节流是否符合Class文件格式的规范；例如：是否以 <code>0xCAFEBABE</code>开头、主次版本号是否在当前虚拟机的处理范围之内、常量池中的常量是否有不被支持的类型。</li>
-<li><strong>元数据验证</strong>：对字节码描述的信息进行语义分析（注意：对比javac编译阶段的语义分析），以保证其描述的信息符合Java语言规范的要求；例如：这个类是否有父类，除了 <code>java.lang.Object</code>之外。</li>
-<li><strong>字节码验证</strong>：通过数据流和控制流分析，确定程序语义是合法的、符合逻辑的。</li>
-<li><strong>符号引用验证</strong>：确保解析动作能正确执行。</li>
-</ul>
-<p>验证阶段是非常重要的，但不是必须的，它对程序运行期没有影响，如果所引用的类经过反复验证，那么可以考虑采用 <code>-Xverifynone</code>参数来关闭大部分的类验证措施，以缩短虚拟机类加载的时间。</p>
-<p><strong>准备：为类的静态变量分配内存，并将其初始化为默认值</strong></p>
-<p>准备阶段是正式为类变量分配内存并设置类变量初始值的阶段，这些内存都将在方法区中分配。对于该阶段有以下几点需要注意：</p>
-<ul>
-<li>1、这时候进行内存分配的仅包括类变量（static），而不包括实例变量，实例变量会在对象实例化时随着对象一块分配在Java堆中。</li>
-<li>2、这里所设置的初始值通常情况下是数据类型默认的零值（如0、0L、null、false等），而不是被在Java代码中被显式地赋予的值。</li>
-</ul>
-<p>假设一个类变量的定义为： <code>public static int value=3</code>；</p>
-<p>那么变量value在准备阶段过后的初始值为0，而不是3，因为这时候尚未开始执行任何Java方法，而把value赋值为3的 <code>public static</code>指令是在程序编译后，存放于类构造器 <code>&lt;clinit&gt;（）</code>方法之中的，所以把value赋值为3的动作将在初始化阶段才会执行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">这里还需要注意如下几点：</span><br><span class="line"></span><br><span class="line">1、对基本数据类型来说，对于类变量（static）和全局变量，如果不显式地对其赋值而直接使用，则系统会为其赋予默认的零值，而对于局部变量来说，在使用前必须显式地为其赋值，否则编译时不通过。</span><br><span class="line"></span><br><span class="line">2、对于同时被static和final修饰的常量，必须在声明的时候就为其显式地赋值，否则编译时不通过；而只被final修饰的常量则既可以在声明时显式地为其赋值，也可以在类初始化时显式地为其赋值，总之，在使用前必须为其显式地赋值，系统不会为其赋予默认零值。</span><br><span class="line"></span><br><span class="line">3、对于引用数据类型reference来说，如数组引用、对象引用等，如果没有对其进行显式地赋值而直接使用，系统都会为其赋予默认的零值，即null。</span><br><span class="line"></span><br><span class="line">4、如果在数组初始化时没有对数组中的各元素赋值，那么其中的元素将根据对应的数据类型而被赋予默认的零值。</span><br><span class="line"></span><br><span class="line">一句话总结以上几点，类变量、引用数据类型赋予默认值，常量、局部变量必须在声明或者初始化之前显示赋值，不然不通过编译</span><br></pre></td></tr></table></figure>
-<ul>
-<li>3、如果类字段的字段属性表中存在 <code>ConstantValue</code>属性，即同时被final和static修饰，那么在准备阶段变量value就会被初始化为ConstValue属性所指定的值。</li>
-</ul>
-<p>假设上面的类变量value被定义为： <code>public static final int value=3</code>；</p>
-<p>编译时Javac将会为value生成ConstantValue属性，在准备阶段虚拟机就会根据 <code>ConstantValue</code>的设置将value赋值为3。我们可以理解为static final常量在编译期就将其结果放入了调用它的类的常量池中</p>
-<p><strong>解析：把类中的符号引用转换为直接引用</strong></p>
-<p>解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程，解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符  7类符号引用进行。符号引用就是一组符号来描述目标，可以是任何字面量。</p>
-<p>直接引用就是直接指向目标的指针、相对偏移量或一个间接定位到目标的句柄。</p>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>初始化，为类的静态变量赋予正确的初始值，JVM负责对类进行初始化，主要对类变量进行初始化。在Java中对类变量进行初始值设定有两种方式：</p>
-<ul>
-<li>①声明类变量是指定初始值</li>
-<li>②使用静态代码块为类变量指定初始值</li>
-</ul>
-<p>JVM初始化步骤：</p>
-<ul>
-<li>1、假如这个类还没有被加载和连接，则程序先加载并连接该类</li>
-<li>2、假如该类的直接父类还没有被初始化，则先初始化其直接父类</li>
-<li>3、假如类中有初始化语句，则系统依次执行这些初始化语句</li>
-</ul>
-<p>类初始化时机：只有当对类的主动使用的时候才会导致类的初始化，类的主动使用包括以下六种：</p>
-<ul>
-<li>创建类的实例，也就是new的方式</li>
-<li>访问某个类或接口的静态变量，或者对该静态变量赋值</li>
-<li>调用类的静态方法</li>
-<li>反射（如 <code>Class.forName(“com.shengsiyuan.Test”)</code>）</li>
-<li>初始化某个类的子类，则其父类也会被初始化</li>
-<li>Java虚拟机启动时被标明为启动类的类（ <code>JavaTest</code>），直接使用 <code>java.exe</code>命令来运行某个主类</li>
-</ul>
-<h3 id="结束生命周期"><a href="#结束生命周期" class="headerlink" title="结束生命周期"></a>结束生命周期</h3><p>在如下几种情况下，Java虚拟机将结束生命周期</p>
-<ul>
-<li>执行了 <code>System.exit()</code>方法</li>
-<li>程序正常执行结束</li>
-<li>程序在执行过程中遇到了异常或错误而异常终止</li>
-<li>由于操作系统出现错误而导致Java虚拟机进程终止</li>
-</ul>
-<h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p><img src="/2019/05/26/jvm/JVM之类的加载机制/类加载器.jpg" alt></p>
-<p>站在Java开发人员的角度来看，类加载器可以大致划分为以下三类：</p>
-<p><strong>启动类加载器</strong>： <code>BootstrapClassLoader</code>，负责加载存放在 <code>JDK\jre\lib</code>(JDK代表JDK的安装目录，下同)下，或被 <code>-Xbootclasspath</code>参数指定的路径中的，并且能被虚拟机识别的类库（如rt.jar，所有的java.开头的类均被 <code>BootstrapClassLoader</code>加载）。启动类加载器是无法被Java程序直接引用的。<br><strong>扩展类加载器</strong>： <code>ExtensionClassLoader</code>，该加载器由 <code>sun.misc.Launcher$ExtClassLoader</code>实现，它负责加载 <code>JDK\jre\lib\ext</code>目录中，或者由 <code>java.ext.dirs</code>系统变量指定的路径中的所有类库（如javax.开头的类），开发者可以直接使用扩展类加载器。<br><strong>应用程序类加载器</strong>： <code>ApplicationClassLoader</code>，该类加载器由 <code>sun.misc.Launcher$AppClassLoader</code>来实现，它负责加载用户类路径（ClassPath）所指定的类，开发者可以直接使用该类加载器，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。</p>
-<p>应用程序都是由这三种类加载器互相配合进行加载的，如果有必要，我们还可以加入自定义的类加载器。因为JVM自带的ClassLoader只是懂得从本地文件系统加载标准的java class文件，因此如果编写了自己的ClassLoader，便可以做到如下几点：</p>
-<ul>
-<li>1、在执行非置信代码之前，自动验证数字签名。</li>
-<li>2、动态地创建符合用户特定需要的定制化构建类。</li>
-<li>3、从特定的场所取得java class，例如数据库中和网络中。</li>
-</ul>
-<h3 id="JVM加载机制"><a href="#JVM加载机制" class="headerlink" title="JVM加载机制"></a>JVM加载机制</h3><ul>
-<li><strong>全盘负责</strong>，当一个类加载器负责加载某个Class时，该Class所依赖的和引用的其他Class也将由该类加载器负责载入，除非显示使用另外一个类加载器来载入</li>
-<li><strong>父类委托</strong>，先让父类加载器试图加载该类，只有在父类加载器无法加载该类时才尝试从自己的类路径中加载该类</li>
-<li><strong>缓存机制</strong>，缓存机制将会保证所有加载过的Class都会被缓存，当程序中需要使用某个Class时，类加载器先从缓存区寻找该Class，只有缓存区不存在，系统才会读取该类对应的二进制数据，并将其转换成Class对象，存入缓存区。这就是为什么修改了Class后，必须重启JVM，程序的修改才会生效</li>
-</ul>
-<p>类的加载三种方式：</p>
-<ul>
-<li>1、命令行启动应用时候由JVM初始化加载</li>
-<li>2、通过Class.forName()方法动态加载</li>
-<li>3、通过ClassLoader.loadClass()方法动态加载</li>
-</ul>
-<p><strong>Class.forName()和ClassLoader.loadClass()区别</strong></p>
-<ul>
-<li><code>Class.forName()</code>：将类的.class文件加载到jvm中之外，还会对类进行解释，执行类中的static块；</li>
-<li><code>ClassLoader.loadClass()</code>：只干一件事情，就是将.class文件加载到jvm中，不会执行static中的内容,只有在newInstance才会去执行static块。</li>
-<li><code>Class.forName(name,initialize,loader)</code>带参函数也可控制是否加载static块。并且只有调用了newInstance()方法采用调用构造函数，创建类的对象 。</li>
-</ul>
-<h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>双亲委派模型的工作流程是：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把请求委托给父加载器去完成，依次向上，因此，所有的类加载请求最终都应该被传递到顶层的启动类加载器中，只有当父加载器在它的搜索范围中没有找到所需的类时，即无法完成该加载，子加载器才会尝试自己去加载该类。</p>
-<p>双亲委派机制:</p>
-<ul>
-<li>1、当 <code>AppClassLoader</code>加载一个class时，它首先不会自己去尝试加载这个类，而是把类加载请求委派给父类加载器<code>ExtClassLoader</code>去完成。</li>
-<li>2、当 <code>ExtClassLoader</code>加载一个class时，它首先也不会自己去尝试加载这个类，而是把类加载请求委派给BootStrapClassLoader<code>`</code>去完成。</li>
-<li>3、如果 <code>BootStrapClassLoader</code>加载失败（例如在 <code>$JAVA_HOME/jre/lib</code>里未查找到该class），会使用 <code>ExtClassLoader</code>来尝试加载；</li>
-<li>4、若ExtClassLoader也加载失败，则会使用 <code>AppClassLoader</code>来加载，如果 <code>AppClassLoader</code>也加载失败，则会报出异常 <code>ClassNotFoundException</code>。</li>
-</ul>
-<p>ClassLoader源码分析：</p>
-<p>双亲委派模型意义：</p>
-<ul>
-<li>系统类防止内存中出现多份同样的字节码</li>
-<li>保证Java程序安全稳定运行</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/零散记/String和包装类的equals和==/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/零散记/String和包装类的equals和==/" class="post-title-link" itemprop="url">String和包装类的equals和==</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-20 18:29:16" itemprop="dateModified" datetime="2019-10-20T18:29:16+08:00">2019-10-20</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-20T18:29:16+08:00" content="2019-10-20">
-                2019-10-20 18:29:16
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/零散记/" itemprop="url" rel="index"><span itemprop="name">零散记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/零散记/String和包装类的equals和==/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/零散记/String和包装类的equals和==/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><p>String对象创建两种方式：</p>
-<ul>
-<li>第一种方式是在常量池中拿对象；</li>
-<li>第二种方式是直接在堆内存空间创建一个新的对象。</li>
-</ul>
-<p><img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-3String-Pool-Java1-450x249.png" alt></p>
-<p><strong>String 类型的常量池比较特殊。它的主要使用方法有两种：</strong></p>
-<ul>
-<li>直接使用双引号声明出来的 String 对象会直接存储在常量池中。</li>
-<li>如果不是用双引号声明的 String 对象，可以使用 String 提供的 intern 方法。String.intern() 是一个 Native 方法，它的作用是：如果运行时常量池中已经包含一个等于此 String 对象内容的字符串，则返回常量池中该字符串的引用；如果没有，JDK1.7之前（不包含1.7）的处理方式是在常量池中创建与此 String 内容相同的字符串，并返回常量池中创建的字符串的引用，JDK1.7以及之后的处理方式是在常量池中记录此字符串的引用，并返回该引用。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="keyword">new</span> String(<span class="string">"计算机"</span>);</span><br><span class="line">String s2 = s1.intern();</span><br><span class="line">String s3 = <span class="string">"计算机"</span>;</span><br><span class="line">System.out.println(s2);<span class="comment">//计算机</span></span><br><span class="line">System.out.println(s1 == s2);<span class="comment">//false，因为一个是堆内存中的 String 对象一个是常量池中的 String 对象，</span></span><br><span class="line">System.out.println(s3 == s2);<span class="comment">//true，因为两个都是常量池中的 String 对象</span></span><br></pre></td></tr></table></figure>
-<p>字符串拼接</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String str1 = <span class="string">"str"</span>;</span><br><span class="line">String str2 = <span class="string">"ing"</span>;</span><br><span class="line"></span><br><span class="line">String str3 = <span class="string">"str"</span> + <span class="string">"ing"</span>;<span class="comment">//常量池中的对象</span></span><br><span class="line">String str4 = str1 + str2; <span class="comment">//在堆上创建的新的对象      </span></span><br><span class="line">String str5 = <span class="string">"string"</span>;<span class="comment">//常量池中的对象</span></span><br><span class="line">System.out.println(str3 == str4);<span class="comment">//false</span></span><br><span class="line">System.out.println(str3 == str5);<span class="comment">//true</span></span><br><span class="line">System.out.println(str4 == str5);<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5.png" alt></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String a = <span class="string">"123"</span>;</span><br><span class="line">		String b = <span class="keyword">new</span> String(<span class="string">"123"</span>);</span><br><span class="line">		String c = <span class="string">"1"</span>+<span class="string">"23"</span>;</span><br><span class="line">		String d = <span class="string">"1"</span>+<span class="keyword">new</span> String(<span class="string">"23"</span>);</span><br><span class="line">		String e = <span class="keyword">new</span> String(<span class="string">"1"</span>)+<span class="keyword">new</span> String(<span class="string">"23"</span>);</span><br><span class="line">		String f = <span class="string">"1"</span>;</span><br><span class="line">		String h = <span class="string">"23"</span>;</span><br><span class="line">		String i = f+h;</span><br><span class="line">		System.out.println(a==b);<span class="comment">//false</span></span><br><span class="line">		System.out.println(a==c);<span class="comment">//true</span></span><br><span class="line">		System.out.println(a==d);<span class="comment">//false</span></span><br><span class="line">		System.out.println(a==e);<span class="comment">//false</span></span><br><span class="line">		System.out.println(b==d);<span class="comment">//false</span></span><br><span class="line">		System.out.println(b==e);<span class="comment">//false</span></span><br><span class="line">		System.out.println(d==e);<span class="comment">//false</span></span><br><span class="line">		System.out.println(<span class="string">"------------------------------"</span>);</span><br><span class="line">		System.out.println(a==i);<span class="comment">//false</span></span><br><span class="line">        System.out.println(b==i);<span class="comment">//false</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>只要涉及到对象引用如上f、h或者其中new一个，整体都会new一个对象，所以都是false</p>
-<h4 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h4><ul>
-<li><strong>Java 基本类型的包装类的大部分都实现了常量池技术，即 Byte,Short,Integer,Long,Character,Boolean；这 5 种包装类默认创建了数值[-128，127] 的相应类型的缓存数据，但是超出此范围仍然会去创建新的对象。</strong> 为啥把缓存设置为[-128，127]区间？性能和资源之间的权衡。</li>
-<li><strong>两种浮点数类型的包装类 Float,Double 并没有实现常量池技术。</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">33</span>;</span><br><span class="line">Integer i2 = <span class="number">33</span>;</span><br><span class="line">System.out.println(i1 == i2);<span class="comment">// 输出 true</span></span><br><span class="line">Integer i11 = <span class="number">333</span>;</span><br><span class="line">Integer i22 = <span class="number">333</span>;</span><br><span class="line">System.out.println(i11 == i22);<span class="comment">// 输出 false</span></span><br></pre></td></tr></table></figure>
-<p><strong>Integer 缓存源代码：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*此方法将始终缓存-128 到 127（包括端点）范围内的值，并可以缓存此范围之外的其他值。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">            <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>应用场景：</strong></p>
-<ol>
-<li>Integer i1=40；Java 在编译的时候会直接将代码封装成 Integer i1=Integer.valueOf(40);，从而使用常量池中的对象。</li>
-<li>Integer i1 = new Integer(40);这种情况下会创建新的对象。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">40</span>;</span><br><span class="line">Integer i2 = <span class="keyword">new</span> Integer(<span class="number">40</span>);</span><br><span class="line">System.out.println(i1==i2);<span class="comment">//输出 false</span></span><br></pre></td></tr></table></figure>
-<p><strong>Integer 比较更丰富的一个例子:</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">40</span>;</span><br><span class="line">Integer i2 = <span class="number">40</span>;</span><br><span class="line">Integer i3 = <span class="number">0</span>;</span><br><span class="line">Integer i4 = <span class="keyword">new</span> Integer(<span class="number">40</span>);</span><br><span class="line">Integer i5 = <span class="keyword">new</span> Integer(<span class="number">40</span>);</span><br><span class="line">Integer i6 = <span class="keyword">new</span> Integer(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"i1=i2   "</span> + (i1 == i2));</span><br><span class="line">System.out.println(<span class="string">"i1=i2+i3   "</span> + (i1 == i2 + i3));</span><br><span class="line">System.out.println(<span class="string">"i1=i4   "</span> + (i1 == i4));</span><br><span class="line">System.out.println(<span class="string">"i4=i5   "</span> + (i4 == i5));</span><br><span class="line">System.out.println(<span class="string">"i4=i5+i6   "</span> + (i4 == i5 + i6));   </span><br><span class="line">System.out.println(<span class="string">"40=i5+i6   "</span> + (<span class="number">40</span> == i5 + i6));</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i1=i2   <span class="keyword">true</span></span><br><span class="line">i1=i2+i3   <span class="keyword">true</span></span><br><span class="line">i1=i4   <span class="keyword">false</span></span><br><span class="line">i4=i5   <span class="keyword">false</span></span><br><span class="line">i4=i5+i6   <span class="keyword">true</span></span><br><span class="line"><span class="number">40</span>=i5+i6   <span class="keyword">true</span></span><br></pre></td></tr></table></figure>
-<p>解释：</p>
-<p>语句 i4 == i5 + i6，因为+这个操作符不适用于 Integer 对象，首先 i5 和 i6 进行自动拆箱操作，进行数值相加，即 i4 == 40。然后 Integer 对象无法与数值进行直接比较，所以 i4 自动拆箱转为 int 值 40，最终这条语句转为 40 == 40 进行数值比较。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Integer a = <span class="number">40</span>;</span><br><span class="line">		Integer b = <span class="keyword">new</span> Integer(<span class="number">40</span>);</span><br><span class="line">		Integer c = <span class="number">10</span>+<span class="number">30</span>;</span><br><span class="line">		Integer d = <span class="number">10</span>+<span class="keyword">new</span> Integer(<span class="number">30</span>);</span><br><span class="line">		Integer e = <span class="keyword">new</span> Integer(<span class="number">10</span>)+<span class="keyword">new</span> Integer(<span class="number">30</span>);</span><br><span class="line">		Integer f = <span class="number">10</span>;</span><br><span class="line">		Integer h = <span class="number">30</span>;</span><br><span class="line">		Integer i = f+h;</span><br><span class="line">		<span class="keyword">int</span> j = <span class="number">40</span>;</span><br><span class="line">		System.out.println(a==b);<span class="comment">//false</span></span><br><span class="line">		System.out.println(a==c);<span class="comment">//true</span></span><br><span class="line">		System.out.println(a==d);<span class="comment">//true</span></span><br><span class="line">		System.out.println(a==e);<span class="comment">//true</span></span><br><span class="line">		System.out.println(b==c);<span class="comment">//false</span></span><br><span class="line">		System.out.println(b==d);<span class="comment">//false</span></span><br><span class="line">		System.out.println(b==e);<span class="comment">//false</span></span><br><span class="line">		System.out.println(d==e);<span class="comment">//true</span></span><br><span class="line">		System.out.println(<span class="string">"------------------------------"</span>);</span><br><span class="line">		System.out.println(a==i);<span class="comment">//true</span></span><br><span class="line">		System.out.println(b==i);<span class="comment">//false</span></span><br><span class="line">		System.out.println(c==i);<span class="comment">//true</span></span><br><span class="line">		System.out.println(d==i);<span class="comment">//true</span></span><br><span class="line">		System.out.println(e==i);<span class="comment">//true</span></span><br><span class="line">		System.out.println(a==j);<span class="comment">//true</span></span><br><span class="line">		System.out.println(b==j);<span class="comment">//true</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>包装类需要考虑自动拆箱问题，当有加减操作时候，就会自动拆箱，相当于在常量池中创建</p>
-<p>equals方法比较内容，所以都相等</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/零散记/jvm在操作系统的哪个区域/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/零散记/jvm在操作系统的哪个区域/" class="post-title-link" itemprop="url">jvm在操作系统的哪个区域</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-19 20:09:18" itemprop="dateModified" datetime="2019-10-19T20:09:18+08:00">2019-10-19</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-19T20:09:18+08:00" content="2019-10-19">
-                2019-10-19 20:09:18
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/零散记/" itemprop="url" rel="index"><span itemprop="name">零散记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/零散记/jvm在操作系统的哪个区域/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/零散记/jvm在操作系统的哪个区域/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>操作系统的基本结构</p>
-<p><img src="/2019/05/26/零散记/jvm在操作系统的哪个区域/v2-7754b65b9eb147c43e6d64229de9d807_hd.jpg" alt></p>
-<p>操作系统中的jvm</p>
-<p><img src="/2019/05/26/零散记/jvm在操作系统的哪个区域/v2-40029bb2d1c7b1cc182f0967df301b90_hd.jpg" alt></p>
-<p>为什么jvm的内存是分布在操作系统的堆中呢？？因为操作系统的栈是操作系统管理的，它随时会被回收，所以如果jvm放在栈中，那java的一个null对象就很难确定会被谁回收了，那gc的存在就一点意义都没有了，而要对栈做到自动释放也是jvm需要考虑的，所以放在堆中就最合适不过了。 操作系统+jvm的内存简单布局</p>
-<p><img src="/2019/05/26/零散记/jvm在操作系统的哪个区域/v2-2a3e5e747032e96d4a4b0eed72a25f9e_hd.jpg" alt></p>
-<p>jvm的设计的模型其实就是操作系统的模型，基于操作系统的角度，jvm也就是一个应用（java.exe/javaw.exe），而基于class文件来说，jvm就是个操作系统，而jvm的方法区，也就相当于操作系统的硬盘区，所以方法区也被叫做permanent区，因为这个单词是永久的意思，也就是永久区。而java栈和操作系统栈是一致的，无论是生长方向还是管理的方式，至于堆，虽然概念上一致目标也一致，分配内存的方式也一直(new,或者malloc等等)，但是由于他们的管理方式不同，jvm是gc回收，而操作系统是程序员手动释放，所以在算法上有很多的差异. 看下面的图。<br><img src="/2019/05/26/零散记/jvm在操作系统的哪个区域/v2-929dbcdb6e6e3b400a4aeec31e823688_hd.jpg" alt></p>
-<p>将这个图和上面的图对比多了什么？没错，多了一个pc寄存器，所谓pc寄存器，无论是在虚拟机中还是在我们虚拟机所寄宿的操作系统中功能目的是一致的，计算机上的pc寄存器是计算机上的硬件，本来就是属于计算机，计算机用pc寄存器来存放“伪指令”或地址，而相对于虚拟机，pc寄存器它表现为一块内存(一个字长，虚拟机要求字长最小为32位)，虚拟机的pc寄存器的功能也是存放伪指令，更确切的说存放的是将要执行指令的地址，它甚至可以是操作系统指令的本地地址，当虚拟机正在执行的方法是一个本地方法的时候，jvm的pc寄存器存储的值是undefined，所以虚拟机的pc寄存器是用于存放下一条将要执行的指令的地址(字节码流)。</p>
-<p><img src="/2019/05/26/零散记/jvm在操作系统的哪个区域/v2-02cf925ec83f848e6dcb3201515a4b6e_hd.jpg" alt></p>
-<p>这个图是要告诉你，当一个classLoder启动的时候，classLoader的生存地点在jvm中的堆，然后它会去主机硬盘上将A.class装载到jvm的方法区，方法区中的这个字节文件会被虚拟机拿来new A字节码()，然后在堆内存生成了一个A字节码的对象，然后A字节码这个内存文件有两个引用一个指向A的class对象，一个指向加载自己的classLoader<br>如下图。</p>
-<p><img src="/2019/05/26/零散记/jvm在操作系统的哪个区域/v2-0344ad4cb69c72591c3ff91569af51c9_hd.jpg" alt></p>
-<p>————————————————<br>版权声明：本文为CSDN博主「Kevinten10」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/wsh596823919/article/details/82669460" target="_blank" rel="noopener">https://blog.csdn.net/wsh596823919/article/details/82669460</a></p>
-<p><a href="https://blog.csdn.net/yfqnihao/article/details/8289363" target="_blank" rel="noopener">https://blog.csdn.net/yfqnihao/article/details/8289363</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/零散记/占用多少个字节数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/零散记/占用多少个字节数/" class="post-title-link" itemprop="url">占用多少个字节数</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-18 16:21:10" itemprop="dateModified" datetime="2019-10-18T16:21:10+08:00">2019-10-18</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-18T16:21:10+08:00" content="2019-10-18">
-                2019-10-18 16:21:10
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/零散记/" itemprop="url" rel="index"><span itemprop="name">零散记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/零散记/占用多少个字节数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/零散记/占用多少个字节数/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>不同的字符需要看不同的编码，char 字符占2个字节，默认unicode</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>中文</th>
-<th>英文</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>unicode</td>
-<td>2（还需要额外加多2个字节）</td>
-<td>2（还需要额外加多2个字节）</td>
-</tr>
-<tr>
-<td>GBK</td>
-<td>2</td>
-<td>1</td>
-</tr>
-<tr>
-<td>utf-8</td>
-<td>3</td>
-<td>1</td>
-</tr>
-<tr>
-<td>utf-16</td>
-<td>2（还需要额外加多2个字节）</td>
-<td>2（还需要额外加多2个字节）</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -3033,7 +3529,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3222,7 +3718,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共91.7k字</span>
+  <span class="post-count">博客全站共114.8k字</span>
 </div>
         
 <div class="busuanzi-count">
