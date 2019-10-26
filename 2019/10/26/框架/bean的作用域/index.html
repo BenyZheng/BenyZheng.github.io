@@ -153,17 +153,18 @@
 
 
 
-  <meta name="description" content="#####">
+  <meta name="description" content="作用域scope配置项作用域限定了Spring Bean的作用范围，在Spring配置文件定义Bean时，通过声明scope配置项，可以灵活定义Bean的作用范围。 例如，当你希望每次IOC容器返回的Bean是同一个实例时，可以设置scope为singleton；当你希望每次IOC容器返回的Bean实例是一个新的实例时，可以设置scope为prototype。 scope配置项有5个属性，用于描述">
+<meta name="keywords" content="框架">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Beny&#39;s blog">
-<meta property="og:url" content="https://benyzheng.github.io/2019/10/25/Java基础/异常分类/index.html">
+<meta property="og:title" content="bean的作用域">
+<meta property="og:url" content="https://benyzheng.github.io/2019/10/26/框架/bean的作用域/index.html">
 <meta property="og:site_name" content="Beny&#39;s blog">
-<meta property="og:description" content="#####">
+<meta property="og:description" content="作用域scope配置项作用域限定了Spring Bean的作用范围，在Spring配置文件定义Bean时，通过声明scope配置项，可以灵活定义Bean的作用范围。 例如，当你希望每次IOC容器返回的Bean是同一个实例时，可以设置scope为singleton；当你希望每次IOC容器返回的Bean实例是一个新的实例时，可以设置scope为prototype。 scope配置项有5个属性，用于描述">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-24T17:21:58.202Z">
+<meta property="og:updated_time" content="2019-10-26T17:25:57.875Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Beny&#39;s blog">
-<meta name="twitter:description" content="#####">
+<meta name="twitter:title" content="bean的作用域">
+<meta name="twitter:description" content="作用域scope配置项作用域限定了Spring Bean的作用范围，在Spring配置文件定义Bean时，通过声明scope配置项，可以灵活定义Bean的作用范围。 例如，当你希望每次IOC容器返回的Bean是同一个实例时，可以设置scope为singleton；当你希望每次IOC容器返回的Bean实例是一个新的实例时，可以设置scope为prototype。 scope配置项有5个属性，用于描述">
 
 
 
@@ -171,7 +172,7 @@
 
   
   
-  <link rel="canonical" href="https://benyzheng.github.io/2019/10/25/Java基础/异常分类/">
+  <link rel="canonical" href="https://benyzheng.github.io/2019/10/26/框架/bean的作用域/">
 
 
 
@@ -181,7 +182,7 @@
   };
 </script>
 
-  <title> | Beny's blog</title>
+  <title>bean的作用域 | Beny's blog</title>
   
 
 
@@ -321,7 +322,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">54</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">60</span></a>
 
   </li>
 
@@ -404,7 +405,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/25/Java基础/异常分类/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/26/框架/bean的作用域/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -421,7 +422,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">bean的作用域
 
               
             
@@ -444,15 +445,27 @@
               
 
              
-             
-             
+                
+              
 
-              <time title="创建时间：2019-10-25 01:15:54 / 修改时间：01:21:58" itemprop="dateCreated datePublished" datetime="2019-10-25T01:15:54+08:00">2019-10-25 01:15:54</time>
+              <time title="创建时间：2019-10-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-26T12:12:57+08:00">2019-10-26 12:12:57</time>
             
 
             
               
             <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-27 01:25:57" itemprop="dateModified" datetime="2019-10-27T01:25:57+08:00">2019-10-27</time> 
               -->
               <!-- new version -->
                         
@@ -467,8 +480,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-25T01:21:58+08:00" content="2019-10-25">
-                2019-10-25 01:21:58
+              <time itemprop="dateUpdated" datetime="2019-10-27T01:25:57+08:00" content="2019-10-27">
+                2019-10-27 01:25:57
               </time>
             </span>
           
@@ -477,6 +490,24 @@
 
 
           
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -490,8 +521,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/25/Java基础/异常分类/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/25/Java基础/异常分类/" itemprop="commentCount"></span>
+                <a href="/2019/10/26/框架/bean的作用域/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/26/框架/bean的作用域/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -526,7 +557,19 @@
       
 
       
-        <p>##### </p>
+        <h3 id="作用域scope配置项"><a href="#作用域scope配置项" class="headerlink" title="作用域scope配置项"></a>作用域scope配置项</h3><p>作用域限定了Spring Bean的作用范围，在Spring配置文件定义Bean时，通过声明scope配置项，可以灵活定义Bean的作用范围。</p>
+<p>例如，当你希望每次IOC容器返回的Bean是同一个实例时，可以设置scope为singleton；当你希望每次IOC容器返回的Bean实例是一个新的实例时，可以设置scope为prototype。</p>
+<p>scope配置项有5个属性，用于描述不同的作用域。</p>
+<p>① singleton</p>
+<p>使用该属性定义Bean时，IOC容器仅创建一个Bean实例，IOC容器每次返回的是同一个Bean实例。</p>
+<p>② prototype</p>
+<p>使用该属性定义Bean时，IOC容器可以创建多个Bean实例，每次返回的都是一个新的实例。</p>
+<p>③ request</p>
+<p>该属性仅对HTTP请求产生作用，使用该属性定义Bean时，每次HTTP请求都会创建一个新的Bean，适用于WebApplicationContext环境。</p>
+<p>④ session</p>
+<p>该属性仅用于HTTP Session，同一个Session共享一个Bean实例。不同Session使用不同的实例。</p>
+<p>⑤ global-session</p>
+<p>该属性仅用于HTTP Session，同session作用域不同的是，所有的Session共享一个Bean实例。</p>
 
       
     </div>
@@ -548,6 +591,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/框架/" rel="tag"># 框架</a>
+          
+        </div>
+      
 
       
       
@@ -557,8 +606,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/22/java集合类/HashMap遍历与删除/" rel="next" title="HashMap遍历与删除">
-                <i class="fa fa-chevron-left"></i> HashMap遍历与删除
+              <a href="/2019/10/26/框架/bean的配置方式/" rel="next" title="bean的配置方式">
+                <i class="fa fa-chevron-left"></i> bean的配置方式
               </a>
             
           </div>
@@ -613,8 +662,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -631,7 +689,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -784,6 +842,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域scope配置项"><span class="nav-number">1.</span> <span class="nav-text">作用域scope配置项</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -820,7 +895,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共114.8k字</span>
+  <span class="post-count">博客全站共125.3k字</span>
 </div>
         
 <div class="busuanzi-count">

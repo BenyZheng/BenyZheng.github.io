@@ -1,8 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://benyzheng.github.io/2019/10/25/Java%E5%9F%BA%E7%A1%80/%E5%BC%82%E5%B8%B8%E5%88%86%E7%B1%BB/</loc>
-    <lastmod>2019-10-24</lastmod>
+    <loc>https://benyzheng.github.io/2019/10/26/%E6%A1%86%E6%9E%B6/bean%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
+    <lastmod>2019-10-26</lastmod>
+  </url>  <url>
+    <loc>https://benyzheng.github.io/2019/10/26/%E6%A1%86%E6%9E%B6/bean%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/</loc>
+    <lastmod>2019-10-26</lastmod>
+  </url>  <url>
+    <loc>https://benyzheng.github.io/2019/10/21/%E6%A1%86%E6%9E%B6/Resource%E5%92%8CAutowired%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
+    <lastmod>2019-10-26</lastmod>
+  </url>  <url>
+    <loc>https://benyzheng.github.io/2019/10/21/%E6%A1%86%E6%9E%B6/SpringMVC%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/</loc>
+    <lastmod>2019-10-26</lastmod>
+  </url>  <url>
+    <loc>https://benyzheng.github.io/2019/01/26/JavaWeb%E7%9F%A5%E8%AF%86/JavaWeb/</loc>
+    <lastmod>2019-10-26</lastmod>
+  </url>  <url>
+    <loc>https://benyzheng.github.io/2019/10/21/%E6%A1%86%E6%9E%B6/bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</loc>
+    <lastmod>2019-10-26</lastmod>
+  </url>  <url>
+    <loc>https://benyzheng.github.io/2019/10/21/%E6%A1%86%E6%9E%B6/servlet%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</loc>
+    <lastmod>2019-10-26</lastmod>
+  </url>  <url>
+    <loc>https://benyzheng.github.io/2019/10/10/%E9%9D%A2%E7%BB%8F/%E9%9D%A2%E7%BB%8F/</loc>
+    <lastmod>2019-10-26</lastmod>
+  </url>  <url>
+    <loc>https://benyzheng.github.io/2019/10/02/Java%E5%9F%BA%E7%A1%80/string%E5%92%8Cstringbuffer%E5%92%8Cstringbuilder%E5%8C%BA%E5%88%AB/</loc>
+    <lastmod>2019-10-26</lastmod>
+  </url>  <url>
+    <loc>https://benyzheng.github.io/2019/10/02/Java%E5%9F%BA%E7%A1%80/Java%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/</loc>
+    <lastmod>2019-10-26</lastmod>
   </url>  <url>
     <loc>https://benyzheng.github.io/2019/05/16/jvm/JVM%E6%A6%82%E8%BF%B0/</loc>
     <lastmod>2019-10-24</lastmod>
@@ -11,9 +38,6 @@
     <lastmod>2019-10-24</lastmod>
   </url>  <url>
     <loc>https://benyzheng.github.io/2019/05/26/%E6%95%B0%E6%8D%AE%E5%BA%93/oracle%E5%92%8Cmysql%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
-    <lastmod>2019-10-24</lastmod>
-  </url>  <url>
-    <loc>https://benyzheng.github.io/2019/10/10/%E9%9D%A2%E7%BB%8F/%E9%9D%A2%E7%BB%8F/</loc>
     <lastmod>2019-10-24</lastmod>
   </url>  <url>
     <loc>https://benyzheng.github.io/2019/10/02/Java%E5%9F%BA%E7%A1%80/Exception%E5%92%8CError%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</loc>
@@ -73,9 +97,6 @@
     <loc>https://benyzheng.github.io/2019/10/21/%E6%A1%86%E6%9E%B6/Spring%20IOC%E5%92%8CAOP/</loc>
     <lastmod>2019-10-21</lastmod>
   </url>  <url>
-    <loc>https://benyzheng.github.io/2019/10/21/%E6%A1%86%E6%9E%B6/bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</loc>
-    <lastmod>2019-10-21</lastmod>
-  </url>  <url>
     <loc>https://benyzheng.github.io/2019/10/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/HTTP/</loc>
     <lastmod>2019-10-20</lastmod>
   </url>  <url>
@@ -105,9 +126,6 @@
   </url>  <url>
     <loc>https://benyzheng.github.io/2019/05/26/%E9%9B%B6%E6%95%A3%E8%AE%B0/sizeOf/</loc>
     <lastmod>2019-10-18</lastmod>
-  </url>  <url>
-    <loc>https://benyzheng.github.io/2019/01/26/JavaWeb%E7%9F%A5%E8%AF%86/JavaWeb/</loc>
-    <lastmod>2019-10-07</lastmod>
   </url>  <url>
     <loc>https://benyzheng.github.io/2019/05/26/JavaEE/JDBC/JDBC%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2019-10-07</lastmod>
