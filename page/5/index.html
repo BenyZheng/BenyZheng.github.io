@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">60</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">61</span></a>
 
   </li>
 
@@ -401,7 +401,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/零散记/String和包装类的equals和==/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据库/mysql概述/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -421,7 +421,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/26/零散记/String和包装类的equals和==/" class="post-title-link" itemprop="url">String和包装类的equals和==</a>
+                <a href="/2019/05/26/数据库/mysql概述/" class="post-title-link" itemprop="url">mysql概述</a>
               
             
           </h1>
@@ -463,7 +463,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-20 18:29:16" itemprop="dateModified" datetime="2019-10-20T18:29:16+08:00">2019-10-20</time> 
+              <time title="修改时间：2019-10-25 01:20:28" itemprop="dateModified" datetime="2019-10-25T01:20:28+08:00">2019-10-25</time> 
               -->
               <!-- new version -->
                         
@@ -478,8 +478,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-20T18:29:16+08:00" content="2019-10-20">
-                2019-10-20 18:29:16
+              <time itemprop="dateUpdated" datetime="2019-10-25T01:20:28+08:00" content="2019-10-25">
+                2019-10-25 01:20:28
               </time>
             </span>
           
@@ -500,7 +500,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/零散记/" itemprop="url" rel="index"><span itemprop="name">零散记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -519,8 +519,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/零散记/String和包装类的equals和==/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/零散记/String和包装类的equals和==/" itemprop="commentCount"></span>
+                <a href="/2019/05/26/数据库/mysql概述/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据库/mysql概述/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -550,45 +550,122 @@
       
         
           
-            <h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><p>String对象创建两种方式：</p>
-<ul>
-<li>第一种方式是在常量池中拿对象；</li>
-<li>第二种方式是直接在堆内存空间创建一个新的对象。</li>
+            <h1 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h1><h2 id="六大约束"><a href="#六大约束" class="headerlink" title="六大约束"></a>六大约束</h2><ul>
+<li><h3 id="primary-key"><a href="#primary-key" class="headerlink" title="primary key"></a>primary key</h3></li>
+<li><h3 id="foreign-key"><a href="#foreign-key" class="headerlink" title="foreign key"></a>foreign key</h3></li>
+<li><h3 id="NOT-NULL"><a href="#NOT-NULL" class="headerlink" title="NOT NULL"></a>NOT NULL</h3></li>
+<li><h3 id="Default"><a href="#Default" class="headerlink" title="Default"></a>Default</h3></li>
+<li><h3 id="Unique"><a href="#Unique" class="headerlink" title="Unique"></a>Unique</h3></li>
+<li><h3 id="check"><a href="#check" class="headerlink" title="check"></a>check</h3></li>
 </ul>
-<p><img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-3String-Pool-Java1-450x249.png" alt></p>
-<p><strong>String 类型的常量池比较特殊。它的主要使用方法有两种：</strong></p>
-<ul>
-<li>直接使用双引号声明出来的 String 对象会直接存储在常量池中。</li>
-<li>如果不是用双引号声明的 String 对象，可以使用 String 提供的 intern 方法。String.intern() 是一个 Native 方法，它的作用是：如果运行时常量池中已经包含一个等于此 String 对象内容的字符串，则返回常量池中该字符串的引用；如果没有，JDK1.7之前（不包含1.7）的处理方式是在常量池中创建与此 String 内容相同的字符串，并返回常量池中创建的字符串的引用，JDK1.7以及之后的处理方式是在常量池中记录此字符串的引用，并返回该引用。</li>
+<h2 id="事务和隔离级别"><a href="#事务和隔离级别" class="headerlink" title="事务和隔离级别"></a>事务和隔离级别</h2><p>事务T1、T2，当T1读取一个表的字段，T2此时插入多几行数据，T1再次读取，数据多了几行<br>幻读和不可重复读区别：不可重复读针对一个字段更新前后数据不一致，幻读是针对一个表数据读取获取的数据数量不想等</p>
+<h3 id="事务ACID"><a href="#事务ACID" class="headerlink" title="事务ACID"></a>事务ACID</h3><ul>
+<li><h4 id="原子性-atomicity"><a href="#原子性-atomicity" class="headerlink" title="原子性(atomicity)"></a>原子性(atomicity)</h4></li>
+<li><h4 id="一致性-consistency"><a href="#一致性-consistency" class="headerlink" title="一致性(consistency)"></a>一致性(consistency)</h4></li>
+<li><h4 id="隔离性-isolation"><a href="#隔离性-isolation" class="headerlink" title="隔离性(isolation)"></a>隔离性(isolation)</h4></li>
+<li><h4 id="持久性-durability"><a href="#持久性-durability" class="headerlink" title="持久性(durability)"></a>持久性(durability)</h4></li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="keyword">new</span> String(<span class="string">"计算机"</span>);</span><br><span class="line">String s2 = s1.intern();</span><br><span class="line">String s3 = <span class="string">"计算机"</span>;</span><br><span class="line">System.out.println(s2);<span class="comment">//计算机</span></span><br><span class="line">System.out.println(s1 == s2);<span class="comment">//false，因为一个是堆内存中的 String 对象一个是常量池中的 String 对象，</span></span><br><span class="line">System.out.println(s3 == s2);<span class="comment">//true，因为两个都是常量池中的 String 对象</span></span><br></pre></td></tr></table></figure>
-<p>字符串拼接</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String str1 = <span class="string">"str"</span>;</span><br><span class="line">String str2 = <span class="string">"ing"</span>;</span><br><span class="line"></span><br><span class="line">String str3 = <span class="string">"str"</span> + <span class="string">"ing"</span>;<span class="comment">//常量池中的对象</span></span><br><span class="line">String str4 = str1 + str2; <span class="comment">//在堆上创建的新的对象      </span></span><br><span class="line">String str5 = <span class="string">"string"</span>;<span class="comment">//常量池中的对象</span></span><br><span class="line">System.out.println(str3 == str4);<span class="comment">//false</span></span><br><span class="line">System.out.println(str3 == str5);<span class="comment">//true</span></span><br><span class="line">System.out.println(str4 == str5);<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5.png" alt></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String a = <span class="string">"123"</span>;</span><br><span class="line">		String b = <span class="keyword">new</span> String(<span class="string">"123"</span>);</span><br><span class="line">		String c = <span class="string">"1"</span>+<span class="string">"23"</span>;</span><br><span class="line">		String d = <span class="string">"1"</span>+<span class="keyword">new</span> String(<span class="string">"23"</span>);</span><br><span class="line">		String e = <span class="keyword">new</span> String(<span class="string">"1"</span>)+<span class="keyword">new</span> String(<span class="string">"23"</span>);</span><br><span class="line">		String f = <span class="string">"1"</span>;</span><br><span class="line">		String h = <span class="string">"23"</span>;</span><br><span class="line">		String i = f+h;</span><br><span class="line">		System.out.println(a==b);<span class="comment">//false</span></span><br><span class="line">		System.out.println(a==c);<span class="comment">//true</span></span><br><span class="line">		System.out.println(a==d);<span class="comment">//false</span></span><br><span class="line">		System.out.println(a==e);<span class="comment">//false</span></span><br><span class="line">		System.out.println(b==d);<span class="comment">//false</span></span><br><span class="line">		System.out.println(b==e);<span class="comment">//false</span></span><br><span class="line">		System.out.println(d==e);<span class="comment">//false</span></span><br><span class="line">		System.out.println(<span class="string">"------------------------------"</span>);</span><br><span class="line">		System.out.println(a==i);<span class="comment">//false</span></span><br><span class="line">        System.out.println(b==i);<span class="comment">//false</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>只要涉及到对象引用如上f、h或者其中new一个，整体都会new一个对象，所以都是false</p>
-<h4 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h4><ul>
-<li><strong>Java 基本类型的包装类的大部分都实现了常量池技术，即 Byte,Short,Integer,Long,Character,Boolean；这 5 种包装类默认创建了数值[-128，127] 的相应类型的缓存数据，但是超出此范围仍然会去创建新的对象。</strong> 为啥把缓存设置为[-128，127]区间？性能和资源之间的权衡。</li>
-<li><strong>两种浮点数类型的包装类 Float,Double 并没有实现常量池技术。</strong></li>
+<h3 id="事务结束四个标志"><a href="#事务结束四个标志" class="headerlink" title="事务结束四个标志"></a>事务结束四个标志</h3><ul>
+<li><h4 id="commit或rollback"><a href="#commit或rollback" class="headerlink" title="commit或rollback"></a>commit或rollback</h4></li>
+<li><h4 id="DDL或DCL自动提交"><a href="#DDL或DCL自动提交" class="headerlink" title="DDL或DCL自动提交"></a>DDL或DCL自动提交</h4></li>
+<li><h4 id="用户会话正常结束"><a href="#用户会话正常结束" class="headerlink" title="用户会话正常结束"></a>用户会话正常结束</h4></li>
+<li><h4 id="系统异常终止"><a href="#系统异常终止" class="headerlink" title="系统异常终止"></a>系统异常终止</h4></li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">33</span>;</span><br><span class="line">Integer i2 = <span class="number">33</span>;</span><br><span class="line">System.out.println(i1 == i2);<span class="comment">// 输出 true</span></span><br><span class="line">Integer i11 = <span class="number">333</span>;</span><br><span class="line">Integer i22 = <span class="number">333</span>;</span><br><span class="line">System.out.println(i11 == i22);<span class="comment">// 输出 false</span></span><br></pre></td></tr></table></figure>
-<p><strong>Integer 缓存源代码：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*此方法将始终缓存-128 到 127（包括端点）范围内的值，并可以缓存此范围之外的其他值。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">            <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>应用场景：</strong></p>
-<ol>
-<li>Integer i1=40；Java 在编译的时候会直接将代码封装成 Integer i1=Integer.valueOf(40);，从而使用常量池中的对象。</li>
-<li>Integer i1 = new Integer(40);这种情况下会创建新的对象。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">40</span>;</span><br><span class="line">Integer i2 = <span class="keyword">new</span> Integer(<span class="number">40</span>);</span><br><span class="line">System.out.println(i1==i2);<span class="comment">//输出 false</span></span><br></pre></td></tr></table></figure>
-<p><strong>Integer 比较更丰富的一个例子:</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">40</span>;</span><br><span class="line">Integer i2 = <span class="number">40</span>;</span><br><span class="line">Integer i3 = <span class="number">0</span>;</span><br><span class="line">Integer i4 = <span class="keyword">new</span> Integer(<span class="number">40</span>);</span><br><span class="line">Integer i5 = <span class="keyword">new</span> Integer(<span class="number">40</span>);</span><br><span class="line">Integer i6 = <span class="keyword">new</span> Integer(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"i1=i2   "</span> + (i1 == i2));</span><br><span class="line">System.out.println(<span class="string">"i1=i2+i3   "</span> + (i1 == i2 + i3));</span><br><span class="line">System.out.println(<span class="string">"i1=i4   "</span> + (i1 == i4));</span><br><span class="line">System.out.println(<span class="string">"i4=i5   "</span> + (i4 == i5));</span><br><span class="line">System.out.println(<span class="string">"i4=i5+i6   "</span> + (i4 == i5 + i6));   </span><br><span class="line">System.out.println(<span class="string">"40=i5+i6   "</span> + (<span class="number">40</span> == i5 + i6));</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i1=i2   <span class="keyword">true</span></span><br><span class="line">i1=i2+i3   <span class="keyword">true</span></span><br><span class="line">i1=i4   <span class="keyword">false</span></span><br><span class="line">i4=i5   <span class="keyword">false</span></span><br><span class="line">i4=i5+i6   <span class="keyword">true</span></span><br><span class="line"><span class="number">40</span>=i5+i6   <span class="keyword">true</span></span><br></pre></td></tr></table></figure>
-<p>解释：</p>
-<p>语句 i4 == i5 + i6，因为+这个操作符不适用于 Integer 对象，首先 i5 和 i6 进行自动拆箱操作，进行数值相加，即 i4 == 40。然后 Integer 对象无法与数值进行直接比较，所以 i4 自动拆箱转为 int 值 40，最终这条语句转为 40 == 40 进行数值比较。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Integer a = <span class="number">40</span>;</span><br><span class="line">		Integer b = <span class="keyword">new</span> Integer(<span class="number">40</span>);</span><br><span class="line">		Integer c = <span class="number">10</span>+<span class="number">30</span>;</span><br><span class="line">		Integer d = <span class="number">10</span>+<span class="keyword">new</span> Integer(<span class="number">30</span>);</span><br><span class="line">		Integer e = <span class="keyword">new</span> Integer(<span class="number">10</span>)+<span class="keyword">new</span> Integer(<span class="number">30</span>);</span><br><span class="line">		Integer f = <span class="number">10</span>;</span><br><span class="line">		Integer h = <span class="number">30</span>;</span><br><span class="line">		Integer i = f+h;</span><br><span class="line">		<span class="keyword">int</span> j = <span class="number">40</span>;</span><br><span class="line">		System.out.println(a==b);<span class="comment">//false</span></span><br><span class="line">		System.out.println(a==c);<span class="comment">//true</span></span><br><span class="line">		System.out.println(a==d);<span class="comment">//true</span></span><br><span class="line">		System.out.println(a==e);<span class="comment">//true</span></span><br><span class="line">		System.out.println(b==c);<span class="comment">//false</span></span><br><span class="line">		System.out.println(b==d);<span class="comment">//false</span></span><br><span class="line">		System.out.println(b==e);<span class="comment">//false</span></span><br><span class="line">		System.out.println(d==e);<span class="comment">//true</span></span><br><span class="line">		System.out.println(<span class="string">"------------------------------"</span>);</span><br><span class="line">		System.out.println(a==i);<span class="comment">//true</span></span><br><span class="line">		System.out.println(b==i);<span class="comment">//false</span></span><br><span class="line">		System.out.println(c==i);<span class="comment">//true</span></span><br><span class="line">		System.out.println(d==i);<span class="comment">//true</span></span><br><span class="line">		System.out.println(e==i);<span class="comment">//true</span></span><br><span class="line">		System.out.println(a==j);<span class="comment">//true</span></span><br><span class="line">		System.out.println(b==j);<span class="comment">//true</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>包装类需要考虑自动拆箱问题，当有加减操作时候，就会自动拆箱，相当于在常量池中创建</p>
-<p>equals方法比较内容，所以都相等</p>
+<h3 id="事务隔离级别和对应的问题"><a href="#事务隔离级别和对应的问题" class="headerlink" title="事务隔离级别和对应的问题"></a>事务隔离级别和对应的问题</h3><p>事务的隔离级别：</p>
+<pre><code>脏读-不可重复读-幻读
+</code></pre><p>read uncommitted：√        √      √<br>read committed：  ×        √      √<br>repeatable read： ×        ×      √<br>serializable      ×      ×     ×</p>
+<p>丢失修改<br>: 指在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。这样第一个事务内的修改结果就被丢失，因此称为丢失修改。 例如：事务1读取某表中的数据A=20，事务2也读取A=20，事务1修改A=A-1，事务2也修改A=A-1，最终结果A=19，事务1的修改被丢失。</p>
+<h4 id="读未提交"><a href="#读未提交" class="headerlink" title="读未提交"></a>读未提交</h4><p>一个事务读取到另一个未提交的数据</p>
+<h5 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h5><p>事务T1、T2，当T2读取到T1已更新但还没有提交的字段，若T2回滚，T1读取的数据临时且无效</p>
+<h4 id="读已提交"><a href="#读已提交" class="headerlink" title="读已提交"></a>读已提交</h4><p>一个事务必须等到另一个事务提交后才可以读取数据</p>
+<h5 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h5><p>事务T1、T2，T1读取一个字段，然后T2更新这个字段之后，T1再次读取同一个字段，数据已经发生改变<br>脏读和不可重复读的区别：脏读是在一个事务里面更新了还没提交导致前后数据不一致，不可重复读是在提交数据之后，事务再次更新操作，导致数据不一致</p>
+<h4 id="重复读"><a href="#重复读" class="headerlink" title="重复读"></a>重复读</h4><p>在开始读取数据(事务开启时)，不允许修改操作</p>
+<h5 id="幻读"><a href="#幻读" class="headerlink" title="幻读"></a>幻读</h5><p>事务T1、T2，T1读取表中一个范围的值，然后T2插入或删除这个字段之后，T1再次读取，数据的数量发生了变化<br>幻读和不可重复读的区别：幻读是插入或删除导致的前后数据不一致（数量上）<br>不可重复读是修改前后导致前后的字段值不一致（内容上）</p>
+<h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><p>事务串行化顺序执行<br>解决脏读、不可重复读、幻读的并发问题</p>
+<h2 id="存储引擎-Innodb、Myisam"><a href="#存储引擎-Innodb、Myisam" class="headerlink" title="存储引擎(Innodb、Myisam)"></a>存储引擎(Innodb、Myisam)</h2><h3 id="支持行锁"><a href="#支持行锁" class="headerlink" title="支持行锁"></a>支持行锁</h3><p>MyISAM 只有表级锁(table-level locking)<br>InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。</p>
+<h3 id="支持事务和崩溃后的安全恢复"><a href="#支持事务和崩溃后的安全恢复" class="headerlink" title="支持事务和崩溃后的安全恢复"></a>支持事务和崩溃后的安全恢复</h3><p>MyISAM 强调的是性能，每次查询具有原子性,其执行速度比InnoDB类型更快，但是不提供事务支持。</p>
+<p>但是InnoDB 提供事务支持事务，外部键等高级数据库功能。 具有事务(commit)、回滚(rollback)和崩溃修复能力(crash recovery capabilities)的事务安全(transaction-safe (ACID compliant))型表。</p>
+<h3 id="支持外键"><a href="#支持外键" class="headerlink" title="支持外键"></a>支持外键</h3><p>MyISAM不支持<br>而InnoDB支持</p>
+<h3 id="支持MVCC"><a href="#支持MVCC" class="headerlink" title="支持MVCC"></a>支持MVCC</h3><p>仅InnoDB支持。应对高并发事务, MVCC比单纯的加锁更高效;</p>
+<p>MVCC只在READ COMMITTED和 REPEATABLE READ 两个隔离级别下工作;</p>
+<p>MVCC可以使用乐观(optimistic)锁和悲观(pessimistic)锁来实现;</p>
+<p>各数据库中MVCC实现并不统一</p>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><h3 id="视图：一种虚拟存在的表，在使用时动态生成，只保存sql逻辑不保存结果"><a href="#视图：一种虚拟存在的表，在使用时动态生成，只保存sql逻辑不保存结果" class="headerlink" title="视图：一种虚拟存在的表，在使用时动态生成，只保存sql逻辑不保存结果"></a>视图：一种虚拟存在的表，在使用时动态生成，只保存sql逻辑不保存结果</h3><h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li><h4 id="多个地方重复用到的结果l"><a href="#多个地方重复用到的结果l" class="headerlink" title="多个地方重复用到的结果l"></a>多个地方重复用到的结果l</h4></li>
+<li><h4 id="sql语句较复杂的语句"><a href="#sql语句较复杂的语句" class="headerlink" title="sql语句较复杂的语句"></a>sql语句较复杂的语句</h4></li>
+</ul>
+<h3 id="视图不可更新情况"><a href="#视图不可更新情况" class="headerlink" title="视图不可更新情况"></a>视图不可更新情况</h3><ul>
+<li><h4 id="包含关键字：distinct、分组函数、group-by、having、union、union-all"><a href="#包含关键字：distinct、分组函数、group-by、having、union、union-all" class="headerlink" title="包含关键字：distinct、分组函数、group by、having、union、union all"></a>包含关键字：distinct、分组函数、group by、having、union、union all</h4></li>
+<li><h4 id="常量视图"><a href="#常量视图" class="headerlink" title="常量视图"></a>常量视图</h4></li>
+<li><h4 id="select中包含子查询"><a href="#select中包含子查询" class="headerlink" title="select中包含子查询"></a>select中包含子查询</h4></li>
+<li><h4 id="join"><a href="#join" class="headerlink" title="join"></a>join</h4></li>
+<li><h4 id="from一个不能更新的视图"><a href="#from一个不能更新的视图" class="headerlink" title="from一个不能更新的视图"></a>from一个不能更新的视图</h4></li>
+<li><h4 id="where子句的子查询引用了from子句中的表"><a href="#where子句的子查询引用了from子句中的表" class="headerlink" title="where子句的子查询引用了from子句中的表"></a>where子句的子查询引用了from子句中的表</h4></li>
+</ul>
+<h2 id="存储程序"><a href="#存储程序" class="headerlink" title="存储程序"></a>存储程序</h2><p>存储过程和函数：实现经过编译并存储在数据库中的一段sql语句的集合</p>
+<h3 id="存储例程"><a href="#存储例程" class="headerlink" title="存储例程"></a>存储例程</h3><ul>
+<li><h4 id="存储函数"><a href="#存储函数" class="headerlink" title="存储函数"></a>存储函数</h4></li>
+<li><h4 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h4></li>
+</ul>
+<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><h2 id="锁机制"><a href="#锁机制" class="headerlink" title="锁机制"></a>锁机制</h2><p>当一个事务请求的锁模式与当前的锁兼容，InnoDB就将请求的锁授予该事务；反之如果请求不兼容，则该事物就等待锁释放。</p>
+<h3 id="表级锁"><a href="#表级锁" class="headerlink" title="表级锁"></a>表级锁</h3><p>MySQL中锁定 粒度最大 的一种锁，对当前操作的整张表加锁，实现简单，资源消耗也比较少，加锁快，不会出现死锁。</p>
+<p>其锁定粒度最大，触发锁冲突的概率最高，并发度最低，MyISAM和 InnoDB引擎都支持表级锁。</p>
+<h4 id="InnoDB表级锁"><a href="#InnoDB表级锁" class="headerlink" title="InnoDB表级锁"></a>InnoDB表级锁</h4><p>当一个事务需要给自己需要的某个资源加锁的时候，如果遇到一个共享锁正锁定着自己需要的资源的时候，自己可以再加一个共享锁，不过不能加排他锁。但是，如果遇到自己需要锁定的资源已经被一个排他锁占有之后，则只能等待该锁定释放资源之后自己才能获取锁定资源并添加自己的锁定。</p>
+<p>而意向锁的作用就是当一个事务在需要获取资源锁定的时候，如果遇到自己需要的资源已经被排他锁占用的时候，该事务可以需要锁定行的表上面添加一个合适的意向锁。</p>
+<p>如果自己需要一个共享锁，那么就在表上面添加一个意向共享锁。而如果自己需要的是某行（或者某些行）上面添加一个排他锁的话，则先在表上面添加一个意向排他锁。</p>
+<p>意向共享锁可以同时并存多个，但是意向排他锁同时只能有一个存在。</p>
+<p>这里的意向锁是表级锁，表示的是一种意向，仅仅表示事务正在读或写某一行记录，在真正加行锁时才会判断是否冲突。意向锁是InnoDB自动加的，不需要用户干预。<br>IX，IS是表级锁，不会和行级的X，S锁发生冲突，只会和表级的X，S发生冲突。</p>
+<h5 id="意向共享锁（IS）"><a href="#意向共享锁（IS）" class="headerlink" title="意向共享锁（IS）"></a>意向共享锁（IS）</h5><p>表示事务准备给数据行记入共享锁，事务在一个数据行加共享锁前必须先取得该表的IS锁。</p>
+<h5 id="意向排他锁（IX）"><a href="#意向排他锁（IX）" class="headerlink" title="意向排他锁（IX）"></a>意向排他锁（IX）</h5><p>表示事务准备给数据行加入排他锁，事务在一个数据行加排他锁前必须先取得该表的IX锁。</p>
+<h4 id="MyISAM表级锁"><a href="#MyISAM表级锁" class="headerlink" title="MyISAM表级锁"></a>MyISAM表级锁</h4><h3 id="页级锁"><a href="#页级锁" class="headerlink" title="页级锁"></a>页级锁</h3><p>MySQL中锁定粒度介于行级锁和表级锁中间的一种锁。</p>
+<p>表级锁速度快，但冲突多，<br>行级冲突少，但速度慢。</p>
+<p>页级进行了折衷，一次锁定相邻的一组记录。BDB支持页级锁。开销和加锁时间界于表锁和行锁之间，会出现死锁。锁定粒度界于表锁和行锁之间，并发度一般。</p>
+<h3 id="行级锁-InnoDB专有"><a href="#行级锁-InnoDB专有" class="headerlink" title="行级锁(InnoDB专有)"></a>行级锁(InnoDB专有)</h3><p>MySQL中锁定 粒度最小 的一种锁，只针对当前操作的行进行加锁。 行级锁能大大减少数据库操作的冲突。</p>
+<p>其加锁粒度最小，并发度高，但加锁的开销也最大，加锁慢，会出现死锁。    </p>
+<p>InnoDB 行锁是通过给索引上的索引项加锁来实现的，InnoDB 这种行锁实现的特点意味着：只有通过索引条件检索数据，InnoDB 才使用行级锁，否则，InnoDB 将使用表锁。</p>
+<h4 id="Record-Lock"><a href="#Record-Lock" class="headerlink" title="Record Lock"></a>Record Lock</h4><p>对索引项加锁</p>
+<p>行锁锁定的是索引记录，而不是行数据，也就是说锁定的是key。</p>
+<p>其他事务不能修改和删除加锁项；</p>
+<p>索引分为主键索引和非主键索引两种，如果一条sql语句操作了主键索引，MySQL就会锁定这条主键索引；</p>
+<p>如果一条语句操作了非主键索引，MySQL会先锁定该非主键索引，再锁定相关的主键索引。</p>
+<h4 id="Gap-Lock"><a href="#Gap-Lock" class="headerlink" title="Gap Lock"></a>Gap Lock</h4><p>对索引项之间的“间隙”加锁，锁定记录的范围（对第一条记录前的间隙或最后一条将记录后的间隙加锁）不包含索引项本身（对非索引项）。</p>
+<p>其他事务不能在锁范围内插入数据，这样就防止了别的事务新增幻影行</p>
+<p>锁定索引记录间隙，确保索引记录的间隙不变。间隙锁是针对事务隔离级别为可重复读或以上级别而已的。</p>
+<p>间隙锁（Gap Lock）一般是针对非唯一索引而言的</p>
+<h4 id="Next-key-Lock"><a href="#Next-key-Lock" class="headerlink" title="Next-key Lock"></a>Next-key Lock</h4><p>锁定索引项本身和索引范围。即Record Lock和Gap Lock的结合。可解决幻读问题。</p>
+<h3 id="发生死锁"><a href="#发生死锁" class="headerlink" title="发生死锁"></a>发生死锁</h3><p>当两个事务同时执行，一个锁住了主键索引，在等待其他相关索引。另一个锁定了非主键索引，在等待主键索引。这样就会发生死锁。</p>
+<p>MyISAM 中是不会产生死锁的，因为 MyISAM 总是一次性获得所需的全部锁，要么全部满足，要么全部等待。而在 InnoDB 中，锁是逐步获得的，就造成了死锁的可能。</p>
+<p>发生死锁后，InnoDB一般都可以检测到，并使一个事务释放锁回退，另一个获取锁完成事务。</p>
+<h4 id="避免死锁"><a href="#避免死锁" class="headerlink" title="避免死锁"></a>避免死锁</h4><p>有多种方法可以避免死锁，这里介绍常见的三种</p>
+<p>1、如果不同程序会并发存取多个表，尽量约定以相同的顺序访问表，可以大大降低死锁机会。</p>
+<p>2、在同一个事务中，尽可能做到一次锁定所需要的所有资源，减少死锁产生概率；</p>
+<p>3、对于非常容易产生死锁的业务部分，可以尝试使用升级锁定颗粒度，通过表级锁定来减少死锁产生的概率；</p>
+<h3 id="是否可写锁分类"><a href="#是否可写锁分类" class="headerlink" title="是否可写锁分类"></a>是否可写锁分类</h3><h4 id="读锁（共享锁）"><a href="#读锁（共享锁）" class="headerlink" title="读锁（共享锁）"></a>读锁（共享锁）</h4><p>其他用户可以并发读取数据，但任何事务都不能获取数据上的排他锁，直到已释放所有共享锁。</p>
+<p>共享锁(S锁)又称为读锁，若事务T对数据对象A加上S锁，则事务T只能读A；</p>
+<p>其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。这就保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改。</p>
+<h4 id="写锁（互斥锁）"><a href="#写锁（互斥锁）" class="headerlink" title="写锁（互斥锁）"></a>写锁（互斥锁）</h4><p>排它锁（(Exclusive lock,简记为X锁)）又称为写锁，若事务T对数据对象A加上X锁，则只允许T读取和修改A，其它任何事务都不能再对A加任何类型的锁，直到T释放A上的锁。</p>
+<p>它防止任何其它事务获取资源上的锁，直到在事务的末尾将资源上的原始锁释放为止。在更新操作(INSERT、UPDATE 或 DELETE)过程中始终应用排它锁。</p>
+<h4 id="两者之间的区别"><a href="#两者之间的区别" class="headerlink" title="两者之间的区别"></a>两者之间的区别</h4><p>共享锁（S锁）：如果事务T对数据A加上共享锁后，则其他事务只能对A再加共享锁，不能加排他锁。获取共享锁的事务只能读数据，不能修改数据。</p>
+<p>排他锁（X锁）：如果事务T对数据A加上排他锁后，则其他事务不能再对A加任任何类型的封锁。获取排他锁的事务既能读数据，又能修改数据。</p>
+<h2 id="大表优化"><a href="#大表优化" class="headerlink" title="大表优化"></a>大表优化</h2><h3 id="限定数据范围"><a href="#限定数据范围" class="headerlink" title="限定数据范围"></a>限定数据范围</h3><h3 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h3><p>经典的数据库拆分方案，主库负责写，从库负责读；</p>
+<h3 id="垂直分区"><a href="#垂直分区" class="headerlink" title="垂直分区"></a>垂直分区</h3><p>根据数据库里面数据表的相关性进行拆分。例如，用户表中既有用户的登录信息又有用户的基本信息，可以将用户表拆分成两个单独的表，甚至放到单独的库做分库。</p>
+<p>简单来说垂直拆分是指数据表列的拆分，把一张列比较多的表拆分为多张表。 如下图所示，这样来说大家应该就更容易理解了。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>垂直拆分的优点： 可以使得列数据变小，在查询时减少读取的Block数，减少I/O次数。此外，垂直分区可以简化表的结构，易于维护。</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>垂直拆分的缺点： 主键会出现冗余，需要管理冗余列，并会引起Join操作，可以通过在应用层进行Join来解决。此外，垂直分区会让事务变得更加复杂；</p>
+<h3 id="水平分区"><a href="#水平分区" class="headerlink" title="水平分区"></a>水平分区</h3><p>保持数据表结构不变，通过某种策略存储数据分片。这样每一片数据分散到不同的表或者库中，达到了分布式的目的。 水平拆分可以支撑非常大的数据量。</p>
+<p>水平拆分是指数据表行的拆分，表的行数超过200万行时，就会变慢，这时可以把一张的表的数据拆成多张表来存放。举个例子：我们可以将用户信息表拆分成多个用户信息表，这样就可以避免单一表数据量过大对性能造成影响。</p>
+<p>水平拆分可以支持非常大的数据量。需要注意的一点是：分表仅仅是解决了单一表数据过大的问题，但由于表的数据还是在同一台机器上，其实对于提升MySQL并发能力没有什么意义，所以 水平拆分最好分库 。</p>
+<p>水平拆分能够 支持非常大的数据量存储，应用端改造也少，但 分片事务难以解决 ，跨节点Join性能较差，逻辑复杂。《Java工程师修炼之道》的作者推荐 尽量不要对数据进行分片，因为拆分会带来逻辑、部署、运维的各种复杂度 ，一般的数据表在优化得当的情况下支撑千万以下的数据量是没有太大问题的。如果实在要分片，尽量选择客户端分片架构，这样可以减少一次和中间件的网络I/O。</p>
+<h4 id="客户端代理"><a href="#客户端代理" class="headerlink" title="客户端代理"></a>客户端代理</h4><p>客户端代理： 分片逻辑在应用端，封装在jar包中，通过修改或者封装JDBC层来实现。 当当网的 Sharding-JDBC 、阿里的TDDL是两种比较常用的实现。</p>
+<h4 id="中间件代理"><a href="#中间件代理" class="headerlink" title="中间件代理"></a>中间件代理</h4><p>中间件代理： 在应用和数据中间加了一个代理层。分片逻辑统一维护在中间件服务中。 我们现在谈的 Mycat 、360的Atlas、网易的DDB等等都是这种架构的实现。</p>
+<h2 id="超一万行数据量的写操作"><a href="#超一万行数据量的写操作" class="headerlink" title="超一万行数据量的写操作"></a>超一万行数据量的写操作</h2><h3 id="产生的问题"><a href="#产生的问题" class="headerlink" title="产生的问题"></a>产生的问题</h3><h4 id="大批量操作可能会造成严重的主从延迟"><a href="#大批量操作可能会造成严重的主从延迟" class="headerlink" title="大批量操作可能会造成严重的主从延迟"></a>大批量操作可能会造成严重的主从延迟</h4><p>主从环境中,大批量操作可能会造成严重的主从延迟，大批量的写操作一般都需要执行一定长的时间， 而只有当主库上执行完成后，才会在其他从库上执行，所以会造成主库与从库长时间的延迟情况</p>
+<h4 id="binlog-日志为-row-格式时会产生大量的日志"><a href="#binlog-日志为-row-格式时会产生大量的日志" class="headerlink" title="binlog 日志为 row 格式时会产生大量的日志"></a>binlog 日志为 row 格式时会产生大量的日志</h4><p>大批量写操作会产生大量日志，特别是对于 row 格式二进制数据而言，由于在 row 格式中会记录每一行数据的修改，我们一次修改的数据越多，产生的日志量也就会越多，日志的传输和恢复所需要的时间也就越长，这也是造成主从延迟的一个原因</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h4 id="避免产生大事务操作，分批操作"><a href="#避免产生大事务操作，分批操作" class="headerlink" title="避免产生大事务操作，分批操作"></a>避免产生大事务操作，分批操作</h4><p>大批量修改数据，一定是在一个事务中进行的，这就会造成表中大批量数据进行锁定，从而导致大量的阻塞，阻塞会对 MySQL的性能产生非常大的影响。</p>
+<p>特别是长时间的阻塞会占满所有数据库的可用连接，这会使生产环境中的其他应用无法连接到数据库，因此一定要注意大批量写操作要进行分批。</p>
+<h4 id="对于大表使用pt-online-schema-change修改表的结构"><a href="#对于大表使用pt-online-schema-change修改表的结构" class="headerlink" title="对于大表使用pt-online-schema-change修改表的结构"></a>对于大表使用pt-online-schema-change修改表的结构</h4><p>避免大表修改产生的主从延迟<br>避免在对表字段进行修改时进行锁表</p>
+<p>对大表数据结构的修改一定要谨慎，会造成严重的锁表操作，尤其是生产环境，是不能容忍的。</p>
+<p>pt-online-schema-change 它会首先建立一个与原表结构相同的新表，并且在新表上进行表结构的修改，然后再把原表中的数据复制到新表中，并在原表中增加一些触发器。</p>
+<p>把原表中新增的数据也复制到新表中，在行所有数据复制完成之后，把新表命名成原表，并把原来的表删除掉。把原来一个 DDL 操作，分解成多个小的批次进行。</p>
 
           
         
@@ -645,7 +722,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据库/oracle和mysql的区别/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/零散记/sizeOf/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -665,7 +742,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/26/数据库/oracle和mysql的区别/" class="post-title-link" itemprop="url">oracle和mysql的区别</a>
+                <a href="/2019/05/26/零散记/sizeOf/" class="post-title-link" itemprop="url">sizeOf</a>
               
             
           </h1>
@@ -707,7 +784,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-25 01:17:46" itemprop="dateModified" datetime="2019-10-25T01:17:46+08:00">2019-10-25</time> 
+              <time title="修改时间：2019-10-18 16:07:12" itemprop="dateModified" datetime="2019-10-18T16:07:12+08:00">2019-10-18</time> 
               -->
               <!-- new version -->
                         
@@ -722,8 +799,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-25T01:17:46+08:00" content="2019-10-25">
-                2019-10-25 01:17:46
+              <time itemprop="dateUpdated" datetime="2019-10-18T16:07:12+08:00" content="2019-10-18">
+                2019-10-18 16:07:12
               </time>
             </span>
           
@@ -744,7 +821,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/零散记/" itemprop="url" rel="index"><span itemprop="name">零散记</span></a></span>
 
                 
                 
@@ -763,8 +840,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/数据库/oracle和mysql的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据库/oracle和mysql的区别/" itemprop="commentCount"></span>
+                <a href="/2019/05/26/零散记/sizeOf/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/零散记/sizeOf/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -794,12 +871,7 @@
       
         
           
-            <p>默认隔离级别不同：mysql默认可重复读，oracle默认读已提交</p>
-<p>隔离级别种类不同：oracle只有读已提交和串行化，只读</p>
-<p>对事务的提交：mysql自动提交，oracle默认手动提交</p>
-<p>并发性：mysql有索引行级锁，没索引表级锁，oracle使用行级锁对资源锁定的粒度小得很，只是锁定sql需要得资源，不依赖索引</p>
-<p>分页查询：MySQL用到limit，oracle用到伪列ROWNUM和嵌套查询</p>
-<p>逻辑备份：mysql逻辑备份数据需要锁定数据，oracle不需要</p>
+            <p><a href="https://www.cnblogs.com/qiulinzhang/p/9570867.html" target="_blank" rel="noopener">https://www.cnblogs.com/qiulinzhang/p/9570867.html</a></p>
 
           
         
@@ -1093,7 +1165,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/java集合类/集合类之List/集合类之List/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据库/oracle和mysql的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -1113,7 +1185,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/26/java集合类/集合类之List/集合类之List/" class="post-title-link" itemprop="url">集合类之List</a>
+                <a href="/2019/05/26/数据库/oracle和mysql的区别/" class="post-title-link" itemprop="url">oracle和mysql的区别</a>
               
             
           </h1>
@@ -1155,7 +1227,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-06 23:54:22" itemprop="dateModified" datetime="2019-10-06T23:54:22+08:00">2019-10-06</time> 
+              <time title="修改时间：2019-10-25 01:17:46" itemprop="dateModified" datetime="2019-10-25T01:17:46+08:00">2019-10-25</time> 
               -->
               <!-- new version -->
                         
@@ -1170,8 +1242,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-06T23:54:22+08:00" content="2019-10-06">
-                2019-10-06 23:54:22
+              <time itemprop="dateUpdated" datetime="2019-10-25T01:17:46+08:00" content="2019-10-25">
+                2019-10-25 01:17:46
               </time>
             </span>
           
@@ -1192,7 +1264,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/集合框架/" itemprop="url" rel="index"><span itemprop="name">集合框架</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -1211,8 +1283,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/java集合类/集合类之List/集合类之List/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/java集合类/集合类之List/集合类之List/" itemprop="commentCount"></span>
+                <a href="/2019/05/26/数据库/oracle和mysql的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据库/oracle和mysql的区别/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1242,64 +1314,359 @@
       
         
           
-            <h1 id="集合类之List"><a href="#集合类之List" class="headerlink" title="集合类之List"></a>集合类之List</h1><p>List接口扩展自Collection，定义一个允许重复的有序集合，从List接口中的方法来看，List接口主要是增加了面向位置的操作，允许在指定位置上操作元素，同时增加了一个能够双向遍历线性表的新列表迭代器ListIterator。List接口的两个重要的具体实现类，也是我们可能最常用的类，ArrayList和LinkedList。</p>
-<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/集合框架体系图.jpg" alt="集合框架体系图"></p>
-<h3 id="1-ArrayList"><a href="#1-ArrayList" class="headerlink" title="1.ArrayList"></a>1.ArrayList</h3><p>它是用数组存储元素的，这个数组可以动态创建，如果元素个数超过了数组的容量，那么就创建一个更大的新数组（通过移位运算符&gt;&gt;1扩大1倍再加上自己原本的容量即扩充1.5倍），并将当前数组中的所有元素都复制到新数组中。假设第一次是集合没有任何元素，下面以插入一个元素为例看看源码的实现。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、找到add()实现方法。</span><br><span class="line"> </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">        ensureCapacityInternal(size + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span></span><br><span class="line">        elementData[size++] = e;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"><span class="number">2</span>、此方法主要是确定将要创建的数组大小。</span><br><span class="line"> </span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">            minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);<span class="comment">//取出两个较大的容量</span></span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        ensureExplicitCapacity(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureExplicitCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">        modCount++;<span class="comment">//记录了结构性改变的次数。结构性改变指的是那些修改了列表大小的操作，在迭代过程中可能会造成错误的结果。</span></span><br><span class="line">        <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">            grow(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"><span class="number">3</span>、最后是创建数组，可以明显的看到先是确定了添加元素后的大小之后将元素复制到新数组中。</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// overflow-conscious code</span></span><br><span class="line">        <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">        <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);<span class="comment">//1.5倍扩容</span></span><br><span class="line">        <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">            newCapacity = minCapacity;</span><br><span class="line">        <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">            newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">        <span class="comment">// minCapacity is usually close to size, so this is a win:</span></span><br><span class="line">        elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>ArrayList遍历三种方法</p>
-<p>1、通过迭代器Iterator()</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Iterator iter = list.iterator();</span><br><span class="line"><span class="keyword">while</span> (iter.hasNext())</span><br><span class="line">&#123;</span><br><span class="line">    System.out.println(iter.next());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2、随机访问，通过索引值去遍历。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> size = list.size();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;size; i++) </span><br><span class="line">&#123;</span><br><span class="line">    System.out.println(list.get(i));        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3、for循环遍历</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(String str:list)</span><br><span class="line">&#123;</span><br><span class="line">System.out.println(str);</span><br><span class="line">　　 &#125;</span><br></pre></td></tr></table></figure>
-<p>ArrayList常见问题</p>
-<p>1、ArrayList如何实现自动增加</p>
-<p>当试图在arraylist中增加一个对象的时候，Java会去检查arraylist，以确保已存在的数组中有足够的容量来存储这个新的对象。如果没有足够容量的话，那么就会新建一个长度更长的数组，旧的数组就会使用Arrays.copyOf方法被复制到新的数组中去，现有的数组引用指向了新的数组。</p>
-<p>2、当传递ArrayList到某个方法中，或者某个方法返回ArrayList，什么时候要考虑安全隐患？如何修复安全违规这个问题呢？</p>
-<p>当array被当做参数传递到某个方法中，如果array在没有被复制的情况下直接被分配给了成员变量，那么就可能发生这种情况，即当原始的数组被调用的方法改变的时候，传递到这个方法中的数组也会改变。</p>
-<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/arrayList安全隐患.png" alt="arrayList安全隐患"></p>
-<p>3、什么情况下你会使用ArrayList？什么时候你会选择LinkedList？</p>
-<p>多数情况下，当你遇到访问元素比插入或者是删除元素更加频繁的时候，你应该使用ArrayList。另外一方面，当你在某个特别的索引中，插入或者是删除元素更加频繁，或者你根本就不需要访问元素的时候，你会选择LinkedList。这里的主要原因是，在ArrayList中访问元素的最糟糕的时间复杂度是”1″，而在LinkedList中可能就是”n”了。在ArrayList中增加或者删除某个元素，通常会调用System.arraycopy方法，这是一种极为消耗资源的操作，因此，在频繁的插入或者是删除元素的情况下，LinkedList的性能会更加好一点。</p>
-<p>System.arraycopy方法消耗资源原因：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</span><br><span class="line">代码解释:</span><br><span class="line">　　Object src : 原数组</span><br><span class="line">   int srcPos : 从元数据的起始位置开始</span><br><span class="line">　　Object dest : 目标数组</span><br><span class="line">　　int destPos : 目标数组的开始起始位置</span><br><span class="line">　　int length  : 要copy的数组的长度</span><br><span class="line"></span><br><span class="line">我们使用System.arraycopy进行转换(copy)</span><br><span class="line"></span><br><span class="line">System.arrayCopy(srcBytes,0,destBytes ,0,5)</span><br><span class="line">上面这段代码就是 : 创建一个一维空数组,数组的总长度为 12位,然后将srcBytes源数组中 从0位 到 第5位之间的数值 copy 到 destBytes目标数组中,在目标数组的第0位开始放置.</span><br><span class="line">那么这行代码的运行效果应该是 2,4,0,0,0,</span><br><span class="line"></span><br><span class="line">增加或者删除都要进行一次copy，消耗资源多。</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/arraylist增加.jpg" alt="arraylist增加"></p>
-<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/arraylist删除.jpg" alt="arraylist删除"></p>
-<p>4、如何复制某个ArrayList到另一个ArrayList中去？写出你的代码？</p>
-<p>下面就是把某个ArrayList复制到另一个ArrayList中去的几种技术：</p>
-<ol>
-<li>使用clone()方法，比如ArrayList newArray = oldArray.clone();</li>
-<li>使用ArrayList构造方法，比如：ArrayList myObject = new ArrayList(myTempObject);</li>
-<li>使用Collection的copy方法。</li>
-</ol>
-<p>注意1和2是浅拷贝(shallow copy)。</p>
-<p>浅拷贝和深拷贝区别：</p>
-<p>| 浅拷贝：只复制引用，另一处修改，你当下的对象也会修改。         </p>
-<p>| 深拷贝：引用对象的值等信息，复制一份一样的。</p>
-<p>浅拷贝—能复制变量，如果对象内还有对象，则只能复制对象的地址（指针指向同一个内存空间）</p>
-<p>深拷贝—能复制变量，也能复制当前对象的内部对象</p>
-<p>利用序列化实现深拷贝</p>
-<p>把对象写到流里的过程是序列化过程（Serialization），而把对象从流中读出来的过程则叫做反序列化过程（Deserialization）。</p>
-<p>在Java语言里深复制一个对象，常常可以先使对象实现Serializable接口，然后把对象（实际上只是对象的一个拷贝）写到一个流里，再从流里读出来，便可以重建对象。</p>
-<h3 id="2-LinkedList"><a href="#2-LinkedList" class="headerlink" title="2.LinkedList"></a>2.LinkedList</h3><p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/LinkedList结构图.png" alt="LinkedList结构图"></p>
-<p>1、继承了AbstractSequentialList抽象类：在遍历LinkedList的时候，官方更推荐使用顺序访问，也就是使用我们的迭代器。（因为LinkedList底层是通过一个双向链表来实现的）（虽然LinkedList也提供了get（int index）方法，但是底层的实现是：每次调用get（int index）方法的时候，都需要从链表的头部或者尾部进行遍历，每一的遍历时间复杂度是O(index)，而相对比ArrayList的底层实现，每次遍历的时间复杂度都是O(1)。所以不推荐通过get（int index）遍历LinkedList。</p>
-<p>至于上面的说从链表的头部后尾部进行遍历：官方源码对遍历进行了优化：通过判断索引index更靠近链表的头部还是尾部来选择遍历的方向）（所以这里遍历LinkedList推荐使用迭代器）。</p>
-<p>2、实现了List接口。（提供List接口中所有方法的实现）<br>实现了Cloneable接口，它支持克隆（浅克隆），底层实现：LinkedList节点并没有被克隆，只是通过Object的clone（）方法得到的Object对象强制转化为了LinkedList,然后把它内部的实例域都置空，然后把被拷贝的LinkedList节点中的每一个值都拷贝到clone中。</p>
-<p>3、实现了Deque接口。实现了Deque所有的可选的操作。</p>
-<p>4、实现了Serializable接口。表明它支持序列化。（和ArrayList一样，底层都提供了两个方法：readObject（ObjectInputStream o）、writeObject（ObjectOutputStream o），用于实现序列化，底层只序列化节点的个数和节点的值）</p>
-<p>底层重要方法分析：</p>
-<p><strong>addAll(int index, Collection）</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首先调用一下空的构造器。</span></span><br><span class="line"><span class="comment">//然后调用addAll(c)方法。</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">LinkedList</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>();</span><br><span class="line">        addAll(c);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//通过调用addAll(int index, Collection&lt;? extends E&gt; c) 完成集合的添加。</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> addAll(size, c);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//几乎所有的涉及到在指定位置添加或者删除或修改操作都需要判断传进来的参数是否合法。</span></span><br><span class="line"><span class="comment">// checkPositionIndex(index)方法就起这个作用。  </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(<span class="keyword">int</span> index, Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">        checkPositionIndex(index);</span><br><span class="line"><span class="comment">//先把集合转化为数组，然后为该数组添加一个新的引用（Objext[] a）。</span></span><br><span class="line">        Object[] a = c.toArray();</span><br><span class="line"><span class="comment">//新建一个变量存储数组的长度。</span></span><br><span class="line">        <span class="keyword">int</span> numNew = a.length;</span><br><span class="line"><span class="comment">//如果待添加的集合为空，直接返回，无需进行后面的步骤。后面都是用来把集合中的元素添加到</span></span><br><span class="line"><span class="comment">//LinkedList中。</span></span><br><span class="line">        <span class="keyword">if</span> (numNew == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="comment">//Node&lt;E&gt; succ：指代待添加节点的位置。</span></span><br><span class="line"><span class="comment">//Node&lt;E&gt; pred：指代待添加节点的前一个节点。</span></span><br><span class="line"><span class="comment">//下面的代码是依据新添加的元素的位置分为两个分支：</span></span><br><span class="line"><span class="comment">//①新添加的元素的位置位于LinkedList最后一个元素的后面。</span></span><br><span class="line"><span class="comment">//新添加的元素的位置位于LinkedList中。</span></span><br><span class="line"><span class="comment">//如果index==size;说明此时需要添加LinkedList中的集合中的每一个元素都是在LinkedList</span></span><br><span class="line"><span class="comment">//最后面。所以把succ设置为空，pred指向尾节点。</span></span><br><span class="line"><span class="comment">//否则的话succ指向插入待插入位置的节点。这里用到了node（int index）方法，这个方法</span></span><br><span class="line"><span class="comment">//后面会详细分析，这里只需要知道该方法返回对应索引位置上的Node（节点）。pred指向succ节点的前一个节点。</span></span><br><span class="line">        Node&lt;E&gt; pred, succ;</span><br><span class="line">        <span class="keyword">if</span> (index == size) &#123;</span><br><span class="line">            succ = <span class="keyword">null</span>;</span><br><span class="line">            pred = last;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            succ = node(index);</span><br><span class="line">            pred = succ.prev;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//接着遍历数组中的每个元素。在每次遍历的时候，都新建一个节点，该节点的值存储数组a中遍历</span></span><br><span class="line"><span class="comment">//的值，该节点的prev用来存储pred节点，next设置为空。接着判断一下该节点的前一个节点是否为</span></span><br><span class="line"><span class="comment">//空，如果为空的话，则把当前节点设置为头节点。否则的话就把当前节点的前一个节点的next值</span></span><br><span class="line"><span class="comment">//设置为当前节点。最后把pred指向当前节点，以便后续新节点的添加。</span></span><br><span class="line">        <span class="keyword">for</span> (Object o : a) &#123;</span><br><span class="line">            <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>) E e = (E) o;</span><br><span class="line">            Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(pred, e, <span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">if</span> (pred == <span class="keyword">null</span>)</span><br><span class="line">                first = newNode;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                pred.next = newNode;</span><br><span class="line">            pred = newNode;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//这里仍然和上面一样，分两种情况对待：</span></span><br><span class="line"><span class="comment">//①当succ==null（也就是新添加的节点位于LinkedList集合的最后一个元素的后面），</span></span><br><span class="line"><span class="comment">//通过遍历上面的a的所有元素，此时pred指向的是LinkedList中的最后一个元素，所以把</span></span><br><span class="line"><span class="comment">//last指向pred指向的节点。</span></span><br><span class="line"><span class="comment">//当不为空的时候，表明在LinkedList集合中添加的元素，需要把pred的next指向succ上，</span></span><br><span class="line"><span class="comment">//succ的prev指向pred。</span></span><br><span class="line"><span class="comment">//最后把集合的大小设置为新的大小。</span></span><br><span class="line"><span class="comment">//modCount（修改的次数）自增。</span></span><br><span class="line">        <span class="keyword">if</span> (succ == <span class="keyword">null</span>) &#123;</span><br><span class="line">            last = pred;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            pred.next = succ;</span><br><span class="line">            succ.prev = pred;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        size += numNew;</span><br><span class="line">        modCount++;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>虽然是增加一个集合的元素，但是modCount只增加了一次</p>
-<p><strong>将LinkedList写入到流中。（也就是把LinkedList状态保存到流中）（序列化）</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">writeObject</span><span class="params">(java.io.ObjectOutputStream s)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> java.io.IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Write out any hidden serialization magic</span></span><br><span class="line">    s.defaultWriteObject();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write out size</span></span><br><span class="line">    s.writeInt(size);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write out all elements in the proper order.</span></span><br><span class="line">    <span class="keyword">for</span> (Node&lt;E&gt; x = first; x != <span class="keyword">null</span>; x = x.next)</span><br><span class="line">        s.writeObject(x.item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>从流中把LinkedList读取出来（读取流，拼装成LinkedList）（反序列化）</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(java.io.ObjectInputStream s)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> java.io.IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">    <span class="comment">// Read in any hidden serialization magic</span></span><br><span class="line">    s.defaultReadObject();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Read in size</span></span><br><span class="line">    <span class="keyword">int</span> size = s.readInt();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Read in all elements in the proper order.</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">        linkLast((E)s.readObject());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>LinkedList提供了两种迭代器，一种是返回Iterator，另一种返回ListIterator。</strong></p>
-<p><strong>①返回ListIterator迭代器：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListIterator&lt;E&gt; <span class="title">listIterator</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    checkPositionIndex(index);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ListItr(index);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>②返回Iterator迭代器：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">descendingIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DescendingIterator();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>默认隔离级别不同：mysql默认可重复读，oracle默认读已提交</p>
+<p>隔离级别种类不同：oracle只有读已提交和串行化，只读</p>
+<p>对事务的提交：mysql自动提交，oracle默认手动提交</p>
+<p>并发性：mysql有索引行级锁，没索引表级锁，oracle使用行级锁对资源锁定的粒度小得很，只是锁定sql需要得资源，不依赖索引</p>
+<p>分页查询：MySQL用到limit，oracle用到伪列ROWNUM和嵌套查询</p>
+<p>逻辑备份：mysql逻辑备份数据需要锁定数据，oracle不需要</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/JavaEE/JDBC/JDBC知识总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/JavaEE/JDBC/JDBC知识总结/" class="post-title-link" itemprop="url">JDBC知识总结</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-07 14:22:26" itemprop="dateModified" datetime="2019-10-07T14:22:26+08:00">2019-10-07</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-07T14:22:26+08:00" content="2019-10-07">
+                2019-10-07 14:22:26
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaEE/" itemprop="url" rel="index"><span itemprop="name">JavaEE</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/JavaEE/JDBC/JDBC知识总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/JavaEE/JDBC/JDBC知识总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JDBC知识总结"><a href="#JDBC知识总结" class="headerlink" title="JDBC知识总结"></a>JDBC知识总结</h1><h3 id="JDBC的接口和类"><a href="#JDBC的接口和类" class="headerlink" title="JDBC的接口和类"></a>JDBC的接口和类</h3><p>JDBC API主要位于java.sql包中，关键的接口和类包括以下几种。</p>
+<table>
+<thead>
+<tr>
+<th>类/接口</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Driver接口、DriverManager类</td>
+<td>前者表示驱动器、后者表示驱动管理器</td>
+</tr>
+<tr>
+<td>Connection接口</td>
+<td>表示数据库的链接</td>
+</tr>
+<tr>
+<td>Statement接口</td>
+<td>负责执行SQL语句</td>
+</tr>
+<tr>
+<td>PreparedStatement接口</td>
+<td>负责执行预备的SQL语句</td>
+</tr>
+<tr>
+<td>CallableStatement接口</td>
+<td>负责执行SQL存储过程</td>
+</tr>
+<tr>
+<td>ResultSet接口</td>
+<td>表示SQL查询语句返回的结果集</td>
+</tr>
+</tbody>
+</table>
+<h3 id="JDBC步骤"><a href="#JDBC步骤" class="headerlink" title="JDBC步骤"></a>JDBC步骤</h3><p>1、注册驱动</p>
+<p>2、获取与数据库的链接</p>
+<p>3、创建代表SQL语句的对象</p>
+<p>4、执行SQL语句</p>
+<p>5、如果是查询语句，需要遍历结果集</p>
+<p>6、释放占用的资源</p>
+<p><img src="/2019/05/26/JavaEE/JDBC/JDBC知识总结/JDBC建立步骤.png" alt></p>
+<h3 id="DriverManager接口和DriverManager类"><a href="#DriverManager接口和DriverManager类" class="headerlink" title="DriverManager接口和DriverManager类"></a>DriverManager接口和DriverManager类</h3><p>DriverManager类用来建立和数据库的连接及管理JDBC驱动器。DriverManager类的方法都是静态的，主要包括以下几种</p>
+<table>
+<thead>
+<tr>
+<th><strong>类/接口</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>registerDriver（Driver driver）</td>
+<td>在DriverManeger中注册JDBC驱动器<br></td>
+</tr>
+<tr>
+<td>getConnection(String url,String user,String password)</td>
+<td>建立和数据的连接</td>
+</tr>
+<tr>
+<td>setLoginTime（int seconds）</td>
+<td>设定等待建立数据连接的超时时间</td>
+</tr>
+<tr>
+<td>setlogWriter（PrintWriter out）</td>
+<td>设定输出JDBC日志的PrintWriter对象</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注册数据库的驱动</span></span><br><span class="line">Class.forName(<span class="string">"com.MySQL.jdbc.Driver"</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">//创建数据库的链接信息(指定要连接那个数据库)：数据库路径、数据库的账号和密码</span></span><br><span class="line">String url = <span class="string">"jdbc:mysql://localhost:3306/dataBase_Name"</span>;</span><br><span class="line"><span class="comment">//jdbc:数据库://ip地址:端口号;数据库名 </span></span><br><span class="line">String username = <span class="string">"root"</span>;</span><br><span class="line">String password = <span class="string">"123456"</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//连接数据库，返回连接结果，该结果的类型是Connection</span></span><br><span class="line">Connection conn = DriverManager.getConnection(url,username,password);<span class="comment">//获得连接</span></span><br></pre></td></tr></table></figure>
+<p>注意，上面代码可能出现的两种异常：</p>
+<p>   1、ClassNotFoundException：这个异常是在加载数据库驱动的时候，出现这个异常有两个可能：</p>
+<p>​          a、检查是否导入了Mysql的jar包</p>
+<p>​          b、将数据库的驱动名打错，检查是否是com.MySQL.jdbc.Driver</p>
+<p>   2、SQLException：这个异常出现在连接数据库的过程，出现这个异常就是三个参数的问题。</p>
+<p>Class.forName(“com.mysql.jdbc.Driver”)和DriverManager.registerDriver(new com.mysql.jdbc.Driver())的区别</p>
+<p>Class.forName(“com.mysql.jdbc.Driver”)的源码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">      DriverManager.registerDriver(<span class="keyword">new</span> Driver());<span class="comment">//静态代码块，加载即初始化</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException E) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Can't register driver!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>DriverManager.registerDriver(new com.mysql.jdbc.Driver())</p>
+<p>Driver类的静态代码块会注册一次，那么此时new Driver的时候就会注册一次，然后外层又会注册一次，所以注册了两次驱动(加载一次、初始化一次)</p>
+<h3 id="connection接口"><a href="#connection接口" class="headerlink" title="connection接口"></a>connection接口</h3><p>Connection接口代表Java程序和数据库的连接，主要包括以下方法。</p>
+<table>
+<thead>
+<tr>
+<th><strong>类/接口</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getMetaData（）</td>
+<td>返回表示数据库的元数据的DatabaseMetaData对象，元数据包含了描述数据库的相关信息</td>
+</tr>
+<tr>
+<td>createStatement（）</td>
+<td>创建并返回Statement对象</td>
+</tr>
+<tr>
+<td>prepareStatement（）</td>
+<td>创建并返回prepareStatement对象</td>
+</tr>
+</tbody>
+</table>
+<p>Connection最为重要的方法就是获取Statement或者prepareStatement对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Statement的用法</span></span><br><span class="line">Statement st = conn.createStatement(sql);</span><br><span class="line">ResultSet rs = stmt.executeQuery();</span><br><span class="line"> </span><br><span class="line"><span class="comment">//prepareStatement的用法</span></span><br><span class="line">PreparedStatement ps = conn.prepareStatement(sql);</span><br><span class="line">ResultSet rs = ps.executeQuery();</span><br></pre></td></tr></table></figure>
+<h3 id="Statement接口"><a href="#Statement接口" class="headerlink" title="Statement接口"></a>Statement接口</h3><p>Statement接口提供了3个执行SQL语句的方法</p>
+<table>
+<thead>
+<tr>
+<th><strong>类/接口</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>execute（String sql）</td>
+<td>执行各种SQL语句，该方法返回一个boolean类型的值。该方法返回的是boolean类型，表示SQL语句是否有结果集。</td>
+</tr>
+</tbody>
+</table>
+<pre><code>如果执行的是更新语句，那么还要调用int getUpdateCount()来获取insert、update、delete语句所影响的行数。
+如果执行的是查询语句，那么还要调用ResultSet对象的getResultSet()来获取select语句的查询结果。 |
+</code></pre><p>| executeUpdate（String sql） | 执行SQL的<strong>insert</strong>、<strong>update</strong>和<strong>delet**</strong>等<strong>语句，适用于</strong>不需要返回结果的SQL语句。该方法返回一个int类型的值，表示数据库中受该SQL语句影响的记录的数目。 |<br>| executeQuery（String sql）  | 执行SQL的select语句。查询操作会返回ResultSet对象，即结果集。 |</p>
+<p>PrepareStatement接口</p>
+<p>PrepareStatement接口继承了Statement接口，用来执行准备的SQL语句。在访问数据库时，可能会遇到某条SQL语句被多次执行，但是其中的参数却不同的情况。</p>
+<p>使用PrepareStatement，而不是Statement来执行SQL语句，这样做具有以下优点：</p>
+<ul>
+<li>简化程序代码，是程序更加灵活。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建SQL语句</span></span><br><span class="line">String sql = <span class="string">"Select * From users Where name = ? And sex = ? And age = ?"</span>;</span><br><span class="line"><span class="comment">//设置参数值</span></span><br><span class="line">ps.setString(<span class="number">1</span>,<span class="string">"LaoYe"</span>);     <span class="comment">//此处的1表示name中的?，而LaoYe表示name的值，下面同理</span></span><br><span class="line">ps.isBoolean(<span class="number">2</span>,<span class="keyword">true</span>);</span><br><span class="line">ps.setInt(<span class="number">3</span>,<span class="number">18</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>提高访问数据库的性能。PrepareStatement执行预准备的SQL语句，数据库只需对这种SQL语句编译一次，然后就可以多次执行。而每次用Statement执行SQL语句时，数据库都需要对该SQL语句进行编译。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、创建SQL语句</span></span><br><span class="line">String sql = <span class="string">"Insert Into users(name,sex,age) Values(?,?,?)"</span>;</span><br><span class="line"><span class="comment">//2、连接数据库，获取连接对象</span></span><br><span class="line">Connection conn = DriverManager.getConnection(url,account,password);</span><br><span class="line"><span class="comment">//3、预准备SQL语句</span></span><br><span class="line">PrepareStatement ps = conn.prepareStatement(sql);</span><br><span class="line"> </span><br><span class="line"><span class="comment">//第一次插入</span></span><br><span class="line">ps.setString(<span class="number">1</span>,<span class="string">"LaoYe"</span>);     <span class="comment">//此处的1表示name中的?，而LaoYe表示name的值，下面同理</span></span><br><span class="line">ps.isBoolean(<span class="number">2</span>,<span class="keyword">true</span>);</span><br><span class="line">ps.setInt(<span class="number">3</span>,<span class="number">18</span>);</span><br><span class="line">ps.executeUpdate();</span><br><span class="line"> </span><br><span class="line">第二次插入</span><br><span class="line">ps.setString(<span class="number">1</span>,<span class="string">"LaoCheng"</span>);     <span class="comment">//此处的1表示name中的?，而LaoYe表示name的值，下面同理</span></span><br><span class="line">ps.isBoolean(<span class="number">2</span>,<span class="keyword">false</span>);</span><br><span class="line">ps.setInt(<span class="number">3</span>,<span class="number">18</span>);</span><br><span class="line">ps.executeUpdate();</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">//结论：可以看出除了值，几乎是重复的，所以视情况可以循环插入，提高开发效率</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>作为 Statement 的子类，PreparedStatement 继承了 Statement 的所有功能。同时，三种方法 execute、                                       executeQuery 和 executeUpdate 已被更改以使之不再需要参数。</li>
+</ul>
+<p>preparestatement预防SQL注入的原因：</p>
+<p>  因为sql语句是预编译的，而且<strong>语句中使用了占位符，规定了sql语句的结构。用户可以设置”?”的值，但是不能改变sql语句的结构</strong>，因此想在sql语句后面加上如“or 1=1”实现sql注入是行不通的。</p>
+<h3 id="ResultSet接口"><a href="#ResultSet接口" class="headerlink" title="ResultSet接口"></a>ResultSet接口</h3><p>结果集对象。该对象包含访问查询结果的方法，ResultSet可以通过列索引或列名或得数据。</p>
+<p>　循环输出数据库信息：</p>
+<p>　　while(rs.next()){<br>　　　　System.out.println(rs.getString(1));<br>　　　　System.out.println(rs.getString(2));<br>　　　　System.out.println(rs.getString(3));<br>　　　　System.out.println(rs.getString(4));<br>}</p>
 
           
         
@@ -1888,7 +2255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/JavaEE/JDBC/JDBC知识总结/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据结构/1 算法的复杂度/算法复杂度/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -1908,7 +2275,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/26/JavaEE/JDBC/JDBC知识总结/" class="post-title-link" itemprop="url">JDBC知识总结</a>
+                <a href="/2019/05/26/数据结构/1 算法的复杂度/算法复杂度/" class="post-title-link" itemprop="url">算法复杂度</a>
               
             
           </h1>
@@ -1950,7 +2317,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-07 14:22:26" itemprop="dateModified" datetime="2019-10-07T14:22:26+08:00">2019-10-07</time> 
+              <time title="修改时间：2019-10-06 22:10:45" itemprop="dateModified" datetime="2019-10-06T22:10:45+08:00">2019-10-06</time> 
               -->
               <!-- new version -->
                         
@@ -1965,8 +2332,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-07T14:22:26+08:00" content="2019-10-07">
-                2019-10-07 14:22:26
+              <time itemprop="dateUpdated" datetime="2019-10-06T22:10:45+08:00" content="2019-10-06">
+                2019-10-06 22:10:45
               </time>
             </span>
           
@@ -1987,7 +2354,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaEE/" itemprop="url" rel="index"><span itemprop="name">JavaEE</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
 
                 
                 
@@ -2006,8 +2373,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/JavaEE/JDBC/JDBC知识总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/JavaEE/JDBC/JDBC知识总结/" itemprop="commentCount"></span>
+                <a href="/2019/05/26/数据结构/1 算法的复杂度/算法复杂度/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据结构/1 算法的复杂度/算法复杂度/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2037,148 +2404,25 @@
       
         
           
-            <h1 id="JDBC知识总结"><a href="#JDBC知识总结" class="headerlink" title="JDBC知识总结"></a>JDBC知识总结</h1><h3 id="JDBC的接口和类"><a href="#JDBC的接口和类" class="headerlink" title="JDBC的接口和类"></a>JDBC的接口和类</h3><p>JDBC API主要位于java.sql包中，关键的接口和类包括以下几种。</p>
-<table>
-<thead>
-<tr>
-<th>类/接口</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Driver接口、DriverManager类</td>
-<td>前者表示驱动器、后者表示驱动管理器</td>
-</tr>
-<tr>
-<td>Connection接口</td>
-<td>表示数据库的链接</td>
-</tr>
-<tr>
-<td>Statement接口</td>
-<td>负责执行SQL语句</td>
-</tr>
-<tr>
-<td>PreparedStatement接口</td>
-<td>负责执行预备的SQL语句</td>
-</tr>
-<tr>
-<td>CallableStatement接口</td>
-<td>负责执行SQL存储过程</td>
-</tr>
-<tr>
-<td>ResultSet接口</td>
-<td>表示SQL查询语句返回的结果集</td>
-</tr>
-</tbody>
-</table>
-<h3 id="JDBC步骤"><a href="#JDBC步骤" class="headerlink" title="JDBC步骤"></a>JDBC步骤</h3><p>1、注册驱动</p>
-<p>2、获取与数据库的链接</p>
-<p>3、创建代表SQL语句的对象</p>
-<p>4、执行SQL语句</p>
-<p>5、如果是查询语句，需要遍历结果集</p>
-<p>6、释放占用的资源</p>
-<p><img src="/2019/05/26/JavaEE/JDBC/JDBC知识总结/JDBC建立步骤.png" alt></p>
-<h3 id="DriverManager接口和DriverManager类"><a href="#DriverManager接口和DriverManager类" class="headerlink" title="DriverManager接口和DriverManager类"></a>DriverManager接口和DriverManager类</h3><p>DriverManager类用来建立和数据库的连接及管理JDBC驱动器。DriverManager类的方法都是静态的，主要包括以下几种</p>
-<table>
-<thead>
-<tr>
-<th><strong>类/接口</strong></th>
-<th><strong>描述</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>registerDriver（Driver driver）</td>
-<td>在DriverManeger中注册JDBC驱动器<br></td>
-</tr>
-<tr>
-<td>getConnection(String url,String user,String password)</td>
-<td>建立和数据的连接</td>
-</tr>
-<tr>
-<td>setLoginTime（int seconds）</td>
-<td>设定等待建立数据连接的超时时间</td>
-</tr>
-<tr>
-<td>setlogWriter（PrintWriter out）</td>
-<td>设定输出JDBC日志的PrintWriter对象</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注册数据库的驱动</span></span><br><span class="line">Class.forName(<span class="string">"com.MySQL.jdbc.Driver"</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">//创建数据库的链接信息(指定要连接那个数据库)：数据库路径、数据库的账号和密码</span></span><br><span class="line">String url = <span class="string">"jdbc:mysql://localhost:3306/dataBase_Name"</span>;</span><br><span class="line"><span class="comment">//jdbc:数据库://ip地址:端口号;数据库名 </span></span><br><span class="line">String username = <span class="string">"root"</span>;</span><br><span class="line">String password = <span class="string">"123456"</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//连接数据库，返回连接结果，该结果的类型是Connection</span></span><br><span class="line">Connection conn = DriverManager.getConnection(url,username,password);<span class="comment">//获得连接</span></span><br></pre></td></tr></table></figure>
-<p>注意，上面代码可能出现的两种异常：</p>
-<p>   1、ClassNotFoundException：这个异常是在加载数据库驱动的时候，出现这个异常有两个可能：</p>
-<p>​          a、检查是否导入了Mysql的jar包</p>
-<p>​          b、将数据库的驱动名打错，检查是否是com.MySQL.jdbc.Driver</p>
-<p>   2、SQLException：这个异常出现在连接数据库的过程，出现这个异常就是三个参数的问题。</p>
-<p>Class.forName(“com.mysql.jdbc.Driver”)和DriverManager.registerDriver(new com.mysql.jdbc.Driver())的区别</p>
-<p>Class.forName(“com.mysql.jdbc.Driver”)的源码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">      DriverManager.registerDriver(<span class="keyword">new</span> Driver());<span class="comment">//静态代码块，加载即初始化</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException E) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Can't register driver!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>DriverManager.registerDriver(new com.mysql.jdbc.Driver())</p>
-<p>Driver类的静态代码块会注册一次，那么此时new Driver的时候就会注册一次，然后外层又会注册一次，所以注册了两次驱动(加载一次、初始化一次)</p>
-<h3 id="connection接口"><a href="#connection接口" class="headerlink" title="connection接口"></a>connection接口</h3><p>Connection接口代表Java程序和数据库的连接，主要包括以下方法。</p>
-<table>
-<thead>
-<tr>
-<th><strong>类/接口</strong></th>
-<th><strong>描述</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>getMetaData（）</td>
-<td>返回表示数据库的元数据的DatabaseMetaData对象，元数据包含了描述数据库的相关信息</td>
-</tr>
-<tr>
-<td>createStatement（）</td>
-<td>创建并返回Statement对象</td>
-</tr>
-<tr>
-<td>prepareStatement（）</td>
-<td>创建并返回prepareStatement对象</td>
-</tr>
-</tbody>
-</table>
-<p>Connection最为重要的方法就是获取Statement或者prepareStatement对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Statement的用法</span></span><br><span class="line">Statement st = conn.createStatement(sql);</span><br><span class="line">ResultSet rs = stmt.executeQuery();</span><br><span class="line"> </span><br><span class="line"><span class="comment">//prepareStatement的用法</span></span><br><span class="line">PreparedStatement ps = conn.prepareStatement(sql);</span><br><span class="line">ResultSet rs = ps.executeQuery();</span><br></pre></td></tr></table></figure>
-<h3 id="Statement接口"><a href="#Statement接口" class="headerlink" title="Statement接口"></a>Statement接口</h3><p>Statement接口提供了3个执行SQL语句的方法</p>
-<table>
-<thead>
-<tr>
-<th><strong>类/接口</strong></th>
-<th><strong>描述</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>execute（String sql）</td>
-<td>执行各种SQL语句，该方法返回一个boolean类型的值。该方法返回的是boolean类型，表示SQL语句是否有结果集。</td>
-</tr>
-</tbody>
-</table>
-<pre><code>如果执行的是更新语句，那么还要调用int getUpdateCount()来获取insert、update、delete语句所影响的行数。
-如果执行的是查询语句，那么还要调用ResultSet对象的getResultSet()来获取select语句的查询结果。 |
-</code></pre><p>| executeUpdate（String sql） | 执行SQL的<strong>insert</strong>、<strong>update</strong>和<strong>delet**</strong>等<strong>语句，适用于</strong>不需要返回结果的SQL语句。该方法返回一个int类型的值，表示数据库中受该SQL语句影响的记录的数目。 |<br>| executeQuery（String sql）  | 执行SQL的select语句。查询操作会返回ResultSet对象，即结果集。 |</p>
-<p>PrepareStatement接口</p>
-<p>PrepareStatement接口继承了Statement接口，用来执行准备的SQL语句。在访问数据库时，可能会遇到某条SQL语句被多次执行，但是其中的参数却不同的情况。</p>
-<p>使用PrepareStatement，而不是Statement来执行SQL语句，这样做具有以下优点：</p>
+            <h3 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h3><p>算法是对问题求解步骤的描述，通过有限序列的指令来实现</p>
+<p>五大特征</p>
 <ul>
-<li>简化程序代码，是程序更加灵活。</li>
+<li>有穷性：有限步之后结束</li>
+<li>确定性：不存在二义性</li>
+<li>可行性</li>
+<li>输入</li>
+<li>输出</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建SQL语句</span></span><br><span class="line">String sql = <span class="string">"Select * From users Where name = ? And sex = ? And age = ?"</span>;</span><br><span class="line"><span class="comment">//设置参数值</span></span><br><span class="line">ps.setString(<span class="number">1</span>,<span class="string">"LaoYe"</span>);     <span class="comment">//此处的1表示name中的?，而LaoYe表示name的值，下面同理</span></span><br><span class="line">ps.isBoolean(<span class="number">2</span>,<span class="keyword">true</span>);</span><br><span class="line">ps.setInt(<span class="number">3</span>,<span class="number">18</span>);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>提高访问数据库的性能。PrepareStatement执行预准备的SQL语句，数据库只需对这种SQL语句编译一次，然后就可以多次执行。而每次用Statement执行SQL语句时，数据库都需要对该SQL语句进行编译。</li>
+<h6 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h6><p>用来衡量算法随着问题规模增大，算法执行时间的增大的快慢</p>
+<p>时间复杂度是问题规模的函数：T(n)</p>
+<p>T(n)=O(f(n))，大O记法</p>
+<p>计算方法： 算法时间增长最快的那个函数项，把它的系数改为1</p>
+<h6 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h6><ul>
+<li>用来衡量算法随问题规模增大，算法所需空间的增长的快慢</li>
+<li>是问题规模的函数：S(n)=O(g(n))</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、创建SQL语句</span></span><br><span class="line">String sql = <span class="string">"Insert Into users(name,sex,age) Values(?,?,?)"</span>;</span><br><span class="line"><span class="comment">//2、连接数据库，获取连接对象</span></span><br><span class="line">Connection conn = DriverManager.getConnection(url,account,password);</span><br><span class="line"><span class="comment">//3、预准备SQL语句</span></span><br><span class="line">PrepareStatement ps = conn.prepareStatement(sql);</span><br><span class="line"> </span><br><span class="line"><span class="comment">//第一次插入</span></span><br><span class="line">ps.setString(<span class="number">1</span>,<span class="string">"LaoYe"</span>);     <span class="comment">//此处的1表示name中的?，而LaoYe表示name的值，下面同理</span></span><br><span class="line">ps.isBoolean(<span class="number">2</span>,<span class="keyword">true</span>);</span><br><span class="line">ps.setInt(<span class="number">3</span>,<span class="number">18</span>);</span><br><span class="line">ps.executeUpdate();</span><br><span class="line"> </span><br><span class="line">第二次插入</span><br><span class="line">ps.setString(<span class="number">1</span>,<span class="string">"LaoCheng"</span>);     <span class="comment">//此处的1表示name中的?，而LaoYe表示name的值，下面同理</span></span><br><span class="line">ps.isBoolean(<span class="number">2</span>,<span class="keyword">false</span>);</span><br><span class="line">ps.setInt(<span class="number">3</span>,<span class="number">18</span>);</span><br><span class="line">ps.executeUpdate();</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">//结论：可以看出除了值，几乎是重复的，所以视情况可以循环插入，提高开发效率</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>作为 Statement 的子类，PreparedStatement 继承了 Statement 的所有功能。同时，三种方法 execute、                                       executeQuery 和 executeUpdate 已被更改以使之不再需要参数。</li>
-</ul>
-<p>preparestatement预防SQL注入的原因：</p>
-<p>  因为sql语句是预编译的，而且<strong>语句中使用了占位符，规定了sql语句的结构。用户可以设置”?”的值，但是不能改变sql语句的结构</strong>，因此想在sql语句后面加上如“or 1=1”实现sql注入是行不通的。</p>
-<h3 id="ResultSet接口"><a href="#ResultSet接口" class="headerlink" title="ResultSet接口"></a>ResultSet接口</h3><p>结果集对象。该对象包含访问查询结果的方法，ResultSet可以通过列索引或列名或得数据。</p>
-<p>　循环输出数据库信息：</p>
-<p>　　while(rs.next()){<br>　　　　System.out.println(rs.getString(1));<br>　　　　System.out.println(rs.getString(2));<br>　　　　System.out.println(rs.getString(3));<br>　　　　System.out.println(rs.getString(4));<br>}</p>
+<p>常见的时间复杂度大小关系</p>
+<p>O(1)&lt;O(logn)&lt;O(n)&lt;O(nlogn)&lt;O(n2)&lt;O(n3)&lt;O(2n)</p>
 
           
         
@@ -2235,7 +2479,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据库/Redis/Redis/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/java集合类/集合类之List/集合类之List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -2255,7 +2499,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/26/数据库/Redis/Redis/" class="post-title-link" itemprop="url">Redis</a>
+                <a href="/2019/05/26/java集合类/集合类之List/集合类之List/" class="post-title-link" itemprop="url">集合类之List</a>
               
             
           </h1>
@@ -2297,7 +2541,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-06 23:43:15" itemprop="dateModified" datetime="2019-10-06T23:43:15+08:00">2019-10-06</time> 
+              <time title="修改时间：2019-10-06 23:54:22" itemprop="dateModified" datetime="2019-10-06T23:54:22+08:00">2019-10-06</time> 
               -->
               <!-- new version -->
                         
@@ -2312,8 +2556,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-06T23:43:15+08:00" content="2019-10-06">
-                2019-10-06 23:43:15
+              <time itemprop="dateUpdated" datetime="2019-10-06T23:54:22+08:00" content="2019-10-06">
+                2019-10-06 23:54:22
               </time>
             </span>
           
@@ -2334,7 +2578,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/集合框架/" itemprop="url" rel="index"><span itemprop="name">集合框架</span></a></span>
 
                 
                 
@@ -2353,8 +2597,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/数据库/Redis/Redis/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据库/Redis/Redis/" itemprop="commentCount"></span>
+                <a href="/2019/05/26/java集合类/集合类之List/集合类之List/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/java集合类/集合类之List/集合类之List/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2384,66 +2628,64 @@
       
         
           
-            <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h3 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h3><p>NoSQL = not only SQL</p>
-<p>非关系型数据库</p>
-<p>为什么需要NoSQL</p>
-<ul>
-<li>High Performance - 高并发读写</li>
-<li>Huge Storage - 海量数据的高效率存储和访问</li>
-<li>HIgh Scalability&amp;&amp;High Availability - 高可扩展性和高可用性</li>
-</ul>
-<p>NoSQL数据库的四大分类</p>
-<ul>
-<li>键值对(key-value)存储</li>
-<li>列存储</li>
-<li>文档数据库</li>
-<li>图形数据库</li>
-</ul>
-<p><img src="/2019/05/26/数据库/Redis/Redis/NoSQL四种类型比较.png" alt></p>
-<p>NoSQL的特点：</p>
-<ul>
-<li>易扩展</li>
-<li>灵活的数据模型</li>
-<li>大数据量</li>
-<li>高可用</li>
-</ul>
-<h3 id="Redis-1"><a href="#Redis-1" class="headerlink" title="Redis"></a>Redis</h3><p>支持的键值数据类型：</p>
-<ul>
-<li>字符串类型</li>
-<li>散列类型</li>
-<li>列表类型</li>
-<li>集合类型</li>
-<li>有序集合类型</li>
-</ul>
-<p>读每秒11万次，写每秒8万次</p>
-<p>Redis应用场景：</p>
-<ul>
-<li>缓存</li>
-<li>任务队列</li>
-<li>应用排行榜</li>
-<li>网站访问统计</li>
-<li>数据过期处理</li>
-<li>分布式集群架构中的session分离</li>
-</ul>
-<h3 id="Jedis"><a href="#Jedis" class="headerlink" title="Jedis"></a>Jedis</h3><p>Jedis是Redis官方首选的java客户端开发包</p>
-<h3 id="Redis的数据结构"><a href="#Redis的数据结构" class="headerlink" title="Redis的数据结构"></a>Redis的数据结构</h3><ul>
-<li>字符串（String）</li>
-<li>哈希（hash）</li>
-<li>字符串列表（list）</li>
-<li>字符串集合（set）</li>
-<li>有序字符串集合（sorted set）</li>
-</ul>
-<h3 id="Redis持久化"><a href="#Redis持久化" class="headerlink" title="Redis持久化"></a>Redis持久化</h3><p>需要持久化的原因：Redis将数据存在内存中，容易丢失数据，需要将数据存进硬盘，称为持久化</p>
-<p>两种持久化的方式</p>
-<ul>
-<li>RDB方式</li>
-<li>AOF方式</li>
-</ul>
-<p>持久化的四种方式：</p>
-<p>RDB方式：默认支持、不需要进行配置，在指定的时间间隔内，将内存中的数据集快照写入硬盘</p>
-<p>AOF方式：以日记的方式记录服务器处理的每一个操作，当重启时，会读取文件进行重建数据库，保证启动时数据库中的数据的完整</p>
-<p>无持久化：通过日志禁止数据库持久化的功能</p>
-<p>同时使用RDB方式和AOF方式</p>
+            <h1 id="集合类之List"><a href="#集合类之List" class="headerlink" title="集合类之List"></a>集合类之List</h1><p>List接口扩展自Collection，定义一个允许重复的有序集合，从List接口中的方法来看，List接口主要是增加了面向位置的操作，允许在指定位置上操作元素，同时增加了一个能够双向遍历线性表的新列表迭代器ListIterator。List接口的两个重要的具体实现类，也是我们可能最常用的类，ArrayList和LinkedList。</p>
+<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/集合框架体系图.jpg" alt="集合框架体系图"></p>
+<h3 id="1-ArrayList"><a href="#1-ArrayList" class="headerlink" title="1.ArrayList"></a>1.ArrayList</h3><p>它是用数组存储元素的，这个数组可以动态创建，如果元素个数超过了数组的容量，那么就创建一个更大的新数组（通过移位运算符&gt;&gt;1扩大1倍再加上自己原本的容量即扩充1.5倍），并将当前数组中的所有元素都复制到新数组中。假设第一次是集合没有任何元素，下面以插入一个元素为例看看源码的实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、找到add()实现方法。</span><br><span class="line"> </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">        ensureCapacityInternal(size + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span></span><br><span class="line">        elementData[size++] = e;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"><span class="number">2</span>、此方法主要是确定将要创建的数组大小。</span><br><span class="line"> </span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">            minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);<span class="comment">//取出两个较大的容量</span></span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        ensureExplicitCapacity(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureExplicitCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">        modCount++;<span class="comment">//记录了结构性改变的次数。结构性改变指的是那些修改了列表大小的操作，在迭代过程中可能会造成错误的结果。</span></span><br><span class="line">        <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">            grow(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"><span class="number">3</span>、最后是创建数组，可以明显的看到先是确定了添加元素后的大小之后将元素复制到新数组中。</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// overflow-conscious code</span></span><br><span class="line">        <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">        <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);<span class="comment">//1.5倍扩容</span></span><br><span class="line">        <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">            newCapacity = minCapacity;</span><br><span class="line">        <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">            newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">        <span class="comment">// minCapacity is usually close to size, so this is a win:</span></span><br><span class="line">        elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>ArrayList遍历三种方法</p>
+<p>1、通过迭代器Iterator()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Iterator iter = list.iterator();</span><br><span class="line"><span class="keyword">while</span> (iter.hasNext())</span><br><span class="line">&#123;</span><br><span class="line">    System.out.println(iter.next());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、随机访问，通过索引值去遍历。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> size = list.size();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;size; i++) </span><br><span class="line">&#123;</span><br><span class="line">    System.out.println(list.get(i));        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、for循环遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(String str:list)</span><br><span class="line">&#123;</span><br><span class="line">System.out.println(str);</span><br><span class="line">　　 &#125;</span><br></pre></td></tr></table></figure>
+<p>ArrayList常见问题</p>
+<p>1、ArrayList如何实现自动增加</p>
+<p>当试图在arraylist中增加一个对象的时候，Java会去检查arraylist，以确保已存在的数组中有足够的容量来存储这个新的对象。如果没有足够容量的话，那么就会新建一个长度更长的数组，旧的数组就会使用Arrays.copyOf方法被复制到新的数组中去，现有的数组引用指向了新的数组。</p>
+<p>2、当传递ArrayList到某个方法中，或者某个方法返回ArrayList，什么时候要考虑安全隐患？如何修复安全违规这个问题呢？</p>
+<p>当array被当做参数传递到某个方法中，如果array在没有被复制的情况下直接被分配给了成员变量，那么就可能发生这种情况，即当原始的数组被调用的方法改变的时候，传递到这个方法中的数组也会改变。</p>
+<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/arrayList安全隐患.png" alt="arrayList安全隐患"></p>
+<p>3、什么情况下你会使用ArrayList？什么时候你会选择LinkedList？</p>
+<p>多数情况下，当你遇到访问元素比插入或者是删除元素更加频繁的时候，你应该使用ArrayList。另外一方面，当你在某个特别的索引中，插入或者是删除元素更加频繁，或者你根本就不需要访问元素的时候，你会选择LinkedList。这里的主要原因是，在ArrayList中访问元素的最糟糕的时间复杂度是”1″，而在LinkedList中可能就是”n”了。在ArrayList中增加或者删除某个元素，通常会调用System.arraycopy方法，这是一种极为消耗资源的操作，因此，在频繁的插入或者是删除元素的情况下，LinkedList的性能会更加好一点。</p>
+<p>System.arraycopy方法消耗资源原因：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</span><br><span class="line">代码解释:</span><br><span class="line">　　Object src : 原数组</span><br><span class="line">   int srcPos : 从元数据的起始位置开始</span><br><span class="line">　　Object dest : 目标数组</span><br><span class="line">　　int destPos : 目标数组的开始起始位置</span><br><span class="line">　　int length  : 要copy的数组的长度</span><br><span class="line"></span><br><span class="line">我们使用System.arraycopy进行转换(copy)</span><br><span class="line"></span><br><span class="line">System.arrayCopy(srcBytes,0,destBytes ,0,5)</span><br><span class="line">上面这段代码就是 : 创建一个一维空数组,数组的总长度为 12位,然后将srcBytes源数组中 从0位 到 第5位之间的数值 copy 到 destBytes目标数组中,在目标数组的第0位开始放置.</span><br><span class="line">那么这行代码的运行效果应该是 2,4,0,0,0,</span><br><span class="line"></span><br><span class="line">增加或者删除都要进行一次copy，消耗资源多。</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/arraylist增加.jpg" alt="arraylist增加"></p>
+<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/arraylist删除.jpg" alt="arraylist删除"></p>
+<p>4、如何复制某个ArrayList到另一个ArrayList中去？写出你的代码？</p>
+<p>下面就是把某个ArrayList复制到另一个ArrayList中去的几种技术：</p>
+<ol>
+<li>使用clone()方法，比如ArrayList newArray = oldArray.clone();</li>
+<li>使用ArrayList构造方法，比如：ArrayList myObject = new ArrayList(myTempObject);</li>
+<li>使用Collection的copy方法。</li>
+</ol>
+<p>注意1和2是浅拷贝(shallow copy)。</p>
+<p>浅拷贝和深拷贝区别：</p>
+<p>| 浅拷贝：只复制引用，另一处修改，你当下的对象也会修改。         </p>
+<p>| 深拷贝：引用对象的值等信息，复制一份一样的。</p>
+<p>浅拷贝—能复制变量，如果对象内还有对象，则只能复制对象的地址（指针指向同一个内存空间）</p>
+<p>深拷贝—能复制变量，也能复制当前对象的内部对象</p>
+<p>利用序列化实现深拷贝</p>
+<p>把对象写到流里的过程是序列化过程（Serialization），而把对象从流中读出来的过程则叫做反序列化过程（Deserialization）。</p>
+<p>在Java语言里深复制一个对象，常常可以先使对象实现Serializable接口，然后把对象（实际上只是对象的一个拷贝）写到一个流里，再从流里读出来，便可以重建对象。</p>
+<h3 id="2-LinkedList"><a href="#2-LinkedList" class="headerlink" title="2.LinkedList"></a>2.LinkedList</h3><p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/LinkedList结构图.png" alt="LinkedList结构图"></p>
+<p>1、继承了AbstractSequentialList抽象类：在遍历LinkedList的时候，官方更推荐使用顺序访问，也就是使用我们的迭代器。（因为LinkedList底层是通过一个双向链表来实现的）（虽然LinkedList也提供了get（int index）方法，但是底层的实现是：每次调用get（int index）方法的时候，都需要从链表的头部或者尾部进行遍历，每一的遍历时间复杂度是O(index)，而相对比ArrayList的底层实现，每次遍历的时间复杂度都是O(1)。所以不推荐通过get（int index）遍历LinkedList。</p>
+<p>至于上面的说从链表的头部后尾部进行遍历：官方源码对遍历进行了优化：通过判断索引index更靠近链表的头部还是尾部来选择遍历的方向）（所以这里遍历LinkedList推荐使用迭代器）。</p>
+<p>2、实现了List接口。（提供List接口中所有方法的实现）<br>实现了Cloneable接口，它支持克隆（浅克隆），底层实现：LinkedList节点并没有被克隆，只是通过Object的clone（）方法得到的Object对象强制转化为了LinkedList,然后把它内部的实例域都置空，然后把被拷贝的LinkedList节点中的每一个值都拷贝到clone中。</p>
+<p>3、实现了Deque接口。实现了Deque所有的可选的操作。</p>
+<p>4、实现了Serializable接口。表明它支持序列化。（和ArrayList一样，底层都提供了两个方法：readObject（ObjectInputStream o）、writeObject（ObjectOutputStream o），用于实现序列化，底层只序列化节点的个数和节点的值）</p>
+<p>底层重要方法分析：</p>
+<p><strong>addAll(int index, Collection）</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首先调用一下空的构造器。</span></span><br><span class="line"><span class="comment">//然后调用addAll(c)方法。</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">LinkedList</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>();</span><br><span class="line">        addAll(c);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//通过调用addAll(int index, Collection&lt;? extends E&gt; c) 完成集合的添加。</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> addAll(size, c);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//几乎所有的涉及到在指定位置添加或者删除或修改操作都需要判断传进来的参数是否合法。</span></span><br><span class="line"><span class="comment">// checkPositionIndex(index)方法就起这个作用。  </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(<span class="keyword">int</span> index, Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">        checkPositionIndex(index);</span><br><span class="line"><span class="comment">//先把集合转化为数组，然后为该数组添加一个新的引用（Objext[] a）。</span></span><br><span class="line">        Object[] a = c.toArray();</span><br><span class="line"><span class="comment">//新建一个变量存储数组的长度。</span></span><br><span class="line">        <span class="keyword">int</span> numNew = a.length;</span><br><span class="line"><span class="comment">//如果待添加的集合为空，直接返回，无需进行后面的步骤。后面都是用来把集合中的元素添加到</span></span><br><span class="line"><span class="comment">//LinkedList中。</span></span><br><span class="line">        <span class="keyword">if</span> (numNew == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="comment">//Node&lt;E&gt; succ：指代待添加节点的位置。</span></span><br><span class="line"><span class="comment">//Node&lt;E&gt; pred：指代待添加节点的前一个节点。</span></span><br><span class="line"><span class="comment">//下面的代码是依据新添加的元素的位置分为两个分支：</span></span><br><span class="line"><span class="comment">//①新添加的元素的位置位于LinkedList最后一个元素的后面。</span></span><br><span class="line"><span class="comment">//新添加的元素的位置位于LinkedList中。</span></span><br><span class="line"><span class="comment">//如果index==size;说明此时需要添加LinkedList中的集合中的每一个元素都是在LinkedList</span></span><br><span class="line"><span class="comment">//最后面。所以把succ设置为空，pred指向尾节点。</span></span><br><span class="line"><span class="comment">//否则的话succ指向插入待插入位置的节点。这里用到了node（int index）方法，这个方法</span></span><br><span class="line"><span class="comment">//后面会详细分析，这里只需要知道该方法返回对应索引位置上的Node（节点）。pred指向succ节点的前一个节点。</span></span><br><span class="line">        Node&lt;E&gt; pred, succ;</span><br><span class="line">        <span class="keyword">if</span> (index == size) &#123;</span><br><span class="line">            succ = <span class="keyword">null</span>;</span><br><span class="line">            pred = last;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            succ = node(index);</span><br><span class="line">            pred = succ.prev;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//接着遍历数组中的每个元素。在每次遍历的时候，都新建一个节点，该节点的值存储数组a中遍历</span></span><br><span class="line"><span class="comment">//的值，该节点的prev用来存储pred节点，next设置为空。接着判断一下该节点的前一个节点是否为</span></span><br><span class="line"><span class="comment">//空，如果为空的话，则把当前节点设置为头节点。否则的话就把当前节点的前一个节点的next值</span></span><br><span class="line"><span class="comment">//设置为当前节点。最后把pred指向当前节点，以便后续新节点的添加。</span></span><br><span class="line">        <span class="keyword">for</span> (Object o : a) &#123;</span><br><span class="line">            <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>) E e = (E) o;</span><br><span class="line">            Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(pred, e, <span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">if</span> (pred == <span class="keyword">null</span>)</span><br><span class="line">                first = newNode;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                pred.next = newNode;</span><br><span class="line">            pred = newNode;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//这里仍然和上面一样，分两种情况对待：</span></span><br><span class="line"><span class="comment">//①当succ==null（也就是新添加的节点位于LinkedList集合的最后一个元素的后面），</span></span><br><span class="line"><span class="comment">//通过遍历上面的a的所有元素，此时pred指向的是LinkedList中的最后一个元素，所以把</span></span><br><span class="line"><span class="comment">//last指向pred指向的节点。</span></span><br><span class="line"><span class="comment">//当不为空的时候，表明在LinkedList集合中添加的元素，需要把pred的next指向succ上，</span></span><br><span class="line"><span class="comment">//succ的prev指向pred。</span></span><br><span class="line"><span class="comment">//最后把集合的大小设置为新的大小。</span></span><br><span class="line"><span class="comment">//modCount（修改的次数）自增。</span></span><br><span class="line">        <span class="keyword">if</span> (succ == <span class="keyword">null</span>) &#123;</span><br><span class="line">            last = pred;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            pred.next = succ;</span><br><span class="line">            succ.prev = pred;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        size += numNew;</span><br><span class="line">        modCount++;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>虽然是增加一个集合的元素，但是modCount只增加了一次</p>
+<p><strong>将LinkedList写入到流中。（也就是把LinkedList状态保存到流中）（序列化）</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">writeObject</span><span class="params">(java.io.ObjectOutputStream s)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> java.io.IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Write out any hidden serialization magic</span></span><br><span class="line">    s.defaultWriteObject();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write out size</span></span><br><span class="line">    s.writeInt(size);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write out all elements in the proper order.</span></span><br><span class="line">    <span class="keyword">for</span> (Node&lt;E&gt; x = first; x != <span class="keyword">null</span>; x = x.next)</span><br><span class="line">        s.writeObject(x.item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>从流中把LinkedList读取出来（读取流，拼装成LinkedList）（反序列化）</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(java.io.ObjectInputStream s)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> java.io.IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">    <span class="comment">// Read in any hidden serialization magic</span></span><br><span class="line">    s.defaultReadObject();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Read in size</span></span><br><span class="line">    <span class="keyword">int</span> size = s.readInt();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Read in all elements in the proper order.</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">        linkLast((E)s.readObject());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>LinkedList提供了两种迭代器，一种是返回Iterator，另一种返回ListIterator。</strong></p>
+<p><strong>①返回ListIterator迭代器：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListIterator&lt;E&gt; <span class="title">listIterator</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    checkPositionIndex(index);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ListItr(index);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>②返回Iterator迭代器：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">descendingIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DescendingIterator();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2500,7 +2742,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据库/数据库之基础知识/数据库之基础知识/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据结构/4 树和二叉树/树与二叉树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -2520,7 +2762,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/26/数据库/数据库之基础知识/数据库之基础知识/" class="post-title-link" itemprop="url">数据库之基础知识</a>
+                <a href="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/" class="post-title-link" itemprop="url">树与二叉树</a>
               
             
           </h1>
@@ -2562,7 +2804,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-06 22:33:39" itemprop="dateModified" datetime="2019-10-06T22:33:39+08:00">2019-10-06</time> 
+              <time title="修改时间：2019-10-06 22:21:52" itemprop="dateModified" datetime="2019-10-06T22:21:52+08:00">2019-10-06</time> 
               -->
               <!-- new version -->
                         
@@ -2577,8 +2819,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-06T22:33:39+08:00" content="2019-10-06">
-                2019-10-06 22:33:39
+              <time itemprop="dateUpdated" datetime="2019-10-06T22:21:52+08:00" content="2019-10-06">
+                2019-10-06 22:21:52
               </time>
             </span>
           
@@ -2599,7 +2841,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
 
                 
                 
@@ -2618,8 +2860,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/数据库/数据库之基础知识/数据库之基础知识/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据库/数据库之基础知识/数据库之基础知识/" itemprop="commentCount"></span>
+                <a href="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2649,343 +2891,152 @@
       
         
           
-            <h1 id="数据库之基础知识"><a href="#数据库之基础知识" class="headerlink" title="数据库之基础知识"></a>数据库之基础知识</h1><h3 id="命令行操作MySQL"><a href="#命令行操作MySQL" class="headerlink" title="命令行操作MySQL"></a>命令行操作MySQL</h3><p>DOS命令</p>
-<p><code>盘符+冒号</code> 切换逻辑盘 如：<code>d:</code><br><code>dir</code> 显示目录和文件列表<br><code>cd 目录名</code> 进入目录<br><code>cd ../</code> 进入上一级目录<br><code>cd ./</code> 进入当前目录<br><code>cd /</code> 进入根目录<br><code>exit</code> 退出命令行</p>
-<p>连接数据库</p>
-<p>语法：mysql -h主机名 -u用户名 -p密码<br>如：mysql -hlocalhost -uroot -proot<br>注意：当提示符变成 mysql&gt; 说明我们已经进入mysql命令行模式，只能使用sql指令<br>sql指令都需要以分号 ; 结束<br>quit 退出mysql</p>
-<p>exit 退出命令行</p>
-<h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><p>创建数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> 数据库名</span><br></pre></td></tr></table></figure>
-<p>显示数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">database</span>；显示服务器上的所有的数据库列表破</span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">database</span> <span class="keyword">like</span> <span class="string">'%a%'</span>; like 子命令，显示所有名字里带a的数据库名</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span> <span class="keyword">like</span> <span class="string">'___'</span>; like 子命令，显示数据库名是三个字符的所有数据库名</span><br><span class="line">% 匹配0个或者多个任意字符</span><br><span class="line">_ 下划线，匹配任意一个字符</span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">database</span> 数据库名; 查看建立数据库的语句</span><br></pre></td></tr></table></figure>
-<p>修改数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">database</span> 数据库名 <span class="keyword">charset</span>=gbk; 修改指定的数据库的字符集，只能修改数据的字符集，数据库名不能修改。</span><br></pre></td></tr></table></figure>
-<p>删除数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">database</span> 数据库名; 删除指定的数据库</span><br></pre></td></tr></table></figure>
-<p>MySQL里面的三个数据库mysql、information_schema、performance_schema是系统默认自带的，不可删除，删了需重装MySQL</p>
-<h3 id="数据库操作-1"><a href="#数据库操作-1" class="headerlink" title="数据库操作"></a>数据库操作</h3><p>创建数据表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 表名(<span class="keyword">id</span> <span class="built_in">int</span>,username <span class="built_in">varchar</span>(<span class="number">30</span>),<span class="keyword">password</span> <span class="built_in">varchar</span>(<span class="number">30</span>));</span><br></pre></td></tr></table></figure>
-<p>查看表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">tables</span>; 查看所有的数据表</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> 表名; 查看数据表的建表语句</span><br><span class="line">desc 表名; 查看数据表的结构</span><br></pre></td></tr></table></figure>
-<p>删除表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> 表名; 查看数据表的结构</span><br></pre></td></tr></table></figure>
-<p>修改表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">engine</span>=<span class="keyword">innodb</span>; 可以修改默认引擎</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">charset</span>=gbk; 可以修改字符集</span><br><span class="line"><span class="keyword">rename</span> <span class="keyword">table</span> 表名 <span class="keyword">to</span> 另一个表名; 可以修改表名</span><br></pre></td></tr></table></figure>
-<h3 id="字段操作"><a href="#字段操作" class="headerlink" title="字段操作"></a>字段操作</h3><p>增加新字段</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">add</span> <span class="keyword">column</span> gender <span class="built_in">varchar</span>(<span class="number">2</span>);</span><br><span class="line">在student数据表中新增gender字段</span><br></pre></td></tr></table></figure>
-<p>修改字段的类型和属性</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">modify</span> <span class="keyword">column</span> gender <span class="built_in">varchar</span>(<span class="number">10</span>);</span><br><span class="line">修改student数据表中gender字段数据类型</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">modify</span> <span class="keyword">column</span> gender <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">after</span> 另一个字段;</span><br><span class="line">修改student数据表中gender字段数据类型，并且在数据表中排在 “另一个字段” 后面</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">modify</span> <span class="keyword">column</span> gender <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">first</span>;</span><br><span class="line">修改student数据表中gender字段数据类型，并且在数据表中排在第一位</span><br></pre></td></tr></table></figure>
-<p>修改字段的名字和定义</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">change</span> <span class="keyword">column</span> gender sex <span class="built_in">varchar</span>(<span class="number">2</span>);</span><br><span class="line">把student数据表中gender字段名字改为sex，数据类型改为varchar(2);</span><br></pre></td></tr></table></figure>
-<p>删除字段</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">drop</span> <span class="keyword">column</span> gender;</span><br><span class="line">删除student数据表中的gender字段;</span><br></pre></td></tr></table></figure>
-<h3 id="记录操作"><a href="#记录操作" class="headerlink" title="记录操作"></a>记录操作</h3><p>新增记录</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名(字段列表) <span class="keyword">values</span> (值的列表);</span><br><span class="line">例子：</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student(username) <span class="keyword">values</span>(<span class="string">'中文'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student(<span class="keyword">id</span>,username,age) <span class="keyword">values</span>(<span class="number">3</span>,<span class="string">'中文'</span>,<span class="number">20</span>);</span><br><span class="line">批量新增：</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student(<span class="keyword">id</span>,username,age) <span class="keyword">values</span> (<span class="number">3</span>,<span class="string">'张三'</span>,<span class="number">18</span>),(<span class="number">4</span>,<span class="string">'李四'</span>,<span class="number">20</span>),(<span class="number">5</span>,<span class="string">'刘五'</span>,<span class="number">22</span>);</span><br><span class="line">值的个数与数据表中的字段个数一样时，可以省略字段列表</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span>(<span class="number">4</span>,<span class="string">'中文'</span>,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
-<p>查询记录</p>
-<p>完整语句：<br>select [字段列表] [from子句] [inner join子句] [where子句] [group by子句] [having子句] [order by子句] [limit子句];</p>
-<p>一般使用：</p>
-<p>select [字段列表] [from子句] [where子句] [order by子句] [limit子句];</p>
-<p>[where子句] 用于过滤数据，只取出满足条件的记录</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student where age &gt;= 20; 查询出 age &gt;= 20的记录</span><br></pre></td></tr></table></figure>
-<p>[order by子句] 用于对查询出的数据进行排序</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student <span class="keyword">where</span> age &gt;= <span class="number">20</span> <span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">asc</span>; 年龄升序排列</span><br></pre></td></tr></table></figure>
-<p>asc升序排列 （从小到大）、desc 降序排序 （从大到小）</p>
-<p>[limit子句] 用于限制输出数据的条数</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">limit n; 提取前 n 条数据</span><br><span class="line">limit m,n; 从 第 m 条开始提取 n 条数据**（m 从 0 开始）**</span><br><span class="line">select * from student where age &gt;= 20 order by age asc limit 2; 查询出 age &gt;= 20的记录年龄，升序排列，提取前 2 条</span><br></pre></td></tr></table></figure>
-<p>修改记录</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> 表名 <span class="keyword">set</span> 字段名<span class="number">1</span>=新的值<span class="number">1</span>,字段名<span class="number">2</span>=新的值<span class="number">2</span>,字段名n=新的值n <span class="keyword">where</span> 子句;</span><br><span class="line">例子：</span><br><span class="line"><span class="keyword">update</span> student <span class="keyword">set</span> age=<span class="number">25</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">8</span>;</span><br></pre></td></tr></table></figure>
-<p>删除记录</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span> 子句;</span><br><span class="line">例子：</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> student <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">8</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="mysql中常用数据类型"><a href="#mysql中常用数据类型" class="headerlink" title="mysql中常用数据类型"></a>mysql中常用数据类型</h3><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>INT(size)</td>
-<td>4字节整数类型，-2147483648 到 2147483647 常规。0 到 4294967295 无符号*。在括号中规定最大位数，默认是11。</td>
-</tr>
-<tr>
-<td>BIGINT(size)</td>
-<td>8字节整数类型，-9223372036854775808 到 9223372036854775807 常规。0 到 18446744073709551615 无符号*。在括号中规定最大位数。默认是20。</td>
-</tr>
-<tr>
-<td>FLOAT(size,d)</td>
-<td>字节浮点数，带有浮动小数点的小数字。在括号中规定最大位数。在 d 参数中规定小数点右侧的最大位数。</td>
-</tr>
-<tr>
-<td>CHAR(size)</td>
-<td>保存固定长度的字符串（可包含字母、数字以及特殊字符）。在括号中指定字符串的长度。最多 255 个字符。</td>
-</tr>
-<tr>
-<td>VARCHAR(size)</td>
-<td>保存可变长度的字符串（可包含字母、数字以及特殊字符）。在括号中指定字符串的最大长度。最多 255 个字符。注释：如果值的长度大于 255，则被转换为 TEXT 类型。</td>
-</tr>
-<tr>
-<td>TEXT</td>
-<td>存放最大长度为 65,535 个字符的字符串。</td>
-</tr>
-<tr>
-<td>DATE()</td>
-<td>日期。格式：YYYY-MM-DD 注释：支持的范围是从 ‘1000-01-01’ 到 ‘9999-12-31’</td>
-</tr>
-<tr>
-<td>DATETIME()</td>
-<td>*日期和时间的组合。格式：YYYY-MM-DD HH:MM:SS 注释：支持的范围是从 ‘1000-01-01 00:00:00’ 到 ‘9999-12-31 23:59:59’</td>
-</tr>
-<tr>
-<td>TIMESTAMP()</td>
-<td>*时间戳。TIMESTAMP 值使用 Unix 纪元(‘1970-01-01 00:00:00’ UTC) 至今的描述来存储。格式：YYYY-MM-DD HH:MM:SS 注释：支持的范围是从 ‘1970-01-01 00:00:01’ UTC 到 ‘2038-01-09 03:14:07’ UTC</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据库/数据库之事务和锁机制/数据库之事务和锁机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/数据库/数据库之事务和锁机制/数据库之事务和锁机制/" class="post-title-link" itemprop="url">数据库之事务和锁机制</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-06 23:42:01" itemprop="dateModified" datetime="2019-10-06T23:42:01+08:00">2019-10-06</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-06T23:42:01+08:00" content="2019-10-06">
-                2019-10-06 23:42:01
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/数据库/数据库之事务和锁机制/数据库之事务和锁机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据库/数据库之事务和锁机制/数据库之事务和锁机制/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="数据库之事务和锁机制"><a href="#数据库之事务和锁机制" class="headerlink" title="数据库之事务和锁机制"></a>数据库之事务和锁机制</h1><p><img src="/2019/05/26/数据库/数据库之事务和锁机制/数据库之事务和锁机制/事务思维导图.png" alt></p>
-<h3 id="事务四大特性"><a href="#事务四大特性" class="headerlink" title="事务四大特性"></a>事务四大特性</h3><p>事务的概念：事务（Transaction）是由一系列对系统中数据进行访问与更新的操作所组成的一个程序执行逻辑单元，要么全部执行，要么全部不执行。</p>
-<p>1、原子性（Atomicity）</p>
-<p>原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚，如果操作失败则不能对数据库有任何影响，任何一项操作都会导致整个事务的失败，同时其它已经被执行的操作都将被撤销并回滚，只有所有的操作全部成功，整个事务才算是成功完成。</p>
-<p>2、一致性（Consistency）</p>
-<p>一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行之后都必须处于一致性状态。拿转账来说，假设用户A和用户B两者的钱加起来一共是5000，那么不管A和B之间如何转账，转几次账，事务结束后两个用户的钱相加起来应该还得是5000，这就是事务的一致性。</p>
-<p>3、隔离性（lsolation）</p>
-<p>隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。</p>
-<p>即要达到这么一种效果：对于任意两个并发的事务T1和T2，在事务T1看来，T2要么在T1开始之前就已经结束，要么在T1结束之后才开始，这样每个事务都感觉不到有其他事务在并发地执行。</p>
-<p>4、持久性（durability）</p>
-<p>持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。</p>
-<p>例如我们在使用JDBC操作数据库时，在提交事务方法后，提示用户事务操作完成，当我们程序执行完成直到看到提示后，就可以认定事务以及正确提交，即使这时候数据库出现了问题，也必须要将我们的事务完全执行完成，否则就会造成我们看到提示事务处理完毕，但是数据库因为故障而没有执行事务的重大错误。</p>
-<h3 id="事务并发引起的问题"><a href="#事务并发引起的问题" class="headerlink" title="事务并发引起的问题"></a>事务并发引起的问题</h3><p>1、脏读（dirty read）</p>
-<p>　　当一个事务正在多次修改某个数据，而在这个事务中这多次的修改都还未提交，这时一个并发的事务来访问该数据，就会造成两个事务得到的数据不一致。</p>
-<p>例如：用户A向用户B转账100元</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> <span class="keyword">account</span> <span class="keyword">set</span> money=money+<span class="number">100</span> <span class="keyword">where</span> <span class="keyword">name</span>=’B’;  (此时A通知B)</span><br><span class="line"></span><br><span class="line"><span class="keyword">update</span> <span class="keyword">account</span> <span class="keyword">set</span> money=money - <span class="number">100</span> <span class="keyword">where</span> <span class="keyword">name</span>=’A’;</span><br><span class="line">以上两条sql语句为转账事务</span><br></pre></td></tr></table></figure>
-<p>转账是一个事务，通知查看是一个事务。</p>
-<p>当只执行第一条SQL时，A通知B查看账户，B发现确实钱已到账（<strong>此时即发生了脏读</strong>）</p>
-<p>而之后无论第二条SQL是否执行，只要该事务不提交，则所有操作都将回滚</p>
-<p>那么当B以后再次查看账户时就会发现钱其实并没有转。</p>
-<p>脏读就是一个事务读取了另一个事务未提交的脏数据</p>
-<p>2、不可重复读（unrepeatable reading）</p>
-<p>不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了。</p>
-<p>例如事务T1在读取某一数据，而事务T2立马修改了这个数据并且提交事务给数据库，事务T1再次读取该数据就得到了不同的结果，发送了不可重复读。</p>
-<p>不可重复读和脏读的区别是，脏读是某一事务读取了另一个事务未提交的脏数据，而不可重复读则是读取了前一事务提交的数据。</p>
-<p>在某些情况下，不可重复读并不是问题，比如我们多次查询某个数据当然以最后查询得到的结果为主。但在另一些情况下就有可能发生问题，例如对于同一个数据A和B依次查询就可能不同，A和B就产生矛盾。</p>
-<p>3、幻读（Phantom read）</p>
-<p>幻读是事务非独立执行时发生的一种现象。例如事务T1对一个表中所有的行的某个数据项做了从“1”修改为“2”的操作，这时事务T2又对这个表中插入了一行数据项，而这个数据项的数值还是为“1”并且提交给数据库。而操作事务T1的用户如果再查看刚刚修改的数据，会发现还有一行没有修改，其实这行是从事务T2中添加的，就好像产生幻觉一样，这就是发生了幻读。</p>
-<p>幻读和不可重复读都是读取了另一条已经提交的事务（这点就脏读不同），所不同的是不可重复读查询的都是同一个数据项，而幻读针对的是一批数据整体（比如数据的个数）。</p>
-<h3 id="事务的四种隔离级别"><a href="#事务的四种隔离级别" class="headerlink" title="事务的四种隔离级别"></a>事务的四种隔离级别</h3><ul>
-<li>Serializable (串行化)：可避免脏读、不可重复读、幻读的发生。</li>
-<li>Repeatable read (可重复读)：可避免脏读、不可重复读的发生。</li>
-<li>Read committed (读已提交)：可避免脏读的发生。</li>
-<li>Read uncommitted (读未提交)：最低级别，任何情况都无法保证。</li>
+            <h3 id="树与二叉树"><a href="#树与二叉树" class="headerlink" title="树与二叉树"></a>树与二叉树</h3><p>一对多的树形结构</p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树的结构定义.png" alt></p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树结点相关概念.png" alt></p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树结点相关概念2.png" alt></p>
+<h5 id="树的性质"><a href="#树的性质" class="headerlink" title="树的性质"></a>树的性质</h5><ul>
+<li>树中的结点等于所有结点的度数加1</li>
 </ul>
-<p>以上四种隔离级别最高的是Serializable级别，最低的是Read uncommitted级别。级别越高，执行效率就越低。像Serializable这样的级别，就是以锁表的方式(类似于Java多线程中的锁)使得其他的线程只能在锁外等待，所以平时选用何种隔离级别应该根据实际情况。在MySQL数据库中默认的隔离级别为Repeatable read (可重复读)。</p>
-<p>隔离级别的设置只对当前链接有效。对于使用MySQL命令窗口而言，一个窗口就相当于一个链接，当前窗口设置的隔离级别只对当前窗口中的事务有效。</p>
-<p>对于JDBC操作数据库来说，一个Connection对象相当于一个链接，而对于Connection对象设置的隔离级别只对该Connection对象有效，与其他链接Connection对象无关。</p>
-<p>### </p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树的性质1.png" alt></p>
+<ul>
+<li>度为m的树中第i层上至多有m<sup>i-1</sup>个结点（i&gt;=1）</li>
+</ul>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树的性质2.png" alt></p>
+<ul>
+<li><p>高度为h的m叉树至多有（m<sup>h</sup>-1)/(m-1)个结点</p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树的性质3.png" alt></p>
+</li>
+<li><p>具有n个结点的m叉树的最小高度为取上整[log<sub>m</sub>(n(m-1)+1)]</p>
+</li>
+</ul>
+<p>解上一个方程的h即可</p>
+<h5 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a>树的存储结构</h5><h6 id="顺序存储结构"><a href="#顺序存储结构" class="headerlink" title="顺序存储结构"></a>顺序存储结构</h6><p>双亲表示法：用一组连续的存储空间存储树的结点，同时在每个结点中，用一个变量存储该结点的双亲结点在数组中的位置</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TNode</span>&#123;</span></span><br><span class="line">    ElemType data;<span class="comment">//结点数据</span></span><br><span class="line">    <span class="keyword">int</span> parent;<span class="comment">//该结点双亲在数组的下标</span></span><br><span class="line">&#125;TNode;<span class="comment">//结点的数据类型</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    TNode nodes[MaxSize];<span class="comment">//结点数组</span></span><br><span class="line">    <span class="keyword">int</span> n;<span class="comment">//结点的数量</span></span><br><span class="line">&#125;Tree;<span class="comment">//结点双亲表示结构</span></span><br></pre></td></tr></table></figure>
+<p>双亲表示法可以根据parent找到该结点的双亲结点，时间复杂度为O(1)。但如果找到某节点的孩子结点就需要遍历</p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/顺序存储结构.png" alt></p>
+<h6 id="链式存储结构"><a href="#链式存储结构" class="headerlink" title="链式存储结构"></a>链式存储结构</h6><p>孩子表示法：把每个结点的孩子结点排列起来存储成一个单链表。所以n个结点就有n个链表；如果时叶子结点，那这个结点的孩子单链表就是空的；然后n个单链表的头指针又存储在一个顺序表（数组）中。</p>
+<p>需要设计两种结合结构类型：</p>
+<ul>
+<li>孩子链表的结点</li>
+<li>每个孩子链表的表头结点（存在数组中）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CNode</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> child;<span class="comment">//该孩子在表头数组的下标</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">CNode</span> *<span class="title">next</span>;</span><span class="comment">//指向该结点的下一个孩子结点</span></span><br><span class="line">&#125;CNode,*Child;<span class="comment">//孩子结点数据结构</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    Elemtype data;<span class="comment">//结点数据域</span></span><br><span class="line">    Child firstchild;<span class="comment">//指向该结点的第一个孩子结点</span></span><br><span class="line">&#125;TNode<span class="comment">//孩子结点的数据类型</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    TNode nodes[MaxSize];<span class="comment">//结点数据域</span></span><br><span class="line">    <span class="keyword">int</span> n;<span class="comment">//树中结点个数</span></span><br><span class="line">&#125;Tree;<span class="comment">//树的孩子表示结构</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/链式存储结构.png" alt></p>
+<p>孩子兄弟表示法：要存储孩子结点和兄弟结点，就是设置两个指针，分别指向该结点的第一个孩子结点和该结点的兄弟结点。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span>&#123;</span></span><br><span class="line">    ElemType data;<span class="comment">//该结点的数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span> *<span class="title">firstchild</span>,*<span class="title">rightsib</span>//指向该结点的第一个孩子结点和该结点的右兄弟结点</span></span><br><span class="line"><span class="class">&#125;<span class="title">CSNode</span>;</span><span class="comment">//孩子兄弟结点数据类型</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/链式存储结构2.png" alt></p>
+<h5 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h5><p>每个结点最多有两颗子树</p>
+<p>左右子树有顺序</p>
+<p>五种基本形态</p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树五种形态.png" alt></p>
+<h6 id="特殊二叉树"><a href="#特殊二叉树" class="headerlink" title="特殊二叉树"></a>特殊二叉树</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/斜树.png" alt></p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/满二叉树.png" alt></p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/完全二叉树.png" alt></p>
+<h5 id="二叉树性质"><a href="#二叉树性质" class="headerlink" title="二叉树性质"></a>二叉树性质</h5><ul>
+<li>非空二叉树上叶子结点等于度为2的结点数加1</li>
+</ul>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树性质1.png" alt></p>
+<ul>
+<li>非空二叉树上第K层上至多有2<sup>k-1</sup>个结点（k&gt;=1）</li>
+</ul>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树性质2.png" alt></p>
+<ul>
+<li>高度为H的二叉树至多有2<sup>H</sup>-1个结点（H&gt;=1）</li>
+</ul>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树性质3.png" alt></p>
+<ul>
+<li>具有N个(N&gt;0)结点的完全二叉树的高度为上取整[log<sub>2</sub>(N+1)]或下取整[log<sub>2</sub>N]+1</li>
+</ul>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树性质4.png" alt></p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树性质5.png" alt></p>
+<h5 id="二叉树的存储结构"><a href="#二叉树的存储结构" class="headerlink" title="二叉树的存储结构"></a>二叉树的存储结构</h5><h6 id="顺序存储结构-1"><a href="#顺序存储结构-1" class="headerlink" title="顺序存储结构"></a>顺序存储结构</h6><p>二叉树的顺序存储结构就是用一组地址连续的存储单元依次自上而下，自左而右存储完全二叉树上的结点元素</p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树顺序存储.png" alt></p>
+<h6 id="链式存储结构-1"><a href="#链式存储结构-1" class="headerlink" title="链式存储结构"></a>链式存储结构</h6><p>二叉树每个结点最多两个孩子，所以设计二叉树的结点结构时考虑两个指针指向该结点的两个孩子</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>&#123;</span></span><br><span class="line">    ElemType data;<span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span><span class="comment">//指向该结点的左右孩子指针</span></span><br><span class="line">&#125;BiTNode,*BiTNode;<span class="comment">//二叉树结点结构</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树链式存储结构.png" alt></p>
+<h5 id="二叉树遍历-递归"><a href="#二叉树遍历-递归" class="headerlink" title="二叉树遍历(递归)"></a>二叉树遍历(递归)</h5><p>二叉树的遍历是指按某种次序依次访问树中的每个结点，使得每个结点均被访问一次，而且仅被访问一次</p>
+<h6 id="递归先序遍历"><a href="#递归先序遍历" class="headerlink" title="递归先序遍历"></a>递归先序遍历</h6><p>操作过程：</p>
+<ul>
+<li>访问根结点</li>
+<li>先序遍历左子树</li>
+<li>先序遍历右子树</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrder</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,T-&gt;data)<span class="comment">//根节点</span></span><br><span class="line">        PreOrder(T-&gt;lchild);<span class="comment">//左子树</span></span><br><span class="line">        PreOrder(T-&gt;rchild);<span class="comment">//右子树</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="递归中序遍历"><a href="#递归中序遍历" class="headerlink" title="递归中序遍历"></a>递归中序遍历</h6><p>操作过程：</p>
+<ul>
+<li>中序遍历左子树</li>
+<li>访问根节点</li>
+<li>中序遍历右子树</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrder</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        InOrder(T-&gt;lchild);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,T-&gt;data);</span><br><span class="line">        InOrder(T-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="递归后序遍历"><a href="#递归后序遍历" class="headerlink" title="递归后序遍历"></a>递归后序遍历</h6><p>操作过程：</p>
+<ul>
+<li>后序遍历左子树</li>
+<li>后序遍历右子树</li>
+<li>访问根节点</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrder</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        PostOrder(T-&gt;lchild);</span><br><span class="line">        PostOrder(T-&gt;rchild);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,T-&gt;data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="二叉树遍历-非递归"><a href="#二叉树遍历-非递归" class="headerlink" title="二叉树遍历(非递归)"></a>二叉树遍历(非递归)</h5><h6 id="非递归先序遍历"><a href="#非递归先序遍历" class="headerlink" title="非递归先序遍历"></a>非递归先序遍历</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraverse</span><span class="params">(BiTree b)</span></span>&#123;</span><br><span class="line">    InitStack(S);</span><br><span class="line">    BitTree p=b;<span class="comment">//工作指针p</span></span><br><span class="line">    <span class="keyword">while</span>(p || !IsEmpty(S))&#123;</span><br><span class="line">        <span class="keyword">while</span>(p)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%c"</span>,p-&gt;data);<span class="comment">//先序先遍历结点</span></span><br><span class="line">            Push(S,p);<span class="comment">//进栈保存</span></span><br><span class="line">            p=p-&gt;lchild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!IsEmpty(S))&#123;</span><br><span class="line">            p=Pop(S);</span><br><span class="line">            p=p-rchild;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="非递归中序遍历"><a href="#非递归中序遍历" class="headerlink" title="非递归中序遍历"></a>非递归中序遍历</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTraverse</span><span class="params">(BiTree b)</span></span>&#123;</span><br><span class="line">    InitStack(S);</span><br><span class="line">    BitTree p=b;<span class="comment">//工作指针p</span></span><br><span class="line">    <span class="keyword">while</span>(p || !IsEmpty(S))&#123;</span><br><span class="line">        <span class="keyword">while</span>(p)&#123;</span><br><span class="line">            Push(S,p);<span class="comment">//进栈保存</span></span><br><span class="line">            p=p-&gt;lchild;</span><br><span class="line">        &#125;</span><br><span class="line">        p=Pop(S);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,p-&gt;data);</span><br><span class="line">        p=p-rchild;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="非递归后序遍历"><a href="#非递归后序遍历" class="headerlink" title="非递归后序遍历"></a>非递归后序遍历</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/非递归后续遍历.png" alt></p>
+<h6 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h6><p>操作过程：</p>
+<p>若树为空，则什么都不做直接返回；</p>
+<p>否则从树的第一层开始访问，从上而下逐层遍历，在同一层中，按从左到右的顺序对结点逐个访问</p>
+<p>出队-&gt;访问-&gt;左右孩子入队</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LevelOrder</span><span class="params">(BiTree b)</span></span>&#123;</span><br><span class="line">    InitQueue(Q);</span><br><span class="line">    BiTree p;</span><br><span class="line">    EnQueue(Q,b);<span class="comment">//根节点入队</span></span><br><span class="line">    <span class="keyword">while</span>(!IsEmpty(Q))&#123;</span><br><span class="line">        DeQueue(Q,p);<span class="comment">//队头元素出队</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,p-&gt;data);</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;lchild!=<span class="literal">NULL</span>)</span><br><span class="line">            EnQueue(Q,p-&gt;lchild);</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;rchild!=<span class="literal">NULL</span>)</span><br><span class="line">            EnQueue(Q,p-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="线索二叉树"><a href="#线索二叉树" class="headerlink" title="线索二叉树"></a>线索二叉树</h5><p>二叉链表表示的二叉树存在大量空指针</p>
+<p>N个结点的二叉树，每个结点都有指向左右孩子的结点指针，所以一共有2N个指针，而N个结点的二叉树一共有N-1个分支，也就是说存在2N-(N-1)=N+1个空指针。</p>
+<p>指向前驱和后继的指针称为线索，加上线索的二叉链表称为线索链表，相应的二叉树称为线索二叉树</p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/线索二叉树.png" alt></p>
+<p>对二叉树以某种次序遍历使其变为线索二叉树的过程叫做线索化。</p>
+<p>如何区分指针是指向左孩子还是前驱，右孩子还是后继？</p>
+<p>在二叉链表结点的结构基础上增加两个标志位ltag和rtag</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ThreadNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ThreadNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span></span><br><span class="line">    <span class="keyword">int</span> ltag,rtag;</span><br><span class="line">&#125;ThreadNode,*ThreadTree;<span class="comment">//线索链表</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/线索二叉树结构.png" alt></p>
+<ul>
+<li>ltag==0表示lchild指向该结点左孩子</li>
+<li>ltag==1表示rchild指向该结点前驱</li>
+<li>rtag==0表示rchild指向该结点右孩子</li>
+<li>rtag==1表示指向该结点后继</li>
+</ul>
+<h6 id="构造线索二叉树"><a href="#构造线索二叉树" class="headerlink" title="构造线索二叉树"></a>构造线索二叉树</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/构造线索二叉树.png" alt></p>
+<h6 id="遍历线索二叉树"><a href="#遍历线索二叉树" class="headerlink" title="遍历线索二叉树"></a>遍历线索二叉树</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/遍历线索二叉树.png" alt></p>
+<h5 id="哈夫曼树和哈夫曼编码"><a href="#哈夫曼树和哈夫曼编码" class="headerlink" title="哈夫曼树和哈夫曼编码"></a>哈夫曼树和哈夫曼编码</h5><p>概念：</p>
+<p>权：树中结点相关的数值</p>
+<p>路径长度：从树中某个结点到另一个结点之间的分支数目（经过的边数）</p>
+<p>带权路径长度：从树的根节点到任意结点的路径长度（经过的边数）与该结点上权值的乘积称为该结点的带权路径长度</p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树的带权路径长度.png" alt></p>
+<p>哈夫曼树：含有N个带权叶子结点的二叉树中，带有带权路径长度（WPL）最小的二叉树，也成为最优二叉树。</p>
+<h6 id="设计哈夫曼树"><a href="#设计哈夫曼树" class="headerlink" title="设计哈夫曼树"></a>设计哈夫曼树</h6><ul>
+<li>将这N个结点分别作为N颗仅含一个结点的二叉树，构成森林F</li>
+<li>构造一个新结点，并从F中选取两颗根节点权值最小的树作为新结点的左右子树，并且将新结点的权值置为左右子树上根节点的权值之和</li>
+<li>从F中删除刚才选出的两棵树，同时将新得到的树加入F中</li>
+<li>重复步骤2和3，直至F中只剩下一棵树为止</li>
+</ul>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/构造哈夫曼树.png" alt></p>
+<h6 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a>哈夫曼编码</h6><p>左子树为0，右子树为1</p>
+<p>哈夫曼编码性质</p>
+<ul>
+<li>哈夫曼编码是前缀编码</li>
+<li>哈夫曼编码是最优前缀编码</li>
+</ul>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/哈夫曼编码.png" alt></p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/哈夫曼编码2.png" alt></p>
+<h5 id="二叉树、树和森林"><a href="#二叉树、树和森林" class="headerlink" title="二叉树、树和森林"></a>二叉树、树和森林</h5><h6 id="树转化成二叉树"><a href="#树转化成二叉树" class="headerlink" title="树转化成二叉树"></a>树转化成二叉树</h6><p>用到一个孩子兄弟表示法（回归本章树的链式存储）</p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树转二叉树1.png" alt></p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树转二叉树2.png" alt></p>
+<h6 id="二叉树转树"><a href="#二叉树转树" class="headerlink" title="二叉树转树"></a>二叉树转树</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树转树.png" alt></p>
+<h6 id="森林转二叉树"><a href="#森林转二叉树" class="headerlink" title="森林转二叉树"></a>森林转二叉树</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/森林转二叉树.png" alt></p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/森林转二叉树2.png" alt></p>
+<h6 id="二叉树转森林"><a href="#二叉树转森林" class="headerlink" title="二叉树转森林"></a>二叉树转森林</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树转森林.png" alt></p>
+<h6 id="树和森林的遍历"><a href="#树和森林的遍历" class="headerlink" title="树和森林的遍历"></a>树和森林的遍历</h6><p>树的先序遍历</p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树的先序遍历.png" alt></p>
+<p>树的后序遍历</p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树的后序遍历.png" alt></p>
+<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树与二叉树先序后序遍历比较.png" alt></p>
+<h6 id="森林遍历"><a href="#森林遍历" class="headerlink" title="森林遍历"></a>森林遍历</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/森林先序后序遍历.png" alt></p>
 
           
         
@@ -3031,7 +3082,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -3075,7 +3126,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3264,7 +3315,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共125.3k字</span>
+  <span class="post-count">博客全站共136.6k字</span>
 </div>
         
 <div class="busuanzi-count">
