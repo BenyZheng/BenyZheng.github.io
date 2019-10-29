@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">61</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">63</span></a>
 
   </li>
 
@@ -401,7 +401,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据库/mysql概述/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/并发/多线程2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -421,7 +421,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/26/数据库/mysql概述/" class="post-title-link" itemprop="url">mysql概述</a>
+                <a href="/2019/05/26/并发/多线程2/" class="post-title-link" itemprop="url">多线程(二)</a>
               
             
           </h1>
@@ -463,7 +463,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-25 01:20:28" itemprop="dateModified" datetime="2019-10-25T01:20:28+08:00">2019-10-25</time> 
+              <time title="修改时间：2019-10-06 23:59:18" itemprop="dateModified" datetime="2019-10-06T23:59:18+08:00">2019-10-06</time> 
               -->
               <!-- new version -->
                         
@@ -478,8 +478,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-25T01:20:28+08:00" content="2019-10-25">
-                2019-10-25 01:20:28
+              <time itemprop="dateUpdated" datetime="2019-10-06T23:59:18+08:00" content="2019-10-06">
+                2019-10-06 23:59:18
               </time>
             </span>
           
@@ -500,7 +500,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
 
                 
                 
@@ -519,8 +519,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/数据库/mysql概述/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据库/mysql概述/" itemprop="commentCount"></span>
+                <a href="/2019/05/26/并发/多线程2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/并发/多线程2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -550,122 +550,393 @@
       
         
           
-            <h1 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h1><h2 id="六大约束"><a href="#六大约束" class="headerlink" title="六大约束"></a>六大约束</h2><ul>
-<li><h3 id="primary-key"><a href="#primary-key" class="headerlink" title="primary key"></a>primary key</h3></li>
-<li><h3 id="foreign-key"><a href="#foreign-key" class="headerlink" title="foreign key"></a>foreign key</h3></li>
-<li><h3 id="NOT-NULL"><a href="#NOT-NULL" class="headerlink" title="NOT NULL"></a>NOT NULL</h3></li>
-<li><h3 id="Default"><a href="#Default" class="headerlink" title="Default"></a>Default</h3></li>
-<li><h3 id="Unique"><a href="#Unique" class="headerlink" title="Unique"></a>Unique</h3></li>
-<li><h3 id="check"><a href="#check" class="headerlink" title="check"></a>check</h3></li>
+            <h3 id="多线程-二"><a href="#多线程-二" class="headerlink" title="多线程(二)"></a>多线程(二)</h3><h5 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h5><p>java允许多线程并发控制，当多个线程同时操作一个可共享的资源变量时（如数据的增删改查），将会导致数据不准确，相互之间产生冲突，因此加入同步锁以避免在该线程没有完成操作之前，被其他线程的调用，从而保证了该变量的唯一性和准确性。</p>
+<p>1、同步方法</p>
+<p> 即有synchronized关键字修饰的方法。由于java的每个对象都有一个内置锁，当用此关键字修饰方法时，内置锁会保护整个方法。在调用该方法前，需要获得内置锁，否则就处于阻塞状态。</p>
+<p><code>public</code> <code>synchronized</code> <code>void</code> <code>save(){}</code></p>
+<p> <strong>注：</strong> synchronized关键字也可以修饰静态方法，此时如果调用该静态方法，将会锁住整个类</p>
+<p>2、同步代码块</p>
+<p>即有synchronized关键字修饰的语句块。被该关键字修饰的语句块会自动被加上内置锁，从而实现同步。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bank</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;<span class="comment">//账户余额  </span></span><br><span class="line">        <span class="comment">//存钱  </span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addMoney</span><span class="params">(<span class="keyword">int</span> money)</span></span>&#123;  </span><br><span class="line">            <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;  </span><br><span class="line">                count +=money;  </span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(System.currentTimeMillis()+<span class="string">"存进："</span>+money);  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="comment">//取钱  </span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subMoney</span><span class="params">(<span class="keyword">int</span> money)</span></span>&#123;  </span><br><span class="line">            <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;  </span><br><span class="line">                <span class="keyword">if</span>(count-money &lt; <span class="number">0</span>)&#123;  </span><br><span class="line">                    System.out.println(<span class="string">"余额不足"</span>);  </span><br><span class="line">                    <span class="keyword">return</span>;  </span><br><span class="line">                &#125;</span><br><span class="line">                count -= money;  </span><br><span class="line">            &#125;  </span><br><span class="line">            System.out.println(+System.currentTimeMillis()+<span class="string">"取出："</span>+money);  </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//查询  </span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lookMoney</span><span class="params">()</span></span>&#123;  </span><br><span class="line">            System.out.println(<span class="string">"账户余额："</span>+count);  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>同步是一种高开销的操作，因此应该尽量减少同步的内容。通常没有必要同步整个方法，使用synchronized代码块同步关键代码即可。</p>
+<p>3、使用特殊域变量（volatile）实现线程同步</p>
+<ul>
+<li>volatile关键字为域变量的访问提供了一种免锁机制</li>
+<li>使用volatile修饰域相当于告诉虚拟机该域可能会被其他线程更新</li>
+<li>每次使用该域就要重新计算，而不是使用寄存器中的值；</li>
+<li>volatile不会提供任何原子操作，它也不能用来修饰final类型的变量。</li>
 </ul>
-<h2 id="事务和隔离级别"><a href="#事务和隔离级别" class="headerlink" title="事务和隔离级别"></a>事务和隔离级别</h2><p>事务T1、T2，当T1读取一个表的字段，T2此时插入多几行数据，T1再次读取，数据多了几行<br>幻读和不可重复读区别：不可重复读针对一个字段更新前后数据不一致，幻读是针对一个表数据读取获取的数据数量不想等</p>
-<h3 id="事务ACID"><a href="#事务ACID" class="headerlink" title="事务ACID"></a>事务ACID</h3><ul>
-<li><h4 id="原子性-atomicity"><a href="#原子性-atomicity" class="headerlink" title="原子性(atomicity)"></a>原子性(atomicity)</h4></li>
-<li><h4 id="一致性-consistency"><a href="#一致性-consistency" class="headerlink" title="一致性(consistency)"></a>一致性(consistency)</h4></li>
-<li><h4 id="隔离性-isolation"><a href="#隔离性-isolation" class="headerlink" title="隔离性(isolation)"></a>隔离性(isolation)</h4></li>
-<li><h4 id="持久性-durability"><a href="#持久性-durability" class="headerlink" title="持久性(durability)"></a>持久性(durability)</h4></li>
-</ul>
-<h3 id="事务结束四个标志"><a href="#事务结束四个标志" class="headerlink" title="事务结束四个标志"></a>事务结束四个标志</h3><ul>
-<li><h4 id="commit或rollback"><a href="#commit或rollback" class="headerlink" title="commit或rollback"></a>commit或rollback</h4></li>
-<li><h4 id="DDL或DCL自动提交"><a href="#DDL或DCL自动提交" class="headerlink" title="DDL或DCL自动提交"></a>DDL或DCL自动提交</h4></li>
-<li><h4 id="用户会话正常结束"><a href="#用户会话正常结束" class="headerlink" title="用户会话正常结束"></a>用户会话正常结束</h4></li>
-<li><h4 id="系统异常终止"><a href="#系统异常终止" class="headerlink" title="系统异常终止"></a>系统异常终止</h4></li>
-</ul>
-<h3 id="事务隔离级别和对应的问题"><a href="#事务隔离级别和对应的问题" class="headerlink" title="事务隔离级别和对应的问题"></a>事务隔离级别和对应的问题</h3><p>事务的隔离级别：</p>
-<pre><code>脏读-不可重复读-幻读
-</code></pre><p>read uncommitted：√        √      √<br>read committed：  ×        √      √<br>repeatable read： ×        ×      √<br>serializable      ×      ×     ×</p>
-<p>丢失修改<br>: 指在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。这样第一个事务内的修改结果就被丢失，因此称为丢失修改。 例如：事务1读取某表中的数据A=20，事务2也读取A=20，事务1修改A=A-1，事务2也修改A=A-1，最终结果A=19，事务1的修改被丢失。</p>
-<h4 id="读未提交"><a href="#读未提交" class="headerlink" title="读未提交"></a>读未提交</h4><p>一个事务读取到另一个未提交的数据</p>
-<h5 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h5><p>事务T1、T2，当T2读取到T1已更新但还没有提交的字段，若T2回滚，T1读取的数据临时且无效</p>
-<h4 id="读已提交"><a href="#读已提交" class="headerlink" title="读已提交"></a>读已提交</h4><p>一个事务必须等到另一个事务提交后才可以读取数据</p>
-<h5 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h5><p>事务T1、T2，T1读取一个字段，然后T2更新这个字段之后，T1再次读取同一个字段，数据已经发生改变<br>脏读和不可重复读的区别：脏读是在一个事务里面更新了还没提交导致前后数据不一致，不可重复读是在提交数据之后，事务再次更新操作，导致数据不一致</p>
-<h4 id="重复读"><a href="#重复读" class="headerlink" title="重复读"></a>重复读</h4><p>在开始读取数据(事务开启时)，不允许修改操作</p>
-<h5 id="幻读"><a href="#幻读" class="headerlink" title="幻读"></a>幻读</h5><p>事务T1、T2，T1读取表中一个范围的值，然后T2插入或删除这个字段之后，T1再次读取，数据的数量发生了变化<br>幻读和不可重复读的区别：幻读是插入或删除导致的前后数据不一致（数量上）<br>不可重复读是修改前后导致前后的字段值不一致（内容上）</p>
-<h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><p>事务串行化顺序执行<br>解决脏读、不可重复读、幻读的并发问题</p>
-<h2 id="存储引擎-Innodb、Myisam"><a href="#存储引擎-Innodb、Myisam" class="headerlink" title="存储引擎(Innodb、Myisam)"></a>存储引擎(Innodb、Myisam)</h2><h3 id="支持行锁"><a href="#支持行锁" class="headerlink" title="支持行锁"></a>支持行锁</h3><p>MyISAM 只有表级锁(table-level locking)<br>InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。</p>
-<h3 id="支持事务和崩溃后的安全恢复"><a href="#支持事务和崩溃后的安全恢复" class="headerlink" title="支持事务和崩溃后的安全恢复"></a>支持事务和崩溃后的安全恢复</h3><p>MyISAM 强调的是性能，每次查询具有原子性,其执行速度比InnoDB类型更快，但是不提供事务支持。</p>
-<p>但是InnoDB 提供事务支持事务，外部键等高级数据库功能。 具有事务(commit)、回滚(rollback)和崩溃修复能力(crash recovery capabilities)的事务安全(transaction-safe (ACID compliant))型表。</p>
-<h3 id="支持外键"><a href="#支持外键" class="headerlink" title="支持外键"></a>支持外键</h3><p>MyISAM不支持<br>而InnoDB支持</p>
-<h3 id="支持MVCC"><a href="#支持MVCC" class="headerlink" title="支持MVCC"></a>支持MVCC</h3><p>仅InnoDB支持。应对高并发事务, MVCC比单纯的加锁更高效;</p>
-<p>MVCC只在READ COMMITTED和 REPEATABLE READ 两个隔离级别下工作;</p>
-<p>MVCC可以使用乐观(optimistic)锁和悲观(pessimistic)锁来实现;</p>
-<p>各数据库中MVCC实现并不统一</p>
-<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><h3 id="视图：一种虚拟存在的表，在使用时动态生成，只保存sql逻辑不保存结果"><a href="#视图：一种虚拟存在的表，在使用时动态生成，只保存sql逻辑不保存结果" class="headerlink" title="视图：一种虚拟存在的表，在使用时动态生成，只保存sql逻辑不保存结果"></a>视图：一种虚拟存在的表，在使用时动态生成，只保存sql逻辑不保存结果</h3><h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
-<li><h4 id="多个地方重复用到的结果l"><a href="#多个地方重复用到的结果l" class="headerlink" title="多个地方重复用到的结果l"></a>多个地方重复用到的结果l</h4></li>
-<li><h4 id="sql语句较复杂的语句"><a href="#sql语句较复杂的语句" class="headerlink" title="sql语句较复杂的语句"></a>sql语句较复杂的语句</h4></li>
-</ul>
-<h3 id="视图不可更新情况"><a href="#视图不可更新情况" class="headerlink" title="视图不可更新情况"></a>视图不可更新情况</h3><ul>
-<li><h4 id="包含关键字：distinct、分组函数、group-by、having、union、union-all"><a href="#包含关键字：distinct、分组函数、group-by、having、union、union-all" class="headerlink" title="包含关键字：distinct、分组函数、group by、having、union、union all"></a>包含关键字：distinct、分组函数、group by、having、union、union all</h4></li>
-<li><h4 id="常量视图"><a href="#常量视图" class="headerlink" title="常量视图"></a>常量视图</h4></li>
-<li><h4 id="select中包含子查询"><a href="#select中包含子查询" class="headerlink" title="select中包含子查询"></a>select中包含子查询</h4></li>
-<li><h4 id="join"><a href="#join" class="headerlink" title="join"></a>join</h4></li>
-<li><h4 id="from一个不能更新的视图"><a href="#from一个不能更新的视图" class="headerlink" title="from一个不能更新的视图"></a>from一个不能更新的视图</h4></li>
-<li><h4 id="where子句的子查询引用了from子句中的表"><a href="#where子句的子查询引用了from子句中的表" class="headerlink" title="where子句的子查询引用了from子句中的表"></a>where子句的子查询引用了from子句中的表</h4></li>
-</ul>
-<h2 id="存储程序"><a href="#存储程序" class="headerlink" title="存储程序"></a>存储程序</h2><p>存储过程和函数：实现经过编译并存储在数据库中的一段sql语句的集合</p>
-<h3 id="存储例程"><a href="#存储例程" class="headerlink" title="存储例程"></a>存储例程</h3><ul>
-<li><h4 id="存储函数"><a href="#存储函数" class="headerlink" title="存储函数"></a>存储函数</h4></li>
-<li><h4 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h4></li>
-</ul>
-<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><h2 id="锁机制"><a href="#锁机制" class="headerlink" title="锁机制"></a>锁机制</h2><p>当一个事务请求的锁模式与当前的锁兼容，InnoDB就将请求的锁授予该事务；反之如果请求不兼容，则该事物就等待锁释放。</p>
-<h3 id="表级锁"><a href="#表级锁" class="headerlink" title="表级锁"></a>表级锁</h3><p>MySQL中锁定 粒度最大 的一种锁，对当前操作的整张表加锁，实现简单，资源消耗也比较少，加锁快，不会出现死锁。</p>
-<p>其锁定粒度最大，触发锁冲突的概率最高，并发度最低，MyISAM和 InnoDB引擎都支持表级锁。</p>
-<h4 id="InnoDB表级锁"><a href="#InnoDB表级锁" class="headerlink" title="InnoDB表级锁"></a>InnoDB表级锁</h4><p>当一个事务需要给自己需要的某个资源加锁的时候，如果遇到一个共享锁正锁定着自己需要的资源的时候，自己可以再加一个共享锁，不过不能加排他锁。但是，如果遇到自己需要锁定的资源已经被一个排他锁占有之后，则只能等待该锁定释放资源之后自己才能获取锁定资源并添加自己的锁定。</p>
-<p>而意向锁的作用就是当一个事务在需要获取资源锁定的时候，如果遇到自己需要的资源已经被排他锁占用的时候，该事务可以需要锁定行的表上面添加一个合适的意向锁。</p>
-<p>如果自己需要一个共享锁，那么就在表上面添加一个意向共享锁。而如果自己需要的是某行（或者某些行）上面添加一个排他锁的话，则先在表上面添加一个意向排他锁。</p>
-<p>意向共享锁可以同时并存多个，但是意向排他锁同时只能有一个存在。</p>
-<p>这里的意向锁是表级锁，表示的是一种意向，仅仅表示事务正在读或写某一行记录，在真正加行锁时才会判断是否冲突。意向锁是InnoDB自动加的，不需要用户干预。<br>IX，IS是表级锁，不会和行级的X，S锁发生冲突，只会和表级的X，S发生冲突。</p>
-<h5 id="意向共享锁（IS）"><a href="#意向共享锁（IS）" class="headerlink" title="意向共享锁（IS）"></a>意向共享锁（IS）</h5><p>表示事务准备给数据行记入共享锁，事务在一个数据行加共享锁前必须先取得该表的IS锁。</p>
-<h5 id="意向排他锁（IX）"><a href="#意向排他锁（IX）" class="headerlink" title="意向排他锁（IX）"></a>意向排他锁（IX）</h5><p>表示事务准备给数据行加入排他锁，事务在一个数据行加排他锁前必须先取得该表的IX锁。</p>
-<h4 id="MyISAM表级锁"><a href="#MyISAM表级锁" class="headerlink" title="MyISAM表级锁"></a>MyISAM表级锁</h4><h3 id="页级锁"><a href="#页级锁" class="headerlink" title="页级锁"></a>页级锁</h3><p>MySQL中锁定粒度介于行级锁和表级锁中间的一种锁。</p>
-<p>表级锁速度快，但冲突多，<br>行级冲突少，但速度慢。</p>
-<p>页级进行了折衷，一次锁定相邻的一组记录。BDB支持页级锁。开销和加锁时间界于表锁和行锁之间，会出现死锁。锁定粒度界于表锁和行锁之间，并发度一般。</p>
-<h3 id="行级锁-InnoDB专有"><a href="#行级锁-InnoDB专有" class="headerlink" title="行级锁(InnoDB专有)"></a>行级锁(InnoDB专有)</h3><p>MySQL中锁定 粒度最小 的一种锁，只针对当前操作的行进行加锁。 行级锁能大大减少数据库操作的冲突。</p>
-<p>其加锁粒度最小，并发度高，但加锁的开销也最大，加锁慢，会出现死锁。    </p>
-<p>InnoDB 行锁是通过给索引上的索引项加锁来实现的，InnoDB 这种行锁实现的特点意味着：只有通过索引条件检索数据，InnoDB 才使用行级锁，否则，InnoDB 将使用表锁。</p>
-<h4 id="Record-Lock"><a href="#Record-Lock" class="headerlink" title="Record Lock"></a>Record Lock</h4><p>对索引项加锁</p>
-<p>行锁锁定的是索引记录，而不是行数据，也就是说锁定的是key。</p>
-<p>其他事务不能修改和删除加锁项；</p>
-<p>索引分为主键索引和非主键索引两种，如果一条sql语句操作了主键索引，MySQL就会锁定这条主键索引；</p>
-<p>如果一条语句操作了非主键索引，MySQL会先锁定该非主键索引，再锁定相关的主键索引。</p>
-<h4 id="Gap-Lock"><a href="#Gap-Lock" class="headerlink" title="Gap Lock"></a>Gap Lock</h4><p>对索引项之间的“间隙”加锁，锁定记录的范围（对第一条记录前的间隙或最后一条将记录后的间隙加锁）不包含索引项本身（对非索引项）。</p>
-<p>其他事务不能在锁范围内插入数据，这样就防止了别的事务新增幻影行</p>
-<p>锁定索引记录间隙，确保索引记录的间隙不变。间隙锁是针对事务隔离级别为可重复读或以上级别而已的。</p>
-<p>间隙锁（Gap Lock）一般是针对非唯一索引而言的</p>
-<h4 id="Next-key-Lock"><a href="#Next-key-Lock" class="headerlink" title="Next-key Lock"></a>Next-key Lock</h4><p>锁定索引项本身和索引范围。即Record Lock和Gap Lock的结合。可解决幻读问题。</p>
-<h3 id="发生死锁"><a href="#发生死锁" class="headerlink" title="发生死锁"></a>发生死锁</h3><p>当两个事务同时执行，一个锁住了主键索引，在等待其他相关索引。另一个锁定了非主键索引，在等待主键索引。这样就会发生死锁。</p>
-<p>MyISAM 中是不会产生死锁的，因为 MyISAM 总是一次性获得所需的全部锁，要么全部满足，要么全部等待。而在 InnoDB 中，锁是逐步获得的，就造成了死锁的可能。</p>
-<p>发生死锁后，InnoDB一般都可以检测到，并使一个事务释放锁回退，另一个获取锁完成事务。</p>
-<h4 id="避免死锁"><a href="#避免死锁" class="headerlink" title="避免死锁"></a>避免死锁</h4><p>有多种方法可以避免死锁，这里介绍常见的三种</p>
-<p>1、如果不同程序会并发存取多个表，尽量约定以相同的顺序访问表，可以大大降低死锁机会。</p>
-<p>2、在同一个事务中，尽可能做到一次锁定所需要的所有资源，减少死锁产生概率；</p>
-<p>3、对于非常容易产生死锁的业务部分，可以尝试使用升级锁定颗粒度，通过表级锁定来减少死锁产生的概率；</p>
-<h3 id="是否可写锁分类"><a href="#是否可写锁分类" class="headerlink" title="是否可写锁分类"></a>是否可写锁分类</h3><h4 id="读锁（共享锁）"><a href="#读锁（共享锁）" class="headerlink" title="读锁（共享锁）"></a>读锁（共享锁）</h4><p>其他用户可以并发读取数据，但任何事务都不能获取数据上的排他锁，直到已释放所有共享锁。</p>
-<p>共享锁(S锁)又称为读锁，若事务T对数据对象A加上S锁，则事务T只能读A；</p>
-<p>其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。这就保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改。</p>
-<h4 id="写锁（互斥锁）"><a href="#写锁（互斥锁）" class="headerlink" title="写锁（互斥锁）"></a>写锁（互斥锁）</h4><p>排它锁（(Exclusive lock,简记为X锁)）又称为写锁，若事务T对数据对象A加上X锁，则只允许T读取和修改A，其它任何事务都不能再对A加任何类型的锁，直到T释放A上的锁。</p>
-<p>它防止任何其它事务获取资源上的锁，直到在事务的末尾将资源上的原始锁释放为止。在更新操作(INSERT、UPDATE 或 DELETE)过程中始终应用排它锁。</p>
-<h4 id="两者之间的区别"><a href="#两者之间的区别" class="headerlink" title="两者之间的区别"></a>两者之间的区别</h4><p>共享锁（S锁）：如果事务T对数据A加上共享锁后，则其他事务只能对A再加共享锁，不能加排他锁。获取共享锁的事务只能读数据，不能修改数据。</p>
-<p>排他锁（X锁）：如果事务T对数据A加上排他锁后，则其他事务不能再对A加任任何类型的封锁。获取排他锁的事务既能读数据，又能修改数据。</p>
-<h2 id="大表优化"><a href="#大表优化" class="headerlink" title="大表优化"></a>大表优化</h2><h3 id="限定数据范围"><a href="#限定数据范围" class="headerlink" title="限定数据范围"></a>限定数据范围</h3><h3 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h3><p>经典的数据库拆分方案，主库负责写，从库负责读；</p>
-<h3 id="垂直分区"><a href="#垂直分区" class="headerlink" title="垂直分区"></a>垂直分区</h3><p>根据数据库里面数据表的相关性进行拆分。例如，用户表中既有用户的登录信息又有用户的基本信息，可以将用户表拆分成两个单独的表，甚至放到单独的库做分库。</p>
-<p>简单来说垂直拆分是指数据表列的拆分，把一张列比较多的表拆分为多张表。 如下图所示，这样来说大家应该就更容易理解了。</p>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>垂直拆分的优点： 可以使得列数据变小，在查询时减少读取的Block数，减少I/O次数。此外，垂直分区可以简化表的结构，易于维护。</p>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>垂直拆分的缺点： 主键会出现冗余，需要管理冗余列，并会引起Join操作，可以通过在应用层进行Join来解决。此外，垂直分区会让事务变得更加复杂；</p>
-<h3 id="水平分区"><a href="#水平分区" class="headerlink" title="水平分区"></a>水平分区</h3><p>保持数据表结构不变，通过某种策略存储数据分片。这样每一片数据分散到不同的表或者库中，达到了分布式的目的。 水平拆分可以支撑非常大的数据量。</p>
-<p>水平拆分是指数据表行的拆分，表的行数超过200万行时，就会变慢，这时可以把一张的表的数据拆成多张表来存放。举个例子：我们可以将用户信息表拆分成多个用户信息表，这样就可以避免单一表数据量过大对性能造成影响。</p>
-<p>水平拆分可以支持非常大的数据量。需要注意的一点是：分表仅仅是解决了单一表数据过大的问题，但由于表的数据还是在同一台机器上，其实对于提升MySQL并发能力没有什么意义，所以 水平拆分最好分库 。</p>
-<p>水平拆分能够 支持非常大的数据量存储，应用端改造也少，但 分片事务难以解决 ，跨节点Join性能较差，逻辑复杂。《Java工程师修炼之道》的作者推荐 尽量不要对数据进行分片，因为拆分会带来逻辑、部署、运维的各种复杂度 ，一般的数据表在优化得当的情况下支撑千万以下的数据量是没有太大问题的。如果实在要分片，尽量选择客户端分片架构，这样可以减少一次和中间件的网络I/O。</p>
-<h4 id="客户端代理"><a href="#客户端代理" class="headerlink" title="客户端代理"></a>客户端代理</h4><p>客户端代理： 分片逻辑在应用端，封装在jar包中，通过修改或者封装JDBC层来实现。 当当网的 Sharding-JDBC 、阿里的TDDL是两种比较常用的实现。</p>
-<h4 id="中间件代理"><a href="#中间件代理" class="headerlink" title="中间件代理"></a>中间件代理</h4><p>中间件代理： 在应用和数据中间加了一个代理层。分片逻辑统一维护在中间件服务中。 我们现在谈的 Mycat 、360的Atlas、网易的DDB等等都是这种架构的实现。</p>
-<h2 id="超一万行数据量的写操作"><a href="#超一万行数据量的写操作" class="headerlink" title="超一万行数据量的写操作"></a>超一万行数据量的写操作</h2><h3 id="产生的问题"><a href="#产生的问题" class="headerlink" title="产生的问题"></a>产生的问题</h3><h4 id="大批量操作可能会造成严重的主从延迟"><a href="#大批量操作可能会造成严重的主从延迟" class="headerlink" title="大批量操作可能会造成严重的主从延迟"></a>大批量操作可能会造成严重的主从延迟</h4><p>主从环境中,大批量操作可能会造成严重的主从延迟，大批量的写操作一般都需要执行一定长的时间， 而只有当主库上执行完成后，才会在其他从库上执行，所以会造成主库与从库长时间的延迟情况</p>
-<h4 id="binlog-日志为-row-格式时会产生大量的日志"><a href="#binlog-日志为-row-格式时会产生大量的日志" class="headerlink" title="binlog 日志为 row 格式时会产生大量的日志"></a>binlog 日志为 row 格式时会产生大量的日志</h4><p>大批量写操作会产生大量日志，特别是对于 row 格式二进制数据而言，由于在 row 格式中会记录每一行数据的修改，我们一次修改的数据越多，产生的日志量也就会越多，日志的传输和恢复所需要的时间也就越长，这也是造成主从延迟的一个原因</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h4 id="避免产生大事务操作，分批操作"><a href="#避免产生大事务操作，分批操作" class="headerlink" title="避免产生大事务操作，分批操作"></a>避免产生大事务操作，分批操作</h4><p>大批量修改数据，一定是在一个事务中进行的，这就会造成表中大批量数据进行锁定，从而导致大量的阻塞，阻塞会对 MySQL的性能产生非常大的影响。</p>
-<p>特别是长时间的阻塞会占满所有数据库的可用连接，这会使生产环境中的其他应用无法连接到数据库，因此一定要注意大批量写操作要进行分批。</p>
-<h4 id="对于大表使用pt-online-schema-change修改表的结构"><a href="#对于大表使用pt-online-schema-change修改表的结构" class="headerlink" title="对于大表使用pt-online-schema-change修改表的结构"></a>对于大表使用pt-online-schema-change修改表的结构</h4><p>避免大表修改产生的主从延迟<br>避免在对表字段进行修改时进行锁表</p>
-<p>对大表数据结构的修改一定要谨慎，会造成严重的锁表操作，尤其是生产环境，是不能容忍的。</p>
-<p>pt-online-schema-change 它会首先建立一个与原表结构相同的新表，并且在新表上进行表结构的修改，然后再把原表中的数据复制到新表中，并在原表中增加一些触发器。</p>
-<p>把原表中新增的数据也复制到新表中，在行所有数据复制完成之后，把新表命名成原表，并把原来的表删除掉。把原来一个 DDL 操作，分解成多个小的批次进行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SynchronizedThread</span> </span>&#123;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Bank</span> </span>&#123;</span><br><span class="line">            <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> account = <span class="number">100</span>;</span><br><span class="line"> </span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAccount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> account;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 用同步方法实现</span></span><br><span class="line"><span class="comment">             * </span></span><br><span class="line"><span class="comment">             * <span class="doctag">@param</span> money</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(<span class="keyword">int</span> money)</span> </span>&#123;</span><br><span class="line">                account += money;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 用同步代码块实现</span></span><br><span class="line"><span class="comment">             * </span></span><br><span class="line"><span class="comment">             * <span class="doctag">@param</span> money</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save1</span><span class="params">(<span class="keyword">int</span> money)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">                    account += money;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">NewThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">            <span class="keyword">private</span> Bank bank;</span><br><span class="line"> </span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="title">NewThread</span><span class="params">(Bank bank)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">this</span>.bank = bank;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    <span class="comment">// bank.save1(10);</span></span><br><span class="line">                    bank.save(<span class="number">10</span>);</span><br><span class="line">                    System.out.println(i + <span class="string">"账户余额为："</span> +bank.getAccount());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 建立线程，调用内部类</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">useThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            Bank bank = <span class="keyword">new</span> Bank();</span><br><span class="line">            NewThread new_thread = <span class="keyword">new</span> NewThread(bank);</span><br><span class="line">            System.out.println(<span class="string">"线程1"</span>);</span><br><span class="line">            Thread thread1 = <span class="keyword">new</span> Thread(new_thread);</span><br><span class="line">            thread1.start();</span><br><span class="line">            System.out.println(<span class="string">"线程2"</span>);</span><br><span class="line">            Thread thread2 = <span class="keyword">new</span> Thread(new_thread);</span><br><span class="line">            thread2.start();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">            SynchronizedThread st = <span class="keyword">new</span> SynchronizedThread();</span><br><span class="line">            st.useThread();</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>多线程中的非同步问题主要出现在对域的读写上，如果让域自身避免这个问题，则就不需要修改操作该域的方法。用final域，有锁保护的域和volatile域可以避免非同步的问题。</p>
+<p>4、使用重入锁(Lock)实现线程同步</p>
+<p>在javaSE5.0中新增了一个java.util.concurrent包来支持同步。ReentrantLock类是可重入、互斥、实现了Lock接口的锁，它与使用synchronized方法和块具有相同的基本行为和语义，并且扩展了其能力。ReenreantLock类的常用方法有：    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ReentrantLock() : 创建一个ReentrantLock实例         </span><br><span class="line">lock() : 获得锁        </span><br><span class="line">unlock() : 释放锁</span><br></pre></td></tr></table></figure>
+<p>ReentrantLock()还有一个可以创建公平锁的构造方法，但由于能大幅度降低程序运行效率，不推荐使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只给出要修改的代码，其余代码与上同</span></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Bank</span> </span>&#123;</span><br><span class="line">            <span class="keyword">private</span> <span class="keyword">int</span> account = <span class="number">100</span>;</span><br><span class="line">            <span class="comment">//需要声明这个锁</span></span><br><span class="line">            <span class="keyword">private</span> Lock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAccount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> account;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//这里不再需要synchronized </span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(<span class="keyword">int</span> money)</span> </span>&#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">try</span>&#123;</span><br><span class="line">                    account += money;</span><br><span class="line">                &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">                    lock.unlock();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ｝</span><br></pre></td></tr></table></figure>
+<h5 id="线程通信"><a href="#线程通信" class="headerlink" title="线程通信"></a>线程通信</h5><p>1、借助于Object类的wait()、notify()和notifyAll()实现通信</p>
+<p>线程执行wait()后，就放弃了运行资格，处于冻结状态；</p>
+<p>​     线程运行时，内存中会建立一个线程池，冻结状态的线程都存在于线程池中，notify()执行时唤醒的也是线程池中的线程，线程池中有多个线程时唤醒第一个被冻结的线程。<br>notifyAll(), 唤醒线程池中所有线程。<br><strong>注：</strong> （1） wait(), notify(),notifyAll()都用在同步里面，因为这3个函数是对持有锁的线程进行操作，而只有同步才有锁，所以要使用在同步中；<br>​       （2） wait(),notify(),notifyAll(),  在使用时必须标识它们所操作的线程持有的锁，因为等待和唤醒必须是同一锁下的线程；而锁可以是任意对象，所以这3个方法都是Object类中的方法。</p>
+<p>单个消费者生产者例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Resource</span></span>&#123;  <span class="comment">//生产者和消费者都要操作的资源  </span></span><br><span class="line">    <span class="keyword">private</span> String name;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count=<span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> flag=<span class="keyword">false</span>;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(String name)</span></span>&#123;  </span><br><span class="line">        <span class="keyword">if</span>(flag)  </span><br><span class="line">            <span class="keyword">try</span>&#123;wait();&#125;<span class="keyword">catch</span>(Exception e)&#123;&#125;  </span><br><span class="line">        <span class="keyword">this</span>.name=name+<span class="string">"---"</span>+count++;  </span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">"...生产者..."</span>+<span class="keyword">this</span>.name);  </span><br><span class="line">        flag=<span class="keyword">true</span>;  </span><br><span class="line">        <span class="keyword">this</span>.notify();  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">out</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        <span class="keyword">if</span>(!flag)  </span><br><span class="line">            <span class="keyword">try</span>&#123;wait();&#125;<span class="keyword">catch</span>(Exception e)&#123;&#125;  </span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">"...消费者..."</span>+<span class="keyword">this</span>.name);  </span><br><span class="line">        flag=<span class="keyword">false</span>;  </span><br><span class="line">        <span class="keyword">this</span>.notify();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;  </span><br><span class="line">    <span class="keyword">private</span> Resource res;  </span><br><span class="line">    Producer(Resource res)&#123;  </span><br><span class="line">        <span class="keyword">this</span>.res=res;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;  </span><br><span class="line">            res.set(<span class="string">"商品"</span>);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;  </span><br><span class="line">    <span class="keyword">private</span> Resource res;  </span><br><span class="line">    Consumer(Resource res)&#123;  </span><br><span class="line">        <span class="keyword">this</span>.res=res;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;  </span><br><span class="line">            res.out();  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProducerConsumerDemo</span></span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  </span><br><span class="line">        Resource r=<span class="keyword">new</span> Resource();  </span><br><span class="line">        Producer pro=<span class="keyword">new</span> Producer(r);  </span><br><span class="line">        Consumer con=<span class="keyword">new</span> Consumer(r);  </span><br><span class="line">        Thread t1=<span class="keyword">new</span> Thread(pro);  </span><br><span class="line">        Thread t2=<span class="keyword">new</span> Thread(con);  </span><br><span class="line">        t1.start();  </span><br><span class="line">        t2.start();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;<span class="comment">//运行结果正常，生产者生产一个商品，紧接着消费者消费一个商品。</span></span><br></pre></td></tr></table></figure>
+<p>​          但是如果有多个生产者和多个消费者，上面的代码就会有问题，比如2个生产者，2个消费者，运行结果就可能出现生产的1个商品生产了一次而被消费了2次，或者连续生产2个商品而只有1个被消费，这是因为此时共有4个线程在操作Resource对象r,  而notify()唤醒的是线程池中第1个wait()的线程，所以生产者执行notify()时，唤醒的线程有可能是另1个生产者线程，这个生产者线程从wait()中醒来后不会再判断flag，而是直接向下运行打印出一个新的商品，这样就出现了连续生产2个商品。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Resource</span></span>&#123;  </span><br><span class="line">        <span class="keyword">private</span> String name;  </span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> count=<span class="number">1</span>;  </span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">boolean</span> flag=<span class="keyword">false</span>;  </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(String name)</span></span>&#123;  </span><br><span class="line">            <span class="keyword">while</span>(flag) <span class="comment">/*原先是if,现在改成while，这样生产者线程从冻结状态醒来时，还会再判断flag.*/</span>  </span><br><span class="line">                <span class="keyword">try</span>&#123;wait();&#125;<span class="keyword">catch</span>(Exception e)&#123;&#125;  </span><br><span class="line">            <span class="keyword">this</span>.name=name+<span class="string">"---"</span>+count++;  </span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">"...生产者..."</span>+<span class="keyword">this</span>.name);  </span><br><span class="line">            flag=<span class="keyword">true</span>;  </span><br><span class="line">            <span class="keyword">this</span>.notifyAll();<span class="comment">/*原先是notity(), 现在改成notifyAll(),这样生产者线程生产完一个商品后可以将等待中的消费者线程唤醒，否则只将上面改成while后，可能出现所有生产者和消费者都在wait()的情况。*/</span>  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">out</span><span class="params">()</span></span>&#123;  </span><br><span class="line">            <span class="keyword">while</span>(!flag) <span class="comment">/*原先是if,现在改成while，这样消费者线程从冻结状态醒来时，还会再判断flag.*/</span>  </span><br><span class="line">                <span class="keyword">try</span>&#123;wait();&#125;<span class="keyword">catch</span>(Exception e)&#123;&#125;  </span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">"...消费者..."</span>+<span class="keyword">this</span>.name);  </span><br><span class="line">            flag=<span class="keyword">false</span>;  </span><br><span class="line">            <span class="keyword">this</span>.notifyAll(); <span class="comment">/*原先是notity(), 现在改成notifyAll(),这样消费者线程消费完一个商品后可以将等待中的生产者线程唤醒，否则只将上面改成while后，可能出现所有生产者和消费者都在wait()的情况。*/</span>  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProducerConsumerDemo</span></span>&#123;  </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  </span><br><span class="line">            Resource r=<span class="keyword">new</span> Resource();  </span><br><span class="line">            Producer pro=<span class="keyword">new</span> Producer(r);  </span><br><span class="line">            Consumer con=<span class="keyword">new</span> Consumer(r);  </span><br><span class="line">            Thread t1=<span class="keyword">new</span> Thread(pro);  </span><br><span class="line">            Thread t2=<span class="keyword">new</span> Thread(con);  </span><br><span class="line">            Thread t3=<span class="keyword">new</span> Thread(pro);  </span><br><span class="line">            Thread t4=<span class="keyword">new</span> Thread(con);  </span><br><span class="line">            t1.start();  </span><br><span class="line">            t2.start();  </span><br><span class="line">            t3.start();  </span><br><span class="line">            t4.start();  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>2、使用Condition控制线程通信</p>
+<p>​    </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/零散记/git的基本操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/零散记/git的基本操作/" class="post-title-link" itemprop="url">git的基本操作</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-29 13:35:48" itemprop="dateModified" datetime="2019-10-29T13:35:48+08:00">2019-10-29</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-29T13:35:48+08:00" content="2019-10-29">
+                2019-10-29 13:35:48
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/零散记/" itemprop="url" rel="index"><span itemprop="name">零散记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/零散记/git的基本操作/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/零散记/git的基本操作/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>git的通用操作流程</p>
+<p><img src="/2019/05/26/零散记/git的基本操作/162fcc0987bf1c0a" alt></p>
+<p>主要涉及到四个关键点：</p>
+<ol>
+<li>工作区：本地电脑存放项目文件的地方，比如learnGitProject文件夹；</li>
+<li>暂存区（Index/Stage）：在使用git管理项目文件的时候，其本地的项目文件会多出一个.git的文件夹，将这个.git文件夹称之为版本库。其中.git文件夹中包含了两个部分，一个是暂存区（Index或者Stage）,顾名思义就是暂时存放文件的地方，通常使用add命令将工作区的文件添加到暂存区里；</li>
+<li>本地仓库：.git文件夹里还包括git自动创建的master分支，并且将HEAD指针指向master分支。使用commit命令可以将暂存区中的文件添加到本地仓库中；</li>
+<li>远程仓库：不是在本地仓库中，项目代码在远程git服务器上，比如项目放在github上，就是一个远程仓库，通常使用clone命令将远程仓库拷贝到本地仓库中，开发后推送到远程仓库中即可；</li>
+</ol>
+<p>更细节的来看：</p>
+<p><img src="/2019/05/26/零散记/git的基本操作/162fcc0e7e711dc7" alt></p>
+<p>日常开发时代码实际上放置在工作区中，也就是本地的XXX.java这些文件，通过add等这些命令将代码文教提交给暂存区（Index/Stage），也就意味着代码全权交给了git进行管理，之后通过commit等命令将暂存区提交给master分支上，也就是意味打了一个版本，也可以说代码提交到了本地仓库中。另外，团队协作过程中自然而然还涉及到与远程仓库的交互。</p>
+<p>因此，经过这样的分析，git命令可以分为这样的逻辑进行理解和记忆：</p>
+<ol>
+<li><p>git管理配置的命令；</p>
+<p><strong>几个核心存储区的交互命令：</strong></p>
+</li>
+<li><p>工作区与暂存区的交互；</p>
+</li>
+<li><p>暂存区与本地仓库（分支）上的交互；</p>
+</li>
+<li><p>本地仓库与远程仓库的交互。</p>
+</li>
+</ol>
+<h2 id="git配置命令"><a href="#git配置命令" class="headerlink" title="git配置命令"></a>git配置命令</h2><blockquote>
+<p>查询配置信息</p>
+</blockquote>
+<ol>
+<li>列出当前配置：<code>git config --list</code>;</li>
+<li>列出repository配置：<code>git config --local --list</code>;</li>
+<li>列出全局配置：<code>git config --global --list</code>;</li>
+<li>列出系统配置：<code>git config --system --list</code>;</li>
+</ol>
+<blockquote>
+<p>第一次使用git，配置用户信息</p>
+</blockquote>
+<ol>
+<li>配置用户名：<code>git config --global user.name &quot;your name&quot;</code>;</li>
+<li>配置用户邮箱：<code>git config --global user.email &quot;youremail@github.com&quot;</code>;</li>
+</ol>
+<blockquote>
+<p>其他配置</p>
+</blockquote>
+<ol>
+<li>配置解决冲突时使用哪种差异分析工具，比如要使用vimdiff：<code>git config --global merge.tool vimdiff</code>;</li>
+<li>配置git命令输出为彩色的：<code>git config --global color.ui auto</code>;</li>
+<li>配置git使用的文本编辑器：<code>git config --global core.editor vi</code>;</li>
+</ol>
+<h2 id="工作区上的操作命令"><a href="#工作区上的操作命令" class="headerlink" title="工作区上的操作命令"></a>工作区上的操作命令</h2><blockquote>
+<p>新建仓库</p>
+</blockquote>
+<ol>
+<li>将工作区中的项目文件使用git进行管理，即创建一个新的本地仓库：<code>git init</code>；</li>
+<li>从远程git仓库复制项目：<code>git clone &lt;url&gt;</code>，如：git clone git://github.com/wasd/example.git;克隆项目时如果想定义新的项目名，可以在clone命令后指定新的项目名：<code>git clone git://github.com/wasd/example.git mygit</code>；</li>
+</ol>
+<blockquote>
+<p>提交</p>
+</blockquote>
+<ol>
+<li>提交工作区所有文件到暂存区：<code>git add .</code>；</li>
+<li>提交工作区中指定文件到暂存区：<code>git add &lt;file1&gt; &lt;file2&gt; ...</code>;</li>
+<li>提交工作区中某个文件夹中所有文件到暂存区：<code>git add [dir]</code>;</li>
+</ol>
+<blockquote>
+<p>撤销</p>
+</blockquote>
+<ol>
+<li>删除工作区文件，并且也从暂存区删除对应文件的记录：<code>git rm &lt;file1&gt; &lt;file2&gt;</code>;</li>
+<li>从暂存区中删除文件，但是工作区依然还有该文件:<code>git rm --cached &lt;file&gt;</code>;</li>
+<li>取消暂存区已经暂存的文件：<code>git reset HEAD &lt;file&gt;...</code>;</li>
+<li>撤销上一次对文件的操作：<code>git checkout --&lt;file&gt;</code>。要确定上一次对文件的修改不再需要，如果想保留上一次的修改以备以后继续工作，可以使用stashing和分支来处理；</li>
+<li>隐藏当前变更，以便能够切换分支：<code>git stash</code>；</li>
+<li>查看当前所有的储藏：<code>git stash list</code>；</li>
+<li>应用最新的储藏：<code>git stash apply</code>，如果想应用更早的储藏：<code>git stash apply stash@{2}</code>；重新应用被暂存的变更，需要加上<code>--index</code>参数：<code>git stash apply --index</code>;</li>
+<li>使用apply命令只是应用储藏，而内容仍然还在栈上，需要移除指定的储藏：<code>git stash drop stash{0}</code>；如果使用pop命令不仅可以重新应用储藏，还可以立刻从堆栈中清除：<code>git stash pop</code>;</li>
+<li>在某些情况下，你可能想应用储藏的修改，在进行了一些其他的修改后，又要取消之前所应用储藏的修改。Git没有提供类似于 stash unapply 的命令，但是可以通过取消该储藏的补丁达到同样的效果：<code>git stash show -p stash@{0} | git apply -R</code>；同样的，如果你沒有指定具体的某个储藏，Git 会选择最近的储藏：<code>git stash show -p | git apply -R</code>；</li>
+</ol>
+<blockquote>
+<p>更新文件</p>
+</blockquote>
+<ol>
+<li>重命名文件，并将已改名文件提交到暂存区：<code>git mv [file-original] [file-renamed]</code>;</li>
+</ol>
+<blockquote>
+<p>查新信息</p>
+</blockquote>
+<ol>
+<li>查询当前工作区所有文件的状态：<code>git status</code>;</li>
+<li>比较工作区中当前文件和暂存区之间的差异，也就是修改之后还没有暂存的内容：git diff；指定文件在工作区和暂存区上差异比较：<code>git diff &lt;file-name&gt;</code>;</li>
+</ol>
+<h2 id="暂存区上的操作命令"><a href="#暂存区上的操作命令" class="headerlink" title="暂存区上的操作命令"></a>暂存区上的操作命令</h2><blockquote>
+<p>提交文件到版本库</p>
+</blockquote>
+<ol>
+<li>将暂存区中的文件提交到本地仓库中，即打上新版本：<code>git commit -m &quot;commit_info&quot;</code>;</li>
+<li>将所有已经使用git管理过的文件暂存后一并提交，跳过add到暂存区的过程：<code>git commit -a -m &quot;commit_info&quot;</code>;</li>
+<li>提交文件时，发现漏掉几个文件，或者注释写错了，可以撤销上一次提交：<code>git commit --amend</code>;</li>
+</ol>
+<blockquote>
+<p>查看信息</p>
+</blockquote>
+<ol>
+<li>比较暂存区与上一版本的差异：<code>git diff --cached</code>;</li>
+<li>指定文件在暂存区和本地仓库的不同：<code>git diff &lt;file-name&gt; --cached</code>;</li>
+<li>查看提交历史：git log；参数<code>-p</code>展开每次提交的内容差异，用<code>-2</code>显示最近的两次更新，如<code>git log -p -2</code>;</li>
+</ol>
+<blockquote>
+<p>打标签</p>
+</blockquote>
+<p>Git 使用的标签有两种类型：<strong>轻量级的（lightweight）和含附注的（annotated）</strong>。轻量级标签就像是个不会变化的分支，实际上它就是个指向特定提交对象的引用。而含附注标签，实际上是存储在仓库中的一个独立对象，它有自身的校验和信息，包含着标签的名字，电子邮件地址和日期，以及标签说明，标签本身也允许使用 GNU Privacy Guard (GPG) 来签署或验证。一般我们都建议使用含附注型的标签，以便保留相关信息；当然，如果只是临时性加注标签，或者不需要旁注额外信息，用轻量级标签也没问题。</p>
+<ol>
+<li>列出现在所有的标签：<code>git tag</code>;</li>
+<li>使用特定的搜索模式列出符合条件的标签，例如只对1.4.2系列的版本感兴趣：<code>git tag -l &quot;v1.4.2.*&quot;</code>;</li>
+<li>创建一个含附注类型的标签，需要加<code>-a</code>参数，如<code>git tag -a v1.4 -m &quot;my version 1.4&quot;</code>;</li>
+<li>使用git show命令查看相应标签的版本信息，并连同显示打标签时的提交对象：<code>git show v1.4</code>;</li>
+<li>如果有自己的私钥，可以使用GPG来签署标签，只需要在命令中使用<code>-s</code>参数：<code>git tag -s v1.5 -m &quot;my signed 1.5 tag&quot;</code>;</li>
+<li>验证已签署的标签：git tag -v ，如<code>git tag -v v1.5</code>;</li>
+<li>创建一个轻量级标签的话，就直接使用git tag命令即可，连<code>-a</code>,<code>-s</code>以及<code>-m</code>选项都不需要，直接给出标签名字即可，如<code>git tag v1.5</code>;</li>
+<li>将标签推送到远程仓库中：git push origin ，如<code>git push origin v1.5</code>；</li>
+<li>将本地所有的标签全部推送到远程仓库中：<code>git push origin --tags</code>;</li>
+</ol>
+<blockquote>
+<p>分支管理</p>
+</blockquote>
+<ol>
+<li>创建分支：<code>git branch &lt;branch-name&gt;</code>，如<code>git branch testing</code>；</li>
+<li>从当前所处的分支切换到其他分支：<code>git checkout &lt;branch-name&gt;</code>，如<code>git checkout testing</code>；</li>
+<li>新建并切换到新建分支上：<code>git checkout -b &lt;branch-name&gt;</code>;</li>
+<li>删除分支：<code>git branch -d &lt;branch-name&gt;</code>；</li>
+<li>将当前分支与指定分支进行合并：<code>git merge &lt;branch-name&gt;</code>;</li>
+<li>显示本地仓库的所有分支：<code>git branch</code>;</li>
+<li>查看各个分支最后一个提交对象的信息：<code>git branch -v</code>;</li>
+<li>查看哪些分支已经合并到当前分支：<code>git branch --merged</code>;</li>
+<li>查看当前哪些分支还没有合并到当前分支：<code>git branch --no-merged</code>;</li>
+<li>把远程分支合并到当前分支：<code>git merge &lt;remote-name&gt;/&lt;branch-name&gt;</code>，如<code>git merge origin/serverfix</code>；如果是单线的历史分支不存在任何需要解决的分歧，只是简单的将HEAD指针前移，所以这种合并过程可以称为快进（Fast forward），而如果是历史分支是分叉的，会以当前分叉的两个分支作为两个祖先，创建新的提交对象；如果在合并分支时，遇到合并冲突需要人工解决后，再才能提交；</li>
+<li>在远程分支的基础上创建新的本地分支<code>：git checkout -b &lt;branch-name&gt; &lt;remote-name&gt;/&lt;branch-name&gt;</code>，如<code>git checkout -b serverfix origin/serverfix</code>;</li>
+<li>从远程分支checkout出来的本地分支，称之为跟踪分支。在跟踪分支上向远程分支上推送内容：<code>git push</code>。该命令会自动判断应该向远程仓库中的哪个分支推送数据；在跟踪分支上合并远程分支：<code>git pull</code>；</li>
+<li>将一个分支里提交的改变移到基底分支上重放一遍：<code>git rebase &lt;rebase-branch&gt; &lt;branch-name&gt;</code>，如<code>git rebase master server</code>，将特性分支server提交的改变在基底分支master上重演一遍；使用rebase操作最大的好处是像在单个分支上操作的，提交的修改历史也是一根线；如果想把基于一个特性分支上的另一个特性分支变基到其他分支上，可以使用<code>--onto</code>操作：<code>git rebase --onto &lt;rebase-branch&gt; &lt;feature branch&gt; &lt;sub-feature-branch&gt;</code>，如<code>git rebase --onto master server client</code>；使用rebase操作应该遵循的原则是：<strong>一旦分支中的提交对象发布到公共仓库，就千万不要对该分支进行rebase操作</strong>；</li>
+</ol>
+<h2 id="本地仓库上的操作"><a href="#本地仓库上的操作" class="headerlink" title="本地仓库上的操作"></a>本地仓库上的操作</h2><ol>
+<li>查看本地仓库关联的远程仓库：<code>git remote</code>；在克隆完每个远程仓库后，远程仓库默认为<code>origin</code>;加上<code>-v</code>的参数后，会显示远程仓库的<code>url</code>地址；</li>
+<li>添加远程仓库，一般会取一个简短的别名：<code>git remote add [remote-name] [url]</code>，比如：<code>git remote add example git://github.com/example/example.git</code>;</li>
+<li>从远程仓库中抓取本地仓库中没有的更新：<code>git fetch [remote-name]</code>，如<code>git fetch origin</code>;使用fetch只是将远端数据拉到本地仓库，并不自动合并到当前工作分支，只能人工合并。如果设置了某个分支关联到远程仓库的某个分支的话，可以使用<code>git pull</code>来拉去远程分支的数据，然后将远端分支自动合并到本地仓库中的当前分支；</li>
+<li>将本地仓库某分支推送到远程仓库上：<code>git push [remote-name] [branch-name]</code>，如<code>git push origin master</code>；如果想将本地分支推送到远程仓库的不同名分支：<code>git push &lt;remote-name&gt; &lt;local-branch&gt;:&lt;remote-branch&gt;</code>，如<code>git push origin serverfix:awesomebranch</code>;如果想删除远程分支：<code>git push [romote-name] :&lt;remote-branch&gt;</code>，如<code>git push origin :serverfix</code>。这里省略了本地分支，也就相当于将空白内容推送给远程分支，就等于删掉了远程分支。</li>
+<li>查看远程仓库的详细信息：<code>git remote show origin</code>；</li>
+<li>修改某个远程仓库在本地的简称：<code>git remote rename [old-name] [new-name]</code>，如<code>git remote rename origin org</code>；</li>
+<li>移除远程仓库：<code>git remote rm [remote-name]</code>；</li>
+</ol>
+<h2 id="忽略文件-gitignore"><a href="#忽略文件-gitignore" class="headerlink" title="忽略文件.gitignore"></a>忽略文件.gitignore</h2><p>一般我们总会有些文件无需纳入 Git 的管理，也不希望它们总出现在未跟踪文件列表。通常都是些自动生成的文件，比如日志文件，或者编译过程中创建的临时文件等。我们可以创建一个名为 .gitignore 的文件，列出要忽略的文件模式。如下例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 此为注释 – 将被 Git 忽略</span><br><span class="line"># 忽略所有 .a 结尾的文件</span><br><span class="line">*.a</span><br><span class="line"># 但 lib.a 除外</span><br><span class="line">!lib.a</span><br><span class="line"># 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</span><br><span class="line">/TODO</span><br><span class="line"># 忽略 build/ 目录下的所有文件</span><br><span class="line">build/</span><br><span class="line"># 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span><br><span class="line">doc/*.txt</span><br><span class="line"># 忽略 doc/ 目录下所有扩展名为 txt 的文件</span><br><span class="line">doc/**/*.txt</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1165,7 +1436,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据库/oracle和mysql的区别/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/零散记/String和包装类的equals和==/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -1185,7 +1456,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/26/数据库/oracle和mysql的区别/" class="post-title-link" itemprop="url">oracle和mysql的区别</a>
+                <a href="/2019/05/26/零散记/String和包装类的equals和==/" class="post-title-link" itemprop="url">String和包装类的equals和==</a>
               
             
           </h1>
@@ -1227,7 +1498,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-25 01:17:46" itemprop="dateModified" datetime="2019-10-25T01:17:46+08:00">2019-10-25</time> 
+              <time title="修改时间：2019-10-20 18:29:16" itemprop="dateModified" datetime="2019-10-20T18:29:16+08:00">2019-10-20</time> 
               -->
               <!-- new version -->
                         
@@ -1242,8 +1513,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-25T01:17:46+08:00" content="2019-10-25">
-                2019-10-25 01:17:46
+              <time itemprop="dateUpdated" datetime="2019-10-20T18:29:16+08:00" content="2019-10-20">
+                2019-10-20 18:29:16
               </time>
             </span>
           
@@ -1264,7 +1535,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/零散记/" itemprop="url" rel="index"><span itemprop="name">零散记</span></a></span>
 
                 
                 
@@ -1283,8 +1554,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/数据库/oracle和mysql的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据库/oracle和mysql的区别/" itemprop="commentCount"></span>
+                <a href="/2019/05/26/零散记/String和包装类的equals和==/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/零散记/String和包装类的equals和==/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1314,12 +1585,263 @@
       
         
           
-            <p>默认隔离级别不同：mysql默认可重复读，oracle默认读已提交</p>
-<p>隔离级别种类不同：oracle只有读已提交和串行化，只读</p>
-<p>对事务的提交：mysql自动提交，oracle默认手动提交</p>
-<p>并发性：mysql有索引行级锁，没索引表级锁，oracle使用行级锁对资源锁定的粒度小得很，只是锁定sql需要得资源，不依赖索引</p>
-<p>分页查询：MySQL用到limit，oracle用到伪列ROWNUM和嵌套查询</p>
-<p>逻辑备份：mysql逻辑备份数据需要锁定数据，oracle不需要</p>
+            <h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><p>String对象创建两种方式：</p>
+<ul>
+<li>第一种方式是在常量池中拿对象；</li>
+<li>第二种方式是直接在堆内存空间创建一个新的对象。</li>
+</ul>
+<p><img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-3String-Pool-Java1-450x249.png" alt></p>
+<p><strong>String 类型的常量池比较特殊。它的主要使用方法有两种：</strong></p>
+<ul>
+<li>直接使用双引号声明出来的 String 对象会直接存储在常量池中。</li>
+<li>如果不是用双引号声明的 String 对象，可以使用 String 提供的 intern 方法。String.intern() 是一个 Native 方法，它的作用是：如果运行时常量池中已经包含一个等于此 String 对象内容的字符串，则返回常量池中该字符串的引用；如果没有，JDK1.7之前（不包含1.7）的处理方式是在常量池中创建与此 String 内容相同的字符串，并返回常量池中创建的字符串的引用，JDK1.7以及之后的处理方式是在常量池中记录此字符串的引用，并返回该引用。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="keyword">new</span> String(<span class="string">"计算机"</span>);</span><br><span class="line">String s2 = s1.intern();</span><br><span class="line">String s3 = <span class="string">"计算机"</span>;</span><br><span class="line">System.out.println(s2);<span class="comment">//计算机</span></span><br><span class="line">System.out.println(s1 == s2);<span class="comment">//false，因为一个是堆内存中的 String 对象一个是常量池中的 String 对象，</span></span><br><span class="line">System.out.println(s3 == s2);<span class="comment">//true，因为两个都是常量池中的 String 对象</span></span><br></pre></td></tr></table></figure>
+<p>字符串拼接</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String str1 = <span class="string">"str"</span>;</span><br><span class="line">String str2 = <span class="string">"ing"</span>;</span><br><span class="line"></span><br><span class="line">String str3 = <span class="string">"str"</span> + <span class="string">"ing"</span>;<span class="comment">//常量池中的对象</span></span><br><span class="line">String str4 = str1 + str2; <span class="comment">//在堆上创建的新的对象      </span></span><br><span class="line">String str5 = <span class="string">"string"</span>;<span class="comment">//常量池中的对象</span></span><br><span class="line">System.out.println(str3 == str4);<span class="comment">//false</span></span><br><span class="line">System.out.println(str3 == str5);<span class="comment">//true</span></span><br><span class="line">System.out.println(str4 == str5);<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String a = <span class="string">"123"</span>;</span><br><span class="line">		String b = <span class="keyword">new</span> String(<span class="string">"123"</span>);</span><br><span class="line">		String c = <span class="string">"1"</span>+<span class="string">"23"</span>;</span><br><span class="line">		String d = <span class="string">"1"</span>+<span class="keyword">new</span> String(<span class="string">"23"</span>);</span><br><span class="line">		String e = <span class="keyword">new</span> String(<span class="string">"1"</span>)+<span class="keyword">new</span> String(<span class="string">"23"</span>);</span><br><span class="line">		String f = <span class="string">"1"</span>;</span><br><span class="line">		String h = <span class="string">"23"</span>;</span><br><span class="line">		String i = f+h;</span><br><span class="line">		System.out.println(a==b);<span class="comment">//false</span></span><br><span class="line">		System.out.println(a==c);<span class="comment">//true</span></span><br><span class="line">		System.out.println(a==d);<span class="comment">//false</span></span><br><span class="line">		System.out.println(a==e);<span class="comment">//false</span></span><br><span class="line">		System.out.println(b==d);<span class="comment">//false</span></span><br><span class="line">		System.out.println(b==e);<span class="comment">//false</span></span><br><span class="line">		System.out.println(d==e);<span class="comment">//false</span></span><br><span class="line">		System.out.println(<span class="string">"------------------------------"</span>);</span><br><span class="line">		System.out.println(a==i);<span class="comment">//false</span></span><br><span class="line">        System.out.println(b==i);<span class="comment">//false</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只要涉及到对象引用如上f、h或者其中new一个，整体都会new一个对象，所以都是false</p>
+<h4 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h4><ul>
+<li><strong>Java 基本类型的包装类的大部分都实现了常量池技术，即 Byte,Short,Integer,Long,Character,Boolean；这 5 种包装类默认创建了数值[-128，127] 的相应类型的缓存数据，但是超出此范围仍然会去创建新的对象。</strong> 为啥把缓存设置为[-128，127]区间？性能和资源之间的权衡。</li>
+<li><strong>两种浮点数类型的包装类 Float,Double 并没有实现常量池技术。</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">33</span>;</span><br><span class="line">Integer i2 = <span class="number">33</span>;</span><br><span class="line">System.out.println(i1 == i2);<span class="comment">// 输出 true</span></span><br><span class="line">Integer i11 = <span class="number">333</span>;</span><br><span class="line">Integer i22 = <span class="number">333</span>;</span><br><span class="line">System.out.println(i11 == i22);<span class="comment">// 输出 false</span></span><br></pre></td></tr></table></figure>
+<p><strong>Integer 缓存源代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*此方法将始终缓存-128 到 127（包括端点）范围内的值，并可以缓存此范围之外的其他值。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">            <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>应用场景：</strong></p>
+<ol>
+<li>Integer i1=40；Java 在编译的时候会直接将代码封装成 Integer i1=Integer.valueOf(40);，从而使用常量池中的对象。</li>
+<li>Integer i1 = new Integer(40);这种情况下会创建新的对象。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">40</span>;</span><br><span class="line">Integer i2 = <span class="keyword">new</span> Integer(<span class="number">40</span>);</span><br><span class="line">System.out.println(i1==i2);<span class="comment">//输出 false</span></span><br></pre></td></tr></table></figure>
+<p><strong>Integer 比较更丰富的一个例子:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">40</span>;</span><br><span class="line">Integer i2 = <span class="number">40</span>;</span><br><span class="line">Integer i3 = <span class="number">0</span>;</span><br><span class="line">Integer i4 = <span class="keyword">new</span> Integer(<span class="number">40</span>);</span><br><span class="line">Integer i5 = <span class="keyword">new</span> Integer(<span class="number">40</span>);</span><br><span class="line">Integer i6 = <span class="keyword">new</span> Integer(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"i1=i2   "</span> + (i1 == i2));</span><br><span class="line">System.out.println(<span class="string">"i1=i2+i3   "</span> + (i1 == i2 + i3));</span><br><span class="line">System.out.println(<span class="string">"i1=i4   "</span> + (i1 == i4));</span><br><span class="line">System.out.println(<span class="string">"i4=i5   "</span> + (i4 == i5));</span><br><span class="line">System.out.println(<span class="string">"i4=i5+i6   "</span> + (i4 == i5 + i6));   </span><br><span class="line">System.out.println(<span class="string">"40=i5+i6   "</span> + (<span class="number">40</span> == i5 + i6));</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i1=i2   <span class="keyword">true</span></span><br><span class="line">i1=i2+i3   <span class="keyword">true</span></span><br><span class="line">i1=i4   <span class="keyword">false</span></span><br><span class="line">i4=i5   <span class="keyword">false</span></span><br><span class="line">i4=i5+i6   <span class="keyword">true</span></span><br><span class="line"><span class="number">40</span>=i5+i6   <span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+<p>解释：</p>
+<p>语句 i4 == i5 + i6，因为+这个操作符不适用于 Integer 对象，首先 i5 和 i6 进行自动拆箱操作，进行数值相加，即 i4 == 40。然后 Integer 对象无法与数值进行直接比较，所以 i4 自动拆箱转为 int 值 40，最终这条语句转为 40 == 40 进行数值比较。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Integer a = <span class="number">40</span>;</span><br><span class="line">		Integer b = <span class="keyword">new</span> Integer(<span class="number">40</span>);</span><br><span class="line">		Integer c = <span class="number">10</span>+<span class="number">30</span>;</span><br><span class="line">		Integer d = <span class="number">10</span>+<span class="keyword">new</span> Integer(<span class="number">30</span>);</span><br><span class="line">		Integer e = <span class="keyword">new</span> Integer(<span class="number">10</span>)+<span class="keyword">new</span> Integer(<span class="number">30</span>);</span><br><span class="line">		Integer f = <span class="number">10</span>;</span><br><span class="line">		Integer h = <span class="number">30</span>;</span><br><span class="line">		Integer i = f+h;</span><br><span class="line">		<span class="keyword">int</span> j = <span class="number">40</span>;</span><br><span class="line">		System.out.println(a==b);<span class="comment">//false</span></span><br><span class="line">		System.out.println(a==c);<span class="comment">//true</span></span><br><span class="line">		System.out.println(a==d);<span class="comment">//true</span></span><br><span class="line">		System.out.println(a==e);<span class="comment">//true</span></span><br><span class="line">		System.out.println(b==c);<span class="comment">//false</span></span><br><span class="line">		System.out.println(b==d);<span class="comment">//false</span></span><br><span class="line">		System.out.println(b==e);<span class="comment">//false</span></span><br><span class="line">		System.out.println(d==e);<span class="comment">//true</span></span><br><span class="line">		System.out.println(<span class="string">"------------------------------"</span>);</span><br><span class="line">		System.out.println(a==i);<span class="comment">//true</span></span><br><span class="line">		System.out.println(b==i);<span class="comment">//false</span></span><br><span class="line">		System.out.println(c==i);<span class="comment">//true</span></span><br><span class="line">		System.out.println(d==i);<span class="comment">//true</span></span><br><span class="line">		System.out.println(e==i);<span class="comment">//true</span></span><br><span class="line">		System.out.println(a==j);<span class="comment">//true</span></span><br><span class="line">		System.out.println(b==j);<span class="comment">//true</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>包装类需要考虑自动拆箱问题，当有加减操作时候，就会自动拆箱，相当于在常量池中创建</p>
+<p>equals方法比较内容，所以都相等</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/零散记/jvm在操作系统的哪个区域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/零散记/jvm在操作系统的哪个区域/" class="post-title-link" itemprop="url">jvm在操作系统的哪个区域</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-19 20:09:18" itemprop="dateModified" datetime="2019-10-19T20:09:18+08:00">2019-10-19</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-19T20:09:18+08:00" content="2019-10-19">
+                2019-10-19 20:09:18
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/零散记/" itemprop="url" rel="index"><span itemprop="name">零散记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/零散记/jvm在操作系统的哪个区域/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/零散记/jvm在操作系统的哪个区域/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>操作系统的基本结构</p>
+<p><img src="/2019/05/26/零散记/jvm在操作系统的哪个区域/v2-7754b65b9eb147c43e6d64229de9d807_hd.jpg" alt></p>
+<p>操作系统中的jvm</p>
+<p><img src="/2019/05/26/零散记/jvm在操作系统的哪个区域/v2-40029bb2d1c7b1cc182f0967df301b90_hd.jpg" alt></p>
+<p>为什么jvm的内存是分布在操作系统的堆中呢？？因为操作系统的栈是操作系统管理的，它随时会被回收，所以如果jvm放在栈中，那java的一个null对象就很难确定会被谁回收了，那gc的存在就一点意义都没有了，而要对栈做到自动释放也是jvm需要考虑的，所以放在堆中就最合适不过了。 操作系统+jvm的内存简单布局</p>
+<p><img src="/2019/05/26/零散记/jvm在操作系统的哪个区域/v2-2a3e5e747032e96d4a4b0eed72a25f9e_hd.jpg" alt></p>
+<p>jvm的设计的模型其实就是操作系统的模型，基于操作系统的角度，jvm也就是一个应用（java.exe/javaw.exe），而基于class文件来说，jvm就是个操作系统，而jvm的方法区，也就相当于操作系统的硬盘区，所以方法区也被叫做permanent区，因为这个单词是永久的意思，也就是永久区。而java栈和操作系统栈是一致的，无论是生长方向还是管理的方式，至于堆，虽然概念上一致目标也一致，分配内存的方式也一直(new,或者malloc等等)，但是由于他们的管理方式不同，jvm是gc回收，而操作系统是程序员手动释放，所以在算法上有很多的差异. 看下面的图。<br><img src="/2019/05/26/零散记/jvm在操作系统的哪个区域/v2-929dbcdb6e6e3b400a4aeec31e823688_hd.jpg" alt></p>
+<p>将这个图和上面的图对比多了什么？没错，多了一个pc寄存器，所谓pc寄存器，无论是在虚拟机中还是在我们虚拟机所寄宿的操作系统中功能目的是一致的，计算机上的pc寄存器是计算机上的硬件，本来就是属于计算机，计算机用pc寄存器来存放“伪指令”或地址，而相对于虚拟机，pc寄存器它表现为一块内存(一个字长，虚拟机要求字长最小为32位)，虚拟机的pc寄存器的功能也是存放伪指令，更确切的说存放的是将要执行指令的地址，它甚至可以是操作系统指令的本地地址，当虚拟机正在执行的方法是一个本地方法的时候，jvm的pc寄存器存储的值是undefined，所以虚拟机的pc寄存器是用于存放下一条将要执行的指令的地址(字节码流)。</p>
+<p><img src="/2019/05/26/零散记/jvm在操作系统的哪个区域/v2-02cf925ec83f848e6dcb3201515a4b6e_hd.jpg" alt></p>
+<p>这个图是要告诉你，当一个classLoder启动的时候，classLoader的生存地点在jvm中的堆，然后它会去主机硬盘上将A.class装载到jvm的方法区，方法区中的这个字节文件会被虚拟机拿来new A字节码()，然后在堆内存生成了一个A字节码的对象，然后A字节码这个内存文件有两个引用一个指向A的class对象，一个指向加载自己的classLoader<br>如下图。</p>
+<p><img src="/2019/05/26/零散记/jvm在操作系统的哪个区域/v2-0344ad4cb69c72591c3ff91569af51c9_hd.jpg" alt></p>
+<p>————————————————<br>版权声明：本文为CSDN博主「Kevinten10」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/wsh596823919/article/details/82669460" target="_blank" rel="noopener">https://blog.csdn.net/wsh596823919/article/details/82669460</a></p>
+<p><a href="https://blog.csdn.net/yfqnihao/article/details/8289363" target="_blank" rel="noopener">https://blog.csdn.net/yfqnihao/article/details/8289363</a></p>
 
           
         
@@ -1667,6 +2189,269 @@
 <h3 id="ResultSet接口"><a href="#ResultSet接口" class="headerlink" title="ResultSet接口"></a>ResultSet接口</h3><p>结果集对象。该对象包含访问查询结果的方法，ResultSet可以通过列索引或列名或得数据。</p>
 <p>　循环输出数据库信息：</p>
 <p>　　while(rs.next()){<br>　　　　System.out.println(rs.getString(1));<br>　　　　System.out.println(rs.getString(2));<br>　　　　System.out.println(rs.getString(3));<br>　　　　System.out.println(rs.getString(4));<br>}</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/java集合类/集合类之List/集合类之List/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/java集合类/集合类之List/集合类之List/" class="post-title-link" itemprop="url">集合类之List</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-06 23:54:22" itemprop="dateModified" datetime="2019-10-06T23:54:22+08:00">2019-10-06</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-06T23:54:22+08:00" content="2019-10-06">
+                2019-10-06 23:54:22
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/集合框架/" itemprop="url" rel="index"><span itemprop="name">集合框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/java集合类/集合类之List/集合类之List/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/java集合类/集合类之List/集合类之List/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="集合类之List"><a href="#集合类之List" class="headerlink" title="集合类之List"></a>集合类之List</h1><p>List接口扩展自Collection，定义一个允许重复的有序集合，从List接口中的方法来看，List接口主要是增加了面向位置的操作，允许在指定位置上操作元素，同时增加了一个能够双向遍历线性表的新列表迭代器ListIterator。List接口的两个重要的具体实现类，也是我们可能最常用的类，ArrayList和LinkedList。</p>
+<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/集合框架体系图.jpg" alt="集合框架体系图"></p>
+<h3 id="1-ArrayList"><a href="#1-ArrayList" class="headerlink" title="1.ArrayList"></a>1.ArrayList</h3><p>它是用数组存储元素的，这个数组可以动态创建，如果元素个数超过了数组的容量，那么就创建一个更大的新数组（通过移位运算符&gt;&gt;1扩大1倍再加上自己原本的容量即扩充1.5倍），并将当前数组中的所有元素都复制到新数组中。假设第一次是集合没有任何元素，下面以插入一个元素为例看看源码的实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、找到add()实现方法。</span><br><span class="line"> </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">        ensureCapacityInternal(size + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span></span><br><span class="line">        elementData[size++] = e;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"><span class="number">2</span>、此方法主要是确定将要创建的数组大小。</span><br><span class="line"> </span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">            minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);<span class="comment">//取出两个较大的容量</span></span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        ensureExplicitCapacity(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureExplicitCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">        modCount++;<span class="comment">//记录了结构性改变的次数。结构性改变指的是那些修改了列表大小的操作，在迭代过程中可能会造成错误的结果。</span></span><br><span class="line">        <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">            grow(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"><span class="number">3</span>、最后是创建数组，可以明显的看到先是确定了添加元素后的大小之后将元素复制到新数组中。</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// overflow-conscious code</span></span><br><span class="line">        <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">        <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);<span class="comment">//1.5倍扩容</span></span><br><span class="line">        <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">            newCapacity = minCapacity;</span><br><span class="line">        <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">            newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">        <span class="comment">// minCapacity is usually close to size, so this is a win:</span></span><br><span class="line">        elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>ArrayList遍历三种方法</p>
+<p>1、通过迭代器Iterator()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Iterator iter = list.iterator();</span><br><span class="line"><span class="keyword">while</span> (iter.hasNext())</span><br><span class="line">&#123;</span><br><span class="line">    System.out.println(iter.next());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、随机访问，通过索引值去遍历。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> size = list.size();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;size; i++) </span><br><span class="line">&#123;</span><br><span class="line">    System.out.println(list.get(i));        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、for循环遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(String str:list)</span><br><span class="line">&#123;</span><br><span class="line">System.out.println(str);</span><br><span class="line">　　 &#125;</span><br></pre></td></tr></table></figure>
+<p>ArrayList常见问题</p>
+<p>1、ArrayList如何实现自动增加</p>
+<p>当试图在arraylist中增加一个对象的时候，Java会去检查arraylist，以确保已存在的数组中有足够的容量来存储这个新的对象。如果没有足够容量的话，那么就会新建一个长度更长的数组，旧的数组就会使用Arrays.copyOf方法被复制到新的数组中去，现有的数组引用指向了新的数组。</p>
+<p>2、当传递ArrayList到某个方法中，或者某个方法返回ArrayList，什么时候要考虑安全隐患？如何修复安全违规这个问题呢？</p>
+<p>当array被当做参数传递到某个方法中，如果array在没有被复制的情况下直接被分配给了成员变量，那么就可能发生这种情况，即当原始的数组被调用的方法改变的时候，传递到这个方法中的数组也会改变。</p>
+<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/arrayList安全隐患.png" alt="arrayList安全隐患"></p>
+<p>3、什么情况下你会使用ArrayList？什么时候你会选择LinkedList？</p>
+<p>多数情况下，当你遇到访问元素比插入或者是删除元素更加频繁的时候，你应该使用ArrayList。另外一方面，当你在某个特别的索引中，插入或者是删除元素更加频繁，或者你根本就不需要访问元素的时候，你会选择LinkedList。这里的主要原因是，在ArrayList中访问元素的最糟糕的时间复杂度是”1″，而在LinkedList中可能就是”n”了。在ArrayList中增加或者删除某个元素，通常会调用System.arraycopy方法，这是一种极为消耗资源的操作，因此，在频繁的插入或者是删除元素的情况下，LinkedList的性能会更加好一点。</p>
+<p>System.arraycopy方法消耗资源原因：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</span><br><span class="line">代码解释:</span><br><span class="line">　　Object src : 原数组</span><br><span class="line">   int srcPos : 从元数据的起始位置开始</span><br><span class="line">　　Object dest : 目标数组</span><br><span class="line">　　int destPos : 目标数组的开始起始位置</span><br><span class="line">　　int length  : 要copy的数组的长度</span><br><span class="line"></span><br><span class="line">我们使用System.arraycopy进行转换(copy)</span><br><span class="line"></span><br><span class="line">System.arrayCopy(srcBytes,0,destBytes ,0,5)</span><br><span class="line">上面这段代码就是 : 创建一个一维空数组,数组的总长度为 12位,然后将srcBytes源数组中 从0位 到 第5位之间的数值 copy 到 destBytes目标数组中,在目标数组的第0位开始放置.</span><br><span class="line">那么这行代码的运行效果应该是 2,4,0,0,0,</span><br><span class="line"></span><br><span class="line">增加或者删除都要进行一次copy，消耗资源多。</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/arraylist增加.jpg" alt="arraylist增加"></p>
+<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/arraylist删除.jpg" alt="arraylist删除"></p>
+<p>4、如何复制某个ArrayList到另一个ArrayList中去？写出你的代码？</p>
+<p>下面就是把某个ArrayList复制到另一个ArrayList中去的几种技术：</p>
+<ol>
+<li>使用clone()方法，比如ArrayList newArray = oldArray.clone();</li>
+<li>使用ArrayList构造方法，比如：ArrayList myObject = new ArrayList(myTempObject);</li>
+<li>使用Collection的copy方法。</li>
+</ol>
+<p>注意1和2是浅拷贝(shallow copy)。</p>
+<p>浅拷贝和深拷贝区别：</p>
+<p>| 浅拷贝：只复制引用，另一处修改，你当下的对象也会修改。         </p>
+<p>| 深拷贝：引用对象的值等信息，复制一份一样的。</p>
+<p>浅拷贝—能复制变量，如果对象内还有对象，则只能复制对象的地址（指针指向同一个内存空间）</p>
+<p>深拷贝—能复制变量，也能复制当前对象的内部对象</p>
+<p>利用序列化实现深拷贝</p>
+<p>把对象写到流里的过程是序列化过程（Serialization），而把对象从流中读出来的过程则叫做反序列化过程（Deserialization）。</p>
+<p>在Java语言里深复制一个对象，常常可以先使对象实现Serializable接口，然后把对象（实际上只是对象的一个拷贝）写到一个流里，再从流里读出来，便可以重建对象。</p>
+<h3 id="2-LinkedList"><a href="#2-LinkedList" class="headerlink" title="2.LinkedList"></a>2.LinkedList</h3><p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/LinkedList结构图.png" alt="LinkedList结构图"></p>
+<p>1、继承了AbstractSequentialList抽象类：在遍历LinkedList的时候，官方更推荐使用顺序访问，也就是使用我们的迭代器。（因为LinkedList底层是通过一个双向链表来实现的）（虽然LinkedList也提供了get（int index）方法，但是底层的实现是：每次调用get（int index）方法的时候，都需要从链表的头部或者尾部进行遍历，每一的遍历时间复杂度是O(index)，而相对比ArrayList的底层实现，每次遍历的时间复杂度都是O(1)。所以不推荐通过get（int index）遍历LinkedList。</p>
+<p>至于上面的说从链表的头部后尾部进行遍历：官方源码对遍历进行了优化：通过判断索引index更靠近链表的头部还是尾部来选择遍历的方向）（所以这里遍历LinkedList推荐使用迭代器）。</p>
+<p>2、实现了List接口。（提供List接口中所有方法的实现）<br>实现了Cloneable接口，它支持克隆（浅克隆），底层实现：LinkedList节点并没有被克隆，只是通过Object的clone（）方法得到的Object对象强制转化为了LinkedList,然后把它内部的实例域都置空，然后把被拷贝的LinkedList节点中的每一个值都拷贝到clone中。</p>
+<p>3、实现了Deque接口。实现了Deque所有的可选的操作。</p>
+<p>4、实现了Serializable接口。表明它支持序列化。（和ArrayList一样，底层都提供了两个方法：readObject（ObjectInputStream o）、writeObject（ObjectOutputStream o），用于实现序列化，底层只序列化节点的个数和节点的值）</p>
+<p>底层重要方法分析：</p>
+<p><strong>addAll(int index, Collection）</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首先调用一下空的构造器。</span></span><br><span class="line"><span class="comment">//然后调用addAll(c)方法。</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">LinkedList</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>();</span><br><span class="line">        addAll(c);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//通过调用addAll(int index, Collection&lt;? extends E&gt; c) 完成集合的添加。</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> addAll(size, c);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//几乎所有的涉及到在指定位置添加或者删除或修改操作都需要判断传进来的参数是否合法。</span></span><br><span class="line"><span class="comment">// checkPositionIndex(index)方法就起这个作用。  </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(<span class="keyword">int</span> index, Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">        checkPositionIndex(index);</span><br><span class="line"><span class="comment">//先把集合转化为数组，然后为该数组添加一个新的引用（Objext[] a）。</span></span><br><span class="line">        Object[] a = c.toArray();</span><br><span class="line"><span class="comment">//新建一个变量存储数组的长度。</span></span><br><span class="line">        <span class="keyword">int</span> numNew = a.length;</span><br><span class="line"><span class="comment">//如果待添加的集合为空，直接返回，无需进行后面的步骤。后面都是用来把集合中的元素添加到</span></span><br><span class="line"><span class="comment">//LinkedList中。</span></span><br><span class="line">        <span class="keyword">if</span> (numNew == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="comment">//Node&lt;E&gt; succ：指代待添加节点的位置。</span></span><br><span class="line"><span class="comment">//Node&lt;E&gt; pred：指代待添加节点的前一个节点。</span></span><br><span class="line"><span class="comment">//下面的代码是依据新添加的元素的位置分为两个分支：</span></span><br><span class="line"><span class="comment">//①新添加的元素的位置位于LinkedList最后一个元素的后面。</span></span><br><span class="line"><span class="comment">//新添加的元素的位置位于LinkedList中。</span></span><br><span class="line"><span class="comment">//如果index==size;说明此时需要添加LinkedList中的集合中的每一个元素都是在LinkedList</span></span><br><span class="line"><span class="comment">//最后面。所以把succ设置为空，pred指向尾节点。</span></span><br><span class="line"><span class="comment">//否则的话succ指向插入待插入位置的节点。这里用到了node（int index）方法，这个方法</span></span><br><span class="line"><span class="comment">//后面会详细分析，这里只需要知道该方法返回对应索引位置上的Node（节点）。pred指向succ节点的前一个节点。</span></span><br><span class="line">        Node&lt;E&gt; pred, succ;</span><br><span class="line">        <span class="keyword">if</span> (index == size) &#123;</span><br><span class="line">            succ = <span class="keyword">null</span>;</span><br><span class="line">            pred = last;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            succ = node(index);</span><br><span class="line">            pred = succ.prev;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//接着遍历数组中的每个元素。在每次遍历的时候，都新建一个节点，该节点的值存储数组a中遍历</span></span><br><span class="line"><span class="comment">//的值，该节点的prev用来存储pred节点，next设置为空。接着判断一下该节点的前一个节点是否为</span></span><br><span class="line"><span class="comment">//空，如果为空的话，则把当前节点设置为头节点。否则的话就把当前节点的前一个节点的next值</span></span><br><span class="line"><span class="comment">//设置为当前节点。最后把pred指向当前节点，以便后续新节点的添加。</span></span><br><span class="line">        <span class="keyword">for</span> (Object o : a) &#123;</span><br><span class="line">            <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>) E e = (E) o;</span><br><span class="line">            Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(pred, e, <span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">if</span> (pred == <span class="keyword">null</span>)</span><br><span class="line">                first = newNode;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                pred.next = newNode;</span><br><span class="line">            pred = newNode;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//这里仍然和上面一样，分两种情况对待：</span></span><br><span class="line"><span class="comment">//①当succ==null（也就是新添加的节点位于LinkedList集合的最后一个元素的后面），</span></span><br><span class="line"><span class="comment">//通过遍历上面的a的所有元素，此时pred指向的是LinkedList中的最后一个元素，所以把</span></span><br><span class="line"><span class="comment">//last指向pred指向的节点。</span></span><br><span class="line"><span class="comment">//当不为空的时候，表明在LinkedList集合中添加的元素，需要把pred的next指向succ上，</span></span><br><span class="line"><span class="comment">//succ的prev指向pred。</span></span><br><span class="line"><span class="comment">//最后把集合的大小设置为新的大小。</span></span><br><span class="line"><span class="comment">//modCount（修改的次数）自增。</span></span><br><span class="line">        <span class="keyword">if</span> (succ == <span class="keyword">null</span>) &#123;</span><br><span class="line">            last = pred;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            pred.next = succ;</span><br><span class="line">            succ.prev = pred;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        size += numNew;</span><br><span class="line">        modCount++;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>虽然是增加一个集合的元素，但是modCount只增加了一次</p>
+<p><strong>将LinkedList写入到流中。（也就是把LinkedList状态保存到流中）（序列化）</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">writeObject</span><span class="params">(java.io.ObjectOutputStream s)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> java.io.IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Write out any hidden serialization magic</span></span><br><span class="line">    s.defaultWriteObject();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write out size</span></span><br><span class="line">    s.writeInt(size);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write out all elements in the proper order.</span></span><br><span class="line">    <span class="keyword">for</span> (Node&lt;E&gt; x = first; x != <span class="keyword">null</span>; x = x.next)</span><br><span class="line">        s.writeObject(x.item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>从流中把LinkedList读取出来（读取流，拼装成LinkedList）（反序列化）</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(java.io.ObjectInputStream s)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> java.io.IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">    <span class="comment">// Read in any hidden serialization magic</span></span><br><span class="line">    s.defaultReadObject();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Read in size</span></span><br><span class="line">    <span class="keyword">int</span> size = s.readInt();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Read in all elements in the proper order.</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">        linkLast((E)s.readObject());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>LinkedList提供了两种迭代器，一种是返回Iterator，另一种返回ListIterator。</strong></p>
+<p><strong>①返回ListIterator迭代器：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListIterator&lt;E&gt; <span class="title">listIterator</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    checkPositionIndex(index);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ListItr(index);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>②返回Iterator迭代器：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">descendingIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DescendingIterator();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2240,844 +3025,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据结构/1 算法的复杂度/算法复杂度/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/数据结构/1 算法的复杂度/算法复杂度/" class="post-title-link" itemprop="url">算法复杂度</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-06 22:10:45" itemprop="dateModified" datetime="2019-10-06T22:10:45+08:00">2019-10-06</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-06T22:10:45+08:00" content="2019-10-06">
-                2019-10-06 22:10:45
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/数据结构/1 算法的复杂度/算法复杂度/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据结构/1 算法的复杂度/算法复杂度/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h3><p>算法是对问题求解步骤的描述，通过有限序列的指令来实现</p>
-<p>五大特征</p>
-<ul>
-<li>有穷性：有限步之后结束</li>
-<li>确定性：不存在二义性</li>
-<li>可行性</li>
-<li>输入</li>
-<li>输出</li>
-</ul>
-<h6 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h6><p>用来衡量算法随着问题规模增大，算法执行时间的增大的快慢</p>
-<p>时间复杂度是问题规模的函数：T(n)</p>
-<p>T(n)=O(f(n))，大O记法</p>
-<p>计算方法： 算法时间增长最快的那个函数项，把它的系数改为1</p>
-<h6 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h6><ul>
-<li>用来衡量算法随问题规模增大，算法所需空间的增长的快慢</li>
-<li>是问题规模的函数：S(n)=O(g(n))</li>
-</ul>
-<p>常见的时间复杂度大小关系</p>
-<p>O(1)&lt;O(logn)&lt;O(n)&lt;O(nlogn)&lt;O(n2)&lt;O(n3)&lt;O(2n)</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/java集合类/集合类之List/集合类之List/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/java集合类/集合类之List/集合类之List/" class="post-title-link" itemprop="url">集合类之List</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-06 23:54:22" itemprop="dateModified" datetime="2019-10-06T23:54:22+08:00">2019-10-06</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-06T23:54:22+08:00" content="2019-10-06">
-                2019-10-06 23:54:22
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/集合框架/" itemprop="url" rel="index"><span itemprop="name">集合框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/java集合类/集合类之List/集合类之List/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/java集合类/集合类之List/集合类之List/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="集合类之List"><a href="#集合类之List" class="headerlink" title="集合类之List"></a>集合类之List</h1><p>List接口扩展自Collection，定义一个允许重复的有序集合，从List接口中的方法来看，List接口主要是增加了面向位置的操作，允许在指定位置上操作元素，同时增加了一个能够双向遍历线性表的新列表迭代器ListIterator。List接口的两个重要的具体实现类，也是我们可能最常用的类，ArrayList和LinkedList。</p>
-<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/集合框架体系图.jpg" alt="集合框架体系图"></p>
-<h3 id="1-ArrayList"><a href="#1-ArrayList" class="headerlink" title="1.ArrayList"></a>1.ArrayList</h3><p>它是用数组存储元素的，这个数组可以动态创建，如果元素个数超过了数组的容量，那么就创建一个更大的新数组（通过移位运算符&gt;&gt;1扩大1倍再加上自己原本的容量即扩充1.5倍），并将当前数组中的所有元素都复制到新数组中。假设第一次是集合没有任何元素，下面以插入一个元素为例看看源码的实现。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、找到add()实现方法。</span><br><span class="line"> </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">        ensureCapacityInternal(size + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span></span><br><span class="line">        elementData[size++] = e;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"><span class="number">2</span>、此方法主要是确定将要创建的数组大小。</span><br><span class="line"> </span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">            minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);<span class="comment">//取出两个较大的容量</span></span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        ensureExplicitCapacity(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureExplicitCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">        modCount++;<span class="comment">//记录了结构性改变的次数。结构性改变指的是那些修改了列表大小的操作，在迭代过程中可能会造成错误的结果。</span></span><br><span class="line">        <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">            grow(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"><span class="number">3</span>、最后是创建数组，可以明显的看到先是确定了添加元素后的大小之后将元素复制到新数组中。</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// overflow-conscious code</span></span><br><span class="line">        <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">        <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);<span class="comment">//1.5倍扩容</span></span><br><span class="line">        <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">            newCapacity = minCapacity;</span><br><span class="line">        <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">            newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">        <span class="comment">// minCapacity is usually close to size, so this is a win:</span></span><br><span class="line">        elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>ArrayList遍历三种方法</p>
-<p>1、通过迭代器Iterator()</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Iterator iter = list.iterator();</span><br><span class="line"><span class="keyword">while</span> (iter.hasNext())</span><br><span class="line">&#123;</span><br><span class="line">    System.out.println(iter.next());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2、随机访问，通过索引值去遍历。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> size = list.size();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;size; i++) </span><br><span class="line">&#123;</span><br><span class="line">    System.out.println(list.get(i));        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3、for循环遍历</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(String str:list)</span><br><span class="line">&#123;</span><br><span class="line">System.out.println(str);</span><br><span class="line">　　 &#125;</span><br></pre></td></tr></table></figure>
-<p>ArrayList常见问题</p>
-<p>1、ArrayList如何实现自动增加</p>
-<p>当试图在arraylist中增加一个对象的时候，Java会去检查arraylist，以确保已存在的数组中有足够的容量来存储这个新的对象。如果没有足够容量的话，那么就会新建一个长度更长的数组，旧的数组就会使用Arrays.copyOf方法被复制到新的数组中去，现有的数组引用指向了新的数组。</p>
-<p>2、当传递ArrayList到某个方法中，或者某个方法返回ArrayList，什么时候要考虑安全隐患？如何修复安全违规这个问题呢？</p>
-<p>当array被当做参数传递到某个方法中，如果array在没有被复制的情况下直接被分配给了成员变量，那么就可能发生这种情况，即当原始的数组被调用的方法改变的时候，传递到这个方法中的数组也会改变。</p>
-<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/arrayList安全隐患.png" alt="arrayList安全隐患"></p>
-<p>3、什么情况下你会使用ArrayList？什么时候你会选择LinkedList？</p>
-<p>多数情况下，当你遇到访问元素比插入或者是删除元素更加频繁的时候，你应该使用ArrayList。另外一方面，当你在某个特别的索引中，插入或者是删除元素更加频繁，或者你根本就不需要访问元素的时候，你会选择LinkedList。这里的主要原因是，在ArrayList中访问元素的最糟糕的时间复杂度是”1″，而在LinkedList中可能就是”n”了。在ArrayList中增加或者删除某个元素，通常会调用System.arraycopy方法，这是一种极为消耗资源的操作，因此，在频繁的插入或者是删除元素的情况下，LinkedList的性能会更加好一点。</p>
-<p>System.arraycopy方法消耗资源原因：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</span><br><span class="line">代码解释:</span><br><span class="line">　　Object src : 原数组</span><br><span class="line">   int srcPos : 从元数据的起始位置开始</span><br><span class="line">　　Object dest : 目标数组</span><br><span class="line">　　int destPos : 目标数组的开始起始位置</span><br><span class="line">　　int length  : 要copy的数组的长度</span><br><span class="line"></span><br><span class="line">我们使用System.arraycopy进行转换(copy)</span><br><span class="line"></span><br><span class="line">System.arrayCopy(srcBytes,0,destBytes ,0,5)</span><br><span class="line">上面这段代码就是 : 创建一个一维空数组,数组的总长度为 12位,然后将srcBytes源数组中 从0位 到 第5位之间的数值 copy 到 destBytes目标数组中,在目标数组的第0位开始放置.</span><br><span class="line">那么这行代码的运行效果应该是 2,4,0,0,0,</span><br><span class="line"></span><br><span class="line">增加或者删除都要进行一次copy，消耗资源多。</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/arraylist增加.jpg" alt="arraylist增加"></p>
-<p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/arraylist删除.jpg" alt="arraylist删除"></p>
-<p>4、如何复制某个ArrayList到另一个ArrayList中去？写出你的代码？</p>
-<p>下面就是把某个ArrayList复制到另一个ArrayList中去的几种技术：</p>
-<ol>
-<li>使用clone()方法，比如ArrayList newArray = oldArray.clone();</li>
-<li>使用ArrayList构造方法，比如：ArrayList myObject = new ArrayList(myTempObject);</li>
-<li>使用Collection的copy方法。</li>
-</ol>
-<p>注意1和2是浅拷贝(shallow copy)。</p>
-<p>浅拷贝和深拷贝区别：</p>
-<p>| 浅拷贝：只复制引用，另一处修改，你当下的对象也会修改。         </p>
-<p>| 深拷贝：引用对象的值等信息，复制一份一样的。</p>
-<p>浅拷贝—能复制变量，如果对象内还有对象，则只能复制对象的地址（指针指向同一个内存空间）</p>
-<p>深拷贝—能复制变量，也能复制当前对象的内部对象</p>
-<p>利用序列化实现深拷贝</p>
-<p>把对象写到流里的过程是序列化过程（Serialization），而把对象从流中读出来的过程则叫做反序列化过程（Deserialization）。</p>
-<p>在Java语言里深复制一个对象，常常可以先使对象实现Serializable接口，然后把对象（实际上只是对象的一个拷贝）写到一个流里，再从流里读出来，便可以重建对象。</p>
-<h3 id="2-LinkedList"><a href="#2-LinkedList" class="headerlink" title="2.LinkedList"></a>2.LinkedList</h3><p><img src="/2019/05/26/java集合类/集合类之List/集合类之List/LinkedList结构图.png" alt="LinkedList结构图"></p>
-<p>1、继承了AbstractSequentialList抽象类：在遍历LinkedList的时候，官方更推荐使用顺序访问，也就是使用我们的迭代器。（因为LinkedList底层是通过一个双向链表来实现的）（虽然LinkedList也提供了get（int index）方法，但是底层的实现是：每次调用get（int index）方法的时候，都需要从链表的头部或者尾部进行遍历，每一的遍历时间复杂度是O(index)，而相对比ArrayList的底层实现，每次遍历的时间复杂度都是O(1)。所以不推荐通过get（int index）遍历LinkedList。</p>
-<p>至于上面的说从链表的头部后尾部进行遍历：官方源码对遍历进行了优化：通过判断索引index更靠近链表的头部还是尾部来选择遍历的方向）（所以这里遍历LinkedList推荐使用迭代器）。</p>
-<p>2、实现了List接口。（提供List接口中所有方法的实现）<br>实现了Cloneable接口，它支持克隆（浅克隆），底层实现：LinkedList节点并没有被克隆，只是通过Object的clone（）方法得到的Object对象强制转化为了LinkedList,然后把它内部的实例域都置空，然后把被拷贝的LinkedList节点中的每一个值都拷贝到clone中。</p>
-<p>3、实现了Deque接口。实现了Deque所有的可选的操作。</p>
-<p>4、实现了Serializable接口。表明它支持序列化。（和ArrayList一样，底层都提供了两个方法：readObject（ObjectInputStream o）、writeObject（ObjectOutputStream o），用于实现序列化，底层只序列化节点的个数和节点的值）</p>
-<p>底层重要方法分析：</p>
-<p><strong>addAll(int index, Collection）</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首先调用一下空的构造器。</span></span><br><span class="line"><span class="comment">//然后调用addAll(c)方法。</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">LinkedList</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>();</span><br><span class="line">        addAll(c);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//通过调用addAll(int index, Collection&lt;? extends E&gt; c) 完成集合的添加。</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> addAll(size, c);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//几乎所有的涉及到在指定位置添加或者删除或修改操作都需要判断传进来的参数是否合法。</span></span><br><span class="line"><span class="comment">// checkPositionIndex(index)方法就起这个作用。  </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(<span class="keyword">int</span> index, Collection&lt;? extends E&gt; c)</span> </span>&#123;</span><br><span class="line">        checkPositionIndex(index);</span><br><span class="line"><span class="comment">//先把集合转化为数组，然后为该数组添加一个新的引用（Objext[] a）。</span></span><br><span class="line">        Object[] a = c.toArray();</span><br><span class="line"><span class="comment">//新建一个变量存储数组的长度。</span></span><br><span class="line">        <span class="keyword">int</span> numNew = a.length;</span><br><span class="line"><span class="comment">//如果待添加的集合为空，直接返回，无需进行后面的步骤。后面都是用来把集合中的元素添加到</span></span><br><span class="line"><span class="comment">//LinkedList中。</span></span><br><span class="line">        <span class="keyword">if</span> (numNew == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="comment">//Node&lt;E&gt; succ：指代待添加节点的位置。</span></span><br><span class="line"><span class="comment">//Node&lt;E&gt; pred：指代待添加节点的前一个节点。</span></span><br><span class="line"><span class="comment">//下面的代码是依据新添加的元素的位置分为两个分支：</span></span><br><span class="line"><span class="comment">//①新添加的元素的位置位于LinkedList最后一个元素的后面。</span></span><br><span class="line"><span class="comment">//新添加的元素的位置位于LinkedList中。</span></span><br><span class="line"><span class="comment">//如果index==size;说明此时需要添加LinkedList中的集合中的每一个元素都是在LinkedList</span></span><br><span class="line"><span class="comment">//最后面。所以把succ设置为空，pred指向尾节点。</span></span><br><span class="line"><span class="comment">//否则的话succ指向插入待插入位置的节点。这里用到了node（int index）方法，这个方法</span></span><br><span class="line"><span class="comment">//后面会详细分析，这里只需要知道该方法返回对应索引位置上的Node（节点）。pred指向succ节点的前一个节点。</span></span><br><span class="line">        Node&lt;E&gt; pred, succ;</span><br><span class="line">        <span class="keyword">if</span> (index == size) &#123;</span><br><span class="line">            succ = <span class="keyword">null</span>;</span><br><span class="line">            pred = last;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            succ = node(index);</span><br><span class="line">            pred = succ.prev;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//接着遍历数组中的每个元素。在每次遍历的时候，都新建一个节点，该节点的值存储数组a中遍历</span></span><br><span class="line"><span class="comment">//的值，该节点的prev用来存储pred节点，next设置为空。接着判断一下该节点的前一个节点是否为</span></span><br><span class="line"><span class="comment">//空，如果为空的话，则把当前节点设置为头节点。否则的话就把当前节点的前一个节点的next值</span></span><br><span class="line"><span class="comment">//设置为当前节点。最后把pred指向当前节点，以便后续新节点的添加。</span></span><br><span class="line">        <span class="keyword">for</span> (Object o : a) &#123;</span><br><span class="line">            <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>) E e = (E) o;</span><br><span class="line">            Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(pred, e, <span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">if</span> (pred == <span class="keyword">null</span>)</span><br><span class="line">                first = newNode;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                pred.next = newNode;</span><br><span class="line">            pred = newNode;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//这里仍然和上面一样，分两种情况对待：</span></span><br><span class="line"><span class="comment">//①当succ==null（也就是新添加的节点位于LinkedList集合的最后一个元素的后面），</span></span><br><span class="line"><span class="comment">//通过遍历上面的a的所有元素，此时pred指向的是LinkedList中的最后一个元素，所以把</span></span><br><span class="line"><span class="comment">//last指向pred指向的节点。</span></span><br><span class="line"><span class="comment">//当不为空的时候，表明在LinkedList集合中添加的元素，需要把pred的next指向succ上，</span></span><br><span class="line"><span class="comment">//succ的prev指向pred。</span></span><br><span class="line"><span class="comment">//最后把集合的大小设置为新的大小。</span></span><br><span class="line"><span class="comment">//modCount（修改的次数）自增。</span></span><br><span class="line">        <span class="keyword">if</span> (succ == <span class="keyword">null</span>) &#123;</span><br><span class="line">            last = pred;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            pred.next = succ;</span><br><span class="line">            succ.prev = pred;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        size += numNew;</span><br><span class="line">        modCount++;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>虽然是增加一个集合的元素，但是modCount只增加了一次</p>
-<p><strong>将LinkedList写入到流中。（也就是把LinkedList状态保存到流中）（序列化）</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">writeObject</span><span class="params">(java.io.ObjectOutputStream s)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> java.io.IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Write out any hidden serialization magic</span></span><br><span class="line">    s.defaultWriteObject();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write out size</span></span><br><span class="line">    s.writeInt(size);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write out all elements in the proper order.</span></span><br><span class="line">    <span class="keyword">for</span> (Node&lt;E&gt; x = first; x != <span class="keyword">null</span>; x = x.next)</span><br><span class="line">        s.writeObject(x.item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>从流中把LinkedList读取出来（读取流，拼装成LinkedList）（反序列化）</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(java.io.ObjectInputStream s)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> java.io.IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">    <span class="comment">// Read in any hidden serialization magic</span></span><br><span class="line">    s.defaultReadObject();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Read in size</span></span><br><span class="line">    <span class="keyword">int</span> size = s.readInt();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Read in all elements in the proper order.</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">        linkLast((E)s.readObject());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>LinkedList提供了两种迭代器，一种是返回Iterator，另一种返回ListIterator。</strong></p>
-<p><strong>①返回ListIterator迭代器：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListIterator&lt;E&gt; <span class="title">listIterator</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    checkPositionIndex(index);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ListItr(index);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>②返回Iterator迭代器：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">descendingIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DescendingIterator();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据结构/4 树和二叉树/树与二叉树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/" class="post-title-link" itemprop="url">树与二叉树</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-06 22:21:52" itemprop="dateModified" datetime="2019-10-06T22:21:52+08:00">2019-10-06</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-06T22:21:52+08:00" content="2019-10-06">
-                2019-10-06 22:21:52
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="树与二叉树"><a href="#树与二叉树" class="headerlink" title="树与二叉树"></a>树与二叉树</h3><p>一对多的树形结构</p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树的结构定义.png" alt></p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树结点相关概念.png" alt></p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树结点相关概念2.png" alt></p>
-<h5 id="树的性质"><a href="#树的性质" class="headerlink" title="树的性质"></a>树的性质</h5><ul>
-<li>树中的结点等于所有结点的度数加1</li>
-</ul>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树的性质1.png" alt></p>
-<ul>
-<li>度为m的树中第i层上至多有m<sup>i-1</sup>个结点（i&gt;=1）</li>
-</ul>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树的性质2.png" alt></p>
-<ul>
-<li><p>高度为h的m叉树至多有（m<sup>h</sup>-1)/(m-1)个结点</p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树的性质3.png" alt></p>
-</li>
-<li><p>具有n个结点的m叉树的最小高度为取上整[log<sub>m</sub>(n(m-1)+1)]</p>
-</li>
-</ul>
-<p>解上一个方程的h即可</p>
-<h5 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a>树的存储结构</h5><h6 id="顺序存储结构"><a href="#顺序存储结构" class="headerlink" title="顺序存储结构"></a>顺序存储结构</h6><p>双亲表示法：用一组连续的存储空间存储树的结点，同时在每个结点中，用一个变量存储该结点的双亲结点在数组中的位置</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TNode</span>&#123;</span></span><br><span class="line">    ElemType data;<span class="comment">//结点数据</span></span><br><span class="line">    <span class="keyword">int</span> parent;<span class="comment">//该结点双亲在数组的下标</span></span><br><span class="line">&#125;TNode;<span class="comment">//结点的数据类型</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    TNode nodes[MaxSize];<span class="comment">//结点数组</span></span><br><span class="line">    <span class="keyword">int</span> n;<span class="comment">//结点的数量</span></span><br><span class="line">&#125;Tree;<span class="comment">//结点双亲表示结构</span></span><br></pre></td></tr></table></figure>
-<p>双亲表示法可以根据parent找到该结点的双亲结点，时间复杂度为O(1)。但如果找到某节点的孩子结点就需要遍历</p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/顺序存储结构.png" alt></p>
-<h6 id="链式存储结构"><a href="#链式存储结构" class="headerlink" title="链式存储结构"></a>链式存储结构</h6><p>孩子表示法：把每个结点的孩子结点排列起来存储成一个单链表。所以n个结点就有n个链表；如果时叶子结点，那这个结点的孩子单链表就是空的；然后n个单链表的头指针又存储在一个顺序表（数组）中。</p>
-<p>需要设计两种结合结构类型：</p>
-<ul>
-<li>孩子链表的结点</li>
-<li>每个孩子链表的表头结点（存在数组中）</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CNode</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> child;<span class="comment">//该孩子在表头数组的下标</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">CNode</span> *<span class="title">next</span>;</span><span class="comment">//指向该结点的下一个孩子结点</span></span><br><span class="line">&#125;CNode,*Child;<span class="comment">//孩子结点数据结构</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    Elemtype data;<span class="comment">//结点数据域</span></span><br><span class="line">    Child firstchild;<span class="comment">//指向该结点的第一个孩子结点</span></span><br><span class="line">&#125;TNode<span class="comment">//孩子结点的数据类型</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    TNode nodes[MaxSize];<span class="comment">//结点数据域</span></span><br><span class="line">    <span class="keyword">int</span> n;<span class="comment">//树中结点个数</span></span><br><span class="line">&#125;Tree;<span class="comment">//树的孩子表示结构</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/链式存储结构.png" alt></p>
-<p>孩子兄弟表示法：要存储孩子结点和兄弟结点，就是设置两个指针，分别指向该结点的第一个孩子结点和该结点的兄弟结点。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span>&#123;</span></span><br><span class="line">    ElemType data;<span class="comment">//该结点的数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span> *<span class="title">firstchild</span>,*<span class="title">rightsib</span>//指向该结点的第一个孩子结点和该结点的右兄弟结点</span></span><br><span class="line"><span class="class">&#125;<span class="title">CSNode</span>;</span><span class="comment">//孩子兄弟结点数据类型</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/链式存储结构2.png" alt></p>
-<h5 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h5><p>每个结点最多有两颗子树</p>
-<p>左右子树有顺序</p>
-<p>五种基本形态</p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树五种形态.png" alt></p>
-<h6 id="特殊二叉树"><a href="#特殊二叉树" class="headerlink" title="特殊二叉树"></a>特殊二叉树</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/斜树.png" alt></p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/满二叉树.png" alt></p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/完全二叉树.png" alt></p>
-<h5 id="二叉树性质"><a href="#二叉树性质" class="headerlink" title="二叉树性质"></a>二叉树性质</h5><ul>
-<li>非空二叉树上叶子结点等于度为2的结点数加1</li>
-</ul>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树性质1.png" alt></p>
-<ul>
-<li>非空二叉树上第K层上至多有2<sup>k-1</sup>个结点（k&gt;=1）</li>
-</ul>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树性质2.png" alt></p>
-<ul>
-<li>高度为H的二叉树至多有2<sup>H</sup>-1个结点（H&gt;=1）</li>
-</ul>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树性质3.png" alt></p>
-<ul>
-<li>具有N个(N&gt;0)结点的完全二叉树的高度为上取整[log<sub>2</sub>(N+1)]或下取整[log<sub>2</sub>N]+1</li>
-</ul>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树性质4.png" alt></p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树性质5.png" alt></p>
-<h5 id="二叉树的存储结构"><a href="#二叉树的存储结构" class="headerlink" title="二叉树的存储结构"></a>二叉树的存储结构</h5><h6 id="顺序存储结构-1"><a href="#顺序存储结构-1" class="headerlink" title="顺序存储结构"></a>顺序存储结构</h6><p>二叉树的顺序存储结构就是用一组地址连续的存储单元依次自上而下，自左而右存储完全二叉树上的结点元素</p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树顺序存储.png" alt></p>
-<h6 id="链式存储结构-1"><a href="#链式存储结构-1" class="headerlink" title="链式存储结构"></a>链式存储结构</h6><p>二叉树每个结点最多两个孩子，所以设计二叉树的结点结构时考虑两个指针指向该结点的两个孩子</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>&#123;</span></span><br><span class="line">    ElemType data;<span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span><span class="comment">//指向该结点的左右孩子指针</span></span><br><span class="line">&#125;BiTNode,*BiTNode;<span class="comment">//二叉树结点结构</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树链式存储结构.png" alt></p>
-<h5 id="二叉树遍历-递归"><a href="#二叉树遍历-递归" class="headerlink" title="二叉树遍历(递归)"></a>二叉树遍历(递归)</h5><p>二叉树的遍历是指按某种次序依次访问树中的每个结点，使得每个结点均被访问一次，而且仅被访问一次</p>
-<h6 id="递归先序遍历"><a href="#递归先序遍历" class="headerlink" title="递归先序遍历"></a>递归先序遍历</h6><p>操作过程：</p>
-<ul>
-<li>访问根结点</li>
-<li>先序遍历左子树</li>
-<li>先序遍历右子树</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrder</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,T-&gt;data)<span class="comment">//根节点</span></span><br><span class="line">        PreOrder(T-&gt;lchild);<span class="comment">//左子树</span></span><br><span class="line">        PreOrder(T-&gt;rchild);<span class="comment">//右子树</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="递归中序遍历"><a href="#递归中序遍历" class="headerlink" title="递归中序遍历"></a>递归中序遍历</h6><p>操作过程：</p>
-<ul>
-<li>中序遍历左子树</li>
-<li>访问根节点</li>
-<li>中序遍历右子树</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrder</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        InOrder(T-&gt;lchild);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,T-&gt;data);</span><br><span class="line">        InOrder(T-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="递归后序遍历"><a href="#递归后序遍历" class="headerlink" title="递归后序遍历"></a>递归后序遍历</h6><p>操作过程：</p>
-<ul>
-<li>后序遍历左子树</li>
-<li>后序遍历右子树</li>
-<li>访问根节点</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrder</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        PostOrder(T-&gt;lchild);</span><br><span class="line">        PostOrder(T-&gt;rchild);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,T-&gt;data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="二叉树遍历-非递归"><a href="#二叉树遍历-非递归" class="headerlink" title="二叉树遍历(非递归)"></a>二叉树遍历(非递归)</h5><h6 id="非递归先序遍历"><a href="#非递归先序遍历" class="headerlink" title="非递归先序遍历"></a>非递归先序遍历</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraverse</span><span class="params">(BiTree b)</span></span>&#123;</span><br><span class="line">    InitStack(S);</span><br><span class="line">    BitTree p=b;<span class="comment">//工作指针p</span></span><br><span class="line">    <span class="keyword">while</span>(p || !IsEmpty(S))&#123;</span><br><span class="line">        <span class="keyword">while</span>(p)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%c"</span>,p-&gt;data);<span class="comment">//先序先遍历结点</span></span><br><span class="line">            Push(S,p);<span class="comment">//进栈保存</span></span><br><span class="line">            p=p-&gt;lchild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!IsEmpty(S))&#123;</span><br><span class="line">            p=Pop(S);</span><br><span class="line">            p=p-rchild;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="非递归中序遍历"><a href="#非递归中序遍历" class="headerlink" title="非递归中序遍历"></a>非递归中序遍历</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTraverse</span><span class="params">(BiTree b)</span></span>&#123;</span><br><span class="line">    InitStack(S);</span><br><span class="line">    BitTree p=b;<span class="comment">//工作指针p</span></span><br><span class="line">    <span class="keyword">while</span>(p || !IsEmpty(S))&#123;</span><br><span class="line">        <span class="keyword">while</span>(p)&#123;</span><br><span class="line">            Push(S,p);<span class="comment">//进栈保存</span></span><br><span class="line">            p=p-&gt;lchild;</span><br><span class="line">        &#125;</span><br><span class="line">        p=Pop(S);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,p-&gt;data);</span><br><span class="line">        p=p-rchild;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="非递归后序遍历"><a href="#非递归后序遍历" class="headerlink" title="非递归后序遍历"></a>非递归后序遍历</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/非递归后续遍历.png" alt></p>
-<h6 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h6><p>操作过程：</p>
-<p>若树为空，则什么都不做直接返回；</p>
-<p>否则从树的第一层开始访问，从上而下逐层遍历，在同一层中，按从左到右的顺序对结点逐个访问</p>
-<p>出队-&gt;访问-&gt;左右孩子入队</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LevelOrder</span><span class="params">(BiTree b)</span></span>&#123;</span><br><span class="line">    InitQueue(Q);</span><br><span class="line">    BiTree p;</span><br><span class="line">    EnQueue(Q,b);<span class="comment">//根节点入队</span></span><br><span class="line">    <span class="keyword">while</span>(!IsEmpty(Q))&#123;</span><br><span class="line">        DeQueue(Q,p);<span class="comment">//队头元素出队</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,p-&gt;data);</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;lchild!=<span class="literal">NULL</span>)</span><br><span class="line">            EnQueue(Q,p-&gt;lchild);</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;rchild!=<span class="literal">NULL</span>)</span><br><span class="line">            EnQueue(Q,p-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="线索二叉树"><a href="#线索二叉树" class="headerlink" title="线索二叉树"></a>线索二叉树</h5><p>二叉链表表示的二叉树存在大量空指针</p>
-<p>N个结点的二叉树，每个结点都有指向左右孩子的结点指针，所以一共有2N个指针，而N个结点的二叉树一共有N-1个分支，也就是说存在2N-(N-1)=N+1个空指针。</p>
-<p>指向前驱和后继的指针称为线索，加上线索的二叉链表称为线索链表，相应的二叉树称为线索二叉树</p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/线索二叉树.png" alt></p>
-<p>对二叉树以某种次序遍历使其变为线索二叉树的过程叫做线索化。</p>
-<p>如何区分指针是指向左孩子还是前驱，右孩子还是后继？</p>
-<p>在二叉链表结点的结构基础上增加两个标志位ltag和rtag</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ThreadNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ThreadNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span></span><br><span class="line">    <span class="keyword">int</span> ltag,rtag;</span><br><span class="line">&#125;ThreadNode,*ThreadTree;<span class="comment">//线索链表</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/线索二叉树结构.png" alt></p>
-<ul>
-<li>ltag==0表示lchild指向该结点左孩子</li>
-<li>ltag==1表示rchild指向该结点前驱</li>
-<li>rtag==0表示rchild指向该结点右孩子</li>
-<li>rtag==1表示指向该结点后继</li>
-</ul>
-<h6 id="构造线索二叉树"><a href="#构造线索二叉树" class="headerlink" title="构造线索二叉树"></a>构造线索二叉树</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/构造线索二叉树.png" alt></p>
-<h6 id="遍历线索二叉树"><a href="#遍历线索二叉树" class="headerlink" title="遍历线索二叉树"></a>遍历线索二叉树</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/遍历线索二叉树.png" alt></p>
-<h5 id="哈夫曼树和哈夫曼编码"><a href="#哈夫曼树和哈夫曼编码" class="headerlink" title="哈夫曼树和哈夫曼编码"></a>哈夫曼树和哈夫曼编码</h5><p>概念：</p>
-<p>权：树中结点相关的数值</p>
-<p>路径长度：从树中某个结点到另一个结点之间的分支数目（经过的边数）</p>
-<p>带权路径长度：从树的根节点到任意结点的路径长度（经过的边数）与该结点上权值的乘积称为该结点的带权路径长度</p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树的带权路径长度.png" alt></p>
-<p>哈夫曼树：含有N个带权叶子结点的二叉树中，带有带权路径长度（WPL）最小的二叉树，也成为最优二叉树。</p>
-<h6 id="设计哈夫曼树"><a href="#设计哈夫曼树" class="headerlink" title="设计哈夫曼树"></a>设计哈夫曼树</h6><ul>
-<li>将这N个结点分别作为N颗仅含一个结点的二叉树，构成森林F</li>
-<li>构造一个新结点，并从F中选取两颗根节点权值最小的树作为新结点的左右子树，并且将新结点的权值置为左右子树上根节点的权值之和</li>
-<li>从F中删除刚才选出的两棵树，同时将新得到的树加入F中</li>
-<li>重复步骤2和3，直至F中只剩下一棵树为止</li>
-</ul>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/构造哈夫曼树.png" alt></p>
-<h6 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a>哈夫曼编码</h6><p>左子树为0，右子树为1</p>
-<p>哈夫曼编码性质</p>
-<ul>
-<li>哈夫曼编码是前缀编码</li>
-<li>哈夫曼编码是最优前缀编码</li>
-</ul>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/哈夫曼编码.png" alt></p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/哈夫曼编码2.png" alt></p>
-<h5 id="二叉树、树和森林"><a href="#二叉树、树和森林" class="headerlink" title="二叉树、树和森林"></a>二叉树、树和森林</h5><h6 id="树转化成二叉树"><a href="#树转化成二叉树" class="headerlink" title="树转化成二叉树"></a>树转化成二叉树</h6><p>用到一个孩子兄弟表示法（回归本章树的链式存储）</p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树转二叉树1.png" alt></p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树转二叉树2.png" alt></p>
-<h6 id="二叉树转树"><a href="#二叉树转树" class="headerlink" title="二叉树转树"></a>二叉树转树</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树转树.png" alt></p>
-<h6 id="森林转二叉树"><a href="#森林转二叉树" class="headerlink" title="森林转二叉树"></a>森林转二叉树</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/森林转二叉树.png" alt></p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/森林转二叉树2.png" alt></p>
-<h6 id="二叉树转森林"><a href="#二叉树转森林" class="headerlink" title="二叉树转森林"></a>二叉树转森林</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/二叉树转森林.png" alt></p>
-<h6 id="树和森林的遍历"><a href="#树和森林的遍历" class="headerlink" title="树和森林的遍历"></a>树和森林的遍历</h6><p>树的先序遍历</p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树的先序遍历.png" alt></p>
-<p>树的后序遍历</p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树的后序遍历.png" alt></p>
-<p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/树与二叉树先序后序遍历比较.png" alt></p>
-<h6 id="森林遍历"><a href="#森林遍历" class="headerlink" title="森林遍历"></a>森林遍历</h6><p><img src="/2019/05/26/数据结构/4 树和二叉树/树与二叉树/森林先序后序遍历.png" alt></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3126,7 +3073,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-count">63</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3315,7 +3262,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共136.6k字</span>
+  <span class="post-count">博客全站共143.9k字</span>
 </div>
         
 <div class="busuanzi-count">
