@@ -299,7 +299,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">13</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">14</span></a>
 
   </li>
         
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">63</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">64</span></a>
 
   </li>
 
@@ -401,7 +401,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/RestController和Controller的区别/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/SpringMVC的工作流程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -421,7 +421,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/21/框架/RestController和Controller的区别/" class="post-title-link" itemprop="url">RestController和Controller的区别</a>
+                <a href="/2019/10/21/框架/SpringMVC的工作流程/" class="post-title-link" itemprop="url">SpringMVC的工作流程</a>
               
             
           </h1>
@@ -463,7 +463,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-23 14:16:36" itemprop="dateModified" datetime="2019-10-23T14:16:36+08:00">2019-10-23</time> 
+              <time title="修改时间：2019-10-26 22:20:59" itemprop="dateModified" datetime="2019-10-26T22:20:59+08:00">2019-10-26</time> 
               -->
               <!-- new version -->
                         
@@ -478,8 +478,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-23T14:16:36+08:00" content="2019-10-23">
-                2019-10-23 14:16:36
+              <time itemprop="dateUpdated" datetime="2019-10-26T22:20:59+08:00" content="2019-10-26">
+                2019-10-26 22:20:59
               </time>
             </span>
           
@@ -519,8 +519,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/RestController和Controller的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/RestController和Controller的区别/" itemprop="commentCount"></span>
+                <a href="/2019/10/21/框架/SpringMVC的工作流程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/SpringMVC的工作流程/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -550,14 +550,53 @@
       
         
           
-            <p>@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。</p>
-<p>1、如果只是使用@RestController注解Controller，则Controller中的方法无法返回jsp页面，配置的视图解析器InternalResourceViewResolver则不起作用，返回的内容就是Return 里的内容（String/JSON）。<br>例如：本来应该到success.jsp页面的，则其显示success.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2、如果使用@RestController注解Controller，需要返回到指定页面，则需要配置视图解析器InternalResourceViewResolver，可以利用ModelAndView返回视图。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> newModelAndView(<span class="string">"success"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3、如果使用@Controller注解Controller，在对应的方法上，视图解析器可以解析return 的jsp,html页面，并且跳转到相应页面</p>
-<p>若需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上@ResponseBody注解。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h3 id="SpringMVC架构"><a href="#SpringMVC架构" class="headerlink" title="SpringMVC架构"></a>SpringMVC架构</h3><p><img src="/2019/10/21/框架/SpringMVC的工作流程/1086132-20180315213752573-1946735693.png" alt></p>
+<h3 id="框架流程"><a href="#框架流程" class="headerlink" title="框架流程"></a>框架流程</h3><ol>
+<li>用户发送请求至前端控制器DispatcherServlet。</li>
+<li>DispatcherServlet收到请求调用HandlerMapping处理器映射器。</li>
+<li>处理器映射器找到具体的处理器，生成处理器对象及处理器拦截器（如果有则生成）一并返回给DispatcherServlet。</li>
+<li>DispatcherServlet调用HandlerAdapter处理器适配器。</li>
+<li>HandlerAdapter经过适配调用具体的处理器（controller，也叫后端控制器）。</li>
+<li>Controller执行完成返回ModelAndView。</li>
+<li>HandlerAdapter将Controller返回的执行结果ModelAndView返回给DispatcherServlet。</li>
+<li>DispatcherServlet将ModelAndView传给ViewReslover视图解析器。</li>
+<li>ViewReslover解析之后返回具体的view。</li>
+<li>DispatcherServlet根据View进行渲染视图（即将模型数据填充至视图jsp/freemaker..中）。</li>
+<li>DispatcherServlet响应用户。</li>
+</ol>
+<p><img src="/2019/10/21/框架/SpringMVC的工作流程/20180803145042704.png" alt></p>
+<h3 id="组件说明"><a href="#组件说明" class="headerlink" title="组件说明"></a>组件说明</h3><p>以下组件通常使用框架提供实现：</p>
+<p><strong>DispatcherServlet：前端控制器</strong></p>
+<p>　　用户请求到达前端控制器，它就相当于mvc模式中的c，dispatcherServlet是整个流程控制的中心，由它调用其它组件处理用户的请求，dispatcherServlet的存在降低了组件之间的耦合性。</p>
+<p><strong>HandlerMapping：处理器映射器</strong></p>
+<p>　　HandlerMapping负责根据用户请求找到Handler即处理器，springmvc提供了不同的映射器实现不同的映射方式，例如：配置文件方式，实现接口方式，注解方式等。</p>
+<p><strong>Handler：处理器</strong></p>
+<p>　　Handler 是继DispatcherServlet前端控制器的后端控制器，在DispatcherServlet的控制下Handler对具体的用户请求进行处理。</p>
+<p>​        由于Handler涉及到具体的用户业务请求，所以一般情况需要程序员根据业务需求开发Handler。</p>
+<p><strong>HandlAdapter：处理器适配器</strong></p>
+<p>　　通过HandlerAdapter对处理器进行执行，这是适配器模式的应用，通过扩展适配器可以对更多类型的处理器进行执行。</p>
+<p><strong>View Resolver：视图解析器</strong></p>
+<p>　　View Resolver负责将处理结果生成View视图(JSP,freemarker)，View Resolver首先根据逻辑视图名解析成物理视图名即具体的页面地址，再生成View视图对象，最后对View进行渲染将处理结果通过页面展示给用户。</p>
+<p><strong>View：视图</strong></p>
+<p>　　springmvc框架提供了很多的View视图类型的支持，包括：jstlView、freemarkerView、pdfView等。我们最常用的视图就是jsp。</p>
+<p>　　一般情况下需要通过页面标签或页面模版技术将模型数据通过页面展示给用户，需要由程序员根据业务需求开发具体的页面。</p>
+<p><strong>需要用户开发的组件有</strong>handler(controller类)、view(jsp/freemarker velocity,thyeleaf)　　　</p>
+<h3 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h3><p><strong>&lt;mvc:annotation-driven /&gt; 说明:</strong></p>
+<p> 　　是一种简写形式，可以让初学者快速成应用默认的配置方案，会默认注册 DefaultAnnotationHandleMapping以及AnnotionMethodHandleAdapter 这两个 Bean, 这两个 Bean ，前者对应类级别， 后者对应到方法级别；</p>
+<p>　　上面的 DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter 是 Spring 为 @Controller 分发请求所必需的。</p>
+<p><strong>annotation-driven 扫描指定包中类上的注解，常用的注解有:</strong></p>
+<p>@Controller 声明Action组件</p>
+<p>@Service 声明Service组件 @Service(“myMovieLister”)</p>
+<p>@Repository 声明Dao组件</p>
+<p>@Component 泛指组件, 当不好归类时.</p>
+<p>@RequestMapping(“/menu”) 请求映射</p>
+<p>@Resource 用于注入，( j2ee提供的 ) 默认按名称装配，@Resource(name=”beanName”)</p>
+<p>@Autowired 用于注入，(srping提供的) 默认按类型装配</p>
+<p>@Transactional( rollbackFor={Exception.class}) 事务管理</p>
+<p>@ResponseBody</p>
+<p>@Scope(“prototype”) 设定bean的作用域</p>
+<h3 id="适配器作用"><a href="#适配器作用" class="headerlink" title="适配器作用"></a>适配器作用</h3><p>SpringMVC涉及的映射器，视图解析器的作用不难理解，映射器负责将前端请求的url映射到配置的处理器，视图解析器将最终的结果进行解析，但中间为什么要经过一层适配器呢，为什么不经映射器找到controller后直接执行返回呢？</p>
+<p>那是因为SpringMVC为业务处理器提供了多种接口实现（例如实现了Controller接口），而适配器就是用来根据处理器实现了什么接口，最终选择与已经注册好的不同类型的Handler Adapter进行匹配，并最终执行，例如，SimpleControllerHandlerAdapter是支持实现了controller接口的控制器，如果自己写的控制器实现了controller接口，那么SimpleControllerHandlerAdapter就会去执行自己写的控制器中的具体方法来完成请求。</p>
 
           
         
@@ -614,7 +653,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/架构/redis主从架构/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Resource和Autowired的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -634,7 +673,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/21/架构/redis主从架构/" class="post-title-link" itemprop="url">redis主从架构</a>
+                <a href="/2019/10/21/框架/Resource和Autowired的区别/" class="post-title-link" itemprop="url">Resource和Autowired的区别</a>
               
             
           </h1>
@@ -676,7 +715,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-22 12:33:32" itemprop="dateModified" datetime="2019-10-22T12:33:32+08:00">2019-10-22</time> 
+              <time title="修改时间：2019-10-27 01:03:09" itemprop="dateModified" datetime="2019-10-27T01:03:09+08:00">2019-10-27</time> 
               -->
               <!-- new version -->
                         
@@ -691,8 +730,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-22T12:33:32+08:00" content="2019-10-22">
-                2019-10-22 12:33:32
+              <time itemprop="dateUpdated" datetime="2019-10-27T01:03:09+08:00" content="2019-10-27">
+                2019-10-27 01:03:09
               </time>
             </span>
           
@@ -713,7 +752,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/" itemprop="url" rel="index"><span itemprop="name">架构</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
 
                 
                 
@@ -732,8 +771,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/架构/redis主从架构/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/架构/redis主从架构/" itemprop="commentCount"></span>
+                <a href="/2019/10/21/框架/Resource和Autowired的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Resource和Autowired的区别/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -763,7 +802,44 @@
       
         
           
-            
+            <p>@Resource和@Autowired都是做bean的注入时使用，其实@Resource不是Spring的注解，是javaEE的注解，它的包是javax.annotation.Resource，需要导入，但是Spring支持该注解的注入。</p>
+<p>1、共同点</p>
+<p>两者都可以写在字段和setter方法上。两者如果都写在字段上，那么就不需要再写setter方法。</p>
+<p>2、不同点</p>
+<p>（1）@Autowired</p>
+<p>@Autowired为Spring提供的注解，需要导入包org.springframework.beans.factory.annotation.Autowired;只按照byType注入。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 下面两种@Autowired只要使用一种即可</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; <span class="comment">// 用于字段上</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserDao</span><span class="params">(UserDao userDao)</span> </span>&#123; <span class="comment">// 用于属性的方法上</span></span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Autowired注解是按照类型（byType）装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，</p>
+<p>可以设置它的required属性为false。如果我们想使用按照名称（byName）来装配，可以结合@Qualifier注解一起</p>
+<p>使用。如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier</span>(<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）@Resource</p>
+<p>@Resource默认按照ByName自动注入，由J2EE提供，需要导入包javax.annotation.Resource。默认按照名称进</p>
+<p>行装配，名称可以通过name属性进行指定，如果没有指定name属性，当注解写在字段上时，默认取字段名进行</p>
+<p>安装名称查找，如果注解写在setter方法上默认取属性名进行装配。当找不到与名称匹配的bean时才按照类型进</p>
+<p>行装配。</p>
+<p>但是需要注意的是，如果name属性一旦指定，就只会按照名称进行装配。</p>
+<p>如果既不制定name也不制定type属性，这时将通过反射机制使用byName自动注入策略。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 下面两种@Resource只要使用一种即可</span></span><br><span class="line">    <span class="meta">@Resource</span>(name=<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; <span class="comment">// 用于字段上</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Resource</span>(name=<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserDao</span><span class="params">(UserDao userDao)</span> </span>&#123; <span class="comment">// 用于属性的setter方法上</span></span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：最好是将@Resource放在setter方法上，因为这样更符合面向对象的思想，通过set、get去操作属性，而不是直接去操作属性。</p>
+<p>@Resource装配顺序：</p>
+<p>①如果同时指定了name和type，则从Spring上下文中找到唯一匹配的bean进行装配，找不到则抛出异常。</p>
+<p>②如果指定了name，则从上下文中查找名称（id）匹配的bean进行装配，找不到则抛出异常。</p>
+<p>③如果指定了type，则从上下文中找到类似匹配的唯一bean进行装配，找不到或是找到多个，都会抛出异常。</p>
+<p>④如果既没有指定name，又没有指定type，则自动按照byName方式进行装配；如果没有匹配，则回退为一个原始类型进行匹配，如果匹配则自动装配。</p>
+<p>@Resource的作用相当于@Autowired，只不过@Autowired按照byType自动注入。</p>
+<p>byName和byType看什么</p>
+<p><img src="/2019/10/21/框架/Resource和Autowired的区别/20180723224000349.png" alt></p>
+<ul>
+<li>byName会搜索整个配置文件中的bean,如果有相同名称的bean则自动装配，否则显示异常。</li>
+</ul>
+<p>例如，在装配com.tutorialspoint.TextEditor的spellChecker时，spring会搜索整个配置文件的bean查找是否有名称为spellChecker的bean，有则自动装配，没有就抛出异常。</p>
+<ul>
+<li>byType会搜索整个配置文件中的bean,如果有相同类型的bean则自动装配，否则显示异常。</li>
+</ul>
+<p>例如，在装配com.tutorialspoint.TextEditor的spellChecker时，spring会搜索整个配置文件的bean查找是否有跟spellChecker属于相同类的bean，有则自动装配，没有就抛出异常。</p>
+<p>#### </p>
+
           
         
       
@@ -981,6 +1057,211 @@
 <li>使用Bean</li>
 <li>容器关闭之前，调用Bean的销毁方法</li>
 </ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Spring IOC和AOP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/框架/Spring IOC和AOP/" class="post-title-link" itemprop="url">Spring IOC和AOP</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+             
+             
+
+              <time title="创建时间：2019-10-21 12:12:57 / 修改时间：12:11:36" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              -->
+              <!-- new version -->
+                        
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/框架/Spring IOC和AOP/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Spring IOC和AOP/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Spring-IOC"><a href="#Spring-IOC" class="headerlink" title="Spring IOC"></a>Spring IOC</h2><p>IoC 全称为 <code>Inversion of Control</code>，翻译为 “控制反转”，它还有一个别名为 DI（<code>Dependency Injection</code>）,即依赖注入。</p>
+<p><strong>ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。</strong>在Java开发中，<strong>Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。</strong>如何理解好Ioc呢？理解好Ioc的关键是要明确“谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”，那我们来深入分析一下：</p>
+<p>　　●<strong>谁控制谁，控制什么：</strong>传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；<strong>谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。</strong></p>
+<p>　　●<strong>为何是反转，哪些方面反转了：</strong>有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？<strong>因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。</strong></p>
+<p><strong>DI—Dependency Injection，即“依赖注入”</strong>：<strong>组件之间依赖关系</strong>由容器在运行期决定，形象的说，即<strong>由容器动态的将某个依赖关系注入到组件之中</strong>。<strong>依赖注入的目的并非为软件系统带来更多功能，而是为了提升组件重用的频率，并为系统搭建一个灵活、可扩展的平台。</strong>通过依赖注入机制，我们只需要通过简单的配置，而无需任何代码就可指定目标需要的资源，完成自身的业务逻辑，而不需要关心具体的资源来自何处，由谁实现。</p>
+<p>　　理解DI的关键是：“谁依赖谁，为什么需要依赖，谁注入谁，注入了什么”，那我们来深入分析一下：</p>
+<p>　　●<strong>谁依赖于谁：</strong>当然是<strong>应用程序依赖于IoC容器</strong>；</p>
+<p>　　●<strong>为什么需要依赖：</strong>应用程序需要IoC容器来提供对象需要的外部资源；</p>
+<p>　　●<strong>谁注入谁：</strong>很明显是<strong>IoC容器注入应用程序某个对象，应用程序依赖的对象</strong>；</p>
+<p>　　<strong>●注入了什么：</strong>就是<strong>注入某个对象所需要的外部资源（包括对象、资源、常量数据）</strong>。</p>
+<h2 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h2><p>AOP是Spring框架面向切面的编程思想，AOP采用一种称为“横切”的技术，将涉及多业务流程的通用功能抽取并单独封装，形成独立的切面，在合适的时机将这些切面横向切入到业务流程指定的位置中。</p>
+<p>例如，在一个业务系统中，用户登录是基础功能，凡是涉及到用户的业务流程都要求用户进行系统登录。如果把用户登录功能代码写入到每个业务流程中，会造成代码冗余，维护也非常麻烦，当需要修改用户登录功能时，就需要修改每个业务流程的用户登录代码，这种处理方式显然是不可取的。比较好的做法是把用户登录功能抽取出来，形成独立的模块，当业务流程需要用户登录时，系统自动把登录功能切入到业务流程中。下图是用户登录功能切入到业务流程示意图。</p>
+<p><img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=725733276,316358623&amp;fm=173&amp;app=25&amp;f=JPEG?w=554&amp;h=409&amp;s=0C827C32191F41C814D9E4DA000060B3" alt></p>
+<p>●  Aspect</p>
+<p>表示切面。切入业务流程的一个独立模块。</p>
+<p>● Join point</p>
+<p>表示连接点。也就是业务流程在运行过程中需要插入切面的具体位置。</p>
+<p>● Advice</p>
+<p>表示通知。是切面的具体实现方法。可分为前置通知（Before）、后置通知（AfterReturning）、异常通知（AfterThrowing）、最终通知（After）和环绕通知（Around）五种。实现方法具体属于哪类通知，是在配置文件和注解中指定的。</p>
+<p>● Pointcut</p>
+<p>表示切入点。用于定义通知应该切入到哪些连接点上，不同的通知通常需要切入到不同的连接点上。</p>
+<p>● Target</p>
+<p>表示目标对象。被一个或者多个切面所通知的对象。</p>
+<p>● Proxy</p>
+<p>表示代理对象。将通知应用到目标对象之后被动态创建的对象。可以简单地理解为，代理对象为目标对象的业务逻辑功能加上被切入的切面所形成的对象。</p>
+<p>● Weaving</p>
+<p>表示切入，也称为织入。将切面应用到目标对象从而创建一个新的代理对象的过程。这个过程可以发生在编译期、类装载期及运行期。</p>
+<p><img src="https://img-blog.csdn.net/20180530175605692?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3E5ODIxNTE3NTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
 
           
         
@@ -1278,7 +1559,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Spring IOC和AOP/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Spring事务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -1298,7 +1579,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/21/框架/Spring IOC和AOP/" class="post-title-link" itemprop="url">Spring IOC和AOP</a>
+                <a href="/2019/10/21/框架/Spring事务/" class="post-title-link" itemprop="url">Spring事务</a>
               
             
           </h1>
@@ -1320,18 +1601,46 @@
               
 
              
-             
-             
+                
+              
 
-              <time title="创建时间：2019-10-21 12:12:57 / 修改时间：12:11:36" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
             
 
             
               
             <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-24 00:05:40" itemprop="dateModified" datetime="2019-10-24T00:05:40+08:00">2019-10-24</time> 
               -->
               <!-- new version -->
                         
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-24T00:05:40+08:00" content="2019-10-24">
+                2019-10-24 00:05:40
+              </time>
+            </span>
+          
             
           </span>
 
@@ -1368,8 +1677,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/Spring IOC和AOP/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Spring IOC和AOP/" itemprop="commentCount"></span>
+                <a href="/2019/10/21/框架/Spring事务/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Spring事务/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1399,34 +1708,52 @@
       
         
           
-            <h2 id="Spring-IOC"><a href="#Spring-IOC" class="headerlink" title="Spring IOC"></a>Spring IOC</h2><p>IoC 全称为 <code>Inversion of Control</code>，翻译为 “控制反转”，它还有一个别名为 DI（<code>Dependency Injection</code>）,即依赖注入。</p>
-<p><strong>ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。</strong>在Java开发中，<strong>Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。</strong>如何理解好Ioc呢？理解好Ioc的关键是要明确“谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”，那我们来深入分析一下：</p>
-<p>　　●<strong>谁控制谁，控制什么：</strong>传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；<strong>谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。</strong></p>
-<p>　　●<strong>为何是反转，哪些方面反转了：</strong>有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？<strong>因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。</strong></p>
-<p><strong>DI—Dependency Injection，即“依赖注入”</strong>：<strong>组件之间依赖关系</strong>由容器在运行期决定，形象的说，即<strong>由容器动态的将某个依赖关系注入到组件之中</strong>。<strong>依赖注入的目的并非为软件系统带来更多功能，而是为了提升组件重用的频率，并为系统搭建一个灵活、可扩展的平台。</strong>通过依赖注入机制，我们只需要通过简单的配置，而无需任何代码就可指定目标需要的资源，完成自身的业务逻辑，而不需要关心具体的资源来自何处，由谁实现。</p>
-<p>　　理解DI的关键是：“谁依赖谁，为什么需要依赖，谁注入谁，注入了什么”，那我们来深入分析一下：</p>
-<p>　　●<strong>谁依赖于谁：</strong>当然是<strong>应用程序依赖于IoC容器</strong>；</p>
-<p>　　●<strong>为什么需要依赖：</strong>应用程序需要IoC容器来提供对象需要的外部资源；</p>
-<p>　　●<strong>谁注入谁：</strong>很明显是<strong>IoC容器注入应用程序某个对象，应用程序依赖的对象</strong>；</p>
-<p>　　<strong>●注入了什么：</strong>就是<strong>注入某个对象所需要的外部资源（包括对象、资源、常量数据）</strong>。</p>
-<h2 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h2><p>AOP是Spring框架面向切面的编程思想，AOP采用一种称为“横切”的技术，将涉及多业务流程的通用功能抽取并单独封装，形成独立的切面，在合适的时机将这些切面横向切入到业务流程指定的位置中。</p>
-<p>例如，在一个业务系统中，用户登录是基础功能，凡是涉及到用户的业务流程都要求用户进行系统登录。如果把用户登录功能代码写入到每个业务流程中，会造成代码冗余，维护也非常麻烦，当需要修改用户登录功能时，就需要修改每个业务流程的用户登录代码，这种处理方式显然是不可取的。比较好的做法是把用户登录功能抽取出来，形成独立的模块，当业务流程需要用户登录时，系统自动把登录功能切入到业务流程中。下图是用户登录功能切入到业务流程示意图。</p>
-<p><img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=725733276,316358623&amp;fm=173&amp;app=25&amp;f=JPEG?w=554&amp;h=409&amp;s=0C827C32191F41C814D9E4DA000060B3" alt></p>
-<p>●  Aspect</p>
-<p>表示切面。切入业务流程的一个独立模块。</p>
-<p>● Join point</p>
-<p>表示连接点。也就是业务流程在运行过程中需要插入切面的具体位置。</p>
-<p>● Advice</p>
-<p>表示通知。是切面的具体实现方法。可分为前置通知（Before）、后置通知（AfterReturning）、异常通知（AfterThrowing）、最终通知（After）和环绕通知（Around）五种。实现方法具体属于哪类通知，是在配置文件和注解中指定的。</p>
-<p>● Pointcut</p>
-<p>表示切入点。用于定义通知应该切入到哪些连接点上，不同的通知通常需要切入到不同的连接点上。</p>
-<p>● Target</p>
-<p>表示目标对象。被一个或者多个切面所通知的对象。</p>
-<p>● Proxy</p>
-<p>表示代理对象。将通知应用到目标对象之后被动态创建的对象。可以简单地理解为，代理对象为目标对象的业务逻辑功能加上被切入的切面所形成的对象。</p>
-<p>● Weaving</p>
-<p>表示切入，也称为织入。将切面应用到目标对象从而创建一个新的代理对象的过程。这个过程可以发生在编译期、类装载期及运行期。</p>
-<p><img src="https://img-blog.csdn.net/20180530175605692?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3E5ODIxNTE3NTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
+            <h3 id="Spring事务机制"><a href="#Spring事务机制" class="headerlink" title="Spring事务机制"></a>Spring事务机制</h3><p>Spring事务机制主要包括 <strong>声明式事务和编程式事务</strong>，此处侧重讲解声明式事务，编程式事务在实际开发中得不到广泛使用</p>
+<p>Spring声明式事务让我们从复杂的事务处理中得到解脱。使得我们 <strong>再也无需要去处理获得连接、关闭连接、事务提交和回滚等这些操作</strong>。再也无需要我们在与事务相关的方法中处理大量的try…catch…finally代码。我们在使用Spring声明式事务时，有一个非常重要的概念就是事务属性。</p>
+<p><strong>事务属性通常由事务的传播行为，事务的隔离级别，事务的超时值和事务只读标志组成</strong>。我们在进行事务划分时，需要进行事务定义，也就是配置事务的属性。</p>
+<p>Spring在TransactionDefinition接口中定义这些属性,以供PlatfromTransactionManager使用, <strong>PlatfromTransactionManager是Spring事务管理的核心接口</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TransactionDefinition</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getPropagationBehavior</span><span class="params">()</span></span>; <span class="comment">//返回事务的传播行为。</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getIsolationLevel</span><span class="params">()</span></span>; <span class="comment">//返回事务的隔离级别，事务管理器根据它来控制另外一个事务可以看到本事务内的哪些数据。</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getTimeout</span><span class="params">()</span></span>; <span class="comment">//返回事务必须在多少秒内完成。</span></span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">isReadOnly</span><span class="params">()</span></span>; <span class="comment">//事务是否只读，事务管理器能够根据这个返回值进行优化，确保事务是只读的。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1、TransactionDefinition接口中定义五个隔离级别：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ISOLATION_DEFAULT 这是一个PlatfromTransactionManager默认的隔离级别，使用数据库默认的事务隔离级别.另外四个与JDBC的隔离级别相对应；</span><br><span class="line"></span><br><span class="line">ISOLATION_READ_UNCOMMITTED 这是事务最低的隔离级别，它充许别外一个事务可以看到这个事务未提交的数据。这种隔离级别会产生脏读，不可重复读和幻像读。</span><br><span class="line"></span><br><span class="line">ISOLATION_READ_COMMITTED 保证一个事务修改的数据提交后才能被另外一个事务读取。另外一个事务不能读取该事务未提交的数据。这种事务隔离级别可以避免脏读出现，但是可能会出现不可重复读和幻像读。</span><br><span class="line"></span><br><span class="line">ISOLATION_REPEATABLE_READ 这种事务隔离级别可以防止脏读，不可重复读。但是可能出现幻像读。它除了保证一个事务不能读取另一个事务未提交的数据外，还保证了避免下面的情况产生(不可重复读)。</span><br><span class="line"></span><br><span class="line">ISOLATION_SERIALIZABLE 这是花费最高代价但是最可靠的事务隔离级别。事务被处理为顺序执行。除了防止脏读，不可重复读外，还避免了幻像读。</span><br></pre></td></tr></table></figure>
+<p>2、在TransactionDefinition接口中定义了七个事务传播行为：</p>
+<p>（1）<strong>PROPAGATION_REQUIRED 如果存在一个事务，则支持当前事务</strong>。如果没有事务则开启一个新的事务。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA &#123;</span><br><span class="line">   ……</span><br><span class="line">   methodB();</span><br><span class="line">   …… </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodB &#123;</span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用Spring声明式事务，spring使用AOP来支持声明式事务，会根据事务属性，自动在方法调用之前决定是否开启一个事务，并在方法执行之后决定事务提交或回滚事务。</p>
+<p>单独调用methodB方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">main &#123;</span><br><span class="line">   metodB();</span><br><span class="line">&#125;</span><br><span class="line">相当于</span><br><span class="line">Main &#123;</span><br><span class="line">   Connection con=<span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">try</span>&#123;</span><br><span class="line">     con = getConnection();</span><br><span class="line">     con.setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">     <span class="comment">//方法调用</span></span><br><span class="line">     methodB();</span><br><span class="line">     <span class="comment">//提交事务</span></span><br><span class="line">     con.commit();</span><br><span class="line">   &#125; Catch(RuntimeException ex) &#123;</span><br><span class="line">     <span class="comment">//回滚事务</span></span><br><span class="line">     con.rollback();</span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">     <span class="comment">//释放资源</span></span><br><span class="line">     closeCon();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Spring保证在methodB方法中所有的调用都获得到一个相同的连接。在调用methodB时，<strong>没有一个存在的事务，所以获得一个新的连接，开启了一个新的事务</strong>。</p>
+<p>单独调用MethodA时，在MethodA内又会调用MethodB。执行效果相当于：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Main &#123;</span><br><span class="line">   Connection con = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">     con = getConnection();</span><br><span class="line">     methodA();</span><br><span class="line">     con.commit();</span><br><span class="line">   &#125; <span class="keyword">catch</span>(RuntimeException ex) &#123;</span><br><span class="line">     con.rollback();</span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">     closeCon();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用MethodA时，环境中没有事务，所以开启一个新的事务.<strong>当在MethodA中调用MethodB时，环境中已经有了一个事务，所以methodB就加入当前事务</strong>。</p>
+<p>（2）<strong>PROPAGATION_SUPPORTS 如果存在一个事务，支持当前事务。如果没有事务，则非事务的执行</strong>。但是对于事务同步的事务管理器，PROPAGATION_SUPPORTS与不使用事务有少许不同。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA() &#123; </span><br><span class="line">   methodB();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 事务属性 PROPAGATION_SUPPORTS</span></span><br><span class="line">methodB() &#123;</span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>单纯的调用methodB时，methodB方法是非事务的执行的。<strong>当调用methdA时,methodB则加入了methodA的事务中执行</strong>。</p>
+<p>（3）<strong>PROPAGATION_MANDATORY 如果已经存在一个事务，支持当前事务。如果没有一个活动的事务，则抛出异常</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA() &#123;</span><br><span class="line">   methodB();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//事务属性 PROPAGATION_MANDATORY </span></span><br><span class="line">methodB() &#123; </span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当单独调用methodB时，因为当前没有一个活动的事务，则会抛出异常throw new IllegalTransactionStateException(“Transaction propagation ‘mandatory’ but no existing transaction found”); 当调用methodA时，methodB则加入到methodA的事务中执行。</p>
+<p>（4）<strong>PROPAGATION_REQUIRES_NEW 总是开启一个新的事务</strong>。如果一个事务已经存在，则将这个存在的事务挂起。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA() &#123; </span><br><span class="line">   doSomeThingA();</span><br><span class="line">   methodB();</span><br><span class="line">   doSomeThingB();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//事务属性 PROPAGATION_REQUIRES_NEW</span></span><br><span class="line">methodB() &#123;</span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main() &#123;</span><br><span class="line">   methodA();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>相当于：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">main() &#123;</span><br><span class="line">   TransactionManager tm = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">try</span> &#123; </span><br><span class="line">     <span class="comment">// 获得一个JTA事务管理器 </span></span><br><span class="line">     tm = getTransactionManager();</span><br><span class="line">     tm.begin(); </span><br><span class="line">     <span class="comment">// 开启一个新的事务</span></span><br><span class="line">     Transaction ts1 = tm.getTransaction();</span><br><span class="line">     doSomeThing(); </span><br><span class="line">     tm.suspend(); <span class="comment">// 挂起当前事务 </span></span><br><span class="line">     <span class="keyword">try</span> &#123;</span><br><span class="line">       tm.begin();<span class="comment">// 重新开启第二个事务 </span></span><br><span class="line">       Transaction ts2 = tm.getTransaction();</span><br><span class="line">       methodB();</span><br><span class="line">       ts2.commit();<span class="comment">// 提交第二个事务</span></span><br><span class="line">     &#125; <span class="keyword">catch</span>(RunTimeException ex) &#123;</span><br><span class="line">        ts2.rollback(); <span class="comment">// 回滚第二个事务</span></span><br><span class="line">     &#125; <span class="keyword">finally</span> &#123; </span><br><span class="line">        <span class="comment">// 释放资源</span></span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">// methodB执行完后，恢复第一个事务</span></span><br><span class="line">     tm.resume(ts1);</span><br><span class="line">     doSomeThingB(); </span><br><span class="line">     ts1.commit();<span class="comment">// 提交第一个事务</span></span><br><span class="line">   &#125; <span class="keyword">catch</span>(RunTimeException ex) &#123;</span><br><span class="line">     ts1.rollback();<span class="comment">// 回滚第一个事务</span></span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">     <span class="comment">//释放资源</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这里，我把 <strong>ts1称为外层事务，ts2称为内层事务</strong>。从上面的代码可以看出，<strong>ts2与ts1是两个独立的事务，互不相干。Ts2是否成功并不依赖于ts1</strong>。如果methodA方法在调用methodB方法后的doSomeThingB方法失败了，而methodB方法所做的结果依然被提交。而除了methodB之外的其它代码导致的结果却被回滚了。<strong>使用PROPAGATION_REQUIRES_NEW,需要使用JtaTransactionManager作为事务管理器</strong>。</p>
+<p>（5）<strong>PROPAGATION_NOT_SUPPORTED 总是非事务地执行，并挂起任何存在的事务</strong>。使用PROPAGATION_NOT_SUPPORTED,也需要使用JtaTransactionManager作为事务管理器。</p>
+<p>（6）<strong>PROPAGATION_NEVER 总是非事务地执行，如果存在一个活动事务，则抛出异常；</strong></p>
+<p>（7）<strong>PROPAGATION_NESTED如果一个活动的事务存在，则运行在一个嵌套的事务中. 如果没有活动事务, 则按TransactionDefinition.PROPAGATION_REQUIRED 属性执行</strong>。这是一个嵌套事务,使用JDBC 3.0驱动时,仅仅支持DataSourceTransactionManager作为事务管理器。需要JDBC 驱动的java.sql.Savepoint类。</p>
+<p>有一些JTA的事务管理器实现可能也提供了同样的功能。使用PROPAGATION_NESTED，还需要把PlatformTransactionManager的nestedTransactionAllowed属性设为true;</p>
+<p>而nestedTransactionAllowed属性值默认为false;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA() &#123;</span><br><span class="line">   doSomeThingA();</span><br><span class="line">   methodB();</span><br><span class="line">   doSomeThingB();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//事务属性 PROPAGATION_NESTED</span></span><br><span class="line">methodB() &#123;</span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果单独调用methodB方法，则按REQUIRED属性执行。如果调用methodA方法，相当于下面的效果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">main() &#123;</span><br><span class="line">    Connection con = <span class="keyword">null</span>;</span><br><span class="line">    Savepoint savepoint = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      con = getConnection();</span><br><span class="line">      con.setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">      doSomeThingA();</span><br><span class="line">      savepoint = con.setSavepoint();</span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">        methodB();</span><br><span class="line">      &#125; <span class="keyword">catch</span>(RuntimeException ex) &#123;</span><br><span class="line">        con.rollback(savepoint);</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="comment">//释放资源 </span></span><br><span class="line">      &#125;</span><br><span class="line">      doSomeThingB();</span><br><span class="line">      con.commit();</span><br><span class="line">    &#125; <span class="keyword">catch</span>(RuntimeException ex) &#123;</span><br><span class="line">      con.rollback();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="comment">//释放资源</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当methodB方法调用之前，调用setSavepoint方法，保存当前的状态到savepoint。如果methodB方法调用失败，则恢复到之前保存的状态。但是需要注意的是，这时的事务并没有进行提交，如果后续的代码(doSomeThingB()方法)调用失败，则回滚包括methodB方法的所有操作。</p>
+<p>嵌套事务一个非常重要的概念就是内层事务依赖于外层事务。外层事务失败时，会回滚内层事务所做的动作。而内层事务操作失败并不会引起外层事务的回滚。</p>
+<h4 id="PROPAGATION-NESTED-与PROPAGATION-REQUIRES-NEW的区别"><a href="#PROPAGATION-NESTED-与PROPAGATION-REQUIRES-NEW的区别" class="headerlink" title="PROPAGATION_NESTED 与PROPAGATION_REQUIRES_NEW的区别:"></a>PROPAGATION_NESTED 与PROPAGATION_REQUIRES_NEW的区别:</h4><p>它们非常类似,都像一个嵌套事务，如果不存在一个活动的事务，都会开启一个新的事务。<strong>使用PROPAGATION_REQUIRES_NEW时，内层事务与外层事务就像两个独立的事务一样</strong>，一旦内层事务进行了提交后，外层事务不能对其进行回滚。两个事务互不影响。两个事务不是一个真正的嵌套事务。同时它需要JTA事务管理器的支持。</p>
+<p>使用PROPAGATION_NESTED时，<strong>外层事务的回滚可以引起内层事务的回滚。而内层事务的异常并不会导致外层事务的回滚，它是一个真正的嵌套事务</strong>。DataSourceTransactionManager使用savepoint支持PROPAGATION_NESTED时，需要JDBC 3.0以上驱动及1.4以上的JDK版本支持。其它的JTA TrasactionManager实现可能有不同的支持方式。</p>
+<p><strong>PROPAGATION_REQUIRES_NEW 启动一个新的, 不依赖于环境的 “内部” 事务</strong>。这个事务将被完全 commited 或 rolled back 而不依赖于外部事务, 它拥有自己的隔离范围, 自己的锁, 等等. 当内部事务开始执行时, 外部事务将被挂起, 内务事务结束时, 外部事务将继续执行。</p>
+<p>另一方面, PROPAGATION_NESTED 开始一个 “嵌套的” 事务, 它是已经存在事务的一个真正的子事务. <strong>潜套事务开始执行时, 它将取得一个 savepoint. 如果这个嵌套事务失败, 我们将回滚到此 savepoint</strong>. 潜套事务是外部事务的一部分, 只有外部事务结束后它才会被提交。</p>
+<p>由此可见, PROPAGATION_REQUIRES_NEW 和 PROPAGATION_NESTED 的最大区别在于, <strong>PROPAGATION_REQUIRES_NEW 完全是一个新的事务, 而 PROPAGATION_NESTED 则是外部事务的子事务, 如果外部事务 commit, 潜套事务也会被 commit, 这个规则同样适用于 roll back</strong>。PROPAGATION_REQUIRED应该是我们首先的事务传播行为。它能够满足我们大多数的事务需求。</p>
+<p>作者：猿码道</p>
+<p>链接：<a href="https://juejin.im/post/5a3b1dc4f265da43333e9049" target="_blank" rel="noopener">https://juejin.im/post/5a3b1dc4f265da43333e9049</a></p>
+<p>来源：掘金</p>
 
           
         
@@ -2667,244 +2994,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/15/计算机网络/HTTPS和HTTP的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/15/计算机网络/HTTPS和HTTP的区别/" class="post-title-link" itemprop="url">HTTPS和HTTP的区别</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-15 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-15T12:12:57+08:00">2019-10-15 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-20 23:13:46" itemprop="dateModified" datetime="2019-10-20T23:13:46+08:00">2019-10-20</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-20T23:13:46+08:00" content="2019-10-20">
-                2019-10-20 23:13:46
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/15/计算机网络/HTTPS和HTTP的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/15/计算机网络/HTTPS和HTTP的区别/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="HTTPS和HTTP的区别"><a href="#HTTPS和HTTP的区别" class="headerlink" title="HTTPS和HTTP的区别"></a>HTTPS和HTTP的区别</h4><ul>
-<li><p>HTTPS协议需要到CA申请证书，一般免费证书很少，需要交费。</p>
-</li>
-<li><p>HTTP协议运行在TCP之上，所有传输的内容都是明文，HTTPS运行在SSL/TLS之上，SSL/TLS运行在TCP之上，所有传输的内容都经过加密的。</p>
-</li>
-<li><p>HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</p>
-</li>
-<li><p>HTTP的连接很简单，是无状态的。Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
-<p>(无状态的意思是其数据包的发送、传输和接收都是相互独立的。</p>
-<p>无连接的意思是指通信双方都不长久的维持对方的任何信息。)</p>
-</li>
-</ul>
-<h4 id="HTTPS的优点："><a href="#HTTPS的优点：" class="headerlink" title="HTTPS的优点："></a>HTTPS的优点：</h4><p>1、使用Https协议可认证用户和服务器，确保数据发送到正确的客户机和服务器。</p>
-<p>2、Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，要比http协议安全，可防止数据在传输过程中不被窃取、修改，确保数据的完整性。</p>
-<p>3、Https是现行架构下最安全的解决方案，虽然不是绝对安全，但它大幅增加了中间人攻击的成本。</p>
-<h4 id="HTTPS的缺点："><a href="#HTTPS的缺点：" class="headerlink" title="HTTPS的缺点："></a>HTTPS的缺点：</h4><p>1、Https协议握手阶段比较费时，会使页面的加载时间延长近。</p>
-<p>2、Https连接缓存不如Http高效，会增加数据开销，甚至已有的安全措施也会因此而受到影响；</p>
-<p>3、SSL证书通常需要绑定IP，不能在同一IP上绑定多个域名，IPv4资源不可能支撑这个消耗。</p>
-<p>4、Https协议的加密范围也比较有限。最关键的，SSL证书的信用链体系并不安全，特别是在某些国家可以控制CA根证书的情况下，中间人攻击一样可行。</p>
-<h4 id="HTTPS连接过程"><a href="#HTTPS连接过程" class="headerlink" title="HTTPS连接过程"></a>HTTPS连接过程</h4><p><img src="/2019/10/15/计算机网络/HTTPS和HTTP的区别/20180709141944471.jpg" alt></p>
-<p>①客户端的浏览器向服务器发送请求，并传送客户端SSL 协议的版本号，加密算法的种类，产生的随机数，以及其他服务器和客户端之间通讯所需要的各种信息。</p>
-<p>②服务器向客户端传送SSL 协议的版本号，加密算法的种类，随机数以及其他相关信息，同时服务器还将向客户端传送自己的证书。</p>
-<p>③客户端利用服务器传过来的信息验证服务器的合法性，服务器的合法性包括：证书是否过期，发行服务器证书的CA 是否可靠，发行者证书的公钥能否正确解开服务器证书的“发行者的数字签名”，服务器证书上的域名是否和服务器的实际域名相匹配。如果合法性验证没有通过，通讯将断开；如果合法性验证通过，将继续进行第四步。</p>
-<p>④用户端随机产生一个用于通讯的“对称密码”，然后用服务器的公钥（服务器的公钥从步骤②中的服务器的证书中获得）对其加密，然后将加密后的“预主密码”传给服务器。</p>
-<p>⑤如果服务器要求客户的身份认证（在握手过程中为可选），用户可以建立一个随机数然后对其进行数据签名，将这个含有签名的随机数和客户自己的证书以及加密过的“预主密码”一起传给服务器。</p>
-<p>⑥如果服务器要求客户的身份认证，服务器必须检验客户证书和签名随机数的合法性，具体的合法性验证过程包括：客户的证书使用日期是否有效，为客户提供证书的CA 是否可靠，发行CA 的公钥能否正确解开客户证书的发行CA 的数字签名，检查客户的证书是否在证书废止列表（CRL）中。检验如果没有通过，通讯立刻中断；如果验证通过，服务器将用自己的私钥解开加密的“预主密码”，然后执行一系列步骤来产生主通讯密码（客户端也将通过同样的方法产生相同的主通讯密码）。</p>
-<p>⑦服务器和客户端用相同的主密码即“通话密码”，一个对称密钥用于SSL 协议的安全数据通讯的加解密通讯。同时在SSL 通讯过程中还要完成数据通讯的完整性，防止数据通讯中的任何变化。</p>
-<p>⑧客户端向服务器端发出信息，指明后面的数据通讯将使用的步骤⑦中的主密码为对称密钥，同时通知服务器客户端的握手过程结束。</p>
-<p>⑨服务器向客户端发出信息，指明后面的数据通讯将使用的步骤⑦中的主密码为对称密钥，同时通知客户端服务器端的握手过程结束。</p>
-<p>⑩SSL 的握手部分结束，SSL 安全通道的数据通讯开始，客户和服务器开始使用相同的对称密钥进行数据通讯，同时进行通讯完整性的检验。</p>
-<h4 id="对称加密和非对称加密的区别"><a href="#对称加密和非对称加密的区别" class="headerlink" title="对称加密和非对称加密的区别"></a>对称加密和非对称加密的区别</h4><p>对称加密只有一把公钥，加密解密都是这个密钥进行</p>
-<p>非对称加密有公钥和私钥，用公钥加密，用私钥解密</p>
-<p>HTTPS是对称加密和非对称加密两者结合的，在传输对称加密的公钥的时候用到非对称加密进行加密传输</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2953,7 +3042,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">63</span>
+                    <span class="site-state-item-count">64</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2998,7 +3087,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -3041,7 +3132,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -3142,7 +3235,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共143.9k字</span>
+  <span class="post-count">博客全站共164.3k字</span>
 </div>
         
 <div class="busuanzi-count">

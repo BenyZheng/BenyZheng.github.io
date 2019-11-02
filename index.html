@@ -299,7 +299,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">13</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">14</span></a>
 
   </li>
         
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">63</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">64</span></a>
 
   </li>
 
@@ -401,7 +401,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/26/框架/bean的作用域/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/30/设计模式/创建型模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -421,7 +421,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/26/框架/bean的作用域/" class="post-title-link" itemprop="url">bean的作用域</a>
+                <a href="/2019/10/30/设计模式/创建型模式/" class="post-title-link" itemprop="url">创建型模式</a>
               
             
           </h1>
@@ -446,7 +446,7 @@
                 
               
 
-              <time title="创建时间：2019-10-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-26T12:12:57+08:00">2019-10-26 12:12:57</time>
+              <time title="创建时间：2019-10-30 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-30T12:12:57+08:00">2019-10-30 12:12:57</time>
             
 
             
@@ -463,7 +463,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-27 01:25:57" itemprop="dateModified" datetime="2019-10-27T01:25:57+08:00">2019-10-27</time> 
+              <time title="修改时间：2019-10-31 00:32:19" itemprop="dateModified" datetime="2019-10-31T00:32:19+08:00">2019-10-31</time> 
               -->
               <!-- new version -->
                         
@@ -478,8 +478,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-27T01:25:57+08:00" content="2019-10-27">
-                2019-10-27 01:25:57
+              <time itemprop="dateUpdated" datetime="2019-10-31T00:32:19+08:00" content="2019-10-31">
+                2019-10-31 00:32:19
               </time>
             </span>
           
@@ -500,7 +500,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a></span>
 
                 
                 
@@ -519,8 +519,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/26/框架/bean的作用域/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/26/框架/bean的作用域/" itemprop="commentCount"></span>
+                <a href="/2019/10/30/设计模式/创建型模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/30/设计模式/创建型模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -550,19 +550,144 @@
       
         
           
-            <h3 id="作用域scope配置项"><a href="#作用域scope配置项" class="headerlink" title="作用域scope配置项"></a>作用域scope配置项</h3><p>作用域限定了Spring Bean的作用范围，在Spring配置文件定义Bean时，通过声明scope配置项，可以灵活定义Bean的作用范围。</p>
-<p>例如，当你希望每次IOC容器返回的Bean是同一个实例时，可以设置scope为singleton；当你希望每次IOC容器返回的Bean实例是一个新的实例时，可以设置scope为prototype。</p>
-<p>scope配置项有5个属性，用于描述不同的作用域。</p>
-<p>① singleton</p>
-<p>使用该属性定义Bean时，IOC容器仅创建一个Bean实例，IOC容器每次返回的是同一个Bean实例。</p>
-<p>② prototype</p>
-<p>使用该属性定义Bean时，IOC容器可以创建多个Bean实例，每次返回的都是一个新的实例。</p>
-<p>③ request</p>
-<p>该属性仅对HTTP请求产生作用，使用该属性定义Bean时，每次HTTP请求都会创建一个新的Bean，适用于WebApplicationContext环境。</p>
-<p>④ session</p>
-<p>该属性仅用于HTTP Session，同一个Session共享一个Bean实例。不同Session使用不同的实例。</p>
-<p>⑤ global-session</p>
-<p>该属性仅用于HTTP Session，同session作用域不同的是，所有的Session共享一个Bean实例。</p>
+            <h2 id="创建型模式概述"><a href="#创建型模式概述" class="headerlink" title="创建型模式概述"></a>创建型模式概述</h2><ul>
+<li>创建型模式(Creational Pattern)对类的实例化过程进行了抽象，能够将软件模块中对象的创建和对象的使用分离。为了使软件的结构更加清晰，外界对于这些对象只需要知道它们共同的接口，而不清楚其具体的实现细节，使整个系统的设计更加符合单一职责原则。</li>
+<li>创建型模式在创建什么(What)，由谁创建(Who)，何时创建(When)等方面都为软件设计者提供了尽可能大的灵活性。创建型模式隐藏了类的实例的创建细节，通过隐藏对象如何被创建和组合在一起达到使整个系统独立的目的。</li>
+</ul>
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><h3 id="单例模式简介"><a href="#单例模式简介" class="headerlink" title="单例模式简介"></a>单例模式简介</h3><h4 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h4><p>保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p>
+<p><img src="/2019/10/30/设计模式/创建型模式/20160908131425758" alt="img"></p>
+<h4 id="1-2-为什么要用单例模式呢？"><a href="#1-2-为什么要用单例模式呢？" class="headerlink" title="1.2 为什么要用单例模式呢？"></a>1.2 为什么要用单例模式呢？</h4><p>在我们的系统中，有一些对象其实我们只需要一个，比如说：线程池、缓存、对话框、注册表、日志对象、充当打印机、显卡等设备驱动程序的对象。事实上，这一类对象只能有一个实例，如果制造出多个实例就可能会导致一些问题的产生，比如：程序的行为异常、资源使用过量、或者不一致性的结果。</p>
+<p><strong>简单来说使用单例模式的好处</strong>：</p>
+<ul>
+<li>对于频繁使用的对象，可以省略创建对象所花费的时间，这对于那些重量级对象而言，是非常可观的一笔系统开销；</li>
+<li>由于 new 操作的次数减少，因而对系统内存的使用频率也会降低，这将减轻 GC 压力，缩短 GC 停顿时间。</li>
+</ul>
+<h4 id="1-3-为什么不使用全局变量确保一个类只有一个实例呢？"><a href="#1-3-为什么不使用全局变量确保一个类只有一个实例呢？" class="headerlink" title="1.3 为什么不使用全局变量确保一个类只有一个实例呢？"></a>1.3 为什么不使用全局变量确保一个类只有一个实例呢？</h4><p>我们知道全局变量分为静态变量和实例变量，静态变量也可以保证该类的实例只存在一个。<br>只要程序加载了类的字节码，不用创建任何实例对象，静态变量就会被分配空间，静态变量就可以被使用了。</p>
+<p>但是，如果说这个对象非常消耗资源，而且程序某次的执行中一直没用，这样就造成了资源的浪费。利用单例模式的话，我们就可以实现在需要使用时才创建对象，这样就避免了不必要的资源浪费。 不仅仅是因为这个原因，在程序中我们要尽量避免全局变量的使用，大量使用全局变量给程序的调试、维护等带来困难。</p>
+<h3 id="单例的模式的实现"><a href="#单例的模式的实现" class="headerlink" title="单例的模式的实现"></a>单例的模式的实现</h3><p>通常单例模式在Java语言中，有两种构建方式：</p>
+<ul>
+<li>饿汉方式。指全局的单例实例在类装载时构建</li>
+<li>懒汉方式。指全局的单例实例在第一次被使用时构建。</li>
+</ul>
+<p>不管是那种创建方式，它们通常都存在下面几点相似处：</p>
+<ul>
+<li>单例类必须要有一个 private 访问级别的构造函数，只有这样，才能确保单例不会在系统中的其他代码内被实例化;</li>
+<li>instance 成员变量和 uniqueInstance 方法必须是 static 的。</li>
+</ul>
+<h4 id="2-1-饿汉方式-线程安全"><a href="#2-1-饿汉方式-线程安全" class="headerlink" title="2.1 饿汉方式(线程安全)"></a>2.1 饿汉方式(线程安全)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">   <span class="comment">//在静态初始化器中创建单例实例，这段代码保证了线程安全</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton uniqueInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">    <span class="comment">//Singleton类只有一个构造方法并且是被private修饰的，所以用户无法通过new方法创建该对象实例</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所谓 <strong>“饿汉方式”</strong> 就是说JVM在加载这个类时就马上创建此唯一的单例实例，不管你用不用，先创建了再说，如果一直没有被使用，便浪费了空间，典型的空间换时间，每次调用的时候，就不需要再判断，节省了运行时间。</p>
+<h4 id="2-2-懒汉式（非线程安全和synchronized关键字线程安全版本-）"><a href="#2-2-懒汉式（非线程安全和synchronized关键字线程安全版本-）" class="headerlink" title="2.2 懒汉式（非线程安全和synchronized关键字线程安全版本 ）"></a>2.2 懒汉式（非线程安全和synchronized关键字线程安全版本 ）</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">static</span> Singleton uniqueInstance;  </span><br><span class="line">      <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;</span><br><span class="line">      &#125;   </span><br><span class="line">      <span class="comment">//没有加入synchronized关键字的版本是线程不安全的</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="comment">//判断当前单例是否已经存在，若存在则返回，不存在则再建立单例</span></span><br><span class="line">	      <span class="keyword">if</span> (uniqueInstance == <span class="keyword">null</span>) &#123;  </span><br><span class="line">	          uniqueInstance = <span class="keyword">new</span> Singleton();  </span><br><span class="line">	      &#125;  </span><br><span class="line">	      <span class="keyword">return</span> uniqueInstance;  </span><br><span class="line">      &#125;  </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>所谓 “ 懒汉式” 就是说单例实例在第一次被使用时构建，而不是在JVM在加载这个类时就马上创建此唯一的单例实例。</p>
+<p>但是上面这种方式很明显是线程不安全的，如果多个线程同时访问getInstance()方法时就会出现问题。如果想要保证线程安全，一种比较常见的方式就是在getInstance() 方法前加上synchronized关键字，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </span><br><span class="line"> <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;  </span><br><span class="line">     uniqueInstance = <span class="keyword">new</span> Singleton();  </span><br><span class="line"> &#125;  </span><br><span class="line"> <span class="keyword">return</span> uniqueInstance;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们知道synchronized关键字偏重量级锁。虽然在JavaSE1.6之后synchronized关键字进行了主要包括：为了减少获得锁和释放锁带来的性能消耗而引入的偏向锁和轻量级锁以及其它各种优化之后执行效率有了显著提升。</p>
+<p>但是在程序中每次使用getInstance() 都要经过synchronized加锁这一层，这难免会增加getInstance()的方法的时间消费，而且还可能会发生阻塞。我们下面介绍到的 双重检查加锁版本 就是为了解决这个问题而存在的。</p>
+<h4 id="2-3-懒汉式-双重检查加锁版本"><a href="#2-3-懒汉式-双重检查加锁版本" class="headerlink" title="2.3 懒汉式(双重检查加锁版本)"></a>2.3 懒汉式(双重检查加锁版本)</h4><p>利用双重检查加锁（double-checked locking），首先检查是否实例已经创建，如果尚未创建，“才”进行同步。这样以来，只有一次同步，这正是我们想要的效果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//volatile保证，当uniqueInstance变量被初始化成Singleton实例时，多个线程可以正确处理uniqueInstance变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton uniqueInstance;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="comment">//检查实例，如果不存在，就进入同步代码块</span></span><br><span class="line">        <span class="keyword">if</span> (uniqueInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//只有第一次才彻底执行这里的代码</span></span><br><span class="line">            <span class="keyword">synchronized</span>(Singleton.class) &#123;</span><br><span class="line">                <span class="comment">//进入同步代码块后，再检查一次，如果仍是null，才创建实例</span></span><br><span class="line">                <span class="keyword">if</span> (uniqueInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    uniqueInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>很明显，这种方式相比于使用synchronized关键字的方法，可以大大减少getInstance() 的时间消费。</p>
+<blockquote>
+<p><strong>注意：</strong> 双重检查加锁版本不适用于1.4及更早版本的Java。<br>1.4及更早版本的Java中，许多JVM对于volatile关键字的实现会导致双重检查加锁的失效。</p>
+</blockquote>
+<h4 id="2-4-懒汉式（登记式-静态内部类方式）"><a href="#2-4-懒汉式（登记式-静态内部类方式）" class="headerlink" title="2.4 懒汉式（登记式/静态内部类方式）"></a>2.4 懒汉式（登记式/静态内部类方式）</h4><p><strong>静态内部实现的单例是懒加载的且线程安全</strong>。</p>
+<p>只有通过显式调用 getInstance 方法时，才会显式装载 SingletonHolder 类，从而实例化 instance（只有第一次使用这个单例的实例的时候才加载，同时不会有线程安全问题）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> SingletonHolder.INSTANCE;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-5-饿汉式（枚举方式）"><a href="#2-5-饿汉式（枚举方式）" class="headerlink" title="2.5 饿汉式（枚举方式）"></a>2.5 饿汉式（枚举方式）</h4><p>这种实现方式还没有被广泛采用，但这是实现单例模式的最佳方法。 它更简洁，自动支持序列化机制，绝对防止多次实例化 （如果单例类实现了Serializable接口，默认情况下每次反序列化总会创建一个新的实例对象，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton &#123;</span><br><span class="line">	 <span class="comment">//定义一个枚举的元素，它就是 Singleton 的一个实例</span></span><br><span class="line">    INSTANCE;  </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomeThing</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">	     System.out.println(<span class="string">"枚举方法实现单例"</span>);</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ESTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Singleton singleton = Singleton.INSTANCE;</span><br><span class="line">		singleton.doSomeThing();<span class="comment">//output:枚举方法实现单例</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><h3 id="工厂模式介绍"><a href="#工厂模式介绍" class="headerlink" title="工厂模式介绍"></a>工厂模式介绍</h3><h4 id="1-1-工厂模式的定义"><a href="#1-1-工厂模式的定义" class="headerlink" title="1.1 工厂模式的定义"></a>1.1 工厂模式的定义</h4><blockquote>
+<p>在基类中定义创建对象的一个接口，让子类决定实例化哪个类。工厂方法让一个类的实例化延迟到子类中进行。</p>
+</blockquote>
+<h4 id="1-2-工厂模式的分类："><a href="#1-2-工厂模式的分类：" class="headerlink" title="1.2 工厂模式的分类："></a>1.2 工厂模式的分类：</h4><p>（1）简单工厂（Simple Factory）模式，又称静态工厂方法模式（Static Factory Method Pattern）。</p>
+<p>（2）工厂方法（Factory Method）模式，又称多态性工厂（Polymorphic Factory）模式或虚拟构造（Virtual Constructor）模式；</p>
+<p>（3）抽象工厂（Abstract Factory）模式，又称工具箱（Kit 或Toolkit）模式。</p>
+<h4 id="1-3-在开源框架中的使用"><a href="#1-3-在开源框架中的使用" class="headerlink" title="1.3 在开源框架中的使用"></a>1.3 在开源框架中的使用</h4><p>举两个比较常见的例子</p>
+<p>(1)Spring中通过getBean(“xxx”)获取Bean；</p>
+<p>(2) Java消息服务JMS中(下面以消息队列ActiveMQ为例子)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、创建一个连接工厂对象，需要指定服务的ip及端口。</span></span><br><span class="line">      ConnectionFactory connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(<span class="string">"tcp://192.168.25.155:61616"</span>);</span><br><span class="line">      <span class="comment">// 2、使用工厂对象创建一个Connection对象。</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-4-为什么要用工厂模式"><a href="#1-4-为什么要用工厂模式" class="headerlink" title="1.4 为什么要用工厂模式"></a>1.4 为什么要用工厂模式</h4><p>(1) 解耦 ：把对象的创建和使用的过程分开</p>
+<p>(2)降低代码重复: 如果创建某个对象的过程都很复杂，需要一定的代码量，而且很多地方都要用到，那么就会有很多的重复代码。</p>
+<p>(3) 降低维护成本 ：由于创建过程都由工厂统一管理，所以发生业务逻辑变化，不需要找到所有需要创建对象B的地方去逐个修正，只需要在工厂里修改即可，降低维护成本。</p>
+<h3 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h3><h4 id="2-1-介绍"><a href="#2-1-介绍" class="headerlink" title="2.1 介绍"></a>2.1 介绍</h4><p>严格的说，简单工厂模式并不是23种常用的设计模式之一，它只算工厂模式的一个特殊实现。简单工厂模式在实际中的应用相对于其他2个工厂模式用的还是相对少得多，因为它只适应很多简单的情况。</p>
+<p>最重要的是它违背了我们在概述中说的 开放-封闭原则 （虽然可以通过反射的机制来避免） 。因为每次你要新添加一个功能，都需要在生switch-case 语句（或者if-else 语句）中去修改代码，添加分支条件。</p>
+<h4 id="2-2-适用场景"><a href="#2-2-适用场景" class="headerlink" title="2.2 适用场景"></a>2.2 适用场景</h4><p>（1）需要创建的对象较少。</p>
+<p>（2）客户端不关心对象的创建过程。</p>
+<h4 id="2-3-简单工厂模式角色分配："><a href="#2-3-简单工厂模式角色分配：" class="headerlink" title="2.3 简单工厂模式角色分配："></a>2.3 简单工厂模式角色分配：</h4><ol>
+<li>工厂(Factory)角色 :简单工厂模式的核心，它负责实现创建所有实例的内部逻辑。工厂类可以被外界直接调用，创建所需的产品对象。</li>
+<li>抽象产品(Product)角色 :简单工厂模式所创建的所有对象的父类，它负责描述所有实例所共有的公共接口。</li>
+<li>具体产品(Concrete Product)角色:简单工厂模式的创建目标，所有创建的对象都是充当这个角色的某个具体类的实例。</li>
+</ol>
+<h4 id="2-4-简单工厂实例"><a href="#2-4-简单工厂实例" class="headerlink" title="2.4 简单工厂实例"></a>2.4 简单工厂实例</h4><p>创建一个可以绘制不同形状的绘图工具，可以绘制圆形，正方形，三角形，每个图形都会有一个draw()方法用于绘图.</p>
+<p>（1）创建Shape接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）创建实现该接口的具体图形类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//圆形</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Circle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Circle"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Draw Circle"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//长方形</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Rectangle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Rectangle"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Draw Rectangle"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//正方形</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Square</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Square"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Draw Square"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（3）创建工厂类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShapeFactory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 getShape 方法获取形状类型的对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Shape <span class="title">getShape</span><span class="params">(String shapeType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (shapeType == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (shapeType.equalsIgnoreCase(<span class="string">"CIRCLE"</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Circle();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equalsIgnoreCase(<span class="string">"RECTANGLE"</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Rectangle();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equalsIgnoreCase(<span class="string">"SQUARE"</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Square();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（4）测试方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取 Circle 的对象，并调用它的 draw 方法</span></span><br><span class="line">        Shape circle = ShapeFactory.getShape(<span class="string">"CIRCLE"</span>);</span><br><span class="line">        circle.draw();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取 Rectangle 的对象，并调用它的 draw 方法</span></span><br><span class="line">        Shape rectangle = ShapeFactory.getShape(<span class="string">"RECTANGLE"</span>);</span><br><span class="line">        rectangle.draw();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取 Square 的对象，并调用它的 draw 方法</span></span><br><span class="line">        Shape square = ShapeFactory.getShape(<span class="string">"SQUARE"</span>);</span><br><span class="line">        square.draw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Circle</span><br><span class="line">Draw Circle</span><br><span class="line">Rectangle</span><br><span class="line">Draw Rectangle</span><br><span class="line">Square</span><br><span class="line">Draw Square</span><br></pre></td></tr></table></figure>
+<p>这样的实现有个问题，如果我们新增产品类的话，就需要修改工厂类中的getShape()方法，这很明显不符合 <strong>开放-封闭原则</strong>   </p>
+<h4 id="2-5-使用反射机制改善简单工厂"><a href="#2-5-使用反射机制改善简单工厂" class="headerlink" title="2.5 使用反射机制改善简单工厂"></a>2.5 使用反射机制改善简单工厂</h4><p><strong>将工厂类改为下面的形式</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> factory_pattern;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 利用反射解决简单工厂每次增加新了产品类都要修改产品工厂的弊端</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Administrator</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShapeFactory2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getClass</span><span class="params">(Class&lt;? extends Shape&gt; clazz)</span> </span>&#123;</span><br><span class="line">        Object obj = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            obj = Class.forName(clazz.getName()).newInstance();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> factory_pattern;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Circle circle = (Circle) ShapeFactory2.getClass(factory_pattern.Circle.class);</span><br><span class="line">        circle.draw();</span><br><span class="line"></span><br><span class="line">        Rectangle rectangle = (Rectangle) ShapeFactory2.getClass(factory_pattern.Rectangle.class);</span><br><span class="line">        rectangle.draw();</span><br><span class="line"></span><br><span class="line">        Square square = (Square) ShapeFactory2.getClass(factory_pattern.Square.class);</span><br><span class="line">        square.draw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种方式的虽然符合了 <strong>开放-关闭原则</strong> ，但是每一次传入的都是产品类的全部路径，这样比较麻烦。如果需要改善的话可以通过 <strong>反射+配置文件</strong> 的形式来改善，这种方式使用的也是比较多的。</p>
+<h3 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h3><h4 id="3-1-介绍"><a href="#3-1-介绍" class="headerlink" title="3.1 介绍"></a>3.1 介绍</h4><p>工厂方法模式应该是在工厂模式家族中是用的最多模式，一般项目中存在最多的就是这个模式。</p>
+<p>工厂方法模式是简单工厂的仅一步深化， 在工厂方法模式中，我们不再提供一个统一的工厂类来创建所有的对象，而是针对不同的对象提供不同的工厂。也就是说 <strong>每个对象都有一个与之对应的工厂</strong> 。</p>
+<h4 id="3-2-适用场景"><a href="#3-2-适用场景" class="headerlink" title="3.2 适用场景"></a>3.2 适用场景</h4><ul>
+<li><p>一个类不知道它所需要的对象的类：在工厂方法模式中，客户端不需要知道具体产品类的类名，只需要知道所对应的工厂即可，具体的产品对象由具体工厂类创建；客户端需要知道创建具体产品的工厂类。</p>
+</li>
+<li><p>一个类通过其子类来指定创建哪个对象：在工厂方法模式中，对于抽象工厂类只需要提供一个创建产品的接口，而由其子类来确定具体要创建的对象，利用面向对象的多态性</p>
+</li>
+<li><p>将创建对象的任务委托给多个工厂子类中的某一个，客户端在使用时可以无需关心是哪一个工厂子类创建产品子类，需要时再动态指定，可将具体工厂类的类名存储在配置文件或数据库中。</p>
+</li>
+</ul>
+<h4 id="3-3-工厂方法模式角色分配："><a href="#3-3-工厂方法模式角色分配：" class="headerlink" title="3.3 工厂方法模式角色分配："></a>3.3 工厂方法模式角色分配：</h4><ol>
+<li>抽象工厂(Abstract Factory)角色：是工厂方法模式的核心，与应用程序无关。任何在模式中创建的对象的工厂类必须实现这个接口。</li>
+<li>具体工厂(Concrete Factory)角色 ：这是实现抽象工厂接口的具体工厂类，包含与应用程序密切相关的逻辑，并且受到应用程序调用以创建某一种产品对象。</li>
+<li>抽象产品(AbstractProduct)角色 ：工厂方法模式所创建的对象的超类型，也就是产品对象的共同父类或共同拥有的接口。</li>
+<li>具体产品(Concrete Product)角色 ：这个角色实现了抽象产品角色所定义的接口。某具体产品有专门的具体工厂创建，它们之间往往一一对应</li>
+</ol>
+<h4 id="3-4-工厂方法模式实例"><a href="#3-4-工厂方法模式实例" class="headerlink" title="3.4 工厂方法模式实例"></a>3.4 工厂方法模式实例</h4><p>上面简单工厂例子中的图形接口以及相关图像实现类不变。我们只需要增加一个工厂接口以及实现这个接口的工厂类即可。</p>
+<p>(1)增加一个工厂接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Shape <span class="title">getShape</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）增加相关工厂类:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//圆形工厂类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CircleFactory</span> <span class="keyword">implements</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Shape <span class="title">getShape</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Circle();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//长方形工厂类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RectangleFactory</span> <span class="keyword">implements</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Shape <span class="title">getShape</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Rectangle();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//圆形工厂类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SquareFactory</span> <span class="keyword">implements</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Shape <span class="title">getShape</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Square();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（3）测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Factory circlefactory = <span class="keyword">new</span> CircleFactory();</span><br><span class="line">        Shape circle = circlefactory.getShape();</span><br><span class="line">        circle.draw();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Circle</span><br><span class="line">Draw Circle</span><br></pre></td></tr></table></figure>
+<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><h4 id="4-1-介绍"><a href="#4-1-介绍" class="headerlink" title="4.1 介绍"></a>4.1 介绍</h4><p>在工厂方法模式中，其实我们有一个潜在意识的意识。那就是我们生产的都是同一类产品。抽象工厂模式是工厂方法的仅一步深化，在这个模式中的工厂类不单单可以创建一种产品，而是可以创建一组产品。</p>
+<p>抽象工厂应该是比较最难理解的一个工厂模式了。</p>
+<h4 id="4-2-适用场景"><a href="#4-2-适用场景" class="headerlink" title="4.2 适用场景"></a>4.2 适用场景</h4><ul>
+<li>和工厂方法一样客户端不需要知道它所创建的对象的类。</li>
+<li>需要一组对象共同完成某种功能时，并且可能存在多组对象完成不同功能的情况。（同属于同一个产品族的产品）</li>
+<li>系统结构稳定，不会频繁的增加对象。（因为一旦增加就需要修改原有代码，不符合开闭原则）</li>
+</ul>
+<h4 id="4-3-抽象工厂方法模式角色分配："><a href="#4-3-抽象工厂方法模式角色分配：" class="headerlink" title="4.3 抽象工厂方法模式角色分配："></a>4.3 抽象工厂方法模式角色分配：</h4><ol>
+<li>抽象工厂（AbstractFactory）角色 ：是工厂方法模式的核心，与应用程序无关。任何在模式中创建的对象的工厂类必须实现这个接口。</li>
+<li>具体工厂类（ConreteFactory）角色 ：这是实现抽象工厂接口的具体工厂类，包含与应用程序密切相关的逻辑，并且受到应用程序调用以创建某一种产品对象。</li>
+<li>抽象产品（Abstract Product）角色 ：工厂方法模式所创建的对象的超类型，也就是产品对象的共同父类或共同拥有的接口。</li>
+<li>具体产品（Concrete Product）角色 ：抽象工厂模式所创建的任何产品对象都是某一个具体产品类的实例。在抽象工厂中创建的产品属于同一产品族，这不同于工厂模式中的工厂只创建单一产品，我后面也会详解介绍到。</li>
+</ol>
+<h4 id="4-4-抽象工厂的工厂和工厂方法中的工厂有什么区别呢？"><a href="#4-4-抽象工厂的工厂和工厂方法中的工厂有什么区别呢？" class="headerlink" title="4.4 抽象工厂的工厂和工厂方法中的工厂有什么区别呢？"></a>4.4 抽象工厂的工厂和工厂方法中的工厂有什么区别呢？</h4><p>抽象工厂是生产一整套有产品的（至少要生产两个产品)，这些产品必须相互是有关系或有依赖的，而工厂方法中的工厂是生产单一产品的工厂。</p>
+<p>下面就是抽象工厂图示： </p>
+<p><img src="/2019/10/30/设计模式/创建型模式/62034363.jpg" alt></p>
+<h4 id="4-5-抽象工厂模式实例"><a href="#4-5-抽象工厂模式实例" class="headerlink" title="4.5 抽象工厂模式实例"></a>4.5 抽象工厂模式实例</h4><p>我们假设现在存在AK、M4A1两类枪，每一种枪对应一种子弹。我们现在这样考虑生产AK的工厂可以顺便生产AK使用的子弹，生产M4A1的工厂可以顺便生产M4A1使用的子弹。（AK工厂生产AK系列产品包括子弹啊，AK枪的类型啊这些，M4A1工厂同理）</p>
+<p>（1）创建相关接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//枪</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Gun</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shooting</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//子弹</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Bullet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">load</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）创建接口对应实现类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//AK类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AK</span> <span class="keyword">implements</span> <span class="title">Gun</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shooting</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"shooting with AK"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//M4A1类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">M4A1</span> <span class="keyword">implements</span> <span class="title">Gun</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shooting</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"shooting with M4A1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//AK子弹类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AK_Bullet</span> <span class="keyword">implements</span> <span class="title">Bullet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">load</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Load bullets with AK"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//M4A1子弹类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">M4A1_Bullet</span> <span class="keyword">implements</span> <span class="title">Bullet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">load</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Load bullets with M4A1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（3）创建工厂接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Gun <span class="title">produceGun</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bullet <span class="title">produceBullet</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（4）创建具体工厂</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生产AK和AK子弹的工厂</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AK_Factory</span> <span class="keyword">implements</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Gun <span class="title">produceGun</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AK();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bullet <span class="title">produceBullet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AK_Bullet();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//生产M4A1和M4A1子弹的工厂</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">M4A1_Factory</span> <span class="keyword">implements</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Gun <span class="title">produceGun</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> M4A1();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bullet <span class="title">produceBullet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> M4A1_Bullet();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（5）测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">     Factory factory;</span><br><span class="line">     Gun gun;</span><br><span class="line">     Bullet bullet;</span><br><span class="line"></span><br><span class="line">     factory =<span class="keyword">new</span> AK_Factory();</span><br><span class="line">     bullet=factory.produceBullet();</span><br><span class="line">     bullet.load();</span><br><span class="line">     gun=factory.produceGun();</span><br><span class="line">     gun.shooting(); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Load bullets with AK</span><br><span class="line">shooting with AK</span><br></pre></td></tr></table></figure>
 
           
         
@@ -885,6 +1010,224 @@
 <p>装配list也是与上面的构造器的装配list一样。</p>
 <p>虽然我们无法使用c-及p-命名空间装配list，但是我们可以使用</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=<span class="string">"vaeCompactDisc"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.stalkers.soundsystem.VaeCompactDisc"</span> c:title=<span class="string">"自定义"</span> c:tracks-ref=<span class="string">"songs"</span>&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line">&lt;util:list id=<span class="string">"songs"</span>&gt;</span><br><span class="line">    &lt;value&gt;有何不可&lt;/value&gt;</span><br><span class="line">    &lt;value&gt;多余的解释&lt;/value&gt;</span><br><span class="line">&lt;/util:list&gt;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/26/框架/bean的作用域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/26/框架/bean的作用域/" class="post-title-link" itemprop="url">bean的作用域</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-26T12:12:57+08:00">2019-10-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-27 01:25:57" itemprop="dateModified" datetime="2019-10-27T01:25:57+08:00">2019-10-27</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-27T01:25:57+08:00" content="2019-10-27">
+                2019-10-27 01:25:57
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/26/框架/bean的作用域/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/26/框架/bean的作用域/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="作用域scope配置项"><a href="#作用域scope配置项" class="headerlink" title="作用域scope配置项"></a>作用域scope配置项</h3><p>作用域限定了Spring Bean的作用范围，在Spring配置文件定义Bean时，通过声明scope配置项，可以灵活定义Bean的作用范围。</p>
+<p>例如，当你希望每次IOC容器返回的Bean是同一个实例时，可以设置scope为singleton；当你希望每次IOC容器返回的Bean实例是一个新的实例时，可以设置scope为prototype。</p>
+<p>scope配置项有5个属性，用于描述不同的作用域。</p>
+<p>① singleton</p>
+<p>使用该属性定义Bean时，IOC容器仅创建一个Bean实例，IOC容器每次返回的是同一个Bean实例。</p>
+<p>② prototype</p>
+<p>使用该属性定义Bean时，IOC容器可以创建多个Bean实例，每次返回的都是一个新的实例。</p>
+<p>③ request</p>
+<p>该属性仅对HTTP请求产生作用，使用该属性定义Bean时，每次HTTP请求都会创建一个新的Bean，适用于WebApplicationContext环境。</p>
+<p>④ session</p>
+<p>该属性仅用于HTTP Session，同一个Session共享一个Bean实例。不同Session使用不同的实例。</p>
+<p>⑤ global-session</p>
+<p>该属性仅用于HTTP Session，同session作用域不同的是，所有的Session共享一个Bean实例。</p>
 
           
         
@@ -1536,6 +1879,211 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/架构/redis主从架构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/架构/redis主从架构/" class="post-title-link" itemprop="url">redis主从架构</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-22 12:33:32" itemprop="dateModified" datetime="2019-10-22T12:33:32+08:00">2019-10-22</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-22T12:33:32+08:00" content="2019-10-22">
+                2019-10-22 12:33:32
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/" itemprop="url" rel="index"><span itemprop="name">架构</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/架构/redis主从架构/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/架构/redis主从架构/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/架构/redis持久化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2092,7 +2640,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/SpringMVC的工作流程/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/RestController和Controller的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -2112,7 +2660,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/21/框架/SpringMVC的工作流程/" class="post-title-link" itemprop="url">SpringMVC的工作流程</a>
+                <a href="/2019/10/21/框架/RestController和Controller的区别/" class="post-title-link" itemprop="url">RestController和Controller的区别</a>
               
             
           </h1>
@@ -2154,7 +2702,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-26 22:20:59" itemprop="dateModified" datetime="2019-10-26T22:20:59+08:00">2019-10-26</time> 
+              <time title="修改时间：2019-10-23 14:16:36" itemprop="dateModified" datetime="2019-10-23T14:16:36+08:00">2019-10-23</time> 
               -->
               <!-- new version -->
                         
@@ -2169,8 +2717,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-26T22:20:59+08:00" content="2019-10-26">
-                2019-10-26 22:20:59
+              <time itemprop="dateUpdated" datetime="2019-10-23T14:16:36+08:00" content="2019-10-23">
+                2019-10-23 14:16:36
               </time>
             </span>
           
@@ -2210,8 +2758,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/SpringMVC的工作流程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/SpringMVC的工作流程/" itemprop="commentCount"></span>
+                <a href="/2019/10/21/框架/RestController和Controller的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/RestController和Controller的区别/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2241,546 +2789,14 @@
       
         
           
-            <h3 id="SpringMVC架构"><a href="#SpringMVC架构" class="headerlink" title="SpringMVC架构"></a>SpringMVC架构</h3><p><img src="/2019/10/21/框架/SpringMVC的工作流程/1086132-20180315213752573-1946735693.png" alt></p>
-<h3 id="框架流程"><a href="#框架流程" class="headerlink" title="框架流程"></a>框架流程</h3><ol>
-<li>用户发送请求至前端控制器DispatcherServlet。</li>
-<li>DispatcherServlet收到请求调用HandlerMapping处理器映射器。</li>
-<li>处理器映射器找到具体的处理器，生成处理器对象及处理器拦截器（如果有则生成）一并返回给DispatcherServlet。</li>
-<li>DispatcherServlet调用HandlerAdapter处理器适配器。</li>
-<li>HandlerAdapter经过适配调用具体的处理器（controller，也叫后端控制器）。</li>
-<li>Controller执行完成返回ModelAndView。</li>
-<li>HandlerAdapter将Controller返回的执行结果ModelAndView返回给DispatcherServlet。</li>
-<li>DispatcherServlet将ModelAndView传给ViewReslover视图解析器。</li>
-<li>ViewReslover解析之后返回具体的view。</li>
-<li>DispatcherServlet根据View进行渲染视图（即将模型数据填充至视图jsp/freemaker..中）。</li>
-<li>DispatcherServlet响应用户。</li>
-</ol>
-<p><img src="/2019/10/21/框架/SpringMVC的工作流程/20180803145042704.png" alt></p>
-<h3 id="组件说明"><a href="#组件说明" class="headerlink" title="组件说明"></a>组件说明</h3><p>以下组件通常使用框架提供实现：</p>
-<p><strong>DispatcherServlet：前端控制器</strong></p>
-<p>　　用户请求到达前端控制器，它就相当于mvc模式中的c，dispatcherServlet是整个流程控制的中心，由它调用其它组件处理用户的请求，dispatcherServlet的存在降低了组件之间的耦合性。</p>
-<p><strong>HandlerMapping：处理器映射器</strong></p>
-<p>　　HandlerMapping负责根据用户请求找到Handler即处理器，springmvc提供了不同的映射器实现不同的映射方式，例如：配置文件方式，实现接口方式，注解方式等。</p>
-<p><strong>Handler：处理器</strong></p>
-<p>　　Handler 是继DispatcherServlet前端控制器的后端控制器，在DispatcherServlet的控制下Handler对具体的用户请求进行处理。</p>
-<p>​        由于Handler涉及到具体的用户业务请求，所以一般情况需要程序员根据业务需求开发Handler。</p>
-<p><strong>HandlAdapter：处理器适配器</strong></p>
-<p>　　通过HandlerAdapter对处理器进行执行，这是适配器模式的应用，通过扩展适配器可以对更多类型的处理器进行执行。</p>
-<p><strong>View Resolver：视图解析器</strong></p>
-<p>　　View Resolver负责将处理结果生成View视图(JSP,freemarker)，View Resolver首先根据逻辑视图名解析成物理视图名即具体的页面地址，再生成View视图对象，最后对View进行渲染将处理结果通过页面展示给用户。</p>
-<p><strong>View：视图</strong></p>
-<p>　　springmvc框架提供了很多的View视图类型的支持，包括：jstlView、freemarkerView、pdfView等。我们最常用的视图就是jsp。</p>
-<p>　　一般情况下需要通过页面标签或页面模版技术将模型数据通过页面展示给用户，需要由程序员根据业务需求开发具体的页面。</p>
-<p><strong>需要用户开发的组件有</strong>handler(controller类)、view(jsp/freemarker velocity,thyeleaf)　　　</p>
-<h3 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h3><p><strong>&lt;mvc:annotation-driven /&gt; 说明:</strong></p>
-<p> 　　是一种简写形式，可以让初学者快速成应用默认的配置方案，会默认注册 DefaultAnnotationHandleMapping以及AnnotionMethodHandleAdapter 这两个 Bean, 这两个 Bean ，前者对应类级别， 后者对应到方法级别；</p>
-<p>　　上面的 DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter 是 Spring 为 @Controller 分发请求所必需的。</p>
-<p><strong>annotation-driven 扫描指定包中类上的注解，常用的注解有:</strong></p>
-<p>@Controller 声明Action组件</p>
-<p>@Service 声明Service组件 @Service(“myMovieLister”)</p>
-<p>@Repository 声明Dao组件</p>
-<p>@Component 泛指组件, 当不好归类时.</p>
-<p>@RequestMapping(“/menu”) 请求映射</p>
-<p>@Resource 用于注入，( j2ee提供的 ) 默认按名称装配，@Resource(name=”beanName”)</p>
-<p>@Autowired 用于注入，(srping提供的) 默认按类型装配</p>
-<p>@Transactional( rollbackFor={Exception.class}) 事务管理</p>
-<p>@ResponseBody</p>
-<p>@Scope(“prototype”) 设定bean的作用域</p>
-<h3 id="适配器作用"><a href="#适配器作用" class="headerlink" title="适配器作用"></a>适配器作用</h3><p>SpringMVC涉及的映射器，视图解析器的作用不难理解，映射器负责将前端请求的url映射到配置的处理器，视图解析器将最终的结果进行解析，但中间为什么要经过一层适配器呢，为什么不经映射器找到controller后直接执行返回呢？</p>
-<p>那是因为SpringMVC为业务处理器提供了多种接口实现（例如实现了Controller接口），而适配器就是用来根据处理器实现了什么接口，最终选择与已经注册好的不同类型的Handler Adapter进行匹配，并最终执行，例如，SimpleControllerHandlerAdapter是支持实现了controller接口的控制器，如果自己写的控制器实现了controller接口，那么SimpleControllerHandlerAdapter就会去执行自己写的控制器中的具体方法来完成请求。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Spring事务/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/21/框架/Spring事务/" class="post-title-link" itemprop="url">Spring事务</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-24 00:05:40" itemprop="dateModified" datetime="2019-10-24T00:05:40+08:00">2019-10-24</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-24T00:05:40+08:00" content="2019-10-24">
-                2019-10-24 00:05:40
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/Spring事务/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Spring事务/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Spring事务机制"><a href="#Spring事务机制" class="headerlink" title="Spring事务机制"></a>Spring事务机制</h3><p>Spring事务机制主要包括 <strong>声明式事务和编程式事务</strong>，此处侧重讲解声明式事务，编程式事务在实际开发中得不到广泛使用</p>
-<p>Spring声明式事务让我们从复杂的事务处理中得到解脱。使得我们 <strong>再也无需要去处理获得连接、关闭连接、事务提交和回滚等这些操作</strong>。再也无需要我们在与事务相关的方法中处理大量的try…catch…finally代码。我们在使用Spring声明式事务时，有一个非常重要的概念就是事务属性。</p>
-<p><strong>事务属性通常由事务的传播行为，事务的隔离级别，事务的超时值和事务只读标志组成</strong>。我们在进行事务划分时，需要进行事务定义，也就是配置事务的属性。</p>
-<p>Spring在TransactionDefinition接口中定义这些属性,以供PlatfromTransactionManager使用, <strong>PlatfromTransactionManager是Spring事务管理的核心接口</strong>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TransactionDefinition</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getPropagationBehavior</span><span class="params">()</span></span>; <span class="comment">//返回事务的传播行为。</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getIsolationLevel</span><span class="params">()</span></span>; <span class="comment">//返回事务的隔离级别，事务管理器根据它来控制另外一个事务可以看到本事务内的哪些数据。</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getTimeout</span><span class="params">()</span></span>; <span class="comment">//返回事务必须在多少秒内完成。</span></span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">isReadOnly</span><span class="params">()</span></span>; <span class="comment">//事务是否只读，事务管理器能够根据这个返回值进行优化，确保事务是只读的。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>1、TransactionDefinition接口中定义五个隔离级别：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ISOLATION_DEFAULT 这是一个PlatfromTransactionManager默认的隔离级别，使用数据库默认的事务隔离级别.另外四个与JDBC的隔离级别相对应；</span><br><span class="line"></span><br><span class="line">ISOLATION_READ_UNCOMMITTED 这是事务最低的隔离级别，它充许别外一个事务可以看到这个事务未提交的数据。这种隔离级别会产生脏读，不可重复读和幻像读。</span><br><span class="line"></span><br><span class="line">ISOLATION_READ_COMMITTED 保证一个事务修改的数据提交后才能被另外一个事务读取。另外一个事务不能读取该事务未提交的数据。这种事务隔离级别可以避免脏读出现，但是可能会出现不可重复读和幻像读。</span><br><span class="line"></span><br><span class="line">ISOLATION_REPEATABLE_READ 这种事务隔离级别可以防止脏读，不可重复读。但是可能出现幻像读。它除了保证一个事务不能读取另一个事务未提交的数据外，还保证了避免下面的情况产生(不可重复读)。</span><br><span class="line"></span><br><span class="line">ISOLATION_SERIALIZABLE 这是花费最高代价但是最可靠的事务隔离级别。事务被处理为顺序执行。除了防止脏读，不可重复读外，还避免了幻像读。</span><br></pre></td></tr></table></figure>
-<p>2、在TransactionDefinition接口中定义了七个事务传播行为：</p>
-<p>（1）<strong>PROPAGATION_REQUIRED 如果存在一个事务，则支持当前事务</strong>。如果没有事务则开启一个新的事务。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA &#123;</span><br><span class="line">   ……</span><br><span class="line">   methodB();</span><br><span class="line">   …… </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodB &#123;</span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用Spring声明式事务，spring使用AOP来支持声明式事务，会根据事务属性，自动在方法调用之前决定是否开启一个事务，并在方法执行之后决定事务提交或回滚事务。</p>
-<p>单独调用methodB方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">main &#123;</span><br><span class="line">   metodB();</span><br><span class="line">&#125;</span><br><span class="line">相当于</span><br><span class="line">Main &#123;</span><br><span class="line">   Connection con=<span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">try</span>&#123;</span><br><span class="line">     con = getConnection();</span><br><span class="line">     con.setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">     <span class="comment">//方法调用</span></span><br><span class="line">     methodB();</span><br><span class="line">     <span class="comment">//提交事务</span></span><br><span class="line">     con.commit();</span><br><span class="line">   &#125; Catch(RuntimeException ex) &#123;</span><br><span class="line">     <span class="comment">//回滚事务</span></span><br><span class="line">     con.rollback();</span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">     <span class="comment">//释放资源</span></span><br><span class="line">     closeCon();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Spring保证在methodB方法中所有的调用都获得到一个相同的连接。在调用methodB时，<strong>没有一个存在的事务，所以获得一个新的连接，开启了一个新的事务</strong>。</p>
-<p>单独调用MethodA时，在MethodA内又会调用MethodB。执行效果相当于：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Main &#123;</span><br><span class="line">   Connection con = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">     con = getConnection();</span><br><span class="line">     methodA();</span><br><span class="line">     con.commit();</span><br><span class="line">   &#125; <span class="keyword">catch</span>(RuntimeException ex) &#123;</span><br><span class="line">     con.rollback();</span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">     closeCon();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调用MethodA时，环境中没有事务，所以开启一个新的事务.<strong>当在MethodA中调用MethodB时，环境中已经有了一个事务，所以methodB就加入当前事务</strong>。</p>
-<p>（2）<strong>PROPAGATION_SUPPORTS 如果存在一个事务，支持当前事务。如果没有事务，则非事务的执行</strong>。但是对于事务同步的事务管理器，PROPAGATION_SUPPORTS与不使用事务有少许不同。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA() &#123; </span><br><span class="line">   methodB();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 事务属性 PROPAGATION_SUPPORTS</span></span><br><span class="line">methodB() &#123;</span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>单纯的调用methodB时，methodB方法是非事务的执行的。<strong>当调用methdA时,methodB则加入了methodA的事务中执行</strong>。</p>
-<p>（3）<strong>PROPAGATION_MANDATORY 如果已经存在一个事务，支持当前事务。如果没有一个活动的事务，则抛出异常</strong>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA() &#123;</span><br><span class="line">   methodB();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//事务属性 PROPAGATION_MANDATORY </span></span><br><span class="line">methodB() &#123; </span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当单独调用methodB时，因为当前没有一个活动的事务，则会抛出异常throw new IllegalTransactionStateException(“Transaction propagation ‘mandatory’ but no existing transaction found”); 当调用methodA时，methodB则加入到methodA的事务中执行。</p>
-<p>（4）<strong>PROPAGATION_REQUIRES_NEW 总是开启一个新的事务</strong>。如果一个事务已经存在，则将这个存在的事务挂起。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA() &#123; </span><br><span class="line">   doSomeThingA();</span><br><span class="line">   methodB();</span><br><span class="line">   doSomeThingB();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//事务属性 PROPAGATION_REQUIRES_NEW</span></span><br><span class="line">methodB() &#123;</span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main() &#123;</span><br><span class="line">   methodA();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>相当于：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">main() &#123;</span><br><span class="line">   TransactionManager tm = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">try</span> &#123; </span><br><span class="line">     <span class="comment">// 获得一个JTA事务管理器 </span></span><br><span class="line">     tm = getTransactionManager();</span><br><span class="line">     tm.begin(); </span><br><span class="line">     <span class="comment">// 开启一个新的事务</span></span><br><span class="line">     Transaction ts1 = tm.getTransaction();</span><br><span class="line">     doSomeThing(); </span><br><span class="line">     tm.suspend(); <span class="comment">// 挂起当前事务 </span></span><br><span class="line">     <span class="keyword">try</span> &#123;</span><br><span class="line">       tm.begin();<span class="comment">// 重新开启第二个事务 </span></span><br><span class="line">       Transaction ts2 = tm.getTransaction();</span><br><span class="line">       methodB();</span><br><span class="line">       ts2.commit();<span class="comment">// 提交第二个事务</span></span><br><span class="line">     &#125; <span class="keyword">catch</span>(RunTimeException ex) &#123;</span><br><span class="line">        ts2.rollback(); <span class="comment">// 回滚第二个事务</span></span><br><span class="line">     &#125; <span class="keyword">finally</span> &#123; </span><br><span class="line">        <span class="comment">// 释放资源</span></span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">// methodB执行完后，恢复第一个事务</span></span><br><span class="line">     tm.resume(ts1);</span><br><span class="line">     doSomeThingB(); </span><br><span class="line">     ts1.commit();<span class="comment">// 提交第一个事务</span></span><br><span class="line">   &#125; <span class="keyword">catch</span>(RunTimeException ex) &#123;</span><br><span class="line">     ts1.rollback();<span class="comment">// 回滚第一个事务</span></span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">     <span class="comment">//释放资源</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在这里，我把 <strong>ts1称为外层事务，ts2称为内层事务</strong>。从上面的代码可以看出，<strong>ts2与ts1是两个独立的事务，互不相干。Ts2是否成功并不依赖于ts1</strong>。如果methodA方法在调用methodB方法后的doSomeThingB方法失败了，而methodB方法所做的结果依然被提交。而除了methodB之外的其它代码导致的结果却被回滚了。<strong>使用PROPAGATION_REQUIRES_NEW,需要使用JtaTransactionManager作为事务管理器</strong>。</p>
-<p>（5）<strong>PROPAGATION_NOT_SUPPORTED 总是非事务地执行，并挂起任何存在的事务</strong>。使用PROPAGATION_NOT_SUPPORTED,也需要使用JtaTransactionManager作为事务管理器。</p>
-<p>（6）<strong>PROPAGATION_NEVER 总是非事务地执行，如果存在一个活动事务，则抛出异常；</strong></p>
-<p>（7）<strong>PROPAGATION_NESTED如果一个活动的事务存在，则运行在一个嵌套的事务中. 如果没有活动事务, 则按TransactionDefinition.PROPAGATION_REQUIRED 属性执行</strong>。这是一个嵌套事务,使用JDBC 3.0驱动时,仅仅支持DataSourceTransactionManager作为事务管理器。需要JDBC 驱动的java.sql.Savepoint类。</p>
-<p>有一些JTA的事务管理器实现可能也提供了同样的功能。使用PROPAGATION_NESTED，还需要把PlatformTransactionManager的nestedTransactionAllowed属性设为true;</p>
-<p>而nestedTransactionAllowed属性值默认为false;</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA() &#123;</span><br><span class="line">   doSomeThingA();</span><br><span class="line">   methodB();</span><br><span class="line">   doSomeThingB();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//事务属性 PROPAGATION_NESTED</span></span><br><span class="line">methodB() &#123;</span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果单独调用methodB方法，则按REQUIRED属性执行。如果调用methodA方法，相当于下面的效果：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">main() &#123;</span><br><span class="line">    Connection con = <span class="keyword">null</span>;</span><br><span class="line">    Savepoint savepoint = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      con = getConnection();</span><br><span class="line">      con.setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">      doSomeThingA();</span><br><span class="line">      savepoint = con.setSavepoint();</span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">        methodB();</span><br><span class="line">      &#125; <span class="keyword">catch</span>(RuntimeException ex) &#123;</span><br><span class="line">        con.rollback(savepoint);</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="comment">//释放资源 </span></span><br><span class="line">      &#125;</span><br><span class="line">      doSomeThingB();</span><br><span class="line">      con.commit();</span><br><span class="line">    &#125; <span class="keyword">catch</span>(RuntimeException ex) &#123;</span><br><span class="line">      con.rollback();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="comment">//释放资源</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当methodB方法调用之前，调用setSavepoint方法，保存当前的状态到savepoint。如果methodB方法调用失败，则恢复到之前保存的状态。但是需要注意的是，这时的事务并没有进行提交，如果后续的代码(doSomeThingB()方法)调用失败，则回滚包括methodB方法的所有操作。</p>
-<p>嵌套事务一个非常重要的概念就是内层事务依赖于外层事务。外层事务失败时，会回滚内层事务所做的动作。而内层事务操作失败并不会引起外层事务的回滚。</p>
-<h4 id="PROPAGATION-NESTED-与PROPAGATION-REQUIRES-NEW的区别"><a href="#PROPAGATION-NESTED-与PROPAGATION-REQUIRES-NEW的区别" class="headerlink" title="PROPAGATION_NESTED 与PROPAGATION_REQUIRES_NEW的区别:"></a>PROPAGATION_NESTED 与PROPAGATION_REQUIRES_NEW的区别:</h4><p>它们非常类似,都像一个嵌套事务，如果不存在一个活动的事务，都会开启一个新的事务。<strong>使用PROPAGATION_REQUIRES_NEW时，内层事务与外层事务就像两个独立的事务一样</strong>，一旦内层事务进行了提交后，外层事务不能对其进行回滚。两个事务互不影响。两个事务不是一个真正的嵌套事务。同时它需要JTA事务管理器的支持。</p>
-<p>使用PROPAGATION_NESTED时，<strong>外层事务的回滚可以引起内层事务的回滚。而内层事务的异常并不会导致外层事务的回滚，它是一个真正的嵌套事务</strong>。DataSourceTransactionManager使用savepoint支持PROPAGATION_NESTED时，需要JDBC 3.0以上驱动及1.4以上的JDK版本支持。其它的JTA TrasactionManager实现可能有不同的支持方式。</p>
-<p><strong>PROPAGATION_REQUIRES_NEW 启动一个新的, 不依赖于环境的 “内部” 事务</strong>。这个事务将被完全 commited 或 rolled back 而不依赖于外部事务, 它拥有自己的隔离范围, 自己的锁, 等等. 当内部事务开始执行时, 外部事务将被挂起, 内务事务结束时, 外部事务将继续执行。</p>
-<p>另一方面, PROPAGATION_NESTED 开始一个 “嵌套的” 事务, 它是已经存在事务的一个真正的子事务. <strong>潜套事务开始执行时, 它将取得一个 savepoint. 如果这个嵌套事务失败, 我们将回滚到此 savepoint</strong>. 潜套事务是外部事务的一部分, 只有外部事务结束后它才会被提交。</p>
-<p>由此可见, PROPAGATION_REQUIRES_NEW 和 PROPAGATION_NESTED 的最大区别在于, <strong>PROPAGATION_REQUIRES_NEW 完全是一个新的事务, 而 PROPAGATION_NESTED 则是外部事务的子事务, 如果外部事务 commit, 潜套事务也会被 commit, 这个规则同样适用于 roll back</strong>。PROPAGATION_REQUIRED应该是我们首先的事务传播行为。它能够满足我们大多数的事务需求。</p>
-<p>作者：猿码道</p>
-<p>链接：<a href="https://juejin.im/post/5a3b1dc4f265da43333e9049" target="_blank" rel="noopener">https://juejin.im/post/5a3b1dc4f265da43333e9049</a></p>
-<p>来源：掘金</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Resource和Autowired的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/21/框架/Resource和Autowired的区别/" class="post-title-link" itemprop="url">Resource和Autowired的区别</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-27 01:03:09" itemprop="dateModified" datetime="2019-10-27T01:03:09+08:00">2019-10-27</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-27T01:03:09+08:00" content="2019-10-27">
-                2019-10-27 01:03:09
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/Resource和Autowired的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Resource和Autowired的区别/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>@Resource和@Autowired都是做bean的注入时使用，其实@Resource不是Spring的注解，是javaEE的注解，它的包是javax.annotation.Resource，需要导入，但是Spring支持该注解的注入。</p>
-<p>1、共同点</p>
-<p>两者都可以写在字段和setter方法上。两者如果都写在字段上，那么就不需要再写setter方法。</p>
-<p>2、不同点</p>
-<p>（1）@Autowired</p>
-<p>@Autowired为Spring提供的注解，需要导入包org.springframework.beans.factory.annotation.Autowired;只按照byType注入。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 下面两种@Autowired只要使用一种即可</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; <span class="comment">// 用于字段上</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserDao</span><span class="params">(UserDao userDao)</span> </span>&#123; <span class="comment">// 用于属性的方法上</span></span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>@Autowired注解是按照类型（byType）装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，</p>
-<p>可以设置它的required属性为false。如果我们想使用按照名称（byName）来装配，可以结合@Qualifier注解一起</p>
-<p>使用。如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier</span>(<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>（2）@Resource</p>
-<p>@Resource默认按照ByName自动注入，由J2EE提供，需要导入包javax.annotation.Resource。默认按照名称进</p>
-<p>行装配，名称可以通过name属性进行指定，如果没有指定name属性，当注解写在字段上时，默认取字段名进行</p>
-<p>安装名称查找，如果注解写在setter方法上默认取属性名进行装配。当找不到与名称匹配的bean时才按照类型进</p>
-<p>行装配。</p>
-<p>但是需要注意的是，如果name属性一旦指定，就只会按照名称进行装配。</p>
-<p>如果既不制定name也不制定type属性，这时将通过反射机制使用byName自动注入策略。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 下面两种@Resource只要使用一种即可</span></span><br><span class="line">    <span class="meta">@Resource</span>(name=<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; <span class="comment">// 用于字段上</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Resource</span>(name=<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserDao</span><span class="params">(UserDao userDao)</span> </span>&#123; <span class="comment">// 用于属性的setter方法上</span></span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注：最好是将@Resource放在setter方法上，因为这样更符合面向对象的思想，通过set、get去操作属性，而不是直接去操作属性。</p>
-<p>@Resource装配顺序：</p>
-<p>①如果同时指定了name和type，则从Spring上下文中找到唯一匹配的bean进行装配，找不到则抛出异常。</p>
-<p>②如果指定了name，则从上下文中查找名称（id）匹配的bean进行装配，找不到则抛出异常。</p>
-<p>③如果指定了type，则从上下文中找到类似匹配的唯一bean进行装配，找不到或是找到多个，都会抛出异常。</p>
-<p>④如果既没有指定name，又没有指定type，则自动按照byName方式进行装配；如果没有匹配，则回退为一个原始类型进行匹配，如果匹配则自动装配。</p>
-<p>@Resource的作用相当于@Autowired，只不过@Autowired按照byType自动注入。</p>
-<p>byName和byType看什么</p>
-<p><img src="/2019/10/21/框架/Resource和Autowired的区别/20180723224000349.png" alt></p>
-<ul>
-<li>byName会搜索整个配置文件中的bean,如果有相同名称的bean则自动装配，否则显示异常。</li>
-</ul>
-<p>例如，在装配com.tutorialspoint.TextEditor的spellChecker时，spring会搜索整个配置文件的bean查找是否有名称为spellChecker的bean，有则自动装配，没有就抛出异常。</p>
-<ul>
-<li>byType会搜索整个配置文件中的bean,如果有相同类型的bean则自动装配，否则显示异常。</li>
-</ul>
-<p>例如，在装配com.tutorialspoint.TextEditor的spellChecker时，spring会搜索整个配置文件的bean查找是否有跟spellChecker属于相同类的bean，有则自动装配，没有就抛出异常。</p>
-<p>#### </p>
+            <p>@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。</p>
+<p>1、如果只是使用@RestController注解Controller，则Controller中的方法无法返回jsp页面，配置的视图解析器InternalResourceViewResolver则不起作用，返回的内容就是Return 里的内容（String/JSON）。<br>例如：本来应该到success.jsp页面的，则其显示success.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、如果使用@RestController注解Controller，需要返回到指定页面，则需要配置视图解析器InternalResourceViewResolver，可以利用ModelAndView返回视图。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> newModelAndView(<span class="string">"success"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、如果使用@Controller注解Controller，在对应的方法上，视图解析器可以解析return 的jsp,html页面，并且跳转到相应页面</p>
+<p>若需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上@ResponseBody注解。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2870,7 +2886,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">63</span>
+                    <span class="site-state-item-count">64</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2915,7 +2931,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2958,7 +2976,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -3059,7 +3079,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共143.9k字</span>
+  <span class="post-count">博客全站共164.3k字</span>
 </div>
         
 <div class="busuanzi-count">
