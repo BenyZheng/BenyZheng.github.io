@@ -401,6 +401,251 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Mybatis如何防止SQL注入/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/框架/Mybatis如何防止SQL注入/" class="post-title-link" itemprop="url">Mybatis如何防止SQL注入</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-27 14:40:51" itemprop="dateModified" datetime="2019-10-27T14:40:51+08:00">2019-10-27</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-27T14:40:51+08:00" content="2019-10-27">
+                2019-10-27 14:40:51
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/框架/Mybatis如何防止SQL注入/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Mybatis如何防止SQL注入/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>两个sql语句的区别：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;selectByNameAndPassword&quot; parameterType=&quot;java.util.Map&quot; resultMap=&quot;BaseResultMap&quot;&gt;</span><br><span class="line">select id, username, password, role</span><br><span class="line">from user</span><br><span class="line">where username = #&#123;username,jdbcType=VARCHAR&#125;</span><br><span class="line">and password = #&#123;password,jdbcType=VARCHAR&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id="selectByNameAndPassword" parameterType="java.util.Map" resultMap="BaseResultMap"&gt;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>, username, <span class="keyword">password</span>, <span class="keyword">role</span></span><br><span class="line"><span class="keyword">from</span> <span class="keyword">user</span></span><br><span class="line"><span class="keyword">where</span> username = $&#123;username,jdbcType=<span class="built_in">VARCHAR</span>&#125;</span><br><span class="line"><span class="keyword">and</span> <span class="keyword">password</span> = $&#123;<span class="keyword">password</span>,jdbcType=<span class="built_in">VARCHAR</span>&#125;</span><br><span class="line">&lt;/<span class="keyword">select</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>mybatis中的#和$的区别：</strong></p>
+<p>1、#将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。</p>
+<p>如：where username=#{username}，如果传入的值是111,那么解析成sql时的值为where username=”111”, 如</p>
+<p>果传入的值是id，则解析成的sql为where username=”id”.　</p>
+<p>2、$将传入的数据直接显示生成在sql中。</p>
+<p>如：where username=${username}，如果传入的值是111,那么解析成sql时的值为where username=111；</p>
+<p>如果传入的值是;drop table user;，则解析成的sql为：select id, username, password, role from user where </p>
+<p>username=;drop table user;</p>
+<p>3、#方式能够很大程度防止sql注入，$方式无法防止Sql注入。</p>
+<p>4、$方式一般用于传入数据库对象，例如传入表名.</p>
+<p>5、一般能用#的就别用$，若不得不使用“${xxx}”这样的参数，要手工地做好过滤工作，来防止sql注入攻击。</p>
+<p>6、在MyBatis中，“${xxx}”这样格式的参数会直接参与SQL编译，从而不能避免注入攻击。但涉及到动态表名和列</p>
+<p>名时，只能使用“${xxx}”这样的参数格式。所以，这样的参数需要我们在代码中手工进行处理来防止注入。</p>
+<p>【结论】在编写MyBatis的映射语句时，尽量采用“#{xxx}”这样的格式。若不得不使用“${xxx}”这样的参数，要手工</p>
+<p>地做好过滤工作，来防止SQL注入攻击。</p>
+<h3 id="什么是sql注入"><a href="#什么是sql注入" class="headerlink" title="什么是sql注入"></a>什么是sql注入</h3><p>是一种代码注入技术，用于攻击数据驱动的应用，恶意的SQL语句被插入到执行的实体字段中（例如，为了转储数据库内容给攻击者）</p>
+<p>　　SQL注入，大家都不陌生，是一种常见的攻击方式。<strong>攻击者</strong>在界面的表单信息或URL上输入一些奇怪的SQL片段（例如“or ‘1’=’1’”这样的语句），有可能入侵<strong>参数检验不足</strong>的应用程序。所以，在我们的应用中需要做一些工作，来防备这样的攻击方式。在一些安全性要求很高的应用中（比如银行软件），经常使用将SQL语句全部替换为<strong>存储过程</strong>这样的方式，来防止SQL注入。这当然是<strong>一种很安全的方式</strong>，但我们平时开发中，可能不需要这种死板的方式。</p>
+<h3 id="mybatis是如何做到防止sql注入的"><a href="#mybatis是如何做到防止sql注入的" class="headerlink" title="mybatis是如何做到防止sql注入的"></a>mybatis是如何做到防止sql注入的</h3><p>　MyBatis框架作为一款半自动化的持久层框架，其SQL语句都要我们自己手动编写，这个时候当然需要防止SQL注入。其实，MyBatis的SQL是一个具有“<strong>输入+输出</strong>”的功能，类似于函数的结构，参考上面的两个例子。其中，parameterType表示了输入的参数类型，resultType表示了输出的参数类型。回应上文，如果我们想防止SQL注入，理所当然地要在输入参数上下功夫。上面代码中使用#的即输入参数在SQL中拼接的部分，传入参数后，打印出执行的SQL语句，会看到SQL是这样的：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>, username, <span class="keyword">password</span>, <span class="keyword">role</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> username=? <span class="keyword">and</span> <span class="keyword">password</span>=?</span><br></pre></td></tr></table></figure>
+<p>不管输入什么参数，打印出的SQL都是这样的。这是因为MyBatis启用了预编译功能，在SQL执行前，会先将上面的SQL发送给数据库进行编译；执行时，直接使用编译好的SQL，替换占位符“?”就可以了。因为SQL注入只能对编译过程起作用，所以这样的方式就很好地避免了SQL注入的问题。</p>
+<p>【底层实现原理】MyBatis是如何做到SQL预编译的呢？其实在框架底层，是JDBC中的PreparedStatement类在起作用，PreparedStatement是我们很熟悉的Statement的子类，它的对象包含了编译好的SQL语句。这种“准备好”的方式不仅能提高安全性，而且在多次执行同一个SQL时，能够提高效率。原因是SQL已编译好，再次执行时无需再编译。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//安全的，预编译了的</span></span><br><span class="line">Connection conn = getConn();<span class="comment">//获得连接</span></span><br><span class="line">String sql = <span class="string">"select id, username, password, role from user where id=?"</span>; <span class="comment">//执行sql前会预编译号该条语句</span></span><br><span class="line">PreparedStatement pstmt = conn.prepareStatement(sql); </span><br><span class="line">pstmt.setString(<span class="number">1</span>, id); </span><br><span class="line">ResultSet rs=pstmt.executeUpdate(); </span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不安全的，没进行预编译</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getNameByUserId</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">    Connection conn = getConn();<span class="comment">//获得连接</span></span><br><span class="line">    String sql = <span class="string">"select id,username,password,role from user where id="</span> + id;</span><br><span class="line">    <span class="comment">//当id参数为"3;drop table user;"时，执行的sql语句如下:</span></span><br><span class="line">    <span class="comment">//select id,username,password,role from user where id=3; drop table user;  </span></span><br><span class="line">    PreparedStatement pstmt =  conn.prepareStatement(sql);</span><br><span class="line">    ResultSet rs=pstmt.executeUpdate();</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>【 <strong>结论</strong>：】</p>
+<table>
+<thead>
+<tr>
+<th>#{}：相当于JDBC中的PreparedStatement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>${}：是输出变量的值</td>
+</tr>
+</tbody>
+</table>
+<p>简单说，#{}是经过预编译的，是安全的；${}是未经过预编译的，仅仅是取变量的值，是非安全的，存在SQL注入。<br>如果我们order by语句后用了${}，那么不做任何处理的时候是存在SQL注入危险的。你说怎么防止，那我只能悲惨的告诉你，你得手动处理过滤一下输入的内容。如判断一下输入的参数的长度是否正常（注入语句一般很长），更精确的过滤则可以查询一下输入的参数是否在预期的参数集合中。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/SpringMVC的工作流程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -597,6 +842,247 @@
 <p>@Scope(“prototype”) 设定bean的作用域</p>
 <h3 id="适配器作用"><a href="#适配器作用" class="headerlink" title="适配器作用"></a>适配器作用</h3><p>SpringMVC涉及的映射器，视图解析器的作用不难理解，映射器负责将前端请求的url映射到配置的处理器，视图解析器将最终的结果进行解析，但中间为什么要经过一层适配器呢，为什么不经映射器找到controller后直接执行返回呢？</p>
 <p>那是因为SpringMVC为业务处理器提供了多种接口实现（例如实现了Controller接口），而适配器就是用来根据处理器实现了什么接口，最终选择与已经注册好的不同类型的Handler Adapter进行匹配，并最终执行，例如，SimpleControllerHandlerAdapter是支持实现了controller接口的控制器，如果自己写的控制器实现了controller接口，那么SimpleControllerHandlerAdapter就会去执行自己写的控制器中的具体方法来完成请求。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/servlet生命周期/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/框架/servlet生命周期/" class="post-title-link" itemprop="url">servlet生命周期</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-26 19:34:57" itemprop="dateModified" datetime="2019-10-26T19:34:57+08:00">2019-10-26</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-26T19:34:57+08:00" content="2019-10-26">
+                2019-10-26 19:34:57
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/框架/servlet生命周期/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/servlet生命周期/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Servlet 生命周期可被定义为从创建直到毁灭的整个过程。以下是 Servlet 遵循的过程：</p>
+<ul>
+<li>Servlet 通过调用 <strong>init ()</strong> 方法进行初始化。</li>
+<li>Servlet 调用 <strong>service()</strong> 方法来处理客户端的请求。</li>
+<li>Servlet 通过调用 <strong>destroy()</strong> 方法终止（结束）。</li>
+<li>最后，Servlet 是由 JVM 的垃圾回收器进行垃圾回收的。</li>
+</ul>
+<h3 id="加载和实例化"><a href="#加载和实例化" class="headerlink" title="加载和实例化"></a>加载和实例化</h3><p>当Servlet容器启动或客户端发送一个请求时，Servlet容器会查找内存中是否存在该Servlet实例，若存在，则直接读取该实例响应请求；如果不存在，就创建一个Servlet实例。</p>
+<h3 id="init-方法"><a href="#init-方法" class="headerlink" title="init() 方法"></a>init() 方法</h3><p>init 方法被设计成只调用一次。它在第一次创建 Servlet 时被调用，在后续每次用户请求时不再调用。因此，它是用于一次性初始化，就像 Applet 的 init 方法一样。</p>
+<p>Servlet 创建于用户第一次调用对应于该 Servlet 的 URL 时，但是您也可以指定 Servlet 在服务器第一次启动时被加载。</p>
+<p>当用户调用一个 Servlet 时，就会创建一个 Servlet 实例，每一个用户请求都会产生一个新的线程，适当的时候移交给 doGet 或 doPost 方法。init() 方法简单地创建或加载一些数据，这些数据将被用于 Servlet 的整个生命周期。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">  <span class="comment">// 初始化代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="service-方法"><a href="#service-方法" class="headerlink" title="service() 方法"></a>service() 方法</h3><p>service() 方法是执行实际任务的主要方法。Servlet 容器（即 Web 服务器）调用 service() 方法来处理来自客户端（浏览器）的请求，并把格式化的响应写回给客户端。</p>
+<p>每次服务器接收到一个 Servlet 请求时，服务器会产生一个新的线程并调用服务。service() 方法检查 HTTP 请求类型（GET、POST、PUT、DELETE 等），并在适当的时候调用 doGet、doPost、doPut，doDelete 等方法。</p>
+<p>下面是该方法的特征：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest request, </span></span></span><br><span class="line"><span class="function"><span class="params">                    ServletResponse response)</span> </span></span><br><span class="line"><span class="function">      <span class="keyword">throws</span> ServletException, IOException</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>service() 方法由容器调用，service 方法在适当的时候调用 doGet、doPost、doPut、doDelete 等方法。所以，您不用对 service() 方法做任何动作，您只需要根据来自客户端的请求类型来重写 doGet() 或 doPost() 即可。</p>
+<p>doGet() 和 doPost() 方法是每次服务请求中最常用的方法。下面是这两种方法的特征。</p>
+<h4 id="doGet-方法"><a href="#doGet-方法" class="headerlink" title="doGet() 方法"></a>doGet() 方法</h4><p>GET 请求来自于一个 URL 的正常请求，或者来自于一个未指定 METHOD 的 HTML 表单，它由 doGet() 方法处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">                  HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="doPost-方法"><a href="#doPost-方法" class="headerlink" title="doPost() 方法"></a>doPost() 方法</h4><p>POST 请求来自于一个特别指定了 METHOD 为 POST 的 HTML 表单，它由 doPost() 方法处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">                   HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="destroy-方法"><a href="#destroy-方法" class="headerlink" title="destroy() 方法"></a>destroy() 方法</h3><p>当Servlet容器关闭时，Servlet实例也随时销毁。其间，Servlet容器会调用Servlet 的destroy()方法去判断该Servlet是否应当被释放（或回收资源）</p>
+<p>destroy() 方法只会被调用一次，在 Servlet 生命周期结束时被调用。destroy() 方法可以让您的 Servlet 关闭数据库连接、停止后台线程、把 Cookie 列表或点击计数器写入到磁盘，并执行其他类似的清理活动。</p>
+<p>在调用 destroy() 方法之后，servlet 对象被标记为垃圾回收。destroy 方法定义如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 终止化代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下图显示了一个典型的 Servlet 生命周期方案。</p>
+<ul>
+<li>第一个到达服务器的 HTTP 请求被委派到 Servlet 容器。</li>
+<li>Servlet 容器在调用 service() 方法之前加载 Servlet。</li>
+<li>然后 Servlet 容器处理由多个线程产生的多个请求，每个线程执行一个单一的 Servlet 实例的 service() 方法。</li>
+</ul>
+<p><img src="/2019/10/21/框架/servlet生命周期/Servlet-LifeCycle.jpg" alt></p>
+<p><strong>* 1、从第一次调用到服务器关闭</strong>。</p>
+<p><strong>* 2、如果Servlet在web.xml中配置了load-on-startup，生命周期为从服务器启动到服务器关闭</strong>。</p>
+<p><img src="/2019/10/21/框架/servlet生命周期/16436080-356eabfb696a3563.webp" alt></p>
 
           
         
@@ -1262,498 +1748,6 @@
 <p>● Weaving</p>
 <p>表示切入，也称为织入。将切面应用到目标对象从而创建一个新的代理对象的过程。这个过程可以发生在编译期、类装载期及运行期。</p>
 <p><img src="https://img-blog.csdn.net/20180530175605692?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3E5ODIxNTE3NTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/servlet生命周期/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/21/框架/servlet生命周期/" class="post-title-link" itemprop="url">servlet生命周期</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-26 19:34:57" itemprop="dateModified" datetime="2019-10-26T19:34:57+08:00">2019-10-26</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-26T19:34:57+08:00" content="2019-10-26">
-                2019-10-26 19:34:57
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/servlet生命周期/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/servlet生命周期/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Servlet 生命周期可被定义为从创建直到毁灭的整个过程。以下是 Servlet 遵循的过程：</p>
-<ul>
-<li>Servlet 通过调用 <strong>init ()</strong> 方法进行初始化。</li>
-<li>Servlet 调用 <strong>service()</strong> 方法来处理客户端的请求。</li>
-<li>Servlet 通过调用 <strong>destroy()</strong> 方法终止（结束）。</li>
-<li>最后，Servlet 是由 JVM 的垃圾回收器进行垃圾回收的。</li>
-</ul>
-<h3 id="加载和实例化"><a href="#加载和实例化" class="headerlink" title="加载和实例化"></a>加载和实例化</h3><p>当Servlet容器启动或客户端发送一个请求时，Servlet容器会查找内存中是否存在该Servlet实例，若存在，则直接读取该实例响应请求；如果不存在，就创建一个Servlet实例。</p>
-<h3 id="init-方法"><a href="#init-方法" class="headerlink" title="init() 方法"></a>init() 方法</h3><p>init 方法被设计成只调用一次。它在第一次创建 Servlet 时被调用，在后续每次用户请求时不再调用。因此，它是用于一次性初始化，就像 Applet 的 init 方法一样。</p>
-<p>Servlet 创建于用户第一次调用对应于该 Servlet 的 URL 时，但是您也可以指定 Servlet 在服务器第一次启动时被加载。</p>
-<p>当用户调用一个 Servlet 时，就会创建一个 Servlet 实例，每一个用户请求都会产生一个新的线程，适当的时候移交给 doGet 或 doPost 方法。init() 方法简单地创建或加载一些数据，这些数据将被用于 Servlet 的整个生命周期。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">  <span class="comment">// 初始化代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="service-方法"><a href="#service-方法" class="headerlink" title="service() 方法"></a>service() 方法</h3><p>service() 方法是执行实际任务的主要方法。Servlet 容器（即 Web 服务器）调用 service() 方法来处理来自客户端（浏览器）的请求，并把格式化的响应写回给客户端。</p>
-<p>每次服务器接收到一个 Servlet 请求时，服务器会产生一个新的线程并调用服务。service() 方法检查 HTTP 请求类型（GET、POST、PUT、DELETE 等），并在适当的时候调用 doGet、doPost、doPut，doDelete 等方法。</p>
-<p>下面是该方法的特征：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest request, </span></span></span><br><span class="line"><span class="function"><span class="params">                    ServletResponse response)</span> </span></span><br><span class="line"><span class="function">      <span class="keyword">throws</span> ServletException, IOException</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>service() 方法由容器调用，service 方法在适当的时候调用 doGet、doPost、doPut、doDelete 等方法。所以，您不用对 service() 方法做任何动作，您只需要根据来自客户端的请求类型来重写 doGet() 或 doPost() 即可。</p>
-<p>doGet() 和 doPost() 方法是每次服务请求中最常用的方法。下面是这两种方法的特征。</p>
-<h4 id="doGet-方法"><a href="#doGet-方法" class="headerlink" title="doGet() 方法"></a>doGet() 方法</h4><p>GET 请求来自于一个 URL 的正常请求，或者来自于一个未指定 METHOD 的 HTML 表单，它由 doGet() 方法处理。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">                  HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="doPost-方法"><a href="#doPost-方法" class="headerlink" title="doPost() 方法"></a>doPost() 方法</h4><p>POST 请求来自于一个特别指定了 METHOD 为 POST 的 HTML 表单，它由 doPost() 方法处理。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">                   HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="destroy-方法"><a href="#destroy-方法" class="headerlink" title="destroy() 方法"></a>destroy() 方法</h3><p>当Servlet容器关闭时，Servlet实例也随时销毁。其间，Servlet容器会调用Servlet 的destroy()方法去判断该Servlet是否应当被释放（或回收资源）</p>
-<p>destroy() 方法只会被调用一次，在 Servlet 生命周期结束时被调用。destroy() 方法可以让您的 Servlet 关闭数据库连接、停止后台线程、把 Cookie 列表或点击计数器写入到磁盘，并执行其他类似的清理活动。</p>
-<p>在调用 destroy() 方法之后，servlet 对象被标记为垃圾回收。destroy 方法定义如下所示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 终止化代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>下图显示了一个典型的 Servlet 生命周期方案。</p>
-<ul>
-<li>第一个到达服务器的 HTTP 请求被委派到 Servlet 容器。</li>
-<li>Servlet 容器在调用 service() 方法之前加载 Servlet。</li>
-<li>然后 Servlet 容器处理由多个线程产生的多个请求，每个线程执行一个单一的 Servlet 实例的 service() 方法。</li>
-</ul>
-<p><img src="/2019/10/21/框架/servlet生命周期/Servlet-LifeCycle.jpg" alt></p>
-<p><strong>* 1、从第一次调用到服务器关闭</strong>。</p>
-<p><strong>* 2、如果Servlet在web.xml中配置了load-on-startup，生命周期为从服务器启动到服务器关闭</strong>。</p>
-<p><img src="/2019/10/21/框架/servlet生命周期/16436080-356eabfb696a3563.webp" alt></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Spring事务/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/21/框架/Spring事务/" class="post-title-link" itemprop="url">Spring事务</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-24 00:05:40" itemprop="dateModified" datetime="2019-10-24T00:05:40+08:00">2019-10-24</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-24T00:05:40+08:00" content="2019-10-24">
-                2019-10-24 00:05:40
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/Spring事务/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Spring事务/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Spring事务机制"><a href="#Spring事务机制" class="headerlink" title="Spring事务机制"></a>Spring事务机制</h3><p>Spring事务机制主要包括 <strong>声明式事务和编程式事务</strong>，此处侧重讲解声明式事务，编程式事务在实际开发中得不到广泛使用</p>
-<p>Spring声明式事务让我们从复杂的事务处理中得到解脱。使得我们 <strong>再也无需要去处理获得连接、关闭连接、事务提交和回滚等这些操作</strong>。再也无需要我们在与事务相关的方法中处理大量的try…catch…finally代码。我们在使用Spring声明式事务时，有一个非常重要的概念就是事务属性。</p>
-<p><strong>事务属性通常由事务的传播行为，事务的隔离级别，事务的超时值和事务只读标志组成</strong>。我们在进行事务划分时，需要进行事务定义，也就是配置事务的属性。</p>
-<p>Spring在TransactionDefinition接口中定义这些属性,以供PlatfromTransactionManager使用, <strong>PlatfromTransactionManager是Spring事务管理的核心接口</strong>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TransactionDefinition</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getPropagationBehavior</span><span class="params">()</span></span>; <span class="comment">//返回事务的传播行为。</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getIsolationLevel</span><span class="params">()</span></span>; <span class="comment">//返回事务的隔离级别，事务管理器根据它来控制另外一个事务可以看到本事务内的哪些数据。</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getTimeout</span><span class="params">()</span></span>; <span class="comment">//返回事务必须在多少秒内完成。</span></span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">isReadOnly</span><span class="params">()</span></span>; <span class="comment">//事务是否只读，事务管理器能够根据这个返回值进行优化，确保事务是只读的。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>1、TransactionDefinition接口中定义五个隔离级别：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ISOLATION_DEFAULT 这是一个PlatfromTransactionManager默认的隔离级别，使用数据库默认的事务隔离级别.另外四个与JDBC的隔离级别相对应；</span><br><span class="line"></span><br><span class="line">ISOLATION_READ_UNCOMMITTED 这是事务最低的隔离级别，它充许别外一个事务可以看到这个事务未提交的数据。这种隔离级别会产生脏读，不可重复读和幻像读。</span><br><span class="line"></span><br><span class="line">ISOLATION_READ_COMMITTED 保证一个事务修改的数据提交后才能被另外一个事务读取。另外一个事务不能读取该事务未提交的数据。这种事务隔离级别可以避免脏读出现，但是可能会出现不可重复读和幻像读。</span><br><span class="line"></span><br><span class="line">ISOLATION_REPEATABLE_READ 这种事务隔离级别可以防止脏读，不可重复读。但是可能出现幻像读。它除了保证一个事务不能读取另一个事务未提交的数据外，还保证了避免下面的情况产生(不可重复读)。</span><br><span class="line"></span><br><span class="line">ISOLATION_SERIALIZABLE 这是花费最高代价但是最可靠的事务隔离级别。事务被处理为顺序执行。除了防止脏读，不可重复读外，还避免了幻像读。</span><br></pre></td></tr></table></figure>
-<p>2、在TransactionDefinition接口中定义了七个事务传播行为：</p>
-<p>（1）<strong>PROPAGATION_REQUIRED 如果存在一个事务，则支持当前事务</strong>。如果没有事务则开启一个新的事务。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA &#123;</span><br><span class="line">   ……</span><br><span class="line">   methodB();</span><br><span class="line">   …… </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodB &#123;</span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用Spring声明式事务，spring使用AOP来支持声明式事务，会根据事务属性，自动在方法调用之前决定是否开启一个事务，并在方法执行之后决定事务提交或回滚事务。</p>
-<p>单独调用methodB方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">main &#123;</span><br><span class="line">   metodB();</span><br><span class="line">&#125;</span><br><span class="line">相当于</span><br><span class="line">Main &#123;</span><br><span class="line">   Connection con=<span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">try</span>&#123;</span><br><span class="line">     con = getConnection();</span><br><span class="line">     con.setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">     <span class="comment">//方法调用</span></span><br><span class="line">     methodB();</span><br><span class="line">     <span class="comment">//提交事务</span></span><br><span class="line">     con.commit();</span><br><span class="line">   &#125; Catch(RuntimeException ex) &#123;</span><br><span class="line">     <span class="comment">//回滚事务</span></span><br><span class="line">     con.rollback();</span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">     <span class="comment">//释放资源</span></span><br><span class="line">     closeCon();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Spring保证在methodB方法中所有的调用都获得到一个相同的连接。在调用methodB时，<strong>没有一个存在的事务，所以获得一个新的连接，开启了一个新的事务</strong>。</p>
-<p>单独调用MethodA时，在MethodA内又会调用MethodB。执行效果相当于：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Main &#123;</span><br><span class="line">   Connection con = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">     con = getConnection();</span><br><span class="line">     methodA();</span><br><span class="line">     con.commit();</span><br><span class="line">   &#125; <span class="keyword">catch</span>(RuntimeException ex) &#123;</span><br><span class="line">     con.rollback();</span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">     closeCon();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调用MethodA时，环境中没有事务，所以开启一个新的事务.<strong>当在MethodA中调用MethodB时，环境中已经有了一个事务，所以methodB就加入当前事务</strong>。</p>
-<p>（2）<strong>PROPAGATION_SUPPORTS 如果存在一个事务，支持当前事务。如果没有事务，则非事务的执行</strong>。但是对于事务同步的事务管理器，PROPAGATION_SUPPORTS与不使用事务有少许不同。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA() &#123; </span><br><span class="line">   methodB();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 事务属性 PROPAGATION_SUPPORTS</span></span><br><span class="line">methodB() &#123;</span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>单纯的调用methodB时，methodB方法是非事务的执行的。<strong>当调用methdA时,methodB则加入了methodA的事务中执行</strong>。</p>
-<p>（3）<strong>PROPAGATION_MANDATORY 如果已经存在一个事务，支持当前事务。如果没有一个活动的事务，则抛出异常</strong>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA() &#123;</span><br><span class="line">   methodB();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//事务属性 PROPAGATION_MANDATORY </span></span><br><span class="line">methodB() &#123; </span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当单独调用methodB时，因为当前没有一个活动的事务，则会抛出异常throw new IllegalTransactionStateException(“Transaction propagation ‘mandatory’ but no existing transaction found”); 当调用methodA时，methodB则加入到methodA的事务中执行。</p>
-<p>（4）<strong>PROPAGATION_REQUIRES_NEW 总是开启一个新的事务</strong>。如果一个事务已经存在，则将这个存在的事务挂起。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA() &#123; </span><br><span class="line">   doSomeThingA();</span><br><span class="line">   methodB();</span><br><span class="line">   doSomeThingB();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//事务属性 PROPAGATION_REQUIRES_NEW</span></span><br><span class="line">methodB() &#123;</span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main() &#123;</span><br><span class="line">   methodA();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>相当于：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">main() &#123;</span><br><span class="line">   TransactionManager tm = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">try</span> &#123; </span><br><span class="line">     <span class="comment">// 获得一个JTA事务管理器 </span></span><br><span class="line">     tm = getTransactionManager();</span><br><span class="line">     tm.begin(); </span><br><span class="line">     <span class="comment">// 开启一个新的事务</span></span><br><span class="line">     Transaction ts1 = tm.getTransaction();</span><br><span class="line">     doSomeThing(); </span><br><span class="line">     tm.suspend(); <span class="comment">// 挂起当前事务 </span></span><br><span class="line">     <span class="keyword">try</span> &#123;</span><br><span class="line">       tm.begin();<span class="comment">// 重新开启第二个事务 </span></span><br><span class="line">       Transaction ts2 = tm.getTransaction();</span><br><span class="line">       methodB();</span><br><span class="line">       ts2.commit();<span class="comment">// 提交第二个事务</span></span><br><span class="line">     &#125; <span class="keyword">catch</span>(RunTimeException ex) &#123;</span><br><span class="line">        ts2.rollback(); <span class="comment">// 回滚第二个事务</span></span><br><span class="line">     &#125; <span class="keyword">finally</span> &#123; </span><br><span class="line">        <span class="comment">// 释放资源</span></span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">// methodB执行完后，恢复第一个事务</span></span><br><span class="line">     tm.resume(ts1);</span><br><span class="line">     doSomeThingB(); </span><br><span class="line">     ts1.commit();<span class="comment">// 提交第一个事务</span></span><br><span class="line">   &#125; <span class="keyword">catch</span>(RunTimeException ex) &#123;</span><br><span class="line">     ts1.rollback();<span class="comment">// 回滚第一个事务</span></span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">     <span class="comment">//释放资源</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在这里，我把 <strong>ts1称为外层事务，ts2称为内层事务</strong>。从上面的代码可以看出，<strong>ts2与ts1是两个独立的事务，互不相干。Ts2是否成功并不依赖于ts1</strong>。如果methodA方法在调用methodB方法后的doSomeThingB方法失败了，而methodB方法所做的结果依然被提交。而除了methodB之外的其它代码导致的结果却被回滚了。<strong>使用PROPAGATION_REQUIRES_NEW,需要使用JtaTransactionManager作为事务管理器</strong>。</p>
-<p>（5）<strong>PROPAGATION_NOT_SUPPORTED 总是非事务地执行，并挂起任何存在的事务</strong>。使用PROPAGATION_NOT_SUPPORTED,也需要使用JtaTransactionManager作为事务管理器。</p>
-<p>（6）<strong>PROPAGATION_NEVER 总是非事务地执行，如果存在一个活动事务，则抛出异常；</strong></p>
-<p>（7）<strong>PROPAGATION_NESTED如果一个活动的事务存在，则运行在一个嵌套的事务中. 如果没有活动事务, 则按TransactionDefinition.PROPAGATION_REQUIRED 属性执行</strong>。这是一个嵌套事务,使用JDBC 3.0驱动时,仅仅支持DataSourceTransactionManager作为事务管理器。需要JDBC 驱动的java.sql.Savepoint类。</p>
-<p>有一些JTA的事务管理器实现可能也提供了同样的功能。使用PROPAGATION_NESTED，还需要把PlatformTransactionManager的nestedTransactionAllowed属性设为true;</p>
-<p>而nestedTransactionAllowed属性值默认为false;</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事务属性 PROPAGATION_REQUIRED</span></span><br><span class="line">methodA() &#123;</span><br><span class="line">   doSomeThingA();</span><br><span class="line">   methodB();</span><br><span class="line">   doSomeThingB();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//事务属性 PROPAGATION_NESTED</span></span><br><span class="line">methodB() &#123;</span><br><span class="line">   ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果单独调用methodB方法，则按REQUIRED属性执行。如果调用methodA方法，相当于下面的效果：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">main() &#123;</span><br><span class="line">    Connection con = <span class="keyword">null</span>;</span><br><span class="line">    Savepoint savepoint = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      con = getConnection();</span><br><span class="line">      con.setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">      doSomeThingA();</span><br><span class="line">      savepoint = con.setSavepoint();</span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">        methodB();</span><br><span class="line">      &#125; <span class="keyword">catch</span>(RuntimeException ex) &#123;</span><br><span class="line">        con.rollback(savepoint);</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="comment">//释放资源 </span></span><br><span class="line">      &#125;</span><br><span class="line">      doSomeThingB();</span><br><span class="line">      con.commit();</span><br><span class="line">    &#125; <span class="keyword">catch</span>(RuntimeException ex) &#123;</span><br><span class="line">      con.rollback();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="comment">//释放资源</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当methodB方法调用之前，调用setSavepoint方法，保存当前的状态到savepoint。如果methodB方法调用失败，则恢复到之前保存的状态。但是需要注意的是，这时的事务并没有进行提交，如果后续的代码(doSomeThingB()方法)调用失败，则回滚包括methodB方法的所有操作。</p>
-<p>嵌套事务一个非常重要的概念就是内层事务依赖于外层事务。外层事务失败时，会回滚内层事务所做的动作。而内层事务操作失败并不会引起外层事务的回滚。</p>
-<h4 id="PROPAGATION-NESTED-与PROPAGATION-REQUIRES-NEW的区别"><a href="#PROPAGATION-NESTED-与PROPAGATION-REQUIRES-NEW的区别" class="headerlink" title="PROPAGATION_NESTED 与PROPAGATION_REQUIRES_NEW的区别:"></a>PROPAGATION_NESTED 与PROPAGATION_REQUIRES_NEW的区别:</h4><p>它们非常类似,都像一个嵌套事务，如果不存在一个活动的事务，都会开启一个新的事务。<strong>使用PROPAGATION_REQUIRES_NEW时，内层事务与外层事务就像两个独立的事务一样</strong>，一旦内层事务进行了提交后，外层事务不能对其进行回滚。两个事务互不影响。两个事务不是一个真正的嵌套事务。同时它需要JTA事务管理器的支持。</p>
-<p>使用PROPAGATION_NESTED时，<strong>外层事务的回滚可以引起内层事务的回滚。而内层事务的异常并不会导致外层事务的回滚，它是一个真正的嵌套事务</strong>。DataSourceTransactionManager使用savepoint支持PROPAGATION_NESTED时，需要JDBC 3.0以上驱动及1.4以上的JDK版本支持。其它的JTA TrasactionManager实现可能有不同的支持方式。</p>
-<p><strong>PROPAGATION_REQUIRES_NEW 启动一个新的, 不依赖于环境的 “内部” 事务</strong>。这个事务将被完全 commited 或 rolled back 而不依赖于外部事务, 它拥有自己的隔离范围, 自己的锁, 等等. 当内部事务开始执行时, 外部事务将被挂起, 内务事务结束时, 外部事务将继续执行。</p>
-<p>另一方面, PROPAGATION_NESTED 开始一个 “嵌套的” 事务, 它是已经存在事务的一个真正的子事务. <strong>潜套事务开始执行时, 它将取得一个 savepoint. 如果这个嵌套事务失败, 我们将回滚到此 savepoint</strong>. 潜套事务是外部事务的一部分, 只有外部事务结束后它才会被提交。</p>
-<p>由此可见, PROPAGATION_REQUIRES_NEW 和 PROPAGATION_NESTED 的最大区别在于, <strong>PROPAGATION_REQUIRES_NEW 完全是一个新的事务, 而 PROPAGATION_NESTED 则是外部事务的子事务, 如果外部事务 commit, 潜套事务也会被 commit, 这个规则同样适用于 roll back</strong>。PROPAGATION_REQUIRED应该是我们首先的事务传播行为。它能够满足我们大多数的事务需求。</p>
-<p>作者：猿码道</p>
-<p>链接：<a href="https://juejin.im/post/5a3b1dc4f265da43333e9049" target="_blank" rel="noopener">https://juejin.im/post/5a3b1dc4f265da43333e9049</a></p>
-<p>来源：掘金</p>
 
           
         
@@ -3235,7 +3229,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共164.3k字</span>
+  <span class="post-count">博客全站共169.2k字</span>
 </div>
         
 <div class="busuanzi-count">

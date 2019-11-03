@@ -700,7 +700,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-11-03 00:09:13" itemprop="dateModified" datetime="2019-11-03T00:09:13+08:00">2019-11-03</time> 
+              <time title="修改时间：2019-11-04 01:38:53" itemprop="dateModified" datetime="2019-11-04T01:38:53+08:00">2019-11-04</time> 
               -->
               <!-- new version -->
                         
@@ -715,8 +715,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-11-03T00:09:13+08:00" content="2019-11-03">
-                2019-11-03 00:09:13
+              <time itemprop="dateUpdated" datetime="2019-11-04T01:38:53+08:00" content="2019-11-04">
+                2019-11-04 01:38:53
               </time>
             </span>
           
@@ -867,8 +867,125 @@
 <ul>
 <li>怎样解决“脏”Entry？</li>
 </ul>
-<p>在分析threadLocal，threadLocalMap以及Entry的关系的时候，知道使用threadLocal有可能存在内存泄漏（对象创建出来后，在之后的逻辑一直没有使用该对象，但是垃圾回收器无法回收这个部分的内存），在源码中针对这种key为null的Entry称之为“stale entry”，直译为不新鲜的entry，我把它理解为“脏entry”，自然而然，Josh Bloch and Doug Lea大师考虑到了这种情况,在set方法的for循环中寻找和当前Key相同的可覆盖entry的过程中通过<strong>replaceStaleEntry</strong>方法解决脏entry的问题。如果当前table[i]为null的话，直接插入新entry后也会通过<strong>cleanSomeSlots</strong>来解决脏entry的问题，</p>
-<p>:::tip 你妈的<br>jkghhjkhjkhjh<br>:::</p>
+<p>在分析threadLocal，threadLocalMap以及Entry的关系的时候，知道使用threadLocal有可能存在内存泄漏（对象创建出来后，在之后的逻辑一直没有使用该对象，但是垃圾回收器无法回收这个部分的内存）</p>
+<p>在源码中针对这种key为null的Entry称之为“stale entry”，“脏entry”，在set方法的for循环中寻找和当前Key相同的可覆盖entry的过程中通过<strong>replaceStaleEntry</strong>方法解决脏entry的问题。如果当前table[i]为null的话，直接插入新entry后也会通过<strong>cleanSomeSlots</strong>来解决脏entry的问题，</p>
+<ul>
+<li>如何进行扩容？</li>
+</ul>
+<blockquote>
+<p>threshold的确定</p>
+</blockquote>
+<p>threadLocalMap会有扩容机制，它的threshold是怎样确定的了？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> threshold; <span class="comment">// Default to 0</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * The initial capacity -- MUST be a power of two.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> INITIAL_CAPACITY = <span class="number">16</span>;</span><br><span class="line"></span><br><span class="line">   ThreadLocalMap(ThreadLocal&lt;?&gt; firstKey, Object firstValue) &#123;</span><br><span class="line">       table = <span class="keyword">new</span> Entry[INITIAL_CAPACITY];</span><br><span class="line">       <span class="keyword">int</span> i = firstKey.threadLocalHashCode &amp; (INITIAL_CAPACITY - <span class="number">1</span>);</span><br><span class="line">       table[i] = <span class="keyword">new</span> Entry(firstKey, firstValue);</span><br><span class="line">       size = <span class="number">1</span>;</span><br><span class="line">       setThreshold(INITIAL_CAPACITY);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Set the resize threshold to maintain at worst a 2/3 load factor.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setThreshold</span><span class="params">(<span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">       threshold = len * <span class="number">2</span> / <span class="number">3</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>在第一次为threadLocal进行赋值的时候会创建初始大小为16的threadLocalMap，并且通过setThreshold方法设置threshold，其值为当前哈希数组长度乘以（2/3），也就是说加载因子为2/3</p>
+<p><strong>加载因子是衡量哈希表密集程度的一个参数，如果加载因子越大的话，说明哈希表被装载的越多，出现hash冲突的可能性越大，反之，则被装载的越少，出现hash冲突的可能性越小。同时如果过小，很显然内存使用率不高，该值取值应该考虑到内存使用率和hash冲突概率的一个平衡，如hashMap,concurrentHashMap的加载因子都为0.75</strong>。</p>
+<p>这里<strong>threadLocalMap初始大小为16</strong>，<strong>加载因子为2/3</strong>，所以哈希表可用大小为：16*2/3=10，即哈希表可用容量为10。</p>
+<blockquote>
+<p>扩容resize</p>
+</blockquote>
+<p>当hash表的size大于threshold的时候，会通过resize方法进行扩容。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Double the capacity of the table.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">resize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Entry[] oldTab = table;</span><br><span class="line">    <span class="keyword">int</span> oldLen = oldTab.length;</span><br><span class="line">	<span class="comment">//新数组为原数组的2倍</span></span><br><span class="line">    <span class="keyword">int</span> newLen = oldLen * <span class="number">2</span>;</span><br><span class="line">    Entry[] newTab = <span class="keyword">new</span> Entry[newLen];</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; oldLen; ++j) &#123;</span><br><span class="line">        Entry e = oldTab[j];</span><br><span class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123;</span><br><span class="line">            ThreadLocal&lt;?&gt; k = e.get();</span><br><span class="line">			<span class="comment">//遍历过程中如果遇到脏entry的话直接另value为null,有助于value能够被回收</span></span><br><span class="line">            <span class="keyword">if</span> (k == <span class="keyword">null</span>) &#123;</span><br><span class="line">                e.value = <span class="keyword">null</span>; <span class="comment">// Help the GC</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="comment">//重新确定entry在新数组的位置，然后进行插入</span></span><br><span class="line">                <span class="keyword">int</span> h = k.threadLocalHashCode &amp; (newLen - <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">while</span> (newTab[h] != <span class="keyword">null</span>)</span><br><span class="line">                    h = nextIndex(h, newLen);</span><br><span class="line">                newTab[h] = e;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//设置新哈希表的threshHold和size属性</span></span><br><span class="line">    setThreshold(newLen);</span><br><span class="line">    size = count;</span><br><span class="line">    table = newTab;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>新建一个大小为原来数组长度的两倍的数组，然后遍历旧数组中的entry并将其插入到新的hash数组中，在扩容的过程中针对脏entry的话会令value为null，以便能够被垃圾回收器能够回收，解决隐藏的内存泄漏的问题。</p>
+<h4 id="3-3-getEntry方法"><a href="#3-3-getEntry方法" class="headerlink" title="3.3 getEntry方法"></a>3.3 getEntry方法</h4><p>getEntry方法源码为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Entry <span class="title">getEntry</span><span class="params">(ThreadLocal&lt;?&gt; key)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//1. 确定在散列数组中的位置</span></span><br><span class="line">    <span class="keyword">int</span> i = key.threadLocalHashCode &amp; (table.length - <span class="number">1</span>);</span><br><span class="line">	<span class="comment">//2. 根据索引i获取entry</span></span><br><span class="line">    Entry e = table[i];</span><br><span class="line">	<span class="comment">//3. 满足条件则返回该entry</span></span><br><span class="line">    <span class="keyword">if</span> (e != <span class="keyword">null</span> &amp;&amp; e.get() == key)</span><br><span class="line">        <span class="keyword">return</span> e;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">		<span class="comment">//4. 未查找到满足条件的entry，额外在做的处理</span></span><br><span class="line">        <span class="keyword">return</span> getEntryAfterMiss(key, i, e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>若能当前定位的entry的key和查找的key相同的话就直接返回这个entry，否则的话就是在set的时候存在hash冲突的情况，需要通过getEntryAfterMiss做进一步处理。getEntryAfterMiss方法为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Entry <span class="title">getEntryAfterMiss</span><span class="params">(ThreadLocal&lt;?&gt; key, <span class="keyword">int</span> i, Entry e)</span> </span>&#123;</span><br><span class="line">    Entry[] tab = table;</span><br><span class="line">    <span class="keyword">int</span> len = tab.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (e != <span class="keyword">null</span>) &#123;</span><br><span class="line">        ThreadLocal&lt;?&gt; k = e.get();</span><br><span class="line">        <span class="keyword">if</span> (k == key)</span><br><span class="line">			<span class="comment">//找到和查询的key相同的entry则返回</span></span><br><span class="line">            <span class="keyword">return</span> e;</span><br><span class="line">        <span class="keyword">if</span> (k == <span class="keyword">null</span>)</span><br><span class="line">			<span class="comment">//解决脏entry的问题</span></span><br><span class="line">            expungeStaleEntry(i);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">			<span class="comment">//继续向后环形查找</span></span><br><span class="line">            i = nextIndex(i, len);</span><br><span class="line">        e = tab[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过nextIndex往后环形查找，如果找到和查询的key相同的entry的话就直接返回，如果在查找过程中遇到脏entry的话使用expungeStaleEntry方法进行处理。</p>
+<p>为了解决潜在的内存泄漏的问题，在set，resize,getEntry这些地方都会对这些脏entry进行处理。</p>
+<h4 id="3-4-remove"><a href="#3-4-remove" class="headerlink" title="3.4 remove"></a>3.4 remove</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Remove the entry for key.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(ThreadLocal&lt;?&gt; key)</span> </span>&#123;</span><br><span class="line">    Entry[] tab = table;</span><br><span class="line">    <span class="keyword">int</span> len = tab.length;</span><br><span class="line">    <span class="keyword">int</span> i = key.threadLocalHashCode &amp; (len-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (Entry e = tab[i];</span><br><span class="line">         e != <span class="keyword">null</span>;</span><br><span class="line">         e = tab[i = nextIndex(i, len)]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (e.get() == key) &#123;</span><br><span class="line">			<span class="comment">//将entry的key置为null</span></span><br><span class="line">            e.clear();</span><br><span class="line">			<span class="comment">//将该entry的value也置为null</span></span><br><span class="line">            expungeStaleEntry(i);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过往后环形查找到与指定key相同的entry后，先通过clear方法将key置为null后，使其转换为一个脏entry，然后调用expungeStaleEntry方法将其value置为null，以便垃圾回收时能够清理，同时将table[i]置为null。</p>
+<h3 id="4-ThreadLocal的使用场景"><a href="#4-ThreadLocal的使用场景" class="headerlink" title="4. ThreadLocal的使用场景"></a>4. ThreadLocal的使用场景</h3><p><strong>ThreadLocal 不是用来解决共享对象的多线程访问问题的</strong>，数据实质上是放在每个thread实例引用的threadLocalMap,也就是说<strong>每个不同的线程都拥有专属于自己的数据容器（threadLocalMap），彼此不影响</strong>。因此threadLocal只适用于 <strong>共享对象会造成线程安全</strong> 的业务场景。比如<strong>hibernate中通过threadLocal管理Session</strong>就是一个典型的案例，不同的请求线程（用户）拥有自己的session,若将session共享出去被多线程访问，必然会带来线程安全问题。下面，我们自己来写一个例子，SimpleDateFormat.parse方法会有线程安全的问题，我们可以尝试使用threadLocal包装SimpleDateFormat，将该实例不被多线程共享即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class ThreadLocalDemo &#123;</span><br><span class="line">    private static ThreadLocal&lt;SimpleDateFormat&gt; sdf = new ThreadLocal&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ExecutorService executorService = Executors.newFixedThreadPool(10);</span><br><span class="line">        for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">            executorService.submit(new DateUtil(&quot;2019-11-25 09:00:&quot; + i % 60));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static class DateUtil implements Runnable &#123;</span><br><span class="line">        private String date;</span><br><span class="line"></span><br><span class="line">        public DateUtil(String date) &#123;</span><br><span class="line">            this.date = date;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            if (sdf.get() == null) &#123;</span><br><span class="line">                sdf.set(new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;));</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    Date date = sdf.get().parse(this.date);</span><br><span class="line">                    System.out.println(date);</span><br><span class="line">                &#125; catch (ParseException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>如果当前线程不持有SimpleDateformat对象实例，那么就新建一个并把它设置到当前线程中，如果已经持有，就直接使用。另外，<strong>从if (sdf.get() == null){….}else{…..}可以看出为每一个线程分配一个SimpleDateformat对象实例是从应用层面（业务代码逻辑）去保证的。</strong></li>
+<li>threadLocal有可能存在内存泄漏，在使用完之后，最好使用remove方法将这个变量移除</li>
+</ol>
+<h2 id="ThreadLocal内存泄漏问题"><a href="#ThreadLocal内存泄漏问题" class="headerlink" title="ThreadLocal内存泄漏问题"></a>ThreadLocal内存泄漏问题</h2><h3 id="1-造成内存泄漏的原因？"><a href="#1-造成内存泄漏的原因？" class="headerlink" title="1. 造成内存泄漏的原因？"></a>1. 造成内存泄漏的原因？</h3><p>threadLocal是为了解决<strong>对象不能被多线程共享访问</strong>的问题，通过threadLocal.set方法将对象实例保存在每个线程自己所拥有的threadLocalMap中，这样每个线程使用自己的对象实例，彼此不会影响达到隔离的作用，从而就解决了对象在被共享访问带来线程安全问题。</p>
+<p>如果将同步机制和threadLocal做一个横向比较的话，同步机制就是通过控制线程访问共享对象的顺序，而threadLocal就是为每一个线程分配一个该对象，各用各的互不影响。</p>
+<p>同步机制以“时间换空间”，由于每个线程在同一时刻共享对象只能被一个线程访问造成整体上响应时间增加，但是对象只占有一份内存，牺牲了时间效率换来了空间效率即“时间换空间”。</p>
+<p>threadLocal，为每个线程都分配了一份对象，自然而然内存使用率增加，每个线程各用各的，整体上时间效率要增加很多，牺牲了空间效率换来时间效率即“空间换时间”。</p>
+<p><img src="/2019/09/28/并发/ThreadLocal/2615789-9107eeb7ad610325.webp" alt="img"></p>
+<p>上图中，实线代表强引用，虚线代表的是弱引用，如果threadLocal外部强引用被置为null(threadLocalInstance=null)的话，threadLocal实例就没有一条引用链路可达，在gc(垃圾回收)的时候势必会被回收，因此entry就存在key为null的情况，无法通过一个Key为null去访问到该entry的value。同时，就存在了这样一条引用链：threadRef-&gt;currentThread-&gt;threadLocalMap-&gt;entry-&gt;valueRef-&gt;valueMemory，导致在垃圾回收的时候进行可达性分析的时候,value可达从而不会被回收掉，但是该value永远不能被访问到，这样就存在了<strong>内存泄漏</strong>。当然，如果线程执行结束后，threadLocal，threadRef会断掉，因此threadLocal,threadLocalMap，entry都会被回收掉。</p>
+<p>可是，在实际使用中我们都是会用线程池去维护我们的线程，比如在Executors.newFixedThreadPool()时创建线程的时候，为了复用线程是不会结束的，所以threadLocal内存泄漏需要注意。</p>
+<h3 id="2-已经做出的改进"><a href="#2-已经做出的改进" class="headerlink" title="2. 已经做出的改进"></a>2. 已经做出的改进</h3><p>在threadLocal的set和get方法中都有相应的处理。针对key为null的entry，源码注释为stale entry，比如在ThreadLocalMap的set方法中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(ThreadLocal&lt;?&gt; key, Object value)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// We don't use a fast path as with get() because it is at</span></span><br><span class="line">    <span class="comment">// least as common to use set() to create new entries as</span></span><br><span class="line">    <span class="comment">// it is to replace existing ones, in which case, a fast</span></span><br><span class="line">    <span class="comment">// path would fail more often than not.</span></span><br><span class="line"></span><br><span class="line">    Entry[] tab = table;</span><br><span class="line">    <span class="keyword">int</span> len = tab.length;</span><br><span class="line">    <span class="keyword">int</span> i = key.threadLocalHashCode &amp; (len-<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (Entry e = tab[i];</span><br><span class="line">             e != <span class="keyword">null</span>;</span><br><span class="line">             e = tab[i = nextIndex(i, len)]) &#123;</span><br><span class="line">        ThreadLocal&lt;?&gt; k = e.get();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (k == key) &#123;</span><br><span class="line">            e.value = value;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (k == <span class="keyword">null</span>) &#123;</span><br><span class="line">            replaceStaleEntry(key, value, i);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">    tab[i] = <span class="keyword">new</span> Entry(key, value);</span><br><span class="line">    <span class="keyword">int</span> sz = ++size;</span><br><span class="line">    <span class="keyword">if</span> (!cleanSomeSlots(i, sz) &amp;&amp; sz &gt;= threshold)</span><br><span class="line">        rehash();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在该方法中针对脏entry做了这样的处理：</p>
+<ol>
+<li>如果当前table[i]！=null的话说明hash冲突就需要向后环形查找，若在查找过程中遇到脏entry就通过replaceStaleEntry进行处理；</li>
+<li>如果当前table[i]==null的话说明新的entry可以直接插入，但是插入后会调用cleanSomeSlots方法检测并清除脏entry</li>
+</ol>
+<h4 id="2-1-cleanSomeSlots"><a href="#2-1-cleanSomeSlots" class="headerlink" title="2.1 cleanSomeSlots"></a>2.1 cleanSomeSlots</h4><p>该方法的源码为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* @param i a position known NOT to hold a stale entry. The</span></span><br><span class="line"><span class="comment"> * scan starts at the element after i.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param n scan control: &#123;@code log2(n)&#125; cells are scanned,</span></span><br><span class="line"><span class="comment"> * unless a stale entry is found, in which case</span></span><br><span class="line"><span class="comment"> * &#123;@code log2(table.length)-1&#125; additional cells are scanned.</span></span><br><span class="line"><span class="comment"> * When called from insertions, this parameter is the number</span></span><br><span class="line"><span class="comment"> * of elements, but when from replaceStaleEntry, it is the</span></span><br><span class="line"><span class="comment"> * table length. (Note: all this could be changed to be either</span></span><br><span class="line"><span class="comment"> * more or less aggressive by weighting n instead of just</span></span><br><span class="line"><span class="comment"> * using straight log n. But this version is simple, fast, and</span></span><br><span class="line"><span class="comment"> * seems to work well.)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @return true if any stale entries have been removed.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">cleanSomeSlots</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> removed = <span class="keyword">false</span>;</span><br><span class="line">    Entry[] tab = table;</span><br><span class="line">    <span class="keyword">int</span> len = tab.length;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        i = nextIndex(i, len);</span><br><span class="line">        Entry e = tab[i];</span><br><span class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span> &amp;&amp; e.get() == <span class="keyword">null</span>) &#123;</span><br><span class="line">            n = len;</span><br><span class="line">            removed = <span class="keyword">true</span>;</span><br><span class="line">            i = expungeStaleEntry(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> ( (n &gt;&gt;&gt;= <span class="number">1</span>) != <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> removed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>入参：</strong></p>
+<ol>
+<li><p>i表示：插入entry的位置i，很显然在上述情况2（table[i]==null）中，entry刚插入后该位置i很显然不是脏entry；</p>
+</li>
+<li><p>参数n</p>
+<p>2.1. n的用途</p>
+<p>主要用于<strong>扫描控制（scan control），从while中是通过n来进行条件判断的说明n就是用来控制扫描趟数（循环次数）的</strong>。在扫描过程中，如果没有遇到脏entry就整个扫描过程持续log2(n)次，log2(n)的得来是因为<code>n &gt;&gt;&gt;= 1</code>，每次n右移一位相当于n除以2。如果在扫描过程中遇到脏entry的话就会令n为当前hash表的长度（<code>n=len</code>），再扫描log2(n)趟，注意此时n增加就是多增加了循环次数从而通过nextIndex往后搜索的范围扩大，示意图如下</p>
+</li>
+</ol>
+<p><img src="/2019/09/28/并发/ThreadLocal/2615789-176285739b74da18.webp" alt="img"></p>
+<p>按照n的初始值，搜索范围为黑线，当遇到了脏entry，此时n变成了哈希数组的长度（n取值增大），搜索范围log2(n)增大，红线表示。如果在整个搜索过程没遇到脏entry的话，搜索结束，采用这种方式的主要是用于时间效率上的平衡。</p>
+<p>2.2. n的取值</p>
+<p>如果是在set方法插入新的entry后调用（上述情况2），n位当前已经插入的entry个数size；如果是在replaceSateleEntry方法中调用n为哈希表的长度len。</p>
+<h4 id="2-2-expungeStaleEntry"><a href="#2-2-expungeStaleEntry" class="headerlink" title="2.2 expungeStaleEntry"></a>2.2 expungeStaleEntry</h4><p>当在搜索过程中遇到了脏entry的话就会调用该方法去清理掉脏entry。源码为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Expunge a stale entry by rehashing any possibly colliding entries</span></span><br><span class="line"><span class="comment"> * lying between staleSlot and the next null slot.  This also expunges</span></span><br><span class="line"><span class="comment"> * any other stale entries encountered before the trailing null.  See</span></span><br><span class="line"><span class="comment"> * Knuth, Section 6.4</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> staleSlot index of slot known to have null key</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> the index of the next null slot after staleSlot</span></span><br><span class="line"><span class="comment"> * (all between staleSlot and this slot will have been checked</span></span><br><span class="line"><span class="comment"> * for expunging).</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">expungeStaleEntry</span><span class="params">(<span class="keyword">int</span> staleSlot)</span> </span>&#123;</span><br><span class="line">    Entry[] tab = table;</span><br><span class="line">    <span class="keyword">int</span> len = tab.length;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//清除当前脏entry</span></span><br><span class="line">    <span class="comment">// expunge entry at staleSlot</span></span><br><span class="line">    tab[staleSlot].value = <span class="keyword">null</span>;</span><br><span class="line">    tab[staleSlot] = <span class="keyword">null</span>;</span><br><span class="line">    size--;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Rehash until we encounter null</span></span><br><span class="line">    Entry e;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="comment">//2.往后环形继续查找,直到遇到table[i]==null时结束</span></span><br><span class="line">    <span class="keyword">for</span> (i = nextIndex(staleSlot, len);</span><br><span class="line">         (e = tab[i]) != <span class="keyword">null</span>;</span><br><span class="line">         i = nextIndex(i, len)) &#123;</span><br><span class="line">        ThreadLocal&lt;?&gt; k = e.get();</span><br><span class="line">        <span class="comment">//3. 如果在向后搜索过程中再次遇到脏entry，同样将其清理掉</span></span><br><span class="line">        <span class="keyword">if</span> (k == <span class="keyword">null</span>) &#123;</span><br><span class="line">            e.value = <span class="keyword">null</span>;</span><br><span class="line">            tab[i] = <span class="keyword">null</span>;</span><br><span class="line">            size--;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//处理rehash的情况</span></span><br><span class="line">            <span class="keyword">int</span> h = k.threadLocalHashCode &amp; (len - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (h != i) &#123;</span><br><span class="line">                tab[i] = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// Unlike Knuth 6.4 Algorithm R, we must scan until</span></span><br><span class="line">                <span class="comment">// null because multiple entries could have been stale.</span></span><br><span class="line">                <span class="keyword">while</span> (tab[h] != <span class="keyword">null</span>)</span><br><span class="line">                    h = nextIndex(h, len);</span><br><span class="line">                tab[h] = e;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该方法主要做了这么几件事情：</p>
+<ol>
+<li>清理当前脏entry，即将其value引用置为null，并且将table[staleSlot]也置为null。value置为null后该value域变为不可达，在下一次gc的时候就会被回收掉，同时table[staleSlot]为null后以便于存放新的entry;</li>
+<li>从当前staleSlot位置向后环形（nextIndex）继续搜索，直到遇到哈希桶（tab[i]）为null的时候退出；</li>
+<li>若在搜索过程再次遇到脏entry，继续将其清除。</li>
+</ol>
+<p>也就是说该方法，<strong>清理掉当前脏entry后，并没有闲下来继续向后搜索，若再次遇到脏entry继续将其清理，直到哈希桶（table[i]）为null时退出</strong>。因此方法执行完的结果为 <strong>从当前脏entry（staleSlot）位到返回的i位，这中间所有的entry不是脏entry</strong>。</p>
+<p>为什么是遇到null退出呢？原因是存在脏entry的前提条件是 <strong>当前哈希桶（table[i]）不为null</strong>,只是该entry的key域为null。如果遇到哈希桶为null,很显然它连成为脏entry的前提条件都不具备。</p>
+<p>对cleanSomeSlot方法做一下总结，其方法执行示意图如下：</p>
+<p><img src="/2019/09/28/并发/ThreadLocal/2615789-176285739b74da18-1572789239883.webp" alt="img"></p>
+<p>cleanSomeSlot方法主要有这样几点：</p>
+<ol>
+<li>从当前位置i处（位于i处的entry一定不是脏entry）为起点在初始小范围（log2(n)，n为哈希表已插入entry的个数size）开始向后搜索脏entry，若在整个搜索过程没有脏entry，方法结束退出</li>
+<li>如果在搜索过程中遇到脏entryt通过expungeStaleEntry方法清理掉当前脏entry，并且该方法会返回下一个哈希桶(table[i])为null的索引位置为i。这时重新令搜索起点为索引位置i，n为哈希表的长度len，再次扩大搜索范围为log2(n’)继续搜索。</li>
+</ol>
+<p>以一个例子更清晰的来说一下，假设当前table数组的情况如下图。</p>
+<p><img src="/2019/09/28/并发/ThreadLocal/2615789-217512cee7e45fc7.webp" alt="img"></p>
+<ol>
+<li><p>如图当前n等于hash表的size即n=10，i=1,在第一趟搜索过程中通过nextIndex,i指向了索引为2的位置，此时table[2]为null，说明第一趟未发现脏entry,则第一趟结束进行第二趟的搜索。</p>
+</li>
+<li><p>第二趟所搜先通过nextIndex方法，索引由2的位置变成了i=3,当前table[3]!=null但是该entry的key为null，说明找到了一个脏entry，<strong>先将n置为哈希表的长度len,然后继续调用expungeStaleEntry方法</strong>，该方法会将当前索引为3的脏entry给清除掉（令value为null，并且table[3]也为null）</p>
+<p>但是<strong>该方法可不想偷懒，它会继续往后环形搜索</strong>，往后会发现索引为4,5的位置的entry同样为脏entry，索引为6的位置的entry不是脏entry保持不变，直至i=7的时候此处table[7]位null，该方法就以i=7返回。至此，第二趟搜索结束；</p>
+</li>
+<li><p>由于在第二趟搜索中发现脏entry，n增大为数组的长度len，因此扩大搜索范围（增大循环次数）继续向后环形搜索；</p>
+</li>
+<li><p>直到在整个搜索范围里都未发现脏entry，cleanSomeSlot方法执行结束退出。</p>
+</li>
+</ol>
+<h4 id="2-3-replaceStaleEntry"><a href="#2-3-replaceStaleEntry" class="headerlink" title="2.3 replaceStaleEntry"></a>2.3 replaceStaleEntry</h4><p>该方法源码为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @param  key the key</span></span><br><span class="line"><span class="comment"> * @param  value the value to be associated with key</span></span><br><span class="line"><span class="comment"> * @param  staleSlot index of the first stale entry encountered while</span></span><br><span class="line"><span class="comment"> *         searching for key.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">replaceStaleEntry</span><span class="params">(ThreadLocal&lt;?&gt; key, Object value, <span class="keyword">int</span> staleSlot)</span> </span>&#123;</span><br><span class="line">    Entry[] tab = table;</span><br><span class="line">    <span class="keyword">int</span> len = tab.length;</span><br><span class="line">    Entry e;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Back up to check for prior stale entry in current run.</span></span><br><span class="line">    <span class="comment">// We clean out whole runs at a time to avoid continual</span></span><br><span class="line">    <span class="comment">// incremental rehashing due to garbage collector freeing</span></span><br><span class="line">    <span class="comment">// up refs in bunches (i.e., whenever the collector runs).</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//向前找到第一个脏entry</span></span><br><span class="line">    <span class="keyword">int</span> slotToExpunge = staleSlot;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = prevIndex(staleSlot, len);</span><br><span class="line">         (e = tab[i]) != <span class="keyword">null</span>;</span><br><span class="line">         i = prevIndex(i, len))</span><br><span class="line">        <span class="keyword">if</span> (e.get() == <span class="keyword">null</span>)</span><br><span class="line"><span class="number">1</span>.          slotToExpunge = i;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Find either the key or trailing null slot of run, whichever</span></span><br><span class="line">    <span class="comment">// occurs first</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = nextIndex(staleSlot, len);</span><br><span class="line">         (e = tab[i]) != <span class="keyword">null</span>;</span><br><span class="line">         i = nextIndex(i, len)) &#123;</span><br><span class="line">        ThreadLocal&lt;?&gt; k = e.get();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// If we find key, then we need to swap it</span></span><br><span class="line">        <span class="comment">// with the stale entry to maintain hash table order.</span></span><br><span class="line">        <span class="comment">// The newly stale slot, or any other stale slot</span></span><br><span class="line">        <span class="comment">// encountered above it, can then be sent to expungeStaleEntry</span></span><br><span class="line">        <span class="comment">// to remove or rehash all of the other entries in run.</span></span><br><span class="line">        <span class="keyword">if</span> (k == key) &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//如果在向后环形查找过程中发现key相同的entry就覆盖并且和脏entry进行交换</span></span><br><span class="line"><span class="number">2</span>.            e.value = value;</span><br><span class="line"><span class="number">3</span>.            tab[i] = tab[staleSlot];</span><br><span class="line"><span class="number">4</span>.            tab[staleSlot] = e;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Start expunge at preceding stale entry if it exists</span></span><br><span class="line">            <span class="comment">//如果在查找过程中还未发现脏entry，那么就以当前位置作为cleanSomeSlots</span></span><br><span class="line">            <span class="comment">//的起点</span></span><br><span class="line">            <span class="keyword">if</span> (slotToExpunge == staleSlot)</span><br><span class="line"><span class="number">5</span>.                slotToExpunge = i;</span><br><span class="line">            <span class="comment">//搜索脏entry并进行清理</span></span><br><span class="line"><span class="number">6</span>.            cleanSomeSlots(expungeStaleEntry(slotToExpunge), len);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// If we didn't find stale entry on backward scan, the</span></span><br><span class="line">        <span class="comment">// first stale entry seen while scanning for key is the</span></span><br><span class="line">        <span class="comment">// first still present in the run.</span></span><br><span class="line">        <span class="comment">//如果向前未搜索到脏entry，则在查找过程遇到脏entry的话，后面就以此时这个位置</span></span><br><span class="line">        <span class="comment">//作为起点执行cleanSomeSlots</span></span><br><span class="line">        <span class="keyword">if</span> (k == <span class="keyword">null</span> &amp;&amp; slotToExpunge == staleSlot)</span><br><span class="line"><span class="number">7</span>.            slotToExpunge = i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If key not found, put new entry in stale slot</span></span><br><span class="line">    <span class="comment">//如果在查找过程中没有找到可以覆盖的entry，则将新的entry插入在脏entry</span></span><br><span class="line"><span class="number">8</span>.    tab[staleSlot].value = <span class="keyword">null</span>;</span><br><span class="line"><span class="number">9</span>.    tab[staleSlot] = <span class="keyword">new</span> Entry(key, value);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If there are any other stale entries in run, expunge them</span></span><br><span class="line"><span class="number">10</span>.    <span class="keyword">if</span> (slotToExpunge != staleSlot)</span><br><span class="line">        <span class="comment">//执行cleanSomeSlots</span></span><br><span class="line"><span class="number">11</span>.        cleanSomeSlots(expungeStaleEntry(slotToExpunge), len);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先先看这一部分的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> slotToExpunge = staleSlot;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = prevIndex(staleSlot, len); (e = tab[i]) != <span class="keyword">null</span>; i = prevIndex(i, len))</span><br><span class="line">        <span class="keyword">if</span> (e.get() == <span class="keyword">null</span>)</span><br><span class="line">            slotToExpunge = i;</span><br></pre></td></tr></table></figure>
+<p>通过PreIndex方法实现往前环形搜索脏entry的功能，初始时slotToExpunge和staleSlot相同，若在搜索过程中发现了脏entry，则更新slotToExpunge为当前索引i。另外，说明replaceStaleEntry并不仅仅局限于处理当前已知的脏entry，它认为在<strong>出现脏entry的相邻位置也有很大概率出现脏entry，所以为了一次处理到位，就需要向前环形搜索，找到前面的脏entry</strong>。</p>
+<p>那么根据在向前搜索中是否还有脏entry以及在for循环后向环形查找中是否找到可覆盖的entry，我们分这四种情况来充分理解这个方法：</p>
+<p>1.前向有脏entry</p>
+<ul>
+<li><p>1.1后向环形查找找到可覆盖的entry</p>
+<p>该情形如下图所示。</p>
+<p><img src="/2019/09/28/并发/ThreadLocal/2615789-ebc60645134a0342.webp" alt="img"></p>
+</li>
+</ul>
+<p>slotToExpunge初始状态和staleSlot相同，当前向环形搜索遇到脏entry时，在第1行代码中slotToExpunge会更新为当前脏entry的索引i，直到遇到哈希桶（table[i]）为null的时候，前向搜索过程结束。</p>
+<p>在接下来的for循环中进行后向环形查找，若查找到了可覆盖的entry，第2,3,4行代码先覆盖当前位置的entry，然后再与staleSlot位置上的脏entry进行交换。交换之后脏entry就更换到了i处，最后使用cleanSomeSlots方法从slotToExpunge为起点开始进行清理脏entry的过程</p>
+<p>2.前向没有脏entry</p>
+<ul>
+<li>2.1后向环形查找找到可覆盖的entry<br>该情形如下图所示。</li>
+</ul>
+<p><img src="/2019/09/28/并发/ThreadLocal/2615789-018d077773a019dc.webp" alt="img"></p>
+<p>slotToExpunge初始状态和staleSlot相同，当前向环形搜索直到遇到哈希桶（table[i]）为null的时候，前向搜索过程结束，若在整个过程未遇到脏entry，slotToExpunge初始状态依旧和staleSlot相同。</p>
+<p>在接下来的for循环中进行后向环形查找，若遇到了脏entry，在第7行代码中更新slotToExpunge为位置i。若查找到了可覆盖的entry，第2,3,4行代码先覆盖当前位置的entry，然后再与staleSlot位置上的脏entry进行交换，交换之后脏entry就更换到了i处。</p>
+<p>如果在整个查找过程中都还没有遇到脏entry的话，会通过第5行代码，将slotToExpunge更新当前i处，最后使用cleanSomeSlots方法从slotToExpunge为起点开始进行清理脏entry的过程。</p>
+<ul>
+<li>2.2后向环形查找未找到可覆盖的entry<br>该情形如下图所示。</li>
+</ul>
+<p><img src="/2019/09/28/并发/ThreadLocal/2615789-eee96f3eca481ae0.webp" alt="img"></p>
 
           
         
@@ -2039,938 +2156,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/jvm/JVM之内存区域/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/jvm/JVM之内存区域/" class="post-title-link" itemprop="url">JVM之内存区域</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-21 12:26:38" itemprop="dateModified" datetime="2019-10-21T12:26:38+08:00">2019-10-21</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-21T12:26:38+08:00" content="2019-10-21">
-                2019-10-21 12:26:38
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/jvm/JVM之内存区域/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/jvm/JVM之内存区域/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="JVM之内存区域"><a href="#JVM之内存区域" class="headerlink" title="JVM之内存区域"></a>JVM之内存区域</h1><p><img src="/2019/05/26/jvm/JVM之内存区域/jvm内存区域.png" alt></p>
-<p>了解如何通过参数来控制各区域的内存大小</p>
-<p><img src="/2019/05/26/jvm/JVM之内存区域/jvm内存参数.png" alt></p>
-<p>控制参数：</p>
-<ul>
-<li>-Xms：设置堆的最小空间大小。</li>
-<li>-Xmx：设置堆的最大空间大小。</li>
-<li>-XX:NewSize：设置新生代最小空间大小。</li>
-<li>-XX:MaxNewSize：设置新生代最大空间大小。</li>
-<li>-XX:PermSize：设置永久代最小空间大小。</li>
-<li>-XX:MaxPermSize：设置永久代最大空间大小。</li>
-<li>-Xss：设置每个线程的堆栈大小。</li>
-</ul>
-<p>没有直接设置老年代的参数，但是可以设置堆空间大小和新生代空间大小两个参数来间接控制。</p>
-<p>老年代空间大小=堆空间大小-年轻代大空间大小</p>
-<h3 id="程序计数器-program-counter-register"><a href="#程序计数器-program-counter-register" class="headerlink" title="程序计数器(program counter register)"></a>程序计数器(program counter register)</h3><p>程序计数器的作用：</p>
-<p>当前线程所执行的字节码的行号指示器，字节码的解析工作就是通过改变这个计数器的值来选取下一个需要执行的字节码指令，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器完成。（<strong>线程私有的</strong>）</p>
-<p>程序计数器的记录内容：</p>
-<p>如果线程正在执行一个java方法，则程序计数器里面记录着正在执行的虚拟机字节码指令的地址；</p>
-<p>如果正在执行的是native方法，则程序计数器里面为null。</p>
-<p>特殊例子：</p>
-<p>此内存区域是唯一一个在java虚拟机规范中没有OutOfMemoryError情况的区域。</p>
-<h3 id="java虚拟机栈-JVM-Stacks"><a href="#java虚拟机栈-JVM-Stacks" class="headerlink" title="java虚拟机栈(JVM Stacks)"></a>java虚拟机栈(JVM Stacks)</h3><p>生命周期：与线程相同，<strong>线程私有</strong>。</p>
-<p>虚拟机栈描述的是java方法执行的内存模型。</p>
-<p>JVM栈的作用：每个方法被执行的时候，都会同时创建一个栈帧(stack frame)用于存储<strong>局部变量表</strong>、<strong>操作数栈</strong>、<strong>动态链接</strong>、<strong>方法出口</strong>等信息。每个方法被调用至执行完成的过程，其实就是一个栈帧从入栈到出栈的过程。</p>
-<p>局部变量表存放了的内容：</p>
-<p>存放着编译期可知的各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（reference类型，它不等同于对象本身，根据不同的虚拟机实现，它可能是一个指向对象起始地址的引用指针，也可能指向一个代表对象的句柄或者其他与此对象相关的位置）和returnAddress类型（指向了一条字节码指令的地址）。</p>
-<p>理解性内容：</p>
-<p>其中64位长度的long和double类型的数据会占用2个局部变量空间（Slot），其余的数据类型只占用1个。局部变量表所需的内存空间在编译期间完成分配，当进入一个方法时，这个方法需要在帧中分配多大的局部变量空间是完全确定的，在方法运行期间不会改变局部变量表的大小。</p>
-<p>该区域的异常状况：</p>
-<ul>
-<li>如果线程请求的栈深度大于虚拟机所允许的深度，将抛出StackOverflowError异常；</li>
-<li>如果虚拟机栈可以动态扩展（当前大部分的Java虚拟机都可动态扩展，只不过Java虚拟机规范中也允许固定长度的虚拟机栈），当扩展时无法申请到足够的内存时会抛出OutOfMemoryError异常。</li>
-</ul>
-<h3 id="本地方法栈-native-method-stacks"><a href="#本地方法栈-native-method-stacks" class="headerlink" title="本地方法栈(native method stacks)"></a>本地方法栈(native method stacks)</h3><p>本地方法栈（Native Method Stacks）与虚拟机栈所发挥的作用是非常相似的，其区别不过是虚拟机栈为虚拟机执行Java方法（也就是字节码）服务，而<strong>本地方法栈则是为虚拟机使用到的Native方法服务</strong>。</p>
-<h3 id="java堆-java-heap"><a href="#java堆-java-heap" class="headerlink" title="java堆(java heap)"></a>java堆(java heap)</h3><p>对于大多数应用来说，Java堆（Java Heap）是Java虚拟机所管理的内存中<strong>最大</strong>的一块。（<strong>线程共享</strong>）</p>
-<p>Java堆是被所有线程共享的一块内存区域，在<strong>虚拟机启动时</strong>创建。</p>
-<p>作用：此内存区域的唯一目的就是<strong>存放对象实例</strong>，<strong>几乎所有的对象实例都在这里分配内存</strong>。</p>
-<p>Java堆是垃圾收集器管理的主要区域，因此很多时候也被称做“<strong>GC堆</strong>”。</p>
-<p>如果从内存回收的角度看，由于现在收集器基本都是采用的分代收集算法，所以Java堆中还可以细分为：<strong>新生代和老年代；再细分年轻代的有Eden空间、From Survivor空间、To Survivor空间等。(默认比例8:1:1)</strong>（详情在GC算法和回收中提到）</p>
-<p>理解性：</p>
-<p>根据Java虚拟机规范的规定，Java堆可以处于物理上不连续的内存空间中，只要逻辑上是连续的即可，就像我们的磁盘空间一样。在实现时，既可以实现成固定大小的，也可以是可扩展的，不过当前主流的虚拟机都是按照可扩展来实现的（通过-Xmx和-Xms控制）。</p>
-<p>异常状况：</p>
-<p>如果在堆中没有内存完成实例分配，并且堆也无法再扩展时，将会抛出OutOfMemoryError异常。</p>
-<h3 id="方法区-method-area"><a href="#方法区-method-area" class="headerlink" title="方法区(method area)"></a>方法区(method area)</h3><p>方法区和Java堆一样，是各个线程共享的内存区域</p>
-<p>作用：<strong>它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</strong></p>
-<p>Java虚拟机规范对这个区域的限制非常宽松，除了和Java堆一样不需要连续的内存和可以选择固定大小或者可扩展外，还可以选择不实现垃圾收集。</p>
-<p>这个区域的内存回收目标主要是<strong>针对常量池的回收</strong>和<strong>对类型的卸载</strong></p>
-<p>异常状况：</p>
-<p>根据Java 虚拟机规范的规定，当方法区无法满足内存分配需求时，将抛出OutOfMemoryError 异常。</p>
-<h3 id="运行时常量池-runtime-constant-pool"><a href="#运行时常量池-runtime-constant-pool" class="headerlink" title="运行时常量池(runtime constant pool)"></a>运行时常量池(runtime constant pool)</h3><p>运行时的常量池属于方法区的一部分。</p>
-<p>作用：用于存放编译期生成的<strong>各种字面量</strong>和<strong>符号引用</strong>，这部分内容将在类加载后存放到方法区的运行时常量池中。编译器和运行期(String 的 intern() )都可以将常量放入池中。</p>
-<p>异常状况</p>
-<p>当常量池无法再申请到内存时会抛出OutOfMemoryError 异常。</p>
-<h3 id="直接内存-direct-memory"><a href="#直接内存-direct-memory" class="headerlink" title="直接内存(direct memory)"></a>直接内存(direct memory)</h3><p>直接内存（Direct Memory）并不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范中定义的内存区域，但是这部分内存也被频繁地使用，而且也可能导致OutOfMemoryError 异常出现。</p>
-<p>本机直接内存的分配不会受到Java 堆大小的限制，但是，既然是内存，则肯定还是会受到本机总内存（包括RAM 及SWAP 区或者分页文件）的大小及处理器寻址空间的限制。服务器管理员配置虚拟机参数时，一般会根据实际内存设置-Xmx等参数信息，但经常会忽略掉直接内存，使得各个内存区域的总和大于物理内存限制（包括物理上的和操作系统级的限制），从而导致动态扩展时出现OutOfMemoryError异常。</p>
-<h3 id="对象访问"><a href="#对象访问" class="headerlink" title="对象访问"></a>对象访问</h3><p>Object obj = new Object();</p>
-<p>最简单的访问，却涉及Java 栈、Java 堆、方法区这三个最重要内存区</p>
-<p>假设这句代码出现在方法体中，那“Object obj”这部分的语义将会反映到Java 栈的本地变量表中，作为一个reference 类型数据出现。</p>
-<p>“new Object()”这部分的语义将会反映到Java 堆中，形成一块存储了Object 类型所有实例数据值（Instance Data，对象中各个实例字段的数据）的结构化内存，根据具体类型以及虚拟机实现的对象内存布局（Object Memory Layout）的不同，这块内存的长度是不固定的。</p>
-<p>在Java 堆中还必须包含能查找到此对象类型数据（如对象类型、父类、实现的接口、方法等）的地址信息，这些类型数据则存储在方法区中。</p>
-<p>由于reference 类型在Java 虚拟机规范里面只规定了一个指向对象的引用，并没有定义这个引用应该通过哪种方式去定位，以及访问到Java 堆中的对象的具体位置，因此不同虚拟机实现的对象访问方式会有所不同，主流的访问方式有两种：使用句柄和直接指针。</p>
-<p>如果使用<strong>句柄访问方式</strong>，Java 堆中将会划分出一块内存来作为句柄池，reference中存储的就是对象的句柄地址，而句柄中包含了对象实例数据和类型数据各自的具体地址信息</p>
-<p><img src="/2019/05/26/jvm/JVM之内存区域/jvm内存区域句柄.jpg" alt></p>
-<p>如果使用<strong>直接指针访问方式</strong>，Java 堆对象的布局中就必须考虑如何放置访问类型数据的相关信息，reference 中直接存储的就是对象地址</p>
-<p><img src="/2019/05/26/jvm/JVM之内存区域/jvm内存区域直接访问.jpg" alt></p>
-<p>使用句柄访问方式的最大好处就是reference 中存储的是稳定的句柄地址，在对象被移动（垃圾收集时移动对象是非常普遍的行为）时只会改变句柄中的实例数据指针，而reference 本身不需要被修改。</p>
-<p>使用直接指针访问方式的最大好处就是速度更快，它节省了一次指针定位的时间开销，由于对象的访问在Java 中非常频繁，因此这类开销积少成多后也是一项非常可观的执行成本。</p>
-<p>就主要虚拟机Sun HotSpot 而言，它是使用第二种方式进行对象访问的，但从整个软件开发的范围来看，各种语言和框架使用句柄来访问的情况也十分常见。</p>
-<h3 id="OutOfMemoryError分析-OOM"><a href="#OutOfMemoryError分析-OOM" class="headerlink" title="OutOfMemoryError分析(OOM)"></a>OutOfMemoryError分析(OOM)</h3><p>java堆溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError：Java heap space</span><br></pre></td></tr></table></figure>
-<p>java栈溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.StackOverflowError</span><br></pre></td></tr></table></figure>
-<p>运行时常量池溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError：PermGen space</span><br></pre></td></tr></table></figure>
-<p>方法区溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError：PermGen space</span><br></pre></td></tr></table></figure>
-<p>本机直接内存溢出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/jvm/JVM之类的加载机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/jvm/JVM之类的加载机制/" class="post-title-link" itemprop="url">JVM之类的加载机制</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-07 01:38:36" itemprop="dateModified" datetime="2019-10-07T01:38:36+08:00">2019-10-07</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-07T01:38:36+08:00" content="2019-10-07">
-                2019-10-07 01:38:36
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/jvm/JVM之类的加载机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/jvm/JVM之类的加载机制/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="JVM之类的加载机制"><a href="#JVM之类的加载机制" class="headerlink" title="JVM之类的加载机制"></a>JVM之类的加载机制</h1><h3 id="什么是类的加载"><a href="#什么是类的加载" class="headerlink" title="什么是类的加载"></a>什么是类的加载</h3><p>类的加载指的是将类的.class文件中的二进制数据读入到内存中，将其放在运行时数据区的方法区内，然后在堆区创建一个 <code>java.lang.Class</code>对象，用来封装类在方法区内的数据结构。类的加载的最终产品是位于堆区中的 <code>Class</code>对象。</p>
-<p> <code>Class</code>对象封装了类在方法区内的数据结构，并且向Java程序员提供了访问方法区内的数据结构的接口。</p>
-<p><img src="/2019/05/26/jvm/JVM之类的加载机制/什么是类加载.jpg" alt></p>
-<p>类加载器并不需要等到某个类被“首次主动使用”时再加载它，JVM规范允许类加载器在预料某个类将要被使用时就预先加载它，如果在预先加载的过程中遇到了.class文件缺失或存在错误，类加载器必须在程序首次主动使用该类时才报告错误（LinkageError错误）如果这个类一直没有被程序主动使用，那么类加载器就不会报告错误。</p>
-<p><strong>加载.class文件的方式</strong></p>
-<ul>
-<li>从本地系统中直接加载</li>
-<li>通过网络下载.class文件</li>
-<li>从zip，jar等归档文件中加载.class文件</li>
-<li>从专有数据库中提取.class文件</li>
-<li>将Java源文件动态编译为.class文件</li>
-</ul>
-<h3 id="类的生命周期"><a href="#类的生命周期" class="headerlink" title="类的生命周期"></a>类的生命周期</h3><p><img src="/2019/05/26/jvm/JVM之类的加载机制/类的生命周期.png" alt></p>
-<p>其中类加载的过程包括了加载、验证、准备、解析、初始化五个阶段。在这五个阶段中，加载、验证、准备和初始化这四个阶段发生的顺序是确定的，而解析阶段则不一定，它在某些情况下可以在初始化阶段之后开始，这是为了支持Java语言的运行时绑定（也成为动态绑定或晚期绑定）。另外注意这里的几个阶段是按顺序开始，而不是按顺序进行或完成，因为这些阶段通常都是互相交叉地混合进行的，通常在一个阶段执行的过程中调用或激活另一个阶段。</p>
-<h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><p>在加载阶段，虚拟机需要完成以下三件事情：</p>
-<ul>
-<li>通过一个类的全限定名来获取其定义的二进制字节流。</li>
-<li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。</li>
-<li>在Java堆中生成一个代表这个类的 <code>java.lang.Class</code>对象，作为对方法区中这些数据的访问入口。</li>
-</ul>
-<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p><strong>验证：确保被加载的类的正确性</strong></p>
-<p>验证是连接阶段的第一步，这一阶段的目的是为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。验证阶段大致会完成4个阶段的检验动作：</p>
-<ul>
-<li><strong>文件格式验证</strong>：验证字节流是否符合Class文件格式的规范；例如：是否以 <code>0xCAFEBABE</code>开头、主次版本号是否在当前虚拟机的处理范围之内、常量池中的常量是否有不被支持的类型。</li>
-<li><strong>元数据验证</strong>：对字节码描述的信息进行语义分析（注意：对比javac编译阶段的语义分析），以保证其描述的信息符合Java语言规范的要求；例如：这个类是否有父类，除了 <code>java.lang.Object</code>之外。</li>
-<li><strong>字节码验证</strong>：通过数据流和控制流分析，确定程序语义是合法的、符合逻辑的。</li>
-<li><strong>符号引用验证</strong>：确保解析动作能正确执行。</li>
-</ul>
-<p>验证阶段是非常重要的，但不是必须的，它对程序运行期没有影响，如果所引用的类经过反复验证，那么可以考虑采用 <code>-Xverifynone</code>参数来关闭大部分的类验证措施，以缩短虚拟机类加载的时间。</p>
-<p><strong>准备：为类的静态变量分配内存，并将其初始化为默认值</strong></p>
-<p>准备阶段是正式为类变量分配内存并设置类变量初始值的阶段，这些内存都将在方法区中分配。对于该阶段有以下几点需要注意：</p>
-<ul>
-<li>1、这时候进行内存分配的仅包括类变量（static），而不包括实例变量，实例变量会在对象实例化时随着对象一块分配在Java堆中。</li>
-<li>2、这里所设置的初始值通常情况下是数据类型默认的零值（如0、0L、null、false等），而不是被在Java代码中被显式地赋予的值。</li>
-</ul>
-<p>假设一个类变量的定义为： <code>public static int value=3</code>；</p>
-<p>那么变量value在准备阶段过后的初始值为0，而不是3，因为这时候尚未开始执行任何Java方法，而把value赋值为3的 <code>public static</code>指令是在程序编译后，存放于类构造器 <code>&lt;clinit&gt;（）</code>方法之中的，所以把value赋值为3的动作将在初始化阶段才会执行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">这里还需要注意如下几点：</span><br><span class="line"></span><br><span class="line">1、对基本数据类型来说，对于类变量（static）和全局变量，如果不显式地对其赋值而直接使用，则系统会为其赋予默认的零值，而对于局部变量来说，在使用前必须显式地为其赋值，否则编译时不通过。</span><br><span class="line"></span><br><span class="line">2、对于同时被static和final修饰的常量，必须在声明的时候就为其显式地赋值，否则编译时不通过；而只被final修饰的常量则既可以在声明时显式地为其赋值，也可以在类初始化时显式地为其赋值，总之，在使用前必须为其显式地赋值，系统不会为其赋予默认零值。</span><br><span class="line"></span><br><span class="line">3、对于引用数据类型reference来说，如数组引用、对象引用等，如果没有对其进行显式地赋值而直接使用，系统都会为其赋予默认的零值，即null。</span><br><span class="line"></span><br><span class="line">4、如果在数组初始化时没有对数组中的各元素赋值，那么其中的元素将根据对应的数据类型而被赋予默认的零值。</span><br><span class="line"></span><br><span class="line">一句话总结以上几点，类变量、引用数据类型赋予默认值，常量、局部变量必须在声明或者初始化之前显示赋值，不然不通过编译</span><br></pre></td></tr></table></figure>
-<ul>
-<li>3、如果类字段的字段属性表中存在 <code>ConstantValue</code>属性，即同时被final和static修饰，那么在准备阶段变量value就会被初始化为ConstValue属性所指定的值。</li>
-</ul>
-<p>假设上面的类变量value被定义为： <code>public static final int value=3</code>；</p>
-<p>编译时Javac将会为value生成ConstantValue属性，在准备阶段虚拟机就会根据 <code>ConstantValue</code>的设置将value赋值为3。我们可以理解为static final常量在编译期就将其结果放入了调用它的类的常量池中</p>
-<p><strong>解析：把类中的符号引用转换为直接引用</strong></p>
-<p>解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程，解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符  7类符号引用进行。符号引用就是一组符号来描述目标，可以是任何字面量。</p>
-<p>直接引用就是直接指向目标的指针、相对偏移量或一个间接定位到目标的句柄。</p>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>初始化，为类的静态变量赋予正确的初始值，JVM负责对类进行初始化，主要对类变量进行初始化。在Java中对类变量进行初始值设定有两种方式：</p>
-<ul>
-<li>①声明类变量是指定初始值</li>
-<li>②使用静态代码块为类变量指定初始值</li>
-</ul>
-<p>JVM初始化步骤：</p>
-<ul>
-<li>1、假如这个类还没有被加载和连接，则程序先加载并连接该类</li>
-<li>2、假如该类的直接父类还没有被初始化，则先初始化其直接父类</li>
-<li>3、假如类中有初始化语句，则系统依次执行这些初始化语句</li>
-</ul>
-<p>类初始化时机：只有当对类的主动使用的时候才会导致类的初始化，类的主动使用包括以下六种：</p>
-<ul>
-<li>创建类的实例，也就是new的方式</li>
-<li>访问某个类或接口的静态变量，或者对该静态变量赋值</li>
-<li>调用类的静态方法</li>
-<li>反射（如 <code>Class.forName(“com.shengsiyuan.Test”)</code>）</li>
-<li>初始化某个类的子类，则其父类也会被初始化</li>
-<li>Java虚拟机启动时被标明为启动类的类（ <code>JavaTest</code>），直接使用 <code>java.exe</code>命令来运行某个主类</li>
-</ul>
-<h3 id="结束生命周期"><a href="#结束生命周期" class="headerlink" title="结束生命周期"></a>结束生命周期</h3><p>在如下几种情况下，Java虚拟机将结束生命周期</p>
-<ul>
-<li>执行了 <code>System.exit()</code>方法</li>
-<li>程序正常执行结束</li>
-<li>程序在执行过程中遇到了异常或错误而异常终止</li>
-<li>由于操作系统出现错误而导致Java虚拟机进程终止</li>
-</ul>
-<h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p><img src="/2019/05/26/jvm/JVM之类的加载机制/类加载器.jpg" alt></p>
-<p>站在Java开发人员的角度来看，类加载器可以大致划分为以下三类：</p>
-<p><strong>启动类加载器</strong>： <code>BootstrapClassLoader</code>，负责加载存放在 <code>JDK\jre\lib</code>(JDK代表JDK的安装目录，下同)下，或被 <code>-Xbootclasspath</code>参数指定的路径中的，并且能被虚拟机识别的类库（如rt.jar，所有的java.开头的类均被 <code>BootstrapClassLoader</code>加载）。启动类加载器是无法被Java程序直接引用的。<br><strong>扩展类加载器</strong>： <code>ExtensionClassLoader</code>，该加载器由 <code>sun.misc.Launcher$ExtClassLoader</code>实现，它负责加载 <code>JDK\jre\lib\ext</code>目录中，或者由 <code>java.ext.dirs</code>系统变量指定的路径中的所有类库（如javax.开头的类），开发者可以直接使用扩展类加载器。<br><strong>应用程序类加载器</strong>： <code>ApplicationClassLoader</code>，该类加载器由 <code>sun.misc.Launcher$AppClassLoader</code>来实现，它负责加载用户类路径（ClassPath）所指定的类，开发者可以直接使用该类加载器，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。</p>
-<p>应用程序都是由这三种类加载器互相配合进行加载的，如果有必要，我们还可以加入自定义的类加载器。因为JVM自带的ClassLoader只是懂得从本地文件系统加载标准的java class文件，因此如果编写了自己的ClassLoader，便可以做到如下几点：</p>
-<ul>
-<li>1、在执行非置信代码之前，自动验证数字签名。</li>
-<li>2、动态地创建符合用户特定需要的定制化构建类。</li>
-<li>3、从特定的场所取得java class，例如数据库中和网络中。</li>
-</ul>
-<h3 id="JVM加载机制"><a href="#JVM加载机制" class="headerlink" title="JVM加载机制"></a>JVM加载机制</h3><ul>
-<li><strong>全盘负责</strong>，当一个类加载器负责加载某个Class时，该Class所依赖的和引用的其他Class也将由该类加载器负责载入，除非显示使用另外一个类加载器来载入</li>
-<li><strong>父类委托</strong>，先让父类加载器试图加载该类，只有在父类加载器无法加载该类时才尝试从自己的类路径中加载该类</li>
-<li><strong>缓存机制</strong>，缓存机制将会保证所有加载过的Class都会被缓存，当程序中需要使用某个Class时，类加载器先从缓存区寻找该Class，只有缓存区不存在，系统才会读取该类对应的二进制数据，并将其转换成Class对象，存入缓存区。这就是为什么修改了Class后，必须重启JVM，程序的修改才会生效</li>
-</ul>
-<p>类的加载三种方式：</p>
-<ul>
-<li>1、命令行启动应用时候由JVM初始化加载</li>
-<li>2、通过Class.forName()方法动态加载</li>
-<li>3、通过ClassLoader.loadClass()方法动态加载</li>
-</ul>
-<p><strong>Class.forName()和ClassLoader.loadClass()区别</strong></p>
-<ul>
-<li><code>Class.forName()</code>：将类的.class文件加载到jvm中之外，还会对类进行解释，执行类中的static块；</li>
-<li><code>ClassLoader.loadClass()</code>：只干一件事情，就是将.class文件加载到jvm中，不会执行static中的内容,只有在newInstance才会去执行static块。</li>
-<li><code>Class.forName(name,initialize,loader)</code>带参函数也可控制是否加载static块。并且只有调用了newInstance()方法采用调用构造函数，创建类的对象 。</li>
-</ul>
-<h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>双亲委派模型的工作流程是：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把请求委托给父加载器去完成，依次向上，因此，所有的类加载请求最终都应该被传递到顶层的启动类加载器中，只有当父加载器在它的搜索范围中没有找到所需的类时，即无法完成该加载，子加载器才会尝试自己去加载该类。</p>
-<p>双亲委派机制:</p>
-<ul>
-<li>1、当 <code>AppClassLoader</code>加载一个class时，它首先不会自己去尝试加载这个类，而是把类加载请求委派给父类加载器<code>ExtClassLoader</code>去完成。</li>
-<li>2、当 <code>ExtClassLoader</code>加载一个class时，它首先也不会自己去尝试加载这个类，而是把类加载请求委派给BootStrapClassLoader<code>`</code>去完成。</li>
-<li>3、如果 <code>BootStrapClassLoader</code>加载失败（例如在 <code>$JAVA_HOME/jre/lib</code>里未查找到该class），会使用 <code>ExtClassLoader</code>来尝试加载；</li>
-<li>4、若ExtClassLoader也加载失败，则会使用 <code>AppClassLoader</code>来加载，如果 <code>AppClassLoader</code>也加载失败，则会报出异常 <code>ClassNotFoundException</code>。</li>
-</ul>
-<p>ClassLoader源码分析：</p>
-<p>双亲委派模型意义：</p>
-<ul>
-<li>系统类防止内存中出现多份同样的字节码</li>
-<li>保证Java程序安全稳定运行</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/jvm/JVM之垃圾收集器与内存分配/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/" class="post-title-link" itemprop="url">JVM之垃圾收集器与内存分配</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-07 01:38:07" itemprop="dateModified" datetime="2019-10-07T01:38:07+08:00">2019-10-07</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-07T01:38:07+08:00" content="2019-10-07">
-                2019-10-07 01:38:07
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/jvm/" itemprop="url" rel="index"><span itemprop="name">jvm</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="JVM之垃圾收集器与内存分配"><a href="#JVM之垃圾收集器与内存分配" class="headerlink" title="JVM之垃圾收集器与内存分配"></a>JVM之垃圾收集器与内存分配</h1><p>垃圾回收区域：</p>
-<p>程序计数器、虚拟机栈、本地方法栈 3 个区域随线程生灭(因为是线程私有)，栈中的栈帧随着方法的进入和退出而有条不紊地执行着出栈和入栈操作。</p>
-<p>而 Java 堆和方法区则不一样，一个接口中的多个实现类需要的内存可能不一样，一个方法中的多个分支需要的内存也可能不一样，我们只有在程序处于运行期才知道那些对象会创建，这部分内存的分配和回收都是动态的，垃圾回收期所关注的就是java堆和方法区。</p>
-<h3 id="判断对象死活"><a href="#判断对象死活" class="headerlink" title="判断对象死活"></a>判断对象死活</h3><p><strong>引用计数法：</strong></p>
-<p>给对象添加一个引用计数器。但是难以解决循环引用问题。</p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/垃圾回收引用计数法.png" alt></p>
-<p>对象objA和objB都有字段instance，赋值令objA.instance = objB及objB.instance = objA，除此以外，这两个对象再无任何引用，实际上这两个对象已经不可能再被访问，但是它们因为互相引用着对方，导致它们的引用计数都不为0,如果不下小心直接把 Obj1-reference 和 Obj2-reference 置 null。则在 Java 堆当中的两块内存依然保持着互相引用无法回收。</p>
-<p><strong>可达性分析(根搜索算法)</strong>：</p>
-<p>通过一系列的 ‘GC Roots’ 的对象作为起始点，从这些节点出发所走过的路径称为引用链。当一个对象到 GC Roots 没有任何引用链相连的时候说明对象不可用。</p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/垃圾回收根搜索算法.jpg" alt></p>
-<p>可作为 GC Roots 的对象：</p>
-<ul>
-<li>虚拟机栈(栈帧中的本地变量表)中引用的对象</li>
-<li>方法区中类静态属性引用的对象</li>
-<li>方法区中常量引用的对象</li>
-<li>本地方法栈中 JNI(即一般说的 Native 方法) 引用的对象</li>
-</ul>
-<p><strong>引用的类别：</strong></p>
-<ul>
-<li>强引用：类似于 <code>Object obj = new Object();</code> 创建的，只要强引用在就不回收。</li>
-<li>软引用：SoftReference 类实现软引用。在系统要发生内存溢出异常之前，将会把这些对象列进回收范围之中进行二次回收。</li>
-<li>弱引用：WeakReference 类实现弱引用。对象只能生存到下一次垃圾收集之前。在垃圾收集器工作时，无论内存是否足够都会回收掉只被弱引用关联的对象。</li>
-<li>虚引用：PhantomReference 类实现虚引用。无法通过虚引用获取一个对象的实例，为一个对象设置虚引用关联的唯一目的就是能在这个对象被收集器回收时收到一个系统通知。</li>
-</ul>
-<h3 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h3><p>在堆中，尤其是在新生代中，一次垃圾回收一般可以回收 70% ~ 95% 的空间，而永久代的垃圾收集效率远低于此。</p>
-<p>永久代垃圾回收主要两部分内容：废弃的常量和无用的类。  </p>
-<p>判断废弃常量：一般是判断没有该常量的引用。</p>
-<p>判断无用的类：要以下三个条件都满足</p>
-<ul>
-<li>该类所有的实例都已经回收，也就是 Java 堆中不存在该类的任何实例</li>
-<li>加载该类的 ClassLoader 已经被回收</li>
-<li>该类对应的 java.lang.Class 对象没有任何地方被引用，无法在任何地方通过反射访问该类的方法</li>
-</ul>
-<h3 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h3><p>标记-清除算法：</p>
-<p>标记所有需要回收的对象，标记完成后统一进行回收被标记的对象</p>
-<p>缺点：</p>
-<ul>
-<li>效率不高</li>
-<li>空间产生大量碎片</li>
-</ul>
-<p>复制算法：</p>
-<p>思路：把空间分成两块，每次只对其中一块进行 GC。当这块内存使用完时，就将还存活的对象复制到另一块上面。</p>
-<p>解决前一种方法的不足，但是会造成空间利用率低下。因为大多数新生代对象都不会熬过第一次 GC。所以没必要 1 : 1 划分空间。可以分一块较大的 Eden 空间和两块较小的 Survivor 空间，每次使用 Eden 空间和其中一块 Survivor。当回收时，将 Eden 和 Survivor 中还存活的对象一次性复制到另一块 Survivor 上，最后清理 Eden 和 Survivor 空间。大小比例一般是 8 : 1 : 1，每次浪费 10% 的 Survivor 空间。</p>
-<p>但是这里有一个问题就是如果存活的大于 10% 怎么办？这里采用一种分配担保策略：多出来的对象直接进入老年代。</p>
-<p>标记-整理算法：</p>
-<p>与标记-清除算法不同的一点是，会把存活对象移动一端，解决空间产生大量碎片的缺点。</p>
-<p>分代收集算法：</p>
-<p>当前商业虚拟机的垃圾收集都采用分代收集算法。</p>
-<p>把java堆分成新生代和老年代，根据各个年代的特点采用最合适的收集算法。</p>
-<p>在新生代中，每次垃圾回收时都发现大批对象死去，只有少量存活，选用复制算法，只需要付出少量存活对象的复制成本就可以完成收集。</p>
-<p>在老年代中，对象存活率高，没有额外空间对他进行分配担保，就使用标记清除或者标记整理算法回收。</p>
-<h3 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h3><p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/垃圾回收收集器.jpg" alt></p>
-<p>说明：如果两个收集器之间存在连线说明他们之间可以搭配使用。</p>
-<p><strong>serial收集器</strong></p>
-<p>这是一个单线程收集器。意味着它只会使用一个 CPU 或一条收集线程去完成收集工作，并且在进行垃圾回收时必须暂停其它所有的工作线程直到收集结束。</p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/serial收集器.jpg" alt></p>
-<p><strong>ParNew收集器</strong></p>
-<p> Serial 收集器的多线程版本，许多运行在server模式下的虚拟机中首选的新生代收集器，原因是处理Serial收集器，只有它能与CMS收集器配合工作(真正意义上的并发收集器，实现让垃圾收集线程和用户线程同时工作)</p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/ParNew收集器.jpg" alt></p>
-<p><strong>Parallel Scavenge收集器</strong></p>
-<p>并行和并发区别：</p>
-<ul>
-<li>并行(Parallel)：指多条垃圾收集线程并行工作，但此时用户线程仍然处于等待状态</li>
-<li>并发(Concurrent)：指用户线程与垃圾收集线程同时执行（但不一定是并行的，可能会交替执行），用户线程继续运行，而垃圾收集程序运行于另一个CPU上。</li>
-</ul>
-<p>这是一个<strong>新生代收集器</strong>，也是使用复制算法实现，同时也是<strong>并行</strong>的<strong>多线程</strong>收集器。</p>
-<p>CMS 等收集器的关注点是尽可能地缩短<strong>垃圾收集时用户线程所停顿的时间</strong>，而 Parallel Scavenge 收集器的目的是<strong>达到一个可控制的吞吐量</strong>(Throughput = 运行用户代码时间 / (运行用户代码时间 + 垃圾收集时间)  )。</p>
-<p>Parallel Scavenge收集器提供两个参数用于精确控制吞吐量，分别是<strong>控制最大垃圾收集停顿时间</strong>的-XX:MaxGCPauseMillis参数和<strong>直接设置吞吐量大小</strong>的-XX:GCTimeRatio参数。</p>
-<p>-XX:MaxGCPauseMillis：允许的值是一个大于0的毫秒数，收集器将尽力保证内存回收花费的时间不超过设定值。GC停顿时间缩短是以牺牲吞吐量和新生代空间来换取的(并不是把参数设置越小越好)</p>
-<p>-XX:GCTimeRatio：是一个大于0小于100的整数，是垃圾收集时间占总时间的比率，相当于吞吐量的倒数。</p>
-<p>-XX:+UserAdaptiveSIzePolicy：作为一个吞吐量优先的收集器，虚拟机会根据当前系统的运行情况收集性能监控信息，动态调整停顿时间。这就是 GC 的<strong>自适应调整策略</strong>(GC Ergonomics)。</p>
-<p><strong>Serial Old收集器</strong></p>
-<p>收集器的老年代版本，单线程，使用 <code>标记 —— 整理</code>。</p>
-<p><strong>Parallel Old收集器</strong></p>
-<p>Parallel Old 是 Parallel Scavenge 收集器的老年代版本。多线程，使用 <code>标记 —— 整理</code></p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/parallelold收集器.png" alt></p>
-<p><strong>CMS收集器</strong></p>
-<p>CMS (Concurrent Mark Sweep) 收集器是一种以<strong>获取最短回收停顿时间</strong>为目标的收集器。基于 <code>标记 —— 清除</code> 算法实现。</p>
-<p>运作步骤：</p>
-<ul>
-<li>初始标记(CMS initial mark)：标记 GC Roots 能直接关联到的对象</li>
-<li>并发标记(CMS concurrent mark)：进行 GC Roots Tracing(根搜索算法)</li>
-<li>重新标记(CMS remark)：修正并发标记期间的变动部分</li>
-<li>并发清除(CMS concurrent sweep)</li>
-</ul>
-<p>其中初始标记、重新标记这两个步骤仍然需要“Stop The World”。初始标记仅仅只是标记一下GC Roots能直接关联到的对象，速度很快，并发标记阶段就是进行GC Roots Tracing的过程，而重新标记阶段则是为了修正并发标记期间，因用户程序继续运作而导致标记产生变动的那一部分对象的标记记录，这个阶段的停顿时间一般会比初始标记阶段稍长一些，但远比并发标记的时间短。</p>
-<p>由于整个过程中耗时最长的并发标记和并发清除过程中，收集器线程都可以与用户线程一起工作，所以总体上来说，CMS收集器的内存回收过程是与用户线程一起并发地执行。老年代收集器（新生代使用ParNew）。</p>
-<p><strong>优点</strong>: 并发收集、低停顿<br><strong>缺点</strong>: 对 CPU 资源敏感、无法收集浮动垃圾、<code>标记 —— 清除</code> 算法带来的空间碎片</p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/CMS收集器.png" alt></p>
-<p><strong>G1收集器</strong></p>
-<p>G1是目前技术发展的最前沿成果之一，HotSpot开发团队赋予它的使命是未来可以替换掉JDK1.5中发布的CMS收集器。与CMS收集器相比G1收集器有以下特点：</p>
-<ol>
-<li><strong>空间整合</strong>，G1收集器采用标记整理算法，不会产生内存空间碎片。分配大对象时不会因为无法找到连续空间而提前触发下一次GC。</li>
-<li><strong>可预测停顿</strong>，这是G1的另一大优势，降低停顿时间是G1和CMS的共同关注点，但G1除了追求低停顿外，还能建立可预测的停顿时间模型，能让使用者明确指定在一个长度为N毫秒的时间片段内，消耗在垃圾收集上的时间不得超过N毫秒，这几乎已经是实时Java（RTSJ）的垃圾收集器的特征了。</li>
-</ol>
-<p>上面提到的垃圾收集器，收集的范围都是整个新生代或者老年代，而G1不再是这样。使用G1收集器时，Java堆的内存布局与其他收集器有很大差别，它将整个Java堆划分为<strong>多个大小相等的独立区域</strong>（Region），虽然还保留有新生代和老年代的概念，但新生代和老年代不再是物理隔阂了，它们都是一部分（物理可以不连续、逻辑连续的一段内存）Region的集合。</p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/G1垃圾回收器.png" alt></p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/G1步骤.png" alt></p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/G1收集器运行.png" alt></p>
-<p>G1的新生代收集跟ParNew类似，当新生代占用达到一定比例的时候，开始出发收集。和CMS类似，G1收集器收集老年代对象会有短暂停顿。</p>
-<p>收集步骤：</p>
-<p>1、标记阶段，首先初始标记(Initial-Mark),这个阶段是停顿的(Stop the World Event)，并且会触发一次普通Mintor GC。对应GC log:GC pause (young) (inital-mark)</p>
-<p>2、Root Region Scanning根区域扫描，程序运行过程中会回收survivor区(存活到老年代)，这一过程必须在young GC之前完成。</p>
-<p>3、Concurrent Marking并发标记，在整个堆中进行并发标记(和应用程序并发执行)，此过程可能被young GC中断。在并发标记阶段，若发现区域对象中的所有对象都是垃圾，那个这个区域会被立即回收(图中打X)。同时，并发标记过程中，会计算每个区域的对象活性(区域中存活对象的比例)。</p>
-<p>4、Remark, 最终标记，会有短暂停顿(STW:stop the world)。再标记阶段是用来收集 并发标记阶段 产生新的垃圾(并发阶段和应用程序一同运行)；G1中采用了比CMS更快的初始快照算法:snapshot-at-the-beginning (SATB)。</p>
-<p>5、Copy/Clean up，多线程清除失活对象，会有STW。G1将回收区域的存活对象拷贝到新区域，清除Remember Sets，并发清空回收区域并把它返回到空闲区域链表中。</p>
-<p>6、复制/清除过程后。回收区域的活性对象已经被集中回收到深蓝色和深绿色区域。</p>
-<h3 id="内存分配与回收策略"><a href="#内存分配与回收策略" class="headerlink" title="内存分配与回收策略"></a>内存分配与回收策略</h3><p>对象的内存分配，往大方向上讲，就是在堆上分配（但也可能经过JIT编译后被拆散为标量类型并间接地在栈上分配），对象主要分配在新生代的Eden区上，如果启动本地线程分配缓冲(TLAB)，将线程上优先在TLAB上分配少数情况下也可能会直接分配在老年代中，其细节取决于当前使用的是哪一种垃圾收集器组合，还有虚拟机中与内存相关的参数配置。</p>
-<p><strong>对象优先在Eden分配</strong></p>
-<p>对象主要分配在新生代的 Eden 区上，如果启动了本地线程分配缓冲区，将线程优先在 (TLAB) 上分配。少数情况会直接分配在老年代中。</p>
-<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/java堆内存模型.png" alt></p>
-<p>新生代和老年代：</p>
-<ul>
-<li>新生代GC(minor GC)：发生在新生代的垃圾回收动作，频繁，速度快。</li>
-<li>老年代GC(Major GC / Full GC)：发生在老年代的垃圾回收动作，出现了 Major GC 经常会伴随至少一次 Minor GC(非绝对)。Major GC 的速度一般会比 Minor GC 慢十倍以上。</li>
-</ul>
-<p><strong>大对象直接进入老年代</strong></p>
-<p>大对象指的是需要大量连续内存空间的java对象，最典型的大对象是那种很长字符串及数组(byte[]数组就是典型大对象)</p>
-<p>虚拟机提供一个-XX:PretenureSizeThreshold参数，令大于这个设置值的对象直接在老年代中分配。目的是避免在Eden区及两个Survivor区之间发生大量的内存拷贝。</p>
-<p><strong>长期存活的对象直接进入老年代</strong></p>
-<p>虚拟机为每个对象定义了一个年龄计数器，如果对象经过了1次Minor GC那么对象会进入Survivor区，之后每经过一次Minor GC那么对象的年龄加1，知道达到阀值对象进入老年区。</p>
-<p><strong>动态对象年龄判断</strong></p>
-<p>如果Survivor区中相同年龄的所有对象大小的总和大于Survivor空间的一半，年龄大于或等于该年龄的对象可以直接进入老年代。</p>
-<p><strong>空间分配担保</strong></p>
-<p>每次进行Minor GC时，JVM会计算Survivor区移至老年区的对象的平均大小，如果这个值大于老年区的剩余值大小则进行一次Full GC，如果小于检查HandlePromotionFailure设置，如果true则只进行Monitor GC,如果false则进行Full GC。 </p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/并发/Java并发编程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3711,6 +2896,943 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/并发/多线程1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/并发/多线程1/" class="post-title-link" itemprop="url">多线程(一)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-07 01:40:14" itemprop="dateModified" datetime="2019-10-07T01:40:14+08:00">2019-10-07</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-07T01:40:14+08:00" content="2019-10-07">
+                2019-10-07 01:40:14
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/并发/多线程1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/并发/多线程1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="多线程-一"><a href="#多线程-一" class="headerlink" title="多线程(一)"></a>多线程(一)</h3><h5 id="进程和线程的基本概念"><a href="#进程和线程的基本概念" class="headerlink" title="进程和线程的基本概念"></a>进程和线程的基本概念</h5><p>进程：系统中能独立运行并作为资源分配的基本单位</p>
+<p>进程的特征：</p>
+<p>1.动态性：进程的实质是程序的一次执行过程，进程是动态产生，动态消亡的。<br>2.并发性：任何进程都可以同其他进程一起并发执行。<br>3.独立性：进程是一个能独立运行的基本单位，同时也是系统分配资源和调度的独立单位。<br>4.异步性：由于进程间的相互制约，使进程具有执行的间断性，即进程按各自独立的、不可预知的速度向前推进。</p>
+<p>线程：是进程中的一个实体，作为系统调度和分派的基本单位。</p>
+<p>线程的性质：</p>
+<p>1.线程是进程内的一个相对独立的可执行的单元。若把进程称为任务的话，那么线程则是应用中的一个子任务的执行。<br>2.由于线程是被调度的基本单元，而进程不是调度单元。所以，每个进程在创建时，至少需要同时为该进程创建一个线程。即进程中至少要有一个或一个以上的线程，否则该进程无法被调度执行。<br>3.进程是被分给并拥有资源的基本单元。同一进程内的多个线程共享该进程的资源，但线程并不拥有资源，只是使用他们。<br>4.线程是操作系统中基本调度单元，因此线程中应包含有调度所需要的必要信息，且在生命周期中有状态的变化。<br>5.由于共享资源【包括数据和文件】，所以线程间需要通信和同步机制，且需要时线程可以创建其他线程，但线程间不存在父子关系。</p>
+<p>进程与线程的区别：</p>
+<p>1、调度：在传统的操作系统中，CPU调度和分派的基本单位是进程。在引入线程的操作系统中，则把线程作为CPU调度和分派的基本单位，进程则作为资源拥有的基本单位，将线程作为cpu调度和分派，进程则作为资源拥有的基本单位，显著提高系统的并发性（同一进程中的线程切换不会引起进程切换，不同进程中的线程切换才会引起进程切换）</p>
+<p>2、并发性：进程之间可以并发执行，同一个进程之间的线程也可以并发执行，提高系统资源和系统吞吐量</p>
+<p>（例如，在一个为引入线程的单CPU操作系统中，若仅设置一个文件服务进程，当它由于某种原因被封锁时，便没有其他的文件服务进程来提供服务。在引入线程的操作系统中，可以在一个文件服务进程设置多个服务线程。当第一个线程等待时，文件服务进程中的第二个线程可以继续运行；当第二个线程封锁时，第三个线程可以继续执行，从而显著地提高了文件服务的质量以及系统的吞吐量。）</p>
+<p>3、拥有资源：进程拥系统资源的独立单位，线程不能拥有自己的资源，但可以访问隶属进程的资源（代码段、数据段以及系统资源，可供同一个进程的其他线程共享）</p>
+<p>4、独立性：在同一进程中的不同线程之间的独立性要比不同进程之间的独立性低得多，这是因为为了防止进程之间彼此干扰和破坏，每个进程都拥有一个独立的地址空间和其它资源，除了共享全局变量外，不允许其它进程的访问。</p>
+<p>5、系统开销：由于在创建或撤销进程时，系统都要为之分配或回收资源，如内存空间、I/O设备等。因此，操作系统为此所付出的开销将显著地大于在创建或撤消线程时的开销。</p>
+<p>6、支持多处理机系统： 在多处理机系统中，对于传统的进程，即单线程进程，不管有多少处理机，该进程只能运行在一个处理机上。但对于多线程进程，就可以将一个进程中的多个线程分配到多个处理机上，使它们并行执行，这无疑将加速进程的完成。</p>
+<h5 id="创建和启动线程"><a href="#创建和启动线程" class="headerlink" title="创建和启动线程"></a>创建和启动线程</h5><p>1、继承Thread类创建线程类</p>
+<p>步骤：</p>
+<ul>
+<li>定义一个继承Thread类的子类，并重写该类的run()方法</li>
+<li>创建子类的实例，即创建线程对象</li>
+<li>调用该线程对象的start()方法启动线程</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeThead</span> <span class="keyword">extends</span> <span class="title">Thraad</span>   </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span>   </span>&#123; </span><br><span class="line">     <span class="comment">//do something here  </span></span><br><span class="line">    &#125;  </span><br><span class="line"> &#125; </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"> SomeThread oneThread = <span class="keyword">new</span> SomeThread();   </span><br><span class="line">  <span class="comment">//启动线程：   </span></span><br><span class="line"> oneThread.start(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、实现Runnable接口创建线程类</p>
+<p>步骤：</p>
+<ul>
+<li>定义Runnable接口的实现类，并重写该接口的的run()方法</li>
+<li>创建该实现类的实例</li>
+<li>以此实例作为创建Thread对象的参数，该Thread对象即是线程对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span>   </span>&#123; </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span>   </span>&#123; </span><br><span class="line">  <span class="comment">//do something here  </span></span><br><span class="line">  &#125;  </span><br><span class="line">&#125; </span><br><span class="line">Runnable oneRunnable = <span class="keyword">new</span> SomeRunnable();   </span><br><span class="line">Thread oneThread = <span class="keyword">new</span> Thread(oneRunnable);   </span><br><span class="line">oneThread.start();</span><br></pre></td></tr></table></figure>
+<p>3、通过Callable和Future创建对象</p>
+<p>步骤：</p>
+<ul>
+<li>创建Callable接口的实现类，并实现call()方法，该call()方法作为线程执行体，并且有返回值</li>
+<li>创建Callable实现类的实例</li>
+<li>使用FutureTask类来包装Callable对象，该FutureTask对象封装Callable对象的call()方法的返回值</li>
+<li>使用FutureTask对象作为Thread对象的target创建并启动新线程</li>
+<li>调用FutureTask对象的get()方法获取子线程执行结束后的返回值</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Callable</span>   </span>&#123; </span><br><span class="line">  <span class="function">V <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;  </span><br><span class="line"> &#125; </span><br><span class="line">  步骤<span class="number">1</span>：创建实现Callable接口的类SomeCallable(略);   </span><br><span class="line">  步骤<span class="number">2</span>：创建一个类对象： </span><br><span class="line">      Callable oneCallable = <span class="keyword">new</span> SomeCallable(); </span><br><span class="line">  步骤<span class="number">3</span>：由Callable创建一个FutureTask对象：   </span><br><span class="line">    FutureTask oneTask = <span class="keyword">new</span> FutureTask(oneCallable); </span><br><span class="line">  注释： FutureTask是一个包装器，它通过接受Callable来创建，它同时实现了 Future和Runnable接口。 </span><br><span class="line">  步骤<span class="number">4</span>：由FutureTask创建一个Thread对象：   </span><br><span class="line">    Thread oneThread = <span class="keyword">new</span> Thread(oneTask);   </span><br><span class="line">  步骤<span class="number">5</span>：启动线程：  </span><br><span class="line">    oneThread.start();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Callable&lt;Integer&gt; myCallable = <span class="keyword">new</span> MyCallable();    <span class="comment">// 创建MyCallable对象</span></span><br><span class="line">        FutureTask&lt;Integer&gt; ft = <span class="keyword">new</span> FutureTask&lt;Integer&gt;(myCallable); <span class="comment">//使用FutureTask来包装MyCallable对象</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" "</span> + i);</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">30</span>) &#123;</span><br><span class="line">                Thread thread = <span class="keyword">new</span> Thread(ft);   <span class="comment">//FutureTask对象作为Thread对象的target创建新的线程</span></span><br><span class="line">                thread.start();                      <span class="comment">//线程进入到就绪状态</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"主线程for循环执行完毕.."</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = ft.get();            <span class="comment">//取得新创建的新线程中的call()方法返回的结果</span></span><br><span class="line">            System.out.println(<span class="string">"sum = "</span> + sum);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCallable</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 与run()方法不同的是，call()方法具有返回值</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" "</span> + i);</span><br><span class="line">            sum += i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h5><p><img src="/2019/05/26/并发/多线程1/线程生命周期.png" alt></p>
+<p>1、新建状态</p>
+<p>   用new关键字和Thread类或其子类建立一个线程对象后，该线程对象就处于新生状态。处于新生状态的线程有自己的内存空间，通过调用start方法进入就绪状态（runnable）。</p>
+<p>2、就绪状态</p>
+<p>处于就绪状态的线程已经具备了运行条件，但还没有分配到CPU，处于线程就绪队列（尽管是采用队列形式，事实上，把它称为可运行池而不是可运行队列。因为cpu的调度不一定是按照先进先出的顺序来调度的），等待系统为其分配CPU。等待状态并不是执行状态，当系统选定一个等待执行的Thread对象后，它就会从等待执行状态进入执行状态，系统挑选的动作称之为“cpu调度”。一旦获得CPU，线程就进入运行状态并自动调用自己的run方法。</p>
+<p>提示：如果希望子线程调用start()方法后立即执行，可以使用Thread.sleep()方式使主线程睡眠一伙儿，转去执行子线程。</p>
+<p>3、运行状态</p>
+<p>处于就绪状态的线程，如果获得了cpu的调度，就会从就绪状态变为运行状态，执行run()方法中的任务。</p>
+<p>运行状态-&gt;就绪状态：1.失去cpu资源 2.调用yield()方法</p>
+<p>运行状态-&gt;阻塞状态：</p>
+<p>1.调用sleep()方法主动放弃cpu资源</p>
+<p>2.线程调用一个阻塞式IO方法，在该方法返回之前，线程被阻塞</p>
+<p>3.线程试图获取一个同步监视器（锁），但该同步监视器正被其他线程所持有</p>
+<p>4.线程在等待某个通知（notify）</p>
+<p>5.程序调用线程的suspend方法被线程挂起（容易导致死锁）</p>
+<p>4、阻塞状态</p>
+<p>只有当引起阻塞的原因消除时，如睡眠时间已到，或等待的I/O设备空闲下来，线程便转入就绪状态，重新到就绪队列中排队等待，被系统选中后从原来停止的位置开始继续运行。</p>
+<p>5、死亡状态</p>
+<p> 当线程的run()方法执行完，或者被强制性地终止，就认为它死去。这个线程对象也许是活的，但是，它已经不是一个单独执行的线程。线程一旦死亡，就不能复生。 </p>
+<h5 id="线程管理"><a href="#线程管理" class="headerlink" title="线程管理"></a>线程管理</h5><p>1、线程睡眠sleep</p>
+<p>让当前正在执行的线程暂停一段时间，并进入阻塞状态，且当前线程不会失去锁</p>
+<p>sleep是静态方法，最好不要用Thread的实例对象调用它，因为它睡眠的始终是当前正在运行的线程，而不是调用它的线程对象，它只对正在运行状态的线程对象有效</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;  </span><br><span class="line">        System.out.println(Thread.currentThread().getName());  </span><br><span class="line">        MyThread myThread=<span class="keyword">new</span> MyThread();  </span><br><span class="line">        myThread.start();  </span><br><span class="line">        myThread.sleep(<span class="number">1000</span>);<span class="comment">//这里sleep的就是main线程，而非myThread线程  </span></span><br><span class="line">        Thread.sleep(<span class="number">10</span>);  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)&#123;  </span><br><span class="line">            System.out.println(<span class="string">"main"</span>+i);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用sleep方法之后，线程是进入阻塞状态的，只有当睡眠的时间结束，才会重新进入到就绪状态，而就绪状态进入到运行状态，是由系统控制的，我们不可能精准的去干涉它，所以如果调用Thread.sleep(1000)使得线程睡眠1秒，可能结果会大于1秒。</p>
+<p>2、线程让步yield()</p>
+<p>yield()方法和sleep()方法有点相似，它也是Thread类提供的一个静态的方法，它也可以让当前正在执行的线程暂停，让出cpu资源给其他的线程。但是和sleep()方法不同的是，它不会进入到阻塞状态，而是进入到就绪状态。</p>
+<p>3、线程合并join()</p>
+<p>线程的合并的含义就是将几个并行线程的线程合并为一个单线程执行，应用场景是当一个线程必须等待另一个线程执行完毕才能执行时，Thread类提供了join方法来完成这个功能，它不是静态方法。<br>从上面的方法的列表可以看到，它有3个重载的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">()</span>      </span></span><br><span class="line"><span class="function">     当前线程等该加入该线程后面，等待该线程终止。    </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">long</span> millis)</span>  </span></span><br><span class="line"><span class="function">     当前线程等待该线程终止的时间最长为 millis 毫秒。 如果在millis时间内，该线程没有执行完，那么当前线程进入就绪状态，重新等待cpu调度  </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">long</span> millis,<span class="keyword">int</span> nanos)</span>   </span></span><br><span class="line"><span class="function">     等待该线程终止的时间最长为 millis 毫秒 + nanos 纳秒。如果在millis时间内，该线程没有执行完，那么当前线程进入就绪状态，重新等待cpu调度</span></span><br></pre></td></tr></table></figure>
+<p>4、设置线程优先级</p>
+<p>每个线程默认的优先级都与创建它的父线程具有相同的优先级，在默认情况下，main线程具有普通优先级。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MAX_PRIORITY   =<span class="number">10</span></span><br><span class="line"></span><br><span class="line">MIN_PRIORITY   =<span class="number">1</span></span><br><span class="line"></span><br><span class="line">NORM_PRIORITY   =<span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong>虽然Java提供了10个优先级别，但这些优先级别需要操作系统的支持。不同的操作系统的优先级并不相同，而且也不能很好的和Java的10个优先级别对应。所以我们应该使用MAX_PRIORITY、MIN_PRIORITY和NORM_PRIORITY三个静态常量来设定优先级，这样才能保证程序最好的可移植性。</p>
+<p>5、后台(守护)线程</p>
+<p>JVM的垃圾回收、内存管理等线程都是守护线程。还有就是在做数据库应用时候，使用的数据库连接池，连接池本身也包含着很多后台线程，监控连接个数、超时时间、状态等等。</p>
+<p>守护线程的用途为：</p>
+<p>​     • 守护线程通常用于执行一些后台作业，例如在应用程序运行时播放背景音乐，在文字编辑器里做自动语法检查、自动保存等功能。</p>
+<p>​     • Java的垃圾回收也是一个守护线程。守护线的好处就是你不需要关心它的结束问题。例如你在你的应用程序运行的时候希望播放背景音乐，如果将这个播放背景音乐的线程设定为非守护线程，那么在用户请求退出的时候，不仅要退出主线程，还要通知播放背景音乐的线程退出；如果设定为守护线程则不需要了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public final void setDaemon(boolean on)        </span><br><span class="line">将该线程标记为守护线程或用户线程。当正在运行的线程都是守护线程时，Java 虚拟机退出。    </span><br><span class="line">         </span><br><span class="line">该方法必须在启动线程前调用。 该方法首先调用该线程的 checkAccess 方法，且不带任何参数。这可能抛出 SecurityException（在当前线程中）。   </span><br><span class="line">  参数：</span><br><span class="line">     on - 如果为 true，则将该线程标记为守护线程。    </span><br><span class="line">  抛出：    </span><br><span class="line">    IllegalThreadStateException - 如果该线程处于活动状态。    </span><br><span class="line">    SecurityException - 如果当前线程无法修改该线程。</span><br></pre></td></tr></table></figure>
+<p>6、正确结束线程</p>
+<p>Thread.stop()、Thread.suspend、Thread.resume、Runtime.runFinalizersOnExit这些终止线程运行的方法已经被废弃了，使用它们是极端不安全的！想要安全有效的结束一个线程，可以使用下面的方法：</p>
+<p>​    • 正常执行完run方法，然后结束掉；</p>
+<p>​    • 控制循环条件和判断条件的标识符来结束掉线程。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/jvm/JVM之垃圾收集器与内存分配/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/" class="post-title-link" itemprop="url">JVM之垃圾收集器与内存分配</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-07 01:38:07" itemprop="dateModified" datetime="2019-10-07T01:38:07+08:00">2019-10-07</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-07T01:38:07+08:00" content="2019-10-07">
+                2019-10-07 01:38:07
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/jvm/" itemprop="url" rel="index"><span itemprop="name">jvm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JVM之垃圾收集器与内存分配"><a href="#JVM之垃圾收集器与内存分配" class="headerlink" title="JVM之垃圾收集器与内存分配"></a>JVM之垃圾收集器与内存分配</h1><p>垃圾回收区域：</p>
+<p>程序计数器、虚拟机栈、本地方法栈 3 个区域随线程生灭(因为是线程私有)，栈中的栈帧随着方法的进入和退出而有条不紊地执行着出栈和入栈操作。</p>
+<p>而 Java 堆和方法区则不一样，一个接口中的多个实现类需要的内存可能不一样，一个方法中的多个分支需要的内存也可能不一样，我们只有在程序处于运行期才知道那些对象会创建，这部分内存的分配和回收都是动态的，垃圾回收期所关注的就是java堆和方法区。</p>
+<h3 id="判断对象死活"><a href="#判断对象死活" class="headerlink" title="判断对象死活"></a>判断对象死活</h3><p><strong>引用计数法：</strong></p>
+<p>给对象添加一个引用计数器。但是难以解决循环引用问题。</p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/垃圾回收引用计数法.png" alt></p>
+<p>对象objA和objB都有字段instance，赋值令objA.instance = objB及objB.instance = objA，除此以外，这两个对象再无任何引用，实际上这两个对象已经不可能再被访问，但是它们因为互相引用着对方，导致它们的引用计数都不为0,如果不下小心直接把 Obj1-reference 和 Obj2-reference 置 null。则在 Java 堆当中的两块内存依然保持着互相引用无法回收。</p>
+<p><strong>可达性分析(根搜索算法)</strong>：</p>
+<p>通过一系列的 ‘GC Roots’ 的对象作为起始点，从这些节点出发所走过的路径称为引用链。当一个对象到 GC Roots 没有任何引用链相连的时候说明对象不可用。</p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/垃圾回收根搜索算法.jpg" alt></p>
+<p>可作为 GC Roots 的对象：</p>
+<ul>
+<li>虚拟机栈(栈帧中的本地变量表)中引用的对象</li>
+<li>方法区中类静态属性引用的对象</li>
+<li>方法区中常量引用的对象</li>
+<li>本地方法栈中 JNI(即一般说的 Native 方法) 引用的对象</li>
+</ul>
+<p><strong>引用的类别：</strong></p>
+<ul>
+<li>强引用：类似于 <code>Object obj = new Object();</code> 创建的，只要强引用在就不回收。</li>
+<li>软引用：SoftReference 类实现软引用。在系统要发生内存溢出异常之前，将会把这些对象列进回收范围之中进行二次回收。</li>
+<li>弱引用：WeakReference 类实现弱引用。对象只能生存到下一次垃圾收集之前。在垃圾收集器工作时，无论内存是否足够都会回收掉只被弱引用关联的对象。</li>
+<li>虚引用：PhantomReference 类实现虚引用。无法通过虚引用获取一个对象的实例，为一个对象设置虚引用关联的唯一目的就是能在这个对象被收集器回收时收到一个系统通知。</li>
+</ul>
+<h3 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h3><p>在堆中，尤其是在新生代中，一次垃圾回收一般可以回收 70% ~ 95% 的空间，而永久代的垃圾收集效率远低于此。</p>
+<p>永久代垃圾回收主要两部分内容：废弃的常量和无用的类。  </p>
+<p>判断废弃常量：一般是判断没有该常量的引用。</p>
+<p>判断无用的类：要以下三个条件都满足</p>
+<ul>
+<li>该类所有的实例都已经回收，也就是 Java 堆中不存在该类的任何实例</li>
+<li>加载该类的 ClassLoader 已经被回收</li>
+<li>该类对应的 java.lang.Class 对象没有任何地方被引用，无法在任何地方通过反射访问该类的方法</li>
+</ul>
+<h3 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h3><p>标记-清除算法：</p>
+<p>标记所有需要回收的对象，标记完成后统一进行回收被标记的对象</p>
+<p>缺点：</p>
+<ul>
+<li>效率不高</li>
+<li>空间产生大量碎片</li>
+</ul>
+<p>复制算法：</p>
+<p>思路：把空间分成两块，每次只对其中一块进行 GC。当这块内存使用完时，就将还存活的对象复制到另一块上面。</p>
+<p>解决前一种方法的不足，但是会造成空间利用率低下。因为大多数新生代对象都不会熬过第一次 GC。所以没必要 1 : 1 划分空间。可以分一块较大的 Eden 空间和两块较小的 Survivor 空间，每次使用 Eden 空间和其中一块 Survivor。当回收时，将 Eden 和 Survivor 中还存活的对象一次性复制到另一块 Survivor 上，最后清理 Eden 和 Survivor 空间。大小比例一般是 8 : 1 : 1，每次浪费 10% 的 Survivor 空间。</p>
+<p>但是这里有一个问题就是如果存活的大于 10% 怎么办？这里采用一种分配担保策略：多出来的对象直接进入老年代。</p>
+<p>标记-整理算法：</p>
+<p>与标记-清除算法不同的一点是，会把存活对象移动一端，解决空间产生大量碎片的缺点。</p>
+<p>分代收集算法：</p>
+<p>当前商业虚拟机的垃圾收集都采用分代收集算法。</p>
+<p>把java堆分成新生代和老年代，根据各个年代的特点采用最合适的收集算法。</p>
+<p>在新生代中，每次垃圾回收时都发现大批对象死去，只有少量存活，选用复制算法，只需要付出少量存活对象的复制成本就可以完成收集。</p>
+<p>在老年代中，对象存活率高，没有额外空间对他进行分配担保，就使用标记清除或者标记整理算法回收。</p>
+<h3 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h3><p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/垃圾回收收集器.jpg" alt></p>
+<p>说明：如果两个收集器之间存在连线说明他们之间可以搭配使用。</p>
+<p><strong>serial收集器</strong></p>
+<p>这是一个单线程收集器。意味着它只会使用一个 CPU 或一条收集线程去完成收集工作，并且在进行垃圾回收时必须暂停其它所有的工作线程直到收集结束。</p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/serial收集器.jpg" alt></p>
+<p><strong>ParNew收集器</strong></p>
+<p> Serial 收集器的多线程版本，许多运行在server模式下的虚拟机中首选的新生代收集器，原因是处理Serial收集器，只有它能与CMS收集器配合工作(真正意义上的并发收集器，实现让垃圾收集线程和用户线程同时工作)</p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/ParNew收集器.jpg" alt></p>
+<p><strong>Parallel Scavenge收集器</strong></p>
+<p>并行和并发区别：</p>
+<ul>
+<li>并行(Parallel)：指多条垃圾收集线程并行工作，但此时用户线程仍然处于等待状态</li>
+<li>并发(Concurrent)：指用户线程与垃圾收集线程同时执行（但不一定是并行的，可能会交替执行），用户线程继续运行，而垃圾收集程序运行于另一个CPU上。</li>
+</ul>
+<p>这是一个<strong>新生代收集器</strong>，也是使用复制算法实现，同时也是<strong>并行</strong>的<strong>多线程</strong>收集器。</p>
+<p>CMS 等收集器的关注点是尽可能地缩短<strong>垃圾收集时用户线程所停顿的时间</strong>，而 Parallel Scavenge 收集器的目的是<strong>达到一个可控制的吞吐量</strong>(Throughput = 运行用户代码时间 / (运行用户代码时间 + 垃圾收集时间)  )。</p>
+<p>Parallel Scavenge收集器提供两个参数用于精确控制吞吐量，分别是<strong>控制最大垃圾收集停顿时间</strong>的-XX:MaxGCPauseMillis参数和<strong>直接设置吞吐量大小</strong>的-XX:GCTimeRatio参数。</p>
+<p>-XX:MaxGCPauseMillis：允许的值是一个大于0的毫秒数，收集器将尽力保证内存回收花费的时间不超过设定值。GC停顿时间缩短是以牺牲吞吐量和新生代空间来换取的(并不是把参数设置越小越好)</p>
+<p>-XX:GCTimeRatio：是一个大于0小于100的整数，是垃圾收集时间占总时间的比率，相当于吞吐量的倒数。</p>
+<p>-XX:+UserAdaptiveSIzePolicy：作为一个吞吐量优先的收集器，虚拟机会根据当前系统的运行情况收集性能监控信息，动态调整停顿时间。这就是 GC 的<strong>自适应调整策略</strong>(GC Ergonomics)。</p>
+<p><strong>Serial Old收集器</strong></p>
+<p>收集器的老年代版本，单线程，使用 <code>标记 —— 整理</code>。</p>
+<p><strong>Parallel Old收集器</strong></p>
+<p>Parallel Old 是 Parallel Scavenge 收集器的老年代版本。多线程，使用 <code>标记 —— 整理</code></p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/parallelold收集器.png" alt></p>
+<p><strong>CMS收集器</strong></p>
+<p>CMS (Concurrent Mark Sweep) 收集器是一种以<strong>获取最短回收停顿时间</strong>为目标的收集器。基于 <code>标记 —— 清除</code> 算法实现。</p>
+<p>运作步骤：</p>
+<ul>
+<li>初始标记(CMS initial mark)：标记 GC Roots 能直接关联到的对象</li>
+<li>并发标记(CMS concurrent mark)：进行 GC Roots Tracing(根搜索算法)</li>
+<li>重新标记(CMS remark)：修正并发标记期间的变动部分</li>
+<li>并发清除(CMS concurrent sweep)</li>
+</ul>
+<p>其中初始标记、重新标记这两个步骤仍然需要“Stop The World”。初始标记仅仅只是标记一下GC Roots能直接关联到的对象，速度很快，并发标记阶段就是进行GC Roots Tracing的过程，而重新标记阶段则是为了修正并发标记期间，因用户程序继续运作而导致标记产生变动的那一部分对象的标记记录，这个阶段的停顿时间一般会比初始标记阶段稍长一些，但远比并发标记的时间短。</p>
+<p>由于整个过程中耗时最长的并发标记和并发清除过程中，收集器线程都可以与用户线程一起工作，所以总体上来说，CMS收集器的内存回收过程是与用户线程一起并发地执行。老年代收集器（新生代使用ParNew）。</p>
+<p><strong>优点</strong>: 并发收集、低停顿<br><strong>缺点</strong>: 对 CPU 资源敏感、无法收集浮动垃圾、<code>标记 —— 清除</code> 算法带来的空间碎片</p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/CMS收集器.png" alt></p>
+<p><strong>G1收集器</strong></p>
+<p>G1是目前技术发展的最前沿成果之一，HotSpot开发团队赋予它的使命是未来可以替换掉JDK1.5中发布的CMS收集器。与CMS收集器相比G1收集器有以下特点：</p>
+<ol>
+<li><strong>空间整合</strong>，G1收集器采用标记整理算法，不会产生内存空间碎片。分配大对象时不会因为无法找到连续空间而提前触发下一次GC。</li>
+<li><strong>可预测停顿</strong>，这是G1的另一大优势，降低停顿时间是G1和CMS的共同关注点，但G1除了追求低停顿外，还能建立可预测的停顿时间模型，能让使用者明确指定在一个长度为N毫秒的时间片段内，消耗在垃圾收集上的时间不得超过N毫秒，这几乎已经是实时Java（RTSJ）的垃圾收集器的特征了。</li>
+</ol>
+<p>上面提到的垃圾收集器，收集的范围都是整个新生代或者老年代，而G1不再是这样。使用G1收集器时，Java堆的内存布局与其他收集器有很大差别，它将整个Java堆划分为<strong>多个大小相等的独立区域</strong>（Region），虽然还保留有新生代和老年代的概念，但新生代和老年代不再是物理隔阂了，它们都是一部分（物理可以不连续、逻辑连续的一段内存）Region的集合。</p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/G1垃圾回收器.png" alt></p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/G1步骤.png" alt></p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/G1收集器运行.png" alt></p>
+<p>G1的新生代收集跟ParNew类似，当新生代占用达到一定比例的时候，开始出发收集。和CMS类似，G1收集器收集老年代对象会有短暂停顿。</p>
+<p>收集步骤：</p>
+<p>1、标记阶段，首先初始标记(Initial-Mark),这个阶段是停顿的(Stop the World Event)，并且会触发一次普通Mintor GC。对应GC log:GC pause (young) (inital-mark)</p>
+<p>2、Root Region Scanning根区域扫描，程序运行过程中会回收survivor区(存活到老年代)，这一过程必须在young GC之前完成。</p>
+<p>3、Concurrent Marking并发标记，在整个堆中进行并发标记(和应用程序并发执行)，此过程可能被young GC中断。在并发标记阶段，若发现区域对象中的所有对象都是垃圾，那个这个区域会被立即回收(图中打X)。同时，并发标记过程中，会计算每个区域的对象活性(区域中存活对象的比例)。</p>
+<p>4、Remark, 最终标记，会有短暂停顿(STW:stop the world)。再标记阶段是用来收集 并发标记阶段 产生新的垃圾(并发阶段和应用程序一同运行)；G1中采用了比CMS更快的初始快照算法:snapshot-at-the-beginning (SATB)。</p>
+<p>5、Copy/Clean up，多线程清除失活对象，会有STW。G1将回收区域的存活对象拷贝到新区域，清除Remember Sets，并发清空回收区域并把它返回到空闲区域链表中。</p>
+<p>6、复制/清除过程后。回收区域的活性对象已经被集中回收到深蓝色和深绿色区域。</p>
+<h3 id="内存分配与回收策略"><a href="#内存分配与回收策略" class="headerlink" title="内存分配与回收策略"></a>内存分配与回收策略</h3><p>对象的内存分配，往大方向上讲，就是在堆上分配（但也可能经过JIT编译后被拆散为标量类型并间接地在栈上分配），对象主要分配在新生代的Eden区上，如果启动本地线程分配缓冲(TLAB)，将线程上优先在TLAB上分配少数情况下也可能会直接分配在老年代中，其细节取决于当前使用的是哪一种垃圾收集器组合，还有虚拟机中与内存相关的参数配置。</p>
+<p><strong>对象优先在Eden分配</strong></p>
+<p>对象主要分配在新生代的 Eden 区上，如果启动了本地线程分配缓冲区，将线程优先在 (TLAB) 上分配。少数情况会直接分配在老年代中。</p>
+<p><img src="/2019/05/26/jvm/JVM之垃圾收集器与内存分配/java堆内存模型.png" alt></p>
+<p>新生代和老年代：</p>
+<ul>
+<li>新生代GC(minor GC)：发生在新生代的垃圾回收动作，频繁，速度快。</li>
+<li>老年代GC(Major GC / Full GC)：发生在老年代的垃圾回收动作，出现了 Major GC 经常会伴随至少一次 Minor GC(非绝对)。Major GC 的速度一般会比 Minor GC 慢十倍以上。</li>
+</ul>
+<p><strong>大对象直接进入老年代</strong></p>
+<p>大对象指的是需要大量连续内存空间的java对象，最典型的大对象是那种很长字符串及数组(byte[]数组就是典型大对象)</p>
+<p>虚拟机提供一个-XX:PretenureSizeThreshold参数，令大于这个设置值的对象直接在老年代中分配。目的是避免在Eden区及两个Survivor区之间发生大量的内存拷贝。</p>
+<p><strong>长期存活的对象直接进入老年代</strong></p>
+<p>虚拟机为每个对象定义了一个年龄计数器，如果对象经过了1次Minor GC那么对象会进入Survivor区，之后每经过一次Minor GC那么对象的年龄加1，知道达到阀值对象进入老年区。</p>
+<p><strong>动态对象年龄判断</strong></p>
+<p>如果Survivor区中相同年龄的所有对象大小的总和大于Survivor空间的一半，年龄大于或等于该年龄的对象可以直接进入老年代。</p>
+<p><strong>空间分配担保</strong></p>
+<p>每次进行Minor GC时，JVM会计算Survivor区移至老年区的对象的平均大小，如果这个值大于老年区的剩余值大小则进行一次Full GC，如果小于检查HandlePromotionFailure设置，如果true则只进行Monitor GC,如果false则进行Full GC。 </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/jvm/JVM之类的加载机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/jvm/JVM之类的加载机制/" class="post-title-link" itemprop="url">JVM之类的加载机制</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-07 01:38:36" itemprop="dateModified" datetime="2019-10-07T01:38:36+08:00">2019-10-07</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-07T01:38:36+08:00" content="2019-10-07">
+                2019-10-07 01:38:36
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/jvm/JVM之类的加载机制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/jvm/JVM之类的加载机制/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JVM之类的加载机制"><a href="#JVM之类的加载机制" class="headerlink" title="JVM之类的加载机制"></a>JVM之类的加载机制</h1><h3 id="什么是类的加载"><a href="#什么是类的加载" class="headerlink" title="什么是类的加载"></a>什么是类的加载</h3><p>类的加载指的是将类的.class文件中的二进制数据读入到内存中，将其放在运行时数据区的方法区内，然后在堆区创建一个 <code>java.lang.Class</code>对象，用来封装类在方法区内的数据结构。类的加载的最终产品是位于堆区中的 <code>Class</code>对象。</p>
+<p> <code>Class</code>对象封装了类在方法区内的数据结构，并且向Java程序员提供了访问方法区内的数据结构的接口。</p>
+<p><img src="/2019/05/26/jvm/JVM之类的加载机制/什么是类加载.jpg" alt></p>
+<p>类加载器并不需要等到某个类被“首次主动使用”时再加载它，JVM规范允许类加载器在预料某个类将要被使用时就预先加载它，如果在预先加载的过程中遇到了.class文件缺失或存在错误，类加载器必须在程序首次主动使用该类时才报告错误（LinkageError错误）如果这个类一直没有被程序主动使用，那么类加载器就不会报告错误。</p>
+<p><strong>加载.class文件的方式</strong></p>
+<ul>
+<li>从本地系统中直接加载</li>
+<li>通过网络下载.class文件</li>
+<li>从zip，jar等归档文件中加载.class文件</li>
+<li>从专有数据库中提取.class文件</li>
+<li>将Java源文件动态编译为.class文件</li>
+</ul>
+<h3 id="类的生命周期"><a href="#类的生命周期" class="headerlink" title="类的生命周期"></a>类的生命周期</h3><p><img src="/2019/05/26/jvm/JVM之类的加载机制/类的生命周期.png" alt></p>
+<p>其中类加载的过程包括了加载、验证、准备、解析、初始化五个阶段。在这五个阶段中，加载、验证、准备和初始化这四个阶段发生的顺序是确定的，而解析阶段则不一定，它在某些情况下可以在初始化阶段之后开始，这是为了支持Java语言的运行时绑定（也成为动态绑定或晚期绑定）。另外注意这里的几个阶段是按顺序开始，而不是按顺序进行或完成，因为这些阶段通常都是互相交叉地混合进行的，通常在一个阶段执行的过程中调用或激活另一个阶段。</p>
+<h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><p>在加载阶段，虚拟机需要完成以下三件事情：</p>
+<ul>
+<li>通过一个类的全限定名来获取其定义的二进制字节流。</li>
+<li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。</li>
+<li>在Java堆中生成一个代表这个类的 <code>java.lang.Class</code>对象，作为对方法区中这些数据的访问入口。</li>
+</ul>
+<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p><strong>验证：确保被加载的类的正确性</strong></p>
+<p>验证是连接阶段的第一步，这一阶段的目的是为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。验证阶段大致会完成4个阶段的检验动作：</p>
+<ul>
+<li><strong>文件格式验证</strong>：验证字节流是否符合Class文件格式的规范；例如：是否以 <code>0xCAFEBABE</code>开头、主次版本号是否在当前虚拟机的处理范围之内、常量池中的常量是否有不被支持的类型。</li>
+<li><strong>元数据验证</strong>：对字节码描述的信息进行语义分析（注意：对比javac编译阶段的语义分析），以保证其描述的信息符合Java语言规范的要求；例如：这个类是否有父类，除了 <code>java.lang.Object</code>之外。</li>
+<li><strong>字节码验证</strong>：通过数据流和控制流分析，确定程序语义是合法的、符合逻辑的。</li>
+<li><strong>符号引用验证</strong>：确保解析动作能正确执行。</li>
+</ul>
+<p>验证阶段是非常重要的，但不是必须的，它对程序运行期没有影响，如果所引用的类经过反复验证，那么可以考虑采用 <code>-Xverifynone</code>参数来关闭大部分的类验证措施，以缩短虚拟机类加载的时间。</p>
+<p><strong>准备：为类的静态变量分配内存，并将其初始化为默认值</strong></p>
+<p>准备阶段是正式为类变量分配内存并设置类变量初始值的阶段，这些内存都将在方法区中分配。对于该阶段有以下几点需要注意：</p>
+<ul>
+<li>1、这时候进行内存分配的仅包括类变量（static），而不包括实例变量，实例变量会在对象实例化时随着对象一块分配在Java堆中。</li>
+<li>2、这里所设置的初始值通常情况下是数据类型默认的零值（如0、0L、null、false等），而不是被在Java代码中被显式地赋予的值。</li>
+</ul>
+<p>假设一个类变量的定义为： <code>public static int value=3</code>；</p>
+<p>那么变量value在准备阶段过后的初始值为0，而不是3，因为这时候尚未开始执行任何Java方法，而把value赋值为3的 <code>public static</code>指令是在程序编译后，存放于类构造器 <code>&lt;clinit&gt;（）</code>方法之中的，所以把value赋值为3的动作将在初始化阶段才会执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">这里还需要注意如下几点：</span><br><span class="line"></span><br><span class="line">1、对基本数据类型来说，对于类变量（static）和全局变量，如果不显式地对其赋值而直接使用，则系统会为其赋予默认的零值，而对于局部变量来说，在使用前必须显式地为其赋值，否则编译时不通过。</span><br><span class="line"></span><br><span class="line">2、对于同时被static和final修饰的常量，必须在声明的时候就为其显式地赋值，否则编译时不通过；而只被final修饰的常量则既可以在声明时显式地为其赋值，也可以在类初始化时显式地为其赋值，总之，在使用前必须为其显式地赋值，系统不会为其赋予默认零值。</span><br><span class="line"></span><br><span class="line">3、对于引用数据类型reference来说，如数组引用、对象引用等，如果没有对其进行显式地赋值而直接使用，系统都会为其赋予默认的零值，即null。</span><br><span class="line"></span><br><span class="line">4、如果在数组初始化时没有对数组中的各元素赋值，那么其中的元素将根据对应的数据类型而被赋予默认的零值。</span><br><span class="line"></span><br><span class="line">一句话总结以上几点，类变量、引用数据类型赋予默认值，常量、局部变量必须在声明或者初始化之前显示赋值，不然不通过编译</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3、如果类字段的字段属性表中存在 <code>ConstantValue</code>属性，即同时被final和static修饰，那么在准备阶段变量value就会被初始化为ConstValue属性所指定的值。</li>
+</ul>
+<p>假设上面的类变量value被定义为： <code>public static final int value=3</code>；</p>
+<p>编译时Javac将会为value生成ConstantValue属性，在准备阶段虚拟机就会根据 <code>ConstantValue</code>的设置将value赋值为3。我们可以理解为static final常量在编译期就将其结果放入了调用它的类的常量池中</p>
+<p><strong>解析：把类中的符号引用转换为直接引用</strong></p>
+<p>解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程，解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符  7类符号引用进行。符号引用就是一组符号来描述目标，可以是任何字面量。</p>
+<p>直接引用就是直接指向目标的指针、相对偏移量或一个间接定位到目标的句柄。</p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>初始化，为类的静态变量赋予正确的初始值，JVM负责对类进行初始化，主要对类变量进行初始化。在Java中对类变量进行初始值设定有两种方式：</p>
+<ul>
+<li>①声明类变量是指定初始值</li>
+<li>②使用静态代码块为类变量指定初始值</li>
+</ul>
+<p>JVM初始化步骤：</p>
+<ul>
+<li>1、假如这个类还没有被加载和连接，则程序先加载并连接该类</li>
+<li>2、假如该类的直接父类还没有被初始化，则先初始化其直接父类</li>
+<li>3、假如类中有初始化语句，则系统依次执行这些初始化语句</li>
+</ul>
+<p>类初始化时机：只有当对类的主动使用的时候才会导致类的初始化，类的主动使用包括以下六种：</p>
+<ul>
+<li>创建类的实例，也就是new的方式</li>
+<li>访问某个类或接口的静态变量，或者对该静态变量赋值</li>
+<li>调用类的静态方法</li>
+<li>反射（如 <code>Class.forName(“com.shengsiyuan.Test”)</code>）</li>
+<li>初始化某个类的子类，则其父类也会被初始化</li>
+<li>Java虚拟机启动时被标明为启动类的类（ <code>JavaTest</code>），直接使用 <code>java.exe</code>命令来运行某个主类</li>
+</ul>
+<h3 id="结束生命周期"><a href="#结束生命周期" class="headerlink" title="结束生命周期"></a>结束生命周期</h3><p>在如下几种情况下，Java虚拟机将结束生命周期</p>
+<ul>
+<li>执行了 <code>System.exit()</code>方法</li>
+<li>程序正常执行结束</li>
+<li>程序在执行过程中遇到了异常或错误而异常终止</li>
+<li>由于操作系统出现错误而导致Java虚拟机进程终止</li>
+</ul>
+<h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p><img src="/2019/05/26/jvm/JVM之类的加载机制/类加载器.jpg" alt></p>
+<p>站在Java开发人员的角度来看，类加载器可以大致划分为以下三类：</p>
+<p><strong>启动类加载器</strong>： <code>BootstrapClassLoader</code>，负责加载存放在 <code>JDK\jre\lib</code>(JDK代表JDK的安装目录，下同)下，或被 <code>-Xbootclasspath</code>参数指定的路径中的，并且能被虚拟机识别的类库（如rt.jar，所有的java.开头的类均被 <code>BootstrapClassLoader</code>加载）。启动类加载器是无法被Java程序直接引用的。<br><strong>扩展类加载器</strong>： <code>ExtensionClassLoader</code>，该加载器由 <code>sun.misc.Launcher$ExtClassLoader</code>实现，它负责加载 <code>JDK\jre\lib\ext</code>目录中，或者由 <code>java.ext.dirs</code>系统变量指定的路径中的所有类库（如javax.开头的类），开发者可以直接使用扩展类加载器。<br><strong>应用程序类加载器</strong>： <code>ApplicationClassLoader</code>，该类加载器由 <code>sun.misc.Launcher$AppClassLoader</code>来实现，它负责加载用户类路径（ClassPath）所指定的类，开发者可以直接使用该类加载器，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。</p>
+<p>应用程序都是由这三种类加载器互相配合进行加载的，如果有必要，我们还可以加入自定义的类加载器。因为JVM自带的ClassLoader只是懂得从本地文件系统加载标准的java class文件，因此如果编写了自己的ClassLoader，便可以做到如下几点：</p>
+<ul>
+<li>1、在执行非置信代码之前，自动验证数字签名。</li>
+<li>2、动态地创建符合用户特定需要的定制化构建类。</li>
+<li>3、从特定的场所取得java class，例如数据库中和网络中。</li>
+</ul>
+<h3 id="JVM加载机制"><a href="#JVM加载机制" class="headerlink" title="JVM加载机制"></a>JVM加载机制</h3><ul>
+<li><strong>全盘负责</strong>，当一个类加载器负责加载某个Class时，该Class所依赖的和引用的其他Class也将由该类加载器负责载入，除非显示使用另外一个类加载器来载入</li>
+<li><strong>父类委托</strong>，先让父类加载器试图加载该类，只有在父类加载器无法加载该类时才尝试从自己的类路径中加载该类</li>
+<li><strong>缓存机制</strong>，缓存机制将会保证所有加载过的Class都会被缓存，当程序中需要使用某个Class时，类加载器先从缓存区寻找该Class，只有缓存区不存在，系统才会读取该类对应的二进制数据，并将其转换成Class对象，存入缓存区。这就是为什么修改了Class后，必须重启JVM，程序的修改才会生效</li>
+</ul>
+<p>类的加载三种方式：</p>
+<ul>
+<li>1、命令行启动应用时候由JVM初始化加载</li>
+<li>2、通过Class.forName()方法动态加载</li>
+<li>3、通过ClassLoader.loadClass()方法动态加载</li>
+</ul>
+<p><strong>Class.forName()和ClassLoader.loadClass()区别</strong></p>
+<ul>
+<li><code>Class.forName()</code>：将类的.class文件加载到jvm中之外，还会对类进行解释，执行类中的static块；</li>
+<li><code>ClassLoader.loadClass()</code>：只干一件事情，就是将.class文件加载到jvm中，不会执行static中的内容,只有在newInstance才会去执行static块。</li>
+<li><code>Class.forName(name,initialize,loader)</code>带参函数也可控制是否加载static块。并且只有调用了newInstance()方法采用调用构造函数，创建类的对象 。</li>
+</ul>
+<h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>双亲委派模型的工作流程是：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把请求委托给父加载器去完成，依次向上，因此，所有的类加载请求最终都应该被传递到顶层的启动类加载器中，只有当父加载器在它的搜索范围中没有找到所需的类时，即无法完成该加载，子加载器才会尝试自己去加载该类。</p>
+<p>双亲委派机制:</p>
+<ul>
+<li>1、当 <code>AppClassLoader</code>加载一个class时，它首先不会自己去尝试加载这个类，而是把类加载请求委派给父类加载器<code>ExtClassLoader</code>去完成。</li>
+<li>2、当 <code>ExtClassLoader</code>加载一个class时，它首先也不会自己去尝试加载这个类，而是把类加载请求委派给BootStrapClassLoader<code>`</code>去完成。</li>
+<li>3、如果 <code>BootStrapClassLoader</code>加载失败（例如在 <code>$JAVA_HOME/jre/lib</code>里未查找到该class），会使用 <code>ExtClassLoader</code>来尝试加载；</li>
+<li>4、若ExtClassLoader也加载失败，则会使用 <code>AppClassLoader</code>来加载，如果 <code>AppClassLoader</code>也加载失败，则会报出异常 <code>ClassNotFoundException</code>。</li>
+</ul>
+<p>ClassLoader源码分析：</p>
+<p>双亲委派模型意义：</p>
+<ul>
+<li>系统类防止内存中出现多份同样的字节码</li>
+<li>保证Java程序安全稳定运行</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/并发/多线程2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3948,7 +4070,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据库/mysql概述/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/jvm/JVM之内存区域/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -3968,7 +4090,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/26/数据库/mysql概述/" class="post-title-link" itemprop="url">mysql概述</a>
+                <a href="/2019/05/26/jvm/JVM之内存区域/" class="post-title-link" itemprop="url">JVM之内存区域</a>
               
             
           </h1>
@@ -4010,7 +4132,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-25 01:20:28" itemprop="dateModified" datetime="2019-10-25T01:20:28+08:00">2019-10-25</time> 
+              <time title="修改时间：2019-10-21 12:26:38" itemprop="dateModified" datetime="2019-10-21T12:26:38+08:00">2019-10-21</time> 
               -->
               <!-- new version -->
                         
@@ -4025,8 +4147,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-25T01:20:28+08:00" content="2019-10-25">
-                2019-10-25 01:20:28
+              <time itemprop="dateUpdated" datetime="2019-10-21T12:26:38+08:00" content="2019-10-21">
+                2019-10-21 12:26:38
               </time>
             </span>
           
@@ -4047,7 +4169,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
 
                 
                 
@@ -4066,8 +4188,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/数据库/mysql概述/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据库/mysql概述/" itemprop="commentCount"></span>
+                <a href="/2019/05/26/jvm/JVM之内存区域/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/jvm/JVM之内存区域/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -4097,122 +4219,85 @@
       
         
           
-            <h1 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h1><h2 id="六大约束"><a href="#六大约束" class="headerlink" title="六大约束"></a>六大约束</h2><ul>
-<li><h3 id="primary-key"><a href="#primary-key" class="headerlink" title="primary key"></a>primary key</h3></li>
-<li><h3 id="foreign-key"><a href="#foreign-key" class="headerlink" title="foreign key"></a>foreign key</h3></li>
-<li><h3 id="NOT-NULL"><a href="#NOT-NULL" class="headerlink" title="NOT NULL"></a>NOT NULL</h3></li>
-<li><h3 id="Default"><a href="#Default" class="headerlink" title="Default"></a>Default</h3></li>
-<li><h3 id="Unique"><a href="#Unique" class="headerlink" title="Unique"></a>Unique</h3></li>
-<li><h3 id="check"><a href="#check" class="headerlink" title="check"></a>check</h3></li>
+            <h1 id="JVM之内存区域"><a href="#JVM之内存区域" class="headerlink" title="JVM之内存区域"></a>JVM之内存区域</h1><p><img src="/2019/05/26/jvm/JVM之内存区域/jvm内存区域.png" alt></p>
+<p>了解如何通过参数来控制各区域的内存大小</p>
+<p><img src="/2019/05/26/jvm/JVM之内存区域/jvm内存参数.png" alt></p>
+<p>控制参数：</p>
+<ul>
+<li>-Xms：设置堆的最小空间大小。</li>
+<li>-Xmx：设置堆的最大空间大小。</li>
+<li>-XX:NewSize：设置新生代最小空间大小。</li>
+<li>-XX:MaxNewSize：设置新生代最大空间大小。</li>
+<li>-XX:PermSize：设置永久代最小空间大小。</li>
+<li>-XX:MaxPermSize：设置永久代最大空间大小。</li>
+<li>-Xss：设置每个线程的堆栈大小。</li>
 </ul>
-<h2 id="事务和隔离级别"><a href="#事务和隔离级别" class="headerlink" title="事务和隔离级别"></a>事务和隔离级别</h2><p>事务T1、T2，当T1读取一个表的字段，T2此时插入多几行数据，T1再次读取，数据多了几行<br>幻读和不可重复读区别：不可重复读针对一个字段更新前后数据不一致，幻读是针对一个表数据读取获取的数据数量不想等</p>
-<h3 id="事务ACID"><a href="#事务ACID" class="headerlink" title="事务ACID"></a>事务ACID</h3><ul>
-<li><h4 id="原子性-atomicity"><a href="#原子性-atomicity" class="headerlink" title="原子性(atomicity)"></a>原子性(atomicity)</h4></li>
-<li><h4 id="一致性-consistency"><a href="#一致性-consistency" class="headerlink" title="一致性(consistency)"></a>一致性(consistency)</h4></li>
-<li><h4 id="隔离性-isolation"><a href="#隔离性-isolation" class="headerlink" title="隔离性(isolation)"></a>隔离性(isolation)</h4></li>
-<li><h4 id="持久性-durability"><a href="#持久性-durability" class="headerlink" title="持久性(durability)"></a>持久性(durability)</h4></li>
+<p>没有直接设置老年代的参数，但是可以设置堆空间大小和新生代空间大小两个参数来间接控制。</p>
+<p>老年代空间大小=堆空间大小-年轻代大空间大小</p>
+<h3 id="程序计数器-program-counter-register"><a href="#程序计数器-program-counter-register" class="headerlink" title="程序计数器(program counter register)"></a>程序计数器(program counter register)</h3><p>程序计数器的作用：</p>
+<p>当前线程所执行的字节码的行号指示器，字节码的解析工作就是通过改变这个计数器的值来选取下一个需要执行的字节码指令，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器完成。（<strong>线程私有的</strong>）</p>
+<p>程序计数器的记录内容：</p>
+<p>如果线程正在执行一个java方法，则程序计数器里面记录着正在执行的虚拟机字节码指令的地址；</p>
+<p>如果正在执行的是native方法，则程序计数器里面为null。</p>
+<p>特殊例子：</p>
+<p>此内存区域是唯一一个在java虚拟机规范中没有OutOfMemoryError情况的区域。</p>
+<h3 id="java虚拟机栈-JVM-Stacks"><a href="#java虚拟机栈-JVM-Stacks" class="headerlink" title="java虚拟机栈(JVM Stacks)"></a>java虚拟机栈(JVM Stacks)</h3><p>生命周期：与线程相同，<strong>线程私有</strong>。</p>
+<p>虚拟机栈描述的是java方法执行的内存模型。</p>
+<p>JVM栈的作用：每个方法被执行的时候，都会同时创建一个栈帧(stack frame)用于存储<strong>局部变量表</strong>、<strong>操作数栈</strong>、<strong>动态链接</strong>、<strong>方法出口</strong>等信息。每个方法被调用至执行完成的过程，其实就是一个栈帧从入栈到出栈的过程。</p>
+<p>局部变量表存放了的内容：</p>
+<p>存放着编译期可知的各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（reference类型，它不等同于对象本身，根据不同的虚拟机实现，它可能是一个指向对象起始地址的引用指针，也可能指向一个代表对象的句柄或者其他与此对象相关的位置）和returnAddress类型（指向了一条字节码指令的地址）。</p>
+<p>理解性内容：</p>
+<p>其中64位长度的long和double类型的数据会占用2个局部变量空间（Slot），其余的数据类型只占用1个。局部变量表所需的内存空间在编译期间完成分配，当进入一个方法时，这个方法需要在帧中分配多大的局部变量空间是完全确定的，在方法运行期间不会改变局部变量表的大小。</p>
+<p>该区域的异常状况：</p>
+<ul>
+<li>如果线程请求的栈深度大于虚拟机所允许的深度，将抛出StackOverflowError异常；</li>
+<li>如果虚拟机栈可以动态扩展（当前大部分的Java虚拟机都可动态扩展，只不过Java虚拟机规范中也允许固定长度的虚拟机栈），当扩展时无法申请到足够的内存时会抛出OutOfMemoryError异常。</li>
 </ul>
-<h3 id="事务结束四个标志"><a href="#事务结束四个标志" class="headerlink" title="事务结束四个标志"></a>事务结束四个标志</h3><ul>
-<li><h4 id="commit或rollback"><a href="#commit或rollback" class="headerlink" title="commit或rollback"></a>commit或rollback</h4></li>
-<li><h4 id="DDL或DCL自动提交"><a href="#DDL或DCL自动提交" class="headerlink" title="DDL或DCL自动提交"></a>DDL或DCL自动提交</h4></li>
-<li><h4 id="用户会话正常结束"><a href="#用户会话正常结束" class="headerlink" title="用户会话正常结束"></a>用户会话正常结束</h4></li>
-<li><h4 id="系统异常终止"><a href="#系统异常终止" class="headerlink" title="系统异常终止"></a>系统异常终止</h4></li>
-</ul>
-<h3 id="事务隔离级别和对应的问题"><a href="#事务隔离级别和对应的问题" class="headerlink" title="事务隔离级别和对应的问题"></a>事务隔离级别和对应的问题</h3><p>事务的隔离级别：</p>
-<pre><code>脏读-不可重复读-幻读
-</code></pre><p>read uncommitted：√        √      √<br>read committed：  ×        √      √<br>repeatable read： ×        ×      √<br>serializable      ×      ×     ×</p>
-<p>丢失修改<br>: 指在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。这样第一个事务内的修改结果就被丢失，因此称为丢失修改。 例如：事务1读取某表中的数据A=20，事务2也读取A=20，事务1修改A=A-1，事务2也修改A=A-1，最终结果A=19，事务1的修改被丢失。</p>
-<h4 id="读未提交"><a href="#读未提交" class="headerlink" title="读未提交"></a>读未提交</h4><p>一个事务读取到另一个未提交的数据</p>
-<h5 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h5><p>事务T1、T2，当T2读取到T1已更新但还没有提交的字段，若T2回滚，T1读取的数据临时且无效</p>
-<h4 id="读已提交"><a href="#读已提交" class="headerlink" title="读已提交"></a>读已提交</h4><p>一个事务必须等到另一个事务提交后才可以读取数据</p>
-<h5 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h5><p>事务T1、T2，T1读取一个字段，然后T2更新这个字段之后，T1再次读取同一个字段，数据已经发生改变<br>脏读和不可重复读的区别：脏读是在一个事务里面更新了还没提交导致前后数据不一致，不可重复读是在提交数据之后，事务再次更新操作，导致数据不一致</p>
-<h4 id="重复读"><a href="#重复读" class="headerlink" title="重复读"></a>重复读</h4><p>在开始读取数据(事务开启时)，不允许修改操作</p>
-<h5 id="幻读"><a href="#幻读" class="headerlink" title="幻读"></a>幻读</h5><p>事务T1、T2，T1读取表中一个范围的值，然后T2插入或删除这个字段之后，T1再次读取，数据的数量发生了变化<br>幻读和不可重复读的区别：幻读是插入或删除导致的前后数据不一致（数量上）<br>不可重复读是修改前后导致前后的字段值不一致（内容上）</p>
-<h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><p>事务串行化顺序执行<br>解决脏读、不可重复读、幻读的并发问题</p>
-<h2 id="存储引擎-Innodb、Myisam"><a href="#存储引擎-Innodb、Myisam" class="headerlink" title="存储引擎(Innodb、Myisam)"></a>存储引擎(Innodb、Myisam)</h2><h3 id="支持行锁"><a href="#支持行锁" class="headerlink" title="支持行锁"></a>支持行锁</h3><p>MyISAM 只有表级锁(table-level locking)<br>InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。</p>
-<h3 id="支持事务和崩溃后的安全恢复"><a href="#支持事务和崩溃后的安全恢复" class="headerlink" title="支持事务和崩溃后的安全恢复"></a>支持事务和崩溃后的安全恢复</h3><p>MyISAM 强调的是性能，每次查询具有原子性,其执行速度比InnoDB类型更快，但是不提供事务支持。</p>
-<p>但是InnoDB 提供事务支持事务，外部键等高级数据库功能。 具有事务(commit)、回滚(rollback)和崩溃修复能力(crash recovery capabilities)的事务安全(transaction-safe (ACID compliant))型表。</p>
-<h3 id="支持外键"><a href="#支持外键" class="headerlink" title="支持外键"></a>支持外键</h3><p>MyISAM不支持<br>而InnoDB支持</p>
-<h3 id="支持MVCC"><a href="#支持MVCC" class="headerlink" title="支持MVCC"></a>支持MVCC</h3><p>仅InnoDB支持。应对高并发事务, MVCC比单纯的加锁更高效;</p>
-<p>MVCC只在READ COMMITTED和 REPEATABLE READ 两个隔离级别下工作;</p>
-<p>MVCC可以使用乐观(optimistic)锁和悲观(pessimistic)锁来实现;</p>
-<p>各数据库中MVCC实现并不统一</p>
-<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><h3 id="视图：一种虚拟存在的表，在使用时动态生成，只保存sql逻辑不保存结果"><a href="#视图：一种虚拟存在的表，在使用时动态生成，只保存sql逻辑不保存结果" class="headerlink" title="视图：一种虚拟存在的表，在使用时动态生成，只保存sql逻辑不保存结果"></a>视图：一种虚拟存在的表，在使用时动态生成，只保存sql逻辑不保存结果</h3><h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
-<li><h4 id="多个地方重复用到的结果l"><a href="#多个地方重复用到的结果l" class="headerlink" title="多个地方重复用到的结果l"></a>多个地方重复用到的结果l</h4></li>
-<li><h4 id="sql语句较复杂的语句"><a href="#sql语句较复杂的语句" class="headerlink" title="sql语句较复杂的语句"></a>sql语句较复杂的语句</h4></li>
-</ul>
-<h3 id="视图不可更新情况"><a href="#视图不可更新情况" class="headerlink" title="视图不可更新情况"></a>视图不可更新情况</h3><ul>
-<li><h4 id="包含关键字：distinct、分组函数、group-by、having、union、union-all"><a href="#包含关键字：distinct、分组函数、group-by、having、union、union-all" class="headerlink" title="包含关键字：distinct、分组函数、group by、having、union、union all"></a>包含关键字：distinct、分组函数、group by、having、union、union all</h4></li>
-<li><h4 id="常量视图"><a href="#常量视图" class="headerlink" title="常量视图"></a>常量视图</h4></li>
-<li><h4 id="select中包含子查询"><a href="#select中包含子查询" class="headerlink" title="select中包含子查询"></a>select中包含子查询</h4></li>
-<li><h4 id="join"><a href="#join" class="headerlink" title="join"></a>join</h4></li>
-<li><h4 id="from一个不能更新的视图"><a href="#from一个不能更新的视图" class="headerlink" title="from一个不能更新的视图"></a>from一个不能更新的视图</h4></li>
-<li><h4 id="where子句的子查询引用了from子句中的表"><a href="#where子句的子查询引用了from子句中的表" class="headerlink" title="where子句的子查询引用了from子句中的表"></a>where子句的子查询引用了from子句中的表</h4></li>
-</ul>
-<h2 id="存储程序"><a href="#存储程序" class="headerlink" title="存储程序"></a>存储程序</h2><p>存储过程和函数：实现经过编译并存储在数据库中的一段sql语句的集合</p>
-<h3 id="存储例程"><a href="#存储例程" class="headerlink" title="存储例程"></a>存储例程</h3><ul>
-<li><h4 id="存储函数"><a href="#存储函数" class="headerlink" title="存储函数"></a>存储函数</h4></li>
-<li><h4 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h4></li>
-</ul>
-<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><h2 id="锁机制"><a href="#锁机制" class="headerlink" title="锁机制"></a>锁机制</h2><p>当一个事务请求的锁模式与当前的锁兼容，InnoDB就将请求的锁授予该事务；反之如果请求不兼容，则该事物就等待锁释放。</p>
-<h3 id="表级锁"><a href="#表级锁" class="headerlink" title="表级锁"></a>表级锁</h3><p>MySQL中锁定 粒度最大 的一种锁，对当前操作的整张表加锁，实现简单，资源消耗也比较少，加锁快，不会出现死锁。</p>
-<p>其锁定粒度最大，触发锁冲突的概率最高，并发度最低，MyISAM和 InnoDB引擎都支持表级锁。</p>
-<h4 id="InnoDB表级锁"><a href="#InnoDB表级锁" class="headerlink" title="InnoDB表级锁"></a>InnoDB表级锁</h4><p>当一个事务需要给自己需要的某个资源加锁的时候，如果遇到一个共享锁正锁定着自己需要的资源的时候，自己可以再加一个共享锁，不过不能加排他锁。但是，如果遇到自己需要锁定的资源已经被一个排他锁占有之后，则只能等待该锁定释放资源之后自己才能获取锁定资源并添加自己的锁定。</p>
-<p>而意向锁的作用就是当一个事务在需要获取资源锁定的时候，如果遇到自己需要的资源已经被排他锁占用的时候，该事务可以需要锁定行的表上面添加一个合适的意向锁。</p>
-<p>如果自己需要一个共享锁，那么就在表上面添加一个意向共享锁。而如果自己需要的是某行（或者某些行）上面添加一个排他锁的话，则先在表上面添加一个意向排他锁。</p>
-<p>意向共享锁可以同时并存多个，但是意向排他锁同时只能有一个存在。</p>
-<p>这里的意向锁是表级锁，表示的是一种意向，仅仅表示事务正在读或写某一行记录，在真正加行锁时才会判断是否冲突。意向锁是InnoDB自动加的，不需要用户干预。<br>IX，IS是表级锁，不会和行级的X，S锁发生冲突，只会和表级的X，S发生冲突。</p>
-<h5 id="意向共享锁（IS）"><a href="#意向共享锁（IS）" class="headerlink" title="意向共享锁（IS）"></a>意向共享锁（IS）</h5><p>表示事务准备给数据行记入共享锁，事务在一个数据行加共享锁前必须先取得该表的IS锁。</p>
-<h5 id="意向排他锁（IX）"><a href="#意向排他锁（IX）" class="headerlink" title="意向排他锁（IX）"></a>意向排他锁（IX）</h5><p>表示事务准备给数据行加入排他锁，事务在一个数据行加排他锁前必须先取得该表的IX锁。</p>
-<h4 id="MyISAM表级锁"><a href="#MyISAM表级锁" class="headerlink" title="MyISAM表级锁"></a>MyISAM表级锁</h4><h3 id="页级锁"><a href="#页级锁" class="headerlink" title="页级锁"></a>页级锁</h3><p>MySQL中锁定粒度介于行级锁和表级锁中间的一种锁。</p>
-<p>表级锁速度快，但冲突多，<br>行级冲突少，但速度慢。</p>
-<p>页级进行了折衷，一次锁定相邻的一组记录。BDB支持页级锁。开销和加锁时间界于表锁和行锁之间，会出现死锁。锁定粒度界于表锁和行锁之间，并发度一般。</p>
-<h3 id="行级锁-InnoDB专有"><a href="#行级锁-InnoDB专有" class="headerlink" title="行级锁(InnoDB专有)"></a>行级锁(InnoDB专有)</h3><p>MySQL中锁定 粒度最小 的一种锁，只针对当前操作的行进行加锁。 行级锁能大大减少数据库操作的冲突。</p>
-<p>其加锁粒度最小，并发度高，但加锁的开销也最大，加锁慢，会出现死锁。    </p>
-<p>InnoDB 行锁是通过给索引上的索引项加锁来实现的，InnoDB 这种行锁实现的特点意味着：只有通过索引条件检索数据，InnoDB 才使用行级锁，否则，InnoDB 将使用表锁。</p>
-<h4 id="Record-Lock"><a href="#Record-Lock" class="headerlink" title="Record Lock"></a>Record Lock</h4><p>对索引项加锁</p>
-<p>行锁锁定的是索引记录，而不是行数据，也就是说锁定的是key。</p>
-<p>其他事务不能修改和删除加锁项；</p>
-<p>索引分为主键索引和非主键索引两种，如果一条sql语句操作了主键索引，MySQL就会锁定这条主键索引；</p>
-<p>如果一条语句操作了非主键索引，MySQL会先锁定该非主键索引，再锁定相关的主键索引。</p>
-<h4 id="Gap-Lock"><a href="#Gap-Lock" class="headerlink" title="Gap Lock"></a>Gap Lock</h4><p>对索引项之间的“间隙”加锁，锁定记录的范围（对第一条记录前的间隙或最后一条将记录后的间隙加锁）不包含索引项本身（对非索引项）。</p>
-<p>其他事务不能在锁范围内插入数据，这样就防止了别的事务新增幻影行</p>
-<p>锁定索引记录间隙，确保索引记录的间隙不变。间隙锁是针对事务隔离级别为可重复读或以上级别而已的。</p>
-<p>间隙锁（Gap Lock）一般是针对非唯一索引而言的</p>
-<h4 id="Next-key-Lock"><a href="#Next-key-Lock" class="headerlink" title="Next-key Lock"></a>Next-key Lock</h4><p>锁定索引项本身和索引范围。即Record Lock和Gap Lock的结合。可解决幻读问题。</p>
-<h3 id="发生死锁"><a href="#发生死锁" class="headerlink" title="发生死锁"></a>发生死锁</h3><p>当两个事务同时执行，一个锁住了主键索引，在等待其他相关索引。另一个锁定了非主键索引，在等待主键索引。这样就会发生死锁。</p>
-<p>MyISAM 中是不会产生死锁的，因为 MyISAM 总是一次性获得所需的全部锁，要么全部满足，要么全部等待。而在 InnoDB 中，锁是逐步获得的，就造成了死锁的可能。</p>
-<p>发生死锁后，InnoDB一般都可以检测到，并使一个事务释放锁回退，另一个获取锁完成事务。</p>
-<h4 id="避免死锁"><a href="#避免死锁" class="headerlink" title="避免死锁"></a>避免死锁</h4><p>有多种方法可以避免死锁，这里介绍常见的三种</p>
-<p>1、如果不同程序会并发存取多个表，尽量约定以相同的顺序访问表，可以大大降低死锁机会。</p>
-<p>2、在同一个事务中，尽可能做到一次锁定所需要的所有资源，减少死锁产生概率；</p>
-<p>3、对于非常容易产生死锁的业务部分，可以尝试使用升级锁定颗粒度，通过表级锁定来减少死锁产生的概率；</p>
-<h3 id="是否可写锁分类"><a href="#是否可写锁分类" class="headerlink" title="是否可写锁分类"></a>是否可写锁分类</h3><h4 id="读锁（共享锁）"><a href="#读锁（共享锁）" class="headerlink" title="读锁（共享锁）"></a>读锁（共享锁）</h4><p>其他用户可以并发读取数据，但任何事务都不能获取数据上的排他锁，直到已释放所有共享锁。</p>
-<p>共享锁(S锁)又称为读锁，若事务T对数据对象A加上S锁，则事务T只能读A；</p>
-<p>其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。这就保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改。</p>
-<h4 id="写锁（互斥锁）"><a href="#写锁（互斥锁）" class="headerlink" title="写锁（互斥锁）"></a>写锁（互斥锁）</h4><p>排它锁（(Exclusive lock,简记为X锁)）又称为写锁，若事务T对数据对象A加上X锁，则只允许T读取和修改A，其它任何事务都不能再对A加任何类型的锁，直到T释放A上的锁。</p>
-<p>它防止任何其它事务获取资源上的锁，直到在事务的末尾将资源上的原始锁释放为止。在更新操作(INSERT、UPDATE 或 DELETE)过程中始终应用排它锁。</p>
-<h4 id="两者之间的区别"><a href="#两者之间的区别" class="headerlink" title="两者之间的区别"></a>两者之间的区别</h4><p>共享锁（S锁）：如果事务T对数据A加上共享锁后，则其他事务只能对A再加共享锁，不能加排他锁。获取共享锁的事务只能读数据，不能修改数据。</p>
-<p>排他锁（X锁）：如果事务T对数据A加上排他锁后，则其他事务不能再对A加任任何类型的封锁。获取排他锁的事务既能读数据，又能修改数据。</p>
-<h2 id="大表优化"><a href="#大表优化" class="headerlink" title="大表优化"></a>大表优化</h2><h3 id="限定数据范围"><a href="#限定数据范围" class="headerlink" title="限定数据范围"></a>限定数据范围</h3><h3 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h3><p>经典的数据库拆分方案，主库负责写，从库负责读；</p>
-<h3 id="垂直分区"><a href="#垂直分区" class="headerlink" title="垂直分区"></a>垂直分区</h3><p>根据数据库里面数据表的相关性进行拆分。例如，用户表中既有用户的登录信息又有用户的基本信息，可以将用户表拆分成两个单独的表，甚至放到单独的库做分库。</p>
-<p>简单来说垂直拆分是指数据表列的拆分，把一张列比较多的表拆分为多张表。 如下图所示，这样来说大家应该就更容易理解了。</p>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>垂直拆分的优点： 可以使得列数据变小，在查询时减少读取的Block数，减少I/O次数。此外，垂直分区可以简化表的结构，易于维护。</p>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>垂直拆分的缺点： 主键会出现冗余，需要管理冗余列，并会引起Join操作，可以通过在应用层进行Join来解决。此外，垂直分区会让事务变得更加复杂；</p>
-<h3 id="水平分区"><a href="#水平分区" class="headerlink" title="水平分区"></a>水平分区</h3><p>保持数据表结构不变，通过某种策略存储数据分片。这样每一片数据分散到不同的表或者库中，达到了分布式的目的。 水平拆分可以支撑非常大的数据量。</p>
-<p>水平拆分是指数据表行的拆分，表的行数超过200万行时，就会变慢，这时可以把一张的表的数据拆成多张表来存放。举个例子：我们可以将用户信息表拆分成多个用户信息表，这样就可以避免单一表数据量过大对性能造成影响。</p>
-<p>水平拆分可以支持非常大的数据量。需要注意的一点是：分表仅仅是解决了单一表数据过大的问题，但由于表的数据还是在同一台机器上，其实对于提升MySQL并发能力没有什么意义，所以 水平拆分最好分库 。</p>
-<p>水平拆分能够 支持非常大的数据量存储，应用端改造也少，但 分片事务难以解决 ，跨节点Join性能较差，逻辑复杂。《Java工程师修炼之道》的作者推荐 尽量不要对数据进行分片，因为拆分会带来逻辑、部署、运维的各种复杂度 ，一般的数据表在优化得当的情况下支撑千万以下的数据量是没有太大问题的。如果实在要分片，尽量选择客户端分片架构，这样可以减少一次和中间件的网络I/O。</p>
-<h4 id="客户端代理"><a href="#客户端代理" class="headerlink" title="客户端代理"></a>客户端代理</h4><p>客户端代理： 分片逻辑在应用端，封装在jar包中，通过修改或者封装JDBC层来实现。 当当网的 Sharding-JDBC 、阿里的TDDL是两种比较常用的实现。</p>
-<h4 id="中间件代理"><a href="#中间件代理" class="headerlink" title="中间件代理"></a>中间件代理</h4><p>中间件代理： 在应用和数据中间加了一个代理层。分片逻辑统一维护在中间件服务中。 我们现在谈的 Mycat 、360的Atlas、网易的DDB等等都是这种架构的实现。</p>
-<h2 id="超一万行数据量的写操作"><a href="#超一万行数据量的写操作" class="headerlink" title="超一万行数据量的写操作"></a>超一万行数据量的写操作</h2><h3 id="产生的问题"><a href="#产生的问题" class="headerlink" title="产生的问题"></a>产生的问题</h3><h4 id="大批量操作可能会造成严重的主从延迟"><a href="#大批量操作可能会造成严重的主从延迟" class="headerlink" title="大批量操作可能会造成严重的主从延迟"></a>大批量操作可能会造成严重的主从延迟</h4><p>主从环境中,大批量操作可能会造成严重的主从延迟，大批量的写操作一般都需要执行一定长的时间， 而只有当主库上执行完成后，才会在其他从库上执行，所以会造成主库与从库长时间的延迟情况</p>
-<h4 id="binlog-日志为-row-格式时会产生大量的日志"><a href="#binlog-日志为-row-格式时会产生大量的日志" class="headerlink" title="binlog 日志为 row 格式时会产生大量的日志"></a>binlog 日志为 row 格式时会产生大量的日志</h4><p>大批量写操作会产生大量日志，特别是对于 row 格式二进制数据而言，由于在 row 格式中会记录每一行数据的修改，我们一次修改的数据越多，产生的日志量也就会越多，日志的传输和恢复所需要的时间也就越长，这也是造成主从延迟的一个原因</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h4 id="避免产生大事务操作，分批操作"><a href="#避免产生大事务操作，分批操作" class="headerlink" title="避免产生大事务操作，分批操作"></a>避免产生大事务操作，分批操作</h4><p>大批量修改数据，一定是在一个事务中进行的，这就会造成表中大批量数据进行锁定，从而导致大量的阻塞，阻塞会对 MySQL的性能产生非常大的影响。</p>
-<p>特别是长时间的阻塞会占满所有数据库的可用连接，这会使生产环境中的其他应用无法连接到数据库，因此一定要注意大批量写操作要进行分批。</p>
-<h4 id="对于大表使用pt-online-schema-change修改表的结构"><a href="#对于大表使用pt-online-schema-change修改表的结构" class="headerlink" title="对于大表使用pt-online-schema-change修改表的结构"></a>对于大表使用pt-online-schema-change修改表的结构</h4><p>避免大表修改产生的主从延迟<br>避免在对表字段进行修改时进行锁表</p>
-<p>对大表数据结构的修改一定要谨慎，会造成严重的锁表操作，尤其是生产环境，是不能容忍的。</p>
-<p>pt-online-schema-change 它会首先建立一个与原表结构相同的新表，并且在新表上进行表结构的修改，然后再把原表中的数据复制到新表中，并在原表中增加一些触发器。</p>
-<p>把原表中新增的数据也复制到新表中，在行所有数据复制完成之后，把新表命名成原表，并把原来的表删除掉。把原来一个 DDL 操作，分解成多个小的批次进行。</p>
+<h3 id="本地方法栈-native-method-stacks"><a href="#本地方法栈-native-method-stacks" class="headerlink" title="本地方法栈(native method stacks)"></a>本地方法栈(native method stacks)</h3><p>本地方法栈（Native Method Stacks）与虚拟机栈所发挥的作用是非常相似的，其区别不过是虚拟机栈为虚拟机执行Java方法（也就是字节码）服务，而<strong>本地方法栈则是为虚拟机使用到的Native方法服务</strong>。</p>
+<h3 id="java堆-java-heap"><a href="#java堆-java-heap" class="headerlink" title="java堆(java heap)"></a>java堆(java heap)</h3><p>对于大多数应用来说，Java堆（Java Heap）是Java虚拟机所管理的内存中<strong>最大</strong>的一块。（<strong>线程共享</strong>）</p>
+<p>Java堆是被所有线程共享的一块内存区域，在<strong>虚拟机启动时</strong>创建。</p>
+<p>作用：此内存区域的唯一目的就是<strong>存放对象实例</strong>，<strong>几乎所有的对象实例都在这里分配内存</strong>。</p>
+<p>Java堆是垃圾收集器管理的主要区域，因此很多时候也被称做“<strong>GC堆</strong>”。</p>
+<p>如果从内存回收的角度看，由于现在收集器基本都是采用的分代收集算法，所以Java堆中还可以细分为：<strong>新生代和老年代；再细分年轻代的有Eden空间、From Survivor空间、To Survivor空间等。(默认比例8:1:1)</strong>（详情在GC算法和回收中提到）</p>
+<p>理解性：</p>
+<p>根据Java虚拟机规范的规定，Java堆可以处于物理上不连续的内存空间中，只要逻辑上是连续的即可，就像我们的磁盘空间一样。在实现时，既可以实现成固定大小的，也可以是可扩展的，不过当前主流的虚拟机都是按照可扩展来实现的（通过-Xmx和-Xms控制）。</p>
+<p>异常状况：</p>
+<p>如果在堆中没有内存完成实例分配，并且堆也无法再扩展时，将会抛出OutOfMemoryError异常。</p>
+<h3 id="方法区-method-area"><a href="#方法区-method-area" class="headerlink" title="方法区(method area)"></a>方法区(method area)</h3><p>方法区和Java堆一样，是各个线程共享的内存区域</p>
+<p>作用：<strong>它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</strong></p>
+<p>Java虚拟机规范对这个区域的限制非常宽松，除了和Java堆一样不需要连续的内存和可以选择固定大小或者可扩展外，还可以选择不实现垃圾收集。</p>
+<p>这个区域的内存回收目标主要是<strong>针对常量池的回收</strong>和<strong>对类型的卸载</strong></p>
+<p>异常状况：</p>
+<p>根据Java 虚拟机规范的规定，当方法区无法满足内存分配需求时，将抛出OutOfMemoryError 异常。</p>
+<h3 id="运行时常量池-runtime-constant-pool"><a href="#运行时常量池-runtime-constant-pool" class="headerlink" title="运行时常量池(runtime constant pool)"></a>运行时常量池(runtime constant pool)</h3><p>运行时的常量池属于方法区的一部分。</p>
+<p>作用：用于存放编译期生成的<strong>各种字面量</strong>和<strong>符号引用</strong>，这部分内容将在类加载后存放到方法区的运行时常量池中。编译器和运行期(String 的 intern() )都可以将常量放入池中。</p>
+<p>异常状况</p>
+<p>当常量池无法再申请到内存时会抛出OutOfMemoryError 异常。</p>
+<h3 id="直接内存-direct-memory"><a href="#直接内存-direct-memory" class="headerlink" title="直接内存(direct memory)"></a>直接内存(direct memory)</h3><p>直接内存（Direct Memory）并不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范中定义的内存区域，但是这部分内存也被频繁地使用，而且也可能导致OutOfMemoryError 异常出现。</p>
+<p>本机直接内存的分配不会受到Java 堆大小的限制，但是，既然是内存，则肯定还是会受到本机总内存（包括RAM 及SWAP 区或者分页文件）的大小及处理器寻址空间的限制。服务器管理员配置虚拟机参数时，一般会根据实际内存设置-Xmx等参数信息，但经常会忽略掉直接内存，使得各个内存区域的总和大于物理内存限制（包括物理上的和操作系统级的限制），从而导致动态扩展时出现OutOfMemoryError异常。</p>
+<h3 id="对象访问"><a href="#对象访问" class="headerlink" title="对象访问"></a>对象访问</h3><p>Object obj = new Object();</p>
+<p>最简单的访问，却涉及Java 栈、Java 堆、方法区这三个最重要内存区</p>
+<p>假设这句代码出现在方法体中，那“Object obj”这部分的语义将会反映到Java 栈的本地变量表中，作为一个reference 类型数据出现。</p>
+<p>“new Object()”这部分的语义将会反映到Java 堆中，形成一块存储了Object 类型所有实例数据值（Instance Data，对象中各个实例字段的数据）的结构化内存，根据具体类型以及虚拟机实现的对象内存布局（Object Memory Layout）的不同，这块内存的长度是不固定的。</p>
+<p>在Java 堆中还必须包含能查找到此对象类型数据（如对象类型、父类、实现的接口、方法等）的地址信息，这些类型数据则存储在方法区中。</p>
+<p>由于reference 类型在Java 虚拟机规范里面只规定了一个指向对象的引用，并没有定义这个引用应该通过哪种方式去定位，以及访问到Java 堆中的对象的具体位置，因此不同虚拟机实现的对象访问方式会有所不同，主流的访问方式有两种：使用句柄和直接指针。</p>
+<p>如果使用<strong>句柄访问方式</strong>，Java 堆中将会划分出一块内存来作为句柄池，reference中存储的就是对象的句柄地址，而句柄中包含了对象实例数据和类型数据各自的具体地址信息</p>
+<p><img src="/2019/05/26/jvm/JVM之内存区域/jvm内存区域句柄.jpg" alt></p>
+<p>如果使用<strong>直接指针访问方式</strong>，Java 堆对象的布局中就必须考虑如何放置访问类型数据的相关信息，reference 中直接存储的就是对象地址</p>
+<p><img src="/2019/05/26/jvm/JVM之内存区域/jvm内存区域直接访问.jpg" alt></p>
+<p>使用句柄访问方式的最大好处就是reference 中存储的是稳定的句柄地址，在对象被移动（垃圾收集时移动对象是非常普遍的行为）时只会改变句柄中的实例数据指针，而reference 本身不需要被修改。</p>
+<p>使用直接指针访问方式的最大好处就是速度更快，它节省了一次指针定位的时间开销，由于对象的访问在Java 中非常频繁，因此这类开销积少成多后也是一项非常可观的执行成本。</p>
+<p>就主要虚拟机Sun HotSpot 而言，它是使用第二种方式进行对象访问的，但从整个软件开发的范围来看，各种语言和框架使用句柄来访问的情况也十分常见。</p>
+<h3 id="OutOfMemoryError分析-OOM"><a href="#OutOfMemoryError分析-OOM" class="headerlink" title="OutOfMemoryError分析(OOM)"></a>OutOfMemoryError分析(OOM)</h3><p>java堆溢出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError：Java heap space</span><br></pre></td></tr></table></figure>
+<p>java栈溢出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.StackOverflowError</span><br></pre></td></tr></table></figure>
+<p>运行时常量池溢出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError：PermGen space</span><br></pre></td></tr></table></figure>
+<p>方法区溢出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError：PermGen space</span><br></pre></td></tr></table></figure>
+<p>本机直接内存溢出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError</span><br></pre></td></tr></table></figure>
 
           
         
@@ -4495,7 +4580,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共164.3k字</span>
+  <span class="post-count">博客全站共169.2k字</span>
 </div>
         
 <div class="busuanzi-count">
