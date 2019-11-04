@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://benyzheng.github.io/2019/10/27/%E5%B9%B6%E5%8F%91/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
+    
+    <lastmod>2019-11-04T17:29:22.420Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://benyzheng.github.io/2019/10/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E5%BF%B5/</loc>
+    
+    <lastmod>2019-11-04T10:19:19.676Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://benyzheng.github.io/2019/09/28/%E5%B9%B6%E5%8F%91/BlockingQueue/</loc>
+    
+    <lastmod>2019-11-04T07:41:20.718Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://benyzheng.github.io/2019/09/28/%E5%B9%B6%E5%8F%91/ThreadLocal/</loc>
     
-    <lastmod>2019-11-03T17:38:53.529Z</lastmod>
+    <lastmod>2019-11-04T04:05:45.936Z</lastmod>
     
   </url>
   
