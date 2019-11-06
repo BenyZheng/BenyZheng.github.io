@@ -153,13 +153,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Beny&#39;s blog">
-<meta property="og:url" content="https://benyzheng.github.io/archives/2019/10/index.html">
+  <meta name="description" content="string s = null; 表示一个空串,没有占用了空间,不在内存中开辟空间 s.length()会出现空指针异常 string s = “”; 在内存中开辟空间,但空间中没有值(“”也是一个字符串) 表示一个空串,被实列化了,占用了内存空间 s.length()长度为0 null 表示一个空引用,“” 表示一个空字符串,string.Empty和“”类似，在内存中分配0个字节如果想声明一个">
+<meta name="keywords" content="Java基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="String=null和空字符串的区别">
+<meta property="og:url" content="https://benyzheng.github.io/2019/10/02/Java基础/String=null和空字符串的区别/index.html">
 <meta property="og:site_name" content="Beny&#39;s blog">
+<meta property="og:description" content="string s = null; 表示一个空串,没有占用了空间,不在内存中开辟空间 s.length()会出现空指针异常 string s = “”; 在内存中开辟空间,但空间中没有值(“”也是一个字符串) 表示一个空串,被实列化了,占用了内存空间 s.length()长度为0 null 表示一个空引用,“” 表示一个空字符串,string.Empty和“”类似，在内存中分配0个字节如果想声明一个">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-06T17:19:31.432Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Beny&#39;s blog">
+<meta name="twitter:title" content="String=null和空字符串的区别">
+<meta name="twitter:description" content="string s = null; 表示一个空串,没有占用了空间,不在内存中开辟空间 s.length()会出现空指针异常 string s = “”; 在内存中开辟空间,但空间中没有值(“”也是一个字符串) 表示一个空串,被实列化了,占用了内存空间 s.length()长度为0 null 表示一个空引用,“” 表示一个空字符串,string.Empty和“”类似，在内存中分配0个字节如果想声明一个">
 
 
 
@@ -167,7 +172,7 @@
 
   
   
-  <link rel="canonical" href="https://benyzheng.github.io/archives/2019/10/">
+  <link rel="canonical" href="https://benyzheng.github.io/2019/10/02/Java基础/String=null和空字符串的区别/">
 
 
 
@@ -177,7 +182,7 @@
   };
 </script>
 
-  <title>归档 | Beny's blog</title>
+  <title>String=null和空字符串的区别 | Beny's blog</title>
   
 
 
@@ -225,7 +230,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -305,7 +310,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -336,22 +341,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -400,396 +389,259 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/String=null和空字符串的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h1 class="post-title" itemprop="name headline">String=null和空字符串的区别
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-02 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-02T12:12:57+08:00">2019-10-02 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-11-07 01:19:31" itemprop="dateModified" datetime="2019-11-07T01:19:31+08:00">2019-11-07</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-11-07T01:19:31+08:00" content="2019-11-07">
+                2019-11-07 01:19:31
+              </time>
+            </span>
           
-        不错! 目前共计 73 篇日志。 继续努力。
-      </span>
-      
+            
+          </span>
 
-      
 
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/30/设计模式/创建型模式/" itemprop="url">
+          
+            <span class="post-category">
             
-              <span itemprop="name">创建型模式</span>
+              <span class="post-meta-divider">|</span>
             
-          </a>
-        
-      </h2>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a></span>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-30T12:12:57+08:00" content="2019-10-30">
-          10-30
-        </time>
-      </div>
+                
+                
+              
+            </span>
+          
 
-    </header>
-  </article>
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/02/Java基础/String=null和空字符串的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/String=null和空字符串的区别/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
+          
+          
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/29/并发/生产者消费者/" itemprop="url">
-            
-              <span itemprop="name">生产者消费者问题</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-29T12:12:57+08:00" content="2019-10-29">
-          10-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/29/并发/并发工具/" itemprop="url">
-            
-              <span itemprop="name">并发工具</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-29T12:12:57+08:00" content="2019-10-29">
-          10-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>string s = null;</p>
+<p>表示一个空串,没有占用了空间,不在内存中开辟空间</p>
+<p>s.length()会出现空指针异常</p>
+<p>string s = “”;</p>
+<p>在内存中开辟空间,但空间中没有值(“”也是一个字符串)</p>
+<p>表示一个空串,被实列化了,占用了内存空间</p>
+<p>s.length()长度为0</p>
+<p>null 表示一个空引用,<br>“” 表示一个空字符串,<br>string.Empty和“”类似，在内存中分配0个字节<br>如果想声明一个初始值为空的字符串变量最好用 string str = string.Empty;</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/28/并发/原子操作类/" itemprop="url">
-            
-              <span itemprop="name">原子操作类</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-28T12:12:57+08:00" content="2019-10-28">
-          10-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/27/并发/线程池/" itemprop="url">
-            
-              <span itemprop="name">线程池</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-27T12:12:57+08:00" content="2019-10-27">
-          10-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/26/框架/bean的配置方式/" itemprop="url">
-            
-              <span itemprop="name">bean的配置方式</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-26T12:12:57+08:00" content="2019-10-26">
-          10-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/26/框架/bean的作用域/" itemprop="url">
-            
-              <span itemprop="name">bean的作用域</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-26T12:12:57+08:00" content="2019-10-26">
-          10-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/22/java集合类/HashMap遍历与删除/" itemprop="url">
-            
-              <span itemprop="name">HashMap遍历与删除</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-22T12:12:57+08:00" content="2019-10-22">
-          10-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/21/Linux/Linux基础命令/" itemprop="url">
-            
-              <span itemprop="name">Linux基础命令</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-21T12:12:57+08:00" content="2019-10-21">
-          10-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/21/Linux/Linux文件目录结构/" itemprop="url">
-            
-              <span itemprop="name">Linux文件目录结构</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-21T12:12:57+08:00" content="2019-10-21">
-          10-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java基础/" rel="tag"># Java基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/02/Java基础/字符流和字节流/" rel="next" title="字符流和字节流">
+                <i class="fa fa-chevron-left"></i> 字符流和字节流
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/02/Java基础/string和stringbuffer和stringbuilder区别/" rel="prev" title="string和stringbuffer和stringbuilder区别">
+                string和stringbuffer和stringbuilder区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/10/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/10/page/4/">4</a><a class="extend next" rel="next" href="/archives/2019/10/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -1142,6 +994,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -1194,6 +1050,8 @@
 
 
 
+
+  
 
 
   

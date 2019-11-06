@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">71</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">73</span></a>
 
   </li>
 
@@ -385,6 +385,225 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/算法/数据结构/栈与队列/设计循环队列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/算法/数据结构/栈与队列/设计循环队列/" class="post-title-link" itemprop="url">设计循环队列</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-11-06 00:03:59" itemprop="dateModified" datetime="2019-11-06T00:03:59+08:00">2019-11-06</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-11-06T00:03:59+08:00" content="2019-11-06">
+                2019-11-06 00:03:59
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/算法/数据结构/栈与队列/设计循环队列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/算法/数据结构/栈与队列/设计循环队列/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>设计你的循环队列实现。 循环队列是一种线性数据结构，其操作表现基于 FIFO（先进先出）原则并且队尾被连接在队首之后以形成一个循环。它也被称为“环形缓冲器”。</p>
+<p>循环队列的一个好处是我们可以利用这个队列之前用过的空间。在一个普通队列里，一旦一个队列满了，我们就不能插入下一个元素，即使在队列前面仍有空间。但是使用循环队列，我们能使用这些空间去存储新的值。</p>
+<p>你的实现应该支持如下操作：</p>
+<ul>
+<li><code>MyCircularQueue(k)</code>: 构造器，设置队列长度为 k 。</li>
+<li><code>Front</code>: 从队首获取元素。如果队列为空，返回 -1 。</li>
+<li><code>Rear</code>: 获取队尾元素。如果队列为空，返回 -1 。</li>
+<li><code>enQueue(value)</code>: 向循环队列插入一个元素。如果成功插入则返回真。</li>
+<li><code>deQueue()</code>: 从循环队列中删除一个元素。如果成功删除则返回真。</li>
+<li><code>isEmpty()</code>: 检查循环队列是否为空。</li>
+<li><code>isFull()</code>: 检查循环队列是否已满。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">MyCircularQueue circularQueue = new MycircularQueue(3); // 设置长度为 3</span><br><span class="line"></span><br><span class="line">circularQueue.enQueue(1);  // 返回 true</span><br><span class="line"></span><br><span class="line">circularQueue.enQueue(2);  // 返回 true</span><br><span class="line"></span><br><span class="line">circularQueue.enQueue(3);  // 返回 true</span><br><span class="line"></span><br><span class="line">circularQueue.enQueue(4);  // 返回 false，队列已满</span><br><span class="line"></span><br><span class="line">circularQueue.Rear();  // 返回 3</span><br><span class="line"></span><br><span class="line">circularQueue.isFull();  // 返回 true</span><br><span class="line"></span><br><span class="line">circularQueue.deQueue();  // 返回 true</span><br><span class="line"></span><br><span class="line">circularQueue.enQueue(4);  // 返回 true</span><br><span class="line"></span><br><span class="line">circularQueue.Rear();  // 返回 4</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCircularQueue</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span>[] content;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> head;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> tail;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> length;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/** Initialize your data structure here. Set the size of the queue to be k. */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyCircularQueue</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">            length = k+<span class="number">1</span>;</span><br><span class="line">            content = <span class="keyword">new</span> <span class="keyword">int</span>[k+<span class="number">1</span>];</span><br><span class="line">            head = <span class="number">0</span>;</span><br><span class="line">            tail = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** Insert an element into the circular queue. Return true if the operation is successful. */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">enQueue</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>((tail+<span class="number">1</span>)%length==head)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            content[tail] = value;</span><br><span class="line">            tail = (tail+<span class="number">1</span>)%length;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** Delete an element from the circular queue. Return true if the operation is successful. */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">deQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(tail==head)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            head = (head+<span class="number">1</span>)%length;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** Get the front item from the queue. */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Front</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(isEmpty())&#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> content[head];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** Get the last item from the queue. */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Rear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(isEmpty())&#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> content[(tail-<span class="number">1</span>+length)%length];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** Checks whether the circular queue is empty or not. */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> head==tail;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** Checks whether the circular queue is full or not. */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (tail+<span class="number">1</span>)%length==head;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyCircularQueue object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MyCircularQueue obj = new MyCircularQueue(k);</span></span><br><span class="line"><span class="comment"> * boolean param_1 = obj.enQueue(value);</span></span><br><span class="line"><span class="comment"> * boolean param_2 = obj.deQueue();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.Front();</span></span><br><span class="line"><span class="comment"> * int param_4 = obj.Rear();</span></span><br><span class="line"><span class="comment"> * boolean param_5 = obj.isEmpty();</span></span><br><span class="line"><span class="comment"> * boolean param_6 = obj.isFull();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1241,244 +1460,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/15/计算机网络/HTTPS和HTTP的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/15/计算机网络/HTTPS和HTTP的区别/" class="post-title-link" itemprop="url">HTTPS和HTTP的区别</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-15 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-15T12:12:57+08:00">2019-10-15 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-20 23:13:46" itemprop="dateModified" datetime="2019-10-20T23:13:46+08:00">2019-10-20</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-20T23:13:46+08:00" content="2019-10-20">
-                2019-10-20 23:13:46
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/15/计算机网络/HTTPS和HTTP的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/15/计算机网络/HTTPS和HTTP的区别/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="HTTPS和HTTP的区别"><a href="#HTTPS和HTTP的区别" class="headerlink" title="HTTPS和HTTP的区别"></a>HTTPS和HTTP的区别</h4><ul>
-<li><p>HTTPS协议需要到CA申请证书，一般免费证书很少，需要交费。</p>
-</li>
-<li><p>HTTP协议运行在TCP之上，所有传输的内容都是明文，HTTPS运行在SSL/TLS之上，SSL/TLS运行在TCP之上，所有传输的内容都经过加密的。</p>
-</li>
-<li><p>HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</p>
-</li>
-<li><p>HTTP的连接很简单，是无状态的。Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
-<p>(无状态的意思是其数据包的发送、传输和接收都是相互独立的。</p>
-<p>无连接的意思是指通信双方都不长久的维持对方的任何信息。)</p>
-</li>
-</ul>
-<h4 id="HTTPS的优点："><a href="#HTTPS的优点：" class="headerlink" title="HTTPS的优点："></a>HTTPS的优点：</h4><p>1、使用Https协议可认证用户和服务器，确保数据发送到正确的客户机和服务器。</p>
-<p>2、Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，要比http协议安全，可防止数据在传输过程中不被窃取、修改，确保数据的完整性。</p>
-<p>3、Https是现行架构下最安全的解决方案，虽然不是绝对安全，但它大幅增加了中间人攻击的成本。</p>
-<h4 id="HTTPS的缺点："><a href="#HTTPS的缺点：" class="headerlink" title="HTTPS的缺点："></a>HTTPS的缺点：</h4><p>1、Https协议握手阶段比较费时，会使页面的加载时间延长近。</p>
-<p>2、Https连接缓存不如Http高效，会增加数据开销，甚至已有的安全措施也会因此而受到影响；</p>
-<p>3、SSL证书通常需要绑定IP，不能在同一IP上绑定多个域名，IPv4资源不可能支撑这个消耗。</p>
-<p>4、Https协议的加密范围也比较有限。最关键的，SSL证书的信用链体系并不安全，特别是在某些国家可以控制CA根证书的情况下，中间人攻击一样可行。</p>
-<h4 id="HTTPS连接过程"><a href="#HTTPS连接过程" class="headerlink" title="HTTPS连接过程"></a>HTTPS连接过程</h4><p><img src="/2019/10/15/计算机网络/HTTPS和HTTP的区别/20180709141944471.jpg" alt></p>
-<p>①客户端的浏览器向服务器发送请求，并传送客户端SSL 协议的版本号，加密算法的种类，产生的随机数，以及其他服务器和客户端之间通讯所需要的各种信息。</p>
-<p>②服务器向客户端传送SSL 协议的版本号，加密算法的种类，随机数以及其他相关信息，同时服务器还将向客户端传送自己的证书。</p>
-<p>③客户端利用服务器传过来的信息验证服务器的合法性，服务器的合法性包括：证书是否过期，发行服务器证书的CA 是否可靠，发行者证书的公钥能否正确解开服务器证书的“发行者的数字签名”，服务器证书上的域名是否和服务器的实际域名相匹配。如果合法性验证没有通过，通讯将断开；如果合法性验证通过，将继续进行第四步。</p>
-<p>④用户端随机产生一个用于通讯的“对称密码”，然后用服务器的公钥（服务器的公钥从步骤②中的服务器的证书中获得）对其加密，然后将加密后的“预主密码”传给服务器。</p>
-<p>⑤如果服务器要求客户的身份认证（在握手过程中为可选），用户可以建立一个随机数然后对其进行数据签名，将这个含有签名的随机数和客户自己的证书以及加密过的“预主密码”一起传给服务器。</p>
-<p>⑥如果服务器要求客户的身份认证，服务器必须检验客户证书和签名随机数的合法性，具体的合法性验证过程包括：客户的证书使用日期是否有效，为客户提供证书的CA 是否可靠，发行CA 的公钥能否正确解开客户证书的发行CA 的数字签名，检查客户的证书是否在证书废止列表（CRL）中。检验如果没有通过，通讯立刻中断；如果验证通过，服务器将用自己的私钥解开加密的“预主密码”，然后执行一系列步骤来产生主通讯密码（客户端也将通过同样的方法产生相同的主通讯密码）。</p>
-<p>⑦服务器和客户端用相同的主密码即“通话密码”，一个对称密钥用于SSL 协议的安全数据通讯的加解密通讯。同时在SSL 通讯过程中还要完成数据通讯的完整性，防止数据通讯中的任何变化。</p>
-<p>⑧客户端向服务器端发出信息，指明后面的数据通讯将使用的步骤⑦中的主密码为对称密钥，同时通知服务器客户端的握手过程结束。</p>
-<p>⑨服务器向客户端发出信息，指明后面的数据通讯将使用的步骤⑦中的主密码为对称密钥，同时通知客户端服务器端的握手过程结束。</p>
-<p>⑩SSL 的握手部分结束，SSL 安全通道的数据通讯开始，客户和服务器开始使用相同的对称密钥进行数据通讯，同时进行通讯完整性的检验。</p>
-<h4 id="对称加密和非对称加密的区别"><a href="#对称加密和非对称加密的区别" class="headerlink" title="对称加密和非对称加密的区别"></a>对称加密和非对称加密的区别</h4><p>对称加密只有一把公钥，加密解密都是这个密钥进行</p>
-<p>非对称加密有公钥和私钥，用公钥加密，用私钥解密</p>
-<p>HTTPS是对称加密和非对称加密两者结合的，在传输对称加密的公钥的时候用到非对称加密进行加密传输</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/15/计算机网络/HTTP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1990,6 +1971,244 @@
 <li>在客户端再次请求且命中资源的时候，此时客户端去检查上次缓存的缓存策略，根据策略的不同、是否过期等判断是直接读取本地缓存还是与服务器协商缓存</li>
 </ol>
 <p><img src="/2019/10/15/计算机网络/HTTP/1567493438627.900e0bee.png" alt></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/15/计算机网络/HTTPS和HTTP的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/15/计算机网络/HTTPS和HTTP的区别/" class="post-title-link" itemprop="url">HTTPS和HTTP的区别</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-15 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-15T12:12:57+08:00">2019-10-15 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-20 23:13:46" itemprop="dateModified" datetime="2019-10-20T23:13:46+08:00">2019-10-20</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-20T23:13:46+08:00" content="2019-10-20">
+                2019-10-20 23:13:46
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/15/计算机网络/HTTPS和HTTP的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/15/计算机网络/HTTPS和HTTP的区别/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="HTTPS和HTTP的区别"><a href="#HTTPS和HTTP的区别" class="headerlink" title="HTTPS和HTTP的区别"></a>HTTPS和HTTP的区别</h4><ul>
+<li><p>HTTPS协议需要到CA申请证书，一般免费证书很少，需要交费。</p>
+</li>
+<li><p>HTTP协议运行在TCP之上，所有传输的内容都是明文，HTTPS运行在SSL/TLS之上，SSL/TLS运行在TCP之上，所有传输的内容都经过加密的。</p>
+</li>
+<li><p>HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</p>
+</li>
+<li><p>HTTP的连接很简单，是无状态的。Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
+<p>(无状态的意思是其数据包的发送、传输和接收都是相互独立的。</p>
+<p>无连接的意思是指通信双方都不长久的维持对方的任何信息。)</p>
+</li>
+</ul>
+<h4 id="HTTPS的优点："><a href="#HTTPS的优点：" class="headerlink" title="HTTPS的优点："></a>HTTPS的优点：</h4><p>1、使用Https协议可认证用户和服务器，确保数据发送到正确的客户机和服务器。</p>
+<p>2、Https协议是由SSL+Http协议构建的可进行加密传输、身份认证的网络协议，要比http协议安全，可防止数据在传输过程中不被窃取、修改，确保数据的完整性。</p>
+<p>3、Https是现行架构下最安全的解决方案，虽然不是绝对安全，但它大幅增加了中间人攻击的成本。</p>
+<h4 id="HTTPS的缺点："><a href="#HTTPS的缺点：" class="headerlink" title="HTTPS的缺点："></a>HTTPS的缺点：</h4><p>1、Https协议握手阶段比较费时，会使页面的加载时间延长近。</p>
+<p>2、Https连接缓存不如Http高效，会增加数据开销，甚至已有的安全措施也会因此而受到影响；</p>
+<p>3、SSL证书通常需要绑定IP，不能在同一IP上绑定多个域名，IPv4资源不可能支撑这个消耗。</p>
+<p>4、Https协议的加密范围也比较有限。最关键的，SSL证书的信用链体系并不安全，特别是在某些国家可以控制CA根证书的情况下，中间人攻击一样可行。</p>
+<h4 id="HTTPS连接过程"><a href="#HTTPS连接过程" class="headerlink" title="HTTPS连接过程"></a>HTTPS连接过程</h4><p><img src="/2019/10/15/计算机网络/HTTPS和HTTP的区别/20180709141944471.jpg" alt></p>
+<p>①客户端的浏览器向服务器发送请求，并传送客户端SSL 协议的版本号，加密算法的种类，产生的随机数，以及其他服务器和客户端之间通讯所需要的各种信息。</p>
+<p>②服务器向客户端传送SSL 协议的版本号，加密算法的种类，随机数以及其他相关信息，同时服务器还将向客户端传送自己的证书。</p>
+<p>③客户端利用服务器传过来的信息验证服务器的合法性，服务器的合法性包括：证书是否过期，发行服务器证书的CA 是否可靠，发行者证书的公钥能否正确解开服务器证书的“发行者的数字签名”，服务器证书上的域名是否和服务器的实际域名相匹配。如果合法性验证没有通过，通讯将断开；如果合法性验证通过，将继续进行第四步。</p>
+<p>④用户端随机产生一个用于通讯的“对称密码”，然后用服务器的公钥（服务器的公钥从步骤②中的服务器的证书中获得）对其加密，然后将加密后的“预主密码”传给服务器。</p>
+<p>⑤如果服务器要求客户的身份认证（在握手过程中为可选），用户可以建立一个随机数然后对其进行数据签名，将这个含有签名的随机数和客户自己的证书以及加密过的“预主密码”一起传给服务器。</p>
+<p>⑥如果服务器要求客户的身份认证，服务器必须检验客户证书和签名随机数的合法性，具体的合法性验证过程包括：客户的证书使用日期是否有效，为客户提供证书的CA 是否可靠，发行CA 的公钥能否正确解开客户证书的发行CA 的数字签名，检查客户的证书是否在证书废止列表（CRL）中。检验如果没有通过，通讯立刻中断；如果验证通过，服务器将用自己的私钥解开加密的“预主密码”，然后执行一系列步骤来产生主通讯密码（客户端也将通过同样的方法产生相同的主通讯密码）。</p>
+<p>⑦服务器和客户端用相同的主密码即“通话密码”，一个对称密钥用于SSL 协议的安全数据通讯的加解密通讯。同时在SSL 通讯过程中还要完成数据通讯的完整性，防止数据通讯中的任何变化。</p>
+<p>⑧客户端向服务器端发出信息，指明后面的数据通讯将使用的步骤⑦中的主密码为对称密钥，同时通知服务器客户端的握手过程结束。</p>
+<p>⑨服务器向客户端发出信息，指明后面的数据通讯将使用的步骤⑦中的主密码为对称密钥，同时通知客户端服务器端的握手过程结束。</p>
+<p>⑩SSL 的握手部分结束，SSL 安全通道的数据通讯开始，客户和服务器开始使用相同的对称密钥进行数据通讯，同时进行通讯完整性的检验。</p>
+<h4 id="对称加密和非对称加密的区别"><a href="#对称加密和非对称加密的区别" class="headerlink" title="对称加密和非对称加密的区别"></a>对称加密和非对称加密的区别</h4><p>对称加密只有一把公钥，加密解密都是这个密钥进行</p>
+<p>非对称加密有公钥和私钥，用公钥加密，用私钥解密</p>
+<p>HTTPS是对称加密和非对称加密两者结合的，在传输对称加密的公钥的时候用到非对称加密进行加密传输</p>
 
           
         
@@ -2817,259 +3036,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/02/Java基础/Java对日期操作的类/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/02/Java基础/Java对日期操作的类/" class="post-title-link" itemprop="url">Java对日期操作的类</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-02 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-02T12:12:57+08:00">2019-10-02 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-31 20:16:19" itemprop="dateModified" datetime="2019-10-31T20:16:19+08:00">2019-10-31</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-31T20:16:19+08:00" content="2019-10-31">
-                2019-10-31 20:16:19
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/02/Java基础/Java对日期操作的类/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/02/Java基础/Java对日期操作的类/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h3><p>表示特定的瞬间，精确到毫秒（因为闰秒的原因，所以其实结果并不是特别的准确，但是如果要求不是特别严格，影响并没有很大。）</p>
-<p>构造方法：Date()、Date(Long date)</p>
-<p>常用方法：</p>
-<p>void setTime(Long time)：根据毫秒数设置该日期对象，默认构造函数设置该日期对象为当前日期。</p>
-<p>Long getTime()：获取日期对象毫秒数。毫秒数都是以1970年1月1日0点0分0秒开始计算。</p>
-<p>（下面几个方法，在源代码中，实际比较的还是两个日期的毫秒数）</p>
-<p>int compareTo(Date date)：比较俩个日期顺序，比参数date小，返回负数，相等返回0，大则返回正数。</p>
-<p>boolean before(Date date)：判断是否在参数date之前，是则返回true。</p>
-<p>boolean after(Date date)：同上，判断在是否在参数之后。</p>
-<p>boolean equals(Object date)：当且仅当date不为空，是Date对象，而且毫秒数与调用方法的日期对象相等才为true。</p>
-<h3 id="SimpleDateFormat"><a href="#SimpleDateFormat" class="headerlink" title="SimpleDateFormat"></a>SimpleDateFormat</h3><p>继承DateFormat类，主要用来进行格式转换。</p>
-<p>构造函数：SimpleDateFormat(String pattern)，最常用的构造方法。根据指定格式来转换字符串与日期。</p>
-<p>常用的2个格式转换方法：</p>
-<ul>
-<li><p>字符串转换成Date类：Date parse(String date)</p>
-</li>
-<li><p>Date类转换成字符串类型：String format(Date date)，都是继承DateFormat类的方法</p>
-</li>
-</ul>
-<p>其中，parse方法会抛出一个转换异常：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Date <span class="title">parse</span><span class="params">(String source)</span> <span class="keyword">throws</span> ParseException</span>&#123;</span><br><span class="line">       ParsePosition pos = <span class="keyword">new</span> ParsePosition(<span class="number">0</span>);</span><br><span class="line">       Date result = parse(source, pos);</span><br><span class="line">       <span class="keyword">if</span> (pos.index == <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> ParseException(<span class="string">"Unparseable date: \""</span> + source + <span class="string">"\""</span> ,</span><br><span class="line">               pos.errorIndex);</span><br><span class="line">       <span class="keyword">return</span> result;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>下面是一个转换的例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">       <span class="comment">//对字符串格式类似为2018-09这种进行转换，年月之间用‘-’分隔</span></span><br><span class="line">	SimpleDateFormat simpleDateFormat=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM"</span>);</span><br><span class="line">	Date date=(Date)simpleDateFormat.parse(<span class="string">"2018-09"</span>);</span><br><span class="line">	System.out.println(date);</span><br><span class="line">	String dateStr=simpleDateFormat.format(date);</span><br><span class="line">	System.out.println(dateStr);</span><br><span class="line">       <span class="comment">//将转换格式应用为201809这种，年月之间没有分隔符号的，只要年月相同，结果就与上面相同</span></span><br><span class="line">	simpleDateFormat.applyPattern(<span class="string">"yyyyMM"</span>);<span class="comment">//applyPattern方法用来切换需要转换的字符串格式。</span></span><br><span class="line">	Date date2=(Date)simpleDateFormat.parse(<span class="string">"201809"</span>);</span><br><span class="line">	System.out.println(date2);</span><br><span class="line">	String dateStr2=simpleDateFormat.format(date2);</span><br><span class="line">	System.out.println(dateStr2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Calendar"><a href="#Calendar" class="headerlink" title="Calendar"></a>Calendar</h3><p>一个抽象类，为特定瞬间和一组日历字段之间的转换以及操作日历字段提供了方法。</p>
-<p>使用<strong>Calendar.getInstance</strong>获取该对象：Calendar nowTime=Calendar.getInstance();</p>
-<p>部分常用方法：</p>
-<p>void setTime(Date date)：通过该类方法指定Calendar对象表示的日期。</p>
-<p>Date getTime()：获取一个Date对象。</p>
-<p>void setTimeInMillis(Long time)：同上。</p>
-<p>void add(int field,int amount)：给当前对象的指定字段增加指定数值。Calender类为日历中的各种字段都设置了int类型的数值，比如，</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> YEAR = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> MONTH = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> WEEK_OF_YEAR = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
-<p>字段‘年’所对应的int值为1，如果你想将当前日历类对象的年份加1年，那么只需这样做：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Calendar nowTime=Calendar.getInstance();</span><br><span class="line">System.out.println(nowTime.get(Calendar.YEAR));</span><br><span class="line">nowTime.add(YEAR,<span class="number">1</span>);</span><br><span class="line">System.out.println(nowTime.get(Calendar.YEAR));</span><br><span class="line"> </span><br><span class="line">结果：</span><br><span class="line"><span class="number">2018</span></span><br><span class="line"><span class="number">2019</span></span><br></pre></td></tr></table></figure>
-<p><strong>int compareTo(Calendar calendar)：最终还是使用毫秒数来比较的。</strong></p>
-<p><strong>boolean before(Object obj)、boolean after(Object obj)</strong>：内部都是调用上面的compareTo方法实现。</p>
-<h3 id="三个日期类的使用例子"><a href="#三个日期类的使用例子" class="headerlink" title="三个日期类的使用例子"></a>三个日期类的使用例子</h3><p>（1）一天的毫秒数：Long oneDay=Long.parseLong((24*60*60*1000)+””);</p>
-<p>（2）接收的字符串格式的时间，转化为Date类型，并且获取对应的毫秒数：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">		SimpleDateFormat simpleDateFormat=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM"</span>);</span><br><span class="line">		Date date=(Date)simpleDateFormat.parse(<span class="string">"2018-09"</span>);</span><br><span class="line">		<span class="comment">//距离1970年1月1日的毫秒数</span></span><br><span class="line">		Long timeMilli=date.getTime();</span><br><span class="line">		System.out.println(date);</span><br><span class="line">		System.out.println(timeMilli);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">    结果：</span><br><span class="line">    Sat Sep <span class="number">01</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> CST <span class="number">2018</span></span><br><span class="line">    <span class="number">1535731200000</span></span><br></pre></td></tr></table></figure>
-<p>获取指定年月份中指定月的天数，比如2018年9月有30天，返回结果就应该为30，8月就应该返回31</p>
-<p>例子中，是通过传入字符串日期来进行计算的，如果能直接接收日期对象就少一个转换的过程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">	SimpleDateFormat simpleDateFormat=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);</span><br><span class="line">	<span class="comment">//将日期字符串转换为Date对象</span></span><br><span class="line">	Date date=(Date)simpleDateFormat.parse(<span class="string">"2018-08-05"</span>);</span><br><span class="line">	<span class="comment">//通过Date对象，创建一个日历对象</span></span><br><span class="line">	Calendar calendar=Calendar.getInstance();</span><br><span class="line">	calendar.setTime(date);</span><br><span class="line">	<span class="comment">//通过日历中的字段，获取一个月的天数</span></span><br><span class="line">	Integer daysNumber=calendar.getActualMaximum(Calendar.DAY_OF_MONTH);</span><br><span class="line">	System.out.println(daysNumber);</span><br><span class="line">	Date date2=(Date)simpleDateFormat.parse(<span class="string">"2018-09-05"</span>);</span><br><span class="line">	<span class="comment">//通过Date对象，创建一个日历对象</span></span><br><span class="line">	calendar.setTime(date2);</span><br><span class="line">	<span class="comment">//通过日历中的字段，获取一个月的天数</span></span><br><span class="line">	daysNumber=calendar.getActualMaximum(Calendar.DAY_OF_MONTH);</span><br><span class="line">	System.out.println(daysNumber);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   结果：</span><br><span class="line">   <span class="number">31</span></span><br><span class="line">   <span class="number">30</span></span><br></pre></td></tr></table></figure>
-<p>获取对应日期的星期数</p>
-<p>比如2018-08-19是星期天，就输出星期天，20号星期一就输出星期一</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">	SimpleDateFormat simpleDateFormat=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);</span><br><span class="line">	<span class="comment">//将日期字符串转换为Date对象</span></span><br><span class="line">	Date date=(Date)simpleDateFormat.parse(<span class="string">"2018-08-19"</span>);</span><br><span class="line">	<span class="comment">//通过Date对象，创建一个日历对象</span></span><br><span class="line">	Calendar calendar=Calendar.getInstance();</span><br><span class="line">	calendar.setTime(date);</span><br><span class="line">	<span class="comment">//获取当天对应的星期数，星期天为1，星期六为7，详见Calendar类的常量</span></span><br><span class="line">	Integer dayOfWeek=calendar.get(Calendar.DAY_OF_WEEK);</span><br><span class="line">	String dayOfWeekStr=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">switch</span>(dayOfWeek) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期天"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期一"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期二"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期三"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期四"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期五"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">			dayOfWeekStr=<span class="string">"星期六"</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	System.out.println(dayOfWeekStr);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   结果：</span><br><span class="line">   星期天</span><br></pre></td></tr></table></figure>
-<p>总结：</p>
-<p>SimpleDateFormat类用于转换格式，String←→Date；</p>
-<p>Date类用于获取毫秒数，或者作为设置Calendar对象日期的参数，date.getTime()、calendar.setTime(date)</p>
-<p>Calendar类用于具体操作，比如获取指定年、月的天数，日期对应的星期数，对应的月份数等。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3118,7 +3084,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">71</span>
+                    <span class="site-state-item-count">73</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3315,7 +3281,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共193.4k字</span>
+  <span class="post-count">博客全站共195.9k字</span>
 </div>
         
 <div class="busuanzi-count">
