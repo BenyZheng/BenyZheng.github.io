@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/libs/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/libs/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_small.ico?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1. 倒计时器CountDownLatch在多线程协作完成业务功能时，有时候需要等待其他多个线程完成任务之后，主线程才能继续往下执行业务功能，在这种的业务场景下，通常可以使用Thread类的join方法，让主线程等待被join的线程执行完之后，主线程才能继续往下执行。 当然，使用线程间消息通信机制也可以完成。其实，java并发工具类中为我们提供了类似“倒计时”这样的工具类，可以十分方便的完成所说的">
+<meta name="keywords" content="并发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并发工具">
+<meta property="og:url" content="https://benyzheng.github.io/2019/10/29/并发/并发工具/index.html">
+<meta property="og:site_name" content="Beny&#39;s blog">
+<meta property="og:description" content="1. 倒计时器CountDownLatch在多线程协作完成业务功能时，有时候需要等待其他多个线程完成任务之后，主线程才能继续往下执行业务功能，在这种的业务场景下，通常可以使用Thread类的join方法，让主线程等待被join的线程执行完之后，主线程才能继续往下执行。 当然，使用线程间消息通信机制也可以完成。其实，java并发工具类中为我们提供了类似“倒计时”这样的工具类，可以十分方便的完成所说的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://benyzheng.github.io/2019/10/29/并发/并发工具/16334ad72bdd4ca3">
+<meta property="og:updated_time" content="2019-11-05T10:51:27.016Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="并发工具">
+<meta name="twitter:description" content="1. 倒计时器CountDownLatch在多线程协作完成业务功能时，有时候需要等待其他多个线程完成任务之后，主线程才能继续往下执行业务功能，在这种的业务场景下，通常可以使用Thread类的join方法，让主线程等待被join的线程执行完之后，主线程才能继续往下执行。 当然，使用线程间消息通信机制也可以完成。其实，java并发工具类中为我们提供了类似“倒计时”这样的工具类，可以十分方便的完成所说的">
+<meta name="twitter:image" content="https://benyzheng.github.io/2019/10/29/并发/并发工具/16334ad72bdd4ca3">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://benyzheng.github.io/2019/10/29/并发/并发工具/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>并发工具 | Beny's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Beny's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Nothing worth having comes easy.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">15</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">71</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+<a href="https://github.com/bengzheng" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/29/并发/并发工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">并发工具
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-29 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-29T12:12:57+08:00">2019-10-29 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-11-05 18:51:27" itemprop="dateModified" datetime="2019-11-05T18:51:27+08:00">2019-11-05</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-11-05T18:51:27+08:00" content="2019-11-05">
+                2019-11-05 18:51:27
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/29/并发/并发工具/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/29/并发/并发工具/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-倒计时器CountDownLatch"><a href="#1-倒计时器CountDownLatch" class="headerlink" title="1. 倒计时器CountDownLatch"></a>1. 倒计时器CountDownLatch</h2><p>在多线程协作完成业务功能时，有时候需要等待其他多个线程完成任务之后，主线程才能继续往下执行业务功能，在这种的业务场景下，通常可以使用Thread类的join方法，让主线程等待被join的线程执行完之后，主线程才能继续往下执行。</p>
+<p>当然，使用线程间消息通信机制也可以完成。其实，java并发工具类中为我们提供了类似“倒计时”这样的工具类，可以十分方便的完成所说的这种业务场景。</p>
+<p>为了能够理解CountDownLatch，举一个很通俗的例子，运动员进行跑步比赛时，假设有6个运动员参与比赛，裁判员在终点会为这6个运动员分别计时，可以想象没当一个运动员到达终点的时候，对于裁判员来说就少了一个计时任务。直到所有运动员都到达终点了，裁判员的任务也才完成。这6个运动员可以类比成6个线程，当线程调用CountDownLatch.countDown方法时就会对计数器的值减一，直到计数器的值为0的时候，裁判员（调用await方法的线程）才能继续往下执行。</p>
+<p>从CountDownLatch的构造方法看起：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CountDownLatch</span><span class="params">(<span class="keyword">int</span> count)</span></span></span><br></pre></td></tr></table></figure>
+<p>构造方法会传入一个整型数N，之后调用CountDownLatch的<code>countDown</code>方法会对N减一，知道N减到0的时候，当前调用<code>await</code>方法的线程继续执行。</p>
+<p>CountDownLatch的方法：</p>
+<ol>
+<li>await() throws InterruptedException：调用该方法的线程等到构造方法传入的N减到0的时候，才能继续往下执行；</li>
+<li>await(long timeout, TimeUnit unit)：与上面的await方法功能一致，只不过这里有了时间限制，调用该方法的线程等到指定的timeout时间后，不管N是否减至为0，都会继续往下执行；</li>
+<li>countDown()：使CountDownLatch初始值N减1；</li>
+<li>long getCount()：获取当前CountDownLatch维护的值；</li>
+</ol>
+<p>下面用一个具体的例子来说明CountDownLatch的具体用法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountDownLatchDemo</span> </span>&#123;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> CountDownLatch startSignal = <span class="keyword">new</span> CountDownLatch(<span class="number">1</span>);</span><br><span class="line"><span class="comment">//用来表示裁判员需要维护的是6个运动员</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> CountDownLatch endSignal = <span class="keyword">new</span> CountDownLatch(<span class="number">6</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    ExecutorService executorService = Executors.newFixedThreadPool(<span class="number">6</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">        executorService.execute(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">" 运动员等待裁判员响哨！！！"</span>);</span><br><span class="line">                startSignal.await();</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">"正在全力冲刺"</span>);</span><br><span class="line">                endSignal.countDown();</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">"  到达终点"</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">        System.out.println(<span class="string">"裁判员发号施令啦！！！"</span>);</span><br><span class="line">        startSignal.countDown();</span><br><span class="line">        endSignal.await();</span><br><span class="line">        System.out.println(<span class="string">"所有运动员到达终点，比赛结束！"</span>);</span><br><span class="line">        executorService.shutdown();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">输出结果：</span><br><span class="line"></span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">2</span> 运动员等待裁判员响哨！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">3</span> 运动员等待裁判员响哨！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">1</span> 运动员等待裁判员响哨！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">4</span> 运动员等待裁判员响哨！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">5</span> 运动员等待裁判员响哨！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">6</span> 运动员等待裁判员响哨！！！</span><br><span class="line">裁判员发号施令啦！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">2</span>正在全力冲刺</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">2</span>  到达终点</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">3</span>正在全力冲刺</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">3</span>  到达终点</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">1</span>正在全力冲刺</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">1</span>  到达终点</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">4</span>正在全力冲刺</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">4</span>  到达终点</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">5</span>正在全力冲刺</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">5</span>  到达终点</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">6</span>正在全力冲刺</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">6</span>  到达终点</span><br><span class="line">所有运动员到达终点，比赛结束！</span><br></pre></td></tr></table></figure>
+<p>该示例代码中设置了两个CountDownLatch，第一个<code>endSignal</code>用于控制让main线程（裁判员）必须等到其他线程（运动员）让CountDownLatch维护的数值N减到0为止。另一个<code>startSignal</code>用于让main线程对其他线程进行“发号施令”，startSignal引用的CountDownLatch初始值为1，而其他线程执行的run方法中都会先通过 <code>startSignal.await()</code>让这些线程都被阻塞，直到main线程通过调用<code>startSignal.countDown();</code>，将值N减1，CountDownLatch维护的数值N为0后，其他线程才能往下执行，并且，每个线程执行的run方法中都会通过<code>endSignal.countDown();</code>对<code>endSignal</code>维护的数值进行减一，由于往线程池提交了6个任务，会被减6次，所以<code>endSignal</code>维护的值最终会变为0，因此main线程在<code>latch.await();</code>阻塞结束，才能继续往下执行。</p>
+<p>另外，需要注意的是，当调用CountDownLatch的countDown方法时，当前线程是不会被阻塞，会继续往下执行，比如在该例中会继续输出<code>pool-1-thread-4 到达终点</code>。</p>
+<h2 id="2-循环栅栏：CyclicBarrier"><a href="#2-循环栅栏：CyclicBarrier" class="headerlink" title="2. 循环栅栏：CyclicBarrier"></a>2. 循环栅栏：CyclicBarrier</h2><p>CyclicBarrier也是一种多线程并发控制的实用工具，和CountDownLatch一样具有等待计数的功能，但是相比于CountDownLatch功能更加强大。</p>
+<p>为了理解CyclicBarrier，这里举一个通俗的例子。开运动会时，会有跑步这一项运动，我们来模拟下运动员入场时的情况，假设有6条跑道，在比赛开始时，就需要6个运动员在比赛开始的时候都站在起点了，裁判员吹哨后才能开始跑步。跑道起点就相当于“barrier”，是临界点，而这6个运动员就类比成线程的话，就是这6个线程都必须到达指定点了，意味着凑齐了一波，然后才能继续执行，否则每个线程都得阻塞等待，直至凑齐一波即可。</p>
+<p>CyclicBarrier当多个线程凑齐了一波之后，仍然有效，可以继续凑齐下一波。CyclicBarrier的执行示意图如下：</p>
+<p><img src="/2019/10/29/并发/并发工具/16334ad72bdd4ca3" alt="CyclicBarrieræ§è¡ç¤ºæå¾.jpg"></p>
+<p>当多个线程都达到了指定点后，才能继续往下继续执行。这就有点像报数的感觉，假设6个线程就相当于6个运动员，到赛道起点时会报数进行统计，如果刚好是6的话，这一波就凑齐了，才能往下执行。</p>
+<p><strong>CyclicBarrier在使用一次后，下面依然有效，可以继续当做计数器使用，这是与CountDownLatch的区别之一。</strong>这里的6个线程，也就是计数器的初始值6，是通过CyclicBarrier的构造方法传入的。</p>
+<p>下面来看下CyclicBarrier的主要方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//等到所有的线程都到达指定的临界点</span></span><br><span class="line">await() <span class="keyword">throws</span> InterruptedException, BrokenBarrierException </span><br><span class="line"></span><br><span class="line"><span class="comment">//与上面的await方法功能基本一致，只不过这里有超时限制，阻塞等待直至到达超时时间为止</span></span><br><span class="line">await(<span class="keyword">long</span> timeout, TimeUnit unit) <span class="keyword">throws</span> InterruptedException, </span><br><span class="line">BrokenBarrierException, TimeoutException </span><br><span class="line"></span><br><span class="line"><span class="comment">//获取当前有多少个线程阻塞等待在临界点上</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getNumberWaiting</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//用于查询阻塞等待的线程是否被中断</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isBroken</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//将屏障重置为初始状态。如果当前有线程正在临界点等待的话，将抛出BrokenBarrierException。</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reset</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<p>另外需要注意的是，CyclicBarrier提供了这样的构造方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CyclicBarrier</span><span class="params">(<span class="keyword">int</span> parties, Runnable barrierAction)</span></span></span><br></pre></td></tr></table></figure>
+<p>可以用来，当指定的线程都到达了指定的临界点的时，接下来执行的操作可以由barrierAction传入即可。</p>
+<blockquote>
+<p>一个例子</p>
+</blockquote>
+<p>用一个简单的例子，来看下CyclicBarrier的用法，我们来模拟下上面的运动员的例子。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CyclicBarrierDemo</span> </span>&#123;</span><br><span class="line">    <span class="comment">//指定必须有6个运动员到达才行</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> CyclicBarrier barrier = <span class="keyword">new</span> CyclicBarrier(<span class="number">6</span>, () -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">"所有运动员入场，裁判员一声令下！！！！！"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"运动员准备进场，全场欢呼............"</span>);</span><br><span class="line"></span><br><span class="line">        ExecutorService service = Executors.newFixedThreadPool(<span class="number">6</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">            service.execute(() -&gt; &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">" 运动员，进场"</span>);</span><br><span class="line">                    barrier.await();</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">"  运动员出发"</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (BrokenBarrierException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">运动员准备进场，全场欢呼............</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">2</span> 运动员，进场</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">1</span> 运动员，进场</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">3</span> 运动员，进场</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">4</span> 运动员，进场</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">5</span> 运动员，进场</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">6</span> 运动员，进场</span><br><span class="line">所有运动员入场，裁判员一声令下！！！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">6</span>  运动员出发</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">1</span>  运动员出发</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">5</span>  运动员出发</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">4</span>  运动员出发</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">3</span>  运动员出发</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">2</span>  运动员出发</span><br></pre></td></tr></table></figure>
+<p>从输出结果可以看出，当6个运动员（线程）都到达了指定的临界点（barrier）时候，才能继续往下执行，否则，则会阻塞等待在调用<code>await()</code>处</p>
+<h2 id="3-CountDownLatch与CyclicBarrier的比较"><a href="#3-CountDownLatch与CyclicBarrier的比较" class="headerlink" title="3. CountDownLatch与CyclicBarrier的比较"></a>3. CountDownLatch与CyclicBarrier的比较</h2><p>CountDownLatch与CyclicBarrier都是用于控制并发的工具类，都可以理解成维护的就是一个计数器，但是这两者还是各有不同侧重点的：</p>
+<ol>
+<li>CountDownLatch一般用于某个线程A等待若干个其他线程执行完任务之后，它才执行；而CyclicBarrier一般用于一组线程互相等待至某个状态，然后这一组线程再同时执行；CountDownLatch强调一个线程等多个线程完成某件事情。CyclicBarrier是多个线程互等，等大家都完成，再携手共进。</li>
+<li>调用CountDownLatch的countDown方法后，当前线程并不会阻塞，会继续往下执行；而调用CyclicBarrier的await方法，会阻塞当前线程，直到CyclicBarrier指定的线程全部都到达了指定点的时候，才能继续往下执行；</li>
+<li>CountDownLatch方法比较少，操作比较简单，而CyclicBarrier提供的方法更多，比如能够通过getNumberWaiting()，isBroken()这些方法获取当前多个线程的状态，<strong>并且CyclicBarrier的构造方法可以传入barrierAction</strong>，指定当所有线程都到达时执行的业务功能；</li>
+<li>CountDownLatch是不能复用的，而CyclicLatch是可以复用的。</li>
+</ol>
+<h2 id="4-控制资源并发访问–Semaphore"><a href="#4-控制资源并发访问–Semaphore" class="headerlink" title="4. 控制资源并发访问–Semaphore"></a>4. 控制资源并发访问–Semaphore</h2><p>Semaphore可以理解为<strong>信号量</strong>，用于控制资源能够被并发访问的线程数量，以保证多个线程能够合理的使用特定资源。Semaphore就相当于一个许可证，线程需要先通过acquire方法获取该许可证，该线程才能继续往下执行，否则只能在该方法出阻塞等待。当执行完业务功能后，需要通过<code>release()</code>方法将许可证归还，以便其他线程能够获得许可证继续执行。</p>
+<p>Semaphore可以用于做流量控制，特别是公共资源有限的应用场景，比如数据库连接。假如有多个线程读取数据后，需要将数据保存在数据库中，而可用的最大数据库连接只有10个，这时候就需要使用Semaphore来控制能够并发访问到数据库连接资源的线程个数最多只有10个。在限制资源使用的应用场景下，Semaphore是特别合适的。</p>
+<p>下面来看下Semaphore的主要方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取许可，如果无法获取到，则阻塞等待直至能够获取为止</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">acquire</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//同acquire方法功能基本一样，只不过该方法可以一次获取多个许可</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">int</span> permits)</span> <span class="keyword">throws</span> InterruptedException</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//释放许可</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">release</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//释放指定个数的许可</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">release</span><span class="params">(<span class="keyword">int</span> permits)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//尝试获取许可，如果能够获取成功则立即返回true，否则，则返回false</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//与tryAcquire方法一致，只不过这里可以指定获取多个许可</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">int</span> permits)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//尝试获取许可，如果能够立即获取到或者在指定时间内能够获取到，则返回true，否则返回false</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span> <span class="keyword">throws</span> InterruptedException</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//与上一个方法一致，只不过这里能够获取多个许可</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">int</span> permits, <span class="keyword">long</span> timeout, TimeUnit unit)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//返回当前可用的许可证个数</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">availablePermits</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//返回正在等待获取许可证的线程数</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getQueueLength</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//是否有线程正在等待获取许可证</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">hasQueuedThreads</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//获取所有正在等待许可的线程集合</span></span></span><br><span class="line"><span class="function">Collection&lt;Thread&gt; <span class="title">getQueuedThreads</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<p>另外，在Semaphore的构造方法中还支持指定是够具有公平性，默认的是非公平性，这样也是为了保证吞吐量。</p>
+<blockquote>
+<p>一个例子</p>
+</blockquote>
+<p>下面用一个简单的例子来说明Semaphore的具体使用。我们来模拟这样一样场景。有一天，班主任需要班上10个同学到讲台上来填写一个表格，但是老师只准备了5支笔，因此，只能保证同时只有5个同学能够拿到笔并填写表格，没有获取到笔的同学只能够等前面的同学用完之后，才能拿到笔去填写表格。该示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SemaphoreDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//表示老师只有10支笔</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Semaphore semaphore = <span class="keyword">new</span> Semaphore(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//表示10个学生</span></span><br><span class="line">        ExecutorService service = Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            service.execute(() -&gt; &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">"  同学准备获取笔......"</span>);</span><br><span class="line">                    semaphore.acquire();</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">"  同学获取到笔"</span>);</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">"  填写表格ing....."</span>);</span><br><span class="line">                    TimeUnit.SECONDS.sleep(<span class="number">3</span>);</span><br><span class="line">                    semaphore.release();</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">"  填写完表格，归还了笔！！！！！！"</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        service.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">输出结果：</span><br><span class="line"></span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">1</span>  同学准备获取笔......</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">1</span>  同学获取到笔</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">1</span>  填写表格ing.....</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">2</span>  同学准备获取笔......</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">2</span>  同学获取到笔</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">2</span>  填写表格ing.....</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">3</span>  同学准备获取笔......</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">4</span>  同学准备获取笔......</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">3</span>  同学获取到笔</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">4</span>  同学获取到笔</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">4</span>  填写表格ing.....</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">3</span>  填写表格ing.....</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">5</span>  同学准备获取笔......</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">5</span>  同学获取到笔</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">5</span>  填写表格ing.....</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">6</span>  同学准备获取笔......</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">7</span>  同学准备获取笔......</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">8</span>  同学准备获取笔......</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">9</span>  同学准备获取笔......</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">10</span>  同学准备获取笔......</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">4</span>  填写完表格，归还了笔！！！！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">9</span>  同学获取到笔</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">9</span>  填写表格ing.....</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">5</span>  填写完表格，归还了笔！！！！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">7</span>  同学获取到笔</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">7</span>  填写表格ing.....</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">8</span>  同学获取到笔</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">8</span>  填写表格ing.....</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">1</span>  填写完表格，归还了笔！！！！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">6</span>  同学获取到笔</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">6</span>  填写表格ing.....</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">3</span>  填写完表格，归还了笔！！！！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">2</span>  填写完表格，归还了笔！！！！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">10</span>  同学获取到笔</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">10</span>  填写表格ing.....</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">7</span>  填写完表格，归还了笔！！！！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">9</span>  填写完表格，归还了笔！！！！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">8</span>  填写完表格，归还了笔！！！！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">6</span>  填写完表格，归还了笔！！！！！！</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">10</span>  填写完表格，归还了笔！！！！！！</span><br></pre></td></tr></table></figure>
+<p>根据输出结果进行分析，Semaphore允许的最大许可数为5，也就是允许的最大并发执行的线程个数为5，可以看出，前5个线程（前5个学生）先获取到笔，然后填写表格，而6-10这5个线程，由于获取不到许可，只能阻塞等待。当线程<code>pool-1-thread-4</code>释放了许可之后，<code>pool-1-thread-9</code>就可以获取到许可，继续往下执行。对其他线程的执行过程，也是同样的道理。从这个例子就可以看出，<strong>Semaphore用来做特殊资源的并发访问控制是相当合适的，如果有业务场景需要进行流量控制，可以优先考虑Semaphore。</strong></p>
+<h2 id="5-线程间交换数据的工具–Exchanger"><a href="#5-线程间交换数据的工具–Exchanger" class="headerlink" title="5.线程间交换数据的工具–Exchanger"></a>5.线程间交换数据的工具–Exchanger</h2><p>Exchanger是一个用于线程间协作的工具类，用于两个线程间能够交换。它提供了一个交换的同步点，在这个同步点两个线程能够交换数据。</p>
+<p>具体交换数据是通过exchange方法来实现的，如果一个线程先执行exchange方法，那么它会同步等待另一个线程也执行exchange方法，这个时候两个线程就都达到了同步点，两个线程就可以交换数据。</p>
+<p>Exchanger除了一个无参的构造方法外，主要方法也很简单：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当一个线程执行该方法的时候，会等待另一个线程也执行该方法，因此两个线程就都达到了同步点</span></span><br><span class="line"><span class="comment">//将数据交换给另一个线程，同时返回获取的数据</span></span><br><span class="line"><span class="function">V <span class="title">exchange</span><span class="params">(V x)</span> <span class="keyword">throws</span> InterruptedException</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//同上一个方法功能基本一样，只不过这个方法同步等待的时候，增加了超时时间</span></span></span><br><span class="line"><span class="function">V <span class="title">exchange</span><span class="params">(V x, <span class="keyword">long</span> timeout, TimeUnit unit)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> InterruptedException, TimeoutException</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一个例子</p>
+</blockquote>
+<p>Exchanger理解起来很容易，这里用一个简单的例子来看下它的具体使用。我们来模拟这样一个情景，在青春洋溢的中学时代，下课期间，男生经常会给走廊里为自己喜欢的女孩子送情书，男孩会先到女孩教室门口，然后等女孩出来，教室那里就是一个同步点，然后彼此交换信物，也就是彼此交换了数据。现在，就来模拟这个情景。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExchangerDemo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Exchanger&lt;String&gt; exchanger = <span class="keyword">new</span> Exchanger();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//代表男生和女生</span></span><br><span class="line">        ExecutorService service = Executors.newFixedThreadPool(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        service.execute(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//男生对女生说的话</span></span><br><span class="line">                String girl = exchanger.exchange(<span class="string">"我其实暗恋你很久了......"</span>);</span><br><span class="line">                System.out.println(<span class="string">"女孩儿说："</span> + girl);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        service.execute(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">"女生慢慢的从教室你走出来......"</span>);</span><br><span class="line">                TimeUnit.SECONDS.sleep(<span class="number">3</span>);</span><br><span class="line">                <span class="comment">//男生对女生说的话</span></span><br><span class="line">                String boy = exchanger.exchange(<span class="string">"我也很喜欢你......"</span>);</span><br><span class="line">                System.out.println(<span class="string">"男孩儿说："</span> + boy);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line"></span><br><span class="line">女生慢慢的从教室你走出来......</span><br><span class="line">男孩儿说：我其实暗恋你很久了......</span><br><span class="line">女孩儿说：我也很喜欢你......</span><br></pre></td></tr></table></figure>
+<p>这个例子很简单，也很能说明Exchanger的基本使用。当两个线程都到达调用exchange方法的同步点的时候，两个线程就能交换彼此的数据。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/并发/" rel="tag"># 并发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/29/并发/生产者消费者/" rel="next" title="生产者消费者问题">
+                <i class="fa fa-chevron-left"></i> 生产者消费者问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/30/设计模式/创建型模式/" rel="prev" title="创建型模式">
+                创建型模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Beny">
+            
+              <p class="site-author-name" itemprop="name">Beny</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">71</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/1105397915" title="1105397915 &rarr; 1105397915"><i class="fa fa-fw fa-qq"></i>1105397915</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/benyzheng" title="GitHub &rarr; https://github.com/benyzheng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/zhengbeny@qq.com" title="zhengbeny@qq.com &rarr; zhengbeny@qq.com"><i class="fa fa-fw fa-envelope"></i>zhengbeny@qq.com</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-倒计时器CountDownLatch"><span class="nav-number">1.</span> <span class="nav-text">1. 倒计时器CountDownLatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-循环栅栏：CyclicBarrier"><span class="nav-number">2.</span> <span class="nav-text">2. 循环栅栏：CyclicBarrier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-CountDownLatch与CyclicBarrier的比较"><span class="nav-number">3.</span> <span class="nav-text">3. CountDownLatch与CyclicBarrier的比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-控制资源并发访问–Semaphore"><span class="nav-number">4.</span> <span class="nav-text">4. 控制资源并发访问–Semaphore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-线程间交换数据的工具–Exchanger"><span class="nav-number">5.</span> <span class="nav-text">5.线程间交换数据的工具–Exchanger</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Beny</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共193.4k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="/js/src/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'oaY0uDqkCsuX94AxTtnV6scO-gzGzoHsz',
+    appKey: 'HKU5SJPAd8KyYqk6Q8fdArL5',
+    placeholder: '写了评论, offer还会远吗? ----记得填写邮箱哦~如果可以填写你的网站互相参考就更好啦',
+    avatar: 'retro',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+  //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/click.js"></script>-->
+</body>
+</html>

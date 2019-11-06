@@ -299,7 +299,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">14</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">15</span></a>
 
   </li>
         
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">67</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">71</span></a>
 
   </li>
 
@@ -385,6 +385,471 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/RestController和Controller的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/框架/RestController和Controller的区别/" class="post-title-link" itemprop="url">RestController和Controller的区别</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-23 14:16:36" itemprop="dateModified" datetime="2019-10-23T14:16:36+08:00">2019-10-23</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-23T14:16:36+08:00" content="2019-10-23">
+                2019-10-23 14:16:36
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/框架/RestController和Controller的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/RestController和Controller的区别/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。</p>
+<p>1、如果只是使用@RestController注解Controller，则Controller中的方法无法返回jsp页面，配置的视图解析器InternalResourceViewResolver则不起作用，返回的内容就是Return 里的内容（String/JSON）。<br>例如：本来应该到success.jsp页面的，则其显示success.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、如果使用@RestController注解Controller，需要返回到指定页面，则需要配置视图解析器InternalResourceViewResolver，可以利用ModelAndView返回视图。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> newModelAndView(<span class="string">"success"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、如果使用@Controller注解Controller，在对应的方法上，视图解析器可以解析return 的jsp,html页面，并且跳转到相应页面</p>
+<p>若需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上@ResponseBody注解。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/SpringMVC的工作流程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/框架/SpringMVC的工作流程/" class="post-title-link" itemprop="url">SpringMVC的工作流程</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-26 22:20:59" itemprop="dateModified" datetime="2019-10-26T22:20:59+08:00">2019-10-26</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-26T22:20:59+08:00" content="2019-10-26">
+                2019-10-26 22:20:59
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/框架/SpringMVC的工作流程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/SpringMVC的工作流程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="SpringMVC架构"><a href="#SpringMVC架构" class="headerlink" title="SpringMVC架构"></a>SpringMVC架构</h3><p><img src="/2019/10/21/框架/SpringMVC的工作流程/1086132-20180315213752573-1946735693.png" alt></p>
+<h3 id="框架流程"><a href="#框架流程" class="headerlink" title="框架流程"></a>框架流程</h3><ol>
+<li>用户发送请求至前端控制器DispatcherServlet。</li>
+<li>DispatcherServlet收到请求调用HandlerMapping处理器映射器。</li>
+<li>处理器映射器找到具体的处理器，生成处理器对象及处理器拦截器（如果有则生成）一并返回给DispatcherServlet。</li>
+<li>DispatcherServlet调用HandlerAdapter处理器适配器。</li>
+<li>HandlerAdapter经过适配调用具体的处理器（controller，也叫后端控制器）。</li>
+<li>Controller执行完成返回ModelAndView。</li>
+<li>HandlerAdapter将Controller返回的执行结果ModelAndView返回给DispatcherServlet。</li>
+<li>DispatcherServlet将ModelAndView传给ViewReslover视图解析器。</li>
+<li>ViewReslover解析之后返回具体的view。</li>
+<li>DispatcherServlet根据View进行渲染视图（即将模型数据填充至视图jsp/freemaker..中）。</li>
+<li>DispatcherServlet响应用户。</li>
+</ol>
+<p><img src="/2019/10/21/框架/SpringMVC的工作流程/20180803145042704.png" alt></p>
+<h3 id="组件说明"><a href="#组件说明" class="headerlink" title="组件说明"></a>组件说明</h3><p>以下组件通常使用框架提供实现：</p>
+<p><strong>DispatcherServlet：前端控制器</strong></p>
+<p>　　用户请求到达前端控制器，它就相当于mvc模式中的c，dispatcherServlet是整个流程控制的中心，由它调用其它组件处理用户的请求，dispatcherServlet的存在降低了组件之间的耦合性。</p>
+<p><strong>HandlerMapping：处理器映射器</strong></p>
+<p>　　HandlerMapping负责根据用户请求找到Handler即处理器，springmvc提供了不同的映射器实现不同的映射方式，例如：配置文件方式，实现接口方式，注解方式等。</p>
+<p><strong>Handler：处理器</strong></p>
+<p>　　Handler 是继DispatcherServlet前端控制器的后端控制器，在DispatcherServlet的控制下Handler对具体的用户请求进行处理。</p>
+<p>​        由于Handler涉及到具体的用户业务请求，所以一般情况需要程序员根据业务需求开发Handler。</p>
+<p><strong>HandlAdapter：处理器适配器</strong></p>
+<p>　　通过HandlerAdapter对处理器进行执行，这是适配器模式的应用，通过扩展适配器可以对更多类型的处理器进行执行。</p>
+<p><strong>View Resolver：视图解析器</strong></p>
+<p>　　View Resolver负责将处理结果生成View视图(JSP,freemarker)，View Resolver首先根据逻辑视图名解析成物理视图名即具体的页面地址，再生成View视图对象，最后对View进行渲染将处理结果通过页面展示给用户。</p>
+<p><strong>View：视图</strong></p>
+<p>　　springmvc框架提供了很多的View视图类型的支持，包括：jstlView、freemarkerView、pdfView等。我们最常用的视图就是jsp。</p>
+<p>　　一般情况下需要通过页面标签或页面模版技术将模型数据通过页面展示给用户，需要由程序员根据业务需求开发具体的页面。</p>
+<p><strong>需要用户开发的组件有</strong>handler(controller类)、view(jsp/freemarker velocity,thyeleaf)　　　</p>
+<h3 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h3><p><strong>&lt;mvc:annotation-driven /&gt; 说明:</strong></p>
+<p> 　　是一种简写形式，可以让初学者快速成应用默认的配置方案，会默认注册 DefaultAnnotationHandleMapping以及AnnotionMethodHandleAdapter 这两个 Bean, 这两个 Bean ，前者对应类级别， 后者对应到方法级别；</p>
+<p>　　上面的 DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter 是 Spring 为 @Controller 分发请求所必需的。</p>
+<p><strong>annotation-driven 扫描指定包中类上的注解，常用的注解有:</strong></p>
+<p>@Controller 声明Action组件</p>
+<p>@Service 声明Service组件 @Service(“myMovieLister”)</p>
+<p>@Repository 声明Dao组件</p>
+<p>@Component 泛指组件, 当不好归类时.</p>
+<p>@RequestMapping(“/menu”) 请求映射</p>
+<p>@Resource 用于注入，( j2ee提供的 ) 默认按名称装配，@Resource(name=”beanName”)</p>
+<p>@Autowired 用于注入，(srping提供的) 默认按类型装配</p>
+<p>@Transactional( rollbackFor={Exception.class}) 事务管理</p>
+<p>@ResponseBody</p>
+<p>@Scope(“prototype”) 设定bean的作用域</p>
+<h3 id="适配器作用"><a href="#适配器作用" class="headerlink" title="适配器作用"></a>适配器作用</h3><p>SpringMVC涉及的映射器，视图解析器的作用不难理解，映射器负责将前端请求的url映射到配置的处理器，视图解析器将最终的结果进行解析，但中间为什么要经过一层适配器呢，为什么不经映射器找到controller后直接执行返回呢？</p>
+<p>那是因为SpringMVC为业务处理器提供了多种接口实现（例如实现了Controller接口），而适配器就是用来根据处理器实现了什么接口，最终选择与已经注册好的不同类型的Handler Adapter进行匹配，并最终执行，例如，SimpleControllerHandlerAdapter是支持实现了controller接口的控制器，如果自己写的控制器实现了controller接口，那么SimpleControllerHandlerAdapter就会去执行自己写的控制器中的具体方法来完成请求。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -652,7 +1117,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/SpringMVC的工作流程/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Resource和Autowired的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -672,7 +1137,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/21/框架/SpringMVC的工作流程/" class="post-title-link" itemprop="url">SpringMVC的工作流程</a>
+                <a href="/2019/10/21/框架/Resource和Autowired的区别/" class="post-title-link" itemprop="url">Resource和Autowired的区别</a>
               
             
           </h1>
@@ -714,7 +1179,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-26 22:20:59" itemprop="dateModified" datetime="2019-10-26T22:20:59+08:00">2019-10-26</time> 
+              <time title="修改时间：2019-10-27 01:03:09" itemprop="dateModified" datetime="2019-10-27T01:03:09+08:00">2019-10-27</time> 
               -->
               <!-- new version -->
                         
@@ -729,8 +1194,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-26T22:20:59+08:00" content="2019-10-26">
-                2019-10-26 22:20:59
+              <time itemprop="dateUpdated" datetime="2019-10-27T01:03:09+08:00" content="2019-10-27">
+                2019-10-27 01:03:09
               </time>
             </span>
           
@@ -770,8 +1235,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/SpringMVC的工作流程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/SpringMVC的工作流程/" itemprop="commentCount"></span>
+                <a href="/2019/10/21/框架/Resource和Autowired的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Resource和Autowired的区别/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -801,53 +1266,707 @@
       
         
           
-            <h3 id="SpringMVC架构"><a href="#SpringMVC架构" class="headerlink" title="SpringMVC架构"></a>SpringMVC架构</h3><p><img src="/2019/10/21/框架/SpringMVC的工作流程/1086132-20180315213752573-1946735693.png" alt></p>
-<h3 id="框架流程"><a href="#框架流程" class="headerlink" title="框架流程"></a>框架流程</h3><ol>
-<li>用户发送请求至前端控制器DispatcherServlet。</li>
-<li>DispatcherServlet收到请求调用HandlerMapping处理器映射器。</li>
-<li>处理器映射器找到具体的处理器，生成处理器对象及处理器拦截器（如果有则生成）一并返回给DispatcherServlet。</li>
-<li>DispatcherServlet调用HandlerAdapter处理器适配器。</li>
-<li>HandlerAdapter经过适配调用具体的处理器（controller，也叫后端控制器）。</li>
-<li>Controller执行完成返回ModelAndView。</li>
-<li>HandlerAdapter将Controller返回的执行结果ModelAndView返回给DispatcherServlet。</li>
-<li>DispatcherServlet将ModelAndView传给ViewReslover视图解析器。</li>
-<li>ViewReslover解析之后返回具体的view。</li>
-<li>DispatcherServlet根据View进行渲染视图（即将模型数据填充至视图jsp/freemaker..中）。</li>
-<li>DispatcherServlet响应用户。</li>
+            <p>@Resource和@Autowired都是做bean的注入时使用，其实@Resource不是Spring的注解，是javaEE的注解，它的包是javax.annotation.Resource，需要导入，但是Spring支持该注解的注入。</p>
+<p>1、共同点</p>
+<p>两者都可以写在字段和setter方法上。两者如果都写在字段上，那么就不需要再写setter方法。</p>
+<p>2、不同点</p>
+<p>（1）@Autowired</p>
+<p>@Autowired为Spring提供的注解，需要导入包org.springframework.beans.factory.annotation.Autowired;只按照byType注入。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 下面两种@Autowired只要使用一种即可</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; <span class="comment">// 用于字段上</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserDao</span><span class="params">(UserDao userDao)</span> </span>&#123; <span class="comment">// 用于属性的方法上</span></span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Autowired注解是按照类型（byType）装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，</p>
+<p>可以设置它的required属性为false。如果我们想使用按照名称（byName）来装配，可以结合@Qualifier注解一起</p>
+<p>使用。如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier</span>(<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）@Resource</p>
+<p>@Resource默认按照ByName自动注入，由J2EE提供，需要导入包javax.annotation.Resource。默认按照名称进</p>
+<p>行装配，名称可以通过name属性进行指定，如果没有指定name属性，当注解写在字段上时，默认取字段名进行</p>
+<p>安装名称查找，如果注解写在setter方法上默认取属性名进行装配。当找不到与名称匹配的bean时才按照类型进</p>
+<p>行装配。</p>
+<p>但是需要注意的是，如果name属性一旦指定，就只会按照名称进行装配。</p>
+<p>如果既不制定name也不制定type属性，这时将通过反射机制使用byName自动注入策略。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 下面两种@Resource只要使用一种即可</span></span><br><span class="line">    <span class="meta">@Resource</span>(name=<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; <span class="comment">// 用于字段上</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Resource</span>(name=<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserDao</span><span class="params">(UserDao userDao)</span> </span>&#123; <span class="comment">// 用于属性的setter方法上</span></span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：最好是将@Resource放在setter方法上，因为这样更符合面向对象的思想，通过set、get去操作属性，而不是直接去操作属性。</p>
+<p>@Resource装配顺序：</p>
+<p>①如果同时指定了name和type，则从Spring上下文中找到唯一匹配的bean进行装配，找不到则抛出异常。</p>
+<p>②如果指定了name，则从上下文中查找名称（id）匹配的bean进行装配，找不到则抛出异常。</p>
+<p>③如果指定了type，则从上下文中找到类似匹配的唯一bean进行装配，找不到或是找到多个，都会抛出异常。</p>
+<p>④如果既没有指定name，又没有指定type，则自动按照byName方式进行装配；如果没有匹配，则回退为一个原始类型进行匹配，如果匹配则自动装配。</p>
+<p>@Resource的作用相当于@Autowired，只不过@Autowired按照byType自动注入。</p>
+<p>byName和byType看什么</p>
+<p><img src="/2019/10/21/框架/Resource和Autowired的区别/20180723224000349.png" alt></p>
+<ul>
+<li>byName会搜索整个配置文件中的bean,如果有相同名称的bean则自动装配，否则显示异常。</li>
+</ul>
+<p>例如，在装配com.tutorialspoint.TextEditor的spellChecker时，spring会搜索整个配置文件的bean查找是否有名称为spellChecker的bean，有则自动装配，没有就抛出异常。</p>
+<ul>
+<li>byType会搜索整个配置文件中的bean,如果有相同类型的bean则自动装配，否则显示异常。</li>
+</ul>
+<p>例如，在装配com.tutorialspoint.TextEditor的spellChecker时，spring会搜索整个配置文件的bean查找是否有跟spellChecker属于相同类的bean，有则自动装配，没有就抛出异常。</p>
+<p>#### </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Spring IOC和AOP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/框架/Spring IOC和AOP/" class="post-title-link" itemprop="url">Spring IOC和AOP</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+             
+             
+
+              <time title="创建时间：2019-10-21 12:12:57 / 修改时间：12:11:36" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              -->
+              <!-- new version -->
+                        
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/框架/Spring IOC和AOP/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Spring IOC和AOP/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Spring-IOC"><a href="#Spring-IOC" class="headerlink" title="Spring IOC"></a>Spring IOC</h2><p>IoC 全称为 <code>Inversion of Control</code>，翻译为 “控制反转”，它还有一个别名为 DI（<code>Dependency Injection</code>）,即依赖注入。</p>
+<p><strong>ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。</strong>在Java开发中，<strong>Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。</strong>如何理解好Ioc呢？理解好Ioc的关键是要明确“谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”，那我们来深入分析一下：</p>
+<p>　　●<strong>谁控制谁，控制什么：</strong>传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；<strong>谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。</strong></p>
+<p>　　●<strong>为何是反转，哪些方面反转了：</strong>有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？<strong>因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。</strong></p>
+<p><strong>DI—Dependency Injection，即“依赖注入”</strong>：<strong>组件之间依赖关系</strong>由容器在运行期决定，形象的说，即<strong>由容器动态的将某个依赖关系注入到组件之中</strong>。<strong>依赖注入的目的并非为软件系统带来更多功能，而是为了提升组件重用的频率，并为系统搭建一个灵活、可扩展的平台。</strong>通过依赖注入机制，我们只需要通过简单的配置，而无需任何代码就可指定目标需要的资源，完成自身的业务逻辑，而不需要关心具体的资源来自何处，由谁实现。</p>
+<p>　　理解DI的关键是：“谁依赖谁，为什么需要依赖，谁注入谁，注入了什么”，那我们来深入分析一下：</p>
+<p>　　●<strong>谁依赖于谁：</strong>当然是<strong>应用程序依赖于IoC容器</strong>；</p>
+<p>　　●<strong>为什么需要依赖：</strong>应用程序需要IoC容器来提供对象需要的外部资源；</p>
+<p>　　●<strong>谁注入谁：</strong>很明显是<strong>IoC容器注入应用程序某个对象，应用程序依赖的对象</strong>；</p>
+<p>　　<strong>●注入了什么：</strong>就是<strong>注入某个对象所需要的外部资源（包括对象、资源、常量数据）</strong>。</p>
+<h2 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h2><p>AOP是Spring框架面向切面的编程思想，AOP采用一种称为“横切”的技术，将涉及多业务流程的通用功能抽取并单独封装，形成独立的切面，在合适的时机将这些切面横向切入到业务流程指定的位置中。</p>
+<p>例如，在一个业务系统中，用户登录是基础功能，凡是涉及到用户的业务流程都要求用户进行系统登录。如果把用户登录功能代码写入到每个业务流程中，会造成代码冗余，维护也非常麻烦，当需要修改用户登录功能时，就需要修改每个业务流程的用户登录代码，这种处理方式显然是不可取的。比较好的做法是把用户登录功能抽取出来，形成独立的模块，当业务流程需要用户登录时，系统自动把登录功能切入到业务流程中。下图是用户登录功能切入到业务流程示意图。</p>
+<p><img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=725733276,316358623&amp;fm=173&amp;app=25&amp;f=JPEG?w=554&amp;h=409&amp;s=0C827C32191F41C814D9E4DA000060B3" alt></p>
+<p>●  Aspect</p>
+<p>表示切面。切入业务流程的一个独立模块。</p>
+<p>● Join point</p>
+<p>表示连接点。也就是业务流程在运行过程中需要插入切面的具体位置。</p>
+<p>● Advice</p>
+<p>表示通知。是切面的具体实现方法。可分为前置通知（Before）、后置通知（AfterReturning）、异常通知（AfterThrowing）、最终通知（After）和环绕通知（Around）五种。实现方法具体属于哪类通知，是在配置文件和注解中指定的。</p>
+<p>● Pointcut</p>
+<p>表示切入点。用于定义通知应该切入到哪些连接点上，不同的通知通常需要切入到不同的连接点上。</p>
+<p>● Target</p>
+<p>表示目标对象。被一个或者多个切面所通知的对象。</p>
+<p>● Proxy</p>
+<p>表示代理对象。将通知应用到目标对象之后被动态创建的对象。可以简单地理解为，代理对象为目标对象的业务逻辑功能加上被切入的切面所形成的对象。</p>
+<p>● Weaving</p>
+<p>表示切入，也称为织入。将切面应用到目标对象从而创建一个新的代理对象的过程。这个过程可以发生在编译期、类装载期及运行期。</p>
+<p><img src="https://img-blog.csdn.net/20180530175605692?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3E5ODIxNTE3NTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/bean的生命周期/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/框架/bean的生命周期/" class="post-title-link" itemprop="url">Bean的生命周期</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-26 21:30:16" itemprop="dateModified" datetime="2019-10-26T21:30:16+08:00">2019-10-26</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-26T21:30:16+08:00" content="2019-10-26">
+                2019-10-26 21:30:16
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/框架/bean的生命周期/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/bean的生命周期/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/2019/10/21/框架/bean的生命周期/20180426085835757.png" alt></p>
+<p>可以简述为以下九步</p>
+<ol>
+<li>实例化bean对象(通过构造方法或者工厂方法)</li>
+<li>设置对象属性(setter等)（依赖注入）</li>
+<li>如果Bean实现了BeanNameAware接口，工厂调用Bean的setBeanName()方法传递Bean的ID。（和下面的一条均属于检查Aware接口）</li>
+<li>如果Bean实现了BeanFactoryAware接口，工厂调用setBeanFactory()方法传入工厂自身</li>
+<li>将Bean实例传递给Bean的前置处理器的postProcessBeforeInitialization(Object bean, String beanname)方法</li>
+<li>调用Bean的初始化方法</li>
+<li>将Bean实例传递给Bean的后置处理器的postProcessAfterInitialization(Object bean, String beanname)方法</li>
+<li>使用Bean</li>
+<li>容器关闭之前，调用Bean的销毁方法</li>
 </ol>
-<p><img src="/2019/10/21/框架/SpringMVC的工作流程/20180803145042704.png" alt></p>
-<h3 id="组件说明"><a href="#组件说明" class="headerlink" title="组件说明"></a>组件说明</h3><p>以下组件通常使用框架提供实现：</p>
-<p><strong>DispatcherServlet：前端控制器</strong></p>
-<p>　　用户请求到达前端控制器，它就相当于mvc模式中的c，dispatcherServlet是整个流程控制的中心，由它调用其它组件处理用户的请求，dispatcherServlet的存在降低了组件之间的耦合性。</p>
-<p><strong>HandlerMapping：处理器映射器</strong></p>
-<p>　　HandlerMapping负责根据用户请求找到Handler即处理器，springmvc提供了不同的映射器实现不同的映射方式，例如：配置文件方式，实现接口方式，注解方式等。</p>
-<p><strong>Handler：处理器</strong></p>
-<p>　　Handler 是继DispatcherServlet前端控制器的后端控制器，在DispatcherServlet的控制下Handler对具体的用户请求进行处理。</p>
-<p>​        由于Handler涉及到具体的用户业务请求，所以一般情况需要程序员根据业务需求开发Handler。</p>
-<p><strong>HandlAdapter：处理器适配器</strong></p>
-<p>　　通过HandlerAdapter对处理器进行执行，这是适配器模式的应用，通过扩展适配器可以对更多类型的处理器进行执行。</p>
-<p><strong>View Resolver：视图解析器</strong></p>
-<p>　　View Resolver负责将处理结果生成View视图(JSP,freemarker)，View Resolver首先根据逻辑视图名解析成物理视图名即具体的页面地址，再生成View视图对象，最后对View进行渲染将处理结果通过页面展示给用户。</p>
-<p><strong>View：视图</strong></p>
-<p>　　springmvc框架提供了很多的View视图类型的支持，包括：jstlView、freemarkerView、pdfView等。我们最常用的视图就是jsp。</p>
-<p>　　一般情况下需要通过页面标签或页面模版技术将模型数据通过页面展示给用户，需要由程序员根据业务需求开发具体的页面。</p>
-<p><strong>需要用户开发的组件有</strong>handler(controller类)、view(jsp/freemarker velocity,thyeleaf)　　　</p>
-<h3 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h3><p><strong>&lt;mvc:annotation-driven /&gt; 说明:</strong></p>
-<p> 　　是一种简写形式，可以让初学者快速成应用默认的配置方案，会默认注册 DefaultAnnotationHandleMapping以及AnnotionMethodHandleAdapter 这两个 Bean, 这两个 Bean ，前者对应类级别， 后者对应到方法级别；</p>
-<p>　　上面的 DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter 是 Spring 为 @Controller 分发请求所必需的。</p>
-<p><strong>annotation-driven 扫描指定包中类上的注解，常用的注解有:</strong></p>
-<p>@Controller 声明Action组件</p>
-<p>@Service 声明Service组件 @Service(“myMovieLister”)</p>
-<p>@Repository 声明Dao组件</p>
-<p>@Component 泛指组件, 当不好归类时.</p>
-<p>@RequestMapping(“/menu”) 请求映射</p>
-<p>@Resource 用于注入，( j2ee提供的 ) 默认按名称装配，@Resource(name=”beanName”)</p>
-<p>@Autowired 用于注入，(srping提供的) 默认按类型装配</p>
-<p>@Transactional( rollbackFor={Exception.class}) 事务管理</p>
-<p>@ResponseBody</p>
-<p>@Scope(“prototype”) 设定bean的作用域</p>
-<h3 id="适配器作用"><a href="#适配器作用" class="headerlink" title="适配器作用"></a>适配器作用</h3><p>SpringMVC涉及的映射器，视图解析器的作用不难理解，映射器负责将前端请求的url映射到配置的处理器，视图解析器将最终的结果进行解析，但中间为什么要经过一层适配器呢，为什么不经映射器找到controller后直接执行返回呢？</p>
-<p>那是因为SpringMVC为业务处理器提供了多种接口实现（例如实现了Controller接口），而适配器就是用来根据处理器实现了什么接口，最终选择与已经注册好的不同类型的Handler Adapter进行匹配，并最终执行，例如，SimpleControllerHandlerAdapter是支持实现了controller接口的控制器，如果自己写的控制器实现了controller接口，那么SimpleControllerHandlerAdapter就会去执行自己写的控制器中的具体方法来完成请求。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/servlet生命周期/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/框架/servlet生命周期/" class="post-title-link" itemprop="url">servlet生命周期</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-26 19:34:57" itemprop="dateModified" datetime="2019-10-26T19:34:57+08:00">2019-10-26</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-26T19:34:57+08:00" content="2019-10-26">
+                2019-10-26 19:34:57
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/框架/servlet生命周期/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/servlet生命周期/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Servlet 生命周期可被定义为从创建直到毁灭的整个过程。以下是 Servlet 遵循的过程：</p>
+<ul>
+<li>Servlet 通过调用 <strong>init ()</strong> 方法进行初始化。</li>
+<li>Servlet 调用 <strong>service()</strong> 方法来处理客户端的请求。</li>
+<li>Servlet 通过调用 <strong>destroy()</strong> 方法终止（结束）。</li>
+<li>最后，Servlet 是由 JVM 的垃圾回收器进行垃圾回收的。</li>
+</ul>
+<h3 id="加载和实例化"><a href="#加载和实例化" class="headerlink" title="加载和实例化"></a>加载和实例化</h3><p>当Servlet容器启动或客户端发送一个请求时，Servlet容器会查找内存中是否存在该Servlet实例，若存在，则直接读取该实例响应请求；如果不存在，就创建一个Servlet实例。</p>
+<h3 id="init-方法"><a href="#init-方法" class="headerlink" title="init() 方法"></a>init() 方法</h3><p>init 方法被设计成只调用一次。它在第一次创建 Servlet 时被调用，在后续每次用户请求时不再调用。因此，它是用于一次性初始化，就像 Applet 的 init 方法一样。</p>
+<p>Servlet 创建于用户第一次调用对应于该 Servlet 的 URL 时，但是您也可以指定 Servlet 在服务器第一次启动时被加载。</p>
+<p>当用户调用一个 Servlet 时，就会创建一个 Servlet 实例，每一个用户请求都会产生一个新的线程，适当的时候移交给 doGet 或 doPost 方法。init() 方法简单地创建或加载一些数据，这些数据将被用于 Servlet 的整个生命周期。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">  <span class="comment">// 初始化代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="service-方法"><a href="#service-方法" class="headerlink" title="service() 方法"></a>service() 方法</h3><p>service() 方法是执行实际任务的主要方法。Servlet 容器（即 Web 服务器）调用 service() 方法来处理来自客户端（浏览器）的请求，并把格式化的响应写回给客户端。</p>
+<p>每次服务器接收到一个 Servlet 请求时，服务器会产生一个新的线程并调用服务。service() 方法检查 HTTP 请求类型（GET、POST、PUT、DELETE 等），并在适当的时候调用 doGet、doPost、doPut，doDelete 等方法。</p>
+<p>下面是该方法的特征：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest request, </span></span></span><br><span class="line"><span class="function"><span class="params">                    ServletResponse response)</span> </span></span><br><span class="line"><span class="function">      <span class="keyword">throws</span> ServletException, IOException</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>service() 方法由容器调用，service 方法在适当的时候调用 doGet、doPost、doPut、doDelete 等方法。所以，您不用对 service() 方法做任何动作，您只需要根据来自客户端的请求类型来重写 doGet() 或 doPost() 即可。</p>
+<p>doGet() 和 doPost() 方法是每次服务请求中最常用的方法。下面是这两种方法的特征。</p>
+<h4 id="doGet-方法"><a href="#doGet-方法" class="headerlink" title="doGet() 方法"></a>doGet() 方法</h4><p>GET 请求来自于一个 URL 的正常请求，或者来自于一个未指定 METHOD 的 HTML 表单，它由 doGet() 方法处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">                  HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="doPost-方法"><a href="#doPost-方法" class="headerlink" title="doPost() 方法"></a>doPost() 方法</h4><p>POST 请求来自于一个特别指定了 METHOD 为 POST 的 HTML 表单，它由 doPost() 方法处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">                   HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="destroy-方法"><a href="#destroy-方法" class="headerlink" title="destroy() 方法"></a>destroy() 方法</h3><p>当Servlet容器关闭时，Servlet实例也随时销毁。其间，Servlet容器会调用Servlet 的destroy()方法去判断该Servlet是否应当被释放（或回收资源）</p>
+<p>destroy() 方法只会被调用一次，在 Servlet 生命周期结束时被调用。destroy() 方法可以让您的 Servlet 关闭数据库连接、停止后台线程、把 Cookie 列表或点击计数器写入到磁盘，并执行其他类似的清理活动。</p>
+<p>在调用 destroy() 方法之后，servlet 对象被标记为垃圾回收。destroy 方法定义如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 终止化代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下图显示了一个典型的 Servlet 生命周期方案。</p>
+<ul>
+<li>第一个到达服务器的 HTTP 请求被委派到 Servlet 容器。</li>
+<li>Servlet 容器在调用 service() 方法之前加载 Servlet。</li>
+<li>然后 Servlet 容器处理由多个线程产生的多个请求，每个线程执行一个单一的 Servlet 实例的 service() 方法。</li>
+</ul>
+<p><img src="/2019/10/21/框架/servlet生命周期/Servlet-LifeCycle.jpg" alt></p>
+<p><strong>* 1、从第一次调用到服务器关闭</strong>。</p>
+<p><strong>* 2、如果Servlet在web.xml中配置了load-on-startup，生命周期为从服务器启动到服务器关闭</strong>。</p>
+<p><img src="/2019/10/21/框架/servlet生命周期/16436080-356eabfb696a3563.webp" alt></p>
 
           
         
@@ -1420,7 +2539,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Spring IOC和AOP/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/算法/数据结构/栈与队列/设计循环队列/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -1440,212 +2559,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/21/框架/Spring IOC和AOP/" class="post-title-link" itemprop="url">Spring IOC和AOP</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-             
-             
-
-              <time title="创建时间：2019-10-21 12:12:57 / 修改时间：12:11:36" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              -->
-              <!-- new version -->
-                        
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/Spring IOC和AOP/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Spring IOC和AOP/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Spring-IOC"><a href="#Spring-IOC" class="headerlink" title="Spring IOC"></a>Spring IOC</h2><p>IoC 全称为 <code>Inversion of Control</code>，翻译为 “控制反转”，它还有一个别名为 DI（<code>Dependency Injection</code>）,即依赖注入。</p>
-<p><strong>ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。</strong>在Java开发中，<strong>Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。</strong>如何理解好Ioc呢？理解好Ioc的关键是要明确“谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”，那我们来深入分析一下：</p>
-<p>　　●<strong>谁控制谁，控制什么：</strong>传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；<strong>谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。</strong></p>
-<p>　　●<strong>为何是反转，哪些方面反转了：</strong>有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？<strong>因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。</strong></p>
-<p><strong>DI—Dependency Injection，即“依赖注入”</strong>：<strong>组件之间依赖关系</strong>由容器在运行期决定，形象的说，即<strong>由容器动态的将某个依赖关系注入到组件之中</strong>。<strong>依赖注入的目的并非为软件系统带来更多功能，而是为了提升组件重用的频率，并为系统搭建一个灵活、可扩展的平台。</strong>通过依赖注入机制，我们只需要通过简单的配置，而无需任何代码就可指定目标需要的资源，完成自身的业务逻辑，而不需要关心具体的资源来自何处，由谁实现。</p>
-<p>　　理解DI的关键是：“谁依赖谁，为什么需要依赖，谁注入谁，注入了什么”，那我们来深入分析一下：</p>
-<p>　　●<strong>谁依赖于谁：</strong>当然是<strong>应用程序依赖于IoC容器</strong>；</p>
-<p>　　●<strong>为什么需要依赖：</strong>应用程序需要IoC容器来提供对象需要的外部资源；</p>
-<p>　　●<strong>谁注入谁：</strong>很明显是<strong>IoC容器注入应用程序某个对象，应用程序依赖的对象</strong>；</p>
-<p>　　<strong>●注入了什么：</strong>就是<strong>注入某个对象所需要的外部资源（包括对象、资源、常量数据）</strong>。</p>
-<h2 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h2><p>AOP是Spring框架面向切面的编程思想，AOP采用一种称为“横切”的技术，将涉及多业务流程的通用功能抽取并单独封装，形成独立的切面，在合适的时机将这些切面横向切入到业务流程指定的位置中。</p>
-<p>例如，在一个业务系统中，用户登录是基础功能，凡是涉及到用户的业务流程都要求用户进行系统登录。如果把用户登录功能代码写入到每个业务流程中，会造成代码冗余，维护也非常麻烦，当需要修改用户登录功能时，就需要修改每个业务流程的用户登录代码，这种处理方式显然是不可取的。比较好的做法是把用户登录功能抽取出来，形成独立的模块，当业务流程需要用户登录时，系统自动把登录功能切入到业务流程中。下图是用户登录功能切入到业务流程示意图。</p>
-<p><img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=725733276,316358623&amp;fm=173&amp;app=25&amp;f=JPEG?w=554&amp;h=409&amp;s=0C827C32191F41C814D9E4DA000060B3" alt></p>
-<p>●  Aspect</p>
-<p>表示切面。切入业务流程的一个独立模块。</p>
-<p>● Join point</p>
-<p>表示连接点。也就是业务流程在运行过程中需要插入切面的具体位置。</p>
-<p>● Advice</p>
-<p>表示通知。是切面的具体实现方法。可分为前置通知（Before）、后置通知（AfterReturning）、异常通知（AfterThrowing）、最终通知（After）和环绕通知（Around）五种。实现方法具体属于哪类通知，是在配置文件和注解中指定的。</p>
-<p>● Pointcut</p>
-<p>表示切入点。用于定义通知应该切入到哪些连接点上，不同的通知通常需要切入到不同的连接点上。</p>
-<p>● Target</p>
-<p>表示目标对象。被一个或者多个切面所通知的对象。</p>
-<p>● Proxy</p>
-<p>表示代理对象。将通知应用到目标对象之后被动态创建的对象。可以简单地理解为，代理对象为目标对象的业务逻辑功能加上被切入的切面所形成的对象。</p>
-<p>● Weaving</p>
-<p>表示切入，也称为织入。将切面应用到目标对象从而创建一个新的代理对象的过程。这个过程可以发生在编译期、类装载期及运行期。</p>
-<p><img src="https://img-blog.csdn.net/20180530175605692?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3E5ODIxNTE3NTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/servlet生命周期/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/21/框架/servlet生命周期/" class="post-title-link" itemprop="url">servlet生命周期</a>
+                <a href="/2019/10/21/算法/数据结构/栈与队列/设计循环队列/" class="post-title-link" itemprop="url">设计循环队列</a>
               
             
           </h1>
@@ -1687,7 +2601,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-26 19:34:57" itemprop="dateModified" datetime="2019-10-26T19:34:57+08:00">2019-10-26</time> 
+              <time title="修改时间：2019-11-06 00:03:59" itemprop="dateModified" datetime="2019-11-06T00:03:59+08:00">2019-11-06</time> 
               -->
               <!-- new version -->
                         
@@ -1702,8 +2616,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-26T19:34:57+08:00" content="2019-10-26">
-                2019-10-26 19:34:57
+              <time itemprop="dateUpdated" datetime="2019-11-06T00:03:59+08:00" content="2019-11-06">
+                2019-11-06 00:03:59
               </time>
             </span>
           
@@ -1724,7 +2638,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -1743,8 +2657,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/servlet生命周期/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/servlet生命周期/" itemprop="commentCount"></span>
+                <a href="/2019/10/21/算法/数据结构/栈与队列/设计循环队列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/算法/数据结构/栈与队列/设计循环队列/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1774,892 +2688,20 @@
       
         
           
-            <p>Servlet 生命周期可被定义为从创建直到毁灭的整个过程。以下是 Servlet 遵循的过程：</p>
+            <p>设计你的循环队列实现。 循环队列是一种线性数据结构，其操作表现基于 FIFO（先进先出）原则并且队尾被连接在队首之后以形成一个循环。它也被称为“环形缓冲器”。</p>
+<p>循环队列的一个好处是我们可以利用这个队列之前用过的空间。在一个普通队列里，一旦一个队列满了，我们就不能插入下一个元素，即使在队列前面仍有空间。但是使用循环队列，我们能使用这些空间去存储新的值。</p>
+<p>你的实现应该支持如下操作：</p>
 <ul>
-<li>Servlet 通过调用 <strong>init ()</strong> 方法进行初始化。</li>
-<li>Servlet 调用 <strong>service()</strong> 方法来处理客户端的请求。</li>
-<li>Servlet 通过调用 <strong>destroy()</strong> 方法终止（结束）。</li>
-<li>最后，Servlet 是由 JVM 的垃圾回收器进行垃圾回收的。</li>
+<li><code>MyCircularQueue(k)</code>: 构造器，设置队列长度为 k 。</li>
+<li><code>Front</code>: 从队首获取元素。如果队列为空，返回 -1 。</li>
+<li><code>Rear</code>: 获取队尾元素。如果队列为空，返回 -1 。</li>
+<li><code>enQueue(value)</code>: 向循环队列插入一个元素。如果成功插入则返回真。</li>
+<li><code>deQueue()</code>: 从循环队列中删除一个元素。如果成功删除则返回真。</li>
+<li><code>isEmpty()</code>: 检查循环队列是否为空。</li>
+<li><code>isFull()</code>: 检查循环队列是否已满。</li>
 </ul>
-<h3 id="加载和实例化"><a href="#加载和实例化" class="headerlink" title="加载和实例化"></a>加载和实例化</h3><p>当Servlet容器启动或客户端发送一个请求时，Servlet容器会查找内存中是否存在该Servlet实例，若存在，则直接读取该实例响应请求；如果不存在，就创建一个Servlet实例。</p>
-<h3 id="init-方法"><a href="#init-方法" class="headerlink" title="init() 方法"></a>init() 方法</h3><p>init 方法被设计成只调用一次。它在第一次创建 Servlet 时被调用，在后续每次用户请求时不再调用。因此，它是用于一次性初始化，就像 Applet 的 init 方法一样。</p>
-<p>Servlet 创建于用户第一次调用对应于该 Servlet 的 URL 时，但是您也可以指定 Servlet 在服务器第一次启动时被加载。</p>
-<p>当用户调用一个 Servlet 时，就会创建一个 Servlet 实例，每一个用户请求都会产生一个新的线程，适当的时候移交给 doGet 或 doPost 方法。init() 方法简单地创建或加载一些数据，这些数据将被用于 Servlet 的整个生命周期。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">  <span class="comment">// 初始化代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="service-方法"><a href="#service-方法" class="headerlink" title="service() 方法"></a>service() 方法</h3><p>service() 方法是执行实际任务的主要方法。Servlet 容器（即 Web 服务器）调用 service() 方法来处理来自客户端（浏览器）的请求，并把格式化的响应写回给客户端。</p>
-<p>每次服务器接收到一个 Servlet 请求时，服务器会产生一个新的线程并调用服务。service() 方法检查 HTTP 请求类型（GET、POST、PUT、DELETE 等），并在适当的时候调用 doGet、doPost、doPut，doDelete 等方法。</p>
-<p>下面是该方法的特征：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest request, </span></span></span><br><span class="line"><span class="function"><span class="params">                    ServletResponse response)</span> </span></span><br><span class="line"><span class="function">      <span class="keyword">throws</span> ServletException, IOException</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>service() 方法由容器调用，service 方法在适当的时候调用 doGet、doPost、doPut、doDelete 等方法。所以，您不用对 service() 方法做任何动作，您只需要根据来自客户端的请求类型来重写 doGet() 或 doPost() 即可。</p>
-<p>doGet() 和 doPost() 方法是每次服务请求中最常用的方法。下面是这两种方法的特征。</p>
-<h4 id="doGet-方法"><a href="#doGet-方法" class="headerlink" title="doGet() 方法"></a>doGet() 方法</h4><p>GET 请求来自于一个 URL 的正常请求，或者来自于一个未指定 METHOD 的 HTML 表单，它由 doGet() 方法处理。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">                  HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="doPost-方法"><a href="#doPost-方法" class="headerlink" title="doPost() 方法"></a>doPost() 方法</h4><p>POST 请求来自于一个特别指定了 METHOD 为 POST 的 HTML 表单，它由 doPost() 方法处理。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">                   HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="destroy-方法"><a href="#destroy-方法" class="headerlink" title="destroy() 方法"></a>destroy() 方法</h3><p>当Servlet容器关闭时，Servlet实例也随时销毁。其间，Servlet容器会调用Servlet 的destroy()方法去判断该Servlet是否应当被释放（或回收资源）</p>
-<p>destroy() 方法只会被调用一次，在 Servlet 生命周期结束时被调用。destroy() 方法可以让您的 Servlet 关闭数据库连接、停止后台线程、把 Cookie 列表或点击计数器写入到磁盘，并执行其他类似的清理活动。</p>
-<p>在调用 destroy() 方法之后，servlet 对象被标记为垃圾回收。destroy 方法定义如下所示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 终止化代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>下图显示了一个典型的 Servlet 生命周期方案。</p>
-<ul>
-<li>第一个到达服务器的 HTTP 请求被委派到 Servlet 容器。</li>
-<li>Servlet 容器在调用 service() 方法之前加载 Servlet。</li>
-<li>然后 Servlet 容器处理由多个线程产生的多个请求，每个线程执行一个单一的 Servlet 实例的 service() 方法。</li>
-</ul>
-<p><img src="/2019/10/21/框架/servlet生命周期/Servlet-LifeCycle.jpg" alt></p>
-<p><strong>* 1、从第一次调用到服务器关闭</strong>。</p>
-<p><strong>* 2、如果Servlet在web.xml中配置了load-on-startup，生命周期为从服务器启动到服务器关闭</strong>。</p>
-<p><img src="/2019/10/21/框架/servlet生命周期/16436080-356eabfb696a3563.webp" alt></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/bean的生命周期/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/21/框架/bean的生命周期/" class="post-title-link" itemprop="url">Bean的生命周期</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-26 21:30:16" itemprop="dateModified" datetime="2019-10-26T21:30:16+08:00">2019-10-26</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-26T21:30:16+08:00" content="2019-10-26">
-                2019-10-26 21:30:16
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/bean的生命周期/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/bean的生命周期/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/2019/10/21/框架/bean的生命周期/20180426085835757.png" alt></p>
-<p>可以简述为以下九步</p>
-<ol>
-<li>实例化bean对象(通过构造方法或者工厂方法)</li>
-<li>设置对象属性(setter等)（依赖注入）</li>
-<li>如果Bean实现了BeanNameAware接口，工厂调用Bean的setBeanName()方法传递Bean的ID。（和下面的一条均属于检查Aware接口）</li>
-<li>如果Bean实现了BeanFactoryAware接口，工厂调用setBeanFactory()方法传入工厂自身</li>
-<li>将Bean实例传递给Bean的前置处理器的postProcessBeforeInitialization(Object bean, String beanname)方法</li>
-<li>调用Bean的初始化方法</li>
-<li>将Bean实例传递给Bean的后置处理器的postProcessAfterInitialization(Object bean, String beanname)方法</li>
-<li>使用Bean</li>
-<li>容器关闭之前，调用Bean的销毁方法</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/20/java集合类/HashMap按键排序和按值排序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/20/java集合类/HashMap按键排序和按值排序/" class="post-title-link" itemprop="url">HashMap按键排序和按值排序</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-20 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-20T12:12:57+08:00">2019-10-20 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-22 00:54:35" itemprop="dateModified" datetime="2019-10-22T00:54:35+08:00">2019-10-22</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-22T00:54:35+08:00" content="2019-10-22">
-                2019-10-22 00:54:35
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/集合框架/" itemprop="url" rel="index"><span itemprop="name">集合框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/20/java集合类/HashMap按键排序和按值排序/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/20/java集合类/HashMap按键排序和按值排序/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="HashMap按键排序和按值排序"><a href="#HashMap按键排序和按值排序" class="headerlink" title="HashMap按键排序和按值排序"></a>HashMap按键排序和按值排序</h3><p>HashMap：我们最常用的Map，它根据key的HashCode 值来存储数据,根据key可以直接获取它的Value，同时它具有很快的访问速度。HashMap最多只允许一条记录的key值为Null(多条会覆盖);允许多条记录的Value为 Null。非同步的。</p>
-<p>TreeMap: 能够把它保存的记录根据key排序,默认是按升序排序，也可以指定排序的比较器，当用Iterator 遍历TreeMap时，得到的记录是排过序的。TreeMap不允许key的值为null。非同步的。</p>
-<p>Hashtable: 与 HashMap类似,不同的是:key和value的值均不允许为null;它支持线程的同步，即任一时刻只有一个线程能写Hashtable,因此也导致了Hashtale在写入时会比较慢。</p>
-<p>LinkedHashMap: 保存了记录的插入顺序，在用Iterator遍历LinkedHashMap时，先得到的记录肯定是先插入的.在遍历的时候会比HashMap慢。key和value均允许为空，非同步的。</p>
-<h4 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h4><p>TreeMap默认是升序的，如果我们需要改变排序方式，则需要使用比较器：Comparator。</p>
-<p>Comparator可以对集合对象或者数组进行排序的比较器接口，实现该接口的public compare(T o1,To2)方法即可实现排序，该方法主要是根据第一个参数o1,小于、等于或者大于o2分别返回负整数、0或者正整数。如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeMapTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       Map&lt;String, String&gt; map = <span class="keyword">new</span> TreeMap&lt;String, String&gt;(</span><br><span class="line">            <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String obj1, String obj2)</span> </span>&#123;</span><br><span class="line">                    <span class="comment">// 降序排序</span></span><br><span class="line">                    <span class="keyword">return</span> obj2.compareTo(obj1);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        map.put(<span class="string">"c"</span>, <span class="string">"ccccc"</span>);</span><br><span class="line">        map.put(<span class="string">"a"</span>, <span class="string">"aaaaa"</span>);</span><br><span class="line">        map.put(<span class="string">"b"</span>, <span class="string">"bbbbb"</span>);</span><br><span class="line">        map.put(<span class="string">"d"</span>, <span class="string">"ddddd"</span>);</span><br><span class="line">        </span><br><span class="line">        Set&lt;String&gt; keySet = map.keySet();</span><br><span class="line">        Iterator&lt;String&gt; iter = keySet.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">            String key = iter.next();</span><br><span class="line">            System.out.println(key + <span class="string">":"</span> + map.get(key));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> 上面例子是对根据TreeMap的key值来进行排序的，但是有时我们需要根据TreeMap的value来进行排序。对value排序我们就需要借助于Collections的sort(List<t> list, Comparator&lt;? super T&gt; c)方法，该方法根据指定比较器产生的顺序对指定列表进行排序。但是有一个前提条件，那就是所有的元素都必须能够根据所提供的比较器来进行比较。如下：</t></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeMapTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Map&lt;String, String&gt; map = <span class="keyword">new</span> TreeMap&lt;String, String&gt;();</span><br><span class="line">        map.put(<span class="string">"d"</span>, <span class="string">"ddddd"</span>);</span><br><span class="line">        map.put(<span class="string">"b"</span>, <span class="string">"bbbbb"</span>);</span><br><span class="line">        map.put(<span class="string">"a"</span>, <span class="string">"aaaaa"</span>);</span><br><span class="line">        map.put(<span class="string">"c"</span>, <span class="string">"ccccc"</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//这里将map.entrySet()转换成list</span></span><br><span class="line">        List&lt;Map.Entry&lt;String,String&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;Map.Entry&lt;String,String&gt;&gt;(map.entrySet());</span><br><span class="line">        <span class="comment">//然后通过比较器来实现排序</span></span><br><span class="line">        Collections.sort(list,<span class="keyword">new</span> Comparator&lt;Map.Entry&lt;String,String&gt;&gt;() &#123;</span><br><span class="line">            <span class="comment">//升序排序</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Entry&lt;String, String&gt; o1,</span></span></span><br><span class="line"><span class="function"><span class="params">                    Entry&lt;String, String&gt; o2)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> o1.getValue().compareTo(o2.getValue());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;String,String&gt; mapping:list)&#123; </span><br><span class="line">               System.out.println(mapping.getKey()+<span class="string">":"</span>+mapping.getValue()); </span><br><span class="line">          &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><p>我们都是HashMap的值是没有顺序的，他是按照key的HashCode来实现的。对于这个无序的HashMap我们要怎么来实现排序呢？参照TreeMap的value排序，我们一样的也可以实现HashMap的排序。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMapTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Map&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">        map.put(<span class="string">"c"</span>, <span class="string">"ccccc"</span>);</span><br><span class="line">        map.put(<span class="string">"a"</span>, <span class="string">"aaaaa"</span>);</span><br><span class="line">        map.put(<span class="string">"b"</span>, <span class="string">"bbbbb"</span>);</span><br><span class="line">        map.put(<span class="string">"d"</span>, <span class="string">"ddddd"</span>);</span><br><span class="line">        </span><br><span class="line">        List&lt;Map.Entry&lt;String,String&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;Map.Entry&lt;String,String&gt;&gt;(map.entrySet());</span><br><span class="line">        Collections.sort(list,<span class="keyword">new</span> Comparator&lt;Map.Entry&lt;String,String&gt;&gt;() &#123;</span><br><span class="line">            <span class="comment">//升序排序</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Entry&lt;String, String&gt; o1,</span></span></span><br><span class="line"><span class="function"><span class="params">                    Entry&lt;String, String&gt; o2)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> o1.getValue().compareTo(o2.getValue());</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;String,String&gt; mapping:list)&#123; </span><br><span class="line">               System.out.println(mapping.getKey()+<span class="string">":"</span>+mapping.getValue()); </span><br><span class="line">          &#125; </span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/20/零散记/redis为什么可以承担高并发/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/20/零散记/redis为什么可以承担高并发/" class="post-title-link" itemprop="url">redis为什么可以承担高并发</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-             
-             
-
-              <time title="创建时间：2019-10-20 12:12:57 / 修改时间：18:51:59" itemprop="dateCreated datePublished" datetime="2019-10-20T12:12:57+08:00">2019-10-20 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-20T18:51:59+08:00" content="2019-10-20">
-                2019-10-20 18:51:59
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/零散记/" itemprop="url" rel="index"><span itemprop="name">零散记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/20/零散记/redis为什么可以承担高并发/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/20/零散记/redis为什么可以承担高并发/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>绝大部分请求是纯粹的内存操作（非常快速）</li>
-<li>采用单线程,避免了不必要的上下文切换和竞争条件</li>
-<li>非阻塞IO 内部实现采用epoll，采用了epoll+自己实现的简单的事件框架。epoll中的读、写、关闭、连接都转化成了事件，然后利用epoll的多路复用特性，绝不在io上浪费一点时间</li>
-</ul>
-<p>　epoll既然是对select和poll的改进，就应该能避免上述的三个缺点。那epoll都是怎么解决的呢？在此之前，我们先看一下epoll和select和poll的调用接口上的不同，select和poll都只提供了一个函数——select或者poll函数。而epoll提供了三个函数，epoll_create,epoll_ctl和epoll_wait，epoll_create是创建一个epoll句柄；epoll_ctl是注册要监听的事件类型；epoll_wait则是等待事件的产生。</p>
-<p>　　对于第一个缺点，epoll的解决方案在epoll_ctl函数中。每次注册新的事件到epoll句柄中时（在epoll_ctl中指定EPOLL_CTL_ADD），会把所有的fd拷贝进内核，而不是在epoll_wait的时候重复拷贝。epoll保证了每个fd在整个过程中只会拷贝一次。</p>
-<p>　　对于第二个缺点，epoll的解决方案不像select或poll一样每次都把current轮流加入fd对应的设备等待队列中，而只在epoll_ctl时把current挂一遍（这一遍必不可少）并为每个fd指定一个回调函数，当设备就绪，唤醒等待队列上的等待者时，就会调用这个回调函数，而这个回调函数会把就绪的fd加入一个就绪链表）。epoll_wait的工作实际上就是在这个就绪链表中查看有没有就绪的fd（利用schedule_timeout()实现睡一会，判断一会的效果，和select实现中的第7步是类似的）。</p>
-<p>　　对于第三个缺点，epoll没有这个限制，它所支持的FD上限是最大可以打开文件的数目，这个数字一般远大于2048,举个例子,在1GB内存的机器上大约是10万左右，具体数目可以cat /proc/sys/fs/file-max察看,一般来说这个数目和系统内存关系很大。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/19/计算机网络/GET和POST的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/19/计算机网络/GET和POST的区别/" class="post-title-link" itemprop="url">GET和POST的区别</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-19 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-19T12:12:57+08:00">2019-10-19 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-20 22:27:24" itemprop="dateModified" datetime="2019-10-20T22:27:24+08:00">2019-10-20</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-20T22:27:24+08:00" content="2019-10-20">
-                2019-10-20 22:27:24
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/19/计算机网络/GET和POST的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/19/计算机网络/GET和POST的区别/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>数据传输方式不同：GET请求通过URL传输数据，而POST的数据通过请求体传输。</li>
-<li>安全性不同：POST的数据因为在请求主体内，所以有一定的安全性保证，而GET的数据在URL中，通过历史记录，缓存很容易查到数据信息。</li>
-<li>数据类型不同：GET只允许 ASCII 字符，而POST无限制</li>
-<li>后退页面的反应：get请求页面后退时，不产生影响；post请求页面后退时，会重新提交请求  </li>
-<li>特性不同：GET是安全（这里的安全是指只读特性，就是使用这个方法不会引起服务器状态变化）且幂等（<strong>幂等的概念是指同一个请求方法执行多次和仅执行一次的效果完全相同</strong>），而POST是非安全非幂等</li>
-<li>缓存性：get请求是可以缓存的，post请求不可以缓存  </li>
-<li>传输数据的大小：  get一般传输数据大小不超过2k-4k（根据浏览器不同，限制不一样，但相差不大）；post请求传输数据的大小根据php.ini 配置文件设定，也可以无限大。  </li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">MyCircularQueue circularQueue = new MycircularQueue(3); // 设置长度为 3</span><br><span class="line"></span><br><span class="line">circularQueue.enQueue(1);  // 返回 true</span><br><span class="line"></span><br><span class="line">circularQueue.enQueue(2);  // 返回 true</span><br><span class="line"></span><br><span class="line">circularQueue.enQueue(3);  // 返回 true</span><br><span class="line"></span><br><span class="line">circularQueue.enQueue(4);  // 返回 false，队列已满</span><br><span class="line"></span><br><span class="line">circularQueue.Rear();  // 返回 3</span><br><span class="line"></span><br><span class="line">circularQueue.isFull();  // 返回 true</span><br><span class="line"></span><br><span class="line">circularQueue.deQueue();  // 返回 true</span><br><span class="line"></span><br><span class="line">circularQueue.enQueue(4);  // 返回 true</span><br><span class="line"></span><br><span class="line">circularQueue.Rear();  // 返回 4</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCircularQueue</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span>[] content;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> head;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> tail;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> length;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/** Initialize your data structure here. Set the size of the queue to be k. */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyCircularQueue</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">            length = k+<span class="number">1</span>;</span><br><span class="line">            content = <span class="keyword">new</span> <span class="keyword">int</span>[k+<span class="number">1</span>];</span><br><span class="line">            head = <span class="number">0</span>;</span><br><span class="line">            tail = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** Insert an element into the circular queue. Return true if the operation is successful. */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">enQueue</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>((tail+<span class="number">1</span>)%length==head)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            content[tail] = value;</span><br><span class="line">            tail = (tail+<span class="number">1</span>)%length;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** Delete an element from the circular queue. Return true if the operation is successful. */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">deQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(tail==head)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            head = (head+<span class="number">1</span>)%length;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** Get the front item from the queue. */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Front</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(isEmpty())&#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> content[head];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** Get the last item from the queue. */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Rear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(isEmpty())&#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> content[(tail-<span class="number">1</span>+length)%length];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** Checks whether the circular queue is empty or not. */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> head==tail;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** Checks whether the circular queue is full or not. */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (tail+<span class="number">1</span>)%length==head;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyCircularQueue object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MyCircularQueue obj = new MyCircularQueue(k);</span></span><br><span class="line"><span class="comment"> * boolean param_1 = obj.enQueue(value);</span></span><br><span class="line"><span class="comment"> * boolean param_2 = obj.deQueue();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.Front();</span></span><br><span class="line"><span class="comment"> * int param_4 = obj.Rear();</span></span><br><span class="line"><span class="comment"> * boolean param_5 = obj.isEmpty();</span></span><br><span class="line"><span class="comment"> * boolean param_6 = obj.isFull();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 
           
         
@@ -2705,7 +2747,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2749,7 +2791,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">67</span>
+                    <span class="site-state-item-count">71</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2796,7 +2838,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2841,7 +2885,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2942,7 +2988,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共179.8k字</span>
+  <span class="post-count">博客全站共193.4k字</span>
 </div>
         
 <div class="busuanzi-count">

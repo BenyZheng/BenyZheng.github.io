@@ -153,14 +153,18 @@
 
 
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="Beny&#39;s blog">
-<meta property="og:url" content="https://benyzheng.github.io/2019/10/21/算法/判断链表是否有环/index.html">
+  <meta name="description" content="给定一个由 &amp;#39;1&amp;#39;（陆地）和 &amp;#39;0&amp;#39;（水）组成的的二维网格，计算岛屿的数量。一个岛被水包围，并且它是通过水平方向或垂直方向上相邻的陆地连接而成的。你可以假设网格的四个边均被水包围。 示例 1: 123456输入:11110110101100000000输出: 1 示例 2: 123456输入:11000110000010000011输出: 3 12345678910">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="岛屿数量">
+<meta property="og:url" content="https://benyzheng.github.io/2019/10/11/算法/数据结构/栈与队列/岛屿数量/index.html">
 <meta property="og:site_name" content="Beny&#39;s blog">
+<meta property="og:description" content="给定一个由 &amp;#39;1&amp;#39;（陆地）和 &amp;#39;0&amp;#39;（水）组成的的二维网格，计算岛屿的数量。一个岛被水包围，并且它是通过水平方向或垂直方向上相邻的陆地连接而成的。你可以假设网格的四个边均被水包围。 示例 1: 123456输入:11110110101100000000输出: 1 示例 2: 123456输入:11000110000010000011输出: 3 12345678910">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-21T15:57:08.219Z">
+<meta property="og:updated_time" content="2019-11-05T17:55:28.787Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Beny&#39;s blog">
+<meta name="twitter:title" content="岛屿数量">
+<meta name="twitter:description" content="给定一个由 &amp;#39;1&amp;#39;（陆地）和 &amp;#39;0&amp;#39;（水）组成的的二维网格，计算岛屿的数量。一个岛被水包围，并且它是通过水平方向或垂直方向上相邻的陆地连接而成的。你可以假设网格的四个边均被水包围。 示例 1: 123456输入:11110110101100000000输出: 1 示例 2: 123456输入:11000110000010000011输出: 3 12345678910">
 
 
 
@@ -168,7 +172,7 @@
 
   
   
-  <link rel="canonical" href="https://benyzheng.github.io/2019/10/21/算法/判断链表是否有环/">
+  <link rel="canonical" href="https://benyzheng.github.io/2019/10/11/算法/数据结构/栈与队列/岛屿数量/">
 
 
 
@@ -178,7 +182,7 @@
   };
 </script>
 
-  <title> | Beny's blog</title>
+  <title>岛屿数量 | Beny's blog</title>
   
 
 
@@ -299,7 +303,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">14</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">15</span></a>
 
   </li>
         
@@ -318,7 +322,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">67</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">71</span></a>
 
   </li>
 
@@ -401,7 +405,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/算法/判断链表是否有环/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/11/算法/数据结构/栈与队列/岛屿数量/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -418,7 +422,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">岛屿数量
 
               
             
@@ -444,14 +448,66 @@
                 
               
 
-              <time title="创建时间：2019-10-21 23:57:08" itemprop="dateCreated datePublished" datetime="2019-10-21T23:57:08+08:00">2019-10-21 23:57:08</time>
+              <time title="创建时间：2019-10-11 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-11T12:12:57+08:00">2019-10-11 12:12:57</time>
             
 
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-11-06 01:55:28" itemprop="dateModified" datetime="2019-11-06T01:55:28+08:00">2019-11-06</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-11-06T01:55:28+08:00" content="2019-11-06">
+                2019-11-06 01:55:28
+              </time>
+            </span>
+          
             
           </span>
 
 
           
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -465,8 +521,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/算法/判断链表是否有环/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/算法/判断链表是否有环/" itemprop="commentCount"></span>
+                <a href="/2019/10/11/算法/数据结构/栈与队列/岛屿数量/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/11/算法/数据结构/栈与队列/岛屿数量/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -501,7 +557,13 @@
       
 
       
-        
+        <p>给定一个由 <code>&#39;1&#39;</code>（陆地）和 <code>&#39;0&#39;</code>（水）组成的的二维网格，计算岛屿的数量。一个岛被水包围，并且它是通过水平方向或垂直方向上相邻的陆地连接而成的。你可以假设网格的四个边均被水包围。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">11110</span><br><span class="line">11010</span><br><span class="line">11000</span><br><span class="line">00000</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">11000</span><br><span class="line">11000</span><br><span class="line">00100</span><br><span class="line">00011</span><br><span class="line">输出: 3</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(grid==<span class="keyword">null</span> || grid.length==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> nr = grid.length;<span class="comment">//数组行数</span></span><br><span class="line">        <span class="keyword">int</span> nc = grid[<span class="number">0</span>].length;<span class="comment">//数组列数</span></span><br><span class="line">        <span class="keyword">int</span> num_islands = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> r=<span class="number">0</span> ; r &lt; nr ; r++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> c=<span class="number">0</span> ; c &lt; nc ; c++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(grid[r][c]==<span class="string">'1'</span>)&#123;</span><br><span class="line">                    num_islands++;</span><br><span class="line">                    grid[r][c] = <span class="string">'0'</span>;</span><br><span class="line">                    Queue&lt;Integer&gt; queue = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">                    queue.add(r*nc+c);<span class="comment">//用这种方式存下数组下标</span></span><br><span class="line">                    <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">                        <span class="keyword">int</span> id = queue.remove();</span><br><span class="line">                        <span class="keyword">int</span> row = id/nc;<span class="comment">//整除得到行数</span></span><br><span class="line">                        <span class="keyword">int</span> col = id%nc;<span class="comment">//取余得到列数</span></span><br><span class="line">                        </span><br><span class="line">                      <span class="comment">//上下左右进行判断，若是'1'，则添加到队列，但num_islands不加一，是同一个岛屿</span></span><br><span class="line">                        <span class="keyword">if</span>(row-<span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; grid[row-<span class="number">1</span>][col]==<span class="string">'1'</span>)&#123;</span><br><span class="line">                            grid[row-<span class="number">1</span>][col] = <span class="string">'0'</span>;</span><br><span class="line">                            queue.add((row-<span class="number">1</span>)*nc + col);</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">if</span>(row+<span class="number">1</span> &lt; nr &amp;&amp; grid[row+<span class="number">1</span>][col]==<span class="string">'1'</span>)&#123;</span><br><span class="line">                            grid[row+<span class="number">1</span>][col] = <span class="string">'0'</span>;</span><br><span class="line">                            queue.add((row+<span class="number">1</span>)*nc + col);</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">if</span>(col-<span class="number">1</span> &gt;=<span class="number">0</span> &amp;&amp; grid[row][col-<span class="number">1</span>]==<span class="string">'1'</span>)&#123;</span><br><span class="line">                            grid[row][col-<span class="number">1</span>] = <span class="string">'0'</span>;</span><br><span class="line">                            queue.add(row*nc + col-<span class="number">1</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">if</span>(col+<span class="number">1</span> &lt; nc &amp;&amp; grid[row][col+<span class="number">1</span>]==<span class="string">'1'</span>)&#123;</span><br><span class="line">                            grid[row][col+<span class="number">1</span>] = <span class="string">'0'</span>;</span><br><span class="line">                            queue.add(row*nc + col+<span class="number">1</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num_islands;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -522,6 +584,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
 
       
       
@@ -531,8 +599,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/21/Linux/Linux基础命令/" rel="next" title="Linux基础命令">
-                <i class="fa fa-chevron-left"></i> Linux基础命令
+              <a href="/2019/10/10/面经/面经/" rel="next" title="面经">
+                <i class="fa fa-chevron-left"></i> 面经
               </a>
             
           </div>
@@ -541,8 +609,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/22/java集合类/HashMap遍历与删除/" rel="prev" title="HashMap遍历与删除">
-                HashMap遍历与删除 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/15/计算机网络/HTTP/" rel="prev" title="HTTP">
+                HTTP <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -609,7 +677,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">67</span>
+                    <span class="site-state-item-count">71</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -656,7 +724,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -701,7 +771,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -802,7 +874,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共179.8k字</span>
+  <span class="post-count">博客全站共193.4k字</span>
 </div>
         
 <div class="busuanzi-count">
