@@ -161,7 +161,7 @@
 <meta property="og:site_name" content="Beny&#39;s blog">
 <meta property="og:description" content="wget wget是一个下载文件的工具，它用在命令行下。 wget支持HTTP，HTTPS和FTP协议，可以使用HTTP代理。所谓的自动下载是指，wget可以在用户退出系统的之后在后台执行。这意味这你可以登录系统，启动一个wget下载任务，然后退出系统，wget将在后台执行直到任务完成 wget 可以跟踪HTML页面上的链接依次下载来创建远程服务器的本地版本，完全重建原始站点的目录结构。这又常被称">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-22T02:26:50.190Z">
+<meta property="og:updated_time" content="2019-11-08T16:15:36.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux基础命令">
 <meta name="twitter:description" content="wget wget是一个下载文件的工具，它用在命令行下。 wget支持HTTP，HTTPS和FTP协议，可以使用HTTP代理。所谓的自动下载是指，wget可以在用户退出系统的之后在后台执行。这意味这你可以登录系统，启动一个wget下载任务，然后退出系统，wget将在后台执行直到任务完成 wget 可以跟踪HTML页面上的链接依次下载来创建远程服务器的本地版本，完全重建原始站点的目录结构。这又常被称">
@@ -322,7 +322,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">73</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">74</span></a>
 
   </li>
 
@@ -465,7 +465,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-22 10:26:50" itemprop="dateModified" datetime="2019-10-22T10:26:50+08:00">2019-10-22</time> 
+              <time title="修改时间：2019-11-09 00:15:36" itemprop="dateModified" datetime="2019-11-09T00:15:36+08:00">2019-11-09</time> 
               -->
               <!-- new version -->
                         
@@ -480,8 +480,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-22T10:26:50+08:00" content="2019-10-22">
-                2019-10-22 10:26:50
+              <time itemprop="dateUpdated" datetime="2019-11-09T00:15:36+08:00" content="2019-11-09">
+                2019-11-09 00:15:36
               </time>
             </span>
           
@@ -602,6 +602,172 @@
 <p>9、*.zip 用 unzip 解压</p>
 <h3 id="ps-ef-grep"><a href="#ps-ef-grep" class="headerlink" title="ps -ef | grep ***"></a>ps -ef | grep ***</h3><p>获取某个相关的进程信息</p>
 <h3 id="chmod-777"><a href="#chmod-777" class="headerlink" title="chmod 777"></a>chmod 777</h3><p>权限设置和修改</p>
+<h3 id="切换目录-cd"><a href="#切换目录-cd" class="headerlink" title="切换目录 cd"></a>切换目录 cd</h3><p>cd 命令，是 Change Directory 的缩写，用来切换工作目录。</p>
+<p>cd 命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd [相对路径或绝对路径]</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>特殊符号</th>
+<th>作 用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~</td>
+<td>代表当前登录用户的主目录</td>
+</tr>
+<tr>
+<td>~用户名</td>
+<td>表示切换至指定用户的主目录</td>
+</tr>
+<tr>
+<td>-</td>
+<td>代表上次所在目录</td>
+</tr>
+<tr>
+<td>.</td>
+<td>代表当前目录</td>
+</tr>
+<tr>
+<td>..</td>
+<td>代表上级目录</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vbird]# cd ~</span><br><span class="line">#表示回到自己的主目录，对于 root 用户，其主目录为 /root</span><br><span class="line">[root@localhost ~]# cd</span><br><span class="line">#没有加上任何路径，也代表回到当前登录用户的主目录</span><br><span class="line">[root@localhost ~]# cd ~vbird</span><br><span class="line">#代表切换到 vbird 这个用户的主目录，亦即 /home/vbird</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd ..</span><br><span class="line">#表示切换到目前的上一级目录，亦即是 /root 的上一级目录的意思；</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# cd -</span><br><span class="line">#表示回到刚刚的那个目录</span><br></pre></td></tr></table></figure>
+<h3 id="显示当前路径-pwd"><a href="#显示当前路径-pwd" class="headerlink" title="显示当前路径 pwd"></a>显示当前路径 pwd</h3><p>pwd 命令，是 Print Working Directory （打印工作目录）的缩写，功能是显示用户当前所处的工作目录。该命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# pwd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# whoami</span><br><span class="line">root</span><br><span class="line">[root@localhost ~]# pwd</span><br><span class="line">/root</span><br></pre></td></tr></table></figure>
+<p>whoami 命令用于确定当前登陆的用户</p>
+<h3 id="查看目录下文件-ls"><a href="#查看目录下文件-ls" class="headerlink" title="查看目录下文件 ls"></a>查看目录下文件 ls</h3><p>ls 命令，list 的缩写</p>
+<p>此命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls [选项] 目录名称</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a</td>
+<td>显示全部的文件，包括隐藏文件（开头为 . 的文件）也一起罗列出来，这是最常用的选项之一。</td>
+</tr>
+<tr>
+<td>-A</td>
+<td>显示全部的文件，连同隐藏文件，但不包括 . 与 .. 这两个目录。</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>仅列出目录本身，而不是列出目录内的文件数据。</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>ls 默认会以文件名排序，使用 -f 选项会直接列出结果，而不进行排序。</td>
+</tr>
+<tr>
+<td>-F</td>
+<td>在文件或目录名后加上文件类型的指示符号，例如，* 代表可运行文件，/ 代表目录，= 代表 <a href="http://c.biancheng.net/socket/" target="_blank" rel="noopener">socket</a> 文件，\</td>
+<td>代表 FIFO 文件。</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>以人们易读的方式显示文件或目录大小，如 1KB、234MB、2GB 等。</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>显示 inode 节点信息。</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>使用长格式列出文件和目录信息。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>以 UID 和 GID 分别代替文件用户名和群组名显示出来。</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>将排序结果反向输出，比如，若原本文件名由小到大，反向则为由大到小。</td>
+</tr>
+<tr>
+<td>-R</td>
+<td>连同子目录内容一起列出来，等於将该目录下的所有文件都显示出来。</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>以文件容量大小排序，而不是以文件名排序。</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>以时间排序，而不是以文件名排序。</td>
+</tr>
+<tr>
+<td>–color=never –color=always –color=auto</td>
+<td>never 表示不依据文件特性给予颜色显示。 always 表示显示颜色，ls 默认采用这种方式。 auto 表示让系统自行依据配置来判断是否给予颜色。</td>
+</tr>
+<tr>
+<td>–full-time</td>
+<td>以完整时间模式 （包含年、月、日、时、分）输出</td>
+</tr>
+<tr>
+<td>–time={atime,ctime}</td>
+<td>输出 access 时间或改变权限属性时间（ctime），而不是内容变更时间。</td>
+</tr>
+</tbody>
+</table>
+<p>当 ls 命令不使用任何选项时，默认只会显示非隐藏文件的名称，并以文件名进行排序，同时会根据文件的具体类型给文件名配色（蓝色显示目录，白色显示一般文件）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# ls -al ~</span><br><span class="line">total 156</span><br><span class="line">drwxr-x---  4 root root  4096 Sep 24 00:07 .</span><br><span class="line">drwxr-xr-x 23 root root  4096 Sep 22 12:09 ..</span><br><span class="line">-rw-------  1 root root  1474 Sep  4 18:27 anaconda-ks.cfg</span><br><span class="line">-rw-------  1 root root   955 Sep 24 00:08 .bash_history</span><br><span class="line">-rw-r--r--  1 root root    24 Jan  6  2007 .bash_logout</span><br><span class="line">-rw-r--r--  1 root root   191 Jan  6  2007 .bash_profile</span><br><span class="line">-rw-r--r--  1 root root   176 Jan  6  2007 .bashrc</span><br><span class="line">drwx------  3 root root  4096 Sep  5 10:37 .gconf</span><br><span class="line">-rw-r--r--  1 root root 42304 Sep  4 18:26 install.log</span><br><span class="line">-rw-r--r--  1 root root  5661 Sep  4 18:25 install.log.syslog</span><br></pre></td></tr></table></figure>
+<p> ls 命令还使用了 -l 选项，因此才显示出了文件的详细信息，此选项显示的这 7 列的含义分别是：</p>
+<ol>
+<li>第一列：规定了不同的用户对文件所拥有的权限，具体权限的含义将在后续章节中讲解。</li>
+<li>第二列：引用计数，文件的引用计数代表该文件的硬链接个数，而目录的引用计数代表该目录有多少个一级子目录。</li>
+<li>第三列：所有者，也就是这个文件属于哪个用户。默认所有者是文件的建立用户。</li>
+<li>第四列：所属组，默认所属组是文件建立用户的有效组，一般情况下就是建立用户的所在组。</li>
+<li>第五列：大小，默认单位是字节。</li>
+<li>第六列：文件修改时间，文件状态修改时间或文件数据修改时间都会更改这个时间，注意这个时间不是文件的创建时间。</li>
+<li>第七列：文件名或目录名。</li>
+</ol>
+<h3 id="创建目录（文件夹）mkdir"><a href="#创建目录（文件夹）mkdir" class="headerlink" title="创建目录（文件夹）mkdir"></a>创建目录（文件夹）mkdir</h3><p>mkdir 命令，是 make directories 的缩写，用于创建新目录</p>
+<p>mkdir 命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir [-mp] 目录名</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-m 选项用于手动配置所创建目录的权限，而不再使用默认权限。</li>
+<li>-p 选项递归创建所有目录，以创建 /home/test/demo 为例，在默认情况下，你需要一层一层的创建各个目录，而使用 -p 选项，则系统会自动帮你创建 /home、/home/test 以及 /home/test/demo。</li>
+</ul>
+<h3 id="删除空目录-rmdir"><a href="#删除空目录-rmdir" class="headerlink" title="删除空目录 rmdir"></a>删除空目录 rmdir</h3><p>rmdir（remove empty directories 的缩写）命令用于删除空目录，此命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# rmdir [-p] 目录名</span><br></pre></td></tr></table></figure>
+<p>-p 选项用于递归删除空目录。</p>
+<p>rmdir 命令的作用十分有限，因为只能刪除空目录，所以一旦目录中有内容，就会报错。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost # mkdir test</span><br><span class="line">#建立测试目录</span><br><span class="line">[root@localhost ~]# touch test/boduo</span><br><span class="line">[root@localhost ~]# touch test/longze</span><br><span class="line">#在测试目录中建立两个文件</span><br><span class="line">[root@localhost ~]# rmdir test</span><br><span class="line">rmdir:删除&quot;test&quot;失败：目录非空</span><br></pre></td></tr></table></figure>
+<h3 id="创建文件及修改文件时间戳"><a href="#创建文件及修改文件时间戳" class="headerlink" title="创建文件及修改文件时间戳"></a>创建文件及修改文件时间戳</h3><p>touch 命令不止可以用来创建文件（当指定操作文件不存在时，该命令会在当前位置建立一个空文件），此命令更重要的功能是修改文件的时间参数（但当文件存在时，会修改此文件的时间参数）。</p>
+<p>Linux 系统中，每个文件主要拥有 3 个时间参数（通过 stat 命令进行查看），分别是文件的访问时间、数据修改时间以及状态修改时间：</p>
+<ul>
+<li>访问时间（Access Time，简称 atime）：只要文件的内容被读取，访问时间就会更新。例如，使用 cat 命令可以查看文件的内容，此时文件的访问时间就会发生改变。</li>
+<li>数据修改时间（Modify Time，简称 mtime）：当文件的内容数据发生改变，此文件的数据修改时间就会跟着相应改变。</li>
+<li>状态修改时间（Change Time，简称 ctime）：当文件的状态发生变化，就会相应改变这个时间。比如说，如果文件的权限或者属性发生改变，此时间就会相应改变。</li>
+</ul>
+<p>touch 命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch [选项] 文件名</span><br></pre></td></tr></table></figure>
+<p>选项：</p>
+<ul>
+<li>-a：只修改文件的访问时间；</li>
+<li>-c：仅修改文件的时间参数（3 个时间参数都改变），如果文件不存在，则不建立新文件。</li>
+<li>-d：后面可以跟欲修订的日期，而不用当前的日期，即把文件的 atime 和 mtime 时间改为指定的时间。</li>
+<li>-m：只修改文件的数据修改时间。</li>
+<li>-t：命令后面可以跟欲修订的时间，而不用目前的时间，时间书写格式为 <code>YYMMDDhhmm</code>。</li>
+</ul>
+<p>touch 命令可以只修改文件的访问时间，也可以只修改文件的数据修改时间，但是不能只修改文件的状态修改时间。因为，不论是修改访问时间，还是修改文件的数据时间，对文件来讲，状态都会发生改变，即状态修改时间会随之改变（更新为操作当前文件的真正时间）。</p>
+<p>touch 命令创建文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#touch bols</span><br><span class="line">#建立名为 bols 的空文件</span><br></pre></td></tr></table></figure>
+<p>在上面的基础上修改文件的访问时间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#ll --time=atime bols</span><br><span class="line">#查看文件的访问时间</span><br><span class="line">-rw-r--r-- 1 root root 0 Sep 25 21:23 bols</span><br><span class="line">#文件上次的访问时间为 9 月 25 号 21：23</span><br><span class="line">[root@localhost ~]#touch bols</span><br><span class="line">[root@localhost ~]#ll --time=atime bols</span><br><span class="line">-rw-r--r-- 1 root root 0 May 15 16:36 bols</span><br><span class="line">#而如果文件已经存在，则也不会报错，只是会修改文件的访问时间。</span><br></pre></td></tr></table></figure>
+<p>修改 bols 文件的 atime 和 mtime。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch -d &quot;2017-05-04 15:44&quot; bols</span><br><span class="line">[root@localhost ~]# ll bols; ll --time=atime bols; ll --time=ctime bols</span><br><span class="line">-rw-r--r-- 1 root root 0 May 4 2017 bols</span><br><span class="line">-rw-r--r-- 1 root root 0 May 4 2017 bols</span><br><span class="line">-rw-r--r-- 1 root root 0 Sep 25 21:40 bols</span><br><span class="line">#ctime不会变为设定时间，但更新为当前服务器的时间</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -648,8 +814,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/22/java集合类/HashMap遍历与删除/" rel="prev" title="HashMap遍历与删除">
-                HashMap遍历与删除 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/21/Linux/Linux命令行下识别文件类型/" rel="prev" title="Linux命令行下识别文件类型">
+                Linux命令行下识别文件类型 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -725,7 +891,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -896,7 +1062,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#wget"><span class="nav-number">1.</span> <span class="nav-text">wget</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tar"><span class="nav-number">2.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ps-ef-grep"><span class="nav-number">3.</span> <span class="nav-text">ps -ef | grep ***</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chmod-777"><span class="nav-number">4.</span> <span class="nav-text">chmod 777</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#wget"><span class="nav-number">1.</span> <span class="nav-text">wget</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tar"><span class="nav-number">2.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ps-ef-grep"><span class="nav-number">3.</span> <span class="nav-text">ps -ef | grep ***</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chmod-777"><span class="nav-number">4.</span> <span class="nav-text">chmod 777</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换目录-cd"><span class="nav-number">5.</span> <span class="nav-text">切换目录 cd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示当前路径-pwd"><span class="nav-number">6.</span> <span class="nav-text">显示当前路径 pwd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看目录下文件-ls"><span class="nav-number">7.</span> <span class="nav-text">查看目录下文件 ls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建目录（文件夹）mkdir"><span class="nav-number">8.</span> <span class="nav-text">创建目录（文件夹）mkdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除空目录-rmdir"><span class="nav-number">9.</span> <span class="nav-text">删除空目录 rmdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建文件及修改文件时间戳"><span class="nav-number">10.</span> <span class="nav-text">创建文件及修改文件时间戳</span></a></li></ol></div>
             
 
           </div>
@@ -939,7 +1105,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共195.9k字</span>
+  <span class="post-count">博客全站共199.1k字</span>
 </div>
         
 <div class="busuanzi-count">
