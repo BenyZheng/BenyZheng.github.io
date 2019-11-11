@@ -401,304 +401,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据库/数据库之基础知识/数据库之基础知识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/数据库/数据库之基础知识/数据库之基础知识/" class="post-title-link" itemprop="url">数据库之基础知识</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-06 22:33:39" itemprop="dateModified" datetime="2019-10-06T22:33:39+08:00">2019-10-06</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-06T22:33:39+08:00" content="2019-10-06">
-                2019-10-06 22:33:39
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/26/数据库/数据库之基础知识/数据库之基础知识/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据库/数据库之基础知识/数据库之基础知识/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="数据库之基础知识"><a href="#数据库之基础知识" class="headerlink" title="数据库之基础知识"></a>数据库之基础知识</h1><h3 id="命令行操作MySQL"><a href="#命令行操作MySQL" class="headerlink" title="命令行操作MySQL"></a>命令行操作MySQL</h3><p>DOS命令</p>
-<p><code>盘符+冒号</code> 切换逻辑盘 如：<code>d:</code><br><code>dir</code> 显示目录和文件列表<br><code>cd 目录名</code> 进入目录<br><code>cd ../</code> 进入上一级目录<br><code>cd ./</code> 进入当前目录<br><code>cd /</code> 进入根目录<br><code>exit</code> 退出命令行</p>
-<p>连接数据库</p>
-<p>语法：mysql -h主机名 -u用户名 -p密码<br>如：mysql -hlocalhost -uroot -proot<br>注意：当提示符变成 mysql&gt; 说明我们已经进入mysql命令行模式，只能使用sql指令<br>sql指令都需要以分号 ; 结束<br>quit 退出mysql</p>
-<p>exit 退出命令行</p>
-<h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><p>创建数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> 数据库名</span><br></pre></td></tr></table></figure>
-<p>显示数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">database</span>；显示服务器上的所有的数据库列表破</span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">database</span> <span class="keyword">like</span> <span class="string">'%a%'</span>; like 子命令，显示所有名字里带a的数据库名</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span> <span class="keyword">like</span> <span class="string">'___'</span>; like 子命令，显示数据库名是三个字符的所有数据库名</span><br><span class="line">% 匹配0个或者多个任意字符</span><br><span class="line">_ 下划线，匹配任意一个字符</span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">database</span> 数据库名; 查看建立数据库的语句</span><br></pre></td></tr></table></figure>
-<p>修改数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">database</span> 数据库名 <span class="keyword">charset</span>=gbk; 修改指定的数据库的字符集，只能修改数据的字符集，数据库名不能修改。</span><br></pre></td></tr></table></figure>
-<p>删除数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">database</span> 数据库名; 删除指定的数据库</span><br></pre></td></tr></table></figure>
-<p>MySQL里面的三个数据库mysql、information_schema、performance_schema是系统默认自带的，不可删除，删了需重装MySQL</p>
-<h3 id="数据库操作-1"><a href="#数据库操作-1" class="headerlink" title="数据库操作"></a>数据库操作</h3><p>创建数据表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 表名(<span class="keyword">id</span> <span class="built_in">int</span>,username <span class="built_in">varchar</span>(<span class="number">30</span>),<span class="keyword">password</span> <span class="built_in">varchar</span>(<span class="number">30</span>));</span><br></pre></td></tr></table></figure>
-<p>查看表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">tables</span>; 查看所有的数据表</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> 表名; 查看数据表的建表语句</span><br><span class="line">desc 表名; 查看数据表的结构</span><br></pre></td></tr></table></figure>
-<p>删除表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> 表名; 查看数据表的结构</span><br></pre></td></tr></table></figure>
-<p>修改表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">engine</span>=<span class="keyword">innodb</span>; 可以修改默认引擎</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">charset</span>=gbk; 可以修改字符集</span><br><span class="line"><span class="keyword">rename</span> <span class="keyword">table</span> 表名 <span class="keyword">to</span> 另一个表名; 可以修改表名</span><br></pre></td></tr></table></figure>
-<h3 id="字段操作"><a href="#字段操作" class="headerlink" title="字段操作"></a>字段操作</h3><p>增加新字段</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">add</span> <span class="keyword">column</span> gender <span class="built_in">varchar</span>(<span class="number">2</span>);</span><br><span class="line">在student数据表中新增gender字段</span><br></pre></td></tr></table></figure>
-<p>修改字段的类型和属性</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">modify</span> <span class="keyword">column</span> gender <span class="built_in">varchar</span>(<span class="number">10</span>);</span><br><span class="line">修改student数据表中gender字段数据类型</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">modify</span> <span class="keyword">column</span> gender <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">after</span> 另一个字段;</span><br><span class="line">修改student数据表中gender字段数据类型，并且在数据表中排在 “另一个字段” 后面</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">modify</span> <span class="keyword">column</span> gender <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">first</span>;</span><br><span class="line">修改student数据表中gender字段数据类型，并且在数据表中排在第一位</span><br></pre></td></tr></table></figure>
-<p>修改字段的名字和定义</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">change</span> <span class="keyword">column</span> gender sex <span class="built_in">varchar</span>(<span class="number">2</span>);</span><br><span class="line">把student数据表中gender字段名字改为sex，数据类型改为varchar(2);</span><br></pre></td></tr></table></figure>
-<p>删除字段</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">drop</span> <span class="keyword">column</span> gender;</span><br><span class="line">删除student数据表中的gender字段;</span><br></pre></td></tr></table></figure>
-<h3 id="记录操作"><a href="#记录操作" class="headerlink" title="记录操作"></a>记录操作</h3><p>新增记录</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名(字段列表) <span class="keyword">values</span> (值的列表);</span><br><span class="line">例子：</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student(username) <span class="keyword">values</span>(<span class="string">'中文'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student(<span class="keyword">id</span>,username,age) <span class="keyword">values</span>(<span class="number">3</span>,<span class="string">'中文'</span>,<span class="number">20</span>);</span><br><span class="line">批量新增：</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student(<span class="keyword">id</span>,username,age) <span class="keyword">values</span> (<span class="number">3</span>,<span class="string">'张三'</span>,<span class="number">18</span>),(<span class="number">4</span>,<span class="string">'李四'</span>,<span class="number">20</span>),(<span class="number">5</span>,<span class="string">'刘五'</span>,<span class="number">22</span>);</span><br><span class="line">值的个数与数据表中的字段个数一样时，可以省略字段列表</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span>(<span class="number">4</span>,<span class="string">'中文'</span>,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
-<p>查询记录</p>
-<p>完整语句：<br>select [字段列表] [from子句] [inner join子句] [where子句] [group by子句] [having子句] [order by子句] [limit子句];</p>
-<p>一般使用：</p>
-<p>select [字段列表] [from子句] [where子句] [order by子句] [limit子句];</p>
-<p>[where子句] 用于过滤数据，只取出满足条件的记录</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student where age &gt;= 20; 查询出 age &gt;= 20的记录</span><br></pre></td></tr></table></figure>
-<p>[order by子句] 用于对查询出的数据进行排序</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student <span class="keyword">where</span> age &gt;= <span class="number">20</span> <span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">asc</span>; 年龄升序排列</span><br></pre></td></tr></table></figure>
-<p>asc升序排列 （从小到大）、desc 降序排序 （从大到小）</p>
-<p>[limit子句] 用于限制输出数据的条数</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">limit n; 提取前 n 条数据</span><br><span class="line">limit m,n; 从 第 m 条开始提取 n 条数据**（m 从 0 开始）**</span><br><span class="line">select * from student where age &gt;= 20 order by age asc limit 2; 查询出 age &gt;= 20的记录年龄，升序排列，提取前 2 条</span><br></pre></td></tr></table></figure>
-<p>修改记录</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> 表名 <span class="keyword">set</span> 字段名<span class="number">1</span>=新的值<span class="number">1</span>,字段名<span class="number">2</span>=新的值<span class="number">2</span>,字段名n=新的值n <span class="keyword">where</span> 子句;</span><br><span class="line">例子：</span><br><span class="line"><span class="keyword">update</span> student <span class="keyword">set</span> age=<span class="number">25</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">8</span>;</span><br></pre></td></tr></table></figure>
-<p>删除记录</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span> 子句;</span><br><span class="line">例子：</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> student <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">8</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="mysql中常用数据类型"><a href="#mysql中常用数据类型" class="headerlink" title="mysql中常用数据类型"></a>mysql中常用数据类型</h3><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>INT(size)</td>
-<td>4字节整数类型，-2147483648 到 2147483647 常规。0 到 4294967295 无符号*。在括号中规定最大位数，默认是11。</td>
-</tr>
-<tr>
-<td>BIGINT(size)</td>
-<td>8字节整数类型，-9223372036854775808 到 9223372036854775807 常规。0 到 18446744073709551615 无符号*。在括号中规定最大位数。默认是20。</td>
-</tr>
-<tr>
-<td>FLOAT(size,d)</td>
-<td>字节浮点数，带有浮动小数点的小数字。在括号中规定最大位数。在 d 参数中规定小数点右侧的最大位数。</td>
-</tr>
-<tr>
-<td>CHAR(size)</td>
-<td>保存固定长度的字符串（可包含字母、数字以及特殊字符）。在括号中指定字符串的长度。最多 255 个字符。</td>
-</tr>
-<tr>
-<td>VARCHAR(size)</td>
-<td>保存可变长度的字符串（可包含字母、数字以及特殊字符）。在括号中指定字符串的最大长度。最多 255 个字符。注释：如果值的长度大于 255，则被转换为 TEXT 类型。</td>
-</tr>
-<tr>
-<td>TEXT</td>
-<td>存放最大长度为 65,535 个字符的字符串。</td>
-</tr>
-<tr>
-<td>DATE()</td>
-<td>日期。格式：YYYY-MM-DD 注释：支持的范围是从 ‘1000-01-01’ 到 ‘9999-12-31’</td>
-</tr>
-<tr>
-<td>DATETIME()</td>
-<td>*日期和时间的组合。格式：YYYY-MM-DD HH:MM:SS 注释：支持的范围是从 ‘1000-01-01 00:00:00’ 到 ‘9999-12-31 23:59:59’</td>
-</tr>
-<tr>
-<td>TIMESTAMP()</td>
-<td>*时间戳。TIMESTAMP 值使用 Unix 纪元(‘1970-01-01 00:00:00’ UTC) 至今的描述来存储。格式：YYYY-MM-DD HH:MM:SS 注释：支持的范围是从 ‘1970-01-01 00:00:01’ UTC 到 ‘2038-01-09 03:14:07’ UTC</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据结构/6 查找/查找/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1005,6 +707,326 @@
 <p>手动求解next数组的值</p>
 <p><img src="/2019/05/26/数据结构/6 查找/查找/92 KMP算法手动next数组1.png" alt></p>
 <p><img src="/2019/05/26/数据结构/6 查找/查找/93 KMP算法手动next数组2.png" alt></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/05/26/数据结构/7 排序/排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/数据结构/7 排序/排序/" class="post-title-link" itemprop="url">排序</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-05-26T12:12:57+08:00">2019-05-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-23 14:04:58" itemprop="dateModified" datetime="2019-10-23T14:04:58+08:00">2019-10-23</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-23T14:04:58+08:00" content="2019-10-23">
+                2019-10-23 14:04:58
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/数据结构/7 排序/排序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/数据结构/7 排序/排序/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>排序就是将原本无序的序列重新排列成有序的序列</p>
+<p>排序的稳定性</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/1 排序稳定性.png" alt></p>
+<p>内部排序：指的是待排序记录全部存放在计算机内存中进行排序的过程</p>
+<p>外部排序：指的是待排序的记录的数量很大，以致内存一次不能容纳全部记录，在排序过程中尚需要对外存进行访问的排序过程</p>
+<p>内部排序分类</p>
+<ul>
+<li>插入类：将无序子序列中的一个或几个记录插入到有序序列中，从而增加记录的有序子序列的长度，包括直接插入排序、折半插入排序、希尔排序</li>
+<li>交换类：通过交换无序序列中的记录从而得到其中关键字最小或最大的记录，并将它加入到有序子序列中，以此方法增加记录的有序子序列的长度，包括冒泡排序和快速排序</li>
+<li>选择类：从记录的无序子序列中选择关键字最小或最大的记录，并将它加入到有序子序列中，以此方法增加有序子序列的长度，包括简单选择排序、树形选择排序、堆排序</li>
+<li><p>归并类：通过归并两个或两个以上的记录有序子序列，逐步增加记录有序序列的长度，包括2路归并排序</p>
+</li>
+<li><p>分配类：是唯一一类不需要关键字之间的比较的排序方法，排序时主要利用分配和收集两种基本操作完成。基数排序是主要的分配类排序</p>
+</li>
+</ul>
+<h5 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h5><h6 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h6><p><img src="/2019/05/26/数据结构/7 排序/排序/2 直接插入排序代码.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> 插入排序;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 直接插入排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InsertSort</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入需要排序的数字"</span>);</span><br><span class="line">		System.out.println(<span class="string">"01 02 03 04 05 06 07 08 09 10"</span>);</span><br><span class="line">		<span class="keyword">int</span> array[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">11</span>];</span><br><span class="line">		<span class="keyword">while</span>(i&lt;<span class="number">11</span>) &#123;</span><br><span class="line">			array[i] = sc.nextInt();</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		InsertSort(array);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>;a&lt;<span class="number">11</span>;a++)</span><br><span class="line">			System.out.print(array[a]+<span class="string">","</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span> array[])</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i,j;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;array.length;i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(array[i]&lt;array[i-<span class="number">1</span>]) &#123;</span><br><span class="line">				array[<span class="number">0</span>]=array[i];</span><br><span class="line">				<span class="keyword">for</span>(j=i-<span class="number">1</span>;array[j]&gt;array[<span class="number">0</span>];j--) &#123;</span><br><span class="line">					array[j+<span class="number">1</span>] = array[j];</span><br><span class="line">				&#125;</span><br><span class="line">				array[j+<span class="number">1</span>] = array[<span class="number">0</span>];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>空间时间复杂度</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/3 直接插入排序时间复杂度.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/4 直接插入排序时间复杂度2.png" alt></p>
+<p>时间复杂度最好O(n)，最坏O(n<sup>2</sup>)</p>
+<p>直接插入排序是<strong>稳定</strong>的</p>
+<h6 id="折半查找排序"><a href="#折半查找排序" class="headerlink" title="折半查找排序"></a>折半查找排序</h6><p><img src="/2019/05/26/数据结构/7 排序/排序/5 折半插入排序.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/6 折半插入排序例子.png" alt></p>
+<p>折半排序代码</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/7 折半插入排序代码.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> 插入排序;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 	折半插入排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11053</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinaryInsertSort</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入需要排序的数字"</span>);</span><br><span class="line">		System.out.println(<span class="string">"01 02 03 04 05 06 07 08 09 10"</span>);</span><br><span class="line">		<span class="keyword">int</span> array[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">11</span>];</span><br><span class="line">		<span class="keyword">while</span>(i&lt;<span class="number">11</span>) &#123;</span><br><span class="line">			array[i] = sc.nextInt();</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		BinaryInsertSort(array);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>;a&lt;<span class="number">11</span>;a++)</span><br><span class="line">			System.out.print(array[a]+<span class="string">","</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">BinaryInsertSort</span><span class="params">(<span class="keyword">int</span> array[])</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i,j,mid,low,high;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;array.length;i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(array[i]&lt;array[i-<span class="number">1</span>]) &#123;</span><br><span class="line">				array[<span class="number">0</span>] = array[i];</span><br><span class="line">				low = <span class="number">1</span>;</span><br><span class="line">				high = i-<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">while</span>(low&lt;=high) &#123;</span><br><span class="line">					mid = (low+high)/<span class="number">2</span>;</span><br><span class="line">					<span class="keyword">if</span>(array[mid]&gt;array[<span class="number">0</span>]) high = mid-<span class="number">1</span>;</span><br><span class="line">					<span class="keyword">else</span> low = mid+<span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">for</span>(j=i-<span class="number">1</span>;j&gt;=high+<span class="number">1</span>;j--)</span><br><span class="line">					array[j+<span class="number">1</span>] = array[j];</span><br><span class="line">				array[high+<span class="number">1</span>] = array[<span class="number">0</span>];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/8 折半插入排序时间复杂度.png" alt></p>
+<p>时间复杂度O(n<sup>2</sup>)</p>
+<p>折半插入排序是<strong>稳定</strong>的</p>
+<h6 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h6><p><img src="/2019/05/26/数据结构/7 排序/排序/9 希尔排序.png" alt></p>
+<p>希尔排序过程</p>
+<p>第一趟：10个元素取增量10/2=5</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/10 希尔排序第一趟.png" alt></p>
+<p>第二趟：5/2向下取整=2</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/11 希尔排序第二趟.png" alt></p>
+<p>第三趟：最后增量为1</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/12 希尔排序第三趟.png" alt></p>
+<p>希尔排序的时间复杂度</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/13 希尔排序时间复杂度.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/14 希尔排序稳定性.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> 插入排序;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  希尔排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11053</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShellSort</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入需要排序的数字"</span>);</span><br><span class="line">		System.out.println(<span class="string">"01 02 03 04 05 06 07 08 09 10"</span>);</span><br><span class="line">		<span class="keyword">int</span> array[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">11</span>];</span><br><span class="line">		<span class="keyword">while</span>(i&lt;<span class="number">11</span>) &#123;</span><br><span class="line">			array[i] = sc.nextInt();</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		ShellSort(array);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>;a&lt;<span class="number">11</span>;a++)</span><br><span class="line">			System.out.print(array[a]+<span class="string">","</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ShellSort</span><span class="params">(<span class="keyword">int</span> array[])</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> d,i,j;</span><br><span class="line">		<span class="keyword">for</span>(d=array.length/<span class="number">2</span>;d&gt;=<span class="number">1</span>;d=d/<span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">for</span>(i=d+<span class="number">1</span>;i&lt;=array.length-<span class="number">1</span>;i++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(array[i]&lt;array[i-d]) &#123;</span><br><span class="line">					array[<span class="number">0</span>] = array[i];</span><br><span class="line">					<span class="keyword">for</span>(j=i-d;j&gt;<span class="number">0</span>&amp;&amp;array[j]&gt;array[<span class="number">0</span>];j-=d) &#123;</span><br><span class="line">						array[j+d] = array[j];</span><br><span class="line">					&#125;</span><br><span class="line">					array[j+d] = array[<span class="number">0</span>];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度最好<strong>O(n<sup>1.3</sup>)，最坏O(n<sup>2</sup>)</strong>.</p>
+<p>希尔排序<strong>不稳定</strong></p>
+<h5 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h5><p>交换类排序：根据序列中两个元素关键字的比较结果来交换它两在序列中的位置</p>
+<h6 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h6><p><img src="/2019/05/26/数据结构/7 排序/排序/15 冒泡排序.png" alt></p>
+<p>冒泡排序代码</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/16 冒泡排序代码.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> 交换排序;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  冒泡排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11053</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BubbleSort</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入需要排序的数字"</span>);</span><br><span class="line">		System.out.println(<span class="string">"01 02 03 04 05 06 07 08 09 10"</span>);</span><br><span class="line">		<span class="keyword">int</span> array[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">11</span>];</span><br><span class="line">		<span class="keyword">while</span>(i&lt;<span class="number">11</span>) &#123;</span><br><span class="line">			array[i] = sc.nextInt();</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		BubbleSort(array);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>;a&lt;<span class="number">11</span>;a++)</span><br><span class="line">			System.out.print(array[a]+<span class="string">","</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="keyword">int</span> array[])</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i,j,temp;</span><br><span class="line">		<span class="keyword">boolean</span> flag;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;array.length;i++) &#123;</span><br><span class="line">			flag=<span class="keyword">false</span>;</span><br><span class="line">			<span class="keyword">for</span>(j=array.length-<span class="number">1</span>;j&gt;i;j--) &#123;</span><br><span class="line">				<span class="keyword">if</span>(array[j-<span class="number">1</span>]&gt;array[j]) &#123;</span><br><span class="line">					temp = array[j];</span><br><span class="line">					array[j] = array[j-<span class="number">1</span>];</span><br><span class="line">					array[j-<span class="number">1</span>] = temp;</span><br><span class="line">					flag = <span class="keyword">true</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(flag==<span class="keyword">false</span>) <span class="keyword">return</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>冒泡排序时间复杂度<strong>最好O(n)，最坏O(n<sup>2</sup>)</strong>.</p>
+<p>冒泡排序<strong>稳定</strong>.</p>
+<h6 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h6><p>快速排序是一种基于分治法的排序方法</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/17 快速排序.png" alt></p>
+<p>快速排序代码</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/18 快速排序代码1.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/19 快速排序代码2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/20 快速排序最坏时间复杂度.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/21 快速排序最坏时间复杂度2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/22 快速排序空间复杂度.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> 交换排序;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 快速排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11053</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入需要排序的数字"</span>);</span><br><span class="line">		System.out.println(<span class="string">"01 02 03 04 05 06 07 08 09 10"</span>);</span><br><span class="line">		<span class="keyword">int</span> array[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">11</span>];</span><br><span class="line">		<span class="keyword">while</span>(i&lt;<span class="number">11</span>) &#123;</span><br><span class="line">			array[i] = sc.nextInt();</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		QuickSort(array,<span class="number">1</span>,array.length-<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>;a&lt;<span class="number">11</span>;a++)</span><br><span class="line">			System.out.print(array[a]+<span class="string">","</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> array[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(low&lt;high) &#123;</span><br><span class="line">			<span class="keyword">int</span> pivotloc = Partition(array,low,high);</span><br><span class="line">			QuickSort(array,low,pivotloc-<span class="number">1</span>);</span><br><span class="line">			QuickSort(array,pivotloc+<span class="number">1</span>,high);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Partition</span><span class="params">(<span class="keyword">int</span> array[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> pivot = array[low];</span><br><span class="line">		<span class="keyword">while</span>(low&lt;high) &#123;</span><br><span class="line">			<span class="keyword">while</span>(low&lt;high&amp;&amp;array[high]&gt;=pivot) high--;</span><br><span class="line">			array[low] = array[high];</span><br><span class="line">			<span class="keyword">while</span>(low&lt;high&amp;&amp;array[low]&lt;=pivot) low++;</span><br><span class="line">			array[high] = array[low];</span><br><span class="line">		&#125;</span><br><span class="line">		array[low] = pivot;</span><br><span class="line">		<span class="keyword">return</span> low;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>快速排序时间复杂度最好<strong>O(nlogn)，最坏O(n<sup>2</sup>)</strong>.</p>
+<p>序列越乱序，效率越高；序列越有序，效率越低</p>
+<p>空间复杂度最好<strong>O(logn)，最坏O(n)</strong>.</p>
+<p>快速排序<strong>不稳定</strong>.</p>
+<h5 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h5><p><img src="/2019/05/26/数据结构/7 排序/排序/23 选择排序.png" alt></p>
+<h6 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h6><p><img src="/2019/05/26/数据结构/7 排序/排序/24 选择排序代码.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/25 选择排序稳定性.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> 选择排序;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 简单选择排序</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectSort</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入需要排序的数字"</span>);</span><br><span class="line">		System.out.println(<span class="string">"01 02 03 04 05 06 07 08 09 10"</span>);</span><br><span class="line">		<span class="keyword">int</span> array[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">11</span>];</span><br><span class="line">		<span class="keyword">while</span>(i&lt;<span class="number">11</span>) &#123;</span><br><span class="line">			array[i] = sc.nextInt();</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		SelectSort(array);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>;a&lt;<span class="number">11</span>;a++)</span><br><span class="line">			System.out.print(array[a]+<span class="string">","</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SelectSort</span><span class="params">(<span class="keyword">int</span> array[])</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i,j,min;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;array.length-<span class="number">1</span>;i++) &#123;</span><br><span class="line">			min = i;</span><br><span class="line">			<span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;array.length;j++) </span><br><span class="line">				<span class="keyword">if</span>(array[min]&gt;array[j]) min = j;</span><br><span class="line">			<span class="keyword">if</span>(min!=i) &#123;</span><br><span class="line">				array[<span class="number">0</span>] = array[min];</span><br><span class="line">				array[min] = array[i];</span><br><span class="line">				array[i] = array[<span class="number">0</span>];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单选择排序时间复杂度O(n<sup>2</sup>)</p>
+<p>不稳定，交换会打破顺序</p>
+<h6 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h6><p>堆的定义</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/26 堆排序.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/27 堆排序形成.png" alt></p>
+<p>大顶堆过程</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/28 大顶堆排序1.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/29 大顶堆排序2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/30 大顶堆排序3.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/31 大顶堆排序4.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/32 大顶堆排序5.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/33 大顶堆排序6.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/34 大顶堆排序7.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/35 大顶堆排序8.png" alt></p>
+<p>堆排序算法</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/36 堆排序算法思路.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/37 堆排序算法.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/38 堆排序算法2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/39 堆排序时间复杂度.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/40 堆排序时间复杂度2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/41 堆排序时间复杂度3.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/42 堆排序时间复杂度4.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/43 堆排序时间复杂度5.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> 选择排序;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 堆排序</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeadSort</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入需要排序的数字"</span>);</span><br><span class="line">		System.out.println(<span class="string">"01 02 03 04 05 06 07 08 09 10"</span>);</span><br><span class="line">		<span class="keyword">int</span> array[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">11</span>];</span><br><span class="line">		<span class="keyword">while</span>(i&lt;<span class="number">11</span>) &#123;</span><br><span class="line">			array[i] = sc.nextInt();</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		HeadSort(array);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>;a&lt;<span class="number">11</span>;a++)</span><br><span class="line">			System.out.print(array[a]+<span class="string">","</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">HeadSort</span><span class="params">(<span class="keyword">int</span> array[])</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> len = array.length-<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		BuildMaxHead(array, len);</span><br><span class="line">		<span class="keyword">for</span>(i=len;i&gt;<span class="number">0</span>;i--) &#123;</span><br><span class="line">			Swap(array,<span class="number">1</span>,i);</span><br><span class="line">			HeadAjust(array,<span class="number">1</span>,i-<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">BuildMaxHead</span><span class="params">(<span class="keyword">int</span> array[],<span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//len=10</span></span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span>(i=len/<span class="number">2</span>;i&gt;<span class="number">0</span>;i--)</span><br><span class="line">			HeadAjust(array,i,len);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">HeadAjust</span><span class="params">(<span class="keyword">int</span> array[],<span class="keyword">int</span> k,<span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		array[<span class="number">0</span>] = array[k];</span><br><span class="line">		<span class="keyword">for</span>(i=k*<span class="number">2</span>;i&lt;=len;i=i*<span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;len&amp;&amp;array[i]&lt;array[i+<span class="number">1</span>])</span><br><span class="line">				i++;</span><br><span class="line">			<span class="keyword">if</span>(array[i]&lt;array[<span class="number">0</span>]) <span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				array[k] = array[i];</span><br><span class="line">				k=i;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		array[k] = array[<span class="number">0</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Swap</span><span class="params">(<span class="keyword">int</span> array[],<span class="keyword">int</span> top,<span class="keyword">int</span> bottom)</span> </span>&#123;</span><br><span class="line">		array[<span class="number">0</span>] = array[top];</span><br><span class="line">		array[top] = array[bottom];</span><br><span class="line">		array[bottom] = array[<span class="number">0</span>];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>堆排序时间复杂度<strong>O(nlog<sub>2</sub>n)，空间复杂度O(1)</strong>。</p>
+<p>堆排序<strong>不稳定</strong>.</p>
+<h5 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h5><p><img src="/2019/05/26/数据结构/7 排序/排序/44 归并排序.png" alt></p>
+<p>归并排序代码</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/45 归并排序代码.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/46 归并排序代码2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/47 归并排序时间复杂度.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/49 归并排序空间复杂度.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> 归并排序;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  归并排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 11053</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSort</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入需要排序的数字"</span>);</span><br><span class="line">		System.out.println(<span class="string">"01 02 03 04 05 06 07 08 09 10"</span>);</span><br><span class="line">		<span class="keyword">int</span> array[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">11</span>];</span><br><span class="line">		<span class="keyword">while</span>(i&lt;<span class="number">11</span>) &#123;</span><br><span class="line">			array[i] = sc.nextInt();</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		MergeSort(array,<span class="number">1</span>,array.length-<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>;a&lt;<span class="number">11</span>;a++)</span><br><span class="line">			System.out.print(array[a]+<span class="string">","</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">MergeSort</span><span class="params">(<span class="keyword">int</span> array[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> mid;</span><br><span class="line">		<span class="keyword">if</span>(low&lt;high) &#123;</span><br><span class="line">			mid = (low+high)/<span class="number">2</span>;</span><br><span class="line">			MergeSort(array,low,mid);</span><br><span class="line">			MergeSort(array,mid+<span class="number">1</span>,high);</span><br><span class="line">			Merge(array,low,mid,high);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> array[],<span class="keyword">int</span> low,<span class="keyword">int</span> mid,<span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i,j,k;</span><br><span class="line">		<span class="keyword">int</span> len = array.length;</span><br><span class="line">		<span class="keyword">int</span> temp[] = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line">		<span class="keyword">for</span>(k=low;k&lt;=high;k++)</span><br><span class="line">			temp[k] = array[k];</span><br><span class="line">		<span class="keyword">for</span>(i=low,j=mid+<span class="number">1</span>,k=i;i&lt;=mid&amp;&amp;j&lt;=high;k++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(temp[i]&lt;temp[j])</span><br><span class="line">				array[k]=temp[i++];</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				array[k]=temp[j++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(i&lt;=mid) array[k++]=temp[i++];</span><br><span class="line">		<span class="keyword">while</span>(j&lt;=high) array[k++]=temp[j++];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度O(nlogn),空间复杂度O(n)</p>
+<p>归并排序稳定</p>
+<h5 id="非比较排序"><a href="#非比较排序" class="headerlink" title="非比较排序"></a>非比较排序</h5><h6 id="基数排序-桶排序"><a href="#基数排序-桶排序" class="headerlink" title="基数排序(桶排序)"></a>基数排序(桶排序)</h6><p><img src="/2019/05/26/数据结构/7 排序/排序/50 基数排序.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/51 基数排序1.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/52 基数排序2.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/53 基数排序3.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/54 基数排序4.png" alt></p>
+<p>MSD</p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/55 基数排序5.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/56 基数排序6.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/57 基数排序7.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/58 基数排序8.png" alt></p>
+<p><img src="/2019/05/26/数据结构/7 排序/排序/59 各排序算法复杂度总结.png" alt></p>
 
           
         
@@ -2132,7 +2154,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共199.1k字</span>
+  <span class="post-count">博客全站共208.1k字</span>
 </div>
         
 <div class="busuanzi-count">

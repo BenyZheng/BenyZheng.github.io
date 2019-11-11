@@ -153,18 +153,22 @@
 
 
 
-  <meta name="description" content="wget wget是一个下载文件的工具，它用在命令行下。 wget支持HTTP，HTTPS和FTP协议，可以使用HTTP代理。所谓的自动下载是指，wget可以在用户退出系统的之后在后台执行。这意味这你可以登录系统，启动一个wget下载任务，然后退出系统，wget将在后台执行直到任务完成 wget 可以跟踪HTML页面上的链接依次下载来创建远程服务器的本地版本，完全重建原始站点的目录结构。这又常被称">
+  <meta name="description" content="切换目录 cdcd 命令，是 Change Directory 的缩写，用来切换工作目录。 cd 命令的基本格式如下： 1[root@localhost ~]# cd [相对路径或绝对路径]    特殊符号 作 用     ~ 代表当前登录用户的主目录   ~用户名 表示切换至指定用户的主目录   - 代表上次所在目录   . 代表当前目录   .. 代表上级目录    123456[root@l">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux基础命令">
 <meta property="og:url" content="https://benyzheng.github.io/2019/10/21/Linux/Linux基础命令/index.html">
 <meta property="og:site_name" content="Beny&#39;s blog">
-<meta property="og:description" content="wget wget是一个下载文件的工具，它用在命令行下。 wget支持HTTP，HTTPS和FTP协议，可以使用HTTP代理。所谓的自动下载是指，wget可以在用户退出系统的之后在后台执行。这意味这你可以登录系统，启动一个wget下载任务，然后退出系统，wget将在后台执行直到任务完成 wget 可以跟踪HTML页面上的链接依次下载来创建远程服务器的本地版本，完全重建原始站点的目录结构。这又常被称">
+<meta property="og:description" content="切换目录 cdcd 命令，是 Change Directory 的缩写，用来切换工作目录。 cd 命令的基本格式如下： 1[root@localhost ~]# cd [相对路径或绝对路径]    特殊符号 作 用     ~ 代表当前登录用户的主目录   ~用户名 表示切换至指定用户的主目录   - 代表上次所在目录   . 代表当前目录   .. 代表上级目录    123456[root@l">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-08T16:15:36.600Z">
+<meta property="og:image" content="https://benyzheng.github.io/2019/10/21/Linux/Linux基础命令/2-1P92Q6130RO.jpg">
+<meta property="og:image" content="https://benyzheng.github.io/2019/10/21/Linux/Linux基础命令/2-1Q00Q41T01J.jpg">
+<meta property="og:image" content="https://benyzheng.github.io/2019/10/21/Linux/Linux基础命令/2-1Q00Q6360L18.jpg">
+<meta property="og:updated_time" content="2019-11-11T15:49:01.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux基础命令">
-<meta name="twitter:description" content="wget wget是一个下载文件的工具，它用在命令行下。 wget支持HTTP，HTTPS和FTP协议，可以使用HTTP代理。所谓的自动下载是指，wget可以在用户退出系统的之后在后台执行。这意味这你可以登录系统，启动一个wget下载任务，然后退出系统，wget将在后台执行直到任务完成 wget 可以跟踪HTML页面上的链接依次下载来创建远程服务器的本地版本，完全重建原始站点的目录结构。这又常被称">
+<meta name="twitter:description" content="切换目录 cdcd 命令，是 Change Directory 的缩写，用来切换工作目录。 cd 命令的基本格式如下： 1[root@localhost ~]# cd [相对路径或绝对路径]    特殊符号 作 用     ~ 代表当前登录用户的主目录   ~用户名 表示切换至指定用户的主目录   - 代表上次所在目录   . 代表当前目录   .. 代表上级目录    123456[root@l">
+<meta name="twitter:image" content="https://benyzheng.github.io/2019/10/21/Linux/Linux基础命令/2-1P92Q6130RO.jpg">
 
 
 
@@ -465,7 +469,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-11-09 00:15:36" itemprop="dateModified" datetime="2019-11-09T00:15:36+08:00">2019-11-09</time> 
+              <time title="修改时间：2019-11-11 23:49:01" itemprop="dateModified" datetime="2019-11-11T23:49:01+08:00">2019-11-11</time> 
               -->
               <!-- new version -->
                         
@@ -480,8 +484,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-11-09T00:15:36+08:00" content="2019-11-09">
-                2019-11-09 00:15:36
+              <time itemprop="dateUpdated" datetime="2019-11-11T23:49:01+08:00" content="2019-11-11">
+                2019-11-11 23:49:01
               </time>
             </span>
           
@@ -557,52 +561,7 @@
       
 
       
-        <h3 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h3><p> wget是一个下载文件的工具，它用在命令行下。 wget支持HTTP，HTTPS和FTP协议，可以使用HTTP代理。所谓的自动下载是指，wget可以在用户退出系统的之后在后台执行。这意味这你可以登录系统，启动一个wget下载任务，然后退出系统，wget将在后台执行直到任务完成</p>
-<p>wget 可以跟踪HTML页面上的链接依次下载来创建远程服务器的本地版本，完全重建原始站点的目录结构。这又常被称作”递归下载”。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">登入并输入文件:</span><br><span class="line">  -o,  --output-file=FILE    将信息写入 FILE。</span><br><span class="line">  -a,  --append-output=FILE  将信息添加至 FILE。</span><br><span class="line">  -d,  --debug               打印大量调试信息。</span><br><span class="line">  -q,  --quiet               安静模式(无信息输出)。</span><br><span class="line">  -v,  --verbose             详尽的输出(此为默认值)。</span><br><span class="line">  -nv, --no-verbose          关闭详尽输出，但不进入安静模式。</span><br><span class="line">  -i,  --input-file=FILE     下载本地或外部 FILE 中的 URLs。</span><br><span class="line">  -F,  --force-html          把输入文件当成 HTML 文件。</span><br><span class="line">  -B,  --base=URL            解析与 URL 相关的</span><br><span class="line">                             HTML 输入文件（由 -i -F 选项指定）。</span><br></pre></td></tr></table></figure>
-<p>使用wget -O下载并以不同的文件名保存(-O：下载文件到对应目录，并且修改文件名称)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O wordpress.zip http://www.minjieren.com/download.aspx?id=1080</span><br></pre></td></tr></table></figure>
-<p>使用wget -b后台下载</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -b &lt;a href=&quot;http://www.minjieren.com/wordpress-3.1-zh_CN.zip&quot;&gt;http://www.minjieren.com/wordpress-3.1-zh_CN.zip&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">备注： 你可以使用以下命令来察看下载进度：tail -f wget-log</span><br></pre></td></tr></table></figure>
-<p>利用-spider: 模拟下载，不会下载，只是会检查是否网站是否好着</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# wget --spider  www.baidu.com    #不下载任何文件</span><br></pre></td></tr></table></figure>
-<h3 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h3><p>-c: 建立压缩档案<br>-x：解压<br>-t：查看内容<br>-r：向压缩归档文件末尾追加文件<br>-u：更新原压缩包中的文件</p>
-<p>这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。</p>
-<p>-z：有gzip属性的<br>-j：有bz2属性的<br>-Z：有compress属性的<br>-v：显示所有过程<br>-O：将文件解开到标准输出</p>
-<p>下面的参数-f是必须的</p>
-<p>-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。</p>
-<p># tar -cf all.tar *.jpg<br>这条命令是将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名。</p>
-<p># tar -rf all.tar *.gif<br>这条命令是将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件的意思。</p>
-<p># tar -uf all.tar logo.gif<br>这条命令是更新原来tar包all.tar中logo.gif文件，-u是表示更新文件的意思。</p>
-<p># tar -tf all.tar<br>这条命令是列出all.tar包中所有文件，-t是列出文件的意思</p>
-<p># tar -xf all.tar<br>这条命令是解出all.tar包中所有文件，-t是解开的意思</p>
-<p><strong>压缩</strong></p>
-<p>tar -cvf jpg.tar *.jpg //将目录里所有jpg文件打包成jpg.tar </p>
-<p>tar -czf jpg.tar.gz *.jpg   //将目录里所有jpg文件打包成jpg.tar后，并且将其用gzip压缩，生成一个gzip压缩过的包，命名为jpg.tar.gz</p>
-<p> tar -cjf jpg.tar.bz2 *.jpg //将目录里所有jpg文件打包成jpg.tar后，并且将其用bzip2压缩，生成一个bzip2压缩过的包，命名为jpg.tar.bz2</p>
-<p>tar -cZf jpg.tar.Z *.jpg   //将目录里所有jpg文件打包成jpg.tar后，并且将其用compress压缩，生成一个umcompress压缩过的包，命名为jpg.tar.Z</p>
-<p>rar a jpg.rar *.jpg //rar格式的压缩，需要先下载rar for linux</p>
-<p>zip jpg.zip *.jpg //zip格式的压缩，需要先下载zip for linux</p>
-<p><strong>解压</strong></p>
-<p>tar -xvf file.tar //解压 tar包</p>
-<p>tar -xzvf file.tar.gz //解压tar.gz</p>
-<p>tar -xjvf file.tar.bz2   //解压 tar.bz2</p>
-<p>tar -xZvf file.tar.Z   //解压tar.Z</p>
-<p>unrar e file.rar //解压rar</p>
-<p>unzip file.zip //解压zip</p>
-<p><strong>总结</strong></p>
-<p>1、*.tar 用 tar -xvf 解压</p>
-<p>2、*.gz 用 gzip -d或者gunzip 解压</p>
-<p>3、<em>.tar.gz和</em>.tgz 用 tar -xzf 解压</p>
-<p>4、*.bz2 用 bzip2 -d或者用bunzip2 解压</p>
-<p>5、*.tar.bz2用tar -xjf 解压</p>
-<p>6、*.Z 用 uncompress 解压</p>
-<p>7、*.tar.Z 用tar -xZf 解压</p>
-<p>8、*.rar 用 unrar e解压</p>
-<p>9、*.zip 用 unzip 解压</p>
-<h3 id="ps-ef-grep"><a href="#ps-ef-grep" class="headerlink" title="ps -ef | grep ***"></a>ps -ef | grep ***</h3><p>获取某个相关的进程信息</p>
-<h3 id="chmod-777"><a href="#chmod-777" class="headerlink" title="chmod 777"></a>chmod 777</h3><p>权限设置和修改</p>
-<h3 id="切换目录-cd"><a href="#切换目录-cd" class="headerlink" title="切换目录 cd"></a>切换目录 cd</h3><p>cd 命令，是 Change Directory 的缩写，用来切换工作目录。</p>
+        <h3 id="切换目录-cd"><a href="#切换目录-cd" class="headerlink" title="切换目录 cd"></a>切换目录 cd</h3><p>cd 命令，是 Change Directory 的缩写，用来切换工作目录。</p>
 <p>cd 命令的基本格式如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd [相对路径或绝对路径]</span><br></pre></td></tr></table></figure>
 <table>
@@ -768,6 +727,1078 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#ll --time=atime bols</span><br><span class="line">#查看文件的访问时间</span><br><span class="line">-rw-r--r-- 1 root root 0 Sep 25 21:23 bols</span><br><span class="line">#文件上次的访问时间为 9 月 25 号 21：23</span><br><span class="line">[root@localhost ~]#touch bols</span><br><span class="line">[root@localhost ~]#ll --time=atime bols</span><br><span class="line">-rw-r--r-- 1 root root 0 May 15 16:36 bols</span><br><span class="line">#而如果文件已经存在，则也不会报错，只是会修改文件的访问时间。</span><br></pre></td></tr></table></figure>
 <p>修改 bols 文件的 atime 和 mtime。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch -d &quot;2017-05-04 15:44&quot; bols</span><br><span class="line">[root@localhost ~]# ll bols; ll --time=atime bols; ll --time=ctime bols</span><br><span class="line">-rw-r--r-- 1 root root 0 May 4 2017 bols</span><br><span class="line">-rw-r--r-- 1 root root 0 May 4 2017 bols</span><br><span class="line">-rw-r--r-- 1 root root 0 Sep 25 21:40 bols</span><br><span class="line">#ctime不会变为设定时间，但更新为当前服务器的时间</span><br></pre></td></tr></table></figure>
+<h3 id="在文件之间建立链接（硬链接和软链接）ln"><a href="#在文件之间建立链接（硬链接和软链接）ln" class="headerlink" title="在文件之间建立链接（硬链接和软链接）ln"></a>在文件之间建立链接（硬链接和软链接）ln</h3><p>Linux 目前使用的是 ext4 文件系统。如果用一张示意图来描述 ext4 文件系统</p>
+<p><img src="/2019/10/21/Linux/Linux基础命令/2-1P92Q6130RO.jpg" alt="ext4 æä»¶ç³»ç»ç¤ºæå¾"></p>
+<p>ext4 文件系统会把分区主要分为两大部分（暂时不提超级块）：小部分用于保存文件的 inode (i 节点）信息；剩余的大部分用于保存 block 信息。</p>
+<p>inode 的默认大小为 128 Byte，用来记录文件的权限（r、w、x）、文件的所有者和属组、文件的大小、文件的状态改变时间（ctime）、文件的最近一次读取时间（atime）、文件的最近一次修改时间（mtime）、文件的数据真正保存的 block 编号。每个文件需要占用一个 inode。仔细查看，就会发现 inode 中是不记录文件名的，那是因为文件名记录在文件所在目录的 block 中。</p>
+<p>block 的大小可以是 1KB、2KB、4KB，默认为 4KB。block 用于实际的数据存储，如果一个 block 放不下数据，则可以占用多个 block。例如，有一个 10KB 的文件需要存储，则会占用 3 个 block，虽然最后一个 block 不能占满，但也不能再放入其他文件的数据。这 3 个 block 有可能是连续的，也有可能是分散的。</p>
+<p>由此，可以知道以下 2 个重要的信息：</p>
+<ol>
+<li>每个文件都独自占用一个 inode，文件内容由 inode 的记录来指向；</li>
+<li>如果想要读取文件内容，就必须借助目录中记录的文件名找到该文件的 inode，才能成功找到文件内容所在的 block 块；</li>
+</ol>
+<p>ln 命令用于给文件创建链接，根据 Linux 系统存储文件的特点，链接的方式分为以下 2 种：</p>
+<ul>
+<li>软链接：类似于 Windows 系统中给文件创建快捷方式，即产生一个特殊的文件，该文件用来指向另一个文件，此链接方式同样适用于目录。</li>
+<li>硬链接：我们知道，文件的基本信息都存储在 inode 中，而硬链接指的就是给一个文件的 inode 分配多个文件名，通过任何一个文件名，都可以找到此文件的 inode，从而读取该文件的数据信息。</li>
+</ul>
+<p>ln 命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ln [选项] 源文件 目标文件</span><br></pre></td></tr></table></figure>
+<p>选项：</p>
+<ul>
+<li>-s：建立软链接文件。如果不加 “-s” 选项，则建立硬链接文件；</li>
+<li>-f：强制。如果目标文件已经存在，则删除目标文件后再建立链接文件；</li>
+</ul>
+<p>创建硬链接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch cangls</span><br><span class="line">[root@localhost ~]# ln /root/cangls /tmp</span><br><span class="line">#建立硬链接文件，目标文件没有写文件名，会和原名一致</span><br><span class="line">#也就是/tmp/cangls 是硬链接文件</span><br></pre></td></tr></table></figure>
+<p>创建软链接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch bols</span><br><span class="line">[root@localhost ~]# ln -s /root/bols /tmp</span><br><span class="line">#建立软链接文件</span><br></pre></td></tr></table></figure>
+<p>这里需要注意，软链接文件的源文件必须写成绝对路径，而不能写成相对路径（硬链接没有这样的要求）；否则软链接文件会报错。</p>
+<h3 id="复制文件和目录-cp"><a href="#复制文件和目录-cp" class="headerlink" title="复制文件和目录 cp"></a>复制文件和目录 cp</h3><p>cp 命令，主要用来复制文件和目录，同时借助某些选项，还可以实现复制整个目录，以及比对两文件的新旧而予以升级等功能。</p>
+<p>cp 命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cp [选项] 源文件 目标文件</span><br></pre></td></tr></table></figure>
+<p>选项：</p>
+<ul>
+<li>-a：相当于 -d、-p、-r 选项的集合；</li>
+<li>-d：如果源文件为软链接（对硬链接无效），则复制出的目标文件也为软链接；</li>
+<li>-i：询问，如果目标文件已经存在，则会询问是否覆盖；</li>
+<li>-l：把目标文件建立为源文件的硬链接文件，而不是复制源文件；</li>
+<li>-s：把目标文件建立为源文件的软链接文件，而不是复制源文件；</li>
+<li>-p：复制后目标文件保留源文件的属性（包括所有者、所属组、权限和时间）；</li>
+<li>-r：递归复制，用于复制目录；</li>
+<li>-u：若目标文件比源文件有差异，则使用该选项可以更新目标文件，此选项可用于对文件的升级和备用。</li>
+</ul>
+<p>需要注意的是，源文件可以有多个，但这种情况下，目标文件必须是目录才可以。</p>
+<h3 id="删除文件或目录-rm"><a href="#删除文件或目录-rm" class="headerlink" title="删除文件或目录 rm"></a>删除文件或目录 rm</h3><p>rm 是强大的删除命令，它可以永久性地删除文件系统中指定的文件或目录。在使用 rm 命令删除文件或目录时，系统不会产生任何提示信息。此命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# rm[选项] 文件或目录</span><br></pre></td></tr></table></figure>
+<p>选项：</p>
+<ul>
+<li>-f：强制删除（force），和 -i 选项相反，使用 -f，系统将不再询问，而是直接删除目标文件或目录。</li>
+<li>-i：和 -f 正好相反，在删除文件或目录之前，系统会给出提示信息，使用 -i 可以有效防止不小心删除有用的文件或目录。</li>
+<li>-r：递归删除，主要用于删除目录，可删除指定目录及包含的所有内容，包括所有的子目录和文件。</li>
+</ul>
+<h3 id="移动文件或改名-mv"><a href="#移动文件或改名-mv" class="headerlink" title="移动文件或改名 mv"></a>移动文件或改名 mv</h3><p>mv 命令（move 的缩写），既可以在不同的目录之间移动文件或目录，也可以对文件和目录进行重命名。该命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mv 【选项】 源文件 目标文件</span><br></pre></td></tr></table></figure>
+<p>选项：</p>
+<ul>
+<li>-f：强制覆盖，如果目标文件已经存在，则不询问，直接强制覆盖；</li>
+<li>-i：交互移动，如果目标文件已经存在，则询问用户是否覆盖（默认选项）；</li>
+<li>-n：如果目标文件已经存在，则不会覆盖移动，而且不询问用户；</li>
+<li>-v：显示文件或目录的移动过程；</li>
+<li>-u：若目标文件已经存在，但两者相比，源文件更新，则会对目标文件进行升级；</li>
+</ul>
+<p>需要注意的是，同 rm 命令类似，mv 命令也是一个具有破坏性的命令，如果使用不当，很可能给系统带来灾难性的后果。</p>
+<p>移动文件或目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mv cangls /tmp</span><br><span class="line">#移动之后，源文件会被删除，类似剪切</span><br><span class="line">[root@localhost ~]# mkdir movie</span><br><span class="line">[root@localhost ~]# mv movie/ /tmp</span><br><span class="line">#也可以移动目录。和 rm、cp 不同的是，mv 移动目录不需要加入 &quot;-r&quot; 选项</span><br></pre></td></tr></table></figure>
+<p>如果移动的目标位置已经存在同名的文件，则同样会提示是否覆盖，因为 mv 命令默认执行的也是 “mv -i” 的别名，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch cangls</span><br><span class="line">#重新建立文件</span><br><span class="line">[root@localhost ~]# mv cangls /tmp</span><br><span class="line">mv:县否覆盖&quot;tmp/cangls&quot;？y</span><br><span class="line">#由于 /tmp 目录下已经存在 cangls 文件，所以会提示是否覆盖，需要手工输入 y 覆盖移动</span><br></pre></td></tr></table></figure>
+<p>强制移动。</p>
+<p>如果我们确认需要覆盖已经存在的同名文件，则可以使用 “-f” 选项进行强制移动，这就不再需要用户手工确认了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch cangls</span><br><span class="line">#重新建立文件</span><br><span class="line">[root@localhost ~]# mv -f cangls /tmp</span><br><span class="line">#就算 /tmp/ 目录下已经存在同名的文件，由于&quot;-f&quot;选项的作用，所以会强制覆盖</span><br></pre></td></tr></table></figure>
+<p>不覆盖移动。</p>
+<p>既然可以强制覆盖移动，那也有可能需要不覆盖的移动。如果需要移动几百个同名文件，但是不想覆盖，这时就需要 “-n” 选项的帮助了。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls /tmp</span><br><span class="line">/tmp/bols /tmp/cangls</span><br><span class="line">#在/tmp/目录下已经存在bols、cangls文件了</span><br><span class="line">[root@localhost ~]# mv -vn bols cangls lmls /tmp/、</span><br><span class="line">&quot;lmls&quot;-&gt;&quot;/tmp/lmls&quot;</span><br><span class="line">#再向 /tmp/ 目录中移动同名文件，如果使用了 &quot;-n&quot; 选项，则可以看到只移动了 lmls，而同名的 bols 和 cangls 并没有移动（&quot;-v&quot; 选项用于显示移动过程）</span><br></pre></td></tr></table></figure>
+<p>改名。<br>如果源文件和目标文件在同一目录中，那就是改名。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mv bols lmls</span><br><span class="line">#把 bols 改名为 lmls</span><br></pre></td></tr></table></figure>
+<p>目录也可以按照同样的方法改名。</p>
+<p>显示移动过程。<br>如果我们想要知道在移动过程中到底有哪些文件进行了移动，则可以使用 “-v” 选项来查看详细的移动信息。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch test1.txt test2.txt test3.txt</span><br><span class="line">#建立三个测试文件</span><br><span class="line">[root@localhost ~]# mv -v *.txt /tmp</span><br><span class="line">&quot;test1.txt&quot; -&gt; &quot;/tmp/test1.txt&quot;</span><br><span class="line">&quot;test2.txt&quot; -&gt; &quot;/tmp/test2.txt&quot;</span><br><span class="line">&quot;test3.txt&quot; -&gt; &quot;/tmp/test3.txt&quot;</span><br><span class="line">#加入&quot;-v&quot;选项，可以看到有哪些文件进行了移动</span><br></pre></td></tr></table></figure>
+<h3 id="自动补全功能和通配符"><a href="#自动补全功能和通配符" class="headerlink" title="自动补全功能和通配符"></a>自动补全功能和通配符</h3><p>按一次 Tab 键补全</p>
+<p>连续按两次 Tab 键出对应列表</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>匹配任意数量的字符。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配任意一个字符。</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>匹配括号内的任意一个字符，甚至 [] 中还可以包含用 -（短横线）连接的字符或数字，表示一定范围内的字符或数字。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="打包操作-tar"><a href="#打包操作-tar" class="headerlink" title="打包操作 tar"></a>打包操作 tar</h3><p>当 tar 命令用于打包操作时，该命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#tar [选项] 源文件或目录</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>将多个文件或目录进行打包。</td>
+</tr>
+<tr>
+<td>-A</td>
+<td>追加 tar 文件到归档文件。</td>
+</tr>
+<tr>
+<td>-f 包名</td>
+<td>指定包的文件名。包的扩展名是用来给管理员识别格式的，所以一定要正确指定扩展名；</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示打包文件过程；</td>
+</tr>
+</tbody>
+</table>
+<p>打包文件和目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -cvf anaconda-ks.cfg.tar anaconda-ks.cfg</span><br><span class="line">#把anacondehks.cfg打包为 anacondehks.cfg.tar文件</span><br></pre></td></tr></table></figure>
+<p>选项 “-cvf” 一般是习惯用法，打包时需要指定打包之后的文件名，而且要用 “.tar” 作为扩展名。打包目录也是如此：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ll -d test/</span><br><span class="line">drwxr-xr-x 2 root root 4096 6月 17 21:09 test/</span><br><span class="line">#test是我们之前的测试目录</span><br><span class="line">[root@localhost ~]# tar -cvf test.tar test/</span><br><span class="line">test/</span><br><span class="line">test/test3</span><br><span class="line">test/test2</span><br><span class="line">test/test1</span><br><span class="line">#把目录打包为test.tar文件</span><br><span class="line">tar命令也可以打包多个文件或目录，只要用空格分开即可。例如:</span><br><span class="line">[root@localhost ~]# tar -cvf ana.tar anaconda-ks.cfg /tmp/</span><br><span class="line">#把anaconda-ks.cfg文件和/tmp目录打包成ana.tar文件包</span><br></pre></td></tr></table></figure>
+<p>打包并压缩目录：</p>
+<p>压缩命令不能直接压缩目录，必须先用 tar 命令将目录打包，然后才能用 gzip 命令或 bzip2 命令对打包文件进行压缩。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x 2 root root 4096 6月 17 21:09 test</span><br><span class="line">-rw-r--r-- 1 root root 10240 6月 18 01:06 test.tar</span><br><span class="line">#我们之前已经把test目录打包成test.tar文件</span><br><span class="line">[root@localhost ~]# gzip test.tar</span><br><span class="line">[root@localhost ~]# ll test.tar.gz</span><br><span class="line">-rw-r--r-- 1 root root 176 6月 18 01:06 test.tar.gz</span><br><span class="line">#gzip命令会把test.tar压缩成test.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="解打包操作-tar"><a href="#解打包操作-tar" class="headerlink" title="解打包操作 tar"></a>解打包操作 tar</h3><p>当 tar 命令用于对 tar 包做解打包操作时，该命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#tar [选项] 压缩包</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-x</td>
+<td>对 tar 包做解打包操作。</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>指定要解压的 tar 包的包名。</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>只查看 tar 包中有哪些文件或目录，不对 tar 包做解打包操作。</td>
+</tr>
+<tr>
+<td>-C 目录</td>
+<td>指定解打包位置。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示解打包的具体过程。</td>
+</tr>
+</tbody>
+</table>
+<p>解打包和打包相比，只是把打包选项 “-cvf” 更换为 “-xvf”：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -xvf anaconda-ks.cfg. tar</span><br><span class="line">#解打包到当前目录下</span><br></pre></td></tr></table></figure>
+<p>如果使用 “-xvf” 选项，则会把包中的文件解压到当前目录下。如果想要指定解压位置，则需要使用 “-C(大写)” 选项。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -xvf test.tar -C /tmp</span><br><span class="line">#把文件包test.tar解打包到/tmp/目录下</span><br></pre></td></tr></table></figure>
+<p>如果只想查看文件包中有哪些文件，则可以把解打包选项 “-x” 更换为测试选项 “-t”：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -tvf test.tar</span><br><span class="line">drwxr-xr-x root/root 0 2016-06-17 21:09 test/</span><br><span class="line">-rw-r-r- root/root 0 2016-06-17 17:51 test/test3</span><br><span class="line">-rw-r-r- root/root 0 2016-06-17 17:51 test/test2</span><br><span class="line">-rw-r-r- root/root 0 2016-06-17 17:51 test/test1</span><br><span class="line">#会用长格式显示test.tar文件包中文件的详细信息</span><br></pre></td></tr></table></figure>
+<h3 id="打包压缩（解压缩解打包）tar"><a href="#打包压缩（解压缩解打包）tar" class="headerlink" title="打包压缩（解压缩解打包）tar"></a>打包压缩（解压缩解打包）tar</h3><p>tar 命令是可以同时打包压缩的，前面的打包和压缩分开，是为了了解在 Linux 中打包和压缩的不同。</p>
+<p>当 tar 命令同时做打包压缩的操作时，其基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#tar [选项] 压缩包 源文件或目录</span><br></pre></td></tr></table></figure>
+<p>常用的选项有以下 2 个，分别是：</p>
+<ul>
+<li>-z：压缩和解压缩 “.tar.gz” 格式；</li>
+<li>-j：压缩和解压缩 “.tar.bz2”格式。</li>
+</ul>
+<p>压缩与解压缩 “.tar.gz”格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -zcvf tmp.tar.gz /tmp/</span><br><span class="line">#把/temp/目录直接打包压缩为&quot;.tar.gz&quot;格式，通过&quot;-z&quot;来识别格式，&quot;-cvf&quot;和打包选项一致</span><br></pre></td></tr></table></figure>
+<p>解压缩也只是在解打包选项 “-xvf” 前面加了一个 “-z” 选项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -zxvf tmp.tar.gz</span><br><span class="line">#解压缩与解打包&quot;.tar.gz&quot;格式</span><br></pre></td></tr></table></figure>
+<p>前面讲的选项 “-C” 用于指定解压位置、”-t” 用于查看压缩包内容，在这里同样适用。</p>
+<p>压缩与解压缩 “.tar.bz2” 格式：<br>和”.tar.gz”格式唯一的不同就是”-zcvf”选项换成了 “-jcvf”，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -jcvf tmp.tar.bz2 /tmp/</span><br><span class="line">#打包压缩为&quot;.tar.bz2&quot;格式，注意压缩包文件名</span><br><span class="line">[root@localhost ~]# tar -jxvf tmp.tar.bz2</span><br><span class="line">#解压缩与解打包&quot;.tar.bz2&quot;格式</span><br></pre></td></tr></table></figure>
+<h3 id="压缩文件或目录-zip"><a href="#压缩文件或目录-zip" class="headerlink" title="压缩文件或目录 zip"></a>压缩文件或目录 zip</h3><p> zip 命令，类似于 Windows 系统中的 winzip 压缩程序，其基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#zip [选项] 压缩包名 源文件或源目录列表</span><br></pre></td></tr></table></figure>
+<p>注意，zip 压缩命令需要手工指定压缩之后的压缩包名，注意写清楚扩展名，以便解压缩时使用。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-r</td>
+<td>递归压缩目录，及将制定目录下的所有文件以及子目录全部压缩。</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>将文件压缩之后，删除原始文件，相当于把文件移到压缩文件中。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示详细的压缩过程信息。</td>
+</tr>
+<tr>
+<td>-q</td>
+<td>在压缩的时候不显示命令的执行过程。</td>
+</tr>
+<tr>
+<td>-压缩级别</td>
+<td>压缩级别是从 1~9 的数字，-1 代表压缩速度更快，-9 代表压缩效果更好。</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>更新压缩文件，即往压缩文件中添加新文件。</td>
+</tr>
+</tbody>
+</table>
+<p>zip 命令的基本使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# zip ana.zip anaconda-ks.cfg</span><br><span class="line">adding: anaconda-ks.cfg (deflated 37%)</span><br><span class="line">#压缩</span><br><span class="line">[root@localhost ~]# ll ana.zip</span><br><span class="line">-rw-r--r-- 1 root root 935 6月 1716:00 ana.zip</span><br><span class="line">#压缩文件生成</span><br></pre></td></tr></table></figure>
+<p>所有的压缩命令都可以同时压缩多个文件，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# zip test.zip install.log install.log.syslog</span><br><span class="line">adding: install.log (deflated 72%)</span><br><span class="line">adding: install.log.syslog (deflated 85%)</span><br><span class="line">#同时压缩多个文件到test.zip压缩包中</span><br><span class="line">[root@localhost ~]#ll test.zip</span><br><span class="line">-rw-r--r-- 1 root root 8368 6月 1716:03 test.zip</span><br><span class="line">#压缩文件生成</span><br></pre></td></tr></table></figure>
+<p>使用 zip 命令压缩目录，需要使用“-r”选项，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir dir1</span><br><span class="line">#建立测试目录</span><br><span class="line">[root@localhost ~]# zip -r dir1.zip dir1</span><br><span class="line">adding: dir1/(stored 0%)</span><br><span class="line">#压缩目录</span><br><span class="line">[root@localhost ~]# ls -dl dir1.zip</span><br><span class="line">-rw-r--r-- 1 root root 160 6月 1716:22 dir1.zip</span><br><span class="line">#压缩文件生成</span><br></pre></td></tr></table></figure>
+<h3 id="解压zip文件-unzip"><a href="#解压zip文件-unzip" class="headerlink" title="解压zip文件 unzip"></a>解压zip文件 unzip</h3><p>unzip 命令可以查看和解压缩 zip 文件。该命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# unzip [选项] 压缩包名</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d 目录名</td>
+<td>将压缩文件解压到指定目录下。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>解压时并不覆盖已经存在的文件。</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>解压时覆盖已经存在的文件，并且无需用户确认。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>查看压缩文件的详细信息，包括压缩文件中包含的文件大小、文件名以及压缩比等，但并不做解压操作。</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>测试压缩文件有无损坏，但并不解压。</td>
+</tr>
+<tr>
+<td>-x 文件列表</td>
+<td>解压文件，但不包含文件列表中指定的文件。</td>
+</tr>
+</tbody>
+</table>
+<p>不论是文件压缩包，还是目录压缩包，都可以直接解压缩，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# unzip dir1.zip</span><br><span class="line">Archive: dir1.zip</span><br><span class="line">creating: dirl/</span><br><span class="line">#解压缩</span><br></pre></td></tr></table></figure>
+<p>使用 -d 选项手动指定解压缩位置，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# unzip -d /tmp/ ana.zip</span><br><span class="line">Archive: ana.zip</span><br><span class="line">inflating: /tmp/anaconda-ks.cfg</span><br><span class="line">#把压缩包解压到指定位置</span><br></pre></td></tr></table></figure>
+<h3 id="压缩文件或目录-gzip"><a href="#压缩文件或目录-gzip" class="headerlink" title="压缩文件或目录 gzip"></a>压缩文件或目录 gzip</h3><p>gzip 是 Linux系统中经常用来对文件进行压缩和解压缩的命令，通过此命令压缩得到的新文件，其扩展名通常标记为“.gz”。</p>
+<p>gzip 命令只能用来压缩文件，不能压缩目录，即便指定了目录，也只能压缩目录内的所有文件。</p>
+<p>gzip 命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gzip [选项] 源文件</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>将压缩数据输出到标准输出中，并保留源文件。</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>对压缩文件进行解压缩。</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>递归压缩指定目录下以及子目录下的所有文件。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>对于每个压缩和解压缩的文件，显示相应的文件名和压缩比。</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>对每一个压缩文件，显示以下字段：压缩文件的大小；未压缩文件的大小；压缩比；未压缩文件的名称。</td>
+</tr>
+<tr>
+<td>-数字</td>
+<td>用于指定压缩等级，-1 压缩等级最低，压缩比最差；-9 压缩比最高。默认压缩比是 -6。</td>
+</tr>
+</tbody>
+</table>
+<p>基本压缩：<br>gzip 压缩命令非常简单，甚至不需要指定压缩之后的压缩包名，只需指定源文件名即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gzip install.log</span><br><span class="line">#压缩instal.log 文件</span><br><span class="line">[root@localhost ~]# ls</span><br><span class="line">anaconda-ks.cfg install.log.gz install.log.syslog</span><br><span class="line">#压缩文件生成，但是源文件也消失了</span><br></pre></td></tr></table></figure>
+<p>保留源文件压缩：<br>在使用 gzip 命令压缩文件时，源文件会消失，从而生成压缩文件。可以在压缩文件的时候，不让源文件消失：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gzip -c anaconda-ks.cfg &gt;anaconda-ks.cfg.gz</span><br><span class="line">#使用-c选项，但是不让压缩数据输出到屏幕上，而是重定向到压缩文件中，这样可以缩文件的同时不删除源文件</span><br><span class="line">[root@localhost ~]# ls</span><br><span class="line">anaconda-ks.cfg anaconda-ks.cfg.gz install.log.gz install.log.syslog</span><br><span class="line">#可以看到压缩文件和源文件都存在</span><br></pre></td></tr></table></figure>
+<p> 压缩目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir test</span><br><span class="line">[root@localhost ~]# touch test/test1</span><br><span class="line">[root@localhost ~]# touch test/test2</span><br><span class="line">[root@localhost ~]# touch test/test3 #建立测试目录，并在里面建立几个测试文件</span><br><span class="line">[root@localhost ~]# gzip -r test/</span><br><span class="line">#压缩目录，并没有报错</span><br><span class="line">[root@localhost ~]# ls</span><br><span class="line">anaconda-ks.cfg anaconda-ks.cfg.gz install.log.gz install.log.syslog test</span><br><span class="line">#但是查看发现test目录依然存在，并没有变为压缩文件</span><br><span class="line">[root@localhost ~]# ls test/</span><br><span class="line">testl.gz test2.gz test3.gz</span><br><span class="line">#原来gzip命令不会打包目录，而是把目录下所有的子文件分别压缩</span><br></pre></td></tr></table></figure>
+<p>在 Linux 中，打包和压缩是分开处理的。而 gzip 命令只会压缩，不能打包，所以才会出现没有打包目录，而只把目录下的文件进行压缩的情况。</p>
+<h3 id="解压缩文件或目录-gunzip"><a href="#解压缩文件或目录-gunzip" class="headerlink" title="解压缩文件或目录 gunzip"></a>解压缩文件或目录 gunzip</h3><p>gunzip 是一个使用广泛的解压缩命令，它用于解压被 gzip 压缩过的文件（扩展名为 .gz）。</p>
+<p>对于解压被 gzip 压缩过的文件，还可以使用 gzip 自己，即 gzip -d 解压缩包。</p>
+<p>gunzip 命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gunzip [选项] 文件</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-r</td>
+<td>递归处理，解压缩指定目录下以及子目录下的所有文件。</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>把解压缩后的文件输出到标准输出设备。</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>强制解压缩文件，不理会文件是否已存在等情况。</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>列出压缩文件内容。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示命令执行过程。</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>测试压缩文件是否正常，但不对其做解压缩操作。</td>
+</tr>
+</tbody>
+</table>
+<p>直接解压缩文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gunzip install.log.gz</span><br></pre></td></tr></table></figure>
+<p>当然，”gunzip -r”依然只会解压缩目录下的文件，而不会解打包。要想解压缩”.gz”格式，还可以使用 “gzip -d”命令，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gzip -d anaconda-ks.cfg.gz</span><br></pre></td></tr></table></figure>
+<p>要解压缩目录下的内容，则需使用 “-r” 选项，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gunzip -r test/</span><br></pre></td></tr></table></figure>
+<p>如果我们压缩的是一个纯文本文件，则可以直接使用 zcat 命令在不解压缩的情况下查看这个文本文件中的内容。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# zcat anaconda-ks.cfg.gz</span><br></pre></td></tr></table></figure>
+<h3 id="压缩文件（-bz2格式）bzip2"><a href="#压缩文件（-bz2格式）bzip2" class="headerlink" title="压缩文件（.bz2格式）bzip2"></a>压缩文件（.bz2格式）bzip2</h3><p>bzip2 命令同 gzip 命令类似，只能对文件进行压缩（或解压缩），对于目录只能压缩（或解压缩）该目录及子目录下的所有文件。当执行压缩任务完成后，会生成一个以“.bz2”为后缀的压缩包。</p>
+<p>bzip2 命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bzip2 [选项] 源文件</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d</td>
+<td>执行解压缩，此时该选项后的源文件应为标记有 .bz2 后缀的压缩包文件。</td>
+</tr>
+<tr>
+<td>-k</td>
+<td>bzip2 在压缩或解压缩任务完成后，会删除原始文件，若要保留原始文件，可使用此选项。</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>bzip2 在压缩或解压缩时，若输出文件与现有文件同名，默认不会覆盖现有文件，若使用此选项，则会强制覆盖现有文件。</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>测试压缩包文件的完整性。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>压缩或解压缩文件时，显示详细信息。</td>
+</tr>
+<tr>
+<td>-数字</td>
+<td>这个参数和 gzip 命令的作用一样，用于指定压缩等级，-1 压缩等级最低，压缩比最差；-9 压缩比最高</td>
+</tr>
+</tbody>
+</table>
+<p>gzip 只是不会打包目录，但是如果使用“-r”选项，则可以分别压缩目录下的每个文件；而 bzip2 命令则根本不支持压缩目录，也没有“-r”选项。</p>
+<p>直接压缩文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bzip2 anaconda-ks.cfg</span><br><span class="line">#压缩成&quot;.bz2&quot;格式</span><br></pre></td></tr></table></figure>
+<p>此压缩命令会在压缩的同时删除源文件。</p>
+<p>压缩的同时保留源文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bzip2 -k install.log.syslog</span><br><span class="line">#压缩</span><br><span class="line">[root@localhost ~]# ls</span><br><span class="line">anaconda-ks.cfg.bz2 install.loginstalLlogsyslog install.logsyslogbz2</span><br><span class="line">#压缩文件和源文件都存在</span><br></pre></td></tr></table></figure>
+<h3 id="bz2格式的解压缩-bunzip2"><a href="#bz2格式的解压缩-bunzip2" class="headerlink" title="bz2格式的解压缩 bunzip2"></a>bz2格式的解压缩 bunzip2</h3><p>要解压“.bz2”格式的压缩包文件，除了使用“bzip2 -d 压缩包名”命令外，还可以使用 bunzip2 命令。</p>
+<p>bunzip2 命令的使用和 gunzip 命令大致相同，bunzip2 命令只能用于解压文件，即便解压目录，也是解压该目录以及所含子目录下的所有文件。</p>
+<p>bunzip2 命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bunzip2 [选项] 源文件</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-k</td>
+<td>解压缩后，默认会删除原来的压缩文件。若要保留压缩文件，需使用此参数。</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>解压缩时，若输出的文件与现有文件同名时，默认不会覆盖现有的文件。若要覆盖，可使用此选项。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示命令执行过程。</td>
+</tr>
+<tr>
+<td>-L</td>
+<td>列出压缩文件内容。</td>
+</tr>
+</tbody>
+</table>
+<p>使用 gunzip2 命令来进行解压缩：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bunzip2 anaconda-ks.cfg.bz2</span><br></pre></td></tr></table></figure>
+<p>“.bz2” 格式也可以使用 “bzip2 -d 压缩包” 命令来进行解压缩，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bzip2 -d install.log.syslog.bz2</span><br></pre></td></tr></table></figure>
+<p>和 “.gz” 格式一样，”.bz2” 格式压缩的纯文本文件也可以不解压缩直接查看，使用的命令是 bzcat。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bzcat install.log.syslog.bz2</span><br></pre></td></tr></table></figure>
+<h3 id="vim基本操作"><a href="#vim基本操作" class="headerlink" title="vim基本操作"></a>vim基本操作</h3><p>使用 Vim 编辑文件时，存在 3 种工作模式，分别是命令模式、输入模式和编辑模式，这 3 种工作模式可随意切换</p>
+<p><img src="/2019/10/21/Linux/Linux基础命令/2-1Q00Q41T01J.jpg" alt="img"></p>
+<p><strong>Vim的命令模式</strong> </p>
+<p>使用 Vim 编辑文件时，默认处于命令模式。此模式下，可使用方向键（上、下、左、右键）或 k、j、h、i 移动光标的位置，还可以对文件内容进行复制、粘贴、替换、删除等操作。</p>
+<p><strong>Vim的输入模式</strong> </p>
+<p>  在输入模式下，Vim 可以对文件执行写操作，类似于在 Windows 系统的文档中输入内容。</p>
+<p>使 Vim 进行输入模式的方式是在命令模式状态下输入 i、I、a、A、o、O 等插入命令（各指令的具体功能如表 3 所示），当编辑文件完成后按 Esc 键即可返回命令模式。</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>在当前光标所在位置插入随后输入的文本，光标后的文本相应向右移动</td>
+</tr>
+<tr>
+<td>I</td>
+<td>在光标所在行的行首插入随后输入的文本，行首是该行的第一个非空白字符，相当于光标移动到行首执行 i 命令</td>
+</tr>
+<tr>
+<td>o</td>
+<td>在光标所在行的下面插入新的一行。光标停在空行首，等待输入文本</td>
+</tr>
+<tr>
+<td>O</td>
+<td>在光标所在行的上面插入新的一行。光标停在空行的行首，等待输入文本</td>
+</tr>
+<tr>
+<td>a</td>
+<td>在当前光标所在位置之后插入随后输入的文本</td>
+</tr>
+<tr>
+<td>A</td>
+<td>在光标所在行的行尾插入随后输入的文本，相当于光标移动到行尾再执行a命令</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim 的编辑模式</strong> </p>
+<p>  编辑模式用于对文件中的指定内容执行保存、查找或替换等操作。</p>
+<p>使 Vim 切换到编辑模式的方法是在命令模式状态下按“：”键，此时 Vim 窗口的左下方出现一个“：”符号，这是就可以输入相关指令进行操作了。  </p>
+<p>指令执行后 Vim 会自动返回命令模式。如想直接返回命令模式，按 Esc 即可。</p>
+<p><strong>Vim 打开文件</strong> </p>
+<p>打开方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@itxdl ~]# vim /test/vi.test</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Vi 使用的选项</th>
+<th>说 明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vim filename</td>
+<td>打开或新建一个文件，并将光标置于第一行的首部</td>
+</tr>
+<tr>
+<td>vim -r filename</td>
+<td>恢复上次 vim 打开时崩溃的文件</td>
+</tr>
+<tr>
+<td>vim -R filename</td>
+<td>把指定的文件以只读方式放入 Vim 编辑器中</td>
+</tr>
+<tr>
+<td>vim + filename</td>
+<td>打开文件，并将光标置于最后一行的首部</td>
+</tr>
+<tr>
+<td>vi +n filename</td>
+<td>打开文件，并将光标置于第 n 行的首部</td>
+</tr>
+<tr>
+<td>vi +/pattern filename</td>
+<td>打幵文件，并将光标置于第一个与 pattern 匹配的位置</td>
+</tr>
+<tr>
+<td>vi -c command filename</td>
+<td>在对文件进行编辑前，先执行指定的命令</td>
+</tr>
+</tbody>
+</table>
+<p><strong>使用 Vim 进行编辑</strong> </p>
+<p>Vim 插入文本</p>
+<p>从命令模式进入输入模式进行编辑，可以按下 I、i、O、o、A、a 等键来完成，使用不同的键，光标所处的位置不同</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>在当前光标所在位置插入随后输入的文本，光标后的文本相应向右移动</td>
+</tr>
+<tr>
+<td>I</td>
+<td>在光标所在行的行首插入随后输入的文本，行首是该行的第一个非空白字符，相当于光标移动到行首执行 i 命令</td>
+</tr>
+<tr>
+<td>o</td>
+<td>在光标所在行的下面插入新的一行。光标停在空行首，等待输入文本</td>
+</tr>
+<tr>
+<td>O（大写）</td>
+<td>在光标所在行的上面插入新的一行。光标停在空行的行首，等待输入文本</td>
+</tr>
+<tr>
+<td>a</td>
+<td>在当前光标所在位置之后插入随后输入的文本</td>
+</tr>
+<tr>
+<td>A</td>
+<td>在光标所在行的行尾插入随后输入的文本，相当于光标移动到行尾再执行 a 命令</td>
+</tr>
+</tbody>
+</table>
+<p>Vim 查找文本</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/abc</td>
+<td>从光标所在位置向前查找字符串 abc</td>
+</tr>
+<tr>
+<td>/^abc</td>
+<td>查找以 abc 为行首的行</td>
+</tr>
+<tr>
+<td>/abc$</td>
+<td>查找以 abc 为行尾的行</td>
+</tr>
+<tr>
+<td>?abc</td>
+<td>从光标所在为主向后查找字符串 abc</td>
+</tr>
+<tr>
+<td>n</td>
+<td>向同一方向重复上次的查找指令</td>
+</tr>
+<tr>
+<td>N</td>
+<td>向相反方向重复上次的查找指定</td>
+</tr>
+</tbody>
+</table>
+<p>例如，在 /etc/passwd.vi 文件中查找字符串 “root”，则运行命令如下图</p>
+<p><img src="/2019/10/21/Linux/Linux基础命令/2-1Q00Q6360L18.jpg" alt="img"></p>
+<p>在查找过程中需要注意的是，要查找的字符串是严格区分大小写的，如查找 “shenchao” 和 “ShenChao” 会得到不同的结果。如果想忽略大小写，则输入命令 “:set ic”；调整回来输入”:set noic”。</p>
+<p>如果在字符串中出现特殊符号，则需要加上转义字符 “\”。常见的特殊符号有 \、*、?、$ 等。如果出现这些字符，例如，要查找字符串 “10$”，则需要在命令模式中输入 “/10\$”。</p>
+<p><strong>Vim 替换文本</strong> </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>替换光标所在位置的字符</td>
+</tr>
+<tr>
+<td>R</td>
+<td>从光标所在位置开始替换字符，其输入内容会覆盖掉后面等长的文本内容，按“Esc”可以结束</td>
+</tr>
+<tr>
+<td>:s/a1/a2/g</td>
+<td>将当前光标所在行中的所有 a1 用 a2 替换</td>
+</tr>
+<tr>
+<td>:n1,n2s/a1/a2/g</td>
+<td>将文件中 n1 到 n2 行中所有 a1 都用 a2 替换</td>
+</tr>
+<tr>
+<td>:g/a1/a2/g</td>
+<td>将文件中所有的 a1 都用 a2 替换</td>
+</tr>
+</tbody>
+</table>
+<p>例如，要将某文件中所有的 “root” 替换为 “liudehua”，则有两种输入命令，分别为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:1, $s/root/liudehua/g</span><br><span class="line">或</span><br><span class="line">:%s/root/liudehua/g</span><br></pre></td></tr></table></figure>
+<p>上述命令是在编辑模式下操作的，表示的是从第一行到最后一行，即全文查找 “root”，然后替换成 “liudehua”。</p>
+<p>如果刚才的命令变成 <code>:10,20 s/root/liudehua/g</code>，则只替换从第 10 行到第 20 行的 “root”。</p>
+<p><strong>Vim删除文本</strong> </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>删除光标所在位置的字符</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>删除光标所在行</td>
+</tr>
+<tr>
+<td>ndd</td>
+<td>删除当前行（包括此行）后 n 行文本</td>
+</tr>
+<tr>
+<td>dG</td>
+<td>删除光标所在行一直到文件末尾的所有内容</td>
+</tr>
+<tr>
+<td>D</td>
+<td>删除光标位置到行尾的内容</td>
+</tr>
+<tr>
+<td>:a1,a2d</td>
+<td>函数从 a1 行到 a2 行的文本内容</td>
+</tr>
+</tbody>
+</table>
+<p>注意，被删除的内容并没有真正删除，都放在了剪贴板中。将光标移动到指定位置处，按下 “p” 键，就可以将刚才删除的内容又粘贴到此处。</p>
+<p><strong>Vim复制和粘贴文本</strong> </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p</td>
+<td>将剪贴板中的内容粘贴到光标后</td>
+</tr>
+<tr>
+<td>P（大写）</td>
+<td>将剪贴板中的内容粘贴到光标前</td>
+</tr>
+<tr>
+<td>y</td>
+<td>复制已选中的文本到剪贴板</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>将光标所在行复制到剪贴板，此命令前可以加数字 n，可复制多行</td>
+</tr>
+<tr>
+<td>yw</td>
+<td>将光标位置的单词复制到剪贴板</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim其他常用快捷键</strong> </p>
+<p>某些情况下，可能需要把两行进行连接。比如说，下面的文件中有两行文本，现在需要将其合并成一行（实际上就是将两行间的换行符去掉）。可以直接在命令模式中按下 “J” 键</p>
+<p>如果不小心误删除了文件内容，则可以通过 “u” 键来撤销刚才执行的命令。如果要撤销刚才的多次操作，可以多按几次 “u” 键。</p>
+<p><strong>Vim 保存退出文本</strong> </p>
+<p>Vim 的保存和退出是在编辑模式中进行的，其常用命令如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:wq!</td>
+<td>保存并强制退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>:q</td>
+<td>不保存就退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>不保存，且强制退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>:w</td>
+<td>保存但是不退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>:w!</td>
+<td>强制保存文本</td>
+</tr>
+<tr>
+<td>:w filename</td>
+<td>另存到 filename 文件</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td>保存并退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>x！</td>
+<td>保存文本，并退出 Vim 编辑器，更通用的一个 vim 命令</td>
+</tr>
+<tr>
+<td>ZZ</td>
+<td>直接退出 Vim 编辑器</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim快捷方向键</strong> </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h</td>
+<td>光标向左移动一位</td>
+</tr>
+<tr>
+<td>j</td>
+<td>光标向下移动一行（以回车为换行符），也就是光标向下移动</td>
+</tr>
+<tr>
+<td>k</td>
+<td>光标向上移动一行（也就是向上移动）</td>
+</tr>
+<tr>
+<td>l</td>
+<td>光标向右移动一位</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim光标以单词为单位移动</strong> </p>
+<p>某些情形下，可能需要光标迅速移动至一行中的某个位置，将光标以单词为单位进行移动就会很方便。</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>w 或 W</td>
+<td>光标移动至下一个单词的单词首</td>
+</tr>
+<tr>
+<td>b 或 B</td>
+<td>光标移动至上一个单词的单词首</td>
+</tr>
+<tr>
+<td>e 或 E</td>
+<td>光标移动至下一个单词的单词尾</td>
+</tr>
+<tr>
+<td>nw 或 nW</td>
+<td>n 为数字，表示光标向右移动 n 个单词</td>
+</tr>
+<tr>
+<td>nb 或 nB</td>
+<td>n 为数字，表示光标向左移动 n 个单词</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim光标移动至行首或行尾</strong> </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 或 ^</td>
+<td>光标移动至当前行的行首</td>
+</tr>
+<tr>
+<td>$</td>
+<td>光标移动至当前行的行尾</td>
+</tr>
+<tr>
+<td>n$</td>
+<td>光标移动至当前行只有 n 行的行尾，n为数字</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim光标移动至指定字符</strong> </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fx</td>
+<td>光标移动至当前行中下一个 x 字符处</td>
+</tr>
+<tr>
+<td>Fx</td>
+<td>光标移动至当前行中下一个 x 字符处</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim光标移动到指定行</strong> </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gg</td>
+<td>光标移动到文件开头</td>
+</tr>
+<tr>
+<td>G</td>
+<td>光标移动至文件末尾</td>
+</tr>
+<tr>
+<td>nG</td>
+<td>光标移动到第 n 行，n 为数字</td>
+</tr>
+<tr>
+<td>:n</td>
+<td>编辑模式下使用的快捷键，可以将光标快速定义到指定行的行首</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim光标移动到匹配的括号处</strong> </p>
+<p>在编辑程序时，经常会为将光标移动到与一个 “(“ 匹配的 “)” （对于 [] 和 {} 也是一样的）处而感到头疼。Vim 里面提供了一个非常方便地査找匹配括号的命令，这就是 “%”。</p>
+<p>比如，在 /etc/init.d/sshd 脚本文件中，想迅速地将光标定位到与之 “{“ 相对应的 “}” 处，则可以将光标先定位在 “{“ 处，然后再使用 “％” 命令，使之定位在 “}” 处</p>
+<h3 id="Vim批量注释和自定义注释快捷键"><a href="#Vim批量注释和自定义注释快捷键" class="headerlink" title="Vim批量注释和自定义注释快捷键"></a>Vim批量注释和自定义注释快捷键</h3><p>使用 Vim 编辑 Shell 脚本，在进行调试时，需要进行多行的注释，每次都要先切换到输入模式，在行首输入注释符”#”再退回命令模式，非常麻烦。</p>
+<p>连续行的注释其实可以用替换命令来完成。换句话说，在指定范围行加”#”注释，可以使用 “:起始行，终止行 s/^/#/g”，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:1,10s/^/#/g</span><br></pre></td></tr></table></figure>
+<p>表示在第 1~10 行行首加”#”注释。”^”意为行首；”g”表示执行替换时不询问确认。如果希望每行交互询问是否执行，则可将 “g” 改为 “c”。</p>
+<p>取消连续行注释，则可以使用 “:起始行，终止行s/^#//g”，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:1,10s/^#//g</span><br></pre></td></tr></table></figure>
+<p>意为将行首的”#”替换为空，即删除。</p>
+<p>添加”//“注释要稍微麻烦一些，命令格式为 “:起始行，终止行 s/^/\/\//g”。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:1,5s/^/\/\//g</span><br></pre></td></tr></table></figure>
+<p>表示在第 1~5 行行首加”//“注释，因为 “/“ 前面需要加转义字符 “\“</p>
+<p>以上方法可以解决连续行的注释问题，如果是非连续的多行就不灵了，这时我们可以定义快捷键简化操作。格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:map 快捷键 执行命令</span><br></pre></td></tr></table></figure>
+<p>如定义快捷键 “Ctrl+P” 为在行首添加 “#” 注释，可以执行 “:map^P l#<esc>“。其中 “^P” 为定义快捷键 “Ctrl+P”。注意：必须同时按 “Ctrl+V+P” 快捷键生成 “^P” 方可有效，或先按 “Ctrl+V” 再按 “Ctrl+P” 也可以，直接输入 “^P” 是无效的。</esc></p>
+<p>“l#<esc>“ 就是此快捷键要触发的动作，”l” 为在光标所在行行首插入，”#” 为要输入的字符，”<esc>“ 表示退回命令模式。”<esc>“ 要逐个字符输入，不可直接按键盘上的 Esc 键。</esc></esc></esc></p>
+<p>设置成功后，直接在任意需要注释的行上按 “Ctrl+P” 快捷键，就会自动在行首加上 “#” 注释。取消此快捷键定义，输入 “:unmap^P” 即可。</p>
+<p>我们可以延伸一下，如果想取消文件行首的快捷键，则可以设置 “:map^B 0x”，快捷键为 “Ctrl+B”, “0” 表示跳到行首，”x” 表示删除光标所在处字符。</p>
+<p>再如，有时我们写完脚本等文件，需要在末尾注释中加入自己的邮箱，则可以直接定义每次按快捷键 “Ctrl+E” 实现插入邮箱，定义方法为 “:map^E <a href="mailto:asamlee@itxdl.net" target="_blank" rel="noopener">asamlee@itxdl.net</a><esc>“。其中 “a” 表示在当前字符后插入，”<a href="mailto:samlee@itxdl.net" target="_blank" rel="noopener">samlee@itxdl.net</a>“ 为插入的邮箱，”<esc>“ 表示插入后返回命令模式。</esc></esc></p>
+<p>所以，通过定义快捷键，可以把前面讲到的命令组合起来使用。</p>
+<p>将快捷键对应的命令保存在 .vimrc 文件中，即可在每次使用 Vim 时自动调用，非常方便。  </p>
+<h3 id="连接文件并打印输出到标准输出设备-cat"><a href="#连接文件并打印输出到标准输出设备-cat" class="headerlink" title="连接文件并打印输出到标准输出设备 cat"></a>连接文件并打印输出到标准输出设备 cat</h3><p>cat 命令可以用来显示文本文件的内容（类似于 DOS 下的 type 命令），也可以把几个文件内容附加到另一个文件中，即连接合并文件。cat 是 concatenate（连接、连续）的简写。</p>
+<p>cat 命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat [选项] 文件名</span><br><span class="line">或者</span><br><span class="line">[root@localhost ~]# cat 文件1 文件2 &gt; 文件3</span><br></pre></td></tr></table></figure>
+<p>这两种格式中，前者用于显示文件的内容，常用选项及各自的含义如下表所示；而后者用于连接合并文件。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-A</td>
+<td>相当于 -vET 选项的整合，用于列出所有隐藏符号；</td>
+</tr>
+<tr>
+<td>-E</td>
+<td>列出每行结尾的回车符 $；</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>对输出的所有行进行编号；</td>
+</tr>
+<tr>
+<td>-b</td>
+<td>同 -n 不同，此选项表示只对非空行进行编号。</td>
+</tr>
+<tr>
+<td>-T</td>
+<td>把 Tab 键 ^I 显示出来；</td>
+</tr>
+<tr>
+<td>-V</td>
+<td>列出特殊字符；</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>当遇到有连续 2 行以上的空白行时，就替换为 1 行的空白行。</td>
+</tr>
+</tbody>
+</table>
+<p>注意，cat 命令用于查看文件内容时，不论文件内容有多少，都会一次性显示。如果文件非常大，那么文件开头的内容就看不到了。不过可以使用<code>PgUp+上箭头</code>组合键向上翻页，但是这种翻页是有极限的，如果文件足够长，那么还是无法看全文件的内容。</p>
+<p>cat 命令本身非常简单，我们可以直接查看文件的内容。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat anaconda-ks.cfg</span><br><span class="line"># Kickstart file automatically generated by anaconda.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#version=DEVEL</span><br><span class="line">install</span><br><span class="line">cdrom</span><br><span class="line">lang zh一CN.UTF-8</span><br><span class="line">…省略部分内容...</span><br></pre></td></tr></table></figure>
+<p>而如果使用 “-n” 选项，则会显示行号。例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat -n anaconda-ks.cfg</span><br><span class="line">1 # Kickstart file automatically generated by anaconda.</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4 #version=DEVEL</span><br><span class="line">5 install</span><br><span class="line">6 cdrom</span><br><span class="line">…省略部分内容...</span><br></pre></td></tr></table></figure>
+<p>如果使用 “-A” 选项，则相当于使用了 “-vET” 选项，可以查看文本中的所有隐藏符号，包括回车符（$）、Tab 键（^I）等。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat -A anaconda-ks.cfg</span><br><span class="line"># Kickstart file automatically generated by anaconda.$</span><br><span class="line">$</span><br><span class="line">$</span><br><span class="line">#version=DEVEL$</span><br><span class="line">install$</span><br><span class="line">cdrom$</span><br><span class="line">…省略部分内容…</span><br></pre></td></tr></table></figure>
+<p>将文件 file1.txt 和 file2.txt 的内容合并后输出到文件 file3.txt 中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost base]# ls</span><br><span class="line">file1.txt    file2.txt</span><br><span class="line">[root@localhost base]# cat file1.txt</span><br><span class="line">http://c.biancheng.net(file1.txt)</span><br><span class="line">[root@localhost base]# cat file2.txt</span><br><span class="line">is great(file2.txt)</span><br><span class="line">[root@localhost base]# cat file1.txt file2.txt &gt; file3.txt</span><br><span class="line">[root@localhost base]# more file3.txt</span><br><span class="line">#more 命令可查看文件中的内容</span><br><span class="line">http://c.biancheng.net(file1.txt)</span><br><span class="line">is great(file2.txt)</span><br><span class="line">[root@localhost base]# ls</span><br><span class="line">file1.txt    file2.txt    file3.txt</span><br></pre></td></tr></table></figure>
+<h3 id="分屏显示文件内容-more"><a href="#分屏显示文件内容-more" class="headerlink" title="分屏显示文件内容 more"></a>分屏显示文件内容 more</h3><p>more 命令可以分页显示文本文件的内容，使用者可以逐页阅读文件中内容，此命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# more [选项] 文件名</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f</td>
+<td>计算行数时，以实际的行数，而不是自动换行过后的行数。</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>不以卷动的方式显示每一页，而是先清除屏幕后再显示内容。</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>跟 -p 选项相似，不同的是先显示内容再清除其他旧资料。</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>当遇到有连续两行以上的空白行时，就替换为一行的空白行。</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>不显示下引号（根据环境变量 TERM 指定的终端而有所不同）。</td>
+</tr>
+<tr>
+<td>+n</td>
+<td>从第 n 行开始显示文件内容，n 代表数字。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>一次显示的行数，n 代表数字。</td>
+</tr>
+</tbody>
+</table>
+<p>more 命令的执行会打开一个交互界面，常用的交互命令：</p>
+<table>
+<thead>
+<tr>
+<th>交互指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h 或 ？</td>
+<td>显示 more 命令交互命令帮助。</td>
+</tr>
+<tr>
+<td>q 或 Q</td>
+<td>退出 more。</td>
+</tr>
+<tr>
+<td>v</td>
+<td>在当前行启动一个编辑器。</td>
+</tr>
+<tr>
+<td>:f</td>
+<td>显示当前文件的文件名和行号。</td>
+</tr>
+<tr>
+<td>!&lt;命令&gt; 或 :!&lt;命令&gt;</td>
+<td>在子<a href="http://c.biancheng.net/shell/" target="_blank" rel="noopener">Shell</a>中执行指定命令。</td>
+</tr>
+<tr>
+<td>回车键</td>
+<td>向下移动一行。</td>
+</tr>
+<tr>
+<td>空格键</td>
+<td>向下移动一页。</td>
+</tr>
+<tr>
+<td>Ctrl+l</td>
+<td>刷新屏幕。</td>
+</tr>
+<tr>
+<td>=</td>
+<td>显示当前行的行号。</td>
+</tr>
+<tr>
+<td>‘</td>
+<td>转到上一次搜索开始的地方。</td>
+</tr>
+<tr>
+<td>Ctrf+f</td>
+<td>向下滚动一页。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>重复上次输入的命令。</td>
+</tr>
+<tr>
+<td>/ 字符串</td>
+<td>搜索指定的字符串。</td>
+</tr>
+<tr>
+<td>d</td>
+<td>向下移动半页。</td>
+</tr>
+<tr>
+<td>b</td>
+<td>向上移动一页。</td>
+</tr>
+</tbody>
+</table>
+<p>用分页的方式显示 anaconda-ks.cfg 文件的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# more anaconda-ks.cfg</span><br><span class="line"># Kickstart file automatically generated by anaconda.</span><br><span class="line">#version=DEVEL</span><br><span class="line">install</span><br><span class="line">cdrom</span><br><span class="line">…省略部分内容…</span><br><span class="line">--More--(69%)</span><br><span class="line">#在这里执行交互命令即可</span><br></pre></td></tr></table></figure>
+<p>显示文件 anaconda-ks.cfg 的内容，每 10 行显示一屏，同时清楚屏幕，使用以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# more -c -10 anaconda-ks.cfg</span><br><span class="line">#省略输出内容。</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -804,8 +1835,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/21/Linux/Linux文件目录结构/" rel="next" title="Linux文件目录结构">
-                <i class="fa fa-chevron-left"></i> Linux文件目录结构
+              <a href="/2019/10/21/架构/redis主从架构/" rel="next" title="redis主从架构">
+                <i class="fa fa-chevron-left"></i> redis主从架构
               </a>
             
           </div>
@@ -814,8 +1845,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/21/Linux/Linux命令行下识别文件类型/" rel="prev" title="Linux命令行下识别文件类型">
-                Linux命令行下识别文件类型 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/21/Linux/Linux文件目录结构/" rel="prev" title="Linux文件目录结构">
+                Linux文件目录结构 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1062,7 +2093,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#wget"><span class="nav-number">1.</span> <span class="nav-text">wget</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tar"><span class="nav-number">2.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ps-ef-grep"><span class="nav-number">3.</span> <span class="nav-text">ps -ef | grep ***</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chmod-777"><span class="nav-number">4.</span> <span class="nav-text">chmod 777</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换目录-cd"><span class="nav-number">5.</span> <span class="nav-text">切换目录 cd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示当前路径-pwd"><span class="nav-number">6.</span> <span class="nav-text">显示当前路径 pwd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看目录下文件-ls"><span class="nav-number">7.</span> <span class="nav-text">查看目录下文件 ls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建目录（文件夹）mkdir"><span class="nav-number">8.</span> <span class="nav-text">创建目录（文件夹）mkdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除空目录-rmdir"><span class="nav-number">9.</span> <span class="nav-text">删除空目录 rmdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建文件及修改文件时间戳"><span class="nav-number">10.</span> <span class="nav-text">创建文件及修改文件时间戳</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#切换目录-cd"><span class="nav-number">1.</span> <span class="nav-text">切换目录 cd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示当前路径-pwd"><span class="nav-number">2.</span> <span class="nav-text">显示当前路径 pwd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看目录下文件-ls"><span class="nav-number">3.</span> <span class="nav-text">查看目录下文件 ls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建目录（文件夹）mkdir"><span class="nav-number">4.</span> <span class="nav-text">创建目录（文件夹）mkdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除空目录-rmdir"><span class="nav-number">5.</span> <span class="nav-text">删除空目录 rmdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建文件及修改文件时间戳"><span class="nav-number">6.</span> <span class="nav-text">创建文件及修改文件时间戳</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在文件之间建立链接（硬链接和软链接）ln"><span class="nav-number">7.</span> <span class="nav-text">在文件之间建立链接（硬链接和软链接）ln</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制文件和目录-cp"><span class="nav-number">8.</span> <span class="nav-text">复制文件和目录 cp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除文件或目录-rm"><span class="nav-number">9.</span> <span class="nav-text">删除文件或目录 rm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动文件或改名-mv"><span class="nav-number">10.</span> <span class="nav-text">移动文件或改名 mv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动补全功能和通配符"><span class="nav-number">11.</span> <span class="nav-text">自动补全功能和通配符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打包操作-tar"><span class="nav-number">12.</span> <span class="nav-text">打包操作 tar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解打包操作-tar"><span class="nav-number">13.</span> <span class="nav-text">解打包操作 tar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打包压缩（解压缩解打包）tar"><span class="nav-number">14.</span> <span class="nav-text">打包压缩（解压缩解打包）tar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩文件或目录-zip"><span class="nav-number">15.</span> <span class="nav-text">压缩文件或目录 zip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解压zip文件-unzip"><span class="nav-number">16.</span> <span class="nav-text">解压zip文件 unzip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩文件或目录-gzip"><span class="nav-number">17.</span> <span class="nav-text">压缩文件或目录 gzip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解压缩文件或目录-gunzip"><span class="nav-number">18.</span> <span class="nav-text">解压缩文件或目录 gunzip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩文件（-bz2格式）bzip2"><span class="nav-number">19.</span> <span class="nav-text">压缩文件（.bz2格式）bzip2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bz2格式的解压缩-bunzip2"><span class="nav-number">20.</span> <span class="nav-text">bz2格式的解压缩 bunzip2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim基本操作"><span class="nav-number">21.</span> <span class="nav-text">vim基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim批量注释和自定义注释快捷键"><span class="nav-number">22.</span> <span class="nav-text">Vim批量注释和自定义注释快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接文件并打印输出到标准输出设备-cat"><span class="nav-number">23.</span> <span class="nav-text">连接文件并打印输出到标准输出设备 cat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分屏显示文件内容-more"><span class="nav-number">24.</span> <span class="nav-text">分屏显示文件内容 more</span></a></li></ol></div>
             
 
           </div>
@@ -1105,7 +2136,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共199.1k字</span>
+  <span class="post-count">博客全站共208.1k字</span>
 </div>
         
 <div class="busuanzi-count">

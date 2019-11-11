@@ -401,7 +401,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/Linux/Linux文件目录结构/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/Linux/Linux基础命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -421,7 +421,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/21/Linux/Linux文件目录结构/" class="post-title-link" itemprop="url">Linux文件目录结构</a>
+                <a href="/2019/10/21/Linux/Linux基础命令/" class="post-title-link" itemprop="url">Linux基础命令</a>
               
             
           </h1>
@@ -463,7 +463,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-11-07 01:55:51" itemprop="dateModified" datetime="2019-11-07T01:55:51+08:00">2019-11-07</time> 
+              <time title="修改时间：2019-11-11 23:49:01" itemprop="dateModified" datetime="2019-11-11T23:49:01+08:00">2019-11-11</time> 
               -->
               <!-- new version -->
                         
@@ -478,8 +478,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-11-07T01:55:51+08:00" content="2019-11-07">
-                2019-11-07 01:55:51
+              <time itemprop="dateUpdated" datetime="2019-11-11T23:49:01+08:00" content="2019-11-11">
+                2019-11-11 23:49:01
               </time>
             </span>
           
@@ -519,8 +519,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/Linux/Linux文件目录结构/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/Linux/Linux文件目录结构/" itemprop="commentCount"></span>
+                <a href="/2019/10/21/Linux/Linux基础命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/Linux/Linux基础命令/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -550,196 +550,1244 @@
       
         
           
-            <h2 id="Linux-根目录（-）"><a href="#Linux-根目录（-）" class="headerlink" title="Linux 根目录（/）"></a>Linux 根目录（/）</h2><p>Linux 系统的根目录（/）最为重要，其原因有以下 2 点：</p>
+            <h3 id="切换目录-cd"><a href="#切换目录-cd" class="headerlink" title="切换目录 cd"></a>切换目录 cd</h3><p>cd 命令，是 Change Directory 的缩写，用来切换工作目录。</p>
+<p>cd 命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd [相对路径或绝对路径]</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>特殊符号</th>
+<th>作 用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~</td>
+<td>代表当前登录用户的主目录</td>
+</tr>
+<tr>
+<td>~用户名</td>
+<td>表示切换至指定用户的主目录</td>
+</tr>
+<tr>
+<td>-</td>
+<td>代表上次所在目录</td>
+</tr>
+<tr>
+<td>.</td>
+<td>代表当前目录</td>
+</tr>
+<tr>
+<td>..</td>
+<td>代表上级目录</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vbird]# cd ~</span><br><span class="line">#表示回到自己的主目录，对于 root 用户，其主目录为 /root</span><br><span class="line">[root@localhost ~]# cd</span><br><span class="line">#没有加上任何路径，也代表回到当前登录用户的主目录</span><br><span class="line">[root@localhost ~]# cd ~vbird</span><br><span class="line">#代表切换到 vbird 这个用户的主目录，亦即 /home/vbird</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd ..</span><br><span class="line">#表示切换到目前的上一级目录，亦即是 /root 的上一级目录的意思；</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# cd -</span><br><span class="line">#表示回到刚刚的那个目录</span><br></pre></td></tr></table></figure>
+<h3 id="显示当前路径-pwd"><a href="#显示当前路径-pwd" class="headerlink" title="显示当前路径 pwd"></a>显示当前路径 pwd</h3><p>pwd 命令，是 Print Working Directory （打印工作目录）的缩写，功能是显示用户当前所处的工作目录。该命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# pwd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# whoami</span><br><span class="line">root</span><br><span class="line">[root@localhost ~]# pwd</span><br><span class="line">/root</span><br></pre></td></tr></table></figure>
+<p>whoami 命令用于确定当前登陆的用户</p>
+<h3 id="查看目录下文件-ls"><a href="#查看目录下文件-ls" class="headerlink" title="查看目录下文件 ls"></a>查看目录下文件 ls</h3><p>ls 命令，list 的缩写</p>
+<p>此命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls [选项] 目录名称</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a</td>
+<td>显示全部的文件，包括隐藏文件（开头为 . 的文件）也一起罗列出来，这是最常用的选项之一。</td>
+</tr>
+<tr>
+<td>-A</td>
+<td>显示全部的文件，连同隐藏文件，但不包括 . 与 .. 这两个目录。</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>仅列出目录本身，而不是列出目录内的文件数据。</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>ls 默认会以文件名排序，使用 -f 选项会直接列出结果，而不进行排序。</td>
+</tr>
+<tr>
+<td>-F</td>
+<td>在文件或目录名后加上文件类型的指示符号，例如，* 代表可运行文件，/ 代表目录，= 代表 <a href="http://c.biancheng.net/socket/" target="_blank" rel="noopener">socket</a> 文件，\</td>
+<td>代表 FIFO 文件。</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>以人们易读的方式显示文件或目录大小，如 1KB、234MB、2GB 等。</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>显示 inode 节点信息。</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>使用长格式列出文件和目录信息。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>以 UID 和 GID 分别代替文件用户名和群组名显示出来。</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>将排序结果反向输出，比如，若原本文件名由小到大，反向则为由大到小。</td>
+</tr>
+<tr>
+<td>-R</td>
+<td>连同子目录内容一起列出来，等於将该目录下的所有文件都显示出来。</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>以文件容量大小排序，而不是以文件名排序。</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>以时间排序，而不是以文件名排序。</td>
+</tr>
+<tr>
+<td>–color=never –color=always –color=auto</td>
+<td>never 表示不依据文件特性给予颜色显示。 always 表示显示颜色，ls 默认采用这种方式。 auto 表示让系统自行依据配置来判断是否给予颜色。</td>
+</tr>
+<tr>
+<td>–full-time</td>
+<td>以完整时间模式 （包含年、月、日、时、分）输出</td>
+</tr>
+<tr>
+<td>–time={atime,ctime}</td>
+<td>输出 access 时间或改变权限属性时间（ctime），而不是内容变更时间。</td>
+</tr>
+</tbody>
+</table>
+<p>当 ls 命令不使用任何选项时，默认只会显示非隐藏文件的名称，并以文件名进行排序，同时会根据文件的具体类型给文件名配色（蓝色显示目录，白色显示一般文件）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# ls -al ~</span><br><span class="line">total 156</span><br><span class="line">drwxr-x---  4 root root  4096 Sep 24 00:07 .</span><br><span class="line">drwxr-xr-x 23 root root  4096 Sep 22 12:09 ..</span><br><span class="line">-rw-------  1 root root  1474 Sep  4 18:27 anaconda-ks.cfg</span><br><span class="line">-rw-------  1 root root   955 Sep 24 00:08 .bash_history</span><br><span class="line">-rw-r--r--  1 root root    24 Jan  6  2007 .bash_logout</span><br><span class="line">-rw-r--r--  1 root root   191 Jan  6  2007 .bash_profile</span><br><span class="line">-rw-r--r--  1 root root   176 Jan  6  2007 .bashrc</span><br><span class="line">drwx------  3 root root  4096 Sep  5 10:37 .gconf</span><br><span class="line">-rw-r--r--  1 root root 42304 Sep  4 18:26 install.log</span><br><span class="line">-rw-r--r--  1 root root  5661 Sep  4 18:25 install.log.syslog</span><br></pre></td></tr></table></figure>
+<p> ls 命令还使用了 -l 选项，因此才显示出了文件的详细信息，此选项显示的这 7 列的含义分别是：</p>
 <ol>
-<li>所有目录都是由根目录衍生出来的；</li>
-<li>根目录与系统的开机、修复、还原密切相关；</li>
+<li>第一列：规定了不同的用户对文件所拥有的权限，具体权限的含义将在后续章节中讲解。</li>
+<li>第二列：引用计数，文件的引用计数代表该文件的硬链接个数，而目录的引用计数代表该目录有多少个一级子目录。</li>
+<li>第三列：所有者，也就是这个文件属于哪个用户。默认所有者是文件的建立用户。</li>
+<li>第四列：所属组，默认所属组是文件建立用户的有效组，一般情况下就是建立用户的所在组。</li>
+<li>第五列：大小，默认单位是字节。</li>
+<li>第六列：文件修改时间，文件状态修改时间或文件数据修改时间都会更改这个时间，注意这个时间不是文件的创建时间。</li>
+<li>第七列：文件名或目录名。</li>
 </ol>
-<p>因此，根目录必须包含开机软件、核心文件、开机所需程序、函数库、修复系统程序等文件</p>
+<h3 id="创建目录（文件夹）mkdir"><a href="#创建目录（文件夹）mkdir" class="headerlink" title="创建目录（文件夹）mkdir"></a>创建目录（文件夹）mkdir</h3><p>mkdir 命令，是 make directories 的缩写，用于创建新目录</p>
+<p>mkdir 命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir [-mp] 目录名</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-m 选项用于手动配置所创建目录的权限，而不再使用默认权限。</li>
+<li>-p 选项递归创建所有目录，以创建 /home/test/demo 为例，在默认情况下，你需要一层一层的创建各个目录，而使用 -p 选项，则系统会自动帮你创建 /home、/home/test 以及 /home/test/demo。</li>
+</ul>
+<h3 id="删除空目录-rmdir"><a href="#删除空目录-rmdir" class="headerlink" title="删除空目录 rmdir"></a>删除空目录 rmdir</h3><p>rmdir（remove empty directories 的缩写）命令用于删除空目录，此命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# rmdir [-p] 目录名</span><br></pre></td></tr></table></figure>
+<p>-p 选项用于递归删除空目录。</p>
+<p>rmdir 命令的作用十分有限，因为只能刪除空目录，所以一旦目录中有内容，就会报错。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost # mkdir test</span><br><span class="line">#建立测试目录</span><br><span class="line">[root@localhost ~]# touch test/boduo</span><br><span class="line">[root@localhost ~]# touch test/longze</span><br><span class="line">#在测试目录中建立两个文件</span><br><span class="line">[root@localhost ~]# rmdir test</span><br><span class="line">rmdir:删除&quot;test&quot;失败：目录非空</span><br></pre></td></tr></table></figure>
+<h3 id="创建文件及修改文件时间戳"><a href="#创建文件及修改文件时间戳" class="headerlink" title="创建文件及修改文件时间戳"></a>创建文件及修改文件时间戳</h3><p>touch 命令不止可以用来创建文件（当指定操作文件不存在时，该命令会在当前位置建立一个空文件），此命令更重要的功能是修改文件的时间参数（但当文件存在时，会修改此文件的时间参数）。</p>
+<p>Linux 系统中，每个文件主要拥有 3 个时间参数（通过 stat 命令进行查看），分别是文件的访问时间、数据修改时间以及状态修改时间：</p>
+<ul>
+<li>访问时间（Access Time，简称 atime）：只要文件的内容被读取，访问时间就会更新。例如，使用 cat 命令可以查看文件的内容，此时文件的访问时间就会发生改变。</li>
+<li>数据修改时间（Modify Time，简称 mtime）：当文件的内容数据发生改变，此文件的数据修改时间就会跟着相应改变。</li>
+<li>状态修改时间（Change Time，简称 ctime）：当文件的状态发生变化，就会相应改变这个时间。比如说，如果文件的权限或者属性发生改变，此时间就会相应改变。</li>
+</ul>
+<p>touch 命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch [选项] 文件名</span><br></pre></td></tr></table></figure>
+<p>选项：</p>
+<ul>
+<li>-a：只修改文件的访问时间；</li>
+<li>-c：仅修改文件的时间参数（3 个时间参数都改变），如果文件不存在，则不建立新文件。</li>
+<li>-d：后面可以跟欲修订的日期，而不用当前的日期，即把文件的 atime 和 mtime 时间改为指定的时间。</li>
+<li>-m：只修改文件的数据修改时间。</li>
+<li>-t：命令后面可以跟欲修订的时间，而不用目前的时间，时间书写格式为 <code>YYMMDDhhmm</code>。</li>
+</ul>
+<p>touch 命令可以只修改文件的访问时间，也可以只修改文件的数据修改时间，但是不能只修改文件的状态修改时间。因为，不论是修改访问时间，还是修改文件的数据时间，对文件来讲，状态都会发生改变，即状态修改时间会随之改变（更新为操作当前文件的真正时间）。</p>
+<p>touch 命令创建文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#touch bols</span><br><span class="line">#建立名为 bols 的空文件</span><br></pre></td></tr></table></figure>
+<p>在上面的基础上修改文件的访问时间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#ll --time=atime bols</span><br><span class="line">#查看文件的访问时间</span><br><span class="line">-rw-r--r-- 1 root root 0 Sep 25 21:23 bols</span><br><span class="line">#文件上次的访问时间为 9 月 25 号 21：23</span><br><span class="line">[root@localhost ~]#touch bols</span><br><span class="line">[root@localhost ~]#ll --time=atime bols</span><br><span class="line">-rw-r--r-- 1 root root 0 May 15 16:36 bols</span><br><span class="line">#而如果文件已经存在，则也不会报错，只是会修改文件的访问时间。</span><br></pre></td></tr></table></figure>
+<p>修改 bols 文件的 atime 和 mtime。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch -d &quot;2017-05-04 15:44&quot; bols</span><br><span class="line">[root@localhost ~]# ll bols; ll --time=atime bols; ll --time=ctime bols</span><br><span class="line">-rw-r--r-- 1 root root 0 May 4 2017 bols</span><br><span class="line">-rw-r--r-- 1 root root 0 May 4 2017 bols</span><br><span class="line">-rw-r--r-- 1 root root 0 Sep 25 21:40 bols</span><br><span class="line">#ctime不会变为设定时间，但更新为当前服务器的时间</span><br></pre></td></tr></table></figure>
+<h3 id="在文件之间建立链接（硬链接和软链接）ln"><a href="#在文件之间建立链接（硬链接和软链接）ln" class="headerlink" title="在文件之间建立链接（硬链接和软链接）ln"></a>在文件之间建立链接（硬链接和软链接）ln</h3><p>Linux 目前使用的是 ext4 文件系统。如果用一张示意图来描述 ext4 文件系统</p>
+<p><img src="/2019/10/21/Linux/Linux基础命令/2-1P92Q6130RO.jpg" alt="ext4 æä»¶ç³»ç»ç¤ºæå¾"></p>
+<p>ext4 文件系统会把分区主要分为两大部分（暂时不提超级块）：小部分用于保存文件的 inode (i 节点）信息；剩余的大部分用于保存 block 信息。</p>
+<p>inode 的默认大小为 128 Byte，用来记录文件的权限（r、w、x）、文件的所有者和属组、文件的大小、文件的状态改变时间（ctime）、文件的最近一次读取时间（atime）、文件的最近一次修改时间（mtime）、文件的数据真正保存的 block 编号。每个文件需要占用一个 inode。仔细查看，就会发现 inode 中是不记录文件名的，那是因为文件名记录在文件所在目录的 block 中。</p>
+<p>block 的大小可以是 1KB、2KB、4KB，默认为 4KB。block 用于实际的数据存储，如果一个 block 放不下数据，则可以占用多个 block。例如，有一个 10KB 的文件需要存储，则会占用 3 个 block，虽然最后一个 block 不能占满，但也不能再放入其他文件的数据。这 3 个 block 有可能是连续的，也有可能是分散的。</p>
+<p>由此，可以知道以下 2 个重要的信息：</p>
+<ol>
+<li>每个文件都独自占用一个 inode，文件内容由 inode 的记录来指向；</li>
+<li>如果想要读取文件内容，就必须借助目录中记录的文件名找到该文件的 inode，才能成功找到文件内容所在的 block 块；</li>
+</ol>
+<p>ln 命令用于给文件创建链接，根据 Linux 系统存储文件的特点，链接的方式分为以下 2 种：</p>
+<ul>
+<li>软链接：类似于 Windows 系统中给文件创建快捷方式，即产生一个特殊的文件，该文件用来指向另一个文件，此链接方式同样适用于目录。</li>
+<li>硬链接：我们知道，文件的基本信息都存储在 inode 中，而硬链接指的就是给一个文件的 inode 分配多个文件名，通过任何一个文件名，都可以找到此文件的 inode，从而读取该文件的数据信息。</li>
+</ul>
+<p>ln 命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ln [选项] 源文件 目标文件</span><br></pre></td></tr></table></figure>
+<p>选项：</p>
+<ul>
+<li>-s：建立软链接文件。如果不加 “-s” 选项，则建立硬链接文件；</li>
+<li>-f：强制。如果目标文件已经存在，则删除目标文件后再建立链接文件；</li>
+</ul>
+<p>创建硬链接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch cangls</span><br><span class="line">[root@localhost ~]# ln /root/cangls /tmp</span><br><span class="line">#建立硬链接文件，目标文件没有写文件名，会和原名一致</span><br><span class="line">#也就是/tmp/cangls 是硬链接文件</span><br></pre></td></tr></table></figure>
+<p>创建软链接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch bols</span><br><span class="line">[root@localhost ~]# ln -s /root/bols /tmp</span><br><span class="line">#建立软链接文件</span><br></pre></td></tr></table></figure>
+<p>这里需要注意，软链接文件的源文件必须写成绝对路径，而不能写成相对路径（硬链接没有这样的要求）；否则软链接文件会报错。</p>
+<h3 id="复制文件和目录-cp"><a href="#复制文件和目录-cp" class="headerlink" title="复制文件和目录 cp"></a>复制文件和目录 cp</h3><p>cp 命令，主要用来复制文件和目录，同时借助某些选项，还可以实现复制整个目录，以及比对两文件的新旧而予以升级等功能。</p>
+<p>cp 命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cp [选项] 源文件 目标文件</span><br></pre></td></tr></table></figure>
+<p>选项：</p>
+<ul>
+<li>-a：相当于 -d、-p、-r 选项的集合；</li>
+<li>-d：如果源文件为软链接（对硬链接无效），则复制出的目标文件也为软链接；</li>
+<li>-i：询问，如果目标文件已经存在，则会询问是否覆盖；</li>
+<li>-l：把目标文件建立为源文件的硬链接文件，而不是复制源文件；</li>
+<li>-s：把目标文件建立为源文件的软链接文件，而不是复制源文件；</li>
+<li>-p：复制后目标文件保留源文件的属性（包括所有者、所属组、权限和时间）；</li>
+<li>-r：递归复制，用于复制目录；</li>
+<li>-u：若目标文件比源文件有差异，则使用该选项可以更新目标文件，此选项可用于对文件的升级和备用。</li>
+</ul>
+<p>需要注意的是，源文件可以有多个，但这种情况下，目标文件必须是目录才可以。</p>
+<h3 id="删除文件或目录-rm"><a href="#删除文件或目录-rm" class="headerlink" title="删除文件或目录 rm"></a>删除文件或目录 rm</h3><p>rm 是强大的删除命令，它可以永久性地删除文件系统中指定的文件或目录。在使用 rm 命令删除文件或目录时，系统不会产生任何提示信息。此命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# rm[选项] 文件或目录</span><br></pre></td></tr></table></figure>
+<p>选项：</p>
+<ul>
+<li>-f：强制删除（force），和 -i 选项相反，使用 -f，系统将不再询问，而是直接删除目标文件或目录。</li>
+<li>-i：和 -f 正好相反，在删除文件或目录之前，系统会给出提示信息，使用 -i 可以有效防止不小心删除有用的文件或目录。</li>
+<li>-r：递归删除，主要用于删除目录，可删除指定目录及包含的所有内容，包括所有的子目录和文件。</li>
+</ul>
+<h3 id="移动文件或改名-mv"><a href="#移动文件或改名-mv" class="headerlink" title="移动文件或改名 mv"></a>移动文件或改名 mv</h3><p>mv 命令（move 的缩写），既可以在不同的目录之间移动文件或目录，也可以对文件和目录进行重命名。该命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mv 【选项】 源文件 目标文件</span><br></pre></td></tr></table></figure>
+<p>选项：</p>
+<ul>
+<li>-f：强制覆盖，如果目标文件已经存在，则不询问，直接强制覆盖；</li>
+<li>-i：交互移动，如果目标文件已经存在，则询问用户是否覆盖（默认选项）；</li>
+<li>-n：如果目标文件已经存在，则不会覆盖移动，而且不询问用户；</li>
+<li>-v：显示文件或目录的移动过程；</li>
+<li>-u：若目标文件已经存在，但两者相比，源文件更新，则会对目标文件进行升级；</li>
+</ul>
+<p>需要注意的是，同 rm 命令类似，mv 命令也是一个具有破坏性的命令，如果使用不当，很可能给系统带来灾难性的后果。</p>
+<p>移动文件或目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mv cangls /tmp</span><br><span class="line">#移动之后，源文件会被删除，类似剪切</span><br><span class="line">[root@localhost ~]# mkdir movie</span><br><span class="line">[root@localhost ~]# mv movie/ /tmp</span><br><span class="line">#也可以移动目录。和 rm、cp 不同的是，mv 移动目录不需要加入 &quot;-r&quot; 选项</span><br></pre></td></tr></table></figure>
+<p>如果移动的目标位置已经存在同名的文件，则同样会提示是否覆盖，因为 mv 命令默认执行的也是 “mv -i” 的别名，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch cangls</span><br><span class="line">#重新建立文件</span><br><span class="line">[root@localhost ~]# mv cangls /tmp</span><br><span class="line">mv:县否覆盖&quot;tmp/cangls&quot;？y</span><br><span class="line">#由于 /tmp 目录下已经存在 cangls 文件，所以会提示是否覆盖，需要手工输入 y 覆盖移动</span><br></pre></td></tr></table></figure>
+<p>强制移动。</p>
+<p>如果我们确认需要覆盖已经存在的同名文件，则可以使用 “-f” 选项进行强制移动，这就不再需要用户手工确认了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch cangls</span><br><span class="line">#重新建立文件</span><br><span class="line">[root@localhost ~]# mv -f cangls /tmp</span><br><span class="line">#就算 /tmp/ 目录下已经存在同名的文件，由于&quot;-f&quot;选项的作用，所以会强制覆盖</span><br></pre></td></tr></table></figure>
+<p>不覆盖移动。</p>
+<p>既然可以强制覆盖移动，那也有可能需要不覆盖的移动。如果需要移动几百个同名文件，但是不想覆盖，这时就需要 “-n” 选项的帮助了。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls /tmp</span><br><span class="line">/tmp/bols /tmp/cangls</span><br><span class="line">#在/tmp/目录下已经存在bols、cangls文件了</span><br><span class="line">[root@localhost ~]# mv -vn bols cangls lmls /tmp/、</span><br><span class="line">&quot;lmls&quot;-&gt;&quot;/tmp/lmls&quot;</span><br><span class="line">#再向 /tmp/ 目录中移动同名文件，如果使用了 &quot;-n&quot; 选项，则可以看到只移动了 lmls，而同名的 bols 和 cangls 并没有移动（&quot;-v&quot; 选项用于显示移动过程）</span><br></pre></td></tr></table></figure>
+<p>改名。<br>如果源文件和目标文件在同一目录中，那就是改名。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mv bols lmls</span><br><span class="line">#把 bols 改名为 lmls</span><br></pre></td></tr></table></figure>
+<p>目录也可以按照同样的方法改名。</p>
+<p>显示移动过程。<br>如果我们想要知道在移动过程中到底有哪些文件进行了移动，则可以使用 “-v” 选项来查看详细的移动信息。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch test1.txt test2.txt test3.txt</span><br><span class="line">#建立三个测试文件</span><br><span class="line">[root@localhost ~]# mv -v *.txt /tmp</span><br><span class="line">&quot;test1.txt&quot; -&gt; &quot;/tmp/test1.txt&quot;</span><br><span class="line">&quot;test2.txt&quot; -&gt; &quot;/tmp/test2.txt&quot;</span><br><span class="line">&quot;test3.txt&quot; -&gt; &quot;/tmp/test3.txt&quot;</span><br><span class="line">#加入&quot;-v&quot;选项，可以看到有哪些文件进行了移动</span><br></pre></td></tr></table></figure>
+<h3 id="自动补全功能和通配符"><a href="#自动补全功能和通配符" class="headerlink" title="自动补全功能和通配符"></a>自动补全功能和通配符</h3><p>按一次 Tab 键补全</p>
+<p>连续按两次 Tab 键出对应列表</p>
 <table>
 <thead>
 <tr>
-<th>一级目录</th>
-<th>功能（作用）</th>
+<th>符号</th>
+<th>作用</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>/bin/</td>
-<td>存放系统命令，普通用户和 root 都可以执行。放在 /bin 下的命令在单用户模式下也可以执行</td>
+<td>*</td>
+<td>匹配任意数量的字符。</td>
 </tr>
 <tr>
-<td>/boot/</td>
-<td>系统启动目录，保存与系统启动相关的文件，如内核文件和启动引导程序（grub）文件等</td>
+<td>?</td>
+<td>匹配任意一个字符。</td>
 </tr>
 <tr>
-<td>/dev/</td>
-<td>设备文件保存位置</td>
-</tr>
-<tr>
-<td>/etc/</td>
-<td>配置文件保存位置。系统内所有采用默认安装方式（rpm 安装）的服务配置文件全部保存在此目录中，如用户信息、服务的启动脚本、常用服务的配置文件等</td>
-</tr>
-<tr>
-<td>/home/</td>
-<td>普通用户的主目录（也称为家目录）。在创建用户时，每个用户要有一个默认登录和保存自己数据的位置，就是用户的主目录，所有普通用户的主目录是在 /home/ 下建立一个和用户名相同的目录。如用户 liming 的主目录就是 /home/liming</td>
-</tr>
-<tr>
-<td>/lib/</td>
-<td>系统调用的函数库保存位置</td>
-</tr>
-<tr>
-<td>/media/</td>
-<td>挂载目录。系统建议用来挂载媒体设备，如软盘和光盘</td>
-</tr>
-<tr>
-<td>/mnt/</td>
-<td>挂载目录。早期 Linux 中只有这一个挂载目录，并没有细分。系统建议这个目录用来挂载额外的设备，如 U 盘、移动硬盘和其他操作系统的分区</td>
-</tr>
-<tr>
-<td>/misc/</td>
-<td>挂载目录。系统建议用来挂载 NFS 服务的共享目录。虽然系统准备了三个默认挂载目录 /media/、/mnt/、/misc/，但是到底在哪个目录中挂载什么设备可以由管理员自己决定。例如，笔者在接触 Linux 的时候，默认挂载目录只有 /mnt/，所以养成了在 /mnt/ 下建立不同目录挂载不同设备的习惯，如 /mnt/cdrom/ 挂载光盘、/mnt/usb/ 挂载 U 盘，都是可以的</td>
-</tr>
-<tr>
-<td>/opt/</td>
-<td>第三方安装的软件保存位置。这个目录是放置和安装其他软件的位置，手工安装的源码包软件都可以安装到这个目录中。不过笔者还是习惯把软件放到 /usr/local/ 目录中，也就是说，/usr/local/ 目录也可以用来安装软件</td>
-</tr>
-<tr>
-<td>/root/</td>
-<td>root 的主目录。普通用户主目录在 /home/ 下，root 主目录直接在“/”下</td>
-</tr>
-<tr>
-<td>/sbin/</td>
-<td>保存与系统环境设置相关的命令，只有 root 可以使用这些命令进行系统环境设置，但也有些命令可以允许普通用户查看</td>
-</tr>
-<tr>
-<td>/srv/</td>
-<td>服务数据目录。一些系统服务启动之后，可以在这个目录中保存所需要的数据</td>
-</tr>
-<tr>
-<td>/tmp/</td>
-<td>临时目录。系统存放临时文件的目录，在该目录下，所有用户都可以访问和写入。建议此目录中不能保存重要数据，最好每次开机都把该目录清空</td>
+<td>[]</td>
+<td>匹配括号内的任意一个字符，甚至 [] 中还可以包含用 -（短横线）连接的字符或数字，表示一定范围内的字符或数字。</td>
 </tr>
 </tbody>
 </table>
-<p>FHS 针对根目录中包含的子目录仅限于表 1，但除此之外，Linux 系统根目录下通常还包含表 2 中的几个一级目录。</p>
+<h3 id="打包操作-tar"><a href="#打包操作-tar" class="headerlink" title="打包操作 tar"></a>打包操作 tar</h3><p>当 tar 命令用于打包操作时，该命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#tar [选项] 源文件或目录</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
-<th>一级目录</th>
-<th>功能（作用）</th>
+<th>选项</th>
+<th>含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>/lost+found/</td>
-<td>当系统意外崩溃或意外关机时，产生的一些文件碎片会存放在这里。在系统启动的过程中，fsck 工具会检查这里，并修复已经损坏的文件系统。这个目录只在每个分区中出现，例如，/lost+found 就是根分区的备份恢复目录，/boot/lost+found 就是 /boot 分区的备份恢复目录</td>
+<td>-c</td>
+<td>将多个文件或目录进行打包。</td>
 </tr>
 <tr>
-<td>/proc/</td>
-<td>虚拟文件系统。该目录中的数据并不保存在硬盘上，而是保存到内存中。主要保存系统的内核、进程、外部设备状态和网络状态等。如 /proc/cpuinfo 是保存 CPU 信息的，/proc/devices 是保存设备驱动的列表的，/proc/filesystems 是保存文件系统列表的，/proc/net 是保存网络协议信息的……</td>
+<td>-A</td>
+<td>追加 tar 文件到归档文件。</td>
 </tr>
 <tr>
-<td>/sys/</td>
-<td>虚拟文件系统。和 /proc/ 目录相似，该目录中的数据都保存在内存中，主要保存与内核相关的信息</td>
+<td>-f 包名</td>
+<td>指定包的文件名。包的扩展名是用来给管理员识别格式的，所以一定要正确指定扩展名；</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示打包文件过程；</td>
 </tr>
 </tbody>
 </table>
-<h2 id="Linux-usr目录"><a href="#Linux-usr目录" class="headerlink" title="Linux /usr目录"></a>Linux /usr目录</h2><p>usr（注意不是 user），全称为 Unix Software Resource，此目录用于存储系统软件资源。FHS 建议所有开发者，应把软件产品的数据合理的放置在 /usr 目录下的各子目录中，而不是为他们的产品创建单独的目录。</p>
-<p>Linux 系统中，所有系统默认的软件都存储在 /usr 目录下，/usr 目录类似 Windows 系统中 C:\Windows\ + C:\Program files\ 两个目录的综合体。</p>
+<p>打包文件和目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -cvf anaconda-ks.cfg.tar anaconda-ks.cfg</span><br><span class="line">#把anacondehks.cfg打包为 anacondehks.cfg.tar文件</span><br></pre></td></tr></table></figure>
+<p>选项 “-cvf” 一般是习惯用法，打包时需要指定打包之后的文件名，而且要用 “.tar” 作为扩展名。打包目录也是如此：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ll -d test/</span><br><span class="line">drwxr-xr-x 2 root root 4096 6月 17 21:09 test/</span><br><span class="line">#test是我们之前的测试目录</span><br><span class="line">[root@localhost ~]# tar -cvf test.tar test/</span><br><span class="line">test/</span><br><span class="line">test/test3</span><br><span class="line">test/test2</span><br><span class="line">test/test1</span><br><span class="line">#把目录打包为test.tar文件</span><br><span class="line">tar命令也可以打包多个文件或目录，只要用空格分开即可。例如:</span><br><span class="line">[root@localhost ~]# tar -cvf ana.tar anaconda-ks.cfg /tmp/</span><br><span class="line">#把anaconda-ks.cfg文件和/tmp目录打包成ana.tar文件包</span><br></pre></td></tr></table></figure>
+<p>打包并压缩目录：</p>
+<p>压缩命令不能直接压缩目录，必须先用 tar 命令将目录打包，然后才能用 gzip 命令或 bzip2 命令对打包文件进行压缩。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x 2 root root 4096 6月 17 21:09 test</span><br><span class="line">-rw-r--r-- 1 root root 10240 6月 18 01:06 test.tar</span><br><span class="line">#我们之前已经把test目录打包成test.tar文件</span><br><span class="line">[root@localhost ~]# gzip test.tar</span><br><span class="line">[root@localhost ~]# ll test.tar.gz</span><br><span class="line">-rw-r--r-- 1 root root 176 6月 18 01:06 test.tar.gz</span><br><span class="line">#gzip命令会把test.tar压缩成test.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="解打包操作-tar"><a href="#解打包操作-tar" class="headerlink" title="解打包操作 tar"></a>解打包操作 tar</h3><p>当 tar 命令用于对 tar 包做解打包操作时，该命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#tar [选项] 压缩包</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
-<th>子目录</th>
-<th>功能（作用）</th>
+<th>选项</th>
+<th>含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>/usr/bin/</td>
-<td>存放系统命令，普通用户和超级用户都可以执行。这些命令和系统启动无关，在单用户模式下不能执行</td>
+<td>-x</td>
+<td>对 tar 包做解打包操作。</td>
 </tr>
 <tr>
-<td>/usr/sbin/</td>
-<td>存放根文件系统不必要的系统管理命令，如多数服务程序，只有 root 可以使用。</td>
+<td>-f</td>
+<td>指定要解压的 tar 包的包名。</td>
 </tr>
 <tr>
-<td>/usr/lib/</td>
-<td>应用程序调用的函数库保存位置</td>
+<td>-t</td>
+<td>只查看 tar 包中有哪些文件或目录，不对 tar 包做解打包操作。</td>
 </tr>
 <tr>
-<td>/usr/XllR6/</td>
-<td>图形界面系统保存位置</td>
+<td>-C 目录</td>
+<td>指定解打包位置。</td>
 </tr>
 <tr>
-<td>/usr/local/</td>
-<td>手工安装的软件保存位置。我们一般建议源码包软件安装在这个位置</td>
-</tr>
-<tr>
-<td>/usr/share/</td>
-<td>应用程序的资源文件保存位置，如帮助文档、说明文档和字体目录</td>
-</tr>
-<tr>
-<td>/usr/src/</td>
-<td>源码包保存位置。我们手工下载的源码包和内核源码包都可以保存到这里。不过笔者更习惯把手工下载的源码包保存到 /usr/local/src/ 目录中，把内核源码保存到 /usr/src/linux/ 目录中</td>
-</tr>
-<tr>
-<td>/usr/include</td>
-<td>C/C++等编程语言头文件的放置目录</td>
+<td>-v</td>
+<td>显示解打包的具体过程。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="Linux-var-目录"><a href="#Linux-var-目录" class="headerlink" title="Linux /var 目录"></a>Linux /var 目录</h2><p>/var 目录用于存储动态数据，例如缓存、日志文件、软件运行过程中产生的文件等。通常，此目录下建议包含如下这些子目录。</p>
+<p>解打包和打包相比，只是把打包选项 “-cvf” 更换为 “-xvf”：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -xvf anaconda-ks.cfg. tar</span><br><span class="line">#解打包到当前目录下</span><br></pre></td></tr></table></figure>
+<p>如果使用 “-xvf” 选项，则会把包中的文件解压到当前目录下。如果想要指定解压位置，则需要使用 “-C(大写)” 选项。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -xvf test.tar -C /tmp</span><br><span class="line">#把文件包test.tar解打包到/tmp/目录下</span><br></pre></td></tr></table></figure>
+<p>如果只想查看文件包中有哪些文件，则可以把解打包选项 “-x” 更换为测试选项 “-t”：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -tvf test.tar</span><br><span class="line">drwxr-xr-x root/root 0 2016-06-17 21:09 test/</span><br><span class="line">-rw-r-r- root/root 0 2016-06-17 17:51 test/test3</span><br><span class="line">-rw-r-r- root/root 0 2016-06-17 17:51 test/test2</span><br><span class="line">-rw-r-r- root/root 0 2016-06-17 17:51 test/test1</span><br><span class="line">#会用长格式显示test.tar文件包中文件的详细信息</span><br></pre></td></tr></table></figure>
+<h3 id="打包压缩（解压缩解打包）tar"><a href="#打包压缩（解压缩解打包）tar" class="headerlink" title="打包压缩（解压缩解打包）tar"></a>打包压缩（解压缩解打包）tar</h3><p>tar 命令是可以同时打包压缩的，前面的打包和压缩分开，是为了了解在 Linux 中打包和压缩的不同。</p>
+<p>当 tar 命令同时做打包压缩的操作时，其基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#tar [选项] 压缩包 源文件或目录</span><br></pre></td></tr></table></figure>
+<p>常用的选项有以下 2 个，分别是：</p>
+<ul>
+<li>-z：压缩和解压缩 “.tar.gz” 格式；</li>
+<li>-j：压缩和解压缩 “.tar.bz2”格式。</li>
+</ul>
+<p>压缩与解压缩 “.tar.gz”格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -zcvf tmp.tar.gz /tmp/</span><br><span class="line">#把/temp/目录直接打包压缩为&quot;.tar.gz&quot;格式，通过&quot;-z&quot;来识别格式，&quot;-cvf&quot;和打包选项一致</span><br></pre></td></tr></table></figure>
+<p>解压缩也只是在解打包选项 “-xvf” 前面加了一个 “-z” 选项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -zxvf tmp.tar.gz</span><br><span class="line">#解压缩与解打包&quot;.tar.gz&quot;格式</span><br></pre></td></tr></table></figure>
+<p>前面讲的选项 “-C” 用于指定解压位置、”-t” 用于查看压缩包内容，在这里同样适用。</p>
+<p>压缩与解压缩 “.tar.bz2” 格式：<br>和”.tar.gz”格式唯一的不同就是”-zcvf”选项换成了 “-jcvf”，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tar -jcvf tmp.tar.bz2 /tmp/</span><br><span class="line">#打包压缩为&quot;.tar.bz2&quot;格式，注意压缩包文件名</span><br><span class="line">[root@localhost ~]# tar -jxvf tmp.tar.bz2</span><br><span class="line">#解压缩与解打包&quot;.tar.bz2&quot;格式</span><br></pre></td></tr></table></figure>
+<h3 id="压缩文件或目录-zip"><a href="#压缩文件或目录-zip" class="headerlink" title="压缩文件或目录 zip"></a>压缩文件或目录 zip</h3><p> zip 命令，类似于 Windows 系统中的 winzip 压缩程序，其基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#zip [选项] 压缩包名 源文件或源目录列表</span><br></pre></td></tr></table></figure>
+<p>注意，zip 压缩命令需要手工指定压缩之后的压缩包名，注意写清楚扩展名，以便解压缩时使用。</p>
 <table>
 <thead>
 <tr>
-<th>/var子目录</th>
-<th>功能（作用）</th>
+<th>选项</th>
+<th>含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>/var/lib/</td>
-<td>程序运行中需要调用或改变的数据保存位置。如 <a href="http://c.biancheng.net/mysql/" target="_blank" rel="noopener">MySQL</a> 的数据库保存在 /var/lib/mysql/ 目录中</td>
+<td>-r</td>
+<td>递归压缩目录，及将制定目录下的所有文件以及子目录全部压缩。</td>
 </tr>
 <tr>
-<td>/var/log/</td>
-<td>登陆文件放置的目录，其中所包含比较重要的文件如 /var/log/messages, /var/log/wtmp 等。</td>
+<td>-m</td>
+<td>将文件压缩之后，删除原始文件，相当于把文件移到压缩文件中。</td>
 </tr>
 <tr>
-<td>/var/run/</td>
-<td>一些服务和程序运行后，它们的 PID（进程 ID）保存位置</td>
+<td>-v</td>
+<td>显示详细的压缩过程信息。</td>
 </tr>
 <tr>
-<td>/var/spool/</td>
-<td>里面主要都是一些临时存放，随时会被用户所调用的数据，例如 /var/spool/mail/ 存放新收到的邮件，/var/spool/cron/ 存放系统定时任务。</td>
+<td>-q</td>
+<td>在压缩的时候不显示命令的执行过程。</td>
 </tr>
 <tr>
-<td>/var/www/</td>
-<td>RPM 包安装的 Apache 的网页主目录</td>
+<td>-压缩级别</td>
+<td>压缩级别是从 1~9 的数字，-1 代表压缩速度更快，-9 代表压缩效果更好。</td>
 </tr>
 <tr>
-<td>/var/nis和/var/yp</td>
-<td>NIS 服务机制所使用的目录，nis 主要记录所有网络中每一个 client 的连接信息；yp 是 linux 的 nis 服务的日志文件存放的目录</td>
-</tr>
-<tr>
-<td>/var/tmp</td>
-<td>一些应用程序在安装或执行时，需要在重启后使用的某些文件，此目录能将该类文件暂时存放起来，完成后再行删除</td>
+<td>-u</td>
+<td>更新压缩文件，即往压缩文件中添加新文件。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="Linux挂载"><a href="#Linux挂载" class="headerlink" title="Linux挂载"></a>Linux挂载</h2><p>Linux系统中“一切皆文件”，所有文件都放置在以根目录为树根的树形目录结构中。在 Linux 看来，任何硬件设备也都是文件，它们各有自己的一套文件系统（文件目录结构）。</p>
-<p>如果不挂载，通过Linux系统中的图形界面系统可以查看找到硬件设备，但命令行方式无法找到。</p>
-<p>挂载，指的就是将设备文件中的顶级目录连接到 Linux 根目录下的某一目录（最好是空目录），访问此目录就等同于访问设备文件。</p>
-<p>纠正一个误区，并不是根目录下任何一个目录都可以作为挂载点，由于挂载操作会使得原有目录中文件被隐藏，因此根目录以及系统原有目录都不要作为挂载点，会造成系统异常甚至崩溃，挂载点最好是新建的空目录。  </p>
-<p>举个例子，我们想通过命令行访问某个 U 盘中的数据，图 1 所示为 U 盘文件目录结构和 Linux 系统中的文件目录结构。</p>
-<p><img src="/2019/10/21/Linux/Linux文件目录结构/2-1Z321130921V9.gif" alt="U çå Linux ç³»ç»æä»¶ç®å½ç»æ"></p>
-<p>图 1 中可以看到，目前 U 盘和 Linux 系统文件分属两个文件系统，还无法使用命令行找到 U 盘文件，需要将两个文件系统进行挂载。</p>
-<p>接下来，我们在根目录下新建一个目录 /sdb-u，通过挂载命令将 U 盘文件系统挂载到此目录，挂载效果如图 2 所示。  </p>
-<p><img src="/2019/10/21/Linux/Linux文件目录结构/2-1Z321130I44B.gif" alt="æä»¶ç³»ç»æè½½"></p>
-<p>可以看到，U 盘文件系统已经成为 Linux 文件系统目录的一部分，此时访问 /sdb-u/ 就等同于访问 U 盘。</p>
-<p>前面讲过，根目录下的 /dev/ 目录文件负责所有的硬件设备文件，事实上，当 U 盘插入 Linux 后，系统也确实会给 U 盘分配一个目录文件（比如 sdb1），就位于 /dev/ 目录下（/dev/sdb1），但无法通过 /dev/sdb1/ 直接访问 U 盘数据，访问此目录只会提供给你此设备的一些基本信息（比如容量）。</p>
-<p>总之，Linux 系统使用任何硬件设备，都必须将设备文件与已有目录文件进行挂载。  </p>
+<p>zip 命令的基本使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# zip ana.zip anaconda-ks.cfg</span><br><span class="line">adding: anaconda-ks.cfg (deflated 37%)</span><br><span class="line">#压缩</span><br><span class="line">[root@localhost ~]# ll ana.zip</span><br><span class="line">-rw-r--r-- 1 root root 935 6月 1716:00 ana.zip</span><br><span class="line">#压缩文件生成</span><br></pre></td></tr></table></figure>
+<p>所有的压缩命令都可以同时压缩多个文件，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# zip test.zip install.log install.log.syslog</span><br><span class="line">adding: install.log (deflated 72%)</span><br><span class="line">adding: install.log.syslog (deflated 85%)</span><br><span class="line">#同时压缩多个文件到test.zip压缩包中</span><br><span class="line">[root@localhost ~]#ll test.zip</span><br><span class="line">-rw-r--r-- 1 root root 8368 6月 1716:03 test.zip</span><br><span class="line">#压缩文件生成</span><br></pre></td></tr></table></figure>
+<p>使用 zip 命令压缩目录，需要使用“-r”选项，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir dir1</span><br><span class="line">#建立测试目录</span><br><span class="line">[root@localhost ~]# zip -r dir1.zip dir1</span><br><span class="line">adding: dir1/(stored 0%)</span><br><span class="line">#压缩目录</span><br><span class="line">[root@localhost ~]# ls -dl dir1.zip</span><br><span class="line">-rw-r--r-- 1 root root 160 6月 1716:22 dir1.zip</span><br><span class="line">#压缩文件生成</span><br></pre></td></tr></table></figure>
+<h3 id="解压zip文件-unzip"><a href="#解压zip文件-unzip" class="headerlink" title="解压zip文件 unzip"></a>解压zip文件 unzip</h3><p>unzip 命令可以查看和解压缩 zip 文件。该命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# unzip [选项] 压缩包名</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d 目录名</td>
+<td>将压缩文件解压到指定目录下。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>解压时并不覆盖已经存在的文件。</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>解压时覆盖已经存在的文件，并且无需用户确认。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>查看压缩文件的详细信息，包括压缩文件中包含的文件大小、文件名以及压缩比等，但并不做解压操作。</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>测试压缩文件有无损坏，但并不解压。</td>
+</tr>
+<tr>
+<td>-x 文件列表</td>
+<td>解压文件，但不包含文件列表中指定的文件。</td>
+</tr>
+</tbody>
+</table>
+<p>不论是文件压缩包，还是目录压缩包，都可以直接解压缩，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# unzip dir1.zip</span><br><span class="line">Archive: dir1.zip</span><br><span class="line">creating: dirl/</span><br><span class="line">#解压缩</span><br></pre></td></tr></table></figure>
+<p>使用 -d 选项手动指定解压缩位置，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# unzip -d /tmp/ ana.zip</span><br><span class="line">Archive: ana.zip</span><br><span class="line">inflating: /tmp/anaconda-ks.cfg</span><br><span class="line">#把压缩包解压到指定位置</span><br></pre></td></tr></table></figure>
+<h3 id="压缩文件或目录-gzip"><a href="#压缩文件或目录-gzip" class="headerlink" title="压缩文件或目录 gzip"></a>压缩文件或目录 gzip</h3><p>gzip 是 Linux系统中经常用来对文件进行压缩和解压缩的命令，通过此命令压缩得到的新文件，其扩展名通常标记为“.gz”。</p>
+<p>gzip 命令只能用来压缩文件，不能压缩目录，即便指定了目录，也只能压缩目录内的所有文件。</p>
+<p>gzip 命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gzip [选项] 源文件</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>将压缩数据输出到标准输出中，并保留源文件。</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>对压缩文件进行解压缩。</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>递归压缩指定目录下以及子目录下的所有文件。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>对于每个压缩和解压缩的文件，显示相应的文件名和压缩比。</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>对每一个压缩文件，显示以下字段：压缩文件的大小；未压缩文件的大小；压缩比；未压缩文件的名称。</td>
+</tr>
+<tr>
+<td>-数字</td>
+<td>用于指定压缩等级，-1 压缩等级最低，压缩比最差；-9 压缩比最高。默认压缩比是 -6。</td>
+</tr>
+</tbody>
+</table>
+<p>基本压缩：<br>gzip 压缩命令非常简单，甚至不需要指定压缩之后的压缩包名，只需指定源文件名即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gzip install.log</span><br><span class="line">#压缩instal.log 文件</span><br><span class="line">[root@localhost ~]# ls</span><br><span class="line">anaconda-ks.cfg install.log.gz install.log.syslog</span><br><span class="line">#压缩文件生成，但是源文件也消失了</span><br></pre></td></tr></table></figure>
+<p>保留源文件压缩：<br>在使用 gzip 命令压缩文件时，源文件会消失，从而生成压缩文件。可以在压缩文件的时候，不让源文件消失：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gzip -c anaconda-ks.cfg &gt;anaconda-ks.cfg.gz</span><br><span class="line">#使用-c选项，但是不让压缩数据输出到屏幕上，而是重定向到压缩文件中，这样可以缩文件的同时不删除源文件</span><br><span class="line">[root@localhost ~]# ls</span><br><span class="line">anaconda-ks.cfg anaconda-ks.cfg.gz install.log.gz install.log.syslog</span><br><span class="line">#可以看到压缩文件和源文件都存在</span><br></pre></td></tr></table></figure>
+<p> 压缩目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir test</span><br><span class="line">[root@localhost ~]# touch test/test1</span><br><span class="line">[root@localhost ~]# touch test/test2</span><br><span class="line">[root@localhost ~]# touch test/test3 #建立测试目录，并在里面建立几个测试文件</span><br><span class="line">[root@localhost ~]# gzip -r test/</span><br><span class="line">#压缩目录，并没有报错</span><br><span class="line">[root@localhost ~]# ls</span><br><span class="line">anaconda-ks.cfg anaconda-ks.cfg.gz install.log.gz install.log.syslog test</span><br><span class="line">#但是查看发现test目录依然存在，并没有变为压缩文件</span><br><span class="line">[root@localhost ~]# ls test/</span><br><span class="line">testl.gz test2.gz test3.gz</span><br><span class="line">#原来gzip命令不会打包目录，而是把目录下所有的子文件分别压缩</span><br></pre></td></tr></table></figure>
+<p>在 Linux 中，打包和压缩是分开处理的。而 gzip 命令只会压缩，不能打包，所以才会出现没有打包目录，而只把目录下的文件进行压缩的情况。</p>
+<h3 id="解压缩文件或目录-gunzip"><a href="#解压缩文件或目录-gunzip" class="headerlink" title="解压缩文件或目录 gunzip"></a>解压缩文件或目录 gunzip</h3><p>gunzip 是一个使用广泛的解压缩命令，它用于解压被 gzip 压缩过的文件（扩展名为 .gz）。</p>
+<p>对于解压被 gzip 压缩过的文件，还可以使用 gzip 自己，即 gzip -d 解压缩包。</p>
+<p>gunzip 命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gunzip [选项] 文件</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-r</td>
+<td>递归处理，解压缩指定目录下以及子目录下的所有文件。</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>把解压缩后的文件输出到标准输出设备。</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>强制解压缩文件，不理会文件是否已存在等情况。</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>列出压缩文件内容。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示命令执行过程。</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>测试压缩文件是否正常，但不对其做解压缩操作。</td>
+</tr>
+</tbody>
+</table>
+<p>直接解压缩文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gunzip install.log.gz</span><br></pre></td></tr></table></figure>
+<p>当然，”gunzip -r”依然只会解压缩目录下的文件，而不会解打包。要想解压缩”.gz”格式，还可以使用 “gzip -d”命令，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gzip -d anaconda-ks.cfg.gz</span><br></pre></td></tr></table></figure>
+<p>要解压缩目录下的内容，则需使用 “-r” 选项，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gunzip -r test/</span><br></pre></td></tr></table></figure>
+<p>如果我们压缩的是一个纯文本文件，则可以直接使用 zcat 命令在不解压缩的情况下查看这个文本文件中的内容。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# zcat anaconda-ks.cfg.gz</span><br></pre></td></tr></table></figure>
+<h3 id="压缩文件（-bz2格式）bzip2"><a href="#压缩文件（-bz2格式）bzip2" class="headerlink" title="压缩文件（.bz2格式）bzip2"></a>压缩文件（.bz2格式）bzip2</h3><p>bzip2 命令同 gzip 命令类似，只能对文件进行压缩（或解压缩），对于目录只能压缩（或解压缩）该目录及子目录下的所有文件。当执行压缩任务完成后，会生成一个以“.bz2”为后缀的压缩包。</p>
+<p>bzip2 命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bzip2 [选项] 源文件</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d</td>
+<td>执行解压缩，此时该选项后的源文件应为标记有 .bz2 后缀的压缩包文件。</td>
+</tr>
+<tr>
+<td>-k</td>
+<td>bzip2 在压缩或解压缩任务完成后，会删除原始文件，若要保留原始文件，可使用此选项。</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>bzip2 在压缩或解压缩时，若输出文件与现有文件同名，默认不会覆盖现有文件，若使用此选项，则会强制覆盖现有文件。</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>测试压缩包文件的完整性。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>压缩或解压缩文件时，显示详细信息。</td>
+</tr>
+<tr>
+<td>-数字</td>
+<td>这个参数和 gzip 命令的作用一样，用于指定压缩等级，-1 压缩等级最低，压缩比最差；-9 压缩比最高</td>
+</tr>
+</tbody>
+</table>
+<p>gzip 只是不会打包目录，但是如果使用“-r”选项，则可以分别压缩目录下的每个文件；而 bzip2 命令则根本不支持压缩目录，也没有“-r”选项。</p>
+<p>直接压缩文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bzip2 anaconda-ks.cfg</span><br><span class="line">#压缩成&quot;.bz2&quot;格式</span><br></pre></td></tr></table></figure>
+<p>此压缩命令会在压缩的同时删除源文件。</p>
+<p>压缩的同时保留源文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bzip2 -k install.log.syslog</span><br><span class="line">#压缩</span><br><span class="line">[root@localhost ~]# ls</span><br><span class="line">anaconda-ks.cfg.bz2 install.loginstalLlogsyslog install.logsyslogbz2</span><br><span class="line">#压缩文件和源文件都存在</span><br></pre></td></tr></table></figure>
+<h3 id="bz2格式的解压缩-bunzip2"><a href="#bz2格式的解压缩-bunzip2" class="headerlink" title="bz2格式的解压缩 bunzip2"></a>bz2格式的解压缩 bunzip2</h3><p>要解压“.bz2”格式的压缩包文件，除了使用“bzip2 -d 压缩包名”命令外，还可以使用 bunzip2 命令。</p>
+<p>bunzip2 命令的使用和 gunzip 命令大致相同，bunzip2 命令只能用于解压文件，即便解压目录，也是解压该目录以及所含子目录下的所有文件。</p>
+<p>bunzip2 命令的基本格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bunzip2 [选项] 源文件</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-k</td>
+<td>解压缩后，默认会删除原来的压缩文件。若要保留压缩文件，需使用此参数。</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>解压缩时，若输出的文件与现有文件同名时，默认不会覆盖现有的文件。若要覆盖，可使用此选项。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示命令执行过程。</td>
+</tr>
+<tr>
+<td>-L</td>
+<td>列出压缩文件内容。</td>
+</tr>
+</tbody>
+</table>
+<p>使用 gunzip2 命令来进行解压缩：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bunzip2 anaconda-ks.cfg.bz2</span><br></pre></td></tr></table></figure>
+<p>“.bz2” 格式也可以使用 “bzip2 -d 压缩包” 命令来进行解压缩，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bzip2 -d install.log.syslog.bz2</span><br></pre></td></tr></table></figure>
+<p>和 “.gz” 格式一样，”.bz2” 格式压缩的纯文本文件也可以不解压缩直接查看，使用的命令是 bzcat。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bzcat install.log.syslog.bz2</span><br></pre></td></tr></table></figure>
+<h3 id="vim基本操作"><a href="#vim基本操作" class="headerlink" title="vim基本操作"></a>vim基本操作</h3><p>使用 Vim 编辑文件时，存在 3 种工作模式，分别是命令模式、输入模式和编辑模式，这 3 种工作模式可随意切换</p>
+<p><img src="/2019/10/21/Linux/Linux基础命令/2-1Q00Q41T01J.jpg" alt="img"></p>
+<p><strong>Vim的命令模式</strong> </p>
+<p>使用 Vim 编辑文件时，默认处于命令模式。此模式下，可使用方向键（上、下、左、右键）或 k、j、h、i 移动光标的位置，还可以对文件内容进行复制、粘贴、替换、删除等操作。</p>
+<p><strong>Vim的输入模式</strong> </p>
+<p>  在输入模式下，Vim 可以对文件执行写操作，类似于在 Windows 系统的文档中输入内容。</p>
+<p>使 Vim 进行输入模式的方式是在命令模式状态下输入 i、I、a、A、o、O 等插入命令（各指令的具体功能如表 3 所示），当编辑文件完成后按 Esc 键即可返回命令模式。</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>在当前光标所在位置插入随后输入的文本，光标后的文本相应向右移动</td>
+</tr>
+<tr>
+<td>I</td>
+<td>在光标所在行的行首插入随后输入的文本，行首是该行的第一个非空白字符，相当于光标移动到行首执行 i 命令</td>
+</tr>
+<tr>
+<td>o</td>
+<td>在光标所在行的下面插入新的一行。光标停在空行首，等待输入文本</td>
+</tr>
+<tr>
+<td>O</td>
+<td>在光标所在行的上面插入新的一行。光标停在空行的行首，等待输入文本</td>
+</tr>
+<tr>
+<td>a</td>
+<td>在当前光标所在位置之后插入随后输入的文本</td>
+</tr>
+<tr>
+<td>A</td>
+<td>在光标所在行的行尾插入随后输入的文本，相当于光标移动到行尾再执行a命令</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim 的编辑模式</strong> </p>
+<p>  编辑模式用于对文件中的指定内容执行保存、查找或替换等操作。</p>
+<p>使 Vim 切换到编辑模式的方法是在命令模式状态下按“：”键，此时 Vim 窗口的左下方出现一个“：”符号，这是就可以输入相关指令进行操作了。  </p>
+<p>指令执行后 Vim 会自动返回命令模式。如想直接返回命令模式，按 Esc 即可。</p>
+<p><strong>Vim 打开文件</strong> </p>
+<p>打开方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@itxdl ~]# vim /test/vi.test</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Vi 使用的选项</th>
+<th>说 明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vim filename</td>
+<td>打开或新建一个文件，并将光标置于第一行的首部</td>
+</tr>
+<tr>
+<td>vim -r filename</td>
+<td>恢复上次 vim 打开时崩溃的文件</td>
+</tr>
+<tr>
+<td>vim -R filename</td>
+<td>把指定的文件以只读方式放入 Vim 编辑器中</td>
+</tr>
+<tr>
+<td>vim + filename</td>
+<td>打开文件，并将光标置于最后一行的首部</td>
+</tr>
+<tr>
+<td>vi +n filename</td>
+<td>打开文件，并将光标置于第 n 行的首部</td>
+</tr>
+<tr>
+<td>vi +/pattern filename</td>
+<td>打幵文件，并将光标置于第一个与 pattern 匹配的位置</td>
+</tr>
+<tr>
+<td>vi -c command filename</td>
+<td>在对文件进行编辑前，先执行指定的命令</td>
+</tr>
+</tbody>
+</table>
+<p><strong>使用 Vim 进行编辑</strong> </p>
+<p>Vim 插入文本</p>
+<p>从命令模式进入输入模式进行编辑，可以按下 I、i、O、o、A、a 等键来完成，使用不同的键，光标所处的位置不同</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>在当前光标所在位置插入随后输入的文本，光标后的文本相应向右移动</td>
+</tr>
+<tr>
+<td>I</td>
+<td>在光标所在行的行首插入随后输入的文本，行首是该行的第一个非空白字符，相当于光标移动到行首执行 i 命令</td>
+</tr>
+<tr>
+<td>o</td>
+<td>在光标所在行的下面插入新的一行。光标停在空行首，等待输入文本</td>
+</tr>
+<tr>
+<td>O（大写）</td>
+<td>在光标所在行的上面插入新的一行。光标停在空行的行首，等待输入文本</td>
+</tr>
+<tr>
+<td>a</td>
+<td>在当前光标所在位置之后插入随后输入的文本</td>
+</tr>
+<tr>
+<td>A</td>
+<td>在光标所在行的行尾插入随后输入的文本，相当于光标移动到行尾再执行 a 命令</td>
+</tr>
+</tbody>
+</table>
+<p>Vim 查找文本</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/abc</td>
+<td>从光标所在位置向前查找字符串 abc</td>
+</tr>
+<tr>
+<td>/^abc</td>
+<td>查找以 abc 为行首的行</td>
+</tr>
+<tr>
+<td>/abc$</td>
+<td>查找以 abc 为行尾的行</td>
+</tr>
+<tr>
+<td>?abc</td>
+<td>从光标所在为主向后查找字符串 abc</td>
+</tr>
+<tr>
+<td>n</td>
+<td>向同一方向重复上次的查找指令</td>
+</tr>
+<tr>
+<td>N</td>
+<td>向相反方向重复上次的查找指定</td>
+</tr>
+</tbody>
+</table>
+<p>例如，在 /etc/passwd.vi 文件中查找字符串 “root”，则运行命令如下图</p>
+<p><img src="/2019/10/21/Linux/Linux基础命令/2-1Q00Q6360L18.jpg" alt="img"></p>
+<p>在查找过程中需要注意的是，要查找的字符串是严格区分大小写的，如查找 “shenchao” 和 “ShenChao” 会得到不同的结果。如果想忽略大小写，则输入命令 “:set ic”；调整回来输入”:set noic”。</p>
+<p>如果在字符串中出现特殊符号，则需要加上转义字符 “\”。常见的特殊符号有 \、*、?、$ 等。如果出现这些字符，例如，要查找字符串 “10$”，则需要在命令模式中输入 “/10\$”。</p>
+<p><strong>Vim 替换文本</strong> </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>替换光标所在位置的字符</td>
+</tr>
+<tr>
+<td>R</td>
+<td>从光标所在位置开始替换字符，其输入内容会覆盖掉后面等长的文本内容，按“Esc”可以结束</td>
+</tr>
+<tr>
+<td>:s/a1/a2/g</td>
+<td>将当前光标所在行中的所有 a1 用 a2 替换</td>
+</tr>
+<tr>
+<td>:n1,n2s/a1/a2/g</td>
+<td>将文件中 n1 到 n2 行中所有 a1 都用 a2 替换</td>
+</tr>
+<tr>
+<td>:g/a1/a2/g</td>
+<td>将文件中所有的 a1 都用 a2 替换</td>
+</tr>
+</tbody>
+</table>
+<p>例如，要将某文件中所有的 “root” 替换为 “liudehua”，则有两种输入命令，分别为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:1, $s/root/liudehua/g</span><br><span class="line">或</span><br><span class="line">:%s/root/liudehua/g</span><br></pre></td></tr></table></figure>
+<p>上述命令是在编辑模式下操作的，表示的是从第一行到最后一行，即全文查找 “root”，然后替换成 “liudehua”。</p>
+<p>如果刚才的命令变成 <code>:10,20 s/root/liudehua/g</code>，则只替换从第 10 行到第 20 行的 “root”。</p>
+<p><strong>Vim删除文本</strong> </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>删除光标所在位置的字符</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>删除光标所在行</td>
+</tr>
+<tr>
+<td>ndd</td>
+<td>删除当前行（包括此行）后 n 行文本</td>
+</tr>
+<tr>
+<td>dG</td>
+<td>删除光标所在行一直到文件末尾的所有内容</td>
+</tr>
+<tr>
+<td>D</td>
+<td>删除光标位置到行尾的内容</td>
+</tr>
+<tr>
+<td>:a1,a2d</td>
+<td>函数从 a1 行到 a2 行的文本内容</td>
+</tr>
+</tbody>
+</table>
+<p>注意，被删除的内容并没有真正删除，都放在了剪贴板中。将光标移动到指定位置处，按下 “p” 键，就可以将刚才删除的内容又粘贴到此处。</p>
+<p><strong>Vim复制和粘贴文本</strong> </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p</td>
+<td>将剪贴板中的内容粘贴到光标后</td>
+</tr>
+<tr>
+<td>P（大写）</td>
+<td>将剪贴板中的内容粘贴到光标前</td>
+</tr>
+<tr>
+<td>y</td>
+<td>复制已选中的文本到剪贴板</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>将光标所在行复制到剪贴板，此命令前可以加数字 n，可复制多行</td>
+</tr>
+<tr>
+<td>yw</td>
+<td>将光标位置的单词复制到剪贴板</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim其他常用快捷键</strong> </p>
+<p>某些情况下，可能需要把两行进行连接。比如说，下面的文件中有两行文本，现在需要将其合并成一行（实际上就是将两行间的换行符去掉）。可以直接在命令模式中按下 “J” 键</p>
+<p>如果不小心误删除了文件内容，则可以通过 “u” 键来撤销刚才执行的命令。如果要撤销刚才的多次操作，可以多按几次 “u” 键。</p>
+<p><strong>Vim 保存退出文本</strong> </p>
+<p>Vim 的保存和退出是在编辑模式中进行的，其常用命令如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:wq!</td>
+<td>保存并强制退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>:q</td>
+<td>不保存就退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>不保存，且强制退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>:w</td>
+<td>保存但是不退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>:w!</td>
+<td>强制保存文本</td>
+</tr>
+<tr>
+<td>:w filename</td>
+<td>另存到 filename 文件</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td>保存并退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>x！</td>
+<td>保存文本，并退出 Vim 编辑器，更通用的一个 vim 命令</td>
+</tr>
+<tr>
+<td>ZZ</td>
+<td>直接退出 Vim 编辑器</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim快捷方向键</strong> </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h</td>
+<td>光标向左移动一位</td>
+</tr>
+<tr>
+<td>j</td>
+<td>光标向下移动一行（以回车为换行符），也就是光标向下移动</td>
+</tr>
+<tr>
+<td>k</td>
+<td>光标向上移动一行（也就是向上移动）</td>
+</tr>
+<tr>
+<td>l</td>
+<td>光标向右移动一位</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim光标以单词为单位移动</strong> </p>
+<p>某些情形下，可能需要光标迅速移动至一行中的某个位置，将光标以单词为单位进行移动就会很方便。</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>w 或 W</td>
+<td>光标移动至下一个单词的单词首</td>
+</tr>
+<tr>
+<td>b 或 B</td>
+<td>光标移动至上一个单词的单词首</td>
+</tr>
+<tr>
+<td>e 或 E</td>
+<td>光标移动至下一个单词的单词尾</td>
+</tr>
+<tr>
+<td>nw 或 nW</td>
+<td>n 为数字，表示光标向右移动 n 个单词</td>
+</tr>
+<tr>
+<td>nb 或 nB</td>
+<td>n 为数字，表示光标向左移动 n 个单词</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim光标移动至行首或行尾</strong> </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 或 ^</td>
+<td>光标移动至当前行的行首</td>
+</tr>
+<tr>
+<td>$</td>
+<td>光标移动至当前行的行尾</td>
+</tr>
+<tr>
+<td>n$</td>
+<td>光标移动至当前行只有 n 行的行尾，n为数字</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim光标移动至指定字符</strong> </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fx</td>
+<td>光标移动至当前行中下一个 x 字符处</td>
+</tr>
+<tr>
+<td>Fx</td>
+<td>光标移动至当前行中下一个 x 字符处</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim光标移动到指定行</strong> </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gg</td>
+<td>光标移动到文件开头</td>
+</tr>
+<tr>
+<td>G</td>
+<td>光标移动至文件末尾</td>
+</tr>
+<tr>
+<td>nG</td>
+<td>光标移动到第 n 行，n 为数字</td>
+</tr>
+<tr>
+<td>:n</td>
+<td>编辑模式下使用的快捷键，可以将光标快速定义到指定行的行首</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vim光标移动到匹配的括号处</strong> </p>
+<p>在编辑程序时，经常会为将光标移动到与一个 “(“ 匹配的 “)” （对于 [] 和 {} 也是一样的）处而感到头疼。Vim 里面提供了一个非常方便地査找匹配括号的命令，这就是 “%”。</p>
+<p>比如，在 /etc/init.d/sshd 脚本文件中，想迅速地将光标定位到与之 “{“ 相对应的 “}” 处，则可以将光标先定位在 “{“ 处，然后再使用 “％” 命令，使之定位在 “}” 处</p>
+<h3 id="Vim批量注释和自定义注释快捷键"><a href="#Vim批量注释和自定义注释快捷键" class="headerlink" title="Vim批量注释和自定义注释快捷键"></a>Vim批量注释和自定义注释快捷键</h3><p>使用 Vim 编辑 Shell 脚本，在进行调试时，需要进行多行的注释，每次都要先切换到输入模式，在行首输入注释符”#”再退回命令模式，非常麻烦。</p>
+<p>连续行的注释其实可以用替换命令来完成。换句话说，在指定范围行加”#”注释，可以使用 “:起始行，终止行 s/^/#/g”，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:1,10s/^/#/g</span><br></pre></td></tr></table></figure>
+<p>表示在第 1~10 行行首加”#”注释。”^”意为行首；”g”表示执行替换时不询问确认。如果希望每行交互询问是否执行，则可将 “g” 改为 “c”。</p>
+<p>取消连续行注释，则可以使用 “:起始行，终止行s/^#//g”，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:1,10s/^#//g</span><br></pre></td></tr></table></figure>
+<p>意为将行首的”#”替换为空，即删除。</p>
+<p>添加”//“注释要稍微麻烦一些，命令格式为 “:起始行，终止行 s/^/\/\//g”。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:1,5s/^/\/\//g</span><br></pre></td></tr></table></figure>
+<p>表示在第 1~5 行行首加”//“注释，因为 “/“ 前面需要加转义字符 “\“</p>
+<p>以上方法可以解决连续行的注释问题，如果是非连续的多行就不灵了，这时我们可以定义快捷键简化操作。格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:map 快捷键 执行命令</span><br></pre></td></tr></table></figure>
+<p>如定义快捷键 “Ctrl+P” 为在行首添加 “#” 注释，可以执行 “:map^P l#<esc>“。其中 “^P” 为定义快捷键 “Ctrl+P”。注意：必须同时按 “Ctrl+V+P” 快捷键生成 “^P” 方可有效，或先按 “Ctrl+V” 再按 “Ctrl+P” 也可以，直接输入 “^P” 是无效的。</esc></p>
+<p>“l#<esc>“ 就是此快捷键要触发的动作，”l” 为在光标所在行行首插入，”#” 为要输入的字符，”<esc>“ 表示退回命令模式。”<esc>“ 要逐个字符输入，不可直接按键盘上的 Esc 键。</esc></esc></esc></p>
+<p>设置成功后，直接在任意需要注释的行上按 “Ctrl+P” 快捷键，就会自动在行首加上 “#” 注释。取消此快捷键定义，输入 “:unmap^P” 即可。</p>
+<p>我们可以延伸一下，如果想取消文件行首的快捷键，则可以设置 “:map^B 0x”，快捷键为 “Ctrl+B”, “0” 表示跳到行首，”x” 表示删除光标所在处字符。</p>
+<p>再如，有时我们写完脚本等文件，需要在末尾注释中加入自己的邮箱，则可以直接定义每次按快捷键 “Ctrl+E” 实现插入邮箱，定义方法为 “:map^E <a href="mailto:asamlee@itxdl.net" target="_blank" rel="noopener">asamlee@itxdl.net</a><esc>“。其中 “a” 表示在当前字符后插入，”<a href="mailto:samlee@itxdl.net" target="_blank" rel="noopener">samlee@itxdl.net</a>“ 为插入的邮箱，”<esc>“ 表示插入后返回命令模式。</esc></esc></p>
+<p>所以，通过定义快捷键，可以把前面讲到的命令组合起来使用。</p>
+<p>将快捷键对应的命令保存在 .vimrc 文件中，即可在每次使用 Vim 时自动调用，非常方便。  </p>
+<h3 id="连接文件并打印输出到标准输出设备-cat"><a href="#连接文件并打印输出到标准输出设备-cat" class="headerlink" title="连接文件并打印输出到标准输出设备 cat"></a>连接文件并打印输出到标准输出设备 cat</h3><p>cat 命令可以用来显示文本文件的内容（类似于 DOS 下的 type 命令），也可以把几个文件内容附加到另一个文件中，即连接合并文件。cat 是 concatenate（连接、连续）的简写。</p>
+<p>cat 命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat [选项] 文件名</span><br><span class="line">或者</span><br><span class="line">[root@localhost ~]# cat 文件1 文件2 &gt; 文件3</span><br></pre></td></tr></table></figure>
+<p>这两种格式中，前者用于显示文件的内容，常用选项及各自的含义如下表所示；而后者用于连接合并文件。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-A</td>
+<td>相当于 -vET 选项的整合，用于列出所有隐藏符号；</td>
+</tr>
+<tr>
+<td>-E</td>
+<td>列出每行结尾的回车符 $；</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>对输出的所有行进行编号；</td>
+</tr>
+<tr>
+<td>-b</td>
+<td>同 -n 不同，此选项表示只对非空行进行编号。</td>
+</tr>
+<tr>
+<td>-T</td>
+<td>把 Tab 键 ^I 显示出来；</td>
+</tr>
+<tr>
+<td>-V</td>
+<td>列出特殊字符；</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>当遇到有连续 2 行以上的空白行时，就替换为 1 行的空白行。</td>
+</tr>
+</tbody>
+</table>
+<p>注意，cat 命令用于查看文件内容时，不论文件内容有多少，都会一次性显示。如果文件非常大，那么文件开头的内容就看不到了。不过可以使用<code>PgUp+上箭头</code>组合键向上翻页，但是这种翻页是有极限的，如果文件足够长，那么还是无法看全文件的内容。</p>
+<p>cat 命令本身非常简单，我们可以直接查看文件的内容。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat anaconda-ks.cfg</span><br><span class="line"># Kickstart file automatically generated by anaconda.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#version=DEVEL</span><br><span class="line">install</span><br><span class="line">cdrom</span><br><span class="line">lang zh一CN.UTF-8</span><br><span class="line">…省略部分内容...</span><br></pre></td></tr></table></figure>
+<p>而如果使用 “-n” 选项，则会显示行号。例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat -n anaconda-ks.cfg</span><br><span class="line">1 # Kickstart file automatically generated by anaconda.</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4 #version=DEVEL</span><br><span class="line">5 install</span><br><span class="line">6 cdrom</span><br><span class="line">…省略部分内容...</span><br></pre></td></tr></table></figure>
+<p>如果使用 “-A” 选项，则相当于使用了 “-vET” 选项，可以查看文本中的所有隐藏符号，包括回车符（$）、Tab 键（^I）等。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat -A anaconda-ks.cfg</span><br><span class="line"># Kickstart file automatically generated by anaconda.$</span><br><span class="line">$</span><br><span class="line">$</span><br><span class="line">#version=DEVEL$</span><br><span class="line">install$</span><br><span class="line">cdrom$</span><br><span class="line">…省略部分内容…</span><br></pre></td></tr></table></figure>
+<p>将文件 file1.txt 和 file2.txt 的内容合并后输出到文件 file3.txt 中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost base]# ls</span><br><span class="line">file1.txt    file2.txt</span><br><span class="line">[root@localhost base]# cat file1.txt</span><br><span class="line">http://c.biancheng.net(file1.txt)</span><br><span class="line">[root@localhost base]# cat file2.txt</span><br><span class="line">is great(file2.txt)</span><br><span class="line">[root@localhost base]# cat file1.txt file2.txt &gt; file3.txt</span><br><span class="line">[root@localhost base]# more file3.txt</span><br><span class="line">#more 命令可查看文件中的内容</span><br><span class="line">http://c.biancheng.net(file1.txt)</span><br><span class="line">is great(file2.txt)</span><br><span class="line">[root@localhost base]# ls</span><br><span class="line">file1.txt    file2.txt    file3.txt</span><br></pre></td></tr></table></figure>
+<h3 id="分屏显示文件内容-more"><a href="#分屏显示文件内容-more" class="headerlink" title="分屏显示文件内容 more"></a>分屏显示文件内容 more</h3><p>more 命令可以分页显示文本文件的内容，使用者可以逐页阅读文件中内容，此命令的基本格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# more [选项] 文件名</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f</td>
+<td>计算行数时，以实际的行数，而不是自动换行过后的行数。</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>不以卷动的方式显示每一页，而是先清除屏幕后再显示内容。</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>跟 -p 选项相似，不同的是先显示内容再清除其他旧资料。</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>当遇到有连续两行以上的空白行时，就替换为一行的空白行。</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>不显示下引号（根据环境变量 TERM 指定的终端而有所不同）。</td>
+</tr>
+<tr>
+<td>+n</td>
+<td>从第 n 行开始显示文件内容，n 代表数字。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>一次显示的行数，n 代表数字。</td>
+</tr>
+</tbody>
+</table>
+<p>more 命令的执行会打开一个交互界面，常用的交互命令：</p>
+<table>
+<thead>
+<tr>
+<th>交互指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h 或 ？</td>
+<td>显示 more 命令交互命令帮助。</td>
+</tr>
+<tr>
+<td>q 或 Q</td>
+<td>退出 more。</td>
+</tr>
+<tr>
+<td>v</td>
+<td>在当前行启动一个编辑器。</td>
+</tr>
+<tr>
+<td>:f</td>
+<td>显示当前文件的文件名和行号。</td>
+</tr>
+<tr>
+<td>!&lt;命令&gt; 或 :!&lt;命令&gt;</td>
+<td>在子<a href="http://c.biancheng.net/shell/" target="_blank" rel="noopener">Shell</a>中执行指定命令。</td>
+</tr>
+<tr>
+<td>回车键</td>
+<td>向下移动一行。</td>
+</tr>
+<tr>
+<td>空格键</td>
+<td>向下移动一页。</td>
+</tr>
+<tr>
+<td>Ctrl+l</td>
+<td>刷新屏幕。</td>
+</tr>
+<tr>
+<td>=</td>
+<td>显示当前行的行号。</td>
+</tr>
+<tr>
+<td>‘</td>
+<td>转到上一次搜索开始的地方。</td>
+</tr>
+<tr>
+<td>Ctrf+f</td>
+<td>向下滚动一页。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>重复上次输入的命令。</td>
+</tr>
+<tr>
+<td>/ 字符串</td>
+<td>搜索指定的字符串。</td>
+</tr>
+<tr>
+<td>d</td>
+<td>向下移动半页。</td>
+</tr>
+<tr>
+<td>b</td>
+<td>向上移动一页。</td>
+</tr>
+</tbody>
+</table>
+<p>用分页的方式显示 anaconda-ks.cfg 文件的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# more anaconda-ks.cfg</span><br><span class="line"># Kickstart file automatically generated by anaconda.</span><br><span class="line">#version=DEVEL</span><br><span class="line">install</span><br><span class="line">cdrom</span><br><span class="line">…省略部分内容…</span><br><span class="line">--More--(69%)</span><br><span class="line">#在这里执行交互命令即可</span><br></pre></td></tr></table></figure>
+<p>显示文件 anaconda-ks.cfg 的内容，每 10 行显示一屏，同时清楚屏幕，使用以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# more -c -10 anaconda-ks.cfg</span><br><span class="line">#省略输出内容。</span><br></pre></td></tr></table></figure>
 
           
         
@@ -946,706 +1994,6 @@
         
           
             
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/RestController和Controller的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/21/框架/RestController和Controller的区别/" class="post-title-link" itemprop="url">RestController和Controller的区别</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-23 14:16:36" itemprop="dateModified" datetime="2019-10-23T14:16:36+08:00">2019-10-23</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-23T14:16:36+08:00" content="2019-10-23">
-                2019-10-23 14:16:36
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/RestController和Controller的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/RestController和Controller的区别/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。</p>
-<p>1、如果只是使用@RestController注解Controller，则Controller中的方法无法返回jsp页面，配置的视图解析器InternalResourceViewResolver则不起作用，返回的内容就是Return 里的内容（String/JSON）。<br>例如：本来应该到success.jsp页面的，则其显示success.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2、如果使用@RestController注解Controller，需要返回到指定页面，则需要配置视图解析器InternalResourceViewResolver，可以利用ModelAndView返回视图。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> newModelAndView(<span class="string">"success"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3、如果使用@Controller注解Controller，在对应的方法上，视图解析器可以解析return 的jsp,html页面，并且跳转到相应页面</p>
-<p>若需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上@ResponseBody注解。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Resource和Autowired的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/21/框架/Resource和Autowired的区别/" class="post-title-link" itemprop="url">Resource和Autowired的区别</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-27 01:03:09" itemprop="dateModified" datetime="2019-10-27T01:03:09+08:00">2019-10-27</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-27T01:03:09+08:00" content="2019-10-27">
-                2019-10-27 01:03:09
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/Resource和Autowired的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Resource和Autowired的区别/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>@Resource和@Autowired都是做bean的注入时使用，其实@Resource不是Spring的注解，是javaEE的注解，它的包是javax.annotation.Resource，需要导入，但是Spring支持该注解的注入。</p>
-<p>1、共同点</p>
-<p>两者都可以写在字段和setter方法上。两者如果都写在字段上，那么就不需要再写setter方法。</p>
-<p>2、不同点</p>
-<p>（1）@Autowired</p>
-<p>@Autowired为Spring提供的注解，需要导入包org.springframework.beans.factory.annotation.Autowired;只按照byType注入。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 下面两种@Autowired只要使用一种即可</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; <span class="comment">// 用于字段上</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserDao</span><span class="params">(UserDao userDao)</span> </span>&#123; <span class="comment">// 用于属性的方法上</span></span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>@Autowired注解是按照类型（byType）装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，</p>
-<p>可以设置它的required属性为false。如果我们想使用按照名称（byName）来装配，可以结合@Qualifier注解一起</p>
-<p>使用。如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier</span>(<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>（2）@Resource</p>
-<p>@Resource默认按照ByName自动注入，由J2EE提供，需要导入包javax.annotation.Resource。默认按照名称进</p>
-<p>行装配，名称可以通过name属性进行指定，如果没有指定name属性，当注解写在字段上时，默认取字段名进行</p>
-<p>安装名称查找，如果注解写在setter方法上默认取属性名进行装配。当找不到与名称匹配的bean时才按照类型进</p>
-<p>行装配。</p>
-<p>但是需要注意的是，如果name属性一旦指定，就只会按照名称进行装配。</p>
-<p>如果既不制定name也不制定type属性，这时将通过反射机制使用byName自动注入策略。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 下面两种@Resource只要使用一种即可</span></span><br><span class="line">    <span class="meta">@Resource</span>(name=<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; <span class="comment">// 用于字段上</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Resource</span>(name=<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserDao</span><span class="params">(UserDao userDao)</span> </span>&#123; <span class="comment">// 用于属性的setter方法上</span></span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注：最好是将@Resource放在setter方法上，因为这样更符合面向对象的思想，通过set、get去操作属性，而不是直接去操作属性。</p>
-<p>@Resource装配顺序：</p>
-<p>①如果同时指定了name和type，则从Spring上下文中找到唯一匹配的bean进行装配，找不到则抛出异常。</p>
-<p>②如果指定了name，则从上下文中查找名称（id）匹配的bean进行装配，找不到则抛出异常。</p>
-<p>③如果指定了type，则从上下文中找到类似匹配的唯一bean进行装配，找不到或是找到多个，都会抛出异常。</p>
-<p>④如果既没有指定name，又没有指定type，则自动按照byName方式进行装配；如果没有匹配，则回退为一个原始类型进行匹配，如果匹配则自动装配。</p>
-<p>@Resource的作用相当于@Autowired，只不过@Autowired按照byType自动注入。</p>
-<p>byName和byType看什么</p>
-<p><img src="/2019/10/21/框架/Resource和Autowired的区别/20180723224000349.png" alt></p>
-<ul>
-<li>byName会搜索整个配置文件中的bean,如果有相同名称的bean则自动装配，否则显示异常。</li>
-</ul>
-<p>例如，在装配com.tutorialspoint.TextEditor的spellChecker时，spring会搜索整个配置文件的bean查找是否有名称为spellChecker的bean，有则自动装配，没有就抛出异常。</p>
-<ul>
-<li>byType会搜索整个配置文件中的bean,如果有相同类型的bean则自动装配，否则显示异常。</li>
-</ul>
-<p>例如，在装配com.tutorialspoint.TextEditor的spellChecker时，spring会搜索整个配置文件的bean查找是否有跟spellChecker属于相同类的bean，有则自动装配，没有就抛出异常。</p>
-<p>#### </p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Mybatis如何防止SQL注入/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/21/框架/Mybatis如何防止SQL注入/" class="post-title-link" itemprop="url">Mybatis如何防止SQL注入</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-27 14:40:51" itemprop="dateModified" datetime="2019-10-27T14:40:51+08:00">2019-10-27</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-27T14:40:51+08:00" content="2019-10-27">
-                2019-10-27 14:40:51
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/Mybatis如何防止SQL注入/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Mybatis如何防止SQL注入/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>两个sql语句的区别：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;selectByNameAndPassword&quot; parameterType=&quot;java.util.Map&quot; resultMap=&quot;BaseResultMap&quot;&gt;</span><br><span class="line">select id, username, password, role</span><br><span class="line">from user</span><br><span class="line">where username = #&#123;username,jdbcType=VARCHAR&#125;</span><br><span class="line">and password = #&#123;password,jdbcType=VARCHAR&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id="selectByNameAndPassword" parameterType="java.util.Map" resultMap="BaseResultMap"&gt;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>, username, <span class="keyword">password</span>, <span class="keyword">role</span></span><br><span class="line"><span class="keyword">from</span> <span class="keyword">user</span></span><br><span class="line"><span class="keyword">where</span> username = $&#123;username,jdbcType=<span class="built_in">VARCHAR</span>&#125;</span><br><span class="line"><span class="keyword">and</span> <span class="keyword">password</span> = $&#123;<span class="keyword">password</span>,jdbcType=<span class="built_in">VARCHAR</span>&#125;</span><br><span class="line">&lt;/<span class="keyword">select</span>&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>mybatis中的#和$的区别：</strong></p>
-<p>1、#将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。</p>
-<p>如：where username=#{username}，如果传入的值是111,那么解析成sql时的值为where username=”111”, 如</p>
-<p>果传入的值是id，则解析成的sql为where username=”id”.　</p>
-<p>2、$将传入的数据直接显示生成在sql中。</p>
-<p>如：where username=${username}，如果传入的值是111,那么解析成sql时的值为where username=111；</p>
-<p>如果传入的值是;drop table user;，则解析成的sql为：select id, username, password, role from user where </p>
-<p>username=;drop table user;</p>
-<p>3、#方式能够很大程度防止sql注入，$方式无法防止Sql注入。</p>
-<p>4、$方式一般用于传入数据库对象，例如传入表名.</p>
-<p>5、一般能用#的就别用$，若不得不使用“${xxx}”这样的参数，要手工地做好过滤工作，来防止sql注入攻击。</p>
-<p>6、在MyBatis中，“${xxx}”这样格式的参数会直接参与SQL编译，从而不能避免注入攻击。但涉及到动态表名和列</p>
-<p>名时，只能使用“${xxx}”这样的参数格式。所以，这样的参数需要我们在代码中手工进行处理来防止注入。</p>
-<p>【结论】在编写MyBatis的映射语句时，尽量采用“#{xxx}”这样的格式。若不得不使用“${xxx}”这样的参数，要手工</p>
-<p>地做好过滤工作，来防止SQL注入攻击。</p>
-<h3 id="什么是sql注入"><a href="#什么是sql注入" class="headerlink" title="什么是sql注入"></a>什么是sql注入</h3><p>是一种代码注入技术，用于攻击数据驱动的应用，恶意的SQL语句被插入到执行的实体字段中（例如，为了转储数据库内容给攻击者）</p>
-<p>　　SQL注入，大家都不陌生，是一种常见的攻击方式。<strong>攻击者</strong>在界面的表单信息或URL上输入一些奇怪的SQL片段（例如“or ‘1’=’1’”这样的语句），有可能入侵<strong>参数检验不足</strong>的应用程序。所以，在我们的应用中需要做一些工作，来防备这样的攻击方式。在一些安全性要求很高的应用中（比如银行软件），经常使用将SQL语句全部替换为<strong>存储过程</strong>这样的方式，来防止SQL注入。这当然是<strong>一种很安全的方式</strong>，但我们平时开发中，可能不需要这种死板的方式。</p>
-<h3 id="mybatis是如何做到防止sql注入的"><a href="#mybatis是如何做到防止sql注入的" class="headerlink" title="mybatis是如何做到防止sql注入的"></a>mybatis是如何做到防止sql注入的</h3><p>　MyBatis框架作为一款半自动化的持久层框架，其SQL语句都要我们自己手动编写，这个时候当然需要防止SQL注入。其实，MyBatis的SQL是一个具有“<strong>输入+输出</strong>”的功能，类似于函数的结构，参考上面的两个例子。其中，parameterType表示了输入的参数类型，resultType表示了输出的参数类型。回应上文，如果我们想防止SQL注入，理所当然地要在输入参数上下功夫。上面代码中使用#的即输入参数在SQL中拼接的部分，传入参数后，打印出执行的SQL语句，会看到SQL是这样的：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>, username, <span class="keyword">password</span>, <span class="keyword">role</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> username=? <span class="keyword">and</span> <span class="keyword">password</span>=?</span><br></pre></td></tr></table></figure>
-<p>不管输入什么参数，打印出的SQL都是这样的。这是因为MyBatis启用了预编译功能，在SQL执行前，会先将上面的SQL发送给数据库进行编译；执行时，直接使用编译好的SQL，替换占位符“?”就可以了。因为SQL注入只能对编译过程起作用，所以这样的方式就很好地避免了SQL注入的问题。</p>
-<p>【底层实现原理】MyBatis是如何做到SQL预编译的呢？其实在框架底层，是JDBC中的PreparedStatement类在起作用，PreparedStatement是我们很熟悉的Statement的子类，它的对象包含了编译好的SQL语句。这种“准备好”的方式不仅能提高安全性，而且在多次执行同一个SQL时，能够提高效率。原因是SQL已编译好，再次执行时无需再编译。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//安全的，预编译了的</span></span><br><span class="line">Connection conn = getConn();<span class="comment">//获得连接</span></span><br><span class="line">String sql = <span class="string">"select id, username, password, role from user where id=?"</span>; <span class="comment">//执行sql前会预编译号该条语句</span></span><br><span class="line">PreparedStatement pstmt = conn.prepareStatement(sql); </span><br><span class="line">pstmt.setString(<span class="number">1</span>, id); </span><br><span class="line">ResultSet rs=pstmt.executeUpdate(); </span><br><span class="line">......</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不安全的，没进行预编译</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getNameByUserId</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">    Connection conn = getConn();<span class="comment">//获得连接</span></span><br><span class="line">    String sql = <span class="string">"select id,username,password,role from user where id="</span> + id;</span><br><span class="line">    <span class="comment">//当id参数为"3;drop table user;"时，执行的sql语句如下:</span></span><br><span class="line">    <span class="comment">//select id,username,password,role from user where id=3; drop table user;  </span></span><br><span class="line">    PreparedStatement pstmt =  conn.prepareStatement(sql);</span><br><span class="line">    ResultSet rs=pstmt.executeUpdate();</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>【 <strong>结论</strong>：】</p>
-<table>
-<thead>
-<tr>
-<th>#{}：相当于JDBC中的PreparedStatement</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>${}：是输出变量的值</td>
-</tr>
-</tbody>
-</table>
-<p>简单说，#{}是经过预编译的，是安全的；${}是未经过预编译的，仅仅是取变量的值，是非安全的，存在SQL注入。<br>如果我们order by语句后用了${}，那么不做任何处理的时候是存在SQL注入危险的。你说怎么防止，那我只能悲惨的告诉你，你得手动处理过滤一下输入的内容。如判断一下输入的参数的长度是否正常（注入语句一般很长），更精确的过滤则可以查询一下输入的参数是否在预期的参数集合中。</p>
-
           
         
       
@@ -1956,6 +2304,911 @@
 <p>6、最后一个小实验，让大家对redis的数据恢复有更加深刻的体会</p>
 <p>（1）在有rdb的dump和aof的appendonly的同时，rdb里也有部分数据，aof里也有部分数据，这个时候其实会发现，rdb的数据不会恢复到内存中<br>（2）我们模拟让aof破损，然后fix，有一条数据会被fix删除<br>（3）再次用fix得aof文件去重启redis，发现数据只剩下一条了</p>
 <p>数据恢复完全是依赖于底层的磁盘的持久化的，主要rdb和aof上都没有数据，那就没了</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Mybatis如何防止SQL注入/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/框架/Mybatis如何防止SQL注入/" class="post-title-link" itemprop="url">Mybatis如何防止SQL注入</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-27 14:40:51" itemprop="dateModified" datetime="2019-10-27T14:40:51+08:00">2019-10-27</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-27T14:40:51+08:00" content="2019-10-27">
+                2019-10-27 14:40:51
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/框架/Mybatis如何防止SQL注入/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Mybatis如何防止SQL注入/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>两个sql语句的区别：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;selectByNameAndPassword&quot; parameterType=&quot;java.util.Map&quot; resultMap=&quot;BaseResultMap&quot;&gt;</span><br><span class="line">select id, username, password, role</span><br><span class="line">from user</span><br><span class="line">where username = #&#123;username,jdbcType=VARCHAR&#125;</span><br><span class="line">and password = #&#123;password,jdbcType=VARCHAR&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id="selectByNameAndPassword" parameterType="java.util.Map" resultMap="BaseResultMap"&gt;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>, username, <span class="keyword">password</span>, <span class="keyword">role</span></span><br><span class="line"><span class="keyword">from</span> <span class="keyword">user</span></span><br><span class="line"><span class="keyword">where</span> username = $&#123;username,jdbcType=<span class="built_in">VARCHAR</span>&#125;</span><br><span class="line"><span class="keyword">and</span> <span class="keyword">password</span> = $&#123;<span class="keyword">password</span>,jdbcType=<span class="built_in">VARCHAR</span>&#125;</span><br><span class="line">&lt;/<span class="keyword">select</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>mybatis中的#和$的区别：</strong></p>
+<p>1、#将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。</p>
+<p>如：where username=#{username}，如果传入的值是111,那么解析成sql时的值为where username=”111”, 如</p>
+<p>果传入的值是id，则解析成的sql为where username=”id”.　</p>
+<p>2、$将传入的数据直接显示生成在sql中。</p>
+<p>如：where username=${username}，如果传入的值是111,那么解析成sql时的值为where username=111；</p>
+<p>如果传入的值是;drop table user;，则解析成的sql为：select id, username, password, role from user where </p>
+<p>username=;drop table user;</p>
+<p>3、#方式能够很大程度防止sql注入，$方式无法防止Sql注入。</p>
+<p>4、$方式一般用于传入数据库对象，例如传入表名.</p>
+<p>5、一般能用#的就别用$，若不得不使用“${xxx}”这样的参数，要手工地做好过滤工作，来防止sql注入攻击。</p>
+<p>6、在MyBatis中，“${xxx}”这样格式的参数会直接参与SQL编译，从而不能避免注入攻击。但涉及到动态表名和列</p>
+<p>名时，只能使用“${xxx}”这样的参数格式。所以，这样的参数需要我们在代码中手工进行处理来防止注入。</p>
+<p>【结论】在编写MyBatis的映射语句时，尽量采用“#{xxx}”这样的格式。若不得不使用“${xxx}”这样的参数，要手工</p>
+<p>地做好过滤工作，来防止SQL注入攻击。</p>
+<h3 id="什么是sql注入"><a href="#什么是sql注入" class="headerlink" title="什么是sql注入"></a>什么是sql注入</h3><p>是一种代码注入技术，用于攻击数据驱动的应用，恶意的SQL语句被插入到执行的实体字段中（例如，为了转储数据库内容给攻击者）</p>
+<p>　　SQL注入，大家都不陌生，是一种常见的攻击方式。<strong>攻击者</strong>在界面的表单信息或URL上输入一些奇怪的SQL片段（例如“or ‘1’=’1’”这样的语句），有可能入侵<strong>参数检验不足</strong>的应用程序。所以，在我们的应用中需要做一些工作，来防备这样的攻击方式。在一些安全性要求很高的应用中（比如银行软件），经常使用将SQL语句全部替换为<strong>存储过程</strong>这样的方式，来防止SQL注入。这当然是<strong>一种很安全的方式</strong>，但我们平时开发中，可能不需要这种死板的方式。</p>
+<h3 id="mybatis是如何做到防止sql注入的"><a href="#mybatis是如何做到防止sql注入的" class="headerlink" title="mybatis是如何做到防止sql注入的"></a>mybatis是如何做到防止sql注入的</h3><p>　MyBatis框架作为一款半自动化的持久层框架，其SQL语句都要我们自己手动编写，这个时候当然需要防止SQL注入。其实，MyBatis的SQL是一个具有“<strong>输入+输出</strong>”的功能，类似于函数的结构，参考上面的两个例子。其中，parameterType表示了输入的参数类型，resultType表示了输出的参数类型。回应上文，如果我们想防止SQL注入，理所当然地要在输入参数上下功夫。上面代码中使用#的即输入参数在SQL中拼接的部分，传入参数后，打印出执行的SQL语句，会看到SQL是这样的：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>, username, <span class="keyword">password</span>, <span class="keyword">role</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> username=? <span class="keyword">and</span> <span class="keyword">password</span>=?</span><br></pre></td></tr></table></figure>
+<p>不管输入什么参数，打印出的SQL都是这样的。这是因为MyBatis启用了预编译功能，在SQL执行前，会先将上面的SQL发送给数据库进行编译；执行时，直接使用编译好的SQL，替换占位符“?”就可以了。因为SQL注入只能对编译过程起作用，所以这样的方式就很好地避免了SQL注入的问题。</p>
+<p>【底层实现原理】MyBatis是如何做到SQL预编译的呢？其实在框架底层，是JDBC中的PreparedStatement类在起作用，PreparedStatement是我们很熟悉的Statement的子类，它的对象包含了编译好的SQL语句。这种“准备好”的方式不仅能提高安全性，而且在多次执行同一个SQL时，能够提高效率。原因是SQL已编译好，再次执行时无需再编译。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//安全的，预编译了的</span></span><br><span class="line">Connection conn = getConn();<span class="comment">//获得连接</span></span><br><span class="line">String sql = <span class="string">"select id, username, password, role from user where id=?"</span>; <span class="comment">//执行sql前会预编译号该条语句</span></span><br><span class="line">PreparedStatement pstmt = conn.prepareStatement(sql); </span><br><span class="line">pstmt.setString(<span class="number">1</span>, id); </span><br><span class="line">ResultSet rs=pstmt.executeUpdate(); </span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不安全的，没进行预编译</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getNameByUserId</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">    Connection conn = getConn();<span class="comment">//获得连接</span></span><br><span class="line">    String sql = <span class="string">"select id,username,password,role from user where id="</span> + id;</span><br><span class="line">    <span class="comment">//当id参数为"3;drop table user;"时，执行的sql语句如下:</span></span><br><span class="line">    <span class="comment">//select id,username,password,role from user where id=3; drop table user;  </span></span><br><span class="line">    PreparedStatement pstmt =  conn.prepareStatement(sql);</span><br><span class="line">    ResultSet rs=pstmt.executeUpdate();</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>【 <strong>结论</strong>：】</p>
+<table>
+<thead>
+<tr>
+<th>#{}：相当于JDBC中的PreparedStatement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>${}：是输出变量的值</td>
+</tr>
+</tbody>
+</table>
+<p>简单说，#{}是经过预编译的，是安全的；${}是未经过预编译的，仅仅是取变量的值，是非安全的，存在SQL注入。<br>如果我们order by语句后用了${}，那么不做任何处理的时候是存在SQL注入危险的。你说怎么防止，那我只能悲惨的告诉你，你得手动处理过滤一下输入的内容。如判断一下输入的参数的长度是否正常（注入语句一般很长），更精确的过滤则可以查询一下输入的参数是否在预期的参数集合中。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Resource和Autowired的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/框架/Resource和Autowired的区别/" class="post-title-link" itemprop="url">Resource和Autowired的区别</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-27 01:03:09" itemprop="dateModified" datetime="2019-10-27T01:03:09+08:00">2019-10-27</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-27T01:03:09+08:00" content="2019-10-27">
+                2019-10-27 01:03:09
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/框架/Resource和Autowired的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Resource和Autowired的区别/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>@Resource和@Autowired都是做bean的注入时使用，其实@Resource不是Spring的注解，是javaEE的注解，它的包是javax.annotation.Resource，需要导入，但是Spring支持该注解的注入。</p>
+<p>1、共同点</p>
+<p>两者都可以写在字段和setter方法上。两者如果都写在字段上，那么就不需要再写setter方法。</p>
+<p>2、不同点</p>
+<p>（1）@Autowired</p>
+<p>@Autowired为Spring提供的注解，需要导入包org.springframework.beans.factory.annotation.Autowired;只按照byType注入。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 下面两种@Autowired只要使用一种即可</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; <span class="comment">// 用于字段上</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserDao</span><span class="params">(UserDao userDao)</span> </span>&#123; <span class="comment">// 用于属性的方法上</span></span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Autowired注解是按照类型（byType）装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，</p>
+<p>可以设置它的required属性为false。如果我们想使用按照名称（byName）来装配，可以结合@Qualifier注解一起</p>
+<p>使用。如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier</span>(<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）@Resource</p>
+<p>@Resource默认按照ByName自动注入，由J2EE提供，需要导入包javax.annotation.Resource。默认按照名称进</p>
+<p>行装配，名称可以通过name属性进行指定，如果没有指定name属性，当注解写在字段上时，默认取字段名进行</p>
+<p>安装名称查找，如果注解写在setter方法上默认取属性名进行装配。当找不到与名称匹配的bean时才按照类型进</p>
+<p>行装配。</p>
+<p>但是需要注意的是，如果name属性一旦指定，就只会按照名称进行装配。</p>
+<p>如果既不制定name也不制定type属性，这时将通过反射机制使用byName自动注入策略。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestServiceImpl</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 下面两种@Resource只要使用一种即可</span></span><br><span class="line">    <span class="meta">@Resource</span>(name=<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao; <span class="comment">// 用于字段上</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Resource</span>(name=<span class="string">"userDao"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserDao</span><span class="params">(UserDao userDao)</span> </span>&#123; <span class="comment">// 用于属性的setter方法上</span></span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：最好是将@Resource放在setter方法上，因为这样更符合面向对象的思想，通过set、get去操作属性，而不是直接去操作属性。</p>
+<p>@Resource装配顺序：</p>
+<p>①如果同时指定了name和type，则从Spring上下文中找到唯一匹配的bean进行装配，找不到则抛出异常。</p>
+<p>②如果指定了name，则从上下文中查找名称（id）匹配的bean进行装配，找不到则抛出异常。</p>
+<p>③如果指定了type，则从上下文中找到类似匹配的唯一bean进行装配，找不到或是找到多个，都会抛出异常。</p>
+<p>④如果既没有指定name，又没有指定type，则自动按照byName方式进行装配；如果没有匹配，则回退为一个原始类型进行匹配，如果匹配则自动装配。</p>
+<p>@Resource的作用相当于@Autowired，只不过@Autowired按照byType自动注入。</p>
+<p>byName和byType看什么</p>
+<p><img src="/2019/10/21/框架/Resource和Autowired的区别/20180723224000349.png" alt></p>
+<ul>
+<li>byName会搜索整个配置文件中的bean,如果有相同名称的bean则自动装配，否则显示异常。</li>
+</ul>
+<p>例如，在装配com.tutorialspoint.TextEditor的spellChecker时，spring会搜索整个配置文件的bean查找是否有名称为spellChecker的bean，有则自动装配，没有就抛出异常。</p>
+<ul>
+<li>byType会搜索整个配置文件中的bean,如果有相同类型的bean则自动装配，否则显示异常。</li>
+</ul>
+<p>例如，在装配com.tutorialspoint.TextEditor的spellChecker时，spring会搜索整个配置文件的bean查找是否有跟spellChecker属于相同类的bean，有则自动装配，没有就抛出异常。</p>
+<p>#### </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Spring IOC和AOP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/框架/Spring IOC和AOP/" class="post-title-link" itemprop="url">Spring IOC和AOP</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+             
+             
+
+              <time title="创建时间：2019-10-21 12:12:57 / 修改时间：12:11:36" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              -->
+              <!-- new version -->
+                        
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/框架/Spring IOC和AOP/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Spring IOC和AOP/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Spring-IOC"><a href="#Spring-IOC" class="headerlink" title="Spring IOC"></a>Spring IOC</h2><p>IoC 全称为 <code>Inversion of Control</code>，翻译为 “控制反转”，它还有一个别名为 DI（<code>Dependency Injection</code>）,即依赖注入。</p>
+<p><strong>ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。</strong>在Java开发中，<strong>Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。</strong>如何理解好Ioc呢？理解好Ioc的关键是要明确“谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”，那我们来深入分析一下：</p>
+<p>　　●<strong>谁控制谁，控制什么：</strong>传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；<strong>谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。</strong></p>
+<p>　　●<strong>为何是反转，哪些方面反转了：</strong>有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？<strong>因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。</strong></p>
+<p><strong>DI—Dependency Injection，即“依赖注入”</strong>：<strong>组件之间依赖关系</strong>由容器在运行期决定，形象的说，即<strong>由容器动态的将某个依赖关系注入到组件之中</strong>。<strong>依赖注入的目的并非为软件系统带来更多功能，而是为了提升组件重用的频率，并为系统搭建一个灵活、可扩展的平台。</strong>通过依赖注入机制，我们只需要通过简单的配置，而无需任何代码就可指定目标需要的资源，完成自身的业务逻辑，而不需要关心具体的资源来自何处，由谁实现。</p>
+<p>　　理解DI的关键是：“谁依赖谁，为什么需要依赖，谁注入谁，注入了什么”，那我们来深入分析一下：</p>
+<p>　　●<strong>谁依赖于谁：</strong>当然是<strong>应用程序依赖于IoC容器</strong>；</p>
+<p>　　●<strong>为什么需要依赖：</strong>应用程序需要IoC容器来提供对象需要的外部资源；</p>
+<p>　　●<strong>谁注入谁：</strong>很明显是<strong>IoC容器注入应用程序某个对象，应用程序依赖的对象</strong>；</p>
+<p>　　<strong>●注入了什么：</strong>就是<strong>注入某个对象所需要的外部资源（包括对象、资源、常量数据）</strong>。</p>
+<h2 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h2><p>AOP是Spring框架面向切面的编程思想，AOP采用一种称为“横切”的技术，将涉及多业务流程的通用功能抽取并单独封装，形成独立的切面，在合适的时机将这些切面横向切入到业务流程指定的位置中。</p>
+<p>例如，在一个业务系统中，用户登录是基础功能，凡是涉及到用户的业务流程都要求用户进行系统登录。如果把用户登录功能代码写入到每个业务流程中，会造成代码冗余，维护也非常麻烦，当需要修改用户登录功能时，就需要修改每个业务流程的用户登录代码，这种处理方式显然是不可取的。比较好的做法是把用户登录功能抽取出来，形成独立的模块，当业务流程需要用户登录时，系统自动把登录功能切入到业务流程中。下图是用户登录功能切入到业务流程示意图。</p>
+<p><img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=725733276,316358623&amp;fm=173&amp;app=25&amp;f=JPEG?w=554&amp;h=409&amp;s=0C827C32191F41C814D9E4DA000060B3" alt></p>
+<p>●  Aspect</p>
+<p>表示切面。切入业务流程的一个独立模块。</p>
+<p>● Join point</p>
+<p>表示连接点。也就是业务流程在运行过程中需要插入切面的具体位置。</p>
+<p>● Advice</p>
+<p>表示通知。是切面的具体实现方法。可分为前置通知（Before）、后置通知（AfterReturning）、异常通知（AfterThrowing）、最终通知（After）和环绕通知（Around）五种。实现方法具体属于哪类通知，是在配置文件和注解中指定的。</p>
+<p>● Pointcut</p>
+<p>表示切入点。用于定义通知应该切入到哪些连接点上，不同的通知通常需要切入到不同的连接点上。</p>
+<p>● Target</p>
+<p>表示目标对象。被一个或者多个切面所通知的对象。</p>
+<p>● Proxy</p>
+<p>表示代理对象。将通知应用到目标对象之后被动态创建的对象。可以简单地理解为，代理对象为目标对象的业务逻辑功能加上被切入的切面所形成的对象。</p>
+<p>● Weaving</p>
+<p>表示切入，也称为织入。将切面应用到目标对象从而创建一个新的代理对象的过程。这个过程可以发生在编译期、类装载期及运行期。</p>
+<p><img src="https://img-blog.csdn.net/20180530175605692?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3E5ODIxNTE3NTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/RestController和Controller的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/框架/RestController和Controller的区别/" class="post-title-link" itemprop="url">RestController和Controller的区别</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-23 14:16:36" itemprop="dateModified" datetime="2019-10-23T14:16:36+08:00">2019-10-23</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-23T14:16:36+08:00" content="2019-10-23">
+                2019-10-23 14:16:36
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/框架/RestController和Controller的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/RestController和Controller的区别/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。</p>
+<p>1、如果只是使用@RestController注解Controller，则Controller中的方法无法返回jsp页面，配置的视图解析器InternalResourceViewResolver则不起作用，返回的内容就是Return 里的内容（String/JSON）。<br>例如：本来应该到success.jsp页面的，则其显示success.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、如果使用@RestController注解Controller，需要返回到指定页面，则需要配置视图解析器InternalResourceViewResolver，可以利用ModelAndView返回视图。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> newModelAndView(<span class="string">"success"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、如果使用@Controller注解Controller，在对应的方法上，视图解析器可以解析return 的jsp,html页面，并且跳转到相应页面</p>
+<p>若需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上@ResponseBody注解。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2515,7 +3768,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/servlet生命周期/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/bean的生命周期/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -2535,7 +3788,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/21/框架/servlet生命周期/" class="post-title-link" itemprop="url">servlet生命周期</a>
+                <a href="/2019/10/21/框架/bean的生命周期/" class="post-title-link" itemprop="url">Bean的生命周期</a>
               
             
           </h1>
@@ -2577,7 +3830,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-10-26 19:34:57" itemprop="dateModified" datetime="2019-10-26T19:34:57+08:00">2019-10-26</time> 
+              <time title="修改时间：2019-10-26 21:30:16" itemprop="dateModified" datetime="2019-10-26T21:30:16+08:00">2019-10-26</time> 
               -->
               <!-- new version -->
                         
@@ -2592,8 +3845,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-26T19:34:57+08:00" content="2019-10-26">
-                2019-10-26 19:34:57
+              <time itemprop="dateUpdated" datetime="2019-10-26T21:30:16+08:00" content="2019-10-26">
+                2019-10-26 21:30:16
               </time>
             </span>
           
@@ -2633,8 +3886,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/servlet生命周期/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/servlet生命周期/" itemprop="commentCount"></span>
+                <a href="/2019/10/21/框架/bean的生命周期/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/bean的生命周期/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2664,247 +3917,19 @@
       
         
           
-            <p>Servlet 生命周期可被定义为从创建直到毁灭的整个过程。以下是 Servlet 遵循的过程：</p>
-<ul>
-<li>Servlet 通过调用 <strong>init ()</strong> 方法进行初始化。</li>
-<li>Servlet 调用 <strong>service()</strong> 方法来处理客户端的请求。</li>
-<li>Servlet 通过调用 <strong>destroy()</strong> 方法终止（结束）。</li>
-<li>最后，Servlet 是由 JVM 的垃圾回收器进行垃圾回收的。</li>
-</ul>
-<h3 id="加载和实例化"><a href="#加载和实例化" class="headerlink" title="加载和实例化"></a>加载和实例化</h3><p>当Servlet容器启动或客户端发送一个请求时，Servlet容器会查找内存中是否存在该Servlet实例，若存在，则直接读取该实例响应请求；如果不存在，就创建一个Servlet实例。</p>
-<h3 id="init-方法"><a href="#init-方法" class="headerlink" title="init() 方法"></a>init() 方法</h3><p>init 方法被设计成只调用一次。它在第一次创建 Servlet 时被调用，在后续每次用户请求时不再调用。因此，它是用于一次性初始化，就像 Applet 的 init 方法一样。</p>
-<p>Servlet 创建于用户第一次调用对应于该 Servlet 的 URL 时，但是您也可以指定 Servlet 在服务器第一次启动时被加载。</p>
-<p>当用户调用一个 Servlet 时，就会创建一个 Servlet 实例，每一个用户请求都会产生一个新的线程，适当的时候移交给 doGet 或 doPost 方法。init() 方法简单地创建或加载一些数据，这些数据将被用于 Servlet 的整个生命周期。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">  <span class="comment">// 初始化代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="service-方法"><a href="#service-方法" class="headerlink" title="service() 方法"></a>service() 方法</h3><p>service() 方法是执行实际任务的主要方法。Servlet 容器（即 Web 服务器）调用 service() 方法来处理来自客户端（浏览器）的请求，并把格式化的响应写回给客户端。</p>
-<p>每次服务器接收到一个 Servlet 请求时，服务器会产生一个新的线程并调用服务。service() 方法检查 HTTP 请求类型（GET、POST、PUT、DELETE 等），并在适当的时候调用 doGet、doPost、doPut，doDelete 等方法。</p>
-<p>下面是该方法的特征：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest request, </span></span></span><br><span class="line"><span class="function"><span class="params">                    ServletResponse response)</span> </span></span><br><span class="line"><span class="function">      <span class="keyword">throws</span> ServletException, IOException</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>service() 方法由容器调用，service 方法在适当的时候调用 doGet、doPost、doPut、doDelete 等方法。所以，您不用对 service() 方法做任何动作，您只需要根据来自客户端的请求类型来重写 doGet() 或 doPost() 即可。</p>
-<p>doGet() 和 doPost() 方法是每次服务请求中最常用的方法。下面是这两种方法的特征。</p>
-<h4 id="doGet-方法"><a href="#doGet-方法" class="headerlink" title="doGet() 方法"></a>doGet() 方法</h4><p>GET 请求来自于一个 URL 的正常请求，或者来自于一个未指定 METHOD 的 HTML 表单，它由 doGet() 方法处理。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">                  HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="doPost-方法"><a href="#doPost-方法" class="headerlink" title="doPost() 方法"></a>doPost() 方法</h4><p>POST 请求来自于一个特别指定了 METHOD 为 POST 的 HTML 表单，它由 doPost() 方法处理。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">                   HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="destroy-方法"><a href="#destroy-方法" class="headerlink" title="destroy() 方法"></a>destroy() 方法</h3><p>当Servlet容器关闭时，Servlet实例也随时销毁。其间，Servlet容器会调用Servlet 的destroy()方法去判断该Servlet是否应当被释放（或回收资源）</p>
-<p>destroy() 方法只会被调用一次，在 Servlet 生命周期结束时被调用。destroy() 方法可以让您的 Servlet 关闭数据库连接、停止后台线程、把 Cookie 列表或点击计数器写入到磁盘，并执行其他类似的清理活动。</p>
-<p>在调用 destroy() 方法之后，servlet 对象被标记为垃圾回收。destroy 方法定义如下所示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 终止化代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>下图显示了一个典型的 Servlet 生命周期方案。</p>
-<ul>
-<li>第一个到达服务器的 HTTP 请求被委派到 Servlet 容器。</li>
-<li>Servlet 容器在调用 service() 方法之前加载 Servlet。</li>
-<li>然后 Servlet 容器处理由多个线程产生的多个请求，每个线程执行一个单一的 Servlet 实例的 service() 方法。</li>
-</ul>
-<p><img src="/2019/10/21/框架/servlet生命周期/Servlet-LifeCycle.jpg" alt></p>
-<p><strong>* 1、从第一次调用到服务器关闭</strong>。</p>
-<p><strong>* 2、如果Servlet在web.xml中配置了load-on-startup，生命周期为从服务器启动到服务器关闭</strong>。</p>
-<p><img src="/2019/10/21/框架/servlet生命周期/16436080-356eabfb696a3563.webp" alt></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/框架/Spring IOC和AOP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/21/框架/Spring IOC和AOP/" class="post-title-link" itemprop="url">Spring IOC和AOP</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-             
-             
-
-              <time title="创建时间：2019-10-21 12:12:57 / 修改时间：12:11:36" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              -->
-              <!-- new version -->
-                        
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/框架/Spring IOC和AOP/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/框架/Spring IOC和AOP/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Spring-IOC"><a href="#Spring-IOC" class="headerlink" title="Spring IOC"></a>Spring IOC</h2><p>IoC 全称为 <code>Inversion of Control</code>，翻译为 “控制反转”，它还有一个别名为 DI（<code>Dependency Injection</code>）,即依赖注入。</p>
-<p><strong>ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。</strong>在Java开发中，<strong>Ioc意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。</strong>如何理解好Ioc呢？理解好Ioc的关键是要明确“谁控制谁，控制什么，为何是反转（有反转就应该有正转了），哪些方面反转了”，那我们来深入分析一下：</p>
-<p>　　●<strong>谁控制谁，控制什么：</strong>传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；<strong>谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。</strong></p>
-<p>　　●<strong>为何是反转，哪些方面反转了：</strong>有反转就有正转，传统应用程序是由我们自己在对象中主动控制去直接获取依赖对象，也就是正转；而反转则是由容器来帮忙创建及注入依赖对象；为何是反转？<strong>因为由容器帮我们查找及注入依赖对象，对象只是被动的接受依赖对象，所以是反转；哪些方面反转了？依赖对象的获取被反转了。</strong></p>
-<p><strong>DI—Dependency Injection，即“依赖注入”</strong>：<strong>组件之间依赖关系</strong>由容器在运行期决定，形象的说，即<strong>由容器动态的将某个依赖关系注入到组件之中</strong>。<strong>依赖注入的目的并非为软件系统带来更多功能，而是为了提升组件重用的频率，并为系统搭建一个灵活、可扩展的平台。</strong>通过依赖注入机制，我们只需要通过简单的配置，而无需任何代码就可指定目标需要的资源，完成自身的业务逻辑，而不需要关心具体的资源来自何处，由谁实现。</p>
-<p>　　理解DI的关键是：“谁依赖谁，为什么需要依赖，谁注入谁，注入了什么”，那我们来深入分析一下：</p>
-<p>　　●<strong>谁依赖于谁：</strong>当然是<strong>应用程序依赖于IoC容器</strong>；</p>
-<p>　　●<strong>为什么需要依赖：</strong>应用程序需要IoC容器来提供对象需要的外部资源；</p>
-<p>　　●<strong>谁注入谁：</strong>很明显是<strong>IoC容器注入应用程序某个对象，应用程序依赖的对象</strong>；</p>
-<p>　　<strong>●注入了什么：</strong>就是<strong>注入某个对象所需要的外部资源（包括对象、资源、常量数据）</strong>。</p>
-<h2 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h2><p>AOP是Spring框架面向切面的编程思想，AOP采用一种称为“横切”的技术，将涉及多业务流程的通用功能抽取并单独封装，形成独立的切面，在合适的时机将这些切面横向切入到业务流程指定的位置中。</p>
-<p>例如，在一个业务系统中，用户登录是基础功能，凡是涉及到用户的业务流程都要求用户进行系统登录。如果把用户登录功能代码写入到每个业务流程中，会造成代码冗余，维护也非常麻烦，当需要修改用户登录功能时，就需要修改每个业务流程的用户登录代码，这种处理方式显然是不可取的。比较好的做法是把用户登录功能抽取出来，形成独立的模块，当业务流程需要用户登录时，系统自动把登录功能切入到业务流程中。下图是用户登录功能切入到业务流程示意图。</p>
-<p><img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=725733276,316358623&amp;fm=173&amp;app=25&amp;f=JPEG?w=554&amp;h=409&amp;s=0C827C32191F41C814D9E4DA000060B3" alt></p>
-<p>●  Aspect</p>
-<p>表示切面。切入业务流程的一个独立模块。</p>
-<p>● Join point</p>
-<p>表示连接点。也就是业务流程在运行过程中需要插入切面的具体位置。</p>
-<p>● Advice</p>
-<p>表示通知。是切面的具体实现方法。可分为前置通知（Before）、后置通知（AfterReturning）、异常通知（AfterThrowing）、最终通知（After）和环绕通知（Around）五种。实现方法具体属于哪类通知，是在配置文件和注解中指定的。</p>
-<p>● Pointcut</p>
-<p>表示切入点。用于定义通知应该切入到哪些连接点上，不同的通知通常需要切入到不同的连接点上。</p>
-<p>● Target</p>
-<p>表示目标对象。被一个或者多个切面所通知的对象。</p>
-<p>● Proxy</p>
-<p>表示代理对象。将通知应用到目标对象之后被动态创建的对象。可以简单地理解为，代理对象为目标对象的业务逻辑功能加上被切入的切面所形成的对象。</p>
-<p>● Weaving</p>
-<p>表示切入，也称为织入。将切面应用到目标对象从而创建一个新的代理对象的过程。这个过程可以发生在编译期、类装载期及运行期。</p>
-<p><img src="https://img-blog.csdn.net/20180530175605692?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3E5ODIxNTE3NTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
+            <p><img src="/2019/10/21/框架/bean的生命周期/20180426085835757.png" alt></p>
+<p>可以简述为以下九步</p>
+<ol>
+<li>实例化bean对象(通过构造方法或者工厂方法)</li>
+<li>设置对象属性(setter等)（依赖注入）</li>
+<li>如果Bean实现了BeanNameAware接口，工厂调用Bean的setBeanName()方法传递Bean的ID。（和下面的一条均属于检查Aware接口）</li>
+<li>如果Bean实现了BeanFactoryAware接口，工厂调用setBeanFactory()方法传入工厂自身</li>
+<li>将Bean实例传递给Bean的前置处理器的postProcessBeforeInitialization(Object bean, String beanname)方法</li>
+<li>调用Bean的初始化方法</li>
+<li>将Bean实例传递给Bean的后置处理器的postProcessAfterInitialization(Object bean, String beanname)方法</li>
+<li>使用Bean</li>
+<li>容器关闭之前，调用Bean的销毁方法</li>
+</ol>
 
           
         
@@ -3191,7 +4216,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共199.1k字</span>
+  <span class="post-count">博客全站共208.1k字</span>
 </div>
         
 <div class="busuanzi-count">

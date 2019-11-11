@@ -2516,18 +2516,46 @@
               
 
              
-             
-             
+                
+              
 
-              <time title="创建时间：2019-10-22 12:12:57 / 修改时间：01:00:55" itemprop="dateCreated datePublished" datetime="2019-10-22T12:12:57+08:00">2019-10-22 12:12:57</time>
+              <time title="创建时间：2019-10-22 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-22T12:12:57+08:00">2019-10-22 12:12:57</time>
             
 
             
               
             <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-11-09 11:21:37" itemprop="dateModified" datetime="2019-11-09T11:21:37+08:00">2019-11-09</time> 
               -->
               <!-- new version -->
                         
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-11-09T11:21:37+08:00" content="2019-11-09">
+                2019-11-09 11:21:37
+              </time>
+            </span>
+          
             
           </span>
 
@@ -2595,10 +2623,10 @@
       
         
           
-            <h4 id="HashMap遍历"><a href="#HashMap遍历" class="headerlink" title="HashMap遍历"></a>HashMap遍历</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,String&gt; map=<span class="keyword">new</span> HashMap&lt;String,String&gt;();</span><br><span class="line">      map.put(<span class="string">"1"</span>, <span class="string">"value1"</span>);</span><br><span class="line">      map.put(<span class="string">"2"</span>, <span class="string">"value2"</span>);</span><br><span class="line">      map.put(<span class="string">"3"</span>, <span class="string">"value3"</span>);</span><br><span class="line">      map.put(<span class="string">"4"</span>, <span class="string">"value4"</span>);</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//第一种：普通使用，二次取值</span></span><br><span class="line">      System.out.println(<span class="string">"\n通过Map.keySet遍历key和value："</span>);  </span><br><span class="line">      <span class="keyword">for</span>(String key:map.keySet())</span><br><span class="line">      &#123;</span><br><span class="line">       System.out.println(<span class="string">"Key: "</span>+key+<span class="string">" Value: "</span>+map.get(key));</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第二种</span></span><br><span class="line">      System.out.println(<span class="string">"\n通过Map.entrySet使用iterator遍历key和value: "</span>);  </span><br><span class="line">      Iterator map1ist=map.entrySet().iterator();</span><br><span class="line">      <span class="keyword">while</span>(map1ist.hasNext())</span><br><span class="line">      &#123;</span><br><span class="line">       Map.Entry&lt;String, String&gt; entry=(Entry&lt;String, String&gt;) map1ist.next();</span><br><span class="line">       System.out.println(<span class="string">"Key: "</span>+entry.getKey()+<span class="string">" Value: "</span>+entry.getValue());</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+            <h4 id="HashMap遍历"><a href="#HashMap遍历" class="headerlink" title="HashMap遍历"></a>HashMap遍历</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,String&gt; map=<span class="keyword">new</span> HashMap&lt;String,String&gt;();</span><br><span class="line">      map.put(<span class="string">"1"</span>, <span class="string">"value1"</span>);</span><br><span class="line">      map.put(<span class="string">"2"</span>, <span class="string">"value2"</span>);</span><br><span class="line">      map.put(<span class="string">"3"</span>, <span class="string">"value3"</span>);</span><br><span class="line">      map.put(<span class="string">"4"</span>, <span class="string">"value4"</span>);</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//第一种：普通使用，二次取值</span></span><br><span class="line">      System.out.println(<span class="string">"\n通过Map.keySet遍历key和value："</span>);  </span><br><span class="line">      <span class="keyword">for</span>(String key:map.keySet())</span><br><span class="line">      &#123;</span><br><span class="line">       	System.out.println(<span class="string">"Key: "</span>+key+<span class="string">" Value: "</span>+map.get(key));</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第二种</span></span><br><span class="line">      System.out.println(<span class="string">"\n通过Map.entrySet使用iterator遍历key和value: "</span>);  </span><br><span class="line">      Iterator map1ist=map.entrySet().iterator();</span><br><span class="line">      <span class="keyword">while</span>(map1ist.hasNext())</span><br><span class="line">      &#123;</span><br><span class="line">           Map.Entry&lt;String, String&gt; entry=(Entry&lt;String, String&gt;) map1ist.next();</span><br><span class="line">           System.out.println(<span class="string">"Key: "</span>+entry.getKey()+<span class="string">" Value: "</span>+entry.getValue());</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第三种：推荐，尤其是容量大时  </span></span><br><span class="line">System.out.println(<span class="string">"\n通过Map.entrySet遍历key和value"</span>);  </span><br><span class="line"><span class="keyword">for</span>(Map.Entry&lt;String, String&gt; entry: map.entrySet())</span><br><span class="line">&#123;</span><br><span class="line"> System.out.println(<span class="string">"Key: "</span>+ entry.getKey()+ <span class="string">" Value: "</span>+entry.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第四种  </span></span><br><span class="line">System.out.println(<span class="string">"\n通过Map.values()遍历所有的value，但不能遍历key"</span>);  </span><br><span class="line"><span class="keyword">for</span>(String v:map.values())</span><br><span class="line">&#123;</span><br><span class="line"> System.out.println(<span class="string">"The value is "</span>+v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第四种  </span></span><br><span class="line">System.out.println(<span class="string">"\n通过Map.values()遍历所有的value，但不能遍历key"</span>);  </span><br><span class="line"><span class="keyword">for</span>(String v:map.values())</span><br><span class="line">&#123;</span><br><span class="line"> 	System.out.println(<span class="string">"The value is "</span>+v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="HashMap遍历删除"><a href="#HashMap遍历删除" class="headerlink" title="HashMap遍历删除"></a>HashMap遍历删除</h4><p>1、第一种遍历删除：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Map.Entry&lt;Integer, String&gt; entry : map.entrySet())&#123;  </span><br><span class="line">    Integer key = entry.getKey();  </span><br><span class="line">    <span class="keyword">if</span>(key % <span class="number">2</span> == <span class="number">0</span>)&#123;  </span><br><span class="line">        System.out.println(<span class="string">"To delete key "</span> + key);  </span><br><span class="line">        map.remove(key);  </span><br><span class="line">        System.out.println(<span class="string">"The key "</span> + + key + <span class="string">" was deleted"</span>);  </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这种遍历删除依旧会报ConcurrentModificationException异常</p>
@@ -2943,7 +2971,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/Linux/Linux基础命令/">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/Linux/Linux文件目录结构/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beny">
@@ -2963,7 +2991,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/10/21/Linux/Linux基础命令/" class="post-title-link" itemprop="url">Linux基础命令</a>
+                <a href="/2019/10/21/Linux/Linux文件目录结构/" class="post-title-link" itemprop="url">Linux文件目录结构</a>
               
             
           </h1>
@@ -3005,7 +3033,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-              <time title="修改时间：2019-11-09 00:15:36" itemprop="dateModified" datetime="2019-11-09T00:15:36+08:00">2019-11-09</time> 
+              <time title="修改时间：2019-11-07 01:55:51" itemprop="dateModified" datetime="2019-11-07T01:55:51+08:00">2019-11-07</time> 
               -->
               <!-- new version -->
                         
@@ -3020,8 +3048,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-11-09T00:15:36+08:00" content="2019-11-09">
-                2019-11-09 00:15:36
+              <time itemprop="dateUpdated" datetime="2019-11-07T01:55:51+08:00" content="2019-11-07">
+                2019-11-07 01:55:51
               </time>
             </span>
           
@@ -3061,8 +3089,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/Linux/Linux基础命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/Linux/Linux基础命令/" itemprop="commentCount"></span>
+                <a href="/2019/10/21/Linux/Linux文件目录结构/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/Linux/Linux文件目录结构/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -3092,217 +3120,196 @@
       
         
           
-            <h3 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h3><p> wget是一个下载文件的工具，它用在命令行下。 wget支持HTTP，HTTPS和FTP协议，可以使用HTTP代理。所谓的自动下载是指，wget可以在用户退出系统的之后在后台执行。这意味这你可以登录系统，启动一个wget下载任务，然后退出系统，wget将在后台执行直到任务完成</p>
-<p>wget 可以跟踪HTML页面上的链接依次下载来创建远程服务器的本地版本，完全重建原始站点的目录结构。这又常被称作”递归下载”。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">登入并输入文件:</span><br><span class="line">  -o,  --output-file=FILE    将信息写入 FILE。</span><br><span class="line">  -a,  --append-output=FILE  将信息添加至 FILE。</span><br><span class="line">  -d,  --debug               打印大量调试信息。</span><br><span class="line">  -q,  --quiet               安静模式(无信息输出)。</span><br><span class="line">  -v,  --verbose             详尽的输出(此为默认值)。</span><br><span class="line">  -nv, --no-verbose          关闭详尽输出，但不进入安静模式。</span><br><span class="line">  -i,  --input-file=FILE     下载本地或外部 FILE 中的 URLs。</span><br><span class="line">  -F,  --force-html          把输入文件当成 HTML 文件。</span><br><span class="line">  -B,  --base=URL            解析与 URL 相关的</span><br><span class="line">                             HTML 输入文件（由 -i -F 选项指定）。</span><br></pre></td></tr></table></figure>
-<p>使用wget -O下载并以不同的文件名保存(-O：下载文件到对应目录，并且修改文件名称)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O wordpress.zip http://www.minjieren.com/download.aspx?id=1080</span><br></pre></td></tr></table></figure>
-<p>使用wget -b后台下载</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -b &lt;a href=&quot;http://www.minjieren.com/wordpress-3.1-zh_CN.zip&quot;&gt;http://www.minjieren.com/wordpress-3.1-zh_CN.zip&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">备注： 你可以使用以下命令来察看下载进度：tail -f wget-log</span><br></pre></td></tr></table></figure>
-<p>利用-spider: 模拟下载，不会下载，只是会检查是否网站是否好着</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# wget --spider  www.baidu.com    #不下载任何文件</span><br></pre></td></tr></table></figure>
-<h3 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h3><p>-c: 建立压缩档案<br>-x：解压<br>-t：查看内容<br>-r：向压缩归档文件末尾追加文件<br>-u：更新原压缩包中的文件</p>
-<p>这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。</p>
-<p>-z：有gzip属性的<br>-j：有bz2属性的<br>-Z：有compress属性的<br>-v：显示所有过程<br>-O：将文件解开到标准输出</p>
-<p>下面的参数-f是必须的</p>
-<p>-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。</p>
-<p># tar -cf all.tar *.jpg<br>这条命令是将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名。</p>
-<p># tar -rf all.tar *.gif<br>这条命令是将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件的意思。</p>
-<p># tar -uf all.tar logo.gif<br>这条命令是更新原来tar包all.tar中logo.gif文件，-u是表示更新文件的意思。</p>
-<p># tar -tf all.tar<br>这条命令是列出all.tar包中所有文件，-t是列出文件的意思</p>
-<p># tar -xf all.tar<br>这条命令是解出all.tar包中所有文件，-t是解开的意思</p>
-<p><strong>压缩</strong></p>
-<p>tar -cvf jpg.tar *.jpg //将目录里所有jpg文件打包成jpg.tar </p>
-<p>tar -czf jpg.tar.gz *.jpg   //将目录里所有jpg文件打包成jpg.tar后，并且将其用gzip压缩，生成一个gzip压缩过的包，命名为jpg.tar.gz</p>
-<p> tar -cjf jpg.tar.bz2 *.jpg //将目录里所有jpg文件打包成jpg.tar后，并且将其用bzip2压缩，生成一个bzip2压缩过的包，命名为jpg.tar.bz2</p>
-<p>tar -cZf jpg.tar.Z *.jpg   //将目录里所有jpg文件打包成jpg.tar后，并且将其用compress压缩，生成一个umcompress压缩过的包，命名为jpg.tar.Z</p>
-<p>rar a jpg.rar *.jpg //rar格式的压缩，需要先下载rar for linux</p>
-<p>zip jpg.zip *.jpg //zip格式的压缩，需要先下载zip for linux</p>
-<p><strong>解压</strong></p>
-<p>tar -xvf file.tar //解压 tar包</p>
-<p>tar -xzvf file.tar.gz //解压tar.gz</p>
-<p>tar -xjvf file.tar.bz2   //解压 tar.bz2</p>
-<p>tar -xZvf file.tar.Z   //解压tar.Z</p>
-<p>unrar e file.rar //解压rar</p>
-<p>unzip file.zip //解压zip</p>
-<p><strong>总结</strong></p>
-<p>1、*.tar 用 tar -xvf 解压</p>
-<p>2、*.gz 用 gzip -d或者gunzip 解压</p>
-<p>3、<em>.tar.gz和</em>.tgz 用 tar -xzf 解压</p>
-<p>4、*.bz2 用 bzip2 -d或者用bunzip2 解压</p>
-<p>5、*.tar.bz2用tar -xjf 解压</p>
-<p>6、*.Z 用 uncompress 解压</p>
-<p>7、*.tar.Z 用tar -xZf 解压</p>
-<p>8、*.rar 用 unrar e解压</p>
-<p>9、*.zip 用 unzip 解压</p>
-<h3 id="ps-ef-grep"><a href="#ps-ef-grep" class="headerlink" title="ps -ef | grep ***"></a>ps -ef | grep ***</h3><p>获取某个相关的进程信息</p>
-<h3 id="chmod-777"><a href="#chmod-777" class="headerlink" title="chmod 777"></a>chmod 777</h3><p>权限设置和修改</p>
-<h3 id="切换目录-cd"><a href="#切换目录-cd" class="headerlink" title="切换目录 cd"></a>切换目录 cd</h3><p>cd 命令，是 Change Directory 的缩写，用来切换工作目录。</p>
-<p>cd 命令的基本格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd [相对路径或绝对路径]</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>特殊符号</th>
-<th>作 用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>~</td>
-<td>代表当前登录用户的主目录</td>
-</tr>
-<tr>
-<td>~用户名</td>
-<td>表示切换至指定用户的主目录</td>
-</tr>
-<tr>
-<td>-</td>
-<td>代表上次所在目录</td>
-</tr>
-<tr>
-<td>.</td>
-<td>代表当前目录</td>
-</tr>
-<tr>
-<td>..</td>
-<td>代表上级目录</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vbird]# cd ~</span><br><span class="line">#表示回到自己的主目录，对于 root 用户，其主目录为 /root</span><br><span class="line">[root@localhost ~]# cd</span><br><span class="line">#没有加上任何路径，也代表回到当前登录用户的主目录</span><br><span class="line">[root@localhost ~]# cd ~vbird</span><br><span class="line">#代表切换到 vbird 这个用户的主目录，亦即 /home/vbird</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd ..</span><br><span class="line">#表示切换到目前的上一级目录，亦即是 /root 的上一级目录的意思；</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# cd -</span><br><span class="line">#表示回到刚刚的那个目录</span><br></pre></td></tr></table></figure>
-<h3 id="显示当前路径-pwd"><a href="#显示当前路径-pwd" class="headerlink" title="显示当前路径 pwd"></a>显示当前路径 pwd</h3><p>pwd 命令，是 Print Working Directory （打印工作目录）的缩写，功能是显示用户当前所处的工作目录。该命令的基本格式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# pwd</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# whoami</span><br><span class="line">root</span><br><span class="line">[root@localhost ~]# pwd</span><br><span class="line">/root</span><br></pre></td></tr></table></figure>
-<p>whoami 命令用于确定当前登陆的用户</p>
-<h3 id="查看目录下文件-ls"><a href="#查看目录下文件-ls" class="headerlink" title="查看目录下文件 ls"></a>查看目录下文件 ls</h3><p>ls 命令，list 的缩写</p>
-<p>此命令的基本格式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls [选项] 目录名称</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-a</td>
-<td>显示全部的文件，包括隐藏文件（开头为 . 的文件）也一起罗列出来，这是最常用的选项之一。</td>
-</tr>
-<tr>
-<td>-A</td>
-<td>显示全部的文件，连同隐藏文件，但不包括 . 与 .. 这两个目录。</td>
-</tr>
-<tr>
-<td>-d</td>
-<td>仅列出目录本身，而不是列出目录内的文件数据。</td>
-</tr>
-<tr>
-<td>-f</td>
-<td>ls 默认会以文件名排序，使用 -f 选项会直接列出结果，而不进行排序。</td>
-</tr>
-<tr>
-<td>-F</td>
-<td>在文件或目录名后加上文件类型的指示符号，例如，* 代表可运行文件，/ 代表目录，= 代表 <a href="http://c.biancheng.net/socket/" target="_blank" rel="noopener">socket</a> 文件，\</td>
-<td>代表 FIFO 文件。</td>
-</tr>
-<tr>
-<td>-h</td>
-<td>以人们易读的方式显示文件或目录大小，如 1KB、234MB、2GB 等。</td>
-</tr>
-<tr>
-<td>-i</td>
-<td>显示 inode 节点信息。</td>
-</tr>
-<tr>
-<td>-l</td>
-<td>使用长格式列出文件和目录信息。</td>
-</tr>
-<tr>
-<td>-n</td>
-<td>以 UID 和 GID 分别代替文件用户名和群组名显示出来。</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>将排序结果反向输出，比如，若原本文件名由小到大，反向则为由大到小。</td>
-</tr>
-<tr>
-<td>-R</td>
-<td>连同子目录内容一起列出来，等於将该目录下的所有文件都显示出来。</td>
-</tr>
-<tr>
-<td>-S</td>
-<td>以文件容量大小排序，而不是以文件名排序。</td>
-</tr>
-<tr>
-<td>-t</td>
-<td>以时间排序，而不是以文件名排序。</td>
-</tr>
-<tr>
-<td>–color=never –color=always –color=auto</td>
-<td>never 表示不依据文件特性给予颜色显示。 always 表示显示颜色，ls 默认采用这种方式。 auto 表示让系统自行依据配置来判断是否给予颜色。</td>
-</tr>
-<tr>
-<td>–full-time</td>
-<td>以完整时间模式 （包含年、月、日、时、分）输出</td>
-</tr>
-<tr>
-<td>–time={atime,ctime}</td>
-<td>输出 access 时间或改变权限属性时间（ctime），而不是内容变更时间。</td>
-</tr>
-</tbody>
-</table>
-<p>当 ls 命令不使用任何选项时，默认只会显示非隐藏文件的名称，并以文件名进行排序，同时会根据文件的具体类型给文件名配色（蓝色显示目录，白色显示一般文件）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# ls -al ~</span><br><span class="line">total 156</span><br><span class="line">drwxr-x---  4 root root  4096 Sep 24 00:07 .</span><br><span class="line">drwxr-xr-x 23 root root  4096 Sep 22 12:09 ..</span><br><span class="line">-rw-------  1 root root  1474 Sep  4 18:27 anaconda-ks.cfg</span><br><span class="line">-rw-------  1 root root   955 Sep 24 00:08 .bash_history</span><br><span class="line">-rw-r--r--  1 root root    24 Jan  6  2007 .bash_logout</span><br><span class="line">-rw-r--r--  1 root root   191 Jan  6  2007 .bash_profile</span><br><span class="line">-rw-r--r--  1 root root   176 Jan  6  2007 .bashrc</span><br><span class="line">drwx------  3 root root  4096 Sep  5 10:37 .gconf</span><br><span class="line">-rw-r--r--  1 root root 42304 Sep  4 18:26 install.log</span><br><span class="line">-rw-r--r--  1 root root  5661 Sep  4 18:25 install.log.syslog</span><br></pre></td></tr></table></figure>
-<p> ls 命令还使用了 -l 选项，因此才显示出了文件的详细信息，此选项显示的这 7 列的含义分别是：</p>
+            <h2 id="Linux-根目录（-）"><a href="#Linux-根目录（-）" class="headerlink" title="Linux 根目录（/）"></a>Linux 根目录（/）</h2><p>Linux 系统的根目录（/）最为重要，其原因有以下 2 点：</p>
 <ol>
-<li>第一列：规定了不同的用户对文件所拥有的权限，具体权限的含义将在后续章节中讲解。</li>
-<li>第二列：引用计数，文件的引用计数代表该文件的硬链接个数，而目录的引用计数代表该目录有多少个一级子目录。</li>
-<li>第三列：所有者，也就是这个文件属于哪个用户。默认所有者是文件的建立用户。</li>
-<li>第四列：所属组，默认所属组是文件建立用户的有效组，一般情况下就是建立用户的所在组。</li>
-<li>第五列：大小，默认单位是字节。</li>
-<li>第六列：文件修改时间，文件状态修改时间或文件数据修改时间都会更改这个时间，注意这个时间不是文件的创建时间。</li>
-<li>第七列：文件名或目录名。</li>
+<li>所有目录都是由根目录衍生出来的；</li>
+<li>根目录与系统的开机、修复、还原密切相关；</li>
 </ol>
-<h3 id="创建目录（文件夹）mkdir"><a href="#创建目录（文件夹）mkdir" class="headerlink" title="创建目录（文件夹）mkdir"></a>创建目录（文件夹）mkdir</h3><p>mkdir 命令，是 make directories 的缩写，用于创建新目录</p>
-<p>mkdir 命令的基本格式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir [-mp] 目录名</span><br></pre></td></tr></table></figure>
-<ul>
-<li>-m 选项用于手动配置所创建目录的权限，而不再使用默认权限。</li>
-<li>-p 选项递归创建所有目录，以创建 /home/test/demo 为例，在默认情况下，你需要一层一层的创建各个目录，而使用 -p 选项，则系统会自动帮你创建 /home、/home/test 以及 /home/test/demo。</li>
-</ul>
-<h3 id="删除空目录-rmdir"><a href="#删除空目录-rmdir" class="headerlink" title="删除空目录 rmdir"></a>删除空目录 rmdir</h3><p>rmdir（remove empty directories 的缩写）命令用于删除空目录，此命令的基本格式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# rmdir [-p] 目录名</span><br></pre></td></tr></table></figure>
-<p>-p 选项用于递归删除空目录。</p>
-<p>rmdir 命令的作用十分有限，因为只能刪除空目录，所以一旦目录中有内容，就会报错。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost # mkdir test</span><br><span class="line">#建立测试目录</span><br><span class="line">[root@localhost ~]# touch test/boduo</span><br><span class="line">[root@localhost ~]# touch test/longze</span><br><span class="line">#在测试目录中建立两个文件</span><br><span class="line">[root@localhost ~]# rmdir test</span><br><span class="line">rmdir:删除&quot;test&quot;失败：目录非空</span><br></pre></td></tr></table></figure>
-<h3 id="创建文件及修改文件时间戳"><a href="#创建文件及修改文件时间戳" class="headerlink" title="创建文件及修改文件时间戳"></a>创建文件及修改文件时间戳</h3><p>touch 命令不止可以用来创建文件（当指定操作文件不存在时，该命令会在当前位置建立一个空文件），此命令更重要的功能是修改文件的时间参数（但当文件存在时，会修改此文件的时间参数）。</p>
-<p>Linux 系统中，每个文件主要拥有 3 个时间参数（通过 stat 命令进行查看），分别是文件的访问时间、数据修改时间以及状态修改时间：</p>
-<ul>
-<li>访问时间（Access Time，简称 atime）：只要文件的内容被读取，访问时间就会更新。例如，使用 cat 命令可以查看文件的内容，此时文件的访问时间就会发生改变。</li>
-<li>数据修改时间（Modify Time，简称 mtime）：当文件的内容数据发生改变，此文件的数据修改时间就会跟着相应改变。</li>
-<li>状态修改时间（Change Time，简称 ctime）：当文件的状态发生变化，就会相应改变这个时间。比如说，如果文件的权限或者属性发生改变，此时间就会相应改变。</li>
-</ul>
-<p>touch 命令的基本格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch [选项] 文件名</span><br></pre></td></tr></table></figure>
-<p>选项：</p>
-<ul>
-<li>-a：只修改文件的访问时间；</li>
-<li>-c：仅修改文件的时间参数（3 个时间参数都改变），如果文件不存在，则不建立新文件。</li>
-<li>-d：后面可以跟欲修订的日期，而不用当前的日期，即把文件的 atime 和 mtime 时间改为指定的时间。</li>
-<li>-m：只修改文件的数据修改时间。</li>
-<li>-t：命令后面可以跟欲修订的时间，而不用目前的时间，时间书写格式为 <code>YYMMDDhhmm</code>。</li>
-</ul>
-<p>touch 命令可以只修改文件的访问时间，也可以只修改文件的数据修改时间，但是不能只修改文件的状态修改时间。因为，不论是修改访问时间，还是修改文件的数据时间，对文件来讲，状态都会发生改变，即状态修改时间会随之改变（更新为操作当前文件的真正时间）。</p>
-<p>touch 命令创建文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#touch bols</span><br><span class="line">#建立名为 bols 的空文件</span><br></pre></td></tr></table></figure>
-<p>在上面的基础上修改文件的访问时间。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#ll --time=atime bols</span><br><span class="line">#查看文件的访问时间</span><br><span class="line">-rw-r--r-- 1 root root 0 Sep 25 21:23 bols</span><br><span class="line">#文件上次的访问时间为 9 月 25 号 21：23</span><br><span class="line">[root@localhost ~]#touch bols</span><br><span class="line">[root@localhost ~]#ll --time=atime bols</span><br><span class="line">-rw-r--r-- 1 root root 0 May 15 16:36 bols</span><br><span class="line">#而如果文件已经存在，则也不会报错，只是会修改文件的访问时间。</span><br></pre></td></tr></table></figure>
-<p>修改 bols 文件的 atime 和 mtime。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch -d &quot;2017-05-04 15:44&quot; bols</span><br><span class="line">[root@localhost ~]# ll bols; ll --time=atime bols; ll --time=ctime bols</span><br><span class="line">-rw-r--r-- 1 root root 0 May 4 2017 bols</span><br><span class="line">-rw-r--r-- 1 root root 0 May 4 2017 bols</span><br><span class="line">-rw-r--r-- 1 root root 0 Sep 25 21:40 bols</span><br><span class="line">#ctime不会变为设定时间，但更新为当前服务器的时间</span><br></pre></td></tr></table></figure>
+<p>因此，根目录必须包含开机软件、核心文件、开机所需程序、函数库、修复系统程序等文件</p>
+<table>
+<thead>
+<tr>
+<th>一级目录</th>
+<th>功能（作用）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/bin/</td>
+<td>存放系统命令，普通用户和 root 都可以执行。放在 /bin 下的命令在单用户模式下也可以执行</td>
+</tr>
+<tr>
+<td>/boot/</td>
+<td>系统启动目录，保存与系统启动相关的文件，如内核文件和启动引导程序（grub）文件等</td>
+</tr>
+<tr>
+<td>/dev/</td>
+<td>设备文件保存位置</td>
+</tr>
+<tr>
+<td>/etc/</td>
+<td>配置文件保存位置。系统内所有采用默认安装方式（rpm 安装）的服务配置文件全部保存在此目录中，如用户信息、服务的启动脚本、常用服务的配置文件等</td>
+</tr>
+<tr>
+<td>/home/</td>
+<td>普通用户的主目录（也称为家目录）。在创建用户时，每个用户要有一个默认登录和保存自己数据的位置，就是用户的主目录，所有普通用户的主目录是在 /home/ 下建立一个和用户名相同的目录。如用户 liming 的主目录就是 /home/liming</td>
+</tr>
+<tr>
+<td>/lib/</td>
+<td>系统调用的函数库保存位置</td>
+</tr>
+<tr>
+<td>/media/</td>
+<td>挂载目录。系统建议用来挂载媒体设备，如软盘和光盘</td>
+</tr>
+<tr>
+<td>/mnt/</td>
+<td>挂载目录。早期 Linux 中只有这一个挂载目录，并没有细分。系统建议这个目录用来挂载额外的设备，如 U 盘、移动硬盘和其他操作系统的分区</td>
+</tr>
+<tr>
+<td>/misc/</td>
+<td>挂载目录。系统建议用来挂载 NFS 服务的共享目录。虽然系统准备了三个默认挂载目录 /media/、/mnt/、/misc/，但是到底在哪个目录中挂载什么设备可以由管理员自己决定。例如，笔者在接触 Linux 的时候，默认挂载目录只有 /mnt/，所以养成了在 /mnt/ 下建立不同目录挂载不同设备的习惯，如 /mnt/cdrom/ 挂载光盘、/mnt/usb/ 挂载 U 盘，都是可以的</td>
+</tr>
+<tr>
+<td>/opt/</td>
+<td>第三方安装的软件保存位置。这个目录是放置和安装其他软件的位置，手工安装的源码包软件都可以安装到这个目录中。不过笔者还是习惯把软件放到 /usr/local/ 目录中，也就是说，/usr/local/ 目录也可以用来安装软件</td>
+</tr>
+<tr>
+<td>/root/</td>
+<td>root 的主目录。普通用户主目录在 /home/ 下，root 主目录直接在“/”下</td>
+</tr>
+<tr>
+<td>/sbin/</td>
+<td>保存与系统环境设置相关的命令，只有 root 可以使用这些命令进行系统环境设置，但也有些命令可以允许普通用户查看</td>
+</tr>
+<tr>
+<td>/srv/</td>
+<td>服务数据目录。一些系统服务启动之后，可以在这个目录中保存所需要的数据</td>
+</tr>
+<tr>
+<td>/tmp/</td>
+<td>临时目录。系统存放临时文件的目录，在该目录下，所有用户都可以访问和写入。建议此目录中不能保存重要数据，最好每次开机都把该目录清空</td>
+</tr>
+</tbody>
+</table>
+<p>FHS 针对根目录中包含的子目录仅限于表 1，但除此之外，Linux 系统根目录下通常还包含表 2 中的几个一级目录。</p>
+<table>
+<thead>
+<tr>
+<th>一级目录</th>
+<th>功能（作用）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/lost+found/</td>
+<td>当系统意外崩溃或意外关机时，产生的一些文件碎片会存放在这里。在系统启动的过程中，fsck 工具会检查这里，并修复已经损坏的文件系统。这个目录只在每个分区中出现，例如，/lost+found 就是根分区的备份恢复目录，/boot/lost+found 就是 /boot 分区的备份恢复目录</td>
+</tr>
+<tr>
+<td>/proc/</td>
+<td>虚拟文件系统。该目录中的数据并不保存在硬盘上，而是保存到内存中。主要保存系统的内核、进程、外部设备状态和网络状态等。如 /proc/cpuinfo 是保存 CPU 信息的，/proc/devices 是保存设备驱动的列表的，/proc/filesystems 是保存文件系统列表的，/proc/net 是保存网络协议信息的……</td>
+</tr>
+<tr>
+<td>/sys/</td>
+<td>虚拟文件系统。和 /proc/ 目录相似，该目录中的数据都保存在内存中，主要保存与内核相关的信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Linux-usr目录"><a href="#Linux-usr目录" class="headerlink" title="Linux /usr目录"></a>Linux /usr目录</h2><p>usr（注意不是 user），全称为 Unix Software Resource，此目录用于存储系统软件资源。FHS 建议所有开发者，应把软件产品的数据合理的放置在 /usr 目录下的各子目录中，而不是为他们的产品创建单独的目录。</p>
+<p>Linux 系统中，所有系统默认的软件都存储在 /usr 目录下，/usr 目录类似 Windows 系统中 C:\Windows\ + C:\Program files\ 两个目录的综合体。</p>
+<table>
+<thead>
+<tr>
+<th>子目录</th>
+<th>功能（作用）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/usr/bin/</td>
+<td>存放系统命令，普通用户和超级用户都可以执行。这些命令和系统启动无关，在单用户模式下不能执行</td>
+</tr>
+<tr>
+<td>/usr/sbin/</td>
+<td>存放根文件系统不必要的系统管理命令，如多数服务程序，只有 root 可以使用。</td>
+</tr>
+<tr>
+<td>/usr/lib/</td>
+<td>应用程序调用的函数库保存位置</td>
+</tr>
+<tr>
+<td>/usr/XllR6/</td>
+<td>图形界面系统保存位置</td>
+</tr>
+<tr>
+<td>/usr/local/</td>
+<td>手工安装的软件保存位置。我们一般建议源码包软件安装在这个位置</td>
+</tr>
+<tr>
+<td>/usr/share/</td>
+<td>应用程序的资源文件保存位置，如帮助文档、说明文档和字体目录</td>
+</tr>
+<tr>
+<td>/usr/src/</td>
+<td>源码包保存位置。我们手工下载的源码包和内核源码包都可以保存到这里。不过笔者更习惯把手工下载的源码包保存到 /usr/local/src/ 目录中，把内核源码保存到 /usr/src/linux/ 目录中</td>
+</tr>
+<tr>
+<td>/usr/include</td>
+<td>C/C++等编程语言头文件的放置目录</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Linux-var-目录"><a href="#Linux-var-目录" class="headerlink" title="Linux /var 目录"></a>Linux /var 目录</h2><p>/var 目录用于存储动态数据，例如缓存、日志文件、软件运行过程中产生的文件等。通常，此目录下建议包含如下这些子目录。</p>
+<table>
+<thead>
+<tr>
+<th>/var子目录</th>
+<th>功能（作用）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/var/lib/</td>
+<td>程序运行中需要调用或改变的数据保存位置。如 <a href="http://c.biancheng.net/mysql/" target="_blank" rel="noopener">MySQL</a> 的数据库保存在 /var/lib/mysql/ 目录中</td>
+</tr>
+<tr>
+<td>/var/log/</td>
+<td>登陆文件放置的目录，其中所包含比较重要的文件如 /var/log/messages, /var/log/wtmp 等。</td>
+</tr>
+<tr>
+<td>/var/run/</td>
+<td>一些服务和程序运行后，它们的 PID（进程 ID）保存位置</td>
+</tr>
+<tr>
+<td>/var/spool/</td>
+<td>里面主要都是一些临时存放，随时会被用户所调用的数据，例如 /var/spool/mail/ 存放新收到的邮件，/var/spool/cron/ 存放系统定时任务。</td>
+</tr>
+<tr>
+<td>/var/www/</td>
+<td>RPM 包安装的 Apache 的网页主目录</td>
+</tr>
+<tr>
+<td>/var/nis和/var/yp</td>
+<td>NIS 服务机制所使用的目录，nis 主要记录所有网络中每一个 client 的连接信息；yp 是 linux 的 nis 服务的日志文件存放的目录</td>
+</tr>
+<tr>
+<td>/var/tmp</td>
+<td>一些应用程序在安装或执行时，需要在重启后使用的某些文件，此目录能将该类文件暂时存放起来，完成后再行删除</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Linux挂载"><a href="#Linux挂载" class="headerlink" title="Linux挂载"></a>Linux挂载</h2><p>Linux系统中“一切皆文件”，所有文件都放置在以根目录为树根的树形目录结构中。在 Linux 看来，任何硬件设备也都是文件，它们各有自己的一套文件系统（文件目录结构）。</p>
+<p>如果不挂载，通过Linux系统中的图形界面系统可以查看找到硬件设备，但命令行方式无法找到。</p>
+<p>挂载，指的就是将设备文件中的顶级目录连接到 Linux 根目录下的某一目录（最好是空目录），访问此目录就等同于访问设备文件。</p>
+<p>纠正一个误区，并不是根目录下任何一个目录都可以作为挂载点，由于挂载操作会使得原有目录中文件被隐藏，因此根目录以及系统原有目录都不要作为挂载点，会造成系统异常甚至崩溃，挂载点最好是新建的空目录。  </p>
+<p>举个例子，我们想通过命令行访问某个 U 盘中的数据，图 1 所示为 U 盘文件目录结构和 Linux 系统中的文件目录结构。</p>
+<p><img src="/2019/10/21/Linux/Linux文件目录结构/2-1Z321130921V9.gif" alt="U çå Linux ç³»ç»æä»¶ç®å½ç»æ"></p>
+<p>图 1 中可以看到，目前 U 盘和 Linux 系统文件分属两个文件系统，还无法使用命令行找到 U 盘文件，需要将两个文件系统进行挂载。</p>
+<p>接下来，我们在根目录下新建一个目录 /sdb-u，通过挂载命令将 U 盘文件系统挂载到此目录，挂载效果如图 2 所示。  </p>
+<p><img src="/2019/10/21/Linux/Linux文件目录结构/2-1Z321130I44B.gif" alt="æä»¶ç³»ç»æè½½"></p>
+<p>可以看到，U 盘文件系统已经成为 Linux 文件系统目录的一部分，此时访问 /sdb-u/ 就等同于访问 U 盘。</p>
+<p>前面讲过，根目录下的 /dev/ 目录文件负责所有的硬件设备文件，事实上，当 U 盘插入 Linux 后，系统也确实会给 U 盘分配一个目录文件（比如 sdb1），就位于 /dev/ 目录下（/dev/sdb1），但无法通过 /dev/sdb1/ 直接访问 U 盘数据，访问此目录只会提供给你此设备的一些基本信息（比如容量）。</p>
+<p>总之，Linux 系统使用任何硬件设备，都必须将设备文件与已有目录文件进行挂载。  </p>
 
           
         
@@ -3589,7 +3596,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共199.1k字</span>
+  <span class="post-count">博客全站共208.1k字</span>
 </div>
         
 <div class="busuanzi-count">
