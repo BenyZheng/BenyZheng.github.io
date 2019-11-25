@@ -1934,224 +1934,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/26/框架/bean的作用域/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/26/框架/bean的作用域/" class="post-title-link" itemprop="url">bean的作用域</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-26T12:12:57+08:00">2019-10-26 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-10-27 01:25:57" itemprop="dateModified" datetime="2019-10-27T01:25:57+08:00">2019-10-27</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-10-27T01:25:57+08:00" content="2019-10-27">
-                2019-10-27 01:25:57
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/26/框架/bean的作用域/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/26/框架/bean的作用域/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="作用域scope配置项"><a href="#作用域scope配置项" class="headerlink" title="作用域scope配置项"></a>作用域scope配置项</h3><p>作用域限定了Spring Bean的作用范围，在Spring配置文件定义Bean时，通过声明scope配置项，可以灵活定义Bean的作用范围。</p>
-<p>例如，当你希望每次IOC容器返回的Bean是同一个实例时，可以设置scope为singleton；当你希望每次IOC容器返回的Bean实例是一个新的实例时，可以设置scope为prototype。</p>
-<p>scope配置项有5个属性，用于描述不同的作用域。</p>
-<p>① singleton</p>
-<p>使用该属性定义Bean时，IOC容器仅创建一个Bean实例，IOC容器每次返回的是同一个Bean实例。</p>
-<p>② prototype</p>
-<p>使用该属性定义Bean时，IOC容器可以创建多个Bean实例，每次返回的都是一个新的实例。</p>
-<p>③ request</p>
-<p>该属性仅对HTTP请求产生作用，使用该属性定义Bean时，每次HTTP请求都会创建一个新的Bean，适用于WebApplicationContext环境。</p>
-<p>④ session</p>
-<p>该属性仅用于HTTP Session，同一个Session共享一个Bean实例。不同Session使用不同的实例。</p>
-<p>⑤ global-session</p>
-<p>该属性仅用于HTTP Session，同session作用域不同的是，所有的Session共享一个Bean实例。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/26/框架/bean的配置方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2474,6 +2256,224 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/26/框架/bean的作用域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/26/框架/bean的作用域/" class="post-title-link" itemprop="url">bean的作用域</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-26 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-26T12:12:57+08:00">2019-10-26 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-10-27 01:25:57" itemprop="dateModified" datetime="2019-10-27T01:25:57+08:00">2019-10-27</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-10-27T01:25:57+08:00" content="2019-10-27">
+                2019-10-27 01:25:57
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架/" itemprop="url" rel="index"><span itemprop="name">框架</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/26/框架/bean的作用域/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/26/框架/bean的作用域/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="作用域scope配置项"><a href="#作用域scope配置项" class="headerlink" title="作用域scope配置项"></a>作用域scope配置项</h3><p>作用域限定了Spring Bean的作用范围，在Spring配置文件定义Bean时，通过声明scope配置项，可以灵活定义Bean的作用范围。</p>
+<p>例如，当你希望每次IOC容器返回的Bean是同一个实例时，可以设置scope为singleton；当你希望每次IOC容器返回的Bean实例是一个新的实例时，可以设置scope为prototype。</p>
+<p>scope配置项有5个属性，用于描述不同的作用域。</p>
+<p>① singleton</p>
+<p>使用该属性定义Bean时，IOC容器仅创建一个Bean实例，IOC容器每次返回的是同一个Bean实例。</p>
+<p>② prototype</p>
+<p>使用该属性定义Bean时，IOC容器可以创建多个Bean实例，每次返回的都是一个新的实例。</p>
+<p>③ request</p>
+<p>该属性仅对HTTP请求产生作用，使用该属性定义Bean时，每次HTTP请求都会创建一个新的Bean，适用于WebApplicationContext环境。</p>
+<p>④ session</p>
+<p>该属性仅用于HTTP Session，同一个Session共享一个Bean实例。不同Session使用不同的实例。</p>
+<p>⑤ global-session</p>
+<p>该属性仅用于HTTP Session，同session作用域不同的是，所有的Session共享一个Bean实例。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/22/java集合类/HashMap遍历与删除/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2638,283 +2638,6 @@
 <p>这种遍历是OK的</p>
 <p>分析上述原因，如果大家理解了List的遍历删除，HashMap的遍历删除有类似之处。下面就分析一下原因：</p>
 <p>如果查询源代码以上的三种的删除方式都是通过调用HashMap.removeEntryForKey方法来实现删除key的操作。<br>在removeEntryForKey方法内执行一次  modCount就会执行一次自增操作，此时modCount就与expectedModCount不一致了，上面三种remove实现中，只有第三种iterator的remove方法在调用完removeEntryForKey方法后同步了expectedModCount值与modCount相同，所以iterator方式不会抛出异常。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/Linux/Linux命令行下识别文件类型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beny">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beny's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/21/Linux/Linux命令行下识别文件类型/" class="post-title-link" itemprop="url">Linux命令行下识别文件类型</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-                
-              
-
-              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
-            
-
-            
-              
-            <!--  old version
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-              <time title="修改时间：2019-11-07 23:44:59" itemprop="dateModified" datetime="2019-11-07T23:44:59+08:00">2019-11-07</time> 
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-11-07T23:44:59+08:00" content="2019-11-07">
-                2019-11-07 23:44:59
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/10/21/Linux/Linux命令行下识别文件类型/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/Linux/Linux命令行下识别文件类型/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Linux 中可以用不同的颜色来区分不同种类的文件，例如绿色代表可执行文件、红色代表压缩文件、浅绿色代表链接文件、白色代表其他文件、黄色代表设备文件等。</p>
-<p>如果想详细了解不同文件类型所对应的颜色，可以使用 man 命令，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# man dir_colors</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/10/21/Linux/Linux命令行下识别文件类型/2-19101010151bC.gif" alt="æ¥çå±æ§"></p>
-<p>每行代表一个文件或目录，其中第一个字符表示的就是文件的类型，其可能的取值以及表示的文件类型</p>
-<table>
-<thead>
-<tr>
-<th>第一个字符</th>
-<th>文件类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-</td>
-<td>普通文件，包括纯文本文件、二进制文件、各种压缩文件等。</td>
-</tr>
-<tr>
-<td>d</td>
-<td>目录，类似 Windows 系统中的文件夹。</td>
-</tr>
-<tr>
-<td>b</td>
-<td>块设备文件，就是保存大块数据的设备，比如最常见的硬盘。</td>
-</tr>
-<tr>
-<td>c</td>
-<td>字符设备文件，例如键盘、鼠标等。</td>
-</tr>
-<tr>
-<td>s</td>
-<td>套接字文件，通常用在网络数据连接，可以启动一个程序开监听用户的要求，用户可以通过套接字进行数据通信。</td>
-</tr>
-<tr>
-<td>p</td>
-<td>管道文件，其主要作用是解决多个程序同时存取一个文件所造成的错误。</td>
-</tr>
-<tr>
-<td>l</td>
-<td>链接文件，类似 Windows 系统中的快捷方式。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Linux命令基本格式"><a href="#Linux命令基本格式" class="headerlink" title="Linux命令基本格式"></a>Linux命令基本格式</h2><h3 id="命令提示符"><a href="#命令提示符" class="headerlink" title="命令提示符"></a>命令提示符</h3><p>[root@localhost ~]#</p>
-<p>这就是 Linux 系统的命令提示符。那么，这个提示符的含义是什么呢？</p>
-<ul>
-<li>[]：这是提示符的分隔符号，没有特殊含义。</li>
-<li>root：显示的是当前的登录用户，笔者现在使用的是 root 用户登录。</li>
-<li>@：分隔符号，没有特殊含义。</li>
-<li>localhost：当前系统的简写主机名（完整主机名是 localhost.localdomain）。</li>
-<li>~：代表用户当前所在的目录，此例中用户当前所在的目录是家目录。</li>
-<li>#：命令提示符，Linux 用这个符号标识登录的用户权限等级。如果是超级用户，提示符就是 #；如果是普通用户，提示符就是 $。</li>
-</ul>
-<p>家目录</p>
-<p>（又称主目录）是什么？ Linux 系统是纯字符界面，用户登录后，要有一个初始登录的位置，这个初始登录位置就称为用户的家：</p>
-<ul>
-<li>超级用户的家目录：/root。</li>
-<li>普通用户的家目录：/home/用户名。</li>
-</ul>
-<p>用户在自己的家目录中拥有完整权限，所以我们也建议操作实验可以放在家目录中进行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd /usr/local</span><br><span class="line">[root@localhost local]#</span><br></pre></td></tr></table></figure>
-<p>如果切换用户所在目录，那么命令提示符中的会变成用户当前所在目录的最后一个目录（不显示完整的所在目录 /usr/ local，只显示最后一个目录 local)。</p>
-<h3 id="命令的基本格式"><a href="#命令的基本格式" class="headerlink" title="命令的基本格式"></a>命令的基本格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# 命令[选项][参数]</span><br></pre></td></tr></table></figure>
-<h4 id="1-选项的作用"><a href="#1-选项的作用" class="headerlink" title="1) 选项的作用"></a>1) 选项的作用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# Is -l</span><br><span class="line">总用量44</span><br><span class="line">-rw-------.1 root root 1207 1 月 14 18:18 anaconda-ks.cfg</span><br><span class="line">-rw-r--r--.1 root root 24772 1 月 14 18:17 install.log</span><br><span class="line">-rw-r--r--.1 root root 7690 1 月 14 18:17 install.log.syslog</span><br></pre></td></tr></table></figure>
-<p>如果加一个”-l”选项，则可以看到显示的内容明显增多了。”-l”是长格式（long list）的意思，也就是显示文件的详细信息。至于 “-l” 选项的具体含义，我们稍后再详细讲解。可以看到选项的作用是调整命令功能。如果没有选项，那么命令只能执行最基本的功能；而一旦有选项，则可以显示更加丰富的数据。</p>
-<p>Linux 的选项又分为短格式选项（-l）和长格式选项（–all）。短格式选项是英文的简写，用一个减号调用，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls -l</span><br></pre></td></tr></table></figure>
-<p>而长格式选项是英文完整单词，一般用两个减号调用，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls --all</span><br></pre></td></tr></table></figure>
-<p>一般情况下，短格式选项是长格式选项的缩写，也就是一个短格式选项会有对应的长格式选项。</p>
-<h4 id="2-参数的作用"><a href="#2-参数的作用" class="headerlink" title="2) 参数的作用"></a>2) 参数的作用</h4><p>参数是命令的操作对象，一般文件、目录、用户和进程等可以作为参数被命令操作。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls -l anaconda-ks.cfg</span><br><span class="line">-rw-------.1 root root 1207 1 月 14 18:18 anaconda-ks.cfg</span><br></pre></td></tr></table></figure>
 
           
         
@@ -3351,6 +3074,283 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://benyzheng.github.io/2019/10/21/Linux/Linux命令行下识别文件类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beny">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beny's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/21/Linux/Linux命令行下识别文件类型/" class="post-title-link" itemprop="url">Linux命令行下识别文件类型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-10-21 12:12:57" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:57+08:00">2019-10-21 12:12:57</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-11-07 23:44:59" itemprop="dateModified" datetime="2019-11-07T23:44:59+08:00">2019-11-07</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-11-07T23:44:59+08:00" content="2019-11-07">
+                2019-11-07 23:44:59
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/10/21/Linux/Linux命令行下识别文件类型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/Linux/Linux命令行下识别文件类型/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Linux 中可以用不同的颜色来区分不同种类的文件，例如绿色代表可执行文件、红色代表压缩文件、浅绿色代表链接文件、白色代表其他文件、黄色代表设备文件等。</p>
+<p>如果想详细了解不同文件类型所对应的颜色，可以使用 man 命令，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# man dir_colors</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/10/21/Linux/Linux命令行下识别文件类型/2-19101010151bC.gif" alt="æ¥çå±æ§"></p>
+<p>每行代表一个文件或目录，其中第一个字符表示的就是文件的类型，其可能的取值以及表示的文件类型</p>
+<table>
+<thead>
+<tr>
+<th>第一个字符</th>
+<th>文件类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>普通文件，包括纯文本文件、二进制文件、各种压缩文件等。</td>
+</tr>
+<tr>
+<td>d</td>
+<td>目录，类似 Windows 系统中的文件夹。</td>
+</tr>
+<tr>
+<td>b</td>
+<td>块设备文件，就是保存大块数据的设备，比如最常见的硬盘。</td>
+</tr>
+<tr>
+<td>c</td>
+<td>字符设备文件，例如键盘、鼠标等。</td>
+</tr>
+<tr>
+<td>s</td>
+<td>套接字文件，通常用在网络数据连接，可以启动一个程序开监听用户的要求，用户可以通过套接字进行数据通信。</td>
+</tr>
+<tr>
+<td>p</td>
+<td>管道文件，其主要作用是解决多个程序同时存取一个文件所造成的错误。</td>
+</tr>
+<tr>
+<td>l</td>
+<td>链接文件，类似 Windows 系统中的快捷方式。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Linux命令基本格式"><a href="#Linux命令基本格式" class="headerlink" title="Linux命令基本格式"></a>Linux命令基本格式</h2><h3 id="命令提示符"><a href="#命令提示符" class="headerlink" title="命令提示符"></a>命令提示符</h3><p>[root@localhost ~]#</p>
+<p>这就是 Linux 系统的命令提示符。那么，这个提示符的含义是什么呢？</p>
+<ul>
+<li>[]：这是提示符的分隔符号，没有特殊含义。</li>
+<li>root：显示的是当前的登录用户，笔者现在使用的是 root 用户登录。</li>
+<li>@：分隔符号，没有特殊含义。</li>
+<li>localhost：当前系统的简写主机名（完整主机名是 localhost.localdomain）。</li>
+<li>~：代表用户当前所在的目录，此例中用户当前所在的目录是家目录。</li>
+<li>#：命令提示符，Linux 用这个符号标识登录的用户权限等级。如果是超级用户，提示符就是 #；如果是普通用户，提示符就是 $。</li>
+</ul>
+<p>家目录</p>
+<p>（又称主目录）是什么？ Linux 系统是纯字符界面，用户登录后，要有一个初始登录的位置，这个初始登录位置就称为用户的家：</p>
+<ul>
+<li>超级用户的家目录：/root。</li>
+<li>普通用户的家目录：/home/用户名。</li>
+</ul>
+<p>用户在自己的家目录中拥有完整权限，所以我们也建议操作实验可以放在家目录中进行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd /usr/local</span><br><span class="line">[root@localhost local]#</span><br></pre></td></tr></table></figure>
+<p>如果切换用户所在目录，那么命令提示符中的会变成用户当前所在目录的最后一个目录（不显示完整的所在目录 /usr/ local，只显示最后一个目录 local)。</p>
+<h3 id="命令的基本格式"><a href="#命令的基本格式" class="headerlink" title="命令的基本格式"></a>命令的基本格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# 命令[选项][参数]</span><br></pre></td></tr></table></figure>
+<h4 id="1-选项的作用"><a href="#1-选项的作用" class="headerlink" title="1) 选项的作用"></a>1) 选项的作用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# Is -l</span><br><span class="line">总用量44</span><br><span class="line">-rw-------.1 root root 1207 1 月 14 18:18 anaconda-ks.cfg</span><br><span class="line">-rw-r--r--.1 root root 24772 1 月 14 18:17 install.log</span><br><span class="line">-rw-r--r--.1 root root 7690 1 月 14 18:17 install.log.syslog</span><br></pre></td></tr></table></figure>
+<p>如果加一个”-l”选项，则可以看到显示的内容明显增多了。”-l”是长格式（long list）的意思，也就是显示文件的详细信息。至于 “-l” 选项的具体含义，我们稍后再详细讲解。可以看到选项的作用是调整命令功能。如果没有选项，那么命令只能执行最基本的功能；而一旦有选项，则可以显示更加丰富的数据。</p>
+<p>Linux 的选项又分为短格式选项（-l）和长格式选项（–all）。短格式选项是英文的简写，用一个减号调用，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls -l</span><br></pre></td></tr></table></figure>
+<p>而长格式选项是英文完整单词，一般用两个减号调用，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls --all</span><br></pre></td></tr></table></figure>
+<p>一般情况下，短格式选项是长格式选项的缩写，也就是一个短格式选项会有对应的长格式选项。</p>
+<h4 id="2-参数的作用"><a href="#2-参数的作用" class="headerlink" title="2) 参数的作用"></a>2) 参数的作用</h4><p>参数是命令的操作对象，一般文件、目录、用户和进程等可以作为参数被命令操作。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls -l anaconda-ks.cfg</span><br><span class="line">-rw-------.1 root root 1207 1 月 14 18:18 anaconda-ks.cfg</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -3596,7 +3596,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共208.1k字</span>
+  <span class="post-count">博客全站共216.6k字</span>
 </div>
         
 <div class="busuanzi-count">
